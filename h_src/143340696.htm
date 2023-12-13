@@ -1,0 +1,48 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>str_reverse</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143340696.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143340696.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143340696.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143340696.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143340696.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143340696.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143344164.htm#112" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/143340696.htm" class="function">str_reverse</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143340560.htm" class="localvar">L</a>) {
+  <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/143340424.htm" class="localvar">l</a>, <a href="../h_src/143340288.htm" class="localvar">i</a>;
+  <a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> <a href="../h_src/143340152.htm" class="localvar">b</a>;
+  const char *<a href="../h_src/143340016.htm" class="localvar">s</a> = <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/143340560.htm" class="localvar">L</a>, 1, &amp;<a href="../h_src/143340424.htm" class="localvar">l</a>);
+  char *<a href="../h_src/143339880.htm" class="localvar">p</a> = <a href="../h_src/57413176.htm" class="function">luaL_buffinitsize</a>(<a href="../h_src/143340560.htm" class="localvar">L</a>, &amp;<a href="../h_src/143340152.htm" class="localvar">b</a>, <a href="../h_src/143340424.htm" class="localvar">l</a>);
+  for (<a href="../h_src/143340288.htm" class="localvar">i</a> = 0; <a href="../h_src/143340288.htm" class="localvar">i</a> &lt; <a href="../h_src/143340424.htm" class="localvar">l</a>; <a href="../h_src/143340288.htm" class="localvar">i</a>++)
+    <a href="../h_src/143339880.htm" class="localvar">p</a>[<a href="../h_src/143340288.htm" class="localvar">i</a>] = <a href="../h_src/143340016.htm" class="localvar">s</a>[<a href="../h_src/143340424.htm" class="localvar">l</a> - <a href="../h_src/143340288.htm" class="localvar">i</a> - 1];
+  <a href="../h_src/57413244.htm" class="function">luaL_pushresultsize</a>(&amp;<a href="../h_src/143340152.htm" class="localvar">b</a>, <a href="../h_src/143340424.htm" class="localvar">l</a>);
+  return 1;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

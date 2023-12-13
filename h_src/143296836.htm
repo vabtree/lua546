@@ -1,0 +1,60 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>quotefloat</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143296836.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143296836.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143296836.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143296836.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143296836.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143296836.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143344164.htm#1151" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/143296836.htm" class="function">quotefloat</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143296700.htm" class="localvar">L</a>, char *<a href="../h_src/143296564.htm" class="localvar">buff</a>, <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/143296428.htm" class="localvar">n</a>) {
+  const char *<a href="../h_src/143296292.htm" class="localvar">s</a>;  <a  class="comments">/* for the fixed representations */</a>
+  if (<a href="../h_src/143296428.htm" class="localvar">n</a> == (<a href="../h_src/57442144.htm" class="type">lua_Number</a>)<a href="../h_src/57449420.htm" class="macro">HUGE_VAL</a>)  <a  class="comments">/* inf? */</a>
+    <a href="../h_src/143296292.htm" class="localvar">s</a> = &quot;1e9999&quot;;
+  else if (<a href="../h_src/143296428.htm" class="localvar">n</a> == -(<a href="../h_src/57442144.htm" class="type">lua_Number</a>)<a href="../h_src/57449420.htm" class="macro">HUGE_VAL</a>)  <a  class="comments">/* -inf? */</a>
+    <a href="../h_src/143296292.htm" class="localvar">s</a> = &quot;-1e9999&quot;;
+  else if (<a href="../h_src/143296428.htm" class="localvar">n</a> != <a href="../h_src/143296428.htm" class="localvar">n</a>)  <a  class="comments">/* NaN? */</a>
+    <a href="../h_src/143296292.htm" class="localvar">s</a> = &quot;(0/0)&quot;;
+  else {  <a  class="comments">/* format number as hexadecimal */</a>
+    int  <a href="../h_src/143296156.htm" class="localvar">nb</a> = <a href="../h_src/143299828.htm" class="function">lua_number2strx</a>(<a href="../h_src/143296700.htm" class="localvar">L</a>, <a href="../h_src/143296564.htm" class="localvar">buff</a>, <a href="../h_src/143298604.htm" class="macro">MAX_ITEM</a>,
+                                 &quot;%&quot; <a href="../h_src/57451596.htm" class="macro">LUA_NUMBER_FRMLEN</a> &quot;a&quot;, <a href="../h_src/143296428.htm" class="localvar">n</a>);
+    <a  class="comments">/* ensures that 'buff' string uses a dot as the radix character */</a>
+    if (<a href="../h_aa/143315808.htm" class="libfunc">memchr</a>(<a href="../h_src/143296564.htm" class="localvar">buff</a>, '.', <a href="../h_src/143296156.htm" class="localvar">nb</a>) == NULL) {  <a  class="comments">/* no dot? */</a>
+      char <a href="../h_src/143296020.htm" class="localvar">point</a> = <a href="../h_src/57448468.htm" class="macro">lua_getlocaledecpoint</a>();  <a  class="comments">/* try locale point */</a>
+      char *<a href="../h_src/143295884.htm" class="localvar">ppoint</a> = (char *)<a href="../h_aa/143315808.htm" class="libfunc">memchr</a>(<a href="../h_src/143296564.htm" class="localvar">buff</a>, <a href="../h_src/143296020.htm" class="localvar">point</a>, <a href="../h_src/143296156.htm" class="localvar">nb</a>);
+      if (<a href="../h_src/143295884.htm" class="localvar">ppoint</a>) *<a href="../h_src/143295884.htm" class="localvar">ppoint</a> = '.';  <a  class="comments">/* change it to a dot */</a>
+    }
+    return <a href="../h_src/143296156.htm" class="localvar">nb</a>;
+  }
+  <a  class="comments">/* for the fixed representations */</a>
+  return <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143296564.htm" class="localvar">buff</a>, <a href="../h_src/143298604.htm" class="macro">MAX_ITEM</a>, &quot;%s&quot;, <a href="../h_src/143296292.htm" class="localvar">s</a>);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

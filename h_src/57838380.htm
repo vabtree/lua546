@@ -1,0 +1,54 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>newupval</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57838380.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57838380.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57838380.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57838380.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57838380.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57838380.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57840488.htm#65" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57838380.htm" class="function">newupval</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57838244.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57838108.htm" class="localvar">level</a>, <a href="../h_src/57509612.htm" class="type">UpVal</a> **<a href="../h_src/57837972.htm" class="localvar">prev</a>) {
+  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57837836.htm" class="localvar">o</a> = <a href="../h_src/57620592.htm" class="function">luaC_newobj</a>(<a href="../h_src/57838244.htm" class="localvar">L</a>, <a href="../h_src/57513760.htm" class="macro">LUA_VUPVAL</a>, sizeof(<a href="../h_src/57509612.htm" class="type">UpVal</a>));
+  <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57837700.htm" class="localvar">uv</a> = <a href="../h_src/57639020.htm" class="macro">gco2upv</a>(<a href="../h_src/57837836.htm" class="localvar">o</a>);
+  <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57837564.htm" class="localvar">next</a> = *<a href="../h_src/57837972.htm" class="localvar">prev</a>;
+  <a href="../h_src/57837700.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57510564.htm" class="variable">v</a>.<a href="../h_src/57510768.htm" class="variable">p</a> = <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57838108.htm" class="localvar">level</a>);  <a  class="comments">/* current value lives in the stack */</a>
+  <a href="../h_src/57837700.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57509680.htm" class="variable">u</a>.<a href="../h_src/57509884.htm" class="variable">open</a>.<a href="../h_src/57510224.htm" class="variable">next</a> = <a href="../h_src/57837564.htm" class="localvar">next</a>;  <a  class="comments">/* link it to list of open upvalues */</a>
+  <a href="../h_src/57837700.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57509680.htm" class="variable">u</a>.<a href="../h_src/57509884.htm" class="variable">open</a>.<a href="../h_src/57510020.htm" class="variable">previous</a> = <a href="../h_src/57837972.htm" class="localvar">prev</a>;
+  if (<a href="../h_src/57837564.htm" class="localvar">next</a>)
+    <a href="../h_src/57837564.htm" class="localvar">next</a>-&gt;<a href="../h_src/57509680.htm" class="variable">u</a>.<a href="../h_src/57509884.htm" class="variable">open</a>.<a href="../h_src/57510020.htm" class="variable">previous</a> = &amp;<a href="../h_src/57837700.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57509680.htm" class="variable">u</a>.<a href="../h_src/57509884.htm" class="variable">open</a>.<a href="../h_src/57510224.htm" class="variable">next</a>;
+  *<a href="../h_src/57837972.htm" class="localvar">prev</a> = <a href="../h_src/57837700.htm" class="localvar">uv</a>;
+  if (!<a href="../h_src/57631812.htm" class="macro">isintwups</a>(<a href="../h_src/57838244.htm" class="localvar">L</a>)) {  <a  class="comments">/* thread not in list of threads with upvalues? */</a>
+    <a href="../h_src/57838244.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642012.htm" class="variable">twups</a> = <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57838244.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57643984.htm" class="variable">twups</a>;  <a  class="comments">/* link it to the list */</a>
+    <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57838244.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57643984.htm" class="variable">twups</a> = <a href="../h_src/57838244.htm" class="localvar">L</a>;
+  }
+  return <a href="../h_src/57837700.htm" class="localvar">uv</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

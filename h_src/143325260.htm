@@ -1,0 +1,56 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>match_class</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143325260.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143325260.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143325260.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143325260.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143325260.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143325260.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143344164.htm#427" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/143325260.htm" class="function">match_class</a> (int <a href="../h_src/143325124.htm" class="localvar">c</a>, int <a href="../h_src/143324988.htm" class="localvar">cl</a>) {
+  int <a href="../h_src/143324852.htm" class="localvar">res</a>;
+  switch (<a href="../h_aa/143338792.htm" class="libfunc">tolower</a>(<a href="../h_src/143324988.htm" class="localvar">cl</a>)) {
+    case 'a' : <a href="../h_src/143324852.htm" class="localvar">res</a> = <a href="../h_aa/143324716.htm" class="libfunc">isalpha</a>(<a href="../h_src/143325124.htm" class="localvar">c</a>); break;
+    case 'c' : <a href="../h_src/143324852.htm" class="localvar">res</a> = <a href="../h_aa/143324648.htm" class="libfunc">iscntrl</a>(<a href="../h_src/143325124.htm" class="localvar">c</a>); break;
+    case 'd' : <a href="../h_src/143324852.htm" class="localvar">res</a> = <a href="../h_aa/58309772.htm" class="libfunc">isdigit</a>(<a href="../h_src/143325124.htm" class="localvar">c</a>); break;
+    case 'g' : <a href="../h_src/143324852.htm" class="localvar">res</a> = <a href="../h_aa/143324580.htm" class="libfunc">isgraph</a>(<a href="../h_src/143325124.htm" class="localvar">c</a>); break;
+    case 'l' : <a href="../h_src/143324852.htm" class="localvar">res</a> = <a href="../h_aa/143324512.htm" class="libfunc">islower</a>(<a href="../h_src/143325124.htm" class="localvar">c</a>); break;
+    case 'p' : <a href="../h_src/143324852.htm" class="localvar">res</a> = <a href="../h_aa/143324444.htm" class="libfunc">ispunct</a>(<a href="../h_src/143325124.htm" class="localvar">c</a>); break;
+    case 's' : <a href="../h_src/143324852.htm" class="localvar">res</a> = <a href="../h_aa/143324376.htm" class="libfunc">isspace</a>(<a href="../h_src/143325124.htm" class="localvar">c</a>); break;
+    case 'u' : <a href="../h_src/143324852.htm" class="localvar">res</a> = <a href="../h_aa/143324308.htm" class="libfunc">isupper</a>(<a href="../h_src/143325124.htm" class="localvar">c</a>); break;
+    case 'w' : <a href="../h_src/143324852.htm" class="localvar">res</a> = <a href="../h_aa/58309840.htm" class="libfunc">isalnum</a>(<a href="../h_src/143325124.htm" class="localvar">c</a>); break;
+    case 'x' : <a href="../h_src/143324852.htm" class="localvar">res</a> = <a href="../h_aa/143248420.htm" class="libfunc">isxdigit</a>(<a href="../h_src/143325124.htm" class="localvar">c</a>); break;
+    case 'z' : <a href="../h_src/143324852.htm" class="localvar">res</a> = (<a href="../h_src/143325124.htm" class="localvar">c</a> == 0); break;  <a  class="comments">/* deprecated option */</a>
+    default: return (<a href="../h_src/143324988.htm" class="localvar">cl</a> == <a href="../h_src/143325124.htm" class="localvar">c</a>);
+  }
+  return (<a href="../h_aa/143324512.htm" class="libfunc">islower</a>(<a href="../h_src/143324988.htm" class="localvar">cl</a>) ? <a href="../h_src/143324852.htm" class="localvar">res</a> : !<a href="../h_src/143324852.htm" class="localvar">res</a>);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,66 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>internshrstr</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58125188.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58125188.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58125188.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58125188.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58125188.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58125188.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58132328.htm#188" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/58125188.htm" class="function">internshrstr</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58125052.htm" class="localvar">L</a>, const char *<a href="../h_src/58124916.htm" class="localvar">str</a>, <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58124780.htm" class="localvar">l</a>) {
+  <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/58124644.htm" class="localvar">ts</a>;
+  <a href="../h_src/57643100.htm" class="type">global_State</a> *<a href="../h_src/58124508.htm" class="localvar">g</a> = <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/58125052.htm" class="localvar">L</a>);
+  <a href="../h_src/57651600.htm" class="type">stringtable</a> *<a href="../h_src/58124372.htm" class="localvar">tb</a> = &amp;<a href="../h_src/58124508.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646364.htm" class="variable">strt</a>;
+  unsigned int <a href="../h_src/58124236.htm" class="localvar">h</a> = <a href="../h_src/57619164.htm" class="function">luaS_hash</a>(<a href="../h_src/58124916.htm" class="localvar">str</a>, <a href="../h_src/58124780.htm" class="localvar">l</a>, <a href="../h_src/58124508.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646160.htm" class="variable">seed</a>);
+  <a href="../h_src/57522736.htm" class="type">TString</a> **<a href="../h_src/58124100.htm" class="localvar">list</a> = &amp;<a href="../h_src/58124372.htm" class="localvar">tb</a>-&gt;<a href="../h_src/57651804.htm" class="variable">hash</a>[<a href="../h_src/57502472.htm" class="macro">lmod</a>(<a href="../h_src/58124236.htm" class="localvar">h</a>, <a href="../h_src/58124372.htm" class="localvar">tb</a>-&gt;<a href="../h_src/57651668.htm" class="variable">size</a>)];
+  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(str != NULL);  <a  class="comments">/* otherwise 'memcmp'/'memcpy' are undefined */</a>
+  for (<a href="../h_src/58124644.htm" class="localvar">ts</a> = *<a href="../h_src/58124100.htm" class="localvar">list</a>; <a href="../h_src/58124644.htm" class="localvar">ts</a> != NULL; <a href="../h_src/58124644.htm" class="localvar">ts</a> = <a href="../h_src/58124644.htm" class="localvar">ts</a>-&gt;<a href="../h_src/57522872.htm" class="variable">u</a>.<a href="../h_src/57523008.htm" class="variable">hnext</a>) {
+    if (<a href="../h_src/58124780.htm" class="localvar">l</a> == <a href="../h_src/58124644.htm" class="localvar">ts</a>-&gt;<a href="../h_src/57523416.htm" class="variable">shrlen</a> &amp;&amp; (<a href="../h_aa/58131444.htm" class="libfunc">memcmp</a>(<a href="../h_src/58124916.htm" class="localvar">str</a>, <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58124644.htm" class="localvar">ts</a>), <a href="../h_src/58124780.htm" class="localvar">l</a> * sizeof(char)) == 0)) {
+      <a  class="comments">/* found! */</a>
+      if (<a href="../h_src/57625556.htm" class="macro">isdead</a>(<a href="../h_src/58124508.htm" class="localvar">g</a>, <a href="../h_src/58124644.htm" class="localvar">ts</a>))  <a  class="comments">/* dead (but not collected yet)? */</a>
+        <a href="../h_src/57625420.htm" class="macro">changewhite</a>(<a href="../h_src/58124644.htm" class="localvar">ts</a>);  <a  class="comments">/* resurrect it */</a>
+      return <a href="../h_src/58124644.htm" class="localvar">ts</a>;
+    }
+  }
+  <a  class="comments">/* else must create a new string */</a>
+  if (<a href="../h_src/58124372.htm" class="localvar">tb</a>-&gt;<a href="../h_src/57651736.htm" class="variable">nuse</a> &gt;= <a href="../h_src/58124372.htm" class="localvar">tb</a>-&gt;<a href="../h_src/57651668.htm" class="variable">size</a>) {  <a  class="comments">/* need to grow string table? */</a>
+    <a href="../h_src/58125596.htm" class="function">growstrtab</a>(<a href="../h_src/58125052.htm" class="localvar">L</a>, <a href="../h_src/58124372.htm" class="localvar">tb</a>);
+    <a href="../h_src/58124100.htm" class="localvar">list</a> = &amp;<a href="../h_src/58124372.htm" class="localvar">tb</a>-&gt;<a href="../h_src/57651804.htm" class="variable">hash</a>[<a href="../h_src/57502472.htm" class="macro">lmod</a>(<a href="../h_src/58124236.htm" class="localvar">h</a>, <a href="../h_src/58124372.htm" class="localvar">tb</a>-&gt;<a href="../h_src/57651668.htm" class="variable">size</a>)];  <a  class="comments">/* rehash with new size */</a>
+  }
+  <a href="../h_src/58124644.htm" class="localvar">ts</a> = <a href="../h_src/58127636.htm" class="function">createstrobj</a>(<a href="../h_src/58125052.htm" class="localvar">L</a>, <a href="../h_src/58124780.htm" class="localvar">l</a>, <a href="../h_src/57525184.htm" class="macro">LUA_VSHRSTR</a>, <a href="../h_src/58124236.htm" class="localvar">h</a>);
+  <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58124644.htm" class="localvar">ts</a>), <a href="../h_src/58124916.htm" class="localvar">str</a>, <a href="../h_src/58124780.htm" class="localvar">l</a> * sizeof(char));
+  <a href="../h_src/58124644.htm" class="localvar">ts</a>-&gt;<a href="../h_src/57523416.htm" class="variable">shrlen</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/58124780.htm" class="localvar">l</a>);
+  <a href="../h_src/58124644.htm" class="localvar">ts</a>-&gt;<a href="../h_src/57522872.htm" class="variable">u</a>.<a href="../h_src/57523008.htm" class="variable">hnext</a> = *<a href="../h_src/58124100.htm" class="localvar">list</a>;
+  *<a href="../h_src/58124100.htm" class="localvar">list</a> = <a href="../h_src/58124644.htm" class="localvar">ts</a>;
+  <a href="../h_src/58124372.htm" class="localvar">tb</a>-&gt;<a href="../h_src/57651736.htm" class="variable">nuse</a>++;
+  return <a href="../h_src/58124644.htm" class="localvar">ts</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

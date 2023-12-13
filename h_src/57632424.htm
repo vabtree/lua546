@@ -1,0 +1,103 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lfunc.h</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57632424.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/57632424.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/57632424.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/57632424.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_ua/57632424.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_da/57632424.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57632424.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57632424.htm" class="file" target="_self">Source Code</a></li>
+<li><a href="../h_sc/57632424.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<pre class=src>
+<a id=1></a><a  class="comments">/*</a>
+<a id=2></a><a  class="comments">** $Id: lfunc.h $</a>
+<a id=3></a><a  class="comments">** Auxiliary functions to manipulate prototypes and closures</a>
+<a id=4></a><a  class="comments">** See Copyright Notice in lua.h</a>
+<a id=5></a><a  class="comments">*/</a>
+
+<a id=7></a>#ifndef <a href="../h_src/57632356.htm" class="macro">lfunc_h</a>
+<a id=8></a>#define <a href="../h_src/57632220.htm" class="macro">lfunc_h</a>
+
+
+<a id=11></a>#include &quot;<a href="../h_src/57537696.htm" class="file">lobject.h</a>&quot;
+
+
+<a id=14></a>#define <a href="../h_src/57632084.htm" class="macro">sizeCclosure</a>(n)	(cast_int(offsetof(CClosure, upvalue)) + \
+                         cast_int(sizeof(TValue)) * (n))
+
+<a id=17></a>#define <a href="../h_src/57631948.htm" class="macro">sizeLclosure</a>(n)	(cast_int(offsetof(LClosure, upvals)) + \
+                         cast_int(sizeof(TValue *)) * (n))
+
+
+<a id=21></a><a  class="comments">/* test whether thread is in 'twups' list */</a>
+<a id=22></a>#define <a href="../h_src/57631812.htm" class="macro">isintwups</a>(L)	(L-&gt;twups != L)
+
+
+<a id=25></a><a  class="comments">/*</a>
+<a id=26></a><a  class="comments">** maximum number of upvalues in a closure (both C and Lua). (Value</a>
+<a id=27></a><a  class="comments">** must fit in a VM register.)</a>
+<a id=28></a><a  class="comments">*/</a>
+<a id=29></a>#define <a href="../h_src/57631676.htm" class="macro">MAXUPVAL</a>	255
+
+
+<a id=32></a>#define <a href="../h_src/57631540.htm" class="macro">upisopen</a>(up)	((up)-&gt;v.p != &amp;(up)-&gt;u.value)
+
+
+<a id=35></a>#define <a href="../h_src/57631404.htm" class="macro">uplevel</a>(up)	check_exp(upisopen(up), cast(StkId, (up)-&gt;v.p))
+
+
+<a id=38></a><a  class="comments">/*</a>
+<a id=39></a><a  class="comments">** maximum number of misses before giving up the cache of closures</a>
+<a id=40></a><a  class="comments">** in prototypes</a>
+<a id=41></a><a  class="comments">*/</a>
+<a id=42></a>#define <a href="../h_src/57631268.htm" class="macro">MAXMISS</a>		10
+
+
+
+<a id=46></a><a  class="comments">/* special status to close upvalues preserving the top of the stack */</a>
+<a id=47></a>#define <a href="../h_src/57631132.htm" class="macro">CLOSEKTOP</a>	(-1)
+
+
+<a id=50></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57630996.htm" class="function">luaF_newproto</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L);
+<a id=51></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> <a href="../h_src/57508728.htm" class="type">CClosure</a> *<a href="../h_src/57630860.htm" class="function">luaF_newCclosure</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int nupvals);
+<a id=52></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> <a href="../h_src/57507980.htm" class="type">LClosure</a> *<a href="../h_src/57630724.htm" class="function">luaF_newLclosure</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int nupvals);
+<a id=53></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57630656.htm" class="function">luaF_initupvals</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57507980.htm" class="type">LClosure</a> *cl);
+<a id=54></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57630588.htm" class="function">luaF_findupval</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57532188.htm" class="type">StkId</a> level);
+<a id=55></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57630520.htm" class="function">luaF_newtbcupval</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57532188.htm" class="type">StkId</a> level);
+<a id=56></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57630452.htm" class="function">luaF_closeupval</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57532188.htm" class="type">StkId</a> level);
+<a id=57></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57630384.htm" class="function">luaF_close</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57532188.htm" class="type">StkId</a> level, int status, int yy);
+<a id=58></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57630316.htm" class="function">luaF_unlinkupval</a> (<a href="../h_src/57509612.htm" class="type">UpVal</a> *uv);
+<a id=59></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57630248.htm" class="function">luaF_freeproto</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57513828.htm" class="type">Proto</a> *f);
+<a id=60></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> const char *<a href="../h_src/57630180.htm" class="function">luaF_getlocalname</a> (const <a href="../h_src/57513828.htm" class="type">Proto</a> *func, int local_number,
+                                         int pc);
+
+
+#endif
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

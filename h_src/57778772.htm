@@ -1,0 +1,45 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>codebinK</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57778772.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57778772.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57778772.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57778772.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57778772.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57778772.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57706720.htm#1448" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/57778772.htm" class="function">codebinK</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57778636.htm" class="localvar">fs</a>, <a href="../h_src/57672584.htm" class="type">BinOpr</a> <a href="../h_src/57778500.htm" class="localvar">opr</a>,
+                      <a href="../h_src/57679384.htm" class="type">expdesc</a> *<a href="../h_src/57778364.htm" class="localvar">e1</a>, <a href="../h_src/57679384.htm" class="type">expdesc</a> *<a href="../h_src/57778228.htm" class="localvar">e2</a>, int <a href="../h_src/57778092.htm" class="localvar">flip</a>, int <a href="../h_src/57777956.htm" class="localvar">line</a>) {
+  <a href="../h_src/57499004.htm" class="type">TMS</a> <a href="../h_src/57777820.htm" class="localvar">event</a> = <a href="../h_src/57783804.htm" class="function">binopr2TM</a>(<a href="../h_src/57778500.htm" class="localvar">opr</a>);
+  int <a href="../h_src/57777684.htm" class="localvar">v2</a> = <a href="../h_src/57778228.htm" class="localvar">e2</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a>;  <a  class="comments">/* K index */</a>
+  <a href="../h_src/57684756.htm" class="type">OpCode</a> <a href="../h_src/57777548.htm" class="localvar">op</a> = <a href="../h_src/57784620.htm" class="function">binopr2op</a>(<a href="../h_src/57778500.htm" class="localvar">opr</a>, <a href="../h_src/57674216.htm" class="variable">OPR_ADD</a>, <a href="../h_src/57689040.htm" class="variable">OP_ADDK</a>);
+  <a href="../h_src/57782716.htm" class="function">finishbinexpval</a>(<a href="../h_src/57778636.htm" class="localvar">fs</a>, <a href="../h_src/57778364.htm" class="localvar">e1</a>, <a href="../h_src/57778228.htm" class="localvar">e2</a>, <a href="../h_src/57777548.htm" class="localvar">op</a>, <a href="../h_src/57777684.htm" class="localvar">v2</a>, <a href="../h_src/57778092.htm" class="localvar">flip</a>, <a href="../h_src/57777956.htm" class="localvar">line</a>, <a href="../h_src/57687272.htm" class="variable">OP_MMBINK</a>, <a href="../h_src/57777820.htm" class="localvar">event</a>);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

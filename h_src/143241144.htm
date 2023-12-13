@@ -1,0 +1,48 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>math_abs</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143241144.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143241144.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143241144.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143241144.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143241144.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143241144.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143241756.htm#29" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/143241144.htm" class="function">math_abs</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143241008.htm" class="localvar">L</a>) {
+  if (<a href="../h_src/57438676.htm" class="function">lua_isinteger</a>(<a href="../h_src/143241008.htm" class="localvar">L</a>, 1)) {
+    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143240872.htm" class="localvar">n</a> = <a href="../h_src/57429428.htm" class="macro">lua_tointeger</a>(<a href="../h_src/143241008.htm" class="localvar">L</a>, 1);
+    if (<a href="../h_src/143240872.htm" class="localvar">n</a> &lt; 0) n = (lua_Integer)(0u - (lua_Unsigned)n);
+    <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143241008.htm" class="localvar">L</a>, <a href="../h_src/143240872.htm" class="localvar">n</a>);
+  }
+  else
+    <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143241008.htm" class="localvar">L</a>, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143240736.htm" class="libfunc">fabs</a>)(<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143241008.htm" class="localvar">L</a>, 1)));
+  return 1;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

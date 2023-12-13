@@ -1,0 +1,54 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>mainfunc</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57987788.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57987788.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57987788.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57987788.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57987788.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57987788.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58057080.htm#1924" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/57987788.htm" class="function">mainfunc</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57987652.htm" class="localvar">ls</a>, <a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57987516.htm" class="localvar">fs</a>) {
+  <a href="../h_src/58055856.htm" class="type">BlockCnt</a> <a href="../h_src/57987380.htm" class="localvar">bl</a>;
+  <a href="../h_src/57517092.htm" class="type">Upvaldesc</a> *<a href="../h_src/57987244.htm" class="localvar">env</a>;
+  <a href="../h_src/58025392.htm" class="function">open_func</a>(<a href="../h_src/57987652.htm" class="localvar">ls</a>, <a href="../h_src/57987516.htm" class="localvar">fs</a>, &amp;<a href="../h_src/57987380.htm" class="localvar">bl</a>);
+  <a href="../h_src/58017980.htm" class="function">setvararg</a>(<a href="../h_src/57987516.htm" class="localvar">fs</a>, 0);  <a  class="comments">/* main function is always declared vararg */</a>
+  <a href="../h_src/57987244.htm" class="localvar">env</a> = <a href="../h_src/58041916.htm" class="function">allocupvalue</a>(<a href="../h_src/57987516.htm" class="localvar">fs</a>);  <a  class="comments">/* ...set environment upvalue */</a>
+  <a href="../h_src/57987244.htm" class="localvar">env</a>-&gt;<a href="../h_src/57517296.htm" class="variable">instack</a> = 1;
+  <a href="../h_src/57987244.htm" class="localvar">env</a>-&gt;<a href="../h_src/57517228.htm" class="variable">idx</a> = 0;
+  <a href="../h_src/57987244.htm" class="localvar">env</a>-&gt;<a href="../h_src/57517160.htm" class="variable">kind</a> = <a href="../h_src/57679316.htm" class="macro">VDKREG</a>;
+  <a href="../h_src/57987244.htm" class="localvar">env</a>-&gt;<a href="../h_src/57517364.htm" class="variable">name</a> = <a href="../h_src/57987652.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700192.htm" class="variable">envn</a>;
+  <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/57987652.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/57987516.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57676052.htm" class="variable">f</a>, <a href="../h_src/57987244.htm" class="localvar">env</a>-&gt;<a href="../h_src/57517364.htm" class="variable">name</a>);
+  <a href="../h_src/57699784.htm" class="function">luaX_next</a>(<a href="../h_src/57987652.htm" class="localvar">ls</a>);  <a  class="comments">/* read first token */</a>
+  <a href="../h_src/58023624.htm" class="function">statlist</a>(<a href="../h_src/57987652.htm" class="localvar">ls</a>);  <a  class="comments">/* parse main body */</a>
+  <a href="../h_src/58052932.htm" class="function">check</a>(<a href="../h_src/57987652.htm" class="localvar">ls</a>, <a href="../h_src/57703116.htm" class="variable">TK_EOS</a>);
+  <a href="../h_src/58024712.htm" class="function">close_func</a>(<a href="../h_src/57987652.htm" class="localvar">ls</a>);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

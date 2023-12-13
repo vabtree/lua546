@@ -1,0 +1,93 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>collectargs</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57563604.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57563604.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57563604.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57563604.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57563604.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57563604.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57461796.htm#277" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/57563604.htm" class="function">collectargs</a> (char **<a href="../h_src/57563468.htm" class="localvar">argv</a>, int *<a href="../h_src/57563332.htm" class="localvar">first</a>) {
+  int <a href="../h_src/57563196.htm" class="localvar">args</a> = 0;
+  int <a href="../h_src/57563060.htm" class="localvar">i</a>;
+  if (<a href="../h_src/57563468.htm" class="localvar">argv</a>[0] != NULL) {  <a  class="comments">/* is there a program name? */</a>
+    if (<a href="../h_src/57563468.htm" class="localvar">argv</a>[0][0])  <a  class="comments">/* not empty? */</a>
+      <a href="../h_src/57572920.htm" class="variable">progname</a> = <a href="../h_src/57563468.htm" class="localvar">argv</a>[0];  <a  class="comments">/* save it */</a>
+  }
+  else {  <a  class="comments">/* no program name */</a>
+    *<a href="../h_src/57563332.htm" class="localvar">first</a> = -1;
+    return 0;
+  }
+  for (<a href="../h_src/57563060.htm" class="localvar">i</a> = 1; <a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>] != NULL; <a href="../h_src/57563060.htm" class="localvar">i</a>++) {  <a  class="comments">/* handle arguments */</a>
+    *<a href="../h_src/57563332.htm" class="localvar">first</a> = <a href="../h_src/57563060.htm" class="localvar">i</a>;
+    if (<a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>][0] != '-')  <a  class="comments">/* not an option? */</a>
+        return <a href="../h_src/57563196.htm" class="localvar">args</a>;  <a  class="comments">/* stop handling options */</a>
+    switch (<a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>][1]) {  <a  class="comments">/* else check option */</a>
+      case '-':  <a  class="comments">/* '--' */</a>
+        if (<a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>][2] != '\0')  <a  class="comments">/* extra characters after '--'? */</a>
+          return <a href="../h_src/57564284.htm" class="macro">has_error</a>;  <a  class="comments">/* invalid option */</a>
+        *<a href="../h_src/57563332.htm" class="localvar">first</a> = <a href="../h_src/57563060.htm" class="localvar">i</a> + 1;
+        return <a href="../h_src/57563196.htm" class="localvar">args</a>;
+      case '\0':  <a  class="comments">/* '-' */</a>
+        return <a href="../h_src/57563196.htm" class="localvar">args</a>;  <a  class="comments">/* script &quot;name&quot; is '-' */</a>
+      case 'E':
+        if (<a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>][2] != '\0')  <a  class="comments">/* extra characters? */</a>
+          return <a href="../h_src/57564284.htm" class="macro">has_error</a>;  <a  class="comments">/* invalid option */</a>
+        <a href="../h_src/57563196.htm" class="localvar">args</a> |= <a href="../h_src/57563740.htm" class="macro">has_E</a>;
+        break;
+      case 'W':
+        if (<a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>][2] != '\0')  <a  class="comments">/* extra characters? */</a>
+          return <a href="../h_src/57564284.htm" class="macro">has_error</a>;  <a  class="comments">/* invalid option */</a>
+        break;
+      case 'i':
+        <a href="../h_src/57563196.htm" class="localvar">args</a> |= <a href="../h_src/57564148.htm" class="macro">has_i</a>;  <a  class="comments">/* (-i implies -v) */</a><a  class="comments">/* FALLTHROUGH */</a>
+      case 'v':
+        if (<a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>][2] != '\0')  <a  class="comments">/* extra characters? */</a>
+          return <a href="../h_src/57564284.htm" class="macro">has_error</a>;  <a  class="comments">/* invalid option */</a>
+        <a href="../h_src/57563196.htm" class="localvar">args</a> |= <a href="../h_src/57564012.htm" class="macro">has_v</a>;
+        break;
+      case 'e':
+        <a href="../h_src/57563196.htm" class="localvar">args</a> |= <a href="../h_src/57563876.htm" class="macro">has_e</a>;  <a  class="comments">/* FALLTHROUGH */</a>
+      case 'l':  <a  class="comments">/* both options need an argument */</a>
+        if (<a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>][2] == '\0') {  <a  class="comments">/* no concatenated argument? */</a>
+          <a href="../h_src/57563060.htm" class="localvar">i</a>++;  <a  class="comments">/* try next 'argv' */</a>
+          if (<a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>] == NULL || <a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>][0] == '-')
+            return <a href="../h_src/57564284.htm" class="macro">has_error</a>;  <a  class="comments">/* no next argument or it is another option */</a>
+        }
+        break;
+      default:  <a  class="comments">/* invalid option */</a>
+        return <a href="../h_src/57564284.htm" class="macro">has_error</a>;
+    }
+  }
+  *<a href="../h_src/57563332.htm" class="localvar">first</a> = 0;  <a  class="comments">/* no script name */</a>
+  return <a href="../h_src/57563196.htm" class="localvar">args</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

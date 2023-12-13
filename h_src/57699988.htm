@@ -1,0 +1,52 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaX_setinput</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57699988.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57699988.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57699988.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57699988.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57699988.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57699988.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57940692.htm#167" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+void <a href="../h_src/57699988.htm" class="function">luaX_setinput</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57935388.htm" class="localvar">L</a>, <a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57935252.htm" class="localvar">ls</a>, <a href="../h_src/57656088.htm" class="type">ZIO</a> *<a href="../h_src/57935116.htm" class="localvar">z</a>, <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/57934980.htm" class="localvar">source</a>,
+                    int <a href="../h_src/57934844.htm" class="localvar">firstchar</a>) {
+  <a href="../h_src/57935252.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a> = 0;
+  <a href="../h_src/57935252.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a> = <a href="../h_src/57935388.htm" class="localvar">L</a>;
+  <a href="../h_src/57935252.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a> = <a href="../h_src/57934844.htm" class="localvar">firstchar</a>;
+  <a href="../h_src/57935252.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701348.htm" class="variable">lookahead</a>.<a href="../h_src/57701960.htm" class="variable">token</a> = <a href="../h_src/57703116.htm" class="variable">TK_EOS</a>;  <a  class="comments">/* no look-ahead token */</a>
+  <a href="../h_src/57935252.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700872.htm" class="variable">z</a> = <a href="../h_src/57935116.htm" class="localvar">z</a>;
+  <a href="../h_src/57935252.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a> = NULL;
+  <a href="../h_src/57935252.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701552.htm" class="variable">linenumber</a> = 1;
+  <a href="../h_src/57935252.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701484.htm" class="variable">lastline</a> = 1;
+  <a href="../h_src/57935252.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700260.htm" class="variable">source</a> = <a href="../h_src/57934980.htm" class="localvar">source</a>;
+  <a href="../h_src/57935252.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700192.htm" class="variable">envn</a> = <a href="../h_src/57619572.htm" class="macro">luaS_newliteral</a>(<a href="../h_src/57935388.htm" class="localvar">L</a>, <a href="../h_src/57705428.htm" class="macro">LUA_ENV</a>);  <a  class="comments">/* get env name */</a>
+  <a href="../h_src/57654660.htm" class="macro">luaZ_resizebuffer</a>(<a href="../h_src/57935252.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/57935252.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>, <a href="../h_src/57543952.htm" class="macro">LUA_MINBUFFER</a>);  <a  class="comments">/* initialize buffer */</a><a href="../h_src/57655748.htm" class="variable">buffer</a> */
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

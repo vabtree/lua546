@@ -1,0 +1,48 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>findfile</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143202996.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143202996.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143202996.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143202996.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143202996.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143202996.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143217276.htm#522" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static const char *<a href="../h_src/143202996.htm" class="function">findfile</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143202860.htm" class="localvar">L</a>, const char *<a href="../h_src/143202724.htm" class="localvar">name</a>,
+                                           const char *<a href="../h_src/143202588.htm" class="localvar">pname</a>,
+                                           const char *<a href="../h_src/143202452.htm" class="localvar">dirsep</a>) {
+  const char *<a href="../h_src/143202316.htm" class="localvar">path</a>;
+  <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143202860.htm" class="localvar">L</a>, <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(1), <a href="../h_src/143202588.htm" class="localvar">pname</a>);
+  <a href="../h_src/143202316.htm" class="localvar">path</a> = <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143202860.htm" class="localvar">L</a>, -1);
+  if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/143202316.htm" class="localvar">path</a> == NULL))
+    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143202860.htm" class="localvar">L</a>, &quot;'package.%s' must be a string&quot;, <a href="../h_src/143202588.htm" class="localvar">pname</a>);
+  return <a href="../h_src/143204764.htm" class="function">searchpath</a>(<a href="../h_src/143202860.htm" class="localvar">L</a>, <a href="../h_src/143202724.htm" class="localvar">name</a>, <a href="../h_src/143202316.htm" class="localvar">path</a>, &quot;.&quot;, <a href="../h_src/143202452.htm" class="localvar">dirsep</a>);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

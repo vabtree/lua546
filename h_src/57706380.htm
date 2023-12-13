@@ -1,0 +1,143 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lcode.h</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57706380.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/57706380.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/57706380.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/57706380.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_ua/57706380.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_da/57706380.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57706380.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57706380.htm" class="file" target="_self">Source Code</a></li>
+<li><a href="../h_sc/57706380.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<pre class=src>
+<a id=1></a><a  class="comments">/*</a>
+<a id=2></a><a  class="comments">** $Id: lcode.h $</a>
+<a id=3></a><a  class="comments">** Code generator for Lua</a>
+<a id=4></a><a  class="comments">** See Copyright Notice in lua.h</a>
+<a id=5></a><a  class="comments">*/</a>
+
+<a id=7></a>#ifndef <a href="../h_src/57706312.htm" class="macro">lcode_h</a>
+<a id=8></a>#define <a href="../h_src/57706176.htm" class="macro">lcode_h</a>
+
+<a id=10></a>#include &quot;<a href="../h_src/57706040.htm" class="file">llex.h</a>&quot;
+<a id=11></a>#include &quot;<a href="../h_src/57537696.htm" class="file">lobject.h</a>&quot;
+<a id=12></a>#include &quot;<a href="../h_src/57699512.htm" class="file">lopcodes.h</a>&quot;
+<a id=13></a>#include &quot;<a href="../h_src/57683056.htm" class="file">lparser.h</a>&quot;
+
+
+<a id=16></a><a  class="comments">/*</a>
+<a id=17></a><a  class="comments">** Marks the end of a patch list. It is an invalid value both as an absolute</a>
+<a id=18></a><a  class="comments">** address, and as a list link (would link an element to itself).</a>
+<a id=19></a><a  class="comments">*/</a>
+<a id=20></a>#define <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a> (-1)
+
+
+<a id=23></a><a  class="comments">/*</a>
+<a id=24></a><a  class="comments">** grep &quot;ORDER OPR&quot; if you change these enums  (ORDER OP)</a>
+<a id=25></a><a  class="comments">*/</a>
+<a id=26></a>typedef enum <a href="../h_src/57672720.htm" class="type">BinOpr</a> {
+<a id=27></a>  <a  class="comments">/* arithmetic operators */</a>
+<a id=28></a>  <a href="../h_src/57674216.htm" class="variable">OPR_ADD</a>, <a href="../h_src/57674148.htm" class="variable">OPR_SUB</a>, <a href="../h_src/57674080.htm" class="variable">OPR_MUL</a>, <a href="../h_src/57674012.htm" class="variable">OPR_MOD</a>, <a href="../h_src/57673944.htm" class="variable">OPR_POW</a>,
+<a id=29></a>  <a href="../h_src/57673876.htm" class="variable">OPR_DIV</a>, <a href="../h_src/57673808.htm" class="variable">OPR_IDIV</a>,
+<a id=30></a>  <a  class="comments">/* bitwise operators */</a>
+<a id=31></a>  <a href="../h_src/57673740.htm" class="variable">OPR_BAND</a>, <a href="../h_src/57673672.htm" class="variable">OPR_BOR</a>, <a href="../h_src/57673604.htm" class="variable">OPR_BXOR</a>,
+<a id=32></a>  <a href="../h_src/57673536.htm" class="variable">OPR_SHL</a>, <a href="../h_src/57673468.htm" class="variable">OPR_SHR</a>,
+<a id=33></a>  <a  class="comments">/* string operator */</a>
+<a id=34></a>  <a href="../h_src/57673400.htm" class="variable">OPR_CONCAT</a>,
+<a id=35></a>  <a  class="comments">/* comparison operators */</a>
+<a id=36></a>  <a href="../h_src/57673332.htm" class="variable">OPR_EQ</a>, <a href="../h_src/57673264.htm" class="variable">OPR_LT</a>, <a href="../h_src/57673196.htm" class="variable">OPR_LE</a>,
+<a id=37></a>  <a href="../h_src/57673128.htm" class="variable">OPR_NE</a>, <a href="../h_src/57673060.htm" class="variable">OPR_GT</a>, <a href="../h_src/57672992.htm" class="variable">OPR_GE</a>,
+<a id=38></a>  <a  class="comments">/* logical operators */</a>
+<a id=39></a>  <a href="../h_src/57672924.htm" class="variable">OPR_AND</a>, <a href="../h_src/57672856.htm" class="variable">OPR_OR</a>,
+<a id=40></a>  <a href="../h_src/57672788.htm" class="variable">OPR_NOBINOPR</a>
+<a id=41></a>} <a href="../h_src/57672584.htm" class="type">BinOpr</a>;
+
+
+<a id=44></a><a  class="comments">/* true if operation is foldable (that is, it is arithmetic or bitwise) */</a>
+<a id=45></a>#define <a href="../h_src/57672516.htm" class="macro">foldbinop</a>(op)	((op) &lt;= OPR_SHR)
+
+
+<a id=48></a>#define <a href="../h_src/57672380.htm" class="macro">luaK_codeABC</a>(fs,o,a,b,c)	luaK_codeABCk(fs,o,a,b,c,0)
+
+
+<a id=51></a>typedef enum <a href="../h_src/57671904.htm" class="type">UnOpr</a> { <a href="../h_src/57672244.htm" class="variable">OPR_MINUS</a>, <a href="../h_src/57672176.htm" class="variable">OPR_BNOT</a>, <a href="../h_src/57672108.htm" class="variable">OPR_NOT</a>, <a href="../h_src/57672040.htm" class="variable">OPR_LEN</a>, <a href="../h_src/57671972.htm" class="variable">OPR_NOUNOPR</a> } <a href="../h_src/57671904.htm" class="type">UnOpr</a>;
+
+
+<a id=54></a><a  class="comments">/* get (pointer to) instruction of given 'expdesc' */</a>
+<a id=55></a>#define <a href="../h_src/57671700.htm" class="macro">getinstruction</a>(fs,e)	((fs)-&gt;f-&gt;code[(e)-&gt;u.info])
+
+
+<a id=58></a>#define <a href="../h_src/57671564.htm" class="macro">luaK_setmultret</a>(fs,e)	luaK_setreturns(fs, e, LUA_MULTRET)
+
+<a id=60></a>#define <a href="../h_src/57671428.htm" class="macro">luaK_jumpto</a>(fs,t)	luaK_patchlist(fs, luaK_jump(fs), t)
+
+<a id=62></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> int <a href="../h_src/57671292.htm" class="function">luaK_code</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs, <a href="../h_src/57545108.htm" class="type">Instruction</a> i);
+<a id=63></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> int <a href="../h_src/57671224.htm" class="function">luaK_codeABx</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs, <a href="../h_src/57684756.htm" class="type">OpCode</a> o, int A, unsigned int Bx);
+<a id=64></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> int <a href="../h_src/57671156.htm" class="function">luaK_codeAsBx</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs, <a href="../h_src/57684756.htm" class="type">OpCode</a> o, int A, int Bx);
+<a id=65></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> int <a href="../h_src/57671088.htm" class="function">luaK_codeABCk</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs, <a href="../h_src/57684756.htm" class="type">OpCode</a> o, int A,
+                                            int B, int C, int k);
+<a id=67></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> int <a href="../h_src/57671020.htm" class="function">luaK_isKint</a> (<a href="../h_src/57679384.htm" class="type">expdesc</a> *e);
+<a id=68></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> int <a href="../h_src/57670884.htm" class="function">luaK_exp2const</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs, const <a href="../h_src/57679384.htm" class="type">expdesc</a> *e, <a href="../h_src/57535384.htm" class="type">TValue</a> *v);
+<a id=69></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57670816.htm" class="function">luaK_fixline</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs, int line);
+<a id=70></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57670748.htm" class="function">luaK_nil</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs, int from, int n);
+<a id=71></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57670680.htm" class="function">luaK_reserveregs</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs, int n);
+<a id=72></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57670612.htm" class="function">luaK_checkstack</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs, int n);
+<a id=73></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57670544.htm" class="function">luaK_int</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs, int reg, <a href="../h_src/57442076.htm" class="type">lua_Integer</a> n);
+<a id=74></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57670476.htm" class="function">luaK_dischargevars</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs, <a href="../h_src/57679384.htm" class="type">expdesc</a> *e);
+<a id=75></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> int <a href="../h_src/57670408.htm" class="function">luaK_exp2anyreg</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs, <a href="../h_src/57679384.htm" class="type">expdesc</a> *e);
+<a id=76></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57670340.htm" class="function">luaK_exp2anyregup</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs, <a href="../h_src/57679384.htm" class="type">expdesc</a> *e);
+<a id=77></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57670272.htm" class="function">luaK_exp2nextreg</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs, <a href="../h_src/57679384.htm" class="type">expdesc</a> *e);
+<a id=78></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57670204.htm" class="function">luaK_exp2val</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs, <a href="../h_src/57679384.htm" class="type">expdesc</a> *e);
+<a id=79></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> int <a href="../h_src/57670136.htm" class="function">luaK_exp2RK</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs, <a href="../h_src/57679384.htm" class="type">expdesc</a> *e);
+<a id=80></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57670068.htm" class="function">luaK_self</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs, <a href="../h_src/57679384.htm" class="type">expdesc</a> *e, <a href="../h_src/57679384.htm" class="type">expdesc</a> *key);
+<a id=81></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57670000.htm" class="function">luaK_indexed</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs, <a href="../h_src/57679384.htm" class="type">expdesc</a> *t, <a href="../h_src/57679384.htm" class="type">expdesc</a> *k);
+<a id=82></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57669932.htm" class="function">luaK_goiftrue</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs, <a href="../h_src/57679384.htm" class="type">expdesc</a> *e);
+<a id=83></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57669864.htm" class="function">luaK_goiffalse</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs, <a href="../h_src/57679384.htm" class="type">expdesc</a> *e);
+<a id=84></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57669796.htm" class="function">luaK_storevar</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs, <a href="../h_src/57679384.htm" class="type">expdesc</a> *var, <a href="../h_src/57679384.htm" class="type">expdesc</a> *e);
+<a id=85></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57669728.htm" class="function">luaK_setreturns</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs, <a href="../h_src/57679384.htm" class="type">expdesc</a> *e, int nresults);
+<a id=86></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57669660.htm" class="function">luaK_setoneret</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs, <a href="../h_src/57679384.htm" class="type">expdesc</a> *e);
+<a id=87></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> int <a href="../h_src/57669592.htm" class="function">luaK_jump</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs);
+<a id=88></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57669524.htm" class="function">luaK_ret</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs, int first, int nret);
+<a id=89></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57669456.htm" class="function">luaK_patchlist</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs, int list, int target);
+<a id=90></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57669388.htm" class="function">luaK_patchtohere</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs, int list);
+<a id=91></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57669320.htm" class="function">luaK_concat</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs, int *l1, int l2);
+<a id=92></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> int <a href="../h_src/57669252.htm" class="function">luaK_getlabel</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs);
+<a id=93></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57669184.htm" class="function">luaK_prefix</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs, <a href="../h_src/57671768.htm" class="type">UnOpr</a> op, <a href="../h_src/57679384.htm" class="type">expdesc</a> *v, int line);
+<a id=94></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57669116.htm" class="function">luaK_infix</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs, <a href="../h_src/57672584.htm" class="type">BinOpr</a> op, <a href="../h_src/57679384.htm" class="type">expdesc</a> *v);
+<a id=95></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57669048.htm" class="function">luaK_posfix</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs, <a href="../h_src/57672584.htm" class="type">BinOpr</a> op, <a href="../h_src/57679384.htm" class="type">expdesc</a> *v1,
+<a id=96></a>                            <a href="../h_src/57679384.htm" class="type">expdesc</a> *v2, int line);
+<a id=97></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57668980.htm" class="function">luaK_settablesize</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs, int pc,
+                                  int ra, int asize, int hsize);
+<a id=99></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57668912.htm" class="function">luaK_setlist</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs, int base, int nelems, int tostore);
+<a id=100></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57668844.htm" class="function">luaK_finish</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs);
+<a id=101></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> <a href="../h_src/57545584.htm" class="macro">l_noret</a> <a href="../h_src/57668776.htm" class="function">luaK_semerror</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *ls, const char *msg);
+
+
+#endif
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,53 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>load_aux</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58300932.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58300932.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58300932.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58300932.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58300932.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58300932.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58312492.htm#323" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/58300932.htm" class="function">load_aux</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58300796.htm" class="localvar">L</a>, int <a href="../h_src/58300660.htm" class="localvar">status</a>, int <a href="../h_src/58300524.htm" class="localvar">envidx</a>) {
+  if (<a href="../h_src/57551704.htm" class="macro">l_likely</a>(<a href="../h_src/58300660.htm" class="localvar">status</a> == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>)) {
+    if (<a href="../h_src/58300524.htm" class="localvar">envidx</a> != 0) {  <a  class="comments">/* 'env' parameter? */</a>
+      <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/58300796.htm" class="localvar">L</a>, <a href="../h_src/58300524.htm" class="localvar">envidx</a>);  <a  class="comments">/* environment for loaded function */</a>
+      if (!<a href="../h_src/57424328.htm" class="function">lua_setupvalue</a>(<a href="../h_src/58300796.htm" class="localvar">L</a>, -2, 1))  <a  class="comments">/* set it as 1st upvalue */</a>
+        <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/58300796.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove 'env' if not used by previous call */</a>
+    }
+    return 1;
+  }
+  else {  <a  class="comments">/* error (message is on top of the stack) */</a>
+    <a href="../h_src/57415760.htm" class="macro">luaL_pushfail</a>(<a href="../h_src/58300796.htm" class="localvar">L</a>);
+    <a href="../h_src/57427252.htm" class="macro">lua_insert</a>(<a href="../h_src/58300796.htm" class="localvar">L</a>, -2);  <a  class="comments">/* put before error message */</a>
+    return 2;  <a  class="comments">/* return fail plus error message */</a>
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

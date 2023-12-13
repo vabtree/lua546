@@ -1,0 +1,60 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>auxresume</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58293180.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58293180.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58293180.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58293180.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58293180.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58293180.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58293928.htm#32" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/58293180.htm" class="function">auxresume</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58293044.htm" class="localvar">L</a>, <a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58292908.htm" class="localvar">co</a>, int <a href="../h_src/58292772.htm" class="localvar">narg</a>) {
+  int <a href="../h_src/58292636.htm" class="localvar">status</a>, <a href="../h_src/58292500.htm" class="localvar">nres</a>;
+  if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(!<a href="../h_src/57439016.htm" class="function">lua_checkstack</a>(<a href="../h_src/58292908.htm" class="localvar">co</a>, <a href="../h_src/58292772.htm" class="localvar">narg</a>))) {
+    <a href="../h_src/57427660.htm" class="macro">lua_pushliteral</a>(<a href="../h_src/58293044.htm" class="localvar">L</a>, &quot;too many arguments to resume&quot;);
+    return -1;  <a  class="comments">/* error flag */</a>
+  }
+  <a href="../h_src/57438948.htm" class="function">lua_xmove</a>(<a href="../h_src/58293044.htm" class="localvar">L</a>, <a href="../h_src/58292908.htm" class="localvar">co</a>, <a href="../h_src/58292772.htm" class="localvar">narg</a>);
+  <a href="../h_src/58292636.htm" class="localvar">status</a> = <a href="../h_src/57432420.htm" class="function">lua_resume</a>(<a href="../h_src/58292908.htm" class="localvar">co</a>, <a href="../h_src/58293044.htm" class="localvar">L</a>, <a href="../h_src/58292772.htm" class="localvar">narg</a>, &amp;<a href="../h_src/58292500.htm" class="localvar">nres</a>);
+  if (<a href="../h_src/57551704.htm" class="macro">l_likely</a>(<a href="../h_src/58292636.htm" class="localvar">status</a> == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a> || status == <a href="../h_src/57445068.htm" class="macro">LUA_YIELD</a>)) {
+    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(!<a href="../h_src/57439016.htm" class="function">lua_checkstack</a>(<a href="../h_src/58293044.htm" class="localvar">L</a>, <a href="../h_src/58292500.htm" class="localvar">nres</a> + 1))) {
+      <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/58292908.htm" class="localvar">co</a>, <a href="../h_src/58292500.htm" class="localvar">nres</a>);  <a  class="comments">/* remove results anyway */</a>
+      <a href="../h_src/57427660.htm" class="macro">lua_pushliteral</a>(<a href="../h_src/58293044.htm" class="localvar">L</a>, &quot;too many results to resume&quot;);
+      return -1;  <a  class="comments">/* error flag */</a>
+    }
+    <a href="../h_src/57438948.htm" class="function">lua_xmove</a>(<a href="../h_src/58292908.htm" class="localvar">co</a>, <a href="../h_src/58293044.htm" class="localvar">L</a>, <a href="../h_src/58292500.htm" class="localvar">nres</a>);  <a  class="comments">/* move yielded values */</a>
+    return <a href="../h_src/58292500.htm" class="localvar">nres</a>;
+  }
+  else {
+    <a href="../h_src/57438948.htm" class="function">lua_xmove</a>(<a href="../h_src/58292908.htm" class="localvar">co</a>, <a href="../h_src/58293044.htm" class="localvar">L</a>, 1);  <a  class="comments">/* move error message */</a>
+    return -1;  <a  class="comments">/* error flag */</a>
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,51 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>validop</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57786524.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57786524.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57786524.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57786524.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57786524.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57786524.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57706720.htm#1314" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/57786524.htm" class="function">validop</a> (int <a href="../h_src/57786388.htm" class="localvar">op</a>, <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57786252.htm" class="localvar">v1</a>, <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57786116.htm" class="localvar">v2</a>) {
+  switch (<a href="../h_src/57786388.htm" class="localvar">op</a>) {
+    case <a href="../h_src/57436840.htm" class="macro">LUA_OPBAND</a>: case <a href="../h_src/57436704.htm" class="macro">LUA_OPBOR</a>: case <a href="../h_src/57436568.htm" class="macro">LUA_OPBXOR</a>:
+    case <a href="../h_src/57436432.htm" class="macro">LUA_OPSHL</a>: case <a href="../h_src/57436296.htm" class="macro">LUA_OPSHR</a>: case <a href="../h_src/57436024.htm" class="macro">LUA_OPBNOT</a>: {  <a  class="comments">/* conversion errors */</a>
+      <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/57785980.htm" class="localvar">i</a>;
+      return (<a href="../h_src/57611276.htm" class="function">luaV_tointegerns</a>(<a href="../h_src/57786252.htm" class="localvar">v1</a>, &amp;<a href="../h_src/57785980.htm" class="localvar">i</a>, <a href="../h_src/57613656.htm" class="macro">LUA_FLOORN2I</a>) &amp;&amp;
+              <a href="../h_src/57611276.htm" class="function">luaV_tointegerns</a>(<a href="../h_src/57786116.htm" class="localvar">v2</a>, &amp;<a href="../h_src/57785980.htm" class="localvar">i</a>, <a href="../h_src/57613656.htm" class="macro">LUA_FLOORN2I</a>));
+    }
+    case <a href="../h_src/57437112.htm" class="macro">LUA_OPDIV</a>: case <a href="../h_src/57436976.htm" class="macro">LUA_OPIDIV</a>: case <a href="../h_src/57437384.htm" class="macro">LUA_OPMOD</a>:  <a  class="comments">/* division by 0 */</a>
+      return (<a href="../h_src/57526408.htm" class="macro">nvalue</a>(<a href="../h_src/57786116.htm" class="localvar">v2</a>) != 0);
+    default: return 1;  <a  class="comments">/* everything else is valid */</a>
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

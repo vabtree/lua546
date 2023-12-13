@@ -1,0 +1,85 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>doargs</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143404860.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143404860.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143404860.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143404860.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143404860.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143404860.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143407988.htm#76" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/143404860.htm" class="function">doargs</a>(int <a href="../h_src/143404724.htm" class="localvar">argc</a>, char* <a href="../h_src/143404588.htm" class="localvar">argv</a>[])
+{
+ int <a href="../h_src/143404452.htm" class="localvar">i</a>;
+ int <a href="../h_src/143404316.htm" class="localvar">version</a>=0;
+ if (<a href="../h_src/143404588.htm" class="localvar">argv</a>[0]!=NULL &amp;&amp; *<a href="../h_src/143404588.htm" class="localvar">argv</a>[0]!=0) <a href="../h_src/143405948.htm" class="variable">progname</a>=<a href="../h_src/143404588.htm" class="localvar">argv</a>[0];
+ for (<a href="../h_src/143404452.htm" class="localvar">i</a>=1; <a href="../h_src/143404452.htm" class="localvar">i</a>&lt;<a href="../h_src/143404724.htm" class="localvar">argc</a>; <a href="../h_src/143404452.htm" class="localvar">i</a>++)
+ {
+  if (*<a href="../h_src/143404588.htm" class="localvar">argv</a>[<a href="../h_src/143404452.htm" class="localvar">i</a>]!='-')			<a  class="comments">/* end of options; keep it */</a>
+   break;
+  else if (<a href="../h_src/143404996.htm" class="macro">IS</a>(&quot;--&quot;))			<a  class="comments">/* end of options; skip it */</a>
+  {
+   ++<a href="../h_src/143404452.htm" class="localvar">i</a>;
+   if (<a href="../h_src/143404316.htm" class="localvar">version</a>) ++<a href="../h_src/143404316.htm" class="localvar">version</a>;
+   break;
+  }
+  else if (<a href="../h_src/143404996.htm" class="macro">IS</a>(&quot;-&quot;))			<a  class="comments">/* end of options; use stdin */</a>
+   break;
+  else if (<a href="../h_src/143404996.htm" class="macro">IS</a>(&quot;-l&quot;))			<a  class="comments">/* list */</a>
+   ++<a href="../h_src/143406288.htm" class="variable">listing</a>;
+  else if (<a href="../h_src/143404996.htm" class="macro">IS</a>(&quot;-o&quot;))			<a  class="comments">/* output file */</a>
+  {
+   <a href="../h_src/143406016.htm" class="variable">output</a>=<a href="../h_src/143404588.htm" class="localvar">argv</a>[++<a href="../h_src/143404452.htm" class="localvar">i</a>];
+   if (<a href="../h_src/143406016.htm" class="variable">output</a>==NULL || *<a href="../h_src/143406016.htm" class="variable">output</a>==0 || (*<a href="../h_src/143406016.htm" class="variable">output</a>=='-' &amp;&amp; <a href="../h_src/143406016.htm" class="variable">output</a>[1]!=0))
+    <a href="../h_src/143405268.htm" class="function">usage</a>(&quot;'-o' needs argument&quot;);
+   if (<a href="../h_src/143404996.htm" class="macro">IS</a>(&quot;-&quot;)) <a href="../h_src/143406016.htm" class="variable">output</a>=NULL;
+  }
+  else if (<a href="../h_src/143404996.htm" class="macro">IS</a>(&quot;-p&quot;))			<a  class="comments">/* parse only */</a>
+   <a href="../h_src/143406220.htm" class="variable">dumping</a>=0;
+  else if (<a href="../h_src/143404996.htm" class="macro">IS</a>(&quot;-s&quot;))			<a  class="comments">/* strip debug information */</a>
+   <a href="../h_src/143406152.htm" class="variable">stripping</a>=1;
+  else if (<a href="../h_src/143404996.htm" class="macro">IS</a>(&quot;-v&quot;))			<a  class="comments">/* show version */</a>
+   ++<a href="../h_src/143404316.htm" class="localvar">version</a>;
+  else					<a  class="comments">/* unknown option */</a>
+   <a href="../h_src/143405268.htm" class="function">usage</a>(<a href="../h_src/143404588.htm" class="localvar">argv</a>[<a href="../h_src/143404452.htm" class="localvar">i</a>]);
+ }
+ if (<a href="../h_src/143404452.htm" class="localvar">i</a>==<a href="../h_src/143404724.htm" class="localvar">argc</a> &amp;&amp; (<a href="../h_src/143406288.htm" class="variable">listing</a> || !<a href="../h_src/143406220.htm" class="variable">dumping</a>))
+ {
+  <a href="../h_src/143406220.htm" class="variable">dumping</a>=0;
+  <a href="../h_src/143404588.htm" class="localvar">argv</a>[--<a href="../h_src/143404452.htm" class="localvar">i</a>]=<a href="../h_src/143406084.htm" class="variable">Output</a>;
+ }
+ if (<a href="../h_src/143404316.htm" class="localvar">version</a>)
+ {
+  <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%s\n&quot;,<a href="../h_src/57446020.htm" class="macro">LUA_COPYRIGHT</a>);
+  if (<a href="../h_src/143404316.htm" class="localvar">version</a>==<a href="../h_src/143404724.htm" class="localvar">argc</a>-1) <a href="../h_aa/143344436.htm" class="libfunc">exit</a>(EXIT_SUCCESS);
+ }
+ return <a href="../h_src/143404452.htm" class="localvar">i</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

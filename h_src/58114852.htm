@@ -1,0 +1,51 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>getgeneric</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58114852.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58114852.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58114852.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58114852.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58114852.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58114852.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58121924.htm#299" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58114852.htm" class="function">getgeneric</a> (<a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58114716.htm" class="localvar">t</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58114580.htm" class="localvar">key</a>, int <a href="../h_src/58114444.htm" class="localvar">deadok</a>) {
+  <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/58114308.htm" class="localvar">n</a> = <a href="../h_src/58118660.htm" class="function">mainpositionTV</a>(<a href="../h_src/58114716.htm" class="localvar">t</a>, <a href="../h_src/58114580.htm" class="localvar">key</a>);
+  for (;;) {  <a  class="comments">/* check whether 'key' is somewhere in the chain */</a>
+    if (<a href="../h_src/58116484.htm" class="function">equalkey</a>(<a href="../h_src/58114580.htm" class="localvar">key</a>, <a href="../h_src/58114308.htm" class="localvar">n</a>, <a href="../h_src/58114444.htm" class="localvar">deadok</a>))
+      return <a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58114308.htm" class="localvar">n</a>);  <a  class="comments">/* that's it */</a>
+    else {
+      int <a href="../h_src/58114172.htm" class="localvar">nx</a> = <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58114308.htm" class="localvar">n</a>);
+      if (<a href="../h_src/58114172.htm" class="localvar">nx</a> == 0)
+        return &amp;<a href="../h_src/58120156.htm" class="variable">absentkey</a>;  <a  class="comments">/* not found */</a>
+      <a href="../h_src/58114308.htm" class="localvar">n</a> += <a href="../h_src/58114172.htm" class="localvar">nx</a>;
+    }
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,53 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaS_new</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57618484.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57618484.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57618484.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57618484.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57618484.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57618484.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58132328.htm#241" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/57618484.htm" class="function">luaS_new</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58123420.htm" class="localvar">L</a>, const char *<a href="../h_src/58123284.htm" class="localvar">str</a>) {
+  unsigned int <a href="../h_src/58123148.htm" class="localvar">i</a> = <a href="../h_src/57549120.htm" class="macro">point2uint</a>(<a href="../h_src/58123284.htm" class="localvar">str</a>) % <a href="../h_src/57544360.htm" class="macro">STRCACHE_N</a>;  <a  class="comments">/* hash */</a>
+  int <a href="../h_src/58123012.htm" class="localvar">j</a>;
+  <a href="../h_src/57522736.htm" class="type">TString</a> **<a href="../h_src/58122876.htm" class="localvar">p</a> = <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/58123420.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57643304.htm" class="variable">strcache</a>[<a href="../h_src/58123148.htm" class="localvar">i</a>];
+  for (<a href="../h_src/58123012.htm" class="localvar">j</a> = 0; <a href="../h_src/58123012.htm" class="localvar">j</a> &lt; <a href="../h_src/57544224.htm" class="macro">STRCACHE_M</a>; <a href="../h_src/58123012.htm" class="localvar">j</a>++) {
+    if (<a href="../h_aa/57564488.htm" class="libfunc">strcmp</a>(<a href="../h_src/58123284.htm" class="localvar">str</a>, <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58122876.htm" class="localvar">p</a>[<a href="../h_src/58123012.htm" class="localvar">j</a>])) == 0)  <a  class="comments">/* hit? */</a>
+      return <a href="../h_src/58122876.htm" class="localvar">p</a>[<a href="../h_src/58123012.htm" class="localvar">j</a>];  <a  class="comments">/* that is it */</a>
+  }
+  <a  class="comments">/* normal route */</a>
+  for (<a href="../h_src/58123012.htm" class="localvar">j</a> = <a href="../h_src/57544224.htm" class="macro">STRCACHE_M</a> - 1; <a href="../h_src/58123012.htm" class="localvar">j</a> &gt; 0; <a href="../h_src/58123012.htm" class="localvar">j</a>--)
+    <a href="../h_src/58122876.htm" class="localvar">p</a>[<a href="../h_src/58123012.htm" class="localvar">j</a>] = <a href="../h_src/58122876.htm" class="localvar">p</a>[<a href="../h_src/58123012.htm" class="localvar">j</a> - 1];  <a  class="comments">/* move out last element */</a>
+  <a  class="comments">/* new element is first in the list */</a>
+  <a href="../h_src/58122876.htm" class="localvar">p</a>[0] = <a href="../h_src/57618552.htm" class="function">luaS_newlstr</a>(<a href="../h_src/58123420.htm" class="localvar">L</a>, <a href="../h_src/58123284.htm" class="localvar">str</a>, <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/58123284.htm" class="localvar">str</a>));
+  return <a href="../h_src/58122876.htm" class="localvar">p</a>[0];
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

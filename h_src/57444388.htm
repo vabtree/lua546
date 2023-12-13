@@ -1,0 +1,64 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lua_State</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57444388.htm" class="class" target="_self">Info</a></li>
+<li><a href="../h_im/57444388.htm" class="class" target="_self">Public Interface</a></li>
+<li><a href="../h_rx/57444388.htm" class="class" target="_self">Inheritance</a></li>
+<li><a href="../h_nm/57444388.htm" class="class" target="_self">Internals</a></li>
+<li><a href="../h_ua/57444388.htm" class="class" target="_self">Use of Members</a></li>
+<li><a href="../h_da/57444388.htm" class="class" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57444388.htm" class="class" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57444388.htm" class="class" target="_self">Declaration</a></li>
+<li><a href="../h_src/57538104.htm#309" class="class" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Declaration</h4>
+<pre class=src>
+struct <a href="../h_src/57444388.htm" class="class">lua_State</a> {
+  <a href="../h_src/57528312.htm" class="macro">CommonHeader</a>;
+  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57642828.htm" class="variable">status</a>;
+  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57642760.htm" class="variable">allowhook</a>;
+  unsigned short <a href="../h_src/57642692.htm" class="variable">nci</a>;  <a  class="comments">/* number of items in 'ci' list */</a>
+  <a href="../h_src/57531780.htm" class="type">StkIdRel</a> <a href="../h_src/57642624.htm" class="variable">top</a>;  <a  class="comments">/* first free slot in the stack */</a>
+  <a href="../h_src/57643100.htm" class="type">global_State</a> *<a href="../h_src/57642488.htm" class="variable">l_G</a>;
+  <a href="../h_src/57537764.htm" class="type">CallInfo</a> *<a href="../h_src/57642420.htm" class="variable">ci</a>;  <a  class="comments">/* call info for current function */</a>
+  <a href="../h_src/57531780.htm" class="type">StkIdRel</a> <a href="../h_src/57642352.htm" class="variable">stack_last</a>;  <a  class="comments">/* end of stack (last element + 1) */</a>
+  <a href="../h_src/57531780.htm" class="type">StkIdRel</a> <a href="../h_src/57642284.htm" class="variable">stack</a>;  <a  class="comments">/* stack base */</a>
+  <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57642216.htm" class="variable">openupval</a>;  <a  class="comments">/* list of open upvalues in this stack */</a>
+  <a href="../h_src/57531780.htm" class="type">StkIdRel</a> <a href="../h_src/57642148.htm" class="variable">tbclist</a>;  <a  class="comments">/* list of to-be-closed variables */</a>
+  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57642080.htm" class="variable">gclist</a>;
+  struct <a href="../h_src/57444388.htm" class="class">lua_State</a> *<a href="../h_src/57642012.htm" class="variable">twups</a>;  <a  class="comments">/* list of threads with open upvalues */</a>
+  struct <a href="../h_src/57653096.htm" class="class">lua_longjmp</a> *<a href="../h_src/57641808.htm" class="variable">errorJmp</a>;  <a  class="comments">/* current error recover point */</a>
+  <a href="../h_src/57537764.htm" class="type">CallInfo</a> <a href="../h_src/57641740.htm" class="variable">base_ci</a>;  <a  class="comments">/* CallInfo for first level (C calling Lua) */</a>
+  volatile <a href="../h_src/57440240.htm" class="type">lua_Hook</a> <a href="../h_src/57641672.htm" class="variable">hook</a>;
+  <a href="../h_aa/57441872.htm" class="type">ptrdiff_t</a> <a href="../h_src/57641604.htm" class="variable">errfunc</a>;  <a  class="comments">/* current error handling function (stack index) */</a>
+  <a href="../h_src/57545176.htm" class="type">l_uint32</a> <a href="../h_src/57641536.htm" class="variable">nCcalls</a>;  <a  class="comments">/* number of nested (non-yieldable | C)  calls */</a>
+  int <a href="../h_src/57641468.htm" class="variable">oldpc</a>;  <a  class="comments">/* last pc traced */</a>
+  int <a href="../h_src/57641400.htm" class="variable">basehookcount</a>;
+  int <a href="../h_src/57641332.htm" class="variable">hookcount</a>;
+  volatile <a href="../h_src/57652824.htm" class="macro">l_signalT</a> <a href="../h_src/57641264.htm" class="variable">hookmask</a>;
+};
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,64 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>getbinopr</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58011860.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58011860.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58011860.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58011860.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58011860.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58011860.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58057080.htm#1206" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static <a href="../h_src/57672584.htm" class="type">BinOpr</a> <a href="../h_src/58011860.htm" class="function">getbinopr</a> (int <a href="../h_src/58011724.htm" class="localvar">op</a>) {
+  switch (<a href="../h_src/58011724.htm" class="localvar">op</a>) {
+    case '+': return <a href="../h_src/57674216.htm" class="variable">OPR_ADD</a>;
+    case '-': return <a href="../h_src/57674148.htm" class="variable">OPR_SUB</a>;
+    case '*': return <a href="../h_src/57674080.htm" class="variable">OPR_MUL</a>;
+    case '%': return <a href="../h_src/57674012.htm" class="variable">OPR_MOD</a>;
+    case '^': return <a href="../h_src/57673944.htm" class="variable">OPR_POW</a>;
+    case '/': return <a href="../h_src/57673876.htm" class="variable">OPR_DIV</a>;
+    case <a href="../h_src/57703796.htm" class="variable">TK_IDIV</a>: return <a href="../h_src/57673808.htm" class="variable">OPR_IDIV</a>;
+    case '&amp;': return <a href="../h_src/57673740.htm" class="variable">OPR_BAND</a>;
+    case '|': return <a href="../h_src/57673672.htm" class="variable">OPR_BOR</a>;
+    case '~': return <a href="../h_src/57673604.htm" class="variable">OPR_BXOR</a>;
+    case <a href="../h_src/57703320.htm" class="variable">TK_SHL</a>: return <a href="../h_src/57673536.htm" class="variable">OPR_SHL</a>;
+    case <a href="../h_src/57703252.htm" class="variable">TK_SHR</a>: return <a href="../h_src/57673468.htm" class="variable">OPR_SHR</a>;
+    case <a href="../h_src/57703728.htm" class="variable">TK_CONCAT</a>: return <a href="../h_src/57673400.htm" class="variable">OPR_CONCAT</a>;
+    case <a href="../h_src/57703388.htm" class="variable">TK_NE</a>: return <a href="../h_src/57673128.htm" class="variable">OPR_NE</a>;
+    case <a href="../h_src/57703592.htm" class="variable">TK_EQ</a>: return <a href="../h_src/57673332.htm" class="variable">OPR_EQ</a>;
+    case '&lt;': return <a href="../h_src/57673264.htm" class="variable">OPR_LT</a>;
+    case <a href="../h_src/57703456.htm" class="variable">TK_LE</a>: return <a href="../h_src/57673196.htm" class="variable">OPR_LE</a>;
+    case '&gt;': return <a href="../h_src/57673060.htm" class="variable">OPR_GT</a>;
+    case <a href="../h_src/57703524.htm" class="variable">TK_GE</a>: return <a href="../h_src/57672992.htm" class="variable">OPR_GE</a>;
+    case <a href="../h_src/57705292.htm" class="variable">TK_AND</a>: return <a href="../h_src/57672924.htm" class="variable">OPR_AND</a>;
+    case <a href="../h_src/57704272.htm" class="variable">TK_OR</a>: return <a href="../h_src/57672856.htm" class="variable">OPR_OR</a>;
+    default: return <a href="../h_src/57672788.htm" class="variable">OPR_NOBINOPR</a>;
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

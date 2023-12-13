@@ -1,0 +1,55 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>main</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57552928.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57552928.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57552928.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57552928.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57552928.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57552928.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57461796.htm#662" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+int <a href="../h_src/57552928.htm" class="function">main</a> (int <a href="../h_src/57552860.htm" class="localvar">argc</a>, char **<a href="../h_src/57552724.htm" class="localvar">argv</a>) {
+  int <a href="../h_src/57552588.htm" class="localvar">status</a>, <a href="../h_src/57552452.htm" class="localvar">result</a>;
+  <a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57552316.htm" class="localvar">L</a> = <a href="../h_src/57418208.htm" class="function">luaL_newstate</a>();  <a  class="comments">/* create state */</a>
+  if (<a href="../h_src/57552316.htm" class="localvar">L</a> == NULL) {
+    <a href="../h_src/57571288.htm" class="function">l_message</a>(<a href="../h_src/57552724.htm" class="localvar">argv</a>[0], &quot;cannot create state: not enough memory&quot;);
+    return EXIT_FAILURE;
+  }
+  <a href="../h_src/57430448.htm" class="function">lua_gc</a>(<a href="../h_src/57552316.htm" class="localvar">L</a>, <a href="../h_src/57431944.htm" class="macro">LUA_GCSTOP</a>);  <a  class="comments">/* stop GC while building state */</a>
+  <a href="../h_src/57428884.htm" class="macro">lua_pushcfunction</a>(<a href="../h_src/57552316.htm" class="localvar">L</a>, &amp;<a href="../h_src/57554016.htm" class="function">pmain</a>);  <a  class="comments">/* to call 'pmain' in protected mode */</a>
+  <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/57552316.htm" class="localvar">L</a>, <a href="../h_src/57552860.htm" class="localvar">argc</a>);  <a  class="comments">/* 1st argument */</a>
+  <a href="../h_src/57434528.htm" class="function">lua_pushlightuserdata</a>(<a href="../h_src/57552316.htm" class="localvar">L</a>, <a href="../h_src/57552724.htm" class="localvar">argv</a>); <a  class="comments">/* 2nd argument */</a>
+  <a href="../h_src/57552588.htm" class="localvar">status</a> = <a href="../h_src/57432760.htm" class="macro">lua_pcall</a>(<a href="../h_src/57552316.htm" class="localvar">L</a>, 2, 1, 0);  <a  class="comments">/* do the call */</a>
+  <a href="../h_src/57552452.htm" class="localvar">result</a> = <a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/57552316.htm" class="localvar">L</a>, -1);  <a  class="comments">/* get result */</a>
+  <a href="../h_src/57570880.htm" class="function">report</a>(<a href="../h_src/57552316.htm" class="localvar">L</a>, <a href="../h_src/57552588.htm" class="localvar">status</a>);
+  <a href="../h_src/57439832.htm" class="function">lua_close</a>(<a href="../h_src/57552316.htm" class="localvar">L</a>);
+  return (<a href="../h_src/57552452.htm" class="localvar">result</a> &amp;&amp; <a href="../h_src/57552588.htm" class="localvar">status</a> == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) ? EXIT_SUCCESS : EXIT_FAILURE;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

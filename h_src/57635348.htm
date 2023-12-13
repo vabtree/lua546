@@ -1,0 +1,46 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaG_ordererror</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57635348.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57635348.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57635348.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57635348.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57635348.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57635348.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57759256.htm#786" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57545584.htm" class="macro">l_noret</a> <a href="../h_src/57635348.htm" class="function">luaG_ordererror</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57889924.htm" class="localvar">L</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57889788.htm" class="localvar">p1</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57889652.htm" class="localvar">p2</a>) {
+  const char *<a href="../h_src/57889516.htm" class="localvar">t1</a> = <a href="../h_src/57498188.htm" class="function">luaT_objtypename</a>(<a href="../h_src/57889924.htm" class="localvar">L</a>, <a href="../h_src/57889788.htm" class="localvar">p1</a>);
+  const char *<a href="../h_src/57889380.htm" class="localvar">t2</a> = <a href="../h_src/57498188.htm" class="function">luaT_objtypename</a>(<a href="../h_src/57889924.htm" class="localvar">L</a>, <a href="../h_src/57889652.htm" class="localvar">p2</a>);
+  if (<a href="../h_aa/57564488.htm" class="libfunc">strcmp</a>(<a href="../h_src/57889516.htm" class="localvar">t1</a>, <a href="../h_src/57889380.htm" class="localvar">t2</a>) == 0)
+    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/57889924.htm" class="localvar">L</a>, &quot;attempt to compare two %s values&quot;, <a href="../h_src/57889516.htm" class="localvar">t1</a>);
+  else
+    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/57889924.htm" class="localvar">L</a>, &quot;attempt to compare %s with %s&quot;, <a href="../h_src/57889516.htm" class="localvar">t1</a>, <a href="../h_src/57889380.htm" class="localvar">t2</a>);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

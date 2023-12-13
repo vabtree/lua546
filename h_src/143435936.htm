@@ -1,0 +1,62 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>unpackint</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143435936.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143435936.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143435936.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143435936.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143435936.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143435936.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143344164.htm#1728" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143435936.htm" class="function">unpackint</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143435800.htm" class="localvar">L</a>, const char *<a href="../h_src/143435664.htm" class="localvar">str</a>,
+                              int <a href="../h_src/143435528.htm" class="localvar">islittle</a>, int <a href="../h_src/143435392.htm" class="localvar">size</a>, int <a href="../h_src/143435256.htm" class="localvar">issigned</a>) {
+  <a href="../h_src/57438132.htm" class="function">lua_Unsigned</a> <a href="../h_src/143435120.htm" class="localvar">res</a> = 0;
+  int <a href="../h_src/143434984.htm" class="localvar">i</a>;
+  int <a href="../h_src/143434848.htm" class="localvar">limit</a> = (<a href="../h_src/143435392.htm" class="localvar">size</a>  &lt;= <a href="../h_src/143288676.htm" class="macro">SZINT</a>) ? <a href="../h_src/143435392.htm" class="localvar">size</a> : <a href="../h_src/143288676.htm" class="macro">SZINT</a>;
+  for (<a href="../h_src/143434984.htm" class="localvar">i</a> = <a href="../h_src/143434848.htm" class="localvar">limit</a> - 1; <a href="../h_src/143434984.htm" class="localvar">i</a> &gt;= 0; <a href="../h_src/143434984.htm" class="localvar">i</a>--) {
+    <a href="../h_src/143435120.htm" class="localvar">res</a> &lt;&lt;= <a href="../h_src/143288948.htm" class="macro">NB</a>;
+    <a href="../h_src/143435120.htm" class="localvar">res</a> |= (<a href="../h_src/57438132.htm" class="function">lua_Unsigned</a>)(unsigned char)<a href="../h_src/143435664.htm" class="localvar">str</a>[<a href="../h_src/143435528.htm" class="localvar">islittle</a> ? <a href="../h_src/143434984.htm" class="localvar">i</a> : <a href="../h_src/143435392.htm" class="localvar">size</a> - 1 - <a href="../h_src/143434984.htm" class="localvar">i</a>];
+  }
+  if (<a href="../h_src/143435392.htm" class="localvar">size</a> &lt; <a href="../h_src/143288676.htm" class="macro">SZINT</a>) {  <a  class="comments">/* real size smaller than lua_Integer? */</a><a href="../h_src/57442076.htm" class="type">lua_Integer</a>? */
+    if (<a href="../h_src/143435256.htm" class="localvar">issigned</a>) {  <a  class="comments">/* needs sign extension? */</a>
+      <a href="../h_src/57438132.htm" class="function">lua_Unsigned</a> <a href="../h_src/143434712.htm" class="localvar">mask</a> = (<a href="../h_src/57438132.htm" class="function">lua_Unsigned</a>)1 &lt;&lt; (<a href="../h_src/143435392.htm" class="localvar">size</a>*<a href="../h_src/143288948.htm" class="macro">NB</a> - 1);
+      <a href="../h_src/143435120.htm" class="localvar">res</a> = ((<a href="../h_src/143435120.htm" class="localvar">res</a> ^ <a href="../h_src/143434712.htm" class="localvar">mask</a>) - <a href="../h_src/143434712.htm" class="localvar">mask</a>);  <a  class="comments">/* do sign extension */</a>
+    }
+  }
+  else if (<a href="../h_src/143435392.htm" class="localvar">size</a> &gt; <a href="../h_src/143288676.htm" class="macro">SZINT</a>) {  <a  class="comments">/* must check unread bytes */</a>
+    int <a href="../h_src/143434576.htm" class="localvar">mask</a> = (!<a href="../h_src/143435256.htm" class="localvar">issigned</a> || (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)<a href="../h_src/143435120.htm" class="localvar">res</a> &gt;= 0) ? 0 : <a href="../h_src/143288812.htm" class="macro">MC</a>;
+    for (<a href="../h_src/143434984.htm" class="localvar">i</a> = <a href="../h_src/143434848.htm" class="localvar">limit</a>; <a href="../h_src/143434984.htm" class="localvar">i</a> &lt; <a href="../h_src/143435392.htm" class="localvar">size</a>; <a href="../h_src/143434984.htm" class="localvar">i</a>++) {
+      if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>((unsigned char)<a href="../h_src/143435664.htm" class="localvar">str</a>[<a href="../h_src/143435528.htm" class="localvar">islittle</a> ? <a href="../h_src/143434984.htm" class="localvar">i</a> : <a href="../h_src/143435392.htm" class="localvar">size</a> - 1 - <a href="../h_src/143434984.htm" class="localvar">i</a>] != <a href="../h_src/143434576.htm" class="localvar">mask</a>))
+        <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143435800.htm" class="localvar">L</a>, &quot;%d-byte integer does not fit into Lua Integer&quot;, <a href="../h_src/143435392.htm" class="localvar">size</a>);
+    }
+  }
+  return (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)<a href="../h_src/143435120.htm" class="localvar">res</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

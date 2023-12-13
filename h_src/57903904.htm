@@ -1,0 +1,44 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>getbuff</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57903904.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57903904.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57903904.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57903904.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57903904.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57903904.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57919748.htm#438" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static char *<a href="../h_src/57903904.htm" class="function">getbuff</a> (<a href="../h_src/57905264.htm" class="type">BuffFS</a> *<a href="../h_src/57903768.htm" class="localvar">buff</a>, int <a href="../h_src/57903632.htm" class="localvar">sz</a>) {
+  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(buff-&gt;blen &lt;= <a href="../h_src/57905808.htm" class="macro">BUFVFS</a>); <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(sz &lt;= <a href="../h_src/57905808.htm" class="macro">BUFVFS</a>);
+  if (<a href="../h_src/57903632.htm" class="localvar">sz</a> &gt; <a href="../h_src/57905808.htm" class="macro">BUFVFS</a> - <a href="../h_src/57903768.htm" class="localvar">buff</a>-&gt;<a href="../h_src/57905400.htm" class="variable">blen</a>)  <a  class="comments">/* not enough space? */</a>
+    <a href="../h_src/57904176.htm" class="function">clearbuff</a>(<a href="../h_src/57903768.htm" class="localvar">buff</a>);
+  return <a href="../h_src/57903768.htm" class="localvar">buff</a>-&gt;<a href="../h_src/57905332.htm" class="variable">space</a> + <a href="../h_src/57903768.htm" class="localvar">buff</a>-&gt;<a href="../h_src/57905400.htm" class="variable">blen</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,56 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>finishpcallk</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57862452.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57862452.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57862452.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57862452.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57862452.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57862452.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57884484.htm#675" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/57862452.htm" class="function">finishpcallk</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57862316.htm" class="localvar">L</a>,  <a href="../h_src/57537764.htm" class="type">CallInfo</a> *<a href="../h_src/57862180.htm" class="localvar">ci</a>) {
+  int <a href="../h_src/57862044.htm" class="localvar">status</a> = <a href="../h_src/57647724.htm" class="macro">getcistrecst</a>(<a href="../h_src/57862180.htm" class="localvar">ci</a>);  <a  class="comments">/* get original status */</a>
+  if (<a href="../h_src/57551704.htm" class="macro">l_likely</a>(<a href="../h_src/57862044.htm" class="localvar">status</a> == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>))  <a  class="comments">/* no error? */</a>
+    <a href="../h_src/57862044.htm" class="localvar">status</a> = <a href="../h_src/57445068.htm" class="macro">LUA_YIELD</a>;  <a  class="comments">/* was interrupted by an yield */</a>
+  else {  <a  class="comments">/* error */</a>
+    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57861908.htm" class="localvar">func</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57862316.htm" class="localvar">L</a>, <a href="../h_src/57862180.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649560.htm" class="variable">u2</a>.<a href="../h_src/57650172.htm" class="variable">funcidx</a>);
+    <a href="../h_src/57862316.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642760.htm" class="variable">allowhook</a> = <a href="../h_src/57647044.htm" class="macro">getoah</a>(<a href="../h_src/57862180.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a>);  <a  class="comments">/* restore 'allowhook' */</a>
+    <a href="../h_src/57861908.htm" class="localvar">func</a> = <a href="../h_src/57630384.htm" class="function">luaF_close</a>(<a href="../h_src/57862316.htm" class="localvar">L</a>, <a href="../h_src/57861908.htm" class="localvar">func</a>, <a href="../h_src/57862044.htm" class="localvar">status</a>, 1);  <a  class="comments">/* can yield or raise an error */</a>
+    <a href="../h_src/57633648.htm" class="function">luaD_seterrorobj</a>(<a href="../h_src/57862316.htm" class="localvar">L</a>, <a href="../h_src/57862044.htm" class="localvar">status</a>, <a href="../h_src/57861908.htm" class="localvar">func</a>);
+    <a href="../h_src/57632696.htm" class="function">luaD_shrinkstack</a>(<a href="../h_src/57862316.htm" class="localvar">L</a>);   <a  class="comments">/* restore stack size in case of overflow */</a>
+    <a href="../h_src/57647588.htm" class="macro">setcistrecst</a>(<a href="../h_src/57862180.htm" class="localvar">ci</a>, <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>);  <a  class="comments">/* clear original status */</a>
+  }
+  <a href="../h_src/57862180.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp;= ~<a href="../h_src/57648812.htm" class="macro">CIST_YPCALL</a>;
+  <a href="../h_src/57862316.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641604.htm" class="variable">errfunc</a> = <a href="../h_src/57862180.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650444.htm" class="variable">c</a>.<a href="../h_src/57650648.htm" class="variable">old_errfunc</a>;
+  <a  class="comments">/* if it is here, there were errors or yields; unlike 'lua_pcallk',</a>
+<a  class="comments">     do not change status */</a>
+  return <a href="../h_src/57862044.htm" class="localvar">status</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

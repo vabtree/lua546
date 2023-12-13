@@ -1,0 +1,56 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaT_adjustvarargs</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57497372.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57497372.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57497372.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57497372.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57497372.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57497372.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58090712.htm#238" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+void <a href="../h_src/57497372.htm" class="function">luaT_adjustvarargs</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58078608.htm" class="localvar">L</a>, int <a href="../h_src/58078472.htm" class="localvar">nfixparams</a>, <a href="../h_src/57537764.htm" class="type">CallInfo</a> *<a href="../h_src/58078336.htm" class="localvar">ci</a>,
+                         const <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/58078200.htm" class="localvar">p</a>) {
+  int <a href="../h_src/58078064.htm" class="localvar">i</a>;
+  int <a href="../h_src/58077928.htm" class="localvar">actual</a> = <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/58078608.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - <a href="../h_src/58078336.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a>) - 1;  <a  class="comments">/* number of arguments */</a>
+  int <a href="../h_src/58077792.htm" class="localvar">nextra</a> = <a href="../h_src/58077928.htm" class="localvar">actual</a> - <a href="../h_src/58078472.htm" class="localvar">nfixparams</a>;  <a  class="comments">/* number of extra arguments */</a>
+  <a href="../h_src/58078336.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650852.htm" class="variable">l</a>.<a href="../h_src/57650988.htm" class="variable">nextraargs</a> = <a href="../h_src/58077792.htm" class="localvar">nextra</a>;
+  <a href="../h_src/57634532.htm" class="macro">luaD_checkstack</a>(<a href="../h_src/58078608.htm" class="localvar">L</a>, <a href="../h_src/57531984.htm" class="variable">p</a>-&gt;<a href="../h_src/57515800.htm" class="variable">maxstacksize</a> + 1);
+  <a  class="comments">/* copy function to the top of the stack */</a>
+  <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/58078608.htm" class="localvar">L</a>, <a href="../h_src/58078608.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>++, <a href="../h_src/58078336.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a>);
+  <a  class="comments">/* move fixed parameters to the top of the stack */</a>
+  for (<a href="../h_src/58078064.htm" class="localvar">i</a> = 1; <a href="../h_src/58078064.htm" class="localvar">i</a> &lt;= <a href="../h_src/58078472.htm" class="localvar">nfixparams</a>; <a href="../h_src/58078064.htm" class="localvar">i</a>++) {
+    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/58078608.htm" class="localvar">L</a>, <a href="../h_src/58078608.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>++, <a href="../h_src/58078336.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a> + <a href="../h_src/58078064.htm" class="localvar">i</a>);
+    <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58078336.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a> + <a href="../h_src/58078064.htm" class="localvar">i</a>));  <a  class="comments">/* erase original parameter (for GC) */</a>
+  }
+  <a href="../h_src/58078336.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a> += <a href="../h_src/58077928.htm" class="localvar">actual</a> + 1;
+  <a href="../h_src/58078336.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651464.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> += <a href="../h_src/58077928.htm" class="localvar">actual</a> + 1;
+  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(L-&gt;top.p &lt;= ci-&gt;top.p &amp;&amp; ci-&gt;top.p &lt;= L-&gt;stack_last.p);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

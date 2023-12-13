@@ -1,0 +1,44 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>getboolfield</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143352120.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143352120.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143352120.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143352120.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143352120.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143352120.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143359192.htm#243" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/143352120.htm" class="function">getboolfield</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143351984.htm" class="localvar">L</a>, const char *<a href="../h_src/143351848.htm" class="localvar">key</a>) {
+  int <a href="../h_src/143351712.htm" class="localvar">res</a>;
+  <a href="../h_src/143351712.htm" class="localvar">res</a> = (<a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143351984.htm" class="localvar">L</a>, -1, <a href="../h_src/143351848.htm" class="localvar">key</a>) == <a href="../h_src/57444048.htm" class="macro">LUA_TNIL</a>) ? -1 : <a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/143351984.htm" class="localvar">L</a>, -1);
+  <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143351984.htm" class="localvar">L</a>, 1);
+  return <a href="../h_src/143351712.htm" class="localvar">res</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

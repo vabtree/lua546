@@ -1,0 +1,102 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>ldebug.h</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57637116.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/57637116.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/57637116.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/57637116.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_ua/57637116.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_da/57637116.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57637116.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57637116.htm" class="file" target="_self">Source Code</a></li>
+<li><a href="../h_sc/57637116.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<pre class=src>
+<a id=1></a><a  class="comments">/*</a>
+<a id=2></a><a  class="comments">** $Id: ldebug.h $</a>
+<a id=3></a><a  class="comments">** Auxiliary functions from Debug Interface module</a>
+<a id=4></a><a  class="comments">** See Copyright Notice in lua.h</a>
+<a id=5></a><a  class="comments">*/</a>
+
+<a id=7></a>#ifndef <a href="../h_src/57637048.htm" class="macro">ldebug_h</a>
+<a id=8></a>#define <a href="../h_src/57636912.htm" class="macro">ldebug_h</a>
+
+
+<a id=11></a>#include &quot;<a href="../h_src/57538104.htm" class="file">lstate.h</a>&quot;
+
+
+<a id=14></a>#define <a href="../h_src/57636776.htm" class="macro">pcRel</a>(pc, p)	(cast_int((pc) - (p)-&gt;code) - 1)
+
+
+<a id=17></a><a  class="comments">/* Active Lua function (given call info) */</a>
+<a id=18></a>#define <a href="../h_src/57636640.htm" class="macro">ci_func</a>(ci)		(clLvalue(s2v((ci)-&gt;func.p)))
+
+
+<a id=21></a>#define <a href="../h_src/57636504.htm" class="macro">resethookcount</a>(L)	(L-&gt;hookcount = L-&gt;basehookcount)
+
+<a id=23></a><a  class="comments">/*</a>
+<a id=24></a><a  class="comments">** mark for entries in 'lineinfo' array that has absolute information in</a>
+<a id=25></a><a  class="comments">** 'abslineinfo' array</a>
+<a id=26></a><a  class="comments">*/</a>
+<a id=27></a>#define <a href="../h_src/57636368.htm" class="macro">ABSLINEINFO</a>	(-0x80)
+
+
+<a id=30></a><a  class="comments">/*</a>
+<a id=31></a><a  class="comments">** MAXimum number of successive Instructions WiTHout ABSolute line</a>
+<a id=32></a><a  class="comments">** information. (A power of two allows fast divisions.)</a>
+<a id=33></a><a  class="comments">*/</a>
+<a id=34></a>#if !defined(<a href="../h_src/57636232.htm" class="macro">MAXIWTHABS</a>)
+<a id=35></a>#define <a href="../h_src/57636096.htm" class="macro">MAXIWTHABS</a>	128
+#endif
+
+
+<a id=39></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> int <a href="../h_src/57635960.htm" class="function">luaG_getfuncline</a> (const <a href="../h_src/57513828.htm" class="type">Proto</a> *f, int pc);
+<a id=40></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> const char *<a href="../h_src/57635892.htm" class="function">luaG_findlocal</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57537764.htm" class="type">CallInfo</a> *ci, int n,
+<a id=41></a>                                                    <a href="../h_src/57532188.htm" class="type">StkId</a> *pos);
+<a id=42></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> <a href="../h_src/57545584.htm" class="macro">l_noret</a> <a href="../h_src/57635756.htm" class="function">luaG_typeerror</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const <a href="../h_src/57535384.htm" class="type">TValue</a> *o,
+                                                const char *opname);
+<a id=44></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> <a href="../h_src/57545584.htm" class="macro">l_noret</a> <a href="../h_src/57635688.htm" class="function">luaG_callerror</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const <a href="../h_src/57535384.htm" class="type">TValue</a> *o);
+<a id=45></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> <a href="../h_src/57545584.htm" class="macro">l_noret</a> <a href="../h_src/57635620.htm" class="function">luaG_forerror</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const <a href="../h_src/57535384.htm" class="type">TValue</a> *o,
+                                               const char *what);
+<a id=47></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> <a href="../h_src/57545584.htm" class="macro">l_noret</a> <a href="../h_src/57635552.htm" class="function">luaG_concaterror</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const <a href="../h_src/57535384.htm" class="type">TValue</a> *p1,
+<a id=48></a>                                                  const <a href="../h_src/57535384.htm" class="type">TValue</a> *p2);
+<a id=49></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> <a href="../h_src/57545584.htm" class="macro">l_noret</a> <a href="../h_src/57635484.htm" class="function">luaG_opinterror</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const <a href="../h_src/57535384.htm" class="type">TValue</a> *p1,
+<a id=50></a>                                                 const <a href="../h_src/57535384.htm" class="type">TValue</a> *p2,
+                                                 const char *msg);
+<a id=52></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> <a href="../h_src/57545584.htm" class="macro">l_noret</a> <a href="../h_src/57635416.htm" class="function">luaG_tointerror</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const <a href="../h_src/57535384.htm" class="type">TValue</a> *p1,
+<a id=53></a>                                                 const <a href="../h_src/57535384.htm" class="type">TValue</a> *p2);
+<a id=54></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> <a href="../h_src/57545584.htm" class="macro">l_noret</a> <a href="../h_src/57635348.htm" class="function">luaG_ordererror</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const <a href="../h_src/57535384.htm" class="type">TValue</a> *p1,
+<a id=55></a>                                                 const <a href="../h_src/57535384.htm" class="type">TValue</a> *p2);
+<a id=56></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> <a href="../h_src/57545584.htm" class="macro">l_noret</a> <a href="../h_src/57635280.htm" class="function">luaG_runerror</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const char *fmt, ...);
+<a id=57></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> const char *<a href="../h_src/57635212.htm" class="function">luaG_addinfo</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const char *msg,
+<a id=58></a>                                                  <a href="../h_src/57522736.htm" class="type">TString</a> *src, int line);
+<a id=59></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> <a href="../h_src/57545584.htm" class="macro">l_noret</a> <a href="../h_src/57635144.htm" class="function">luaG_errormsg</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L);
+<a id=60></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> int <a href="../h_src/57635076.htm" class="function">luaG_traceexec</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const <a href="../h_src/57545108.htm" class="type">Instruction</a> *pc);
+
+
+#endif
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

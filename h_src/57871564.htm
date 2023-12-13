@@ -1,0 +1,82 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>moveresults</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57871564.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57871564.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57871564.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57871564.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57871564.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57871564.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57884484.htm#433" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57545312.htm" class="macro">l_sinline</a> void <a href="../h_src/57871564.htm" class="function">moveresults</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57871428.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57871292.htm" class="localvar">res</a>, int <a href="../h_src/57871156.htm" class="localvar">nres</a>, int <a href="../h_src/57871020.htm" class="localvar">wanted</a>) {
+  <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57870884.htm" class="localvar">firstresult</a>;
+  int <a href="../h_src/57870748.htm" class="localvar">i</a>;
+  switch (<a href="../h_src/57871020.htm" class="localvar">wanted</a>) {  <a  class="comments">/* handle typical cases separately */</a>
+    case 0:  <a  class="comments">/* no values needed */</a>
+      <a href="../h_src/57871428.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57871292.htm" class="localvar">res</a>;
+      return;
+    case 1:  <a  class="comments">/* one value needed */</a>
+      if (<a href="../h_src/57871156.htm" class="localvar">nres</a> == 0)   <a  class="comments">/* no results? */</a>
+        <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57871292.htm" class="localvar">res</a>));  <a  class="comments">/* adjust with nil */</a>
+      else  <a  class="comments">/* at least one result */</a>
+        <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/57871428.htm" class="localvar">L</a>, <a href="../h_src/57871292.htm" class="localvar">res</a>, <a href="../h_src/57871428.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - <a href="../h_src/57871156.htm" class="localvar">nres</a>);  <a  class="comments">/* move it to proper place */</a>
+      <a href="../h_src/57871428.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57871292.htm" class="localvar">res</a> + 1;
+      return;
+    case <a href="../h_src/57445612.htm" class="macro">LUA_MULTRET</a>:
+      <a href="../h_src/57871020.htm" class="localvar">wanted</a> = <a href="../h_src/57871156.htm" class="localvar">nres</a>;  <a  class="comments">/* we want all results */</a>
+      break;
+    default:  <a  class="comments">/* two/more results and/or to-be-closed variables */</a>
+      if (<a href="../h_src/57637524.htm" class="macro">hastocloseCfunc</a>(<a href="../h_src/57871020.htm" class="localvar">wanted</a>)) {  <a  class="comments">/* to-be-closed variables? */</a>
+        <a href="../h_src/57871428.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> |= <a href="../h_src/57648132.htm" class="macro">CIST_CLSRET</a>;  <a  class="comments">/* in case of yields */</a>
+        <a href="../h_src/57871428.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57649560.htm" class="variable">u2</a>.<a href="../h_src/57650036.htm" class="variable">nres</a> = <a href="../h_src/57871156.htm" class="localvar">nres</a>;
+        <a href="../h_src/57871292.htm" class="localvar">res</a> = <a href="../h_src/57630384.htm" class="function">luaF_close</a>(<a href="../h_src/57871428.htm" class="localvar">L</a>, <a href="../h_src/57871292.htm" class="localvar">res</a>, <a href="../h_src/57631132.htm" class="macro">CLOSEKTOP</a>, 1);
+        <a href="../h_src/57871428.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp;= ~<a href="../h_src/57648132.htm" class="macro">CIST_CLSRET</a>;
+        if (<a href="../h_src/57871428.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641264.htm" class="variable">hookmask</a>) {  <a  class="comments">/* if needed, call hook after '__close's */</a>
+          <a href="../h_aa/57441872.htm" class="type">ptrdiff_t</a> <a href="../h_src/57870340.htm" class="localvar">savedres</a> = <a href="../h_src/57634396.htm" class="macro">savestack</a>(<a href="../h_src/57871428.htm" class="localvar">L</a>, <a href="../h_src/57871292.htm" class="localvar">res</a>);
+          <a href="../h_src/57873876.htm" class="function">rethook</a>(<a href="../h_src/57871428.htm" class="localvar">L</a>, <a href="../h_src/57871428.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>, <a href="../h_src/57871156.htm" class="localvar">nres</a>);
+          <a href="../h_src/57871292.htm" class="localvar">res</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57871428.htm" class="localvar">L</a>, <a href="../h_src/57870340.htm" class="localvar">savedres</a>);  <a  class="comments">/* hook can move stack */</a><a href="../h_src/57642284.htm" class="variable">stack</a> */
+        }
+        <a href="../h_src/57871020.htm" class="localvar">wanted</a> = <a href="../h_src/57637252.htm" class="macro">decodeNresults</a>(<a href="../h_src/57871020.htm" class="localvar">wanted</a>);
+        if (<a href="../h_src/57871020.htm" class="localvar">wanted</a> == <a href="../h_src/57445612.htm" class="macro">LUA_MULTRET</a>)
+          <a href="../h_src/57871020.htm" class="localvar">wanted</a> = <a href="../h_src/57871156.htm" class="localvar">nres</a>;  <a  class="comments">/* we want all results */</a>
+      }
+      break;
+  }
+  <a  class="comments">/* generic case */</a>
+  <a href="../h_src/57870884.htm" class="localvar">firstresult</a> = <a href="../h_src/57871428.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - <a href="../h_src/57871156.htm" class="localvar">nres</a>;  <a  class="comments">/* index of first result */</a>
+  if (<a href="../h_src/57871156.htm" class="localvar">nres</a> &gt; <a href="../h_src/57871020.htm" class="localvar">wanted</a>)  <a  class="comments">/* extra results? */</a>
+    <a href="../h_src/57871156.htm" class="localvar">nres</a> = <a href="../h_src/57871020.htm" class="localvar">wanted</a>;  <a  class="comments">/* don't need them */</a>
+  for (<a href="../h_src/57870748.htm" class="localvar">i</a> = 0; <a href="../h_src/57870748.htm" class="localvar">i</a> &lt; <a href="../h_src/57871156.htm" class="localvar">nres</a>; <a href="../h_src/57870748.htm" class="localvar">i</a>++)  <a  class="comments">/* move all results to correct place */</a>
+    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/57871428.htm" class="localvar">L</a>, <a href="../h_src/57871292.htm" class="localvar">res</a> + <a href="../h_src/57870748.htm" class="localvar">i</a>, <a href="../h_src/57870884.htm" class="localvar">firstresult</a> + <a href="../h_src/57870748.htm" class="localvar">i</a>);
+  for (; <a href="../h_src/57870748.htm" class="localvar">i</a> &lt; <a href="../h_src/57871020.htm" class="localvar">wanted</a>; <a href="../h_src/57870748.htm" class="localvar">i</a>++)  <a  class="comments">/* complete wanted number of results */</a>
+    <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57871292.htm" class="localvar">res</a> + <a href="../h_src/57870748.htm" class="localvar">i</a>));
+  <a href="../h_src/57871428.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57871292.htm" class="localvar">res</a> + <a href="../h_src/57871020.htm" class="localvar">wanted</a>;  <a  class="comments">/* top points after the last result */</a>
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

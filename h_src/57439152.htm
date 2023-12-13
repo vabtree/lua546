@@ -1,0 +1,50 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lua_rotate</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57439152.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57439152.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57439152.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57439152.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57439152.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57439152.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57552180.htm#241" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57551840.htm" class="macro">LUA_API</a> void <a href="../h_src/57439152.htm" class="function">lua_rotate</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57603320.htm" class="localvar">L</a>, int <a href="../h_src/57603184.htm" class="localvar">idx</a>, int <a href="../h_src/57603048.htm" class="localvar">n</a>) {
+  <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57602912.htm" class="localvar">p</a>, <a href="../h_src/57602776.htm" class="localvar">t</a>, <a href="../h_src/57602640.htm" class="localvar">m</a>;
+  <a href="../h_src/57543408.htm" class="macro">lua_lock</a>(L);
+  <a href="../h_src/57602776.htm" class="localvar">t</a> = <a href="../h_src/57603320.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1;  <a  class="comments">/* end of stack segment being rotated */</a>
+  <a href="../h_src/57602912.htm" class="localvar">p</a> = <a href="../h_src/57609100.htm" class="function">index2stack</a>(<a href="../h_src/57603320.htm" class="localvar">L</a>, <a href="../h_src/57603184.htm" class="localvar">idx</a>);  <a  class="comments">/* start of segment */</a>
+  <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57603320.htm" class="localvar">L</a>, (n &gt;= 0 ? n : -n) &lt;= (t - p + 1), &quot;invalid 'n'&quot;);
+  <a href="../h_src/57602640.htm" class="localvar">m</a> = (<a href="../h_src/57603048.htm" class="localvar">n</a> &gt;= 0 ? <a href="../h_src/57602776.htm" class="localvar">t</a> - <a href="../h_src/57603048.htm" class="localvar">n</a> : <a href="../h_src/57602912.htm" class="localvar">p</a> - <a href="../h_src/57603048.htm" class="localvar">n</a> - 1);  <a  class="comments">/* end of prefix */</a>
+  <a href="../h_src/57604816.htm" class="function">reverse</a>(<a href="../h_src/57603320.htm" class="localvar">L</a>, <a href="../h_src/57602912.htm" class="localvar">p</a>, <a href="../h_src/57602640.htm" class="localvar">m</a>);  <a  class="comments">/* reverse the prefix with length 'n' */</a>
+  <a href="../h_src/57604816.htm" class="function">reverse</a>(<a href="../h_src/57603320.htm" class="localvar">L</a>, <a href="../h_src/57602640.htm" class="localvar">m</a> + 1, <a href="../h_src/57602776.htm" class="localvar">t</a>);  <a  class="comments">/* reverse the suffix */</a>
+  <a href="../h_src/57604816.htm" class="function">reverse</a>(<a href="../h_src/57603320.htm" class="localvar">L</a>, <a href="../h_src/57602912.htm" class="localvar">p</a>, <a href="../h_src/57602776.htm" class="localvar">t</a>);  <a  class="comments">/* reverse the entire segment */</a>
+  <a href="../h_src/57543272.htm" class="macro">lua_unlock</a>(L);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

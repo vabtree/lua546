@@ -1,0 +1,47 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaC_fix</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57620932.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57620932.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57620932.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57620932.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57620932.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57620932.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57829404.htm#243" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+void <a href="../h_src/57620932.htm" class="function">luaC_fix</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57823352.htm" class="localvar">L</a>, <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57823216.htm" class="localvar">o</a>) {
+  <a href="../h_src/57643100.htm" class="type">global_State</a> *<a href="../h_src/57823080.htm" class="localvar">g</a> = <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57823352.htm" class="localvar">L</a>);
+  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(g-&gt;allgc == o);  <a  class="comments">/* object must be 1st in 'allgc' list! */</a>
+  <a href="../h_src/57827976.htm" class="macro">set2gray</a>(<a href="../h_src/57823216.htm" class="localvar">o</a>);  <a  class="comments">/* they will be gray forever */</a>
+  <a href="../h_src/57623788.htm" class="macro">setage</a>(<a href="../h_src/57823216.htm" class="localvar">o</a>, <a href="../h_src/57624468.htm" class="macro">G_OLD</a>);  <a  class="comments">/* and old forever */</a>
+  <a href="../h_src/57823080.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645344.htm" class="variable">allgc</a> = <a href="../h_src/57823216.htm" class="localvar">o</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>;  <a  class="comments">/* remove object from 'allgc' list */</a>
+  <a href="../h_src/57823216.htm" class="localvar">o</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a> = <a href="../h_src/57823080.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644664.htm" class="variable">fixedgc</a>;  <a  class="comments">/* link it to 'fixedgc' list */</a>
+  <a href="../h_src/57823080.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644664.htm" class="variable">fixedgc</a> = <a href="../h_src/57823216.htm" class="localvar">o</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

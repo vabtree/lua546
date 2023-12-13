@@ -1,0 +1,48 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lua_closeslot</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57429768.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57429768.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57429768.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57429768.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57429768.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57429768.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57552180.htm#209" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57551840.htm" class="macro">LUA_API</a> void <a href="../h_src/57429768.htm" class="function">lua_closeslot</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57605224.htm" class="localvar">L</a>, int <a href="../h_src/57605088.htm" class="localvar">idx</a>) {
+  <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57604952.htm" class="localvar">level</a>;
+  <a href="../h_src/57543408.htm" class="macro">lua_lock</a>(L);
+  <a href="../h_src/57604952.htm" class="localvar">level</a> = <a href="../h_src/57609100.htm" class="function">index2stack</a>(<a href="../h_src/57605224.htm" class="localvar">L</a>, <a href="../h_src/57605088.htm" class="localvar">idx</a>);
+  <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57605224.htm" class="localvar">L</a>, <a href="../h_src/57637524.htm" class="macro">hastocloseCfunc</a>(L-&gt;ci-&gt;nresults) &amp;&amp; L-&gt;tbclist.p == level,
+     &quot;no variable to close at given level&quot;);
+  <a href="../h_src/57604952.htm" class="localvar">level</a> = <a href="../h_src/57630384.htm" class="function">luaF_close</a>(<a href="../h_src/57605224.htm" class="localvar">L</a>, <a href="../h_src/57604952.htm" class="localvar">level</a>, <a href="../h_src/57631132.htm" class="macro">CLOSEKTOP</a>, 0);
+  <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57604952.htm" class="localvar">level</a>));
+  <a href="../h_src/57543272.htm" class="macro">lua_unlock</a>(L);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

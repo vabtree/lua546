@@ -1,0 +1,66 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>correctgraylist</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57953204.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57953204.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57953204.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57953204.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57953204.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57953204.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57829404.htm#1170" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static <a href="../h_src/57527972.htm" class="type">GCObject</a> **<a href="../h_src/57953204.htm" class="function">correctgraylist</a> (<a href="../h_src/57527972.htm" class="type">GCObject</a> **<a href="../h_src/57953068.htm" class="localvar">p</a>) {
+  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57952932.htm" class="localvar">curr</a>;
+  while ((<a href="../h_src/57952932.htm" class="localvar">curr</a> = *<a href="../h_src/57953068.htm" class="localvar">p</a>) != NULL) {
+    <a href="../h_src/57527972.htm" class="type">GCObject</a> **<a href="../h_src/57952796.htm" class="localvar">next</a> = <a href="../h_src/57826208.htm" class="function">getgclist</a>(<a href="../h_src/57952932.htm" class="localvar">curr</a>);
+    if (<a href="../h_src/57626372.htm" class="macro">iswhite</a>(<a href="../h_src/57952932.htm" class="localvar">curr</a>))
+      goto remove;  <a  class="comments">/* remove all white objects */</a>
+    else if (<a href="../h_src/57623924.htm" class="macro">getage</a>(<a href="../h_src/57952932.htm" class="localvar">curr</a>) == <a href="../h_src/57624332.htm" class="macro">G_TOUCHED1</a>) {  <a  class="comments">/* touched in this cycle? */</a>
+      <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57626100.htm" class="macro">isgray</a>(curr));
+      <a href="../h_src/57625284.htm" class="macro">nw2black</a>(<a href="../h_src/57952932.htm" class="localvar">curr</a>);  <a  class="comments">/* make it black, for next barrier */</a>
+      <a href="../h_src/57623516.htm" class="macro">changeage</a>(<a href="../h_src/57952932.htm" class="localvar">curr</a>, <a href="../h_src/57624332.htm" class="macro">G_TOUCHED1</a>, <a href="../h_src/57624196.htm" class="macro">G_TOUCHED2</a>);
+      goto remain;  <a  class="comments">/* keep it in the list and go to next element */</a>
+    }
+    else if (<a href="../h_src/57952932.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528108.htm" class="variable">tt</a> == <a href="../h_src/57528992.htm" class="macro">LUA_VTHREAD</a>) {
+      <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57626100.htm" class="macro">isgray</a>(curr));
+      goto remain;  <a  class="comments">/* keep non-white threads on the list */</a>
+    }
+    else {  <a  class="comments">/* everything else is removed */</a>
+      <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57623652.htm" class="macro">isold</a>(curr));  <a  class="comments">/* young objects should be white here */</a>
+      if (<a href="../h_src/57623924.htm" class="macro">getage</a>(<a href="../h_src/57952932.htm" class="localvar">curr</a>) == <a href="../h_src/57624196.htm" class="macro">G_TOUCHED2</a>)  <a  class="comments">/* advance from TOUCHED2... */</a>
+        <a href="../h_src/57623516.htm" class="macro">changeage</a>(<a href="../h_src/57952932.htm" class="localvar">curr</a>, <a href="../h_src/57624196.htm" class="macro">G_TOUCHED2</a>, <a href="../h_src/57624468.htm" class="macro">G_OLD</a>);  <a  class="comments">/* ... to OLD */</a>
+      <a href="../h_src/57625284.htm" class="macro">nw2black</a>(<a href="../h_src/57952932.htm" class="localvar">curr</a>);  <a  class="comments">/* make object black (to be removed) */</a>
+      goto remove;
+    }
+    remove: *<a href="../h_src/57953068.htm" class="localvar">p</a> = *<a href="../h_src/57952796.htm" class="localvar">next</a>; continue;
+    remain: <a href="../h_src/57953068.htm" class="localvar">p</a> = <a href="../h_src/57952796.htm" class="localvar">next</a>; continue;
+  }
+  return <a href="../h_src/57953068.htm" class="localvar">p</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

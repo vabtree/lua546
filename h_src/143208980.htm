@@ -1,0 +1,46 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>addtoclib</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143208980.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143208980.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143208980.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143208980.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143208980.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143208980.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143217276.htm#349" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/143208980.htm" class="function">addtoclib</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143208844.htm" class="localvar">L</a>, const char *<a href="../h_src/143208708.htm" class="localvar">path</a>, void *<a href="../h_src/143208572.htm" class="localvar">plib</a>) {
+  <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143208844.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/143215848.htm" class="variable">CLIBS</a>);
+  <a href="../h_src/57434528.htm" class="function">lua_pushlightuserdata</a>(<a href="../h_src/143208844.htm" class="localvar">L</a>, <a href="../h_src/143208572.htm" class="localvar">plib</a>);
+  <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/143208844.htm" class="localvar">L</a>, -1);
+  <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/143208844.htm" class="localvar">L</a>, -3, <a href="../h_src/143208708.htm" class="localvar">path</a>);  <a  class="comments">/* CLIBS[path] = plib */</a>
+  <a href="../h_src/57433304.htm" class="function">lua_rawseti</a>(<a href="../h_src/143208844.htm" class="localvar">L</a>, -2, <a href="../h_src/57418140.htm" class="function">luaL_len</a>(<a href="../h_src/143208844.htm" class="localvar">L</a>, -2) + 1);  <a  class="comments">/* CLIBS[#CLIBS + 1] = plib */</a>
+  <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143208844.htm" class="localvar">L</a>, 1);  <a  class="comments">/* pop CLIBS table */</a>
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

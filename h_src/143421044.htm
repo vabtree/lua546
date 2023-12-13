@@ -1,0 +1,44 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>choosePivot</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143421044.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143421044.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143421044.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143421044.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143421044.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143421044.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143431652.htm#334" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static <a href="../h_src/143424376.htm" class="type">IdxT</a> <a href="../h_src/143421044.htm" class="function">choosePivot</a> (<a href="../h_src/143424376.htm" class="type">IdxT</a> <a href="../h_src/143420908.htm" class="localvar">lo</a>, <a href="../h_src/143424376.htm" class="type">IdxT</a> <a href="../h_src/143420772.htm" class="localvar">up</a>, unsigned int <a href="../h_src/143420636.htm" class="localvar">rnd</a>) {
+  <a href="../h_src/143424376.htm" class="type">IdxT</a> <a href="../h_src/143420500.htm" class="localvar">r4</a> = (<a href="../h_src/143420772.htm" class="localvar">up</a> - <a href="../h_src/143420908.htm" class="localvar">lo</a>) / 4;  <a  class="comments">/* range/4 */</a>
+  <a href="../h_src/143424376.htm" class="type">IdxT</a> <a href="../h_src/143420364.htm" class="localvar">p</a> = <a href="../h_src/143420636.htm" class="localvar">rnd</a> % (<a href="../h_src/143420500.htm" class="localvar">r4</a> * 2) + (<a href="../h_src/143420908.htm" class="localvar">lo</a> + <a href="../h_src/143420500.htm" class="localvar">r4</a>);
+  <a href="../h_src/57415352.htm" class="macro">lua_assert</a>(lo + r4 &lt;= p &amp;&amp; p &lt;= up - r4);
+  return <a href="../h_src/143420364.htm" class="localvar">p</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

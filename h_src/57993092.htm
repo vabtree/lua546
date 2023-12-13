@@ -1,0 +1,53 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>getlocalattribute</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57993092.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57993092.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57993092.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57993092.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57993092.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57993092.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58057080.htm#1701" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/57993092.htm" class="function">getlocalattribute</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57992956.htm" class="localvar">ls</a>) {
+  <a  class="comments">/* ATTRIB -&gt; ['&lt;' Name '&gt;'] */</a>
+  if (<a href="../h_src/58053340.htm" class="function">testnext</a>(<a href="../h_src/57992956.htm" class="localvar">ls</a>, '&lt;')) {
+    const char *<a href="../h_src/57992820.htm" class="localvar">attr</a> = <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58051300.htm" class="function">str_checkname</a>(<a href="../h_src/57992956.htm" class="localvar">ls</a>));
+    <a href="../h_src/58052524.htm" class="function">checknext</a>(<a href="../h_src/57992956.htm" class="localvar">ls</a>, '&gt;');
+    if (<a href="../h_aa/57564488.htm" class="libfunc">strcmp</a>(<a href="../h_src/57992820.htm" class="localvar">attr</a>, &quot;const&quot;) == 0)
+      return <a href="../h_src/57679180.htm" class="macro">RDKCONST</a>;  <a  class="comments">/* read-only variable */</a>
+    else if (<a href="../h_aa/57564488.htm" class="libfunc">strcmp</a>(<a href="../h_src/57992820.htm" class="localvar">attr</a>, &quot;close&quot;) == 0)
+      return <a href="../h_src/57679044.htm" class="macro">RDKTOCLOSE</a>;  <a  class="comments">/* to-be-closed variable */</a>
+    else
+      <a href="../h_src/57668776.htm" class="function">luaK_semerror</a>(<a href="../h_src/57992956.htm" class="localvar">ls</a>,
+        <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/57992956.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, &quot;unknown attribute '%s'&quot;, <a href="../h_src/57992820.htm" class="localvar">attr</a>));
+  }
+  return <a href="../h_src/57679316.htm" class="macro">VDKREG</a>;  <a  class="comments">/* regular variable */</a>
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,63 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaY_parser</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57674420.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57674420.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57674420.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57674420.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57674420.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57674420.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58057080.htm#1942" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57507980.htm" class="type">LClosure</a> *<a href="../h_src/57674420.htm" class="function">luaY_parser</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57987108.htm" class="localvar">L</a>, <a href="../h_src/57656088.htm" class="type">ZIO</a> *<a href="../h_src/57986972.htm" class="localvar">z</a>, <a href="../h_src/57655544.htm" class="type">Mbuffer</a> *<a href="../h_src/57986836.htm" class="localvar">buff</a>,
+                       <a href="../h_src/57676256.htm" class="type">Dyndata</a> *<a href="../h_src/57986700.htm" class="localvar">dyd</a>, const char *<a href="../h_src/57986564.htm" class="localvar">name</a>, int <a href="../h_src/57986428.htm" class="localvar">firstchar</a>) {
+  <a href="../h_src/57700124.htm" class="type">LexState</a> <a href="../h_src/57986292.htm" class="localvar">lexstate</a>;
+  <a href="../h_src/57674556.htm" class="type">FuncState</a> <a href="../h_src/57986156.htm" class="localvar">funcstate</a>;
+  <a href="../h_src/57507980.htm" class="type">LClosure</a> *<a href="../h_src/57986020.htm" class="localvar">cl</a> = <a href="../h_src/57630724.htm" class="function">luaF_newLclosure</a>(<a href="../h_src/57987108.htm" class="localvar">L</a>, 1);  <a  class="comments">/* create main closure */</a>
+  <a href="../h_src/57511584.htm" class="macro">setclLvalue2s</a>(<a href="../h_src/57987108.htm" class="localvar">L</a>, <a href="../h_src/57987108.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57986020.htm" class="localvar">cl</a>);  <a  class="comments">/* anchor it (to avoid being collected) */</a>
+  <a href="../h_src/57632628.htm" class="function">luaD_inctop</a>(<a href="../h_src/57987108.htm" class="localvar">L</a>);
+  <a href="../h_src/57986292.htm" class="localvar">lexstate</a>.<a href="../h_src/57700668.htm" class="variable">h</a> = <a href="../h_src/57616512.htm" class="function">luaH_new</a>(<a href="../h_src/57987108.htm" class="localvar">L</a>);  <a  class="comments">/* create table for scanner */</a>
+  <a href="../h_src/57506892.htm" class="macro">sethvalue2s</a>(<a href="../h_src/57987108.htm" class="localvar">L</a>, <a href="../h_src/57987108.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57986292.htm" class="localvar">lexstate</a>.<a href="../h_src/57700668.htm" class="variable">h</a>);  <a  class="comments">/* anchor it */</a>
+  <a href="../h_src/57632628.htm" class="function">luaD_inctop</a>(<a href="../h_src/57987108.htm" class="localvar">L</a>);
+  <a href="../h_src/57986156.htm" class="localvar">funcstate</a>.<a href="../h_src/57676052.htm" class="variable">f</a> = <a href="../h_src/57986020.htm" class="localvar">cl</a>-&gt;<a href="../h_src/57508184.htm" class="variable">p</a> = <a href="../h_src/57630996.htm" class="function">luaF_newproto</a>(<a href="../h_src/57987108.htm" class="localvar">L</a>);
+  <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/57987108.htm" class="localvar">L</a>, <a href="../h_src/57986020.htm" class="localvar">cl</a>, <a href="../h_src/57986020.htm" class="localvar">cl</a>-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>);
+  <a href="../h_src/57986156.htm" class="localvar">funcstate</a>.<a href="../h_src/57676052.htm" class="variable">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a> = <a href="../h_src/57618484.htm" class="function">luaS_new</a>(<a href="../h_src/57987108.htm" class="localvar">L</a>, <a href="../h_src/57986564.htm" class="localvar">name</a>);  <a  class="comments">/* create and anchor TString */</a>
+  <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/57987108.htm" class="localvar">L</a>, <a href="../h_src/57986156.htm" class="localvar">funcstate</a>.<a href="../h_src/57676052.htm" class="variable">f</a>, <a href="../h_src/57986156.htm" class="localvar">funcstate</a>.<a href="../h_src/57676052.htm" class="variable">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>);
+  <a href="../h_src/57986292.htm" class="localvar">lexstate</a>.<a href="../h_src/57700736.htm" class="variable">buff</a> = <a href="../h_src/57986836.htm" class="localvar">buff</a>;
+  <a href="../h_src/57986292.htm" class="localvar">lexstate</a>.<a href="../h_src/57700328.htm" class="variable">dyd</a> = <a href="../h_src/57986700.htm" class="localvar">dyd</a>;
+  <a href="../h_src/57986700.htm" class="localvar">dyd</a>-&gt;<a href="../h_src/57676460.htm" class="variable">actvar</a>.<a href="../h_src/57676664.htm" class="variable">n</a> = <a href="../h_src/57986700.htm" class="localvar">dyd</a>-&gt;<a href="../h_src/57676392.htm" class="variable">gt</a>.<a href="../h_src/57677072.htm" class="variable">n</a> = <a href="../h_src/57986700.htm" class="localvar">dyd</a>-&gt;<a href="../h_src/57676324.htm" class="variable">label</a>.<a href="../h_src/57677072.htm" class="variable">n</a> = 0;
+  <a href="../h_src/57699988.htm" class="function">luaX_setinput</a>(<a href="../h_src/57987108.htm" class="localvar">L</a>, &amp;<a href="../h_src/57986292.htm" class="localvar">lexstate</a>, <a href="../h_src/57986972.htm" class="localvar">z</a>, <a href="../h_src/57986156.htm" class="localvar">funcstate</a>.<a href="../h_src/57676052.htm" class="variable">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>, <a href="../h_src/57986428.htm" class="localvar">firstchar</a>);
+  <a href="../h_src/57987788.htm" class="function">mainfunc</a>(&amp;<a href="../h_src/57986292.htm" class="localvar">lexstate</a>, &amp;<a href="../h_src/57986156.htm" class="localvar">funcstate</a>);
+  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!funcstate.prev &amp;&amp; funcstate.nups == 1 &amp;&amp; !lexstate.fs);
+  <a  class="comments">/* all scopes should be correctly finished */</a>
+  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(dyd-&gt;actvar.n == 0 &amp;&amp; dyd-&gt;gt.n == 0 &amp;&amp; dyd-&gt;label.n == 0);
+  <a href="../h_src/57987108.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>--;  <a  class="comments">/* remove scanner's table */</a>
+  return <a href="../h_src/57986020.htm" class="localvar">cl</a>;  <a  class="comments">/* closure is on the stack, too */</a>
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

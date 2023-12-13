@@ -1,0 +1,62 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>prepbuffsize</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58332620.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58332620.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58332620.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58332620.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58332620.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58332620.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58351320.htm#547" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static char *<a href="../h_src/58332620.htm" class="function">prepbuffsize</a> (<a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> *<a href="../h_src/58332484.htm" class="localvar">B</a>, <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58332348.htm" class="localvar">sz</a>, int <a href="../h_src/58332212.htm" class="localvar">boxidx</a>) {
+  <a href="../h_src/58333300.htm" class="macro">checkbufferlevel</a>(B, boxidx);
+  if (<a href="../h_src/58332484.htm" class="localvar">B</a>-&gt;<a href="../h_src/57415148.htm" class="variable">size</a> - <a href="../h_src/58332484.htm" class="localvar">B</a>-&gt;<a href="../h_src/57415080.htm" class="variable">n</a> &gt;= <a href="../h_src/58332348.htm" class="localvar">sz</a>)  <a  class="comments">/* enough space? */</a>
+    return <a href="../h_src/58332484.htm" class="localvar">B</a>-&gt;<a href="../h_src/57415216.htm" class="variable">b</a> + <a href="../h_src/58332484.htm" class="localvar">B</a>-&gt;<a href="../h_src/57415080.htm" class="variable">n</a>;
+  else {
+    <a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58332076.htm" class="localvar">L</a> = <a href="../h_src/58332484.htm" class="localvar">B</a>-&gt;<a href="../h_src/57415012.htm" class="variable">L</a>;
+    char *<a href="../h_src/58331940.htm" class="localvar">newbuff</a>;
+    <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58331804.htm" class="localvar">newsize</a> = <a href="../h_src/58333164.htm" class="function">newbuffsize</a>(<a href="../h_src/58332484.htm" class="localvar">B</a>, <a href="../h_src/58332348.htm" class="localvar">sz</a>);
+    <a  class="comments">/* create larger buffer */</a>
+    if (<a href="../h_src/58333436.htm" class="macro">buffonstack</a>(<a href="../h_src/58332484.htm" class="localvar">B</a>))  <a  class="comments">/* buffer already has a box? */</a>
+      <a href="../h_src/58331940.htm" class="localvar">newbuff</a> = (char *)<a href="../h_src/58335408.htm" class="function">resizebox</a>(<a href="../h_src/58332076.htm" class="localvar">L</a>, <a href="../h_src/58332212.htm" class="localvar">boxidx</a>, <a href="../h_src/58331804.htm" class="localvar">newsize</a>);  <a  class="comments">/* resize it */</a>
+    else {  <a  class="comments">/* no box yet */</a>
+      <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/58332076.htm" class="localvar">L</a>, <a href="../h_src/58332212.htm" class="localvar">boxidx</a>);  <a  class="comments">/* remove placeholder */</a>
+      <a href="../h_src/58333844.htm" class="function">newbox</a>(<a href="../h_src/58332076.htm" class="localvar">L</a>);  <a  class="comments">/* create a new box */</a>
+      <a href="../h_src/57427252.htm" class="macro">lua_insert</a>(<a href="../h_src/58332076.htm" class="localvar">L</a>, <a href="../h_src/58332212.htm" class="localvar">boxidx</a>);  <a  class="comments">/* move box to its intended position */</a>
+      <a href="../h_src/57429836.htm" class="function">lua_toclose</a>(<a href="../h_src/58332076.htm" class="localvar">L</a>, <a href="../h_src/58332212.htm" class="localvar">boxidx</a>);
+      <a href="../h_src/58331940.htm" class="localvar">newbuff</a> = (char *)<a href="../h_src/58335408.htm" class="function">resizebox</a>(<a href="../h_src/58332076.htm" class="localvar">L</a>, <a href="../h_src/58332212.htm" class="localvar">boxidx</a>, <a href="../h_src/58331804.htm" class="localvar">newsize</a>);
+      <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/58331940.htm" class="localvar">newbuff</a>, <a href="../h_src/58332484.htm" class="localvar">B</a>-&gt;<a href="../h_src/57415216.htm" class="variable">b</a>, <a href="../h_src/58332484.htm" class="localvar">B</a>-&gt;<a href="../h_src/57415080.htm" class="variable">n</a> * sizeof(char));  <a  class="comments">/* copy original content */</a>
+    }
+    <a href="../h_src/58332484.htm" class="localvar">B</a>-&gt;<a href="../h_src/57415216.htm" class="variable">b</a> = <a href="../h_src/58331940.htm" class="localvar">newbuff</a>;
+    <a href="../h_src/58332484.htm" class="localvar">B</a>-&gt;<a href="../h_src/57415148.htm" class="variable">size</a> = <a href="../h_src/58331804.htm" class="localvar">newsize</a>;
+    return <a href="../h_src/58331940.htm" class="localvar">newbuff</a> + <a href="../h_src/58332484.htm" class="localvar">B</a>-&gt;<a href="../h_src/57415080.htm" class="variable">n</a>;
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

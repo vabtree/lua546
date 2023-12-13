@@ -1,0 +1,330 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lutf8lib.c</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143418664.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/143418664.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/143418664.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/143418664.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_uf/143418664.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_df/143418664.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/143418664.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143418664.htm" class="file" target="_self">Source Code</a></li>
+<li><a href="../h_sc/143418664.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<pre class=src>
+<a id=1></a><a  class="comments">/*</a>
+<a id=2></a><a  class="comments">** $Id: lutf8lib.c $</a>
+<a id=3></a><a  class="comments">** Standard library for UTF-8 manipulation</a>
+<a id=4></a><a  class="comments">** See Copyright Notice in lua.h</a>
+<a id=5></a><a  class="comments">*/</a>
+
+<a id=7></a>#define <a href="../h_src/143418596.htm" class="macro">lutf8lib_c</a>
+<a id=8></a>#define <a href="../h_src/143418460.htm" class="macro">LUA_LIB</a>
+
+<a id=10></a>#include &quot;<a href="../h_src/57461592.htm" class="file">lprefix.h</a>&quot;
+
+
+#include &lt;assert.h&gt;
+#include &lt;limits.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+<a id=18></a>#include &quot;<a href="../h_src/57460028.htm" class="file">lua.h</a>&quot;
+
+<a id=20></a>#include &quot;<a href="../h_src/57422356.htm" class="file">lauxlib.h</a>&quot;
+<a id=21></a>#include &quot;<a href="../h_src/57410932.htm" class="file">lualib.h</a>&quot;
+
+
+<a id=24></a>#define <a href="../h_src/143418324.htm" class="macro">MAXUNICODE</a>	0x10FFFFu
+
+<a id=26></a>#define <a href="../h_src/143418188.htm" class="macro">MAXUTF</a>		0x7FFFFFFFu
+
+
+<a id=29></a>#define <a href="../h_src/143418052.htm" class="macro">MSGInvalid</a>	&quot;invalid UTF-8 code&quot;
+
+<a id=31></a><a  class="comments">/*</a>
+<a id=32></a><a  class="comments">** Integer type for decoded UTF-8 values; MAXUTF needs 31 bits.</a>
+<a id=33></a><a  class="comments">*/</a>
+#if (UINT_MAX &gt;&gt; 30) &gt;= 1
+<a id=35></a>typedef unsigned int <a href="../h_src/143417916.htm" class="type">utfint</a>;
+#else
+typedef unsigned long utfint;
+#endif
+
+
+<a id=41></a>#define <a href="../h_src/143417848.htm" class="macro">iscont</a>(c)	(((c) &amp; 0xC0) == 0x80)
+<a id=42></a>#define <a href="../h_src/143417712.htm" class="macro">iscontp</a>(p)	iscont(*(p))
+
+
+<a id=45></a><a  class="comments">/* from strlib */</a>
+<a id=46></a><a  class="comments">/* translate a relative string position: negative means back from end */</a>
+<a id=47></a>static <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143417576.htm" class="function">u_posrelat</a> (<a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143417440.htm" class="localvar">pos</a>, <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/143417304.htm" class="localvar">len</a>) {
+<a id=48></a>  if (<a href="../h_src/143417440.htm" class="localvar">pos</a> &gt;= 0) return <a href="../h_src/143417440.htm" class="localvar">pos</a>;
+<a id=49></a>  else if (0u - (<a href="../h_aa/57441192.htm" class="type">size_t</a>)<a href="../h_src/143417440.htm" class="localvar">pos</a> &gt; <a href="../h_src/143417304.htm" class="localvar">len</a>) return 0;
+<a id=50></a>  else return (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)<a href="../h_src/143417304.htm" class="localvar">len</a> + <a href="../h_src/143417440.htm" class="localvar">pos</a> + 1;
+}
+
+
+<a id=54></a><a  class="comments">/*</a>
+<a id=55></a><a  class="comments">** Decode one UTF-8 sequence, returning NULL if byte sequence is</a>
+<a id=56></a><a  class="comments">** invalid.  The array 'limits' stores the minimum value for each</a>
+<a id=57></a><a  class="comments">** sequence length, to check for overlong representations. Its first</a>
+<a id=58></a><a  class="comments">** entry forces an error for non-ascii bytes with no continuation</a>
+<a id=59></a><a  class="comments">** bytes (count == 0).</a>
+<a id=60></a><a  class="comments">*/</a>
+<a id=61></a>static const char *<a href="../h_src/143417168.htm" class="function">utf8_decode</a> (const char *<a href="../h_src/143417032.htm" class="localvar">s</a>, <a href="../h_src/143417916.htm" class="type">utfint</a> *<a href="../h_src/143416828.htm" class="localvar">val</a>, int <a href="../h_src/143416692.htm" class="localvar">strict</a>) {
+<a id=62></a>  static const <a href="../h_src/143417916.htm" class="type">utfint</a> <a href="../h_src/143416488.htm" class="localvar">limits</a>[] =
+<a id=63></a>        {~(<a href="../h_src/143417916.htm" class="type">utfint</a>)0, 0x80, 0x800, 0x10000u, 0x200000u, 0x4000000u};
+<a id=64></a>  unsigned int <a href="../h_src/143416352.htm" class="localvar">c</a> = (unsigned char)<a href="../h_src/143417032.htm" class="localvar">s</a>[0];
+<a id=65></a>  <a href="../h_src/143417916.htm" class="type">utfint</a> <a href="../h_src/143416216.htm" class="localvar">res</a> = 0;  <a  class="comments">/* final result */</a>
+<a id=66></a>  if (<a href="../h_src/143416352.htm" class="localvar">c</a> &lt; 0x80)  <a  class="comments">/* ascii? */</a>
+<a id=67></a>    <a href="../h_src/143416216.htm" class="localvar">res</a> = <a href="../h_src/143416352.htm" class="localvar">c</a>;
+  else {
+<a id=69></a>    int <a href="../h_src/143416080.htm" class="localvar">count</a> = 0;  <a  class="comments">/* to count number of continuation bytes */</a>
+<a id=70></a>    for (; <a href="../h_src/143416352.htm" class="localvar">c</a> &amp; 0x40; <a href="../h_src/143416352.htm" class="localvar">c</a> &lt;&lt;= 1) {  <a  class="comments">/* while it needs continuation bytes... */</a>
+<a id=71></a>      unsigned int <a href="../h_src/143415944.htm" class="localvar">cc</a> = (unsigned char)<a href="../h_src/143417032.htm" class="localvar">s</a>[++<a href="../h_src/143416080.htm" class="localvar">count</a>];  <a  class="comments">/* read next byte */</a>
+<a id=72></a>      if (!<a href="../h_src/143417848.htm" class="macro">iscont</a>(<a href="../h_src/143415944.htm" class="localvar">cc</a>))  <a  class="comments">/* not a continuation byte? */</a>
+<a id=73></a>        return NULL;  <a  class="comments">/* invalid byte sequence */</a>
+<a id=74></a>      <a href="../h_src/143416216.htm" class="localvar">res</a> = (<a href="../h_src/143416216.htm" class="localvar">res</a> &lt;&lt; 6) | (<a href="../h_src/143415944.htm" class="localvar">cc</a> &amp; 0x3F);  <a  class="comments">/* add lower 6 bits from cont. byte */</a>
+    }
+<a id=76></a>    <a href="../h_src/143416216.htm" class="localvar">res</a> |= ((<a href="../h_src/143417916.htm" class="type">utfint</a>)(<a href="../h_src/143416352.htm" class="localvar">c</a> &amp; 0x7F) &lt;&lt; (<a href="../h_src/143416080.htm" class="localvar">count</a> * 5));  <a  class="comments">/* add first byte */</a>
+<a id=77></a>    if (<a href="../h_src/143416080.htm" class="localvar">count</a> &gt; 5 || <a href="../h_src/143416216.htm" class="localvar">res</a> &gt; <a href="../h_src/143418188.htm" class="macro">MAXUTF</a> || <a href="../h_src/143416216.htm" class="localvar">res</a> &lt; <a href="../h_src/143416488.htm" class="localvar">limits</a>[<a href="../h_src/143416080.htm" class="localvar">count</a>])
+<a id=78></a>      return NULL;  <a  class="comments">/* invalid byte sequence */</a>
+<a id=79></a>    <a href="../h_src/143417032.htm" class="localvar">s</a> += <a href="../h_src/143416080.htm" class="localvar">count</a>;  <a  class="comments">/* skip continuation bytes read */</a>
+  }
+<a id=81></a>  if (<a href="../h_src/143416692.htm" class="localvar">strict</a>) {
+<a id=82></a>    <a  class="comments">/* check for invalid code points; too large or surrogates */</a>
+<a id=83></a>    if (<a href="../h_src/143416216.htm" class="localvar">res</a> &gt; <a href="../h_src/143418324.htm" class="macro">MAXUNICODE</a> || (0xD800u &lt;= <a href="../h_src/143416216.htm" class="localvar">res</a> &amp;&amp; <a href="../h_src/143416216.htm" class="localvar">res</a> &lt;= 0xDFFFu))
+      return NULL;
+  }
+<a id=86></a>  if (<a href="../h_src/143416828.htm" class="localvar">val</a>) *<a href="../h_src/143416828.htm" class="localvar">val</a> = <a href="../h_src/143416216.htm" class="localvar">res</a>;
+<a id=87></a>  return <a href="../h_src/143417032.htm" class="localvar">s</a> + 1;  <a  class="comments">/* +1 to include first byte */</a>
+}
+
+
+<a id=91></a><a  class="comments">/*</a>
+<a id=92></a><a  class="comments">** utf8len(s [, i [, j [, lax]]]) --&gt; number of characters that</a>
+<a id=93></a><a  class="comments">** start in the range [i,j], or nil + current position if 's' is not</a>
+<a id=94></a><a  class="comments">** well formed in that interval</a>
+<a id=95></a><a  class="comments">*/</a>
+<a id=96></a>static int <a href="../h_src/143415808.htm" class="function">utflen</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143415672.htm" class="localvar">L</a>) {
+<a id=97></a>  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143415536.htm" class="localvar">n</a> = 0;  <a  class="comments">/* counter for the number of characters */</a>
+<a id=98></a>  <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/143415400.htm" class="localvar">len</a>;  <a  class="comments">/* string length in bytes */</a>
+<a id=99></a>  const char *<a href="../h_src/143415264.htm" class="localvar">s</a> = <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/143415672.htm" class="localvar">L</a>, 1, &amp;<a href="../h_src/143415400.htm" class="localvar">len</a>);
+<a id=100></a>  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143415128.htm" class="localvar">posi</a> = <a href="../h_src/143417576.htm" class="function">u_posrelat</a>(<a href="../h_src/57419908.htm" class="function">luaL_optinteger</a>(<a href="../h_src/143415672.htm" class="localvar">L</a>, 2, 1), <a href="../h_src/143415400.htm" class="localvar">len</a>);
+<a id=101></a>  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143414992.htm" class="localvar">posj</a> = <a href="../h_src/143417576.htm" class="function">u_posrelat</a>(<a href="../h_src/57419908.htm" class="function">luaL_optinteger</a>(<a href="../h_src/143415672.htm" class="localvar">L</a>, 3, -1), <a href="../h_src/143415400.htm" class="localvar">len</a>);
+<a id=102></a>  int <a href="../h_src/143414856.htm" class="localvar">lax</a> = <a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/143415672.htm" class="localvar">L</a>, 4);
+<a id=103></a>  <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143415672.htm" class="localvar">L</a>, 1 &lt;= <a href="../h_src/143415128.htm" class="localvar">posi</a> &amp;&amp; --<a href="../h_src/143415128.htm" class="localvar">posi</a> &lt;= (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)<a href="../h_src/143415400.htm" class="localvar">len</a>, 2,
+                   &quot;initial position out of bounds&quot;);
+<a id=105></a>  <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143415672.htm" class="localvar">L</a>, --<a href="../h_src/143414992.htm" class="localvar">posj</a> &lt; (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)<a href="../h_src/143415400.htm" class="localvar">len</a>, 3,
+                   &quot;final position out of bounds&quot;);
+<a id=107></a>  while (<a href="../h_src/143415128.htm" class="localvar">posi</a> &lt;= <a href="../h_src/143414992.htm" class="localvar">posj</a>) {
+<a id=108></a>    const char *<a href="../h_src/143414720.htm" class="localvar">s1</a> = <a href="../h_src/143417168.htm" class="function">utf8_decode</a>(<a href="../h_src/143415264.htm" class="localvar">s</a> + <a href="../h_src/143415128.htm" class="localvar">posi</a>, NULL, !<a href="../h_src/143414856.htm" class="localvar">lax</a>);
+<a id=109></a>    if (<a href="../h_src/143414720.htm" class="localvar">s1</a> == NULL) {  <a  class="comments">/* conversion error? */</a>
+<a id=110></a>      <a href="../h_src/57415760.htm" class="macro">luaL_pushfail</a>(<a href="../h_src/143415672.htm" class="localvar">L</a>);  <a  class="comments">/* return fail ... */</a>
+<a id=111></a>      <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143415672.htm" class="localvar">L</a>, <a href="../h_src/143415128.htm" class="localvar">posi</a> + 1);  <a  class="comments">/* ... and current position */</a>
+      return 2;
+    }
+<a id=114></a>    <a href="../h_src/143415128.htm" class="localvar">posi</a> = <a href="../h_src/143414720.htm" class="localvar">s1</a> - <a href="../h_src/143415264.htm" class="localvar">s</a>;
+<a id=115></a>    <a href="../h_src/143415536.htm" class="localvar">n</a>++;
+  }
+<a id=117></a>  <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143415672.htm" class="localvar">L</a>, <a href="../h_src/143415536.htm" class="localvar">n</a>);
+  return 1;
+}
+
+
+<a id=122></a><a  class="comments">/*</a>
+<a id=123></a><a  class="comments">** codepoint(s, [i, [j [, lax]]]) -&gt; returns codepoints for all</a>
+<a id=124></a><a  class="comments">** characters that start in the range [i,j]</a>
+<a id=125></a><a  class="comments">*/</a>
+<a id=126></a>static int <a href="../h_src/143414584.htm" class="function">codepoint</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143414448.htm" class="localvar">L</a>) {
+<a id=127></a>  <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/143414312.htm" class="localvar">len</a>;
+<a id=128></a>  const char *<a href="../h_src/143414176.htm" class="localvar">s</a> = <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/143414448.htm" class="localvar">L</a>, 1, &amp;<a href="../h_src/143414312.htm" class="localvar">len</a>);
+<a id=129></a>  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143414040.htm" class="localvar">posi</a> = <a href="../h_src/143417576.htm" class="function">u_posrelat</a>(<a href="../h_src/57419908.htm" class="function">luaL_optinteger</a>(<a href="../h_src/143414448.htm" class="localvar">L</a>, 2, 1), <a href="../h_src/143414312.htm" class="localvar">len</a>);
+<a id=130></a>  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143413904.htm" class="localvar">pose</a> = <a href="../h_src/143417576.htm" class="function">u_posrelat</a>(<a href="../h_src/57419908.htm" class="function">luaL_optinteger</a>(<a href="../h_src/143414448.htm" class="localvar">L</a>, 3, <a href="../h_src/143414040.htm" class="localvar">posi</a>), <a href="../h_src/143414312.htm" class="localvar">len</a>);
+<a id=131></a>  int <a href="../h_src/143413768.htm" class="localvar">lax</a> = <a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/143414448.htm" class="localvar">L</a>, 4);
+<a id=132></a>  int <a href="../h_src/143413632.htm" class="localvar">n</a>;
+<a id=133></a>  const char *<a href="../h_src/143413496.htm" class="localvar">se</a>;
+<a id=134></a>  <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143414448.htm" class="localvar">L</a>, <a href="../h_src/143414040.htm" class="localvar">posi</a> &gt;= 1, 2, &quot;out of bounds&quot;);
+<a id=135></a>  <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143414448.htm" class="localvar">L</a>, <a href="../h_src/143413904.htm" class="localvar">pose</a> &lt;= (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)<a href="../h_src/143414312.htm" class="localvar">len</a>, 3, &quot;out of bounds&quot;);
+<a id=136></a>  if (<a href="../h_src/143414040.htm" class="localvar">posi</a> &gt; <a href="../h_src/143413904.htm" class="localvar">pose</a>) return 0;  <a  class="comments">/* empty interval; return no values */</a>
+<a id=137></a>  if (<a href="../h_src/143413904.htm" class="localvar">pose</a> - <a href="../h_src/143414040.htm" class="localvar">posi</a> &gt;= INT_MAX)  <a  class="comments">/* (lua_Integer -&gt; int) overflow? */</a>
+<a id=138></a>    return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143414448.htm" class="localvar">L</a>, &quot;string slice too long&quot;);
+<a id=139></a>  <a href="../h_src/143413632.htm" class="localvar">n</a> = (int)(<a href="../h_src/143413904.htm" class="localvar">pose</a> -  <a href="../h_src/143414040.htm" class="localvar">posi</a>) + 1;  <a  class="comments">/* upper bound for number of returns */</a>
+<a id=140></a>  <a href="../h_src/57419840.htm" class="function">luaL_checkstack</a>(<a href="../h_src/143414448.htm" class="localvar">L</a>, <a href="../h_src/143413632.htm" class="localvar">n</a>, &quot;string slice too long&quot;);
+<a id=141></a>  <a href="../h_src/143413632.htm" class="localvar">n</a> = 0;  <a  class="comments">/* count the number of returns */</a>
+<a id=142></a>  <a href="../h_src/143413496.htm" class="localvar">se</a> = <a href="../h_src/143414176.htm" class="localvar">s</a> + <a href="../h_src/143413904.htm" class="localvar">pose</a>;  <a  class="comments">/* string end */</a>
+<a id=143></a>  for (<a href="../h_src/143414176.htm" class="localvar">s</a> += <a href="../h_src/143414040.htm" class="localvar">posi</a> - 1; <a href="../h_src/143414176.htm" class="localvar">s</a> &lt; <a href="../h_src/143413496.htm" class="localvar">se</a>;) {
+<a id=144></a>    <a href="../h_src/143417916.htm" class="type">utfint</a> <a href="../h_src/143413360.htm" class="localvar">code</a>;
+<a id=145></a>    <a href="../h_src/143414176.htm" class="localvar">s</a> = <a href="../h_src/143417168.htm" class="function">utf8_decode</a>(<a href="../h_src/143414176.htm" class="localvar">s</a>, &amp;<a href="../h_src/143413360.htm" class="localvar">code</a>, !<a href="../h_src/143413768.htm" class="localvar">lax</a>);
+<a id=146></a>    if (<a href="../h_src/143414176.htm" class="localvar">s</a> == NULL)
+<a id=147></a>      return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143414448.htm" class="localvar">L</a>, <a href="../h_src/143418052.htm" class="macro">MSGInvalid</a>);
+<a id=148></a>    <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143414448.htm" class="localvar">L</a>, <a href="../h_src/143413360.htm" class="localvar">code</a>);
+<a id=149></a>    <a href="../h_src/143413632.htm" class="localvar">n</a>++;
+  }
+<a id=151></a>  return <a href="../h_src/143413632.htm" class="localvar">n</a>;
+}
+
+
+<a id=155></a>static void <a href="../h_src/143413224.htm" class="function">pushutfchar</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143413088.htm" class="localvar">L</a>, int <a href="../h_src/143412952.htm" class="localvar">arg</a>) {
+<a id=156></a>  <a href="../h_src/57438132.htm" class="function">lua_Unsigned</a> <a href="../h_src/143412816.htm" class="localvar">code</a> = (<a href="../h_src/57438132.htm" class="function">lua_Unsigned</a>)<a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143413088.htm" class="localvar">L</a>, <a href="../h_src/143412952.htm" class="localvar">arg</a>);
+<a id=157></a>  <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143413088.htm" class="localvar">L</a>, <a href="../h_src/143412816.htm" class="localvar">code</a> &lt;= <a href="../h_src/143418188.htm" class="macro">MAXUTF</a>, <a href="../h_src/143412952.htm" class="localvar">arg</a>, &quot;value out of range&quot;);
+<a id=158></a>  <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/143413088.htm" class="localvar">L</a>, &quot;%U&quot;, (long)<a href="../h_src/143412816.htm" class="localvar">code</a>);
+}
+
+
+<a id=162></a><a  class="comments">/*</a>
+<a id=163></a><a  class="comments">** utfchar(n1, n2, ...)  -&gt; char(n1)..char(n2)...</a>
+<a id=164></a><a  class="comments">*/</a>
+<a id=165></a>static int <a href="../h_src/143412680.htm" class="function">utfchar</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143412544.htm" class="localvar">L</a>) {
+<a id=166></a>  int <a href="../h_src/143412408.htm" class="localvar">n</a> = <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/143412544.htm" class="localvar">L</a>);  <a  class="comments">/* number of arguments */</a>
+<a id=167></a>  if (<a href="../h_src/143412408.htm" class="localvar">n</a> == 1)  <a  class="comments">/* optimize common case of single char */</a>
+<a id=168></a>    <a href="../h_src/143413224.htm" class="function">pushutfchar</a>(<a href="../h_src/143412544.htm" class="localvar">L</a>, 1);
+  else {
+<a id=170></a>    int <a href="../h_src/143412272.htm" class="localvar">i</a>;
+<a id=171></a>    <a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> <a href="../h_src/143412136.htm" class="localvar">b</a>;
+<a id=172></a>    <a href="../h_src/57413652.htm" class="function">luaL_buffinit</a>(<a href="../h_src/143412544.htm" class="localvar">L</a>, &amp;<a href="../h_src/143412136.htm" class="localvar">b</a>);
+<a id=173></a>    for (<a href="../h_src/143412272.htm" class="localvar">i</a> = 1; <a href="../h_src/143412272.htm" class="localvar">i</a> &lt;= <a href="../h_src/143412408.htm" class="localvar">n</a>; <a href="../h_src/143412272.htm" class="localvar">i</a>++) {
+<a id=174></a>      <a href="../h_src/143413224.htm" class="function">pushutfchar</a>(<a href="../h_src/143412544.htm" class="localvar">L</a>, <a href="../h_src/143412272.htm" class="localvar">i</a>);
+<a id=175></a>      <a href="../h_src/57413380.htm" class="function">luaL_addvalue</a>(&amp;<a href="../h_src/143412136.htm" class="localvar">b</a>);
+    }
+<a id=177></a>    <a href="../h_src/57413312.htm" class="function">luaL_pushresult</a>(&amp;<a href="../h_src/143412136.htm" class="localvar">b</a>);
+  }
+  return 1;
+}
+
+
+<a id=183></a><a  class="comments">/*</a>
+<a id=184></a><a  class="comments">** offset(s, n, [i])  -&gt; index where n-th character counting from</a>
+<a id=185></a><a  class="comments">**   position 'i' starts; 0 means character at 'i'.</a>
+<a id=186></a><a  class="comments">*/</a>
+<a id=187></a>static int <a href="../h_src/143412000.htm" class="function">byteoffset</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143411864.htm" class="localvar">L</a>) {
+<a id=188></a>  <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/143411728.htm" class="localvar">len</a>;
+<a id=189></a>  const char *<a href="../h_src/143411592.htm" class="localvar">s</a> = <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/143411864.htm" class="localvar">L</a>, 1, &amp;<a href="../h_src/143411728.htm" class="localvar">len</a>);
+<a id=190></a>  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143411456.htm" class="localvar">n</a>  = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143411864.htm" class="localvar">L</a>, 2);
+<a id=191></a>  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143411320.htm" class="localvar">posi</a> = (<a href="../h_src/143411456.htm" class="localvar">n</a> &gt;= 0) ? 1 : <a href="../h_src/143411728.htm" class="localvar">len</a> + 1;
+<a id=192></a>  <a href="../h_src/143411320.htm" class="localvar">posi</a> = <a href="../h_src/143417576.htm" class="function">u_posrelat</a>(<a href="../h_src/57419908.htm" class="function">luaL_optinteger</a>(<a href="../h_src/143411864.htm" class="localvar">L</a>, 3, <a href="../h_src/143411320.htm" class="localvar">posi</a>), <a href="../h_src/143411728.htm" class="localvar">len</a>);
+<a id=193></a>  <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143411864.htm" class="localvar">L</a>, 1 &lt;= <a href="../h_src/143411320.htm" class="localvar">posi</a> &amp;&amp; --<a href="../h_src/143411320.htm" class="localvar">posi</a> &lt;= (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)<a href="../h_src/143411728.htm" class="localvar">len</a>, 3,
+                   &quot;position out of bounds&quot;);
+<a id=195></a>  if (<a href="../h_src/143411456.htm" class="localvar">n</a> == 0) {
+<a id=196></a>    <a  class="comments">/* find beginning of current byte sequence */</a>
+<a id=197></a>    while (<a href="../h_src/143411320.htm" class="localvar">posi</a> &gt; 0 &amp;&amp; <a href="../h_src/143417712.htm" class="macro">iscontp</a>(<a href="../h_src/143411592.htm" class="localvar">s</a> + <a href="../h_src/143411320.htm" class="localvar">posi</a>)) <a href="../h_src/143411320.htm" class="localvar">posi</a>--;
+  }
+  else {
+<a id=200></a>    if (<a href="../h_src/143417712.htm" class="macro">iscontp</a>(<a href="../h_src/143411592.htm" class="localvar">s</a> + <a href="../h_src/143411320.htm" class="localvar">posi</a>))
+<a id=201></a>      return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143411864.htm" class="localvar">L</a>, &quot;initial position is a continuation byte&quot;);
+<a id=202></a>    if (<a href="../h_src/143411456.htm" class="localvar">n</a> &lt; 0) {
+<a id=203></a>       while (<a href="../h_src/143411456.htm" class="localvar">n</a> &lt; 0 &amp;&amp; <a href="../h_src/143411320.htm" class="localvar">posi</a> &gt; 0) {  <a  class="comments">/* move back */</a>
+<a id=204></a>         do {  <a  class="comments">/* find beginning of previous character */</a>
+<a id=205></a>           <a href="../h_src/143411320.htm" class="localvar">posi</a>--;
+<a id=206></a>         } while (<a href="../h_src/143411320.htm" class="localvar">posi</a> &gt; 0 &amp;&amp; <a href="../h_src/143417712.htm" class="macro">iscontp</a>(<a href="../h_src/143411592.htm" class="localvar">s</a> + <a href="../h_src/143411320.htm" class="localvar">posi</a>));
+<a id=207></a>         <a href="../h_src/143411456.htm" class="localvar">n</a>++;
+       }
+     }
+     else {
+<a id=211></a>       <a href="../h_src/143411456.htm" class="localvar">n</a>--;  <a  class="comments">/* do not move for 1st character */</a>
+<a id=212></a>       while (<a href="../h_src/143411456.htm" class="localvar">n</a> &gt; 0 &amp;&amp; <a href="../h_src/143411320.htm" class="localvar">posi</a> &lt; (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)<a href="../h_src/143411728.htm" class="localvar">len</a>) {
+<a id=213></a>         do {  <a  class="comments">/* find beginning of next character */</a>
+<a id=214></a>           <a href="../h_src/143411320.htm" class="localvar">posi</a>++;
+<a id=215></a>         } while (<a href="../h_src/143417712.htm" class="macro">iscontp</a>(<a href="../h_src/143411592.htm" class="localvar">s</a> + <a href="../h_src/143411320.htm" class="localvar">posi</a>));  <a  class="comments">/* (cannot pass final '\0') */</a>
+<a id=216></a>         <a href="../h_src/143411456.htm" class="localvar">n</a>--;
+       }
+     }
+  }
+<a id=220></a>  if (<a href="../h_src/143411456.htm" class="localvar">n</a> == 0)  <a  class="comments">/* did it find given character? */</a>
+<a id=221></a>    <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143411864.htm" class="localvar">L</a>, <a href="../h_src/143411320.htm" class="localvar">posi</a> + 1);
+<a id=222></a>  else  <a  class="comments">/* no such character */</a>
+<a id=223></a>    <a href="../h_src/57415760.htm" class="macro">luaL_pushfail</a>(<a href="../h_src/143411864.htm" class="localvar">L</a>);
+  return 1;
+}
+
+
+<a id=228></a>static int <a href="../h_src/143411184.htm" class="function">iter_aux</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143411048.htm" class="localvar">L</a>, int <a href="../h_src/143410912.htm" class="localvar">strict</a>) {
+<a id=229></a>  <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/143410776.htm" class="localvar">len</a>;
+<a id=230></a>  const char *<a href="../h_src/143410640.htm" class="localvar">s</a> = <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/143411048.htm" class="localvar">L</a>, 1, &amp;<a href="../h_src/143410776.htm" class="localvar">len</a>);
+<a id=231></a>  <a href="../h_src/57438132.htm" class="function">lua_Unsigned</a> <a href="../h_src/143410504.htm" class="localvar">n</a> = (<a href="../h_src/57438132.htm" class="function">lua_Unsigned</a>)<a href="../h_src/57429428.htm" class="macro">lua_tointeger</a>(<a href="../h_src/143411048.htm" class="localvar">L</a>, 2);
+<a id=232></a>  if (<a href="../h_src/143410504.htm" class="localvar">n</a> &lt; <a href="../h_src/143410776.htm" class="localvar">len</a>) {
+<a id=233></a>    while (<a href="../h_src/143417712.htm" class="macro">iscontp</a>(<a href="../h_src/143410640.htm" class="localvar">s</a> + <a href="../h_src/143410504.htm" class="localvar">n</a>)) <a href="../h_src/143410504.htm" class="localvar">n</a>++;  <a  class="comments">/* go to next character */</a>
+  }
+<a id=235></a>  if (<a href="../h_src/143410504.htm" class="localvar">n</a> &gt;= <a href="../h_src/143410776.htm" class="localvar">len</a>)  <a  class="comments">/* (also handles original 'n' being negative) */</a>
+<a id=236></a>    return 0;  <a  class="comments">/* no more codepoints */</a>
+  else {
+<a id=238></a>    <a href="../h_src/143417916.htm" class="type">utfint</a> <a href="../h_src/143410368.htm" class="localvar">code</a>;
+<a id=239></a>    const char *<a href="../h_src/143410232.htm" class="localvar">next</a> = <a href="../h_src/143417168.htm" class="function">utf8_decode</a>(<a href="../h_src/143410640.htm" class="localvar">s</a> + <a href="../h_src/143410504.htm" class="localvar">n</a>, &amp;<a href="../h_src/143410368.htm" class="localvar">code</a>, <a href="../h_src/143410912.htm" class="localvar">strict</a>);
+<a id=240></a>    if (<a href="../h_src/143410232.htm" class="localvar">next</a> == NULL || <a href="../h_src/143417712.htm" class="macro">iscontp</a>(<a href="../h_src/143410232.htm" class="localvar">next</a>))
+<a id=241></a>      return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143411048.htm" class="localvar">L</a>, <a href="../h_src/143418052.htm" class="macro">MSGInvalid</a>);
+<a id=242></a>    <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143411048.htm" class="localvar">L</a>, <a href="../h_src/143410504.htm" class="localvar">n</a> + 1);
+<a id=243></a>    <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143411048.htm" class="localvar">L</a>, <a href="../h_src/143410368.htm" class="localvar">code</a>);
+    return 2;
+  }
+}
+
+
+<a id=249></a>static int <a href="../h_src/143410096.htm" class="function">iter_auxstrict</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143409960.htm" class="localvar">L</a>) {
+<a id=250></a>  return <a href="../h_src/143411184.htm" class="function">iter_aux</a>(<a href="../h_src/143409960.htm" class="localvar">L</a>, 1);
+}
+
+<a id=253></a>static int <a href="../h_src/143409824.htm" class="function">iter_auxlax</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143409688.htm" class="localvar">L</a>) {
+<a id=254></a>  return <a href="../h_src/143411184.htm" class="function">iter_aux</a>(<a href="../h_src/143409688.htm" class="localvar">L</a>, 0);
+}
+
+
+<a id=258></a>static int <a href="../h_src/143409552.htm" class="function">iter_codes</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143409416.htm" class="localvar">L</a>) {
+<a id=259></a>  int <a href="../h_src/143409280.htm" class="localvar">lax</a> = <a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/143409416.htm" class="localvar">L</a>, 2);
+<a id=260></a>  const char *<a href="../h_src/143409144.htm" class="localvar">s</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143409416.htm" class="localvar">L</a>, 1);
+<a id=261></a>  <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143409416.htm" class="localvar">L</a>, !<a href="../h_src/143417712.htm" class="macro">iscontp</a>(<a href="../h_src/143409144.htm" class="localvar">s</a>), 1, <a href="../h_src/143418052.htm" class="macro">MSGInvalid</a>);
+<a id=262></a>  <a href="../h_src/57428884.htm" class="macro">lua_pushcfunction</a>(<a href="../h_src/143409416.htm" class="localvar">L</a>, <a href="../h_src/143409280.htm" class="localvar">lax</a> ? <a href="../h_src/143409824.htm" class="function">iter_auxlax</a> : <a href="../h_src/143410096.htm" class="function">iter_auxstrict</a>);
+<a id=263></a>  <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/143409416.htm" class="localvar">L</a>, 1);
+<a id=264></a>  <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143409416.htm" class="localvar">L</a>, 0);
+  return 3;
+}
+
+
+<a id=269></a><a  class="comments">/* pattern to match a single UTF-8 character */</a>
+<a id=270></a>#define <a href="../h_src/143409008.htm" class="macro">UTF8PATT</a>	&quot;[\0-\x7F\xC2-\xFD][\x80-\xBF]*&quot;
+
+
+<a id=273></a>static const <a href="../h_src/57420996.htm" class="type">luaL_Reg</a> <a href="../h_src/143408872.htm" class="variable">funcs</a>[] = {
+<a id=274></a>  {&quot;offset&quot;, <a href="../h_src/143412000.htm" class="function">byteoffset</a>},
+<a id=275></a>  {&quot;codepoint&quot;, <a href="../h_src/143414584.htm" class="function">codepoint</a>},
+<a id=276></a>  {&quot;char&quot;, <a href="../h_src/143412680.htm" class="function">utfchar</a>},
+<a id=277></a>  {&quot;len&quot;, <a href="../h_src/143415808.htm" class="function">utflen</a>},
+<a id=278></a>  {&quot;codes&quot;, <a href="../h_src/143409552.htm" class="function">iter_codes</a>},
+<a id=279></a>  <a  class="comments">/* placeholders */</a>
+  {&quot;charpattern&quot;, NULL},
+  {NULL, NULL}
+};
+
+
+<a id=285></a><a href="../h_src/57454180.htm" class="macro">LUAMOD_API</a> int <a href="../h_src/57574416.htm" class="function">luaopen_utf8</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143408804.htm" class="localvar">L</a>) {
+<a id=286></a>  <a href="../h_src/57417392.htm" class="macro">luaL_newlib</a>(<a href="../h_src/143408804.htm" class="localvar">L</a>, <a href="../h_src/143408872.htm" class="variable">funcs</a>);
+<a id=287></a>  <a href="../h_src/57435072.htm" class="function">lua_pushlstring</a>(<a href="../h_src/143408804.htm" class="localvar">L</a>, <a href="../h_src/143409008.htm" class="macro">UTF8PATT</a>, sizeof(<a href="../h_src/143409008.htm" class="macro">UTF8PATT</a>)/sizeof(char) - 1);
+<a id=288></a>  <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/143408804.htm" class="localvar">L</a>, -2, &quot;charpattern&quot;);
+  return 1;
+}
+
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

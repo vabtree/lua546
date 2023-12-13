@@ -1,0 +1,49 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>adjustlocalvars</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58044228.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58044228.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58044228.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58044228.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58044228.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58044228.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58057080.htm#311" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/58044228.htm" class="function">adjustlocalvars</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/58044092.htm" class="localvar">ls</a>, int <a href="../h_src/58043956.htm" class="localvar">nvars</a>) {
+  <a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/58043820.htm" class="localvar">fs</a> = <a href="../h_src/58044092.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>;
+  int <a href="../h_src/58043684.htm" class="localvar">reglevel</a> = <a href="../h_src/57674488.htm" class="function">luaY_nvarstack</a>(<a href="../h_src/58043820.htm" class="localvar">fs</a>);
+  int <a href="../h_src/58043548.htm" class="localvar">i</a>;
+  for (<a href="../h_src/58043548.htm" class="localvar">i</a> = 0; <a href="../h_src/58043548.htm" class="localvar">i</a> &lt; <a href="../h_src/58043956.htm" class="localvar">nvars</a>; <a href="../h_src/58043548.htm" class="localvar">i</a>++) {
+    int <a href="../h_src/58043412.htm" class="localvar">vidx</a> = <a href="../h_src/58043820.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674896.htm" class="variable">nactvar</a>++;
+    <a href="../h_src/57677956.htm" class="type">Vardesc</a> *<a href="../h_src/58043276.htm" class="localvar">var</a> = <a href="../h_src/58047628.htm" class="function">getlocalvardesc</a>(<a href="../h_src/58043820.htm" class="localvar">fs</a>, <a href="../h_src/58043412.htm" class="localvar">vidx</a>);
+    <a href="../h_src/58043276.htm" class="localvar">var</a>-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678364.htm" class="variable">ridx</a> = <a href="../h_src/58043684.htm" class="localvar">reglevel</a>++;
+    <a href="../h_src/58043276.htm" class="localvar">var</a>-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678296.htm" class="variable">pidx</a> = <a href="../h_src/58049532.htm" class="function">registerlocalvar</a>(<a href="../h_src/58044092.htm" class="localvar">ls</a>, <a href="../h_src/58043820.htm" class="localvar">fs</a>, <a href="../h_src/58043276.htm" class="localvar">var</a>-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678228.htm" class="variable">name</a>);
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

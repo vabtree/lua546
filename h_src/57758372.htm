@@ -1,0 +1,54 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>getbaseline</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57758372.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57758372.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57758372.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57758372.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57758372.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57758372.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57759256.htm#60" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/57758372.htm" class="function">getbaseline</a> (const <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57758236.htm" class="localvar">f</a>, int <a href="../h_src/57758100.htm" class="localvar">pc</a>, int *<a href="../h_src/57757964.htm" class="localvar">basepc</a>) {
+  if (<a href="../h_src/57758236.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515324.htm" class="variable">sizeabslineinfo</a> == 0 || <a href="../h_src/57758100.htm" class="localvar">pc</a> &lt; <a href="../h_src/57758236.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514168.htm" class="variable">abslineinfo</a>[0].<a href="../h_src/57516480.htm" class="variable">pc</a>) {
+    *<a href="../h_src/57757964.htm" class="localvar">basepc</a> = -1;  <a  class="comments">/* start from the beginning */</a>
+    return <a href="../h_src/57758236.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515256.htm" class="variable">linedefined</a>;
+  }
+  else {
+    int <a href="../h_src/57757828.htm" class="localvar">i</a> = <a href="../h_src/57547080.htm" class="macro">cast_uint</a>(<a href="../h_src/57758100.htm" class="localvar">pc</a>) / <a href="../h_src/57636096.htm" class="macro">MAXIWTHABS</a> - 1;  <a  class="comments">/* get an estimate */</a>
+    <a  class="comments">/* estimate must be a lower bound of the correct base */</a>
+    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(i &lt; 0 ||
+              (i &lt; f-&gt;sizeabslineinfo &amp;&amp; f-&gt;abslineinfo[i].pc &lt;= pc));
+    while (<a href="../h_src/57757828.htm" class="localvar">i</a> + 1 &lt; <a href="../h_src/57758236.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515324.htm" class="variable">sizeabslineinfo</a> &amp;&amp; <a href="../h_src/57758100.htm" class="localvar">pc</a> &gt;= <a href="../h_src/57758236.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514168.htm" class="variable">abslineinfo</a>[<a href="../h_src/57757828.htm" class="localvar">i</a> + 1].<a href="../h_src/57516480.htm" class="variable">pc</a>)
+      <a href="../h_src/57757828.htm" class="localvar">i</a>++;  <a  class="comments">/* low estimate; adjust it */</a>
+    *<a href="../h_src/57757964.htm" class="localvar">basepc</a> = <a href="../h_src/57758236.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514168.htm" class="variable">abslineinfo</a>[<a href="../h_src/57757828.htm" class="localvar">i</a>].<a href="../h_src/57516480.htm" class="variable">pc</a>;
+    return <a href="../h_src/57758236.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514168.htm" class="variable">abslineinfo</a>[<a href="../h_src/57757828.htm" class="localvar">i</a>].<a href="../h_src/57516412.htm" class="variable">line</a>;
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

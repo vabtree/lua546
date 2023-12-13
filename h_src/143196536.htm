@@ -1,0 +1,45 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>createclibstable</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143196536.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143196536.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143196536.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143196536.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143196536.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143196536.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143217276.htm#735" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/143196536.htm" class="function">createclibstable</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143196400.htm" class="localvar">L</a>) {
+  <a href="../h_src/57417732.htm" class="function">luaL_getsubtable</a>(<a href="../h_src/143196400.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/143215848.htm" class="variable">CLIBS</a>);  <a  class="comments">/* create CLIBS table */</a>
+  <a href="../h_src/57433916.htm" class="function">lua_createtable</a>(<a href="../h_src/143196400.htm" class="localvar">L</a>, 0, 1);  <a  class="comments">/* create metatable for CLIBS */</a>
+  <a href="../h_src/57428884.htm" class="macro">lua_pushcfunction</a>(<a href="../h_src/143196400.htm" class="localvar">L</a>, <a href="../h_src/143208436.htm" class="function">gctm</a>);
+  <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/143196400.htm" class="localvar">L</a>, -2, &quot;__gc&quot;);  <a  class="comments">/* set finalizer for CLIBS table */</a>
+  <a href="../h_src/57433168.htm" class="function">lua_setmetatable</a>(<a href="../h_src/143196400.htm" class="localvar">L</a>, -2);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

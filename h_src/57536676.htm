@@ -1,0 +1,49 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>Value</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57536676.htm" class="class" target="_self">Info</a></li>
+<li><a href="../h_im/57536676.htm" class="class" target="_self">Public Interface</a></li>
+<li><a href="../h_rx/57536676.htm" class="class" target="_self">Inheritance</a></li>
+<li><a href="../h_nm/57536676.htm" class="class" target="_self">Internals</a></li>
+<li><a href="../h_ua/57536676.htm" class="class" target="_self">Use of Members</a></li>
+<li><a href="../h_da/57536676.htm" class="class" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57536676.htm" class="class" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57536676.htm" class="class" target="_self">Declaration</a></li>
+<li><a href="../h_src/57537696.htm#49" class="class" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Declaration</h4>
+<pre class=src>
+typedef union <a href="../h_src/57536676.htm" class="class">Value</a> {
+  struct <a href="../h_src/57536540.htm" class="class">GCObject</a> *<a href="../h_src/57536268.htm" class="variable">gc</a>;    <a  class="comments">/* collectable objects */</a>
+  void *<a href="../h_src/57536200.htm" class="variable">p</a>;         <a  class="comments">/* light userdata */</a>
+  <a href="../h_src/57441736.htm" class="type">lua_CFunction</a> <a href="../h_src/57536132.htm" class="variable">f</a>; <a  class="comments">/* light C functions */</a>
+  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/57536064.htm" class="variable">i</a>;   <a  class="comments">/* integer numbers */</a>
+  <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/57535996.htm" class="variable">n</a>;    <a  class="comments">/* float numbers */</a>
+  <a  class="comments">/* not used, but may avoid warnings for uninitialized value */</a>
+  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57535928.htm" class="variable">ub</a>;
+} <a href="../h_src/57535860.htm" class="type">Value</a>;
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

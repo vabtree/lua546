@@ -1,0 +1,53 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>createlabel</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58030696.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58030696.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58030696.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58030696.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58030696.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58030696.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58057080.htm#608" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/58030696.htm" class="function">createlabel</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/58030560.htm" class="localvar">ls</a>, <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/58030424.htm" class="localvar">name</a>, int <a href="../h_src/58030288.htm" class="localvar">line</a>,
+                        int <a href="../h_src/58030152.htm" class="localvar">last</a>) {
+  <a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/58030016.htm" class="localvar">fs</a> = <a href="../h_src/58030560.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>;
+  <a href="../h_src/57676936.htm" class="type">Labellist</a> *<a href="../h_src/58029880.htm" class="localvar">ll</a> = &amp;<a href="../h_src/58030560.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700328.htm" class="variable">dyd</a>-&gt;<a href="../h_src/57676324.htm" class="variable">label</a>;
+  int <a href="../h_src/58029744.htm" class="localvar">l</a> = <a href="../h_src/58033144.htm" class="function">newlabelentry</a>(<a href="../h_src/58030560.htm" class="localvar">ls</a>, <a href="../h_src/58029880.htm" class="localvar">ll</a>, <a href="../h_src/58030424.htm" class="localvar">name</a>, <a href="../h_src/58030288.htm" class="localvar">line</a>, <a href="../h_src/57669252.htm" class="function">luaK_getlabel</a>(<a href="../h_src/58030016.htm" class="localvar">fs</a>));
+  if (<a href="../h_src/58030152.htm" class="localvar">last</a>) {  <a  class="comments">/* label is last no-op statement in the block? */</a>
+    <a  class="comments">/* assume that locals are already out of scope */</a>
+    <a href="../h_src/58029880.htm" class="localvar">ll</a>-&gt;<a href="../h_src/57677140.htm" class="variable">arr</a>[<a href="../h_src/58029744.htm" class="localvar">l</a>].<a href="../h_src/57677548.htm" class="variable">nactvar</a> = <a href="../h_src/58030016.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675576.htm" class="variable">bl</a>-&gt;<a href="../h_src/58056128.htm" class="variable">nactvar</a>;
+  }
+  if (<a href="../h_src/58031512.htm" class="function">solvegotos</a>(<a href="../h_src/58030560.htm" class="localvar">ls</a>, &amp;<a href="../h_src/58029880.htm" class="localvar">ll</a>-&gt;<a href="../h_src/57677140.htm" class="variable">arr</a>[<a href="../h_src/58029744.htm" class="localvar">l</a>])) {  <a  class="comments">/* need close? */</a>
+    <a href="../h_src/57672380.htm" class="macro">luaK_codeABC</a>(<a href="../h_src/58030016.htm" class="localvar">fs</a>, <a href="../h_src/57686864.htm" class="variable">OP_CLOSE</a>, <a href="../h_src/57674488.htm" class="function">luaY_nvarstack</a>(<a href="../h_src/58030016.htm" class="localvar">fs</a>), 0, 0);
+    return 1;
+  }
+  return 0;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

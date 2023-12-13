@@ -1,0 +1,84 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaH_getn</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57592440.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57592440.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57592440.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57592440.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57592440.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57592440.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58121924.htm#923" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57438132.htm" class="function">lua_Unsigned</a> <a href="../h_src/57592440.htm" class="function">luaH_getn</a> (<a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58091324.htm" class="localvar">t</a>) {
+  unsigned int <a href="../h_src/58091188.htm" class="localvar">limit</a> = <a href="../h_src/58091324.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a>;
+  if (<a href="../h_src/58091188.htm" class="localvar">limit</a> &gt; 0 &amp;&amp; <a href="../h_src/57530488.htm" class="macro">isempty</a>(&amp;<a href="../h_src/58091324.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58091188.htm" class="localvar">limit</a> - 1])) {  <a  class="comments">/* (1)? */</a>
+    <a  class="comments">/* there must be a boundary before 'limit' */</a>
+    if (<a href="../h_src/58091188.htm" class="localvar">limit</a> &gt;= 2 &amp;&amp; !<a href="../h_src/57530488.htm" class="macro">isempty</a>(&amp;<a href="../h_src/58091324.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58091188.htm" class="localvar">limit</a> - 2])) {
+      <a  class="comments">/* 'limit - 1' is a boundary; can it be a new limit? */</a>
+      if (<a href="../h_src/58115532.htm" class="function">ispow2realasize</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>) &amp;&amp; !<a href="../h_src/57549528.htm" class="macro">ispow2</a>(<a href="../h_src/58091188.htm" class="localvar">limit</a> - 1)) {
+        <a href="../h_src/58091324.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a> = <a href="../h_src/58091188.htm" class="localvar">limit</a> - 1;
+        <a href="../h_src/57505260.htm" class="macro">setnorealasize</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>);  <a  class="comments">/* now 'alimit' is not the real size */</a>
+      }
+      return <a href="../h_src/58091188.htm" class="localvar">limit</a> - 1;
+    }
+    else {  <a  class="comments">/* must search for a boundary in [0, limit] */</a>
+      unsigned int <a href="../h_src/58091052.htm" class="localvar">boundary</a> = <a href="../h_src/58092004.htm" class="function">binsearch</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>, 0, <a href="../h_src/58091188.htm" class="localvar">limit</a>);
+      <a  class="comments">/* can this boundary represent the real size of the array? */</a>
+      if (<a href="../h_src/58115532.htm" class="function">ispow2realasize</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>) &amp;&amp; <a href="../h_src/58091052.htm" class="localvar">boundary</a> &gt; <a href="../h_src/57616172.htm" class="function">luaH_realasize</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>) / 2) {
+        <a href="../h_src/58091324.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a> = <a href="../h_src/58091052.htm" class="localvar">boundary</a>;  <a  class="comments">/* use it as the new limit */</a>
+        <a href="../h_src/57505260.htm" class="macro">setnorealasize</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>);
+      }
+      return <a href="../h_src/58091052.htm" class="localvar">boundary</a>;
+    }
+  }
+  <a  class="comments">/* 'limit' is zero or present in table */</a>
+  if (!<a href="../h_src/58115940.htm" class="macro">limitequalsasize</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>)) {  <a  class="comments">/* (2)? */</a>
+    <a  class="comments">/* 'limit' &gt; 0 and array has more elements after 'limit' */</a>
+    if (<a href="../h_src/57530488.htm" class="macro">isempty</a>(&amp;<a href="../h_src/58091324.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58091188.htm" class="localvar">limit</a>]))  <a  class="comments">/* 'limit + 1' is empty? */</a>
+      return <a href="../h_src/58091188.htm" class="localvar">limit</a>;  <a  class="comments">/* this is the boundary */</a>
+    <a  class="comments">/* else, try last element in the array */</a>
+    <a href="../h_src/58091188.htm" class="localvar">limit</a> = <a href="../h_src/57616172.htm" class="function">luaH_realasize</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>);
+    if (<a href="../h_src/57530488.htm" class="macro">isempty</a>(&amp;<a href="../h_src/58091324.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58091188.htm" class="localvar">limit</a> - 1])) {  <a  class="comments">/* empty? */</a>
+      <a  class="comments">/* there must be a boundary in the array after old limit,</a>
+<a  class="comments">         and it must be a valid new limit */</a>
+      unsigned int <a href="../h_src/58090916.htm" class="localvar">boundary</a> = <a href="../h_src/58092004.htm" class="function">binsearch</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>, <a href="../h_src/58091324.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a>, <a href="../h_src/58091188.htm" class="localvar">limit</a>);
+      <a href="../h_src/58091324.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a> = <a href="../h_src/58090916.htm" class="localvar">boundary</a>;
+      return <a href="../h_src/58090916.htm" class="localvar">boundary</a>;
+    }
+    <a  class="comments">/* else, new limit is present in the table; check the hash part */</a>
+  }
+  <a  class="comments">/* (3) 'limit' is the last element and either is zero or present in table */</a>
+  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(limit == luaH_realasize(t) &amp;&amp;
+             (limit == 0 || !<a href="../h_src/57530488.htm" class="macro">isempty</a>(&amp;t-&gt;array[limit - 1])));
+  if (<a href="../h_src/57617464.htm" class="macro">isdummy</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>) || <a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617056.htm" class="function">luaH_getint</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>, <a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57442076.htm" class="type">lua_Integer</a>, <a href="../h_src/58091188.htm" class="localvar">limit</a> + 1))))
+    return <a href="../h_src/58091188.htm" class="localvar">limit</a>;  <a  class="comments">/* 'limit + 1' is absent */</a>
+  else  <a  class="comments">/* 'limit + 1' is also present */</a>
+    return <a href="../h_aa/58090780.htm" class="libfunc">hash_search</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>, <a href="../h_src/58091188.htm" class="localvar">limit</a>);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,61 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lua_Unsigned</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143225300.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143225300.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143225300.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143225300.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143225300.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143225300.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143241756.htm#532" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static <a href="../h_src/143225300.htm" class="function">lua_Unsigned</a> project (lua_Unsigned ran, lua_Unsigned <a href="../h_src/143224484.htm" class="localvar">n</a>,
+                             <a href="../h_src/143224552.htm" class="type">RanState</a> *<a href="../h_src/143224280.htm" class="localvar">state</a>) {
+  if ((<a href="../h_src/143224484.htm" class="localvar">n</a> &amp; (<a href="../h_src/143224484.htm" class="localvar">n</a> + 1)) == 0)  <a  class="comments">/* is 'n + 1' a power of 2? */</a>
+    return ran &amp; <a href="../h_src/143224484.htm" class="localvar">n</a>;  <a  class="comments">/* no bias */</a>
+  else {
+    <a href="../h_src/143225300.htm" class="function">lua_Unsigned</a> <a href="../h_src/143224144.htm" class="localvar">lim</a> = <a href="../h_src/143224484.htm" class="localvar">n</a>;
+    <a  class="comments">/* compute the smallest (2^b - 1) not smaller than 'n' */</a>
+    <a href="../h_src/143224144.htm" class="localvar">lim</a> |= (<a href="../h_src/143224144.htm" class="localvar">lim</a> &gt;&gt; 1);
+    <a href="../h_src/143224144.htm" class="localvar">lim</a> |= (<a href="../h_src/143224144.htm" class="localvar">lim</a> &gt;&gt; 2);
+    <a href="../h_src/143224144.htm" class="localvar">lim</a> |= (<a href="../h_src/143224144.htm" class="localvar">lim</a> &gt;&gt; 4);
+    <a href="../h_src/143224144.htm" class="localvar">lim</a> |= (<a href="../h_src/143224144.htm" class="localvar">lim</a> &gt;&gt; 8);
+    <a href="../h_src/143224144.htm" class="localvar">lim</a> |= (<a href="../h_src/143224144.htm" class="localvar">lim</a> &gt;&gt; 16);
+#if (<a href="../h_src/57449828.htm" class="macro">LUA_MAXUNSIGNED</a> &gt;&gt; 31) &gt;= 3
+    lim |= (lim &gt;&gt; 32);  <a  class="comments">/* integer type has more than 32 bits */</a>
+#endif
+    <a href="../h_src/57415352.htm" class="macro">lua_assert</a>((lim &amp; (lim + 1)) == 0  <a  class="comments">/* 'lim + 1' is a power of 2, */</a>
+      &amp;&amp; lim &gt;= n  <a  class="comments">/* not smaller than 'n', */</a>
+      &amp;&amp; (lim &gt;&gt; 1) &lt; n);  <a  class="comments">/* and it is the smallest one */</a>
+    while ((ran &amp;= <a href="../h_src/143224144.htm" class="localvar">lim</a>) &gt; <a href="../h_src/143224484.htm" class="localvar">n</a>)  <a  class="comments">/* project 'ran' into [0..lim] */</a>
+      ran = <a href="../h_aa/143224008.htm" class="libfunc">I2UInt</a>(<a href="../h_src/143226932.htm" class="function">nextrand</a>(<a href="../h_src/143224280.htm" class="localvar">state</a>-&gt;<a href="../h_src/143224688.htm" class="variable">s</a>));  <a  class="comments">/* not inside [0..n]? try again */</a>
+    return ran;
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

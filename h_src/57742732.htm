@@ -1,0 +1,82 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>findsetreg</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57742732.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57742732.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57742732.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57742732.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57742732.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57742732.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57759256.htm#465" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/57742732.htm" class="function">findsetreg</a> (const <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57742596.htm" class="localvar">p</a>, int <a href="../h_src/57742460.htm" class="localvar">lastpc</a>, int <a href="../h_src/57742324.htm" class="localvar">reg</a>) {
+  int <a href="../h_src/57742188.htm" class="localvar">pc</a>;
+  int <a href="../h_src/57742052.htm" class="localvar">setreg</a> = -1;  <a  class="comments">/* keep last instruction that changed 'reg' */</a>
+  int <a href="../h_src/57741916.htm" class="localvar">jmptarget</a> = 0;  <a  class="comments">/* any code before this address is conditional */</a>
+  if (<a href="../h_src/57683736.htm" class="macro">testMMMode</a>(<a href="../h_src/57694752.htm" class="macro">GET_OPCODE</a>(<a href="../h_src/57742596.htm" class="localvar">p</a>-&gt;<a href="../h_src/57514916.htm" class="variable">code</a>[<a href="../h_src/57742460.htm" class="localvar">lastpc</a>])))
+    <a href="../h_src/57742460.htm" class="localvar">lastpc</a>--;  <a  class="comments">/* previous instruction was not actually executed */</a>
+  for (<a href="../h_src/57742188.htm" class="localvar">pc</a> = 0; <a href="../h_src/57742188.htm" class="localvar">pc</a> &lt; <a href="../h_src/57742460.htm" class="localvar">lastpc</a>; <a href="../h_src/57742188.htm" class="localvar">pc</a>++) {
+    <a href="../h_src/57545108.htm" class="type">Instruction</a> <a href="../h_src/57741780.htm" class="localvar">i</a> = <a href="../h_src/57742596.htm" class="localvar">p</a>-&gt;<a href="../h_src/57514916.htm" class="variable">code</a>[<a href="../h_src/57742188.htm" class="localvar">pc</a>];
+    <a href="../h_src/57684756.htm" class="type">OpCode</a> <a href="../h_src/57741644.htm" class="localvar">op</a> = <a href="../h_src/57694752.htm" class="macro">GET_OPCODE</a>(<a href="../h_src/57741780.htm" class="localvar">i</a>);
+    int <a href="../h_src/57741508.htm" class="localvar">a</a> = <a href="../h_src/57694072.htm" class="macro">GETARG_A</a>(<a href="../h_src/57741780.htm" class="localvar">i</a>);
+    int <a href="../h_src/57741372.htm" class="localvar">change</a>;  <a  class="comments">/* true if current instruction changed 'reg' */</a>
+    switch (<a href="../h_src/57741644.htm" class="localvar">op</a>) {
+      case <a href="../h_src/57689992.htm" class="variable">OP_LOADNIL</a>: {  <a  class="comments">/* set registers from 'a' to 'a+b' */</a>
+        int <a href="../h_src/57741236.htm" class="localvar">b</a> = <a href="../h_src/57693800.htm" class="macro">GETARG_B</a>(<a href="../h_src/57741780.htm" class="localvar">i</a>);
+        <a href="../h_src/57741372.htm" class="localvar">change</a> = (<a href="../h_src/57741508.htm" class="localvar">a</a> &lt;= <a href="../h_src/57742324.htm" class="localvar">reg</a> &amp;&amp; <a href="../h_src/57742324.htm" class="localvar">reg</a> &lt;= <a href="../h_src/57741508.htm" class="localvar">a</a> + <a href="../h_src/57741236.htm" class="localvar">b</a>);
+        break;
+      }
+      case <a href="../h_src/57685368.htm" class="variable">OP_TFORCALL</a>: {  <a  class="comments">/* affect all regs above its base */</a>
+        <a href="../h_src/57741372.htm" class="localvar">change</a> = (<a href="../h_src/57742324.htm" class="localvar">reg</a> &gt;= <a href="../h_src/57741508.htm" class="localvar">a</a> + 2);
+        break;
+      }
+      case <a href="../h_src/57685912.htm" class="variable">OP_CALL</a>:
+      case <a href="../h_src/57685844.htm" class="variable">OP_TAILCALL</a>: {  <a  class="comments">/* affect all registers above base */</a>
+        <a href="../h_src/57741372.htm" class="localvar">change</a> = (<a href="../h_src/57742324.htm" class="localvar">reg</a> &gt;= <a href="../h_src/57741508.htm" class="localvar">a</a>);
+        break;
+      }
+      case <a href="../h_src/57686728.htm" class="variable">OP_JMP</a>: {  <a  class="comments">/* doesn't change registers, but changes 'jmptarget' */</a>
+        int <a href="../h_src/57741100.htm" class="localvar">b</a> = <a href="../h_src/57691760.htm" class="macro">GETARG_sJ</a>(<a href="../h_src/57741780.htm" class="localvar">i</a>);
+        int <a href="../h_src/57740964.htm" class="localvar">dest</a> = <a href="../h_src/57742188.htm" class="localvar">pc</a> + 1 + <a href="../h_src/57741100.htm" class="localvar">b</a>;
+        <a  class="comments">/* jump does not skip 'lastpc' and is larger than current one? */</a>
+        if (<a href="../h_src/57740964.htm" class="localvar">dest</a> &lt;= <a href="../h_src/57742460.htm" class="localvar">lastpc</a> &amp;&amp; <a href="../h_src/57740964.htm" class="localvar">dest</a> &gt; <a href="../h_src/57741916.htm" class="localvar">jmptarget</a>)
+          <a href="../h_src/57741916.htm" class="localvar">jmptarget</a> = <a href="../h_src/57740964.htm" class="localvar">dest</a>;  <a  class="comments">/* update 'jmptarget' */</a>
+        <a href="../h_src/57741372.htm" class="localvar">change</a> = 0;
+        break;
+      }
+      default:  <a  class="comments">/* any instruction that sets A */</a>
+        <a href="../h_src/57741372.htm" class="localvar">change</a> = (<a href="../h_src/57684280.htm" class="macro">testAMode</a>(<a href="../h_src/57741644.htm" class="localvar">op</a>) &amp;&amp; <a href="../h_src/57742324.htm" class="localvar">reg</a> == <a href="../h_src/57741508.htm" class="localvar">a</a>);
+        break;
+    }
+    if (<a href="../h_src/57741372.htm" class="localvar">change</a>)
+      <a href="../h_src/57742052.htm" class="localvar">setreg</a> = <a href="../h_src/57743140.htm" class="function">filterpc</a>(<a href="../h_src/57742188.htm" class="localvar">pc</a>, <a href="../h_src/57741916.htm" class="localvar">jmptarget</a>);
+  }
+  return <a href="../h_src/57742052.htm" class="localvar">setreg</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

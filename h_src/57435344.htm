@@ -1,0 +1,56 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lua_compare</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57435344.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57435344.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57435344.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57435344.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57435344.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57435344.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57552180.htm#351" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57551840.htm" class="macro">LUA_API</a> int <a href="../h_src/57435344.htm" class="function">lua_compare</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57596928.htm" class="localvar">L</a>, int <a href="../h_src/57596792.htm" class="localvar">index1</a>, int <a href="../h_src/57596656.htm" class="localvar">index2</a>, int <a href="../h_src/57596520.htm" class="localvar">op</a>) {
+  const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57596384.htm" class="localvar">o1</a>;
+  const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57596248.htm" class="localvar">o2</a>;
+  int <a href="../h_src/57596112.htm" class="localvar">i</a> = 0;
+  <a href="../h_src/57543408.htm" class="macro">lua_lock</a>(L);  <a  class="comments">/* may call tag method */</a>
+  <a href="../h_src/57596384.htm" class="localvar">o1</a> = <a href="../h_src/57610052.htm" class="function">index2value</a>(<a href="../h_src/57596928.htm" class="localvar">L</a>, <a href="../h_src/57596792.htm" class="localvar">index1</a>);
+  <a href="../h_src/57596248.htm" class="localvar">o2</a> = <a href="../h_src/57610052.htm" class="function">index2value</a>(<a href="../h_src/57596928.htm" class="localvar">L</a>, <a href="../h_src/57596656.htm" class="localvar">index2</a>);
+  if (<a href="../h_src/57610460.htm" class="macro">isvalid</a>(<a href="../h_src/57596928.htm" class="localvar">L</a>, <a href="../h_src/57596384.htm" class="localvar">o1</a>) &amp;&amp; <a href="../h_src/57610460.htm" class="macro">isvalid</a>(<a href="../h_src/57596928.htm" class="localvar">L</a>, <a href="../h_src/57596248.htm" class="localvar">o2</a>)) {
+    switch (<a href="../h_src/57596520.htm" class="localvar">op</a>) {
+      case <a href="../h_src/57435820.htm" class="macro">LUA_OPEQ</a>: <a href="../h_src/57596112.htm" class="localvar">i</a> = <a href="../h_src/57611752.htm" class="function">luaV_equalobj</a>(<a href="../h_src/57596928.htm" class="localvar">L</a>, <a href="../h_src/57596384.htm" class="localvar">o1</a>, <a href="../h_src/57596248.htm" class="localvar">o2</a>); break;
+      case <a href="../h_src/57435684.htm" class="macro">LUA_OPLT</a>: <a href="../h_src/57596112.htm" class="localvar">i</a> = <a href="../h_src/57611684.htm" class="function">luaV_lessthan</a>(<a href="../h_src/57596928.htm" class="localvar">L</a>, <a href="../h_src/57596384.htm" class="localvar">o1</a>, <a href="../h_src/57596248.htm" class="localvar">o2</a>); break;
+      case <a href="../h_src/57435548.htm" class="macro">LUA_OPLE</a>: <a href="../h_src/57596112.htm" class="localvar">i</a> = <a href="../h_src/57611616.htm" class="function">luaV_lessequal</a>(<a href="../h_src/57596928.htm" class="localvar">L</a>, <a href="../h_src/57596384.htm" class="localvar">o1</a>, <a href="../h_src/57596248.htm" class="localvar">o2</a>); break;
+      default: <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57596928.htm" class="localvar">L</a>, 0, &quot;invalid option&quot;);
+    }
+  }
+  <a href="../h_src/57543272.htm" class="macro">lua_unlock</a>(L);
+  return <a href="../h_src/57596112.htm" class="localvar">i</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

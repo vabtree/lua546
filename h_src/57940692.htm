@@ -1,0 +1,620 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>llex.c</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57940692.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/57940692.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/57940692.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/57940692.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_uf/57940692.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_df/57940692.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57940692.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57940692.htm" class="file" target="_self">Source Code</a></li>
+<li><a href="../h_sc/57940692.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<pre class=src>
+<a id=1></a><a  class="comments">/*</a>
+<a id=2></a><a  class="comments">** $Id: llex.c $</a>
+<a id=3></a><a  class="comments">** Lexical Analyzer</a>
+<a id=4></a><a  class="comments">** See Copyright Notice in lua.h</a>
+<a id=5></a><a  class="comments">*/</a>
+
+<a id=7></a>#define <a href="../h_src/57940624.htm" class="macro">llex_c</a>
+<a id=8></a>#define <a href="../h_src/57940488.htm" class="macro">LUA_CORE</a>
+
+<a id=10></a>#include &quot;<a href="../h_src/57461592.htm" class="file">lprefix.h</a>&quot;
+
+
+#include &lt;locale.h&gt;
+#include &lt;string.h&gt;
+
+<a id=16></a>#include &quot;<a href="../h_src/57460028.htm" class="file">lua.h</a>&quot;
+
+<a id=18></a>#include &quot;<a href="../h_src/57762112.htm" class="file">lctype.h</a>&quot;
+<a id=19></a>#include &quot;<a href="../h_src/57637116.htm" class="file">ldebug.h</a>&quot;
+<a id=20></a>#include &quot;<a href="../h_src/57635008.htm" class="file">ldo.h</a>&quot;
+<a id=21></a>#include &quot;<a href="../h_src/57630112.htm" class="file">lgc.h</a>&quot;
+<a id=22></a>#include &quot;<a href="../h_src/57706040.htm" class="file">llex.h</a>&quot;
+<a id=23></a>#include &quot;<a href="../h_src/57537696.htm" class="file">lobject.h</a>&quot;
+<a id=24></a>#include &quot;<a href="../h_src/57683056.htm" class="file">lparser.h</a>&quot;
+<a id=25></a>#include &quot;<a href="../h_src/57538104.htm" class="file">lstate.h</a>&quot;
+<a id=26></a>#include &quot;<a href="../h_src/57620184.htm" class="file">lstring.h</a>&quot;
+<a id=27></a>#include &quot;<a href="../h_src/57618348.htm" class="file">ltable.h</a>&quot;
+<a id=28></a>#include &quot;<a href="../h_src/57497236.htm" class="file">lzio.h</a>&quot;
+
+
+
+<a id=32></a>#define <a href="../h_src/57940352.htm" class="macro">next</a>(ls)	(ls-&gt;current = zgetc(ls-&gt;z))
+
+
+
+<a id=36></a>#define <a href="../h_src/57940216.htm" class="macro">currIsNewline</a>(ls)	(ls-&gt;current == '\n' || ls-&gt;current == '\r')
+
+
+<a id=39></a><a  class="comments">/* ORDER RESERVED */</a>
+<a id=40></a>static const char *const <a href="../h_src/57940080.htm" class="variable">luaX_tokens</a> [] = {
+    &quot;and&quot;, &quot;break&quot;, &quot;do&quot;, &quot;else&quot;, &quot;elseif&quot;,
+    &quot;end&quot;, &quot;false&quot;, &quot;for&quot;, &quot;function&quot;, &quot;goto&quot;, &quot;if&quot;,
+    &quot;in&quot;, &quot;local&quot;, &quot;nil&quot;, &quot;not&quot;, &quot;or&quot;, &quot;repeat&quot;,
+    &quot;return&quot;, &quot;then&quot;, &quot;true&quot;, &quot;until&quot;, &quot;while&quot;,
+<a id=45></a>    &quot;<a  class="comments">//&quot;, &quot;..&quot;, &quot;...&quot;, &quot;==&quot;, &quot;&gt;=&quot;, &quot;&lt;=&quot;, &quot;~=&quot;,</a>
+<a id=46></a><a  class="comments"></a>    &quot;&lt;&lt;&quot;, &quot;&gt;&gt;&quot;, &quot;::&quot;, &quot;&lt;eof&gt;&quot;,
+    &quot;&lt;number&gt;&quot;, &quot;&lt;integer&gt;&quot;, &quot;&lt;name&gt;&quot;, &quot;&lt;string&gt;&quot;
+};
+
+
+<a id=51></a>#define <a href="../h_src/57940012.htm" class="macro">save_and_next</a>(ls) (save(ls, ls-&gt;current), next(ls))
+
+
+<a id=54></a>static <a href="../h_src/57545584.htm" class="macro">l_noret</a> <a href="../h_src/57939876.htm" class="function">lexerror</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *ls, const char *msg, int token);
+
+
+<a id=57></a>static void <a href="../h_src/57939740.htm" class="function">save</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57939604.htm" class="localvar">ls</a>, int <a href="../h_src/57939468.htm" class="localvar">c</a>) {
+<a id=58></a>  <a href="../h_src/57655544.htm" class="type">Mbuffer</a> *<a href="../h_src/57939332.htm" class="localvar">b</a> = <a href="../h_src/57939604.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>;
+<a id=59></a>  if (<a href="../h_src/57655068.htm" class="macro">luaZ_bufflen</a>(<a href="../h_src/57939332.htm" class="localvar">b</a>) + 1 &gt; <a href="../h_src/57655204.htm" class="macro">luaZ_sizebuffer</a>(<a href="../h_src/57939332.htm" class="localvar">b</a>)) {
+<a id=60></a>    <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/57939196.htm" class="localvar">newsize</a>;
+<a id=61></a>    if (<a href="../h_src/57655204.htm" class="macro">luaZ_sizebuffer</a>(<a href="../h_src/57939332.htm" class="localvar">b</a>) &gt;= <a href="../h_src/57550208.htm" class="macro">MAX_SIZE</a>/2)
+<a id=62></a>      <a href="../h_src/57939876.htm" class="function">lexerror</a>(<a href="../h_src/57939604.htm" class="localvar">ls</a>, &quot;lexical element too long&quot;, 0);
+<a id=63></a>    <a href="../h_src/57939196.htm" class="localvar">newsize</a> = <a href="../h_src/57655204.htm" class="macro">luaZ_sizebuffer</a>(<a href="../h_src/57939332.htm" class="localvar">b</a>) * 2;
+<a id=64></a>    <a href="../h_src/57654660.htm" class="macro">luaZ_resizebuffer</a>(<a href="../h_src/57939604.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/57939332.htm" class="localvar">b</a>, <a href="../h_src/57939196.htm" class="localvar">newsize</a>);
+  }
+<a id=66></a>  <a href="../h_src/57939332.htm" class="localvar">b</a>-&gt;<a href="../h_src/57655748.htm" class="variable">buffer</a>[<a href="../h_src/57655068.htm" class="macro">luaZ_bufflen</a>(<a href="../h_src/57939332.htm" class="localvar">b</a>)++] = <a href="../h_src/57546672.htm" class="macro">cast_char</a>(<a href="../h_src/57939468.htm" class="localvar">c</a>);
+}
+
+
+<a id=70></a>void <a href="../h_src/57700056.htm" class="function">luaX_init</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57939060.htm" class="localvar">L</a>) {
+<a id=71></a>  int <a href="../h_src/57938924.htm" class="localvar">i</a>;
+<a id=72></a>  <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/57938788.htm" class="localvar">e</a> = <a href="../h_src/57619572.htm" class="macro">luaS_newliteral</a>(<a href="../h_src/57939060.htm" class="localvar">L</a>, <a href="../h_src/57705428.htm" class="macro">LUA_ENV</a>);  <a  class="comments">/* create env name */</a>
+<a id=73></a>  <a href="../h_src/57620932.htm" class="function">luaC_fix</a>(<a href="../h_src/57939060.htm" class="localvar">L</a>, <a href="../h_src/57638884.htm" class="macro">obj2gco</a>(<a href="../h_src/57938788.htm" class="localvar">e</a>));  <a  class="comments">/* never collect this name */</a>
+<a id=74></a>  for (<a href="../h_src/57938924.htm" class="localvar">i</a>=0; <a href="../h_src/57938924.htm" class="localvar">i</a>&lt;<a href="../h_src/57702640.htm" class="macro">NUM_RESERVED</a>; <a href="../h_src/57938924.htm" class="localvar">i</a>++) {
+<a id=75></a>    <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/57938652.htm" class="localvar">ts</a> = <a href="../h_src/57618484.htm" class="function">luaS_new</a>(<a href="../h_src/57939060.htm" class="localvar">L</a>, <a href="../h_src/57940080.htm" class="variable">luaX_tokens</a>[<a href="../h_src/57938924.htm" class="localvar">i</a>]);
+<a id=76></a>    <a href="../h_src/57620932.htm" class="function">luaC_fix</a>(<a href="../h_src/57939060.htm" class="localvar">L</a>, <a href="../h_src/57638884.htm" class="macro">obj2gco</a>(<a href="../h_src/57938652.htm" class="localvar">ts</a>));  <a  class="comments">/* reserved words are never collected */</a>
+<a id=77></a>    <a href="../h_src/57938652.htm" class="localvar">ts</a>-&gt;<a href="../h_src/57523484.htm" class="variable">extra</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/57938924.htm" class="localvar">i</a>+1);  <a  class="comments">/* reserved word */</a>
+  }
+}
+
+
+<a id=82></a>const char *<a href="../h_src/57699580.htm" class="function">luaX_token2str</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57938516.htm" class="localvar">ls</a>, int <a href="../h_src/57938380.htm" class="localvar">token</a>) {
+<a id=83></a>  if (<a href="../h_src/57938380.htm" class="localvar">token</a> &lt; <a href="../h_src/57705700.htm" class="macro">FIRST_RESERVED</a>) {  <a  class="comments">/* single-byte symbols? */</a>
+<a id=84></a>    if (<a href="../h_src/57760004.htm" class="macro">lisprint</a>(<a href="../h_src/57938380.htm" class="localvar">token</a>))
+<a id=85></a>      return <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/57938516.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, &quot;'%c'&quot;, <a href="../h_src/57938380.htm" class="localvar">token</a>);
+<a id=86></a>    else  <a  class="comments">/* control character */</a>
+<a id=87></a>      return <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/57938516.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, &quot;'&lt;\\%d&gt;'&quot;, <a href="../h_src/57938380.htm" class="localvar">token</a>);
+  }
+  else {
+<a id=90></a>    const char *<a href="../h_src/57938244.htm" class="localvar">s</a> = <a href="../h_src/57940080.htm" class="variable">luaX_tokens</a>[<a href="../h_src/57938380.htm" class="localvar">token</a> - <a href="../h_src/57705700.htm" class="macro">FIRST_RESERVED</a>];
+<a id=91></a>    if (<a href="../h_src/57938380.htm" class="localvar">token</a> &lt; <a href="../h_src/57703116.htm" class="variable">TK_EOS</a>)  <a  class="comments">/* fixed format (symbols and reserved words)? */</a>
+<a id=92></a>      return <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/57938516.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, &quot;'%s'&quot;, <a href="../h_src/57938244.htm" class="localvar">s</a>);
+<a id=93></a>    else  <a  class="comments">/* names, strings, and numerals */</a>
+<a id=94></a>      return <a href="../h_src/57938244.htm" class="localvar">s</a>;
+  }
+}
+
+
+<a id=99></a>static const char *<a href="../h_src/57938108.htm" class="function">txtToken</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57937972.htm" class="localvar">ls</a>, int <a href="../h_src/57937836.htm" class="localvar">token</a>) {
+<a id=100></a>  switch (<a href="../h_src/57937836.htm" class="localvar">token</a>) {
+<a id=101></a>    case <a href="../h_src/57702912.htm" class="variable">TK_NAME</a>: case <a href="../h_src/57702844.htm" class="variable">TK_STRING</a>:
+<a id=102></a>    case <a href="../h_src/57703048.htm" class="variable">TK_FLT</a>: case <a href="../h_src/57702980.htm" class="variable">TK_INT</a>:
+<a id=103></a>      <a href="../h_src/57939740.htm" class="function">save</a>(<a href="../h_src/57937972.htm" class="localvar">ls</a>, '\0');
+<a id=104></a>      return <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/57937972.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, &quot;'%s'&quot;, <a href="../h_src/57655340.htm" class="macro">luaZ_buffer</a>(<a href="../h_src/57937972.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>));
+    default:
+<a id=106></a>      return <a href="../h_src/57699580.htm" class="function">luaX_token2str</a>(<a href="../h_src/57937972.htm" class="localvar">ls</a>, <a href="../h_src/57937836.htm" class="localvar">token</a>);
+  }
+}
+
+
+<a id=111></a>static <a href="../h_src/57545584.htm" class="macro">l_noret</a> <a href="../h_src/57939876.htm" class="function">lexerror</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57937700.htm" class="localvar">ls</a>, const char *<a href="../h_src/57937564.htm" class="localvar">msg</a>, int <a href="../h_src/57937428.htm" class="localvar">token</a>) {
+<a id=112></a>  <a href="../h_src/57937564.htm" class="localvar">msg</a> = <a href="../h_src/57635212.htm" class="function">luaG_addinfo</a>(<a href="../h_src/57937700.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/57937564.htm" class="localvar">msg</a>, <a href="../h_src/57937700.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700260.htm" class="variable">source</a>, <a href="../h_src/57937700.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701552.htm" class="variable">linenumber</a>);
+<a id=113></a>  if (<a href="../h_src/57937428.htm" class="localvar">token</a>)
+<a id=114></a>    <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/57937700.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, &quot;%s near %s&quot;, <a href="../h_src/57937564.htm" class="localvar">msg</a>, <a href="../h_src/57938108.htm" class="function">txtToken</a>(<a href="../h_src/57937700.htm" class="localvar">ls</a>, <a href="../h_src/57937428.htm" class="localvar">token</a>));
+<a id=115></a>  <a href="../h_src/57632560.htm" class="function">luaD_throw</a>(<a href="../h_src/57937700.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/57444796.htm" class="macro">LUA_ERRSYNTAX</a>);
+}
+
+
+<a id=119></a><a href="../h_src/57545584.htm" class="macro">l_noret</a> <a href="../h_src/57699648.htm" class="function">luaX_syntaxerror</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57937292.htm" class="localvar">ls</a>, const char *<a href="../h_src/57937156.htm" class="localvar">msg</a>) {
+<a id=120></a>  <a href="../h_src/57939876.htm" class="function">lexerror</a>(<a href="../h_src/57937292.htm" class="localvar">ls</a>, <a href="../h_src/57937156.htm" class="localvar">msg</a>, <a href="../h_src/57937292.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a>);
+}
+
+
+<a id=124></a><a  class="comments">/*</a>
+<a id=125></a><a  class="comments">** Creates a new string and anchors it in scanner's table so that it</a>
+<a id=126></a><a  class="comments">** will not be collected until the end of the compilation; by that time</a>
+<a id=127></a><a  class="comments">** it should be anchored somewhere. It also internalizes long strings,</a>
+<a id=128></a><a  class="comments">** ensuring there is only one copy of each unique string.  The table</a>
+<a id=129></a><a  class="comments">** here is used as a set: the string enters as the key, while its value</a>
+<a id=130></a><a  class="comments">** is irrelevant. We use the string itself as the value only because it</a>
+<a id=131></a><a  class="comments">** is a TValue readily available. Later, the code generation can change</a>
+<a id=132></a><a  class="comments">** this value.</a>
+<a id=133></a><a  class="comments">*/</a>
+<a id=134></a><a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/57699852.htm" class="function">luaX_newstring</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57937020.htm" class="localvar">ls</a>, const char *<a href="../h_src/57936884.htm" class="localvar">str</a>, <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/57936748.htm" class="localvar">l</a>) {
+<a id=135></a>  <a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57936612.htm" class="localvar">L</a> = <a href="../h_src/57937020.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>;
+<a id=136></a>  <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/57936476.htm" class="localvar">ts</a> = <a href="../h_src/57618552.htm" class="function">luaS_newlstr</a>(<a href="../h_src/57936612.htm" class="localvar">L</a>, <a href="../h_src/57936884.htm" class="localvar">str</a>, <a href="../h_src/57936748.htm" class="localvar">l</a>);  <a  class="comments">/* create new string */</a>
+<a id=137></a>  const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57936340.htm" class="localvar">o</a> = <a href="../h_src/57616852.htm" class="function">luaH_getstr</a>(<a href="../h_src/57937020.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700668.htm" class="variable">h</a>, <a href="../h_src/57936476.htm" class="localvar">ts</a>);
+<a id=138></a>  if (!<a href="../h_src/57531168.htm" class="macro">ttisnil</a>(<a href="../h_src/57936340.htm" class="localvar">o</a>))  <a  class="comments">/* string already present? */</a>
+<a id=139></a>    <a href="../h_src/57936476.htm" class="localvar">ts</a> = <a href="../h_src/57503424.htm" class="macro">keystrval</a>(<a href="../h_src/57617192.htm" class="macro">nodefromval</a>(<a href="../h_src/57936340.htm" class="localvar">o</a>));  <a  class="comments">/* get saved copy */</a>
+<a id=140></a>  else {  <a  class="comments">/* not in use yet */</a>
+<a id=141></a>    <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57936204.htm" class="localvar">stv</a> = <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57936612.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>++);  <a  class="comments">/* reserve stack space for string */</a>
+<a id=142></a>    <a href="../h_src/57524232.htm" class="macro">setsvalue</a>(<a href="../h_src/57936612.htm" class="localvar">L</a>, <a href="../h_src/57936204.htm" class="localvar">stv</a>, <a href="../h_src/57936476.htm" class="localvar">ts</a>);  <a  class="comments">/* temporarily anchor the string */</a>
+<a id=143></a>    <a href="../h_src/57616580.htm" class="function">luaH_finishset</a>(<a href="../h_src/57936612.htm" class="localvar">L</a>, <a href="../h_src/57937020.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700668.htm" class="variable">h</a>, <a href="../h_src/57936204.htm" class="localvar">stv</a>, <a href="../h_src/57936340.htm" class="localvar">o</a>, <a href="../h_src/57936204.htm" class="localvar">stv</a>);  <a  class="comments">/* t[string] = string */</a>
+<a id=144></a>    <a  class="comments">/* table is not a metatable, so it does not need to invalidate cache */</a>
+<a id=145></a>    <a href="../h_src/57621612.htm" class="macro">luaC_checkGC</a>(<a href="../h_src/57936612.htm" class="localvar">L</a>);
+<a id=146></a>    <a href="../h_src/57936612.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>--;  <a  class="comments">/* remove string from stack */</a>
+  }
+<a id=148></a>  return <a href="../h_src/57936476.htm" class="localvar">ts</a>;
+}
+
+
+<a id=152></a><a  class="comments">/*</a>
+<a id=153></a><a  class="comments">** increment line number and skips newline sequence (any of</a>
+<a id=154></a><a  class="comments">** \n, \r, \n\r, or \r\n)</a>
+<a id=155></a><a  class="comments">*/</a>
+<a id=156></a>static void <a href="../h_src/57935796.htm" class="function">inclinenumber</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57935660.htm" class="localvar">ls</a>) {
+<a id=157></a>  int <a href="../h_src/57935524.htm" class="localvar">old</a> = <a href="../h_src/57935660.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>;
+<a id=158></a>  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57940216.htm" class="macro">currIsNewline</a>(ls));
+<a id=159></a>  <a href="../h_src/57940352.htm" class="macro">next</a>(<a href="../h_src/57935660.htm" class="localvar">ls</a>);  <a  class="comments">/* skip '\n' or '\r' */</a><a href="../h_src/57654184.htm" class="variable">n</a>' or '\r' */
+<a id=160></a>  if (<a href="../h_src/57940216.htm" class="macro">currIsNewline</a>(<a href="../h_src/57935660.htm" class="localvar">ls</a>) &amp;&amp; <a href="../h_src/57935660.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a> != <a href="../h_src/57935524.htm" class="localvar">old</a>)
+<a id=161></a>    <a href="../h_src/57940352.htm" class="macro">next</a>(<a href="../h_src/57935660.htm" class="localvar">ls</a>);  <a  class="comments">/* skip '\n\r' or '\r\n' */</a><a href="../h_src/57654184.htm" class="variable">n</a>\r' or '\r\<a href="../h_src/57654184.htm" class="variable">n</a>' */
+<a id=162></a>  if (++<a href="../h_src/57935660.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701552.htm" class="variable">linenumber</a> &gt;= <a href="../h_src/57549800.htm" class="macro">MAX_INT</a>)
+<a id=163></a>    <a href="../h_src/57939876.htm" class="function">lexerror</a>(<a href="../h_src/57935660.htm" class="localvar">ls</a>, &quot;chunk has too many lines&quot;, 0);
+}
+
+
+<a id=167></a>void <a href="../h_src/57699988.htm" class="function">luaX_setinput</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57935388.htm" class="localvar">L</a>, <a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57935252.htm" class="localvar">ls</a>, <a href="../h_src/57656088.htm" class="type">ZIO</a> *<a href="../h_src/57935116.htm" class="localvar">z</a>, <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/57934980.htm" class="localvar">source</a>,
+<a id=168></a>                    int <a href="../h_src/57934844.htm" class="localvar">firstchar</a>) {
+<a id=169></a>  <a href="../h_src/57935252.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a> = 0;
+<a id=170></a>  <a href="../h_src/57935252.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a> = <a href="../h_src/57935388.htm" class="localvar">L</a>;
+<a id=171></a>  <a href="../h_src/57935252.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a> = <a href="../h_src/57934844.htm" class="localvar">firstchar</a>;
+<a id=172></a>  <a href="../h_src/57935252.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701348.htm" class="variable">lookahead</a>.<a href="../h_src/57701960.htm" class="variable">token</a> = <a href="../h_src/57703116.htm" class="variable">TK_EOS</a>;  <a  class="comments">/* no look-ahead token */</a>
+<a id=173></a>  <a href="../h_src/57935252.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700872.htm" class="variable">z</a> = <a href="../h_src/57935116.htm" class="localvar">z</a>;
+<a id=174></a>  <a href="../h_src/57935252.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a> = NULL;
+<a id=175></a>  <a href="../h_src/57935252.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701552.htm" class="variable">linenumber</a> = 1;
+<a id=176></a>  <a href="../h_src/57935252.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701484.htm" class="variable">lastline</a> = 1;
+<a id=177></a>  <a href="../h_src/57935252.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700260.htm" class="variable">source</a> = <a href="../h_src/57934980.htm" class="localvar">source</a>;
+<a id=178></a>  <a href="../h_src/57935252.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700192.htm" class="variable">envn</a> = <a href="../h_src/57619572.htm" class="macro">luaS_newliteral</a>(<a href="../h_src/57935388.htm" class="localvar">L</a>, <a href="../h_src/57705428.htm" class="macro">LUA_ENV</a>);  <a  class="comments">/* get env name */</a>
+<a id=179></a>  <a href="../h_src/57654660.htm" class="macro">luaZ_resizebuffer</a>(<a href="../h_src/57935252.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/57935252.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>, <a href="../h_src/57543952.htm" class="macro">LUA_MINBUFFER</a>);  <a  class="comments">/* initialize buffer */</a><a href="../h_src/57655748.htm" class="variable">buffer</a> */
+}
+
+
+
+<a id=184></a><a  class="comments">/*</a>
+<a id=185></a><a  class="comments">** =======================================================</a>
+<a id=186></a><a  class="comments">** LEXICAL ANALYZER</a>
+<a id=187></a><a  class="comments">** =======================================================</a>
+<a id=188></a><a  class="comments">*/</a>
+
+
+<a id=191></a>static int <a href="../h_src/57934708.htm" class="function">check_next1</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57934572.htm" class="localvar">ls</a>, int <a href="../h_src/57934436.htm" class="localvar">c</a>) {
+<a id=192></a>  if (<a href="../h_src/57934572.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a> == <a href="../h_src/57934436.htm" class="localvar">c</a>) {
+<a id=193></a>    <a href="../h_src/57940352.htm" class="macro">next</a>(<a href="../h_src/57934572.htm" class="localvar">ls</a>);
+    return 1;
+  }
+  else return 0;
+}
+
+
+<a id=200></a><a  class="comments">/*</a>
+<a id=201></a><a  class="comments">** Check whether current char is in set 'set' (with two chars) and</a>
+<a id=202></a><a  class="comments">** saves it</a>
+<a id=203></a><a  class="comments">*/</a>
+<a id=204></a>static int <a href="../h_src/57934300.htm" class="function">check_next2</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57934164.htm" class="localvar">ls</a>, const char *<a href="../h_src/57934028.htm" class="localvar">set</a>) {
+<a id=205></a>  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(set[2] == '\0');
+<a id=206></a>  if (<a href="../h_src/57934164.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a> == <a href="../h_src/57934028.htm" class="localvar">set</a>[0] || <a href="../h_src/57934164.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a> == <a href="../h_src/57934028.htm" class="localvar">set</a>[1]) {
+<a id=207></a>    <a href="../h_src/57940012.htm" class="macro">save_and_next</a>(<a href="../h_src/57934164.htm" class="localvar">ls</a>);
+    return 1;
+  }
+  else return 0;
+}
+
+
+<a id=214></a><a  class="comments">/* LUA_NUMBER */</a>
+<a id=215></a><a  class="comments">/*</a>
+<a id=216></a><a  class="comments">** This function is quite liberal in what it accepts, as 'luaO_str2num'</a>
+<a id=217></a><a  class="comments">** will reject ill-formed numerals. Roughly, it accepts the following</a>
+<a id=218></a><a  class="comments">** pattern:</a>
+<a id=219></a><a  class="comments">**</a>
+<a id=220></a><a  class="comments">**   %d(%x|%.|([Ee][+-]?))* | 0[Xx](%x|%.|([Pp][+-]?))*</a>
+<a id=221></a><a  class="comments">**</a>
+<a id=222></a><a  class="comments">** The only tricky part is to accept [+-] only after a valid exponent</a>
+<a id=223></a><a  class="comments">** mark, to avoid reading '3-4' or '0xe+1' as a single number.</a>
+<a id=224></a><a  class="comments">**</a>
+<a id=225></a><a  class="comments">** The caller might have already read an initial dot.</a>
+<a id=226></a><a  class="comments">*/</a>
+<a id=227></a>static int <a href="../h_src/57933892.htm" class="function">read_numeral</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57933756.htm" class="localvar">ls</a>, <a href="../h_src/57702164.htm" class="type">SemInfo</a> *<a href="../h_src/57933552.htm" class="localvar">seminfo</a>) {
+<a id=228></a>  <a href="../h_src/57535384.htm" class="type">TValue</a> <a href="../h_src/57933416.htm" class="localvar">obj</a>;
+<a id=229></a>  const char *<a href="../h_src/57933280.htm" class="localvar">expo</a> = &quot;Ee&quot;;
+<a id=230></a>  int <a href="../h_src/57933144.htm" class="localvar">first</a> = <a href="../h_src/57933756.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>;
+<a id=231></a>  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57760276.htm" class="macro">lisdigit</a>(ls-&gt;current));
+<a id=232></a>  <a href="../h_src/57940012.htm" class="macro">save_and_next</a>(<a href="../h_src/57933756.htm" class="localvar">ls</a>);
+<a id=233></a>  if (<a href="../h_src/57933144.htm" class="localvar">first</a> == '0' &amp;&amp; <a href="../h_src/57934300.htm" class="function">check_next2</a>(<a href="../h_src/57933756.htm" class="localvar">ls</a>, &quot;xX&quot;))  <a  class="comments">/* hexadecimal? */</a>
+<a id=234></a>    <a href="../h_src/57933280.htm" class="localvar">expo</a> = &quot;Pp&quot;;
+  for (;;) {
+<a id=236></a>    if (<a href="../h_src/57934300.htm" class="function">check_next2</a>(<a href="../h_src/57933756.htm" class="localvar">ls</a>, <a href="../h_src/57933280.htm" class="localvar">expo</a>))  <a  class="comments">/* exponent mark? */</a>
+<a id=237></a>      <a href="../h_src/57934300.htm" class="function">check_next2</a>(<a href="../h_src/57933756.htm" class="localvar">ls</a>, &quot;-+&quot;);  <a  class="comments">/* optional exponent sign */</a>
+<a id=238></a>    else if (<a href="../h_src/57759868.htm" class="macro">lisxdigit</a>(<a href="../h_src/57933756.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>) || <a href="../h_src/57933756.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a> == '.')  <a  class="comments">/* '%x|%.' */</a>
+<a id=239></a>      <a href="../h_src/57940012.htm" class="macro">save_and_next</a>(<a href="../h_src/57933756.htm" class="localvar">ls</a>);
+    else break;
+  }
+<a id=242></a>  if (<a href="../h_src/57760548.htm" class="macro">lislalpha</a>(<a href="../h_src/57933756.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>))  <a  class="comments">/* is numeral touching a letter? */</a>
+<a id=243></a>    <a href="../h_src/57940012.htm" class="macro">save_and_next</a>(<a href="../h_src/57933756.htm" class="localvar">ls</a>);  <a  class="comments">/* force an error */</a>
+<a id=244></a>  <a href="../h_src/57939740.htm" class="function">save</a>(<a href="../h_src/57933756.htm" class="localvar">ls</a>, '\0');
+<a id=245></a>  if (<a href="../h_src/57501656.htm" class="function">luaO_str2num</a>(<a href="../h_src/57655340.htm" class="macro">luaZ_buffer</a>(<a href="../h_src/57933756.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>), &amp;<a href="../h_src/57933416.htm" class="localvar">obj</a>) == 0)  <a  class="comments">/* format error? */</a>
+<a id=246></a>    <a href="../h_src/57939876.htm" class="function">lexerror</a>(<a href="../h_src/57933756.htm" class="localvar">ls</a>, &quot;malformed number&quot;, <a href="../h_src/57703048.htm" class="variable">TK_FLT</a>);
+<a id=247></a>  if (<a href="../h_src/57526544.htm" class="macro">ttisinteger</a>(&amp;<a href="../h_src/57933416.htm" class="localvar">obj</a>)) {
+<a id=248></a>    <a href="../h_src/57933552.htm" class="localvar">seminfo</a>-&gt;<a href="../h_src/57702368.htm" class="variable">i</a> = <a href="../h_src/57526136.htm" class="macro">ivalue</a>(&amp;<a href="../h_src/57933416.htm" class="localvar">obj</a>);
+<a id=249></a>    return <a href="../h_src/57702980.htm" class="variable">TK_INT</a>;
+  }
+  else {
+<a id=252></a>    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57526680.htm" class="macro">ttisfloat</a>(&amp;obj));
+<a id=253></a>    <a href="../h_src/57933552.htm" class="localvar">seminfo</a>-&gt;<a href="../h_src/57702436.htm" class="variable">r</a> = <a href="../h_src/57526272.htm" class="macro">fltvalue</a>(&amp;<a href="../h_src/57933416.htm" class="localvar">obj</a>);
+<a id=254></a>    return <a href="../h_src/57703048.htm" class="variable">TK_FLT</a>;
+  }
+}
+
+
+<a id=259></a><a  class="comments">/*</a>
+<a id=260></a><a  class="comments">** read a sequence '[=*[' or ']=*]', leaving the last bracket. If</a>
+<a id=261></a><a  class="comments">** sequence is well formed, return its number of '='s + 2; otherwise,</a>
+<a id=262></a><a  class="comments">** return 1 if it is a single bracket (no '='s and no 2nd bracket);</a>
+<a id=263></a><a  class="comments">** otherwise (an unfinished '[==...') return 0.</a>
+<a id=264></a><a  class="comments">*/</a>
+<a id=265></a>static <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/57933008.htm" class="function">skip_sep</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57932872.htm" class="localvar">ls</a>) {
+<a id=266></a>  <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/57932736.htm" class="localvar">count</a> = 0;
+<a id=267></a>  int <a href="../h_src/57932600.htm" class="localvar">s</a> = <a href="../h_src/57932872.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>;
+<a id=268></a>  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(s == '[' || s == ']');
+<a id=269></a>  <a href="../h_src/57940012.htm" class="macro">save_and_next</a>(<a href="../h_src/57932872.htm" class="localvar">ls</a>);
+<a id=270></a>  while (<a href="../h_src/57932872.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a> == '=') {
+<a id=271></a>    <a href="../h_src/57940012.htm" class="macro">save_and_next</a>(<a href="../h_src/57932872.htm" class="localvar">ls</a>);
+<a id=272></a>    <a href="../h_src/57932736.htm" class="localvar">count</a>++;
+  }
+<a id=274></a>  return (<a href="../h_src/57932872.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a> == <a href="../h_src/57932600.htm" class="localvar">s</a>) ? <a href="../h_src/57932736.htm" class="localvar">count</a> + 2
+<a id=275></a>         : (<a href="../h_src/57932736.htm" class="localvar">count</a> == 0) ? 1
+         : 0;
+}
+
+
+<a id=280></a>static void <a href="../h_src/57932464.htm" class="function">read_long_string</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57932328.htm" class="localvar">ls</a>, <a href="../h_src/57702164.htm" class="type">SemInfo</a> *<a href="../h_src/57932192.htm" class="localvar">seminfo</a>, <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/57932056.htm" class="localvar">sep</a>) {
+<a id=281></a>  int <a href="../h_src/57931920.htm" class="localvar">line</a> = <a href="../h_src/57932328.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701552.htm" class="variable">linenumber</a>;  <a  class="comments">/* initial line (for error message) */</a>
+<a id=282></a>  <a href="../h_src/57940012.htm" class="macro">save_and_next</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>);  <a  class="comments">/* skip 2nd '[' */</a>
+<a id=283></a>  if (<a href="../h_src/57940216.htm" class="macro">currIsNewline</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>))  <a  class="comments">/* string starts with a newline? */</a>
+<a id=284></a>    <a href="../h_src/57935796.htm" class="function">inclinenumber</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>);  <a  class="comments">/* skip it */</a>
+  for (;;) {
+<a id=286></a>    switch (<a href="../h_src/57932328.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>) {
+<a id=287></a>      case <a href="../h_src/57656360.htm" class="macro">EOZ</a>: {  <a  class="comments">/* error */</a>
+<a id=288></a>        const char *<a href="../h_src/57931784.htm" class="localvar">what</a> = (<a href="../h_src/57932192.htm" class="localvar">seminfo</a> ? &quot;string&quot; : &quot;comment&quot;);
+<a id=289></a>        const char *<a href="../h_src/57931648.htm" class="localvar">msg</a> = <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>,
+<a id=290></a>                     &quot;unfinished long %s (starting at line %d)&quot;, <a href="../h_src/57931784.htm" class="localvar">what</a>, <a href="../h_src/57931920.htm" class="localvar">line</a>);
+<a id=291></a>        <a href="../h_src/57939876.htm" class="function">lexerror</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>, <a href="../h_src/57931648.htm" class="localvar">msg</a>, <a href="../h_src/57703116.htm" class="variable">TK_EOS</a>);
+<a id=292></a>        break;  <a  class="comments">/* to avoid warnings */</a>
+      }
+      case ']': {
+<a id=295></a>        if (<a href="../h_src/57933008.htm" class="function">skip_sep</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>) == <a href="../h_src/57932056.htm" class="localvar">sep</a>) {
+<a id=296></a>          <a href="../h_src/57940012.htm" class="macro">save_and_next</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>);  <a  class="comments">/* skip 2nd ']' */</a>
+          goto endloop;
+        }
+        break;
+      }
+      case '\n': case '\r': {
+<a id=302></a>        <a href="../h_src/57939740.htm" class="function">save</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>, '\n');
+<a id=303></a>        <a href="../h_src/57935796.htm" class="function">inclinenumber</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>);
+<a id=304></a>        if (!<a href="../h_src/57932192.htm" class="localvar">seminfo</a>) <a href="../h_src/57654796.htm" class="macro">luaZ_resetbuffer</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>);  <a  class="comments">/* avoid wasting space */</a>
+        break;
+      }
+      default: {
+<a id=308></a>        if (<a href="../h_src/57932192.htm" class="localvar">seminfo</a>) <a href="../h_src/57940012.htm" class="macro">save_and_next</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>);
+<a id=309></a>        else <a href="../h_src/57940352.htm" class="macro">next</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>);
+      }
+    }
+  } endloop:
+<a id=313></a>  if (<a href="../h_src/57932192.htm" class="localvar">seminfo</a>)
+<a id=314></a>    <a href="../h_src/57932192.htm" class="localvar">seminfo</a>-&gt;<a href="../h_src/57702300.htm" class="variable">ts</a> = <a href="../h_src/57699852.htm" class="function">luaX_newstring</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>, <a href="../h_src/57655340.htm" class="macro">luaZ_buffer</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>) + <a href="../h_src/57932056.htm" class="localvar">sep</a>,
+<a id=315></a>                                     <a href="../h_src/57655068.htm" class="macro">luaZ_bufflen</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>) - 2 * <a href="../h_src/57932056.htm" class="localvar">sep</a>);
+}
+
+
+<a id=319></a>static void <a href="../h_src/57931512.htm" class="function">esccheck</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57931376.htm" class="localvar">ls</a>, int <a href="../h_src/57931240.htm" class="localvar">c</a>, const char *<a href="../h_src/57931104.htm" class="localvar">msg</a>) {
+<a id=320></a>  if (!<a href="../h_src/57931240.htm" class="localvar">c</a>) {
+<a id=321></a>    if (<a href="../h_src/57931376.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a> != <a href="../h_src/57656360.htm" class="macro">EOZ</a>)
+<a id=322></a>      <a href="../h_src/57940012.htm" class="macro">save_and_next</a>(<a href="../h_src/57931376.htm" class="localvar">ls</a>);  <a  class="comments">/* add current to buffer for error message */</a><a href="../h_src/57701620.htm" class="variable">current</a> to buffer for error message */
+<a id=323></a>    <a href="../h_src/57939876.htm" class="function">lexerror</a>(<a href="../h_src/57931376.htm" class="localvar">ls</a>, <a href="../h_src/57931104.htm" class="localvar">msg</a>, <a href="../h_src/57702844.htm" class="variable">TK_STRING</a>);
+  }
+}
+
+
+<a id=328></a>static int <a href="../h_src/57930968.htm" class="function">gethexa</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57930832.htm" class="localvar">ls</a>) {
+<a id=329></a>  <a href="../h_src/57940012.htm" class="macro">save_and_next</a>(<a href="../h_src/57930832.htm" class="localvar">ls</a>);
+<a id=330></a>  <a href="../h_src/57931512.htm" class="function">esccheck</a> (<a href="../h_src/57930832.htm" class="localvar">ls</a>, <a href="../h_src/57759868.htm" class="macro">lisxdigit</a>(<a href="../h_src/57930832.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>), &quot;hexadecimal digit expected&quot;);
+<a id=331></a>  return <a href="../h_src/57501588.htm" class="function">luaO_hexavalue</a>(<a href="../h_src/57930832.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>);
+}
+
+
+<a id=335></a>static int <a href="../h_src/57930696.htm" class="function">readhexaesc</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57930560.htm" class="localvar">ls</a>) {
+<a id=336></a>  int <a href="../h_src/57930424.htm" class="localvar">r</a> = <a href="../h_src/57930968.htm" class="function">gethexa</a>(<a href="../h_src/57930560.htm" class="localvar">ls</a>);
+<a id=337></a>  <a href="../h_src/57930424.htm" class="localvar">r</a> = (<a href="../h_src/57930424.htm" class="localvar">r</a> &lt;&lt; 4) + <a href="../h_src/57930968.htm" class="function">gethexa</a>(<a href="../h_src/57930560.htm" class="localvar">ls</a>);
+<a id=338></a>  <a href="../h_src/57654932.htm" class="macro">luaZ_buffremove</a>(<a href="../h_src/57930560.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>, 2);  <a  class="comments">/* remove saved chars from buffer */</a>
+<a id=339></a>  return <a href="../h_src/57930424.htm" class="localvar">r</a>;
+}
+
+
+<a id=343></a>static unsigned long <a href="../h_src/57930288.htm" class="function">readutf8esc</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57930152.htm" class="localvar">ls</a>) {
+<a id=344></a>  unsigned long <a href="../h_src/57930016.htm" class="localvar">r</a>;
+<a id=345></a>  int <a href="../h_src/57929880.htm" class="localvar">i</a> = 4;  <a  class="comments">/* chars to be removed: '\', 'u', '{', and first digit */</a>
+<a id=346></a>  <a href="../h_src/57940012.htm" class="macro">save_and_next</a>(<a href="../h_src/57930152.htm" class="localvar">ls</a>);  <a  class="comments">/* skip 'u' */</a>
+<a id=347></a>  <a href="../h_src/57931512.htm" class="function">esccheck</a>(<a href="../h_src/57930152.htm" class="localvar">ls</a>, <a href="../h_src/57930152.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a> == '{', &quot;missing '{'&quot;);
+<a id=348></a>  <a href="../h_src/57930016.htm" class="localvar">r</a> = <a href="../h_src/57930968.htm" class="function">gethexa</a>(<a href="../h_src/57930152.htm" class="localvar">ls</a>);  <a  class="comments">/* must have at least one digit */</a>
+<a id=349></a>  while (<a href="../h_src/57547624.htm" class="macro">cast_void</a>(<a href="../h_src/57940012.htm" class="macro">save_and_next</a>(<a href="../h_src/57930152.htm" class="localvar">ls</a>)), <a href="../h_src/57759868.htm" class="macro">lisxdigit</a>(<a href="../h_src/57930152.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>)) {
+<a id=350></a>    <a href="../h_src/57929880.htm" class="localvar">i</a>++;
+<a id=351></a>    <a href="../h_src/57931512.htm" class="function">esccheck</a>(<a href="../h_src/57930152.htm" class="localvar">ls</a>, <a href="../h_src/57930016.htm" class="localvar">r</a> &lt;= (0x7FFFFFFFu &gt;&gt; 4), &quot;UTF-8 value too large&quot;);
+<a id=352></a>    <a href="../h_src/57930016.htm" class="localvar">r</a> = (<a href="../h_src/57930016.htm" class="localvar">r</a> &lt;&lt; 4) + <a href="../h_src/57501588.htm" class="function">luaO_hexavalue</a>(<a href="../h_src/57930152.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>);
+  }
+<a id=354></a>  <a href="../h_src/57931512.htm" class="function">esccheck</a>(<a href="../h_src/57930152.htm" class="localvar">ls</a>, <a href="../h_src/57930152.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a> == '}', &quot;missing '}'&quot;);
+<a id=355></a>  <a href="../h_src/57940352.htm" class="macro">next</a>(<a href="../h_src/57930152.htm" class="localvar">ls</a>);  <a  class="comments">/* skip '}' */</a>
+<a id=356></a>  <a href="../h_src/57654932.htm" class="macro">luaZ_buffremove</a>(<a href="../h_src/57930152.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>, <a href="../h_src/57929880.htm" class="localvar">i</a>);  <a  class="comments">/* remove saved chars from buffer */</a>
+<a id=357></a>  return <a href="../h_src/57930016.htm" class="localvar">r</a>;
+}
+
+
+<a id=361></a>static void <a href="../h_src/57929744.htm" class="function">utf8esc</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57929608.htm" class="localvar">ls</a>) {
+<a id=362></a>  char <a href="../h_src/57929472.htm" class="localvar">buff</a>[<a href="../h_src/57502064.htm" class="macro">UTF8BUFFSZ</a>];
+<a id=363></a>  int <a href="../h_src/57929336.htm" class="localvar">n</a> = <a href="../h_src/57501928.htm" class="function">luaO_utf8esc</a>(<a href="../h_src/57929472.htm" class="localvar">buff</a>, <a href="../h_src/57930288.htm" class="function">readutf8esc</a>(<a href="../h_src/57929608.htm" class="localvar">ls</a>));
+<a id=364></a>  for (; <a href="../h_src/57929336.htm" class="localvar">n</a> &gt; 0; <a href="../h_src/57929336.htm" class="localvar">n</a>--)  <a  class="comments">/* add 'buff' to string */</a>
+<a id=365></a>    <a href="../h_src/57939740.htm" class="function">save</a>(<a href="../h_src/57929608.htm" class="localvar">ls</a>, <a href="../h_src/57929472.htm" class="localvar">buff</a>[<a href="../h_src/57502064.htm" class="macro">UTF8BUFFSZ</a> - <a href="../h_src/57929336.htm" class="localvar">n</a>]);
+}
+
+
+<a id=369></a>static int <a href="../h_src/57929200.htm" class="function">readdecesc</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57929064.htm" class="localvar">ls</a>) {
+<a id=370></a>  int <a href="../h_src/57928928.htm" class="localvar">i</a>;
+<a id=371></a>  int <a href="../h_src/57928792.htm" class="localvar">r</a> = 0;  <a  class="comments">/* result accumulator */</a>
+<a id=372></a>  for (<a href="../h_src/57928928.htm" class="localvar">i</a> = 0; <a href="../h_src/57928928.htm" class="localvar">i</a> &lt; 3 &amp;&amp; <a href="../h_src/57760276.htm" class="macro">lisdigit</a>(<a href="../h_src/57929064.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>); <a href="../h_src/57928928.htm" class="localvar">i</a>++) {  <a  class="comments">/* read up to 3 digits */</a>
+<a id=373></a>    <a href="../h_src/57928792.htm" class="localvar">r</a> = 10*<a href="../h_src/57928792.htm" class="localvar">r</a> + <a href="../h_src/57929064.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a> - '0';
+<a id=374></a>    <a href="../h_src/57940012.htm" class="macro">save_and_next</a>(<a href="../h_src/57929064.htm" class="localvar">ls</a>);
+  }
+<a id=376></a>  <a href="../h_src/57931512.htm" class="function">esccheck</a>(<a href="../h_src/57929064.htm" class="localvar">ls</a>, <a href="../h_src/57928792.htm" class="localvar">r</a> &lt;= UCHAR_MAX, &quot;decimal escape too large&quot;);
+<a id=377></a>  <a href="../h_src/57654932.htm" class="macro">luaZ_buffremove</a>(<a href="../h_src/57929064.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>, <a href="../h_src/57928928.htm" class="localvar">i</a>);  <a  class="comments">/* remove read digits from buffer */</a>
+<a id=378></a>  return <a href="../h_src/57928792.htm" class="localvar">r</a>;
+}
+
+
+<a id=382></a>static void <a href="../h_src/57928656.htm" class="function">read_string</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57928520.htm" class="localvar">ls</a>, int <a href="../h_src/57928384.htm" class="localvar">del</a>, <a href="../h_src/57702164.htm" class="type">SemInfo</a> *<a href="../h_src/57928248.htm" class="localvar">seminfo</a>) {
+<a id=383></a>  <a href="../h_src/57940012.htm" class="macro">save_and_next</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>);  <a  class="comments">/* keep delimiter (for error messages) */</a>
+<a id=384></a>  while (<a href="../h_src/57928520.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a> != <a href="../h_src/57928384.htm" class="localvar">del</a>) {
+<a id=385></a>    switch (<a href="../h_src/57928520.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>) {
+<a id=386></a>      case <a href="../h_src/57656360.htm" class="macro">EOZ</a>:
+<a id=387></a>        <a href="../h_src/57939876.htm" class="function">lexerror</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>, &quot;unfinished string&quot;, <a href="../h_src/57703116.htm" class="variable">TK_EOS</a>);
+<a id=388></a>        break;  <a  class="comments">/* to avoid warnings */</a>
+      case '\n':
+      case '\r':
+<a id=391></a>        <a href="../h_src/57939876.htm" class="function">lexerror</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>, &quot;unfinished string&quot;, <a href="../h_src/57702844.htm" class="variable">TK_STRING</a>);
+<a id=392></a>        break;  <a  class="comments">/* to avoid warnings */</a>
+<a id=393></a>      case '\\': {  <a  class="comments">/* escape sequences */</a>
+<a id=394></a>        int <a href="../h_src/57928112.htm" class="localvar">c</a>;  <a  class="comments">/* final character to be saved */</a>
+<a id=395></a>        <a href="../h_src/57940012.htm" class="macro">save_and_next</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>);  <a  class="comments">/* keep '\\' for error messages */</a>
+<a id=396></a>        switch (<a href="../h_src/57928520.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>) {
+<a id=397></a>          case 'a': <a href="../h_src/57928112.htm" class="localvar">c</a> = '\a'; goto read_save;
+<a id=398></a>          case 'b': <a href="../h_src/57928112.htm" class="localvar">c</a> = '\b'; goto read_save;
+<a id=399></a>          case 'f': <a href="../h_src/57928112.htm" class="localvar">c</a> = '\f'; goto read_save;
+<a id=400></a>          case 'n': <a href="../h_src/57928112.htm" class="localvar">c</a> = '\n'; goto read_save;
+<a id=401></a>          case 'r': <a href="../h_src/57928112.htm" class="localvar">c</a> = '\r'; goto read_save;
+<a id=402></a>          case 't': <a href="../h_src/57928112.htm" class="localvar">c</a> = '\t'; goto read_save;
+<a id=403></a>          case 'v': <a href="../h_src/57928112.htm" class="localvar">c</a> = '\v'; goto read_save;
+<a id=404></a>          case 'x': <a href="../h_src/57928112.htm" class="localvar">c</a> = <a href="../h_src/57930696.htm" class="function">readhexaesc</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>); goto read_save;
+<a id=405></a>          case 'u': <a href="../h_src/57929744.htm" class="function">utf8esc</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>);  goto no_save;
+          case '\n': case '\r':
+<a id=407></a>            <a href="../h_src/57935796.htm" class="function">inclinenumber</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>); <a href="../h_src/57928112.htm" class="localvar">c</a> = '\n'; goto only_save;
+          case '\\': case '\&quot;': case '\'':
+<a id=409></a>            <a href="../h_src/57928112.htm" class="localvar">c</a> = <a href="../h_src/57928520.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>; goto read_save;
+<a id=410></a>          case <a href="../h_src/57656360.htm" class="macro">EOZ</a>: goto no_save;  <a  class="comments">/* will raise an error next loop */</a>
+<a id=411></a>          case 'z': {  <a  class="comments">/* zap following span of spaces */</a>
+<a id=412></a>            <a href="../h_src/57654932.htm" class="macro">luaZ_buffremove</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>, 1);  <a  class="comments">/* remove '\\' */</a>
+<a id=413></a>            <a href="../h_src/57940352.htm" class="macro">next</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>);  <a  class="comments">/* skip the 'z' */</a><a href="../h_src/57700872.htm" class="variable">z</a>' */
+<a id=414></a>            while (<a href="../h_src/57760140.htm" class="macro">lisspace</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>)) {
+<a id=415></a>              if (<a href="../h_src/57940216.htm" class="macro">currIsNewline</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>)) <a href="../h_src/57935796.htm" class="function">inclinenumber</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>);
+<a id=416></a>              else <a href="../h_src/57940352.htm" class="macro">next</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>);
+            }
+            goto no_save;
+          }
+          default: {
+<a id=421></a>            <a href="../h_src/57931512.htm" class="function">esccheck</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>, <a href="../h_src/57760276.htm" class="macro">lisdigit</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>), &quot;invalid escape sequence&quot;);
+<a id=422></a>            <a href="../h_src/57928112.htm" class="localvar">c</a> = <a href="../h_src/57929200.htm" class="function">readdecesc</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>);  <a  class="comments">/* digital escape '\ddd' */</a>
+            goto only_save;
+          }
+        }
+       read_save:
+<a id=427></a>         <a href="../h_src/57940352.htm" class="macro">next</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>);
+<a id=428></a>         <a  class="comments">/* go through */</a>
+       only_save:
+<a id=430></a>         <a href="../h_src/57654932.htm" class="macro">luaZ_buffremove</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>, 1);  <a  class="comments">/* remove '\\' */</a>
+<a id=431></a>         <a href="../h_src/57939740.htm" class="function">save</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>, <a href="../h_src/57928112.htm" class="localvar">c</a>);
+<a id=432></a>         <a  class="comments">/* go through */</a>
+       no_save: break;
+      }
+      default:
+<a id=436></a>        <a href="../h_src/57940012.htm" class="macro">save_and_next</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>);
+    }
+  }
+<a id=439></a>  <a href="../h_src/57940012.htm" class="macro">save_and_next</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>);  <a  class="comments">/* skip delimiter */</a>
+<a id=440></a>  <a href="../h_src/57928248.htm" class="localvar">seminfo</a>-&gt;<a href="../h_src/57702300.htm" class="variable">ts</a> = <a href="../h_src/57699852.htm" class="function">luaX_newstring</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>, <a href="../h_src/57655340.htm" class="macro">luaZ_buffer</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>) + 1,
+<a id=441></a>                                   <a href="../h_src/57655068.htm" class="macro">luaZ_bufflen</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>) - 2);
+}
+
+
+<a id=445></a>static int <a href="../h_src/57927976.htm" class="function">llex</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57927840.htm" class="localvar">ls</a>, <a href="../h_src/57702164.htm" class="type">SemInfo</a> *<a href="../h_src/57927704.htm" class="localvar">seminfo</a>) {
+<a id=446></a>  <a href="../h_src/57654796.htm" class="macro">luaZ_resetbuffer</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>);
+  for (;;) {
+<a id=448></a>    switch (<a href="../h_src/57927840.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>) {
+<a id=449></a>      case '\n': case '\r': {  <a  class="comments">/* line breaks */</a>
+<a id=450></a>        <a href="../h_src/57935796.htm" class="function">inclinenumber</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>);
+        break;
+      }
+<a id=453></a>      case ' ': case '\f': case '\t': case '\v': {  <a  class="comments">/* spaces */</a>
+<a id=454></a>        <a href="../h_src/57940352.htm" class="macro">next</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>);
+        break;
+      }
+<a id=457></a>      case '-': {  <a  class="comments">/* '-' or '--' (comment) */</a>
+<a id=458></a>        <a href="../h_src/57940352.htm" class="macro">next</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>);
+<a id=459></a>        if (<a href="../h_src/57927840.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a> != '-') return '-';
+<a id=460></a>        <a  class="comments">/* else is a comment */</a>
+<a id=461></a>        <a href="../h_src/57940352.htm" class="macro">next</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>);
+<a id=462></a>        if (<a href="../h_src/57927840.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a> == '[') {  <a  class="comments">/* long comment? */</a>
+<a id=463></a>          <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/57927568.htm" class="localvar">sep</a> = <a href="../h_src/57933008.htm" class="function">skip_sep</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>);
+<a id=464></a>          <a href="../h_src/57654796.htm" class="macro">luaZ_resetbuffer</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>);  <a  class="comments">/* 'skip_sep' may dirty the buffer */</a>
+<a id=465></a>          if (<a href="../h_src/57927568.htm" class="localvar">sep</a> &gt;= 2) {
+<a id=466></a>            <a href="../h_src/57932464.htm" class="function">read_long_string</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>, NULL, <a href="../h_src/57927568.htm" class="localvar">sep</a>);  <a  class="comments">/* skip long comment */</a>
+<a id=467></a>            <a href="../h_src/57654796.htm" class="macro">luaZ_resetbuffer</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>);  <a  class="comments">/* previous call may dirty the buff. */</a>
+            break;
+          }
+        }
+<a id=471></a>        <a  class="comments">/* else short comment */</a>
+<a id=472></a>        while (!<a href="../h_src/57940216.htm" class="macro">currIsNewline</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>) &amp;&amp; <a href="../h_src/57927840.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a> != <a href="../h_src/57656360.htm" class="macro">EOZ</a>)
+<a id=473></a>          <a href="../h_src/57940352.htm" class="macro">next</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>);  <a  class="comments">/* skip until end of line (or end of file) */</a>
+        break;
+      }
+<a id=476></a>      case '[': {  <a  class="comments">/* long string or simply '[' */</a>
+<a id=477></a>        <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/57927432.htm" class="localvar">sep</a> = <a href="../h_src/57933008.htm" class="function">skip_sep</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>);
+<a id=478></a>        if (<a href="../h_src/57927432.htm" class="localvar">sep</a> &gt;= 2) {
+<a id=479></a>          <a href="../h_src/57932464.htm" class="function">read_long_string</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>, <a href="../h_src/57927704.htm" class="localvar">seminfo</a>, <a href="../h_src/57927432.htm" class="localvar">sep</a>);
+<a id=480></a>          return <a href="../h_src/57702844.htm" class="variable">TK_STRING</a>;
+        }
+<a id=482></a>        else if (<a href="../h_src/57927432.htm" class="localvar">sep</a> == 0)  <a  class="comments">/* '[=...' missing second bracket? */</a>
+<a id=483></a>          <a href="../h_src/57939876.htm" class="function">lexerror</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>, &quot;invalid long string delimiter&quot;, <a href="../h_src/57702844.htm" class="variable">TK_STRING</a>);
+        return '[';
+      }
+      case '=': {
+<a id=487></a>        <a href="../h_src/57940352.htm" class="macro">next</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>);
+<a id=488></a>        if (<a href="../h_src/57934708.htm" class="function">check_next1</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>, '=')) return <a href="../h_src/57703592.htm" class="variable">TK_EQ</a>;  <a  class="comments">/* '==' */</a>
+        else return '=';
+      }
+      case '&lt;': {
+<a id=492></a>        <a href="../h_src/57940352.htm" class="macro">next</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>);
+<a id=493></a>        if (<a href="../h_src/57934708.htm" class="function">check_next1</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>, '=')) return <a href="../h_src/57703456.htm" class="variable">TK_LE</a>;  <a  class="comments">/* '&lt;=' */</a>
+<a id=494></a>        else if (<a href="../h_src/57934708.htm" class="function">check_next1</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>, '&lt;')) return <a href="../h_src/57703320.htm" class="variable">TK_SHL</a>;  <a  class="comments">/* '&lt;&lt;' */</a>
+        else return '&lt;';
+      }
+      case '&gt;': {
+<a id=498></a>        <a href="../h_src/57940352.htm" class="macro">next</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>);
+<a id=499></a>        if (<a href="../h_src/57934708.htm" class="function">check_next1</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>, '=')) return <a href="../h_src/57703524.htm" class="variable">TK_GE</a>;  <a  class="comments">/* '&gt;=' */</a>
+<a id=500></a>        else if (<a href="../h_src/57934708.htm" class="function">check_next1</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>, '&gt;')) return <a href="../h_src/57703252.htm" class="variable">TK_SHR</a>;  <a  class="comments">/* '&gt;&gt;' */</a>
+        else return '&gt;';
+      }
+      case '/': {
+<a id=504></a>        <a href="../h_src/57940352.htm" class="macro">next</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>);
+<a id=505></a>        if (<a href="../h_src/57934708.htm" class="function">check_next1</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>, '/')) return <a href="../h_src/57703796.htm" class="variable">TK_IDIV</a>;  <a  class="comments">/* '//' */</a>
+        else return '/';
+      }
+      case '~': {
+<a id=509></a>        <a href="../h_src/57940352.htm" class="macro">next</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>);
+<a id=510></a>        if (<a href="../h_src/57934708.htm" class="function">check_next1</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>, '=')) return <a href="../h_src/57703388.htm" class="variable">TK_NE</a>;  <a  class="comments">/* '~=' */</a>
+        else return '~';
+      }
+      case ':': {
+<a id=514></a>        <a href="../h_src/57940352.htm" class="macro">next</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>);
+<a id=515></a>        if (<a href="../h_src/57934708.htm" class="function">check_next1</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>, ':')) return <a href="../h_src/57703184.htm" class="variable">TK_DBCOLON</a>;  <a  class="comments">/* '::' */</a>
+        else return ':';
+      }
+<a id=518></a>      case '&quot;': case '\'': {  <a  class="comments">/* short literal strings */</a>
+<a id=519></a>        <a href="../h_src/57928656.htm" class="function">read_string</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>, <a href="../h_src/57927840.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>, <a href="../h_src/57927704.htm" class="localvar">seminfo</a>);
+<a id=520></a>        return <a href="../h_src/57702844.htm" class="variable">TK_STRING</a>;
+      }
+<a id=522></a>      case '.': {  <a  class="comments">/* '.', '..', '...', or number */</a>
+<a id=523></a>        <a href="../h_src/57940012.htm" class="macro">save_and_next</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>);
+<a id=524></a>        if (<a href="../h_src/57934708.htm" class="function">check_next1</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>, '.')) {
+<a id=525></a>          if (<a href="../h_src/57934708.htm" class="function">check_next1</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>, '.'))
+<a id=526></a>            return <a href="../h_src/57703660.htm" class="variable">TK_DOTS</a>;   <a  class="comments">/* '...' */</a>
+<a id=527></a>          else return <a href="../h_src/57703728.htm" class="variable">TK_CONCAT</a>;   <a  class="comments">/* '..' */</a>
+        }
+<a id=529></a>        else if (!<a href="../h_src/57760276.htm" class="macro">lisdigit</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>)) return '.';
+<a id=530></a>        else return <a href="../h_src/57933892.htm" class="function">read_numeral</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>, <a href="../h_src/57927704.htm" class="localvar">seminfo</a>);
+      }
+      case '0': case '1': case '2': case '3': case '4':
+      case '5': case '6': case '7': case '8': case '9': {
+<a id=534></a>        return <a href="../h_src/57933892.htm" class="function">read_numeral</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>, <a href="../h_src/57927704.htm" class="localvar">seminfo</a>);
+      }
+<a id=536></a>      case <a href="../h_src/57656360.htm" class="macro">EOZ</a>: {
+<a id=537></a>        return <a href="../h_src/57703116.htm" class="variable">TK_EOS</a>;
+      }
+      default: {
+<a id=540></a>        if (<a href="../h_src/57760548.htm" class="macro">lislalpha</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>)) {  <a  class="comments">/* identifier or reserved word? */</a>
+<a id=541></a>          <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/57927296.htm" class="localvar">ts</a>;
+          do {
+<a id=543></a>            <a href="../h_src/57940012.htm" class="macro">save_and_next</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>);
+<a id=544></a>          } while (<a href="../h_src/57760412.htm" class="macro">lislalnum</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>));
+<a id=545></a>          <a href="../h_src/57927296.htm" class="localvar">ts</a> = <a href="../h_src/57699852.htm" class="function">luaX_newstring</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>, <a href="../h_src/57655340.htm" class="macro">luaZ_buffer</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>),
+<a id=546></a>                                  <a href="../h_src/57655068.htm" class="macro">luaZ_bufflen</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>));
+<a id=547></a>          <a href="../h_src/57927704.htm" class="localvar">seminfo</a>-&gt;<a href="../h_src/57702300.htm" class="variable">ts</a> = <a href="../h_src/57927296.htm" class="localvar">ts</a>;
+<a id=548></a>          if (<a href="../h_src/57619436.htm" class="macro">isreserved</a>(<a href="../h_src/57927296.htm" class="localvar">ts</a>))  <a  class="comments">/* reserved word? */</a>
+<a id=549></a>            return <a href="../h_src/57927296.htm" class="localvar">ts</a>-&gt;<a href="../h_src/57523484.htm" class="variable">extra</a> - 1 + <a href="../h_src/57705700.htm" class="macro">FIRST_RESERVED</a>;
+          else {
+<a id=551></a>            return <a href="../h_src/57702912.htm" class="variable">TK_NAME</a>;
+          }
+        }
+<a id=554></a>        else {  <a  class="comments">/* single-char tokens ('+', '*', '%', '{', '}', ...) */</a>
+<a id=555></a>          int <a href="../h_src/57927160.htm" class="localvar">c</a> = <a href="../h_src/57927840.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>;
+<a id=556></a>          <a href="../h_src/57940352.htm" class="macro">next</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>);
+<a id=557></a>          return <a href="../h_src/57927160.htm" class="localvar">c</a>;
+        }
+      }
+    }
+  }
+}
+
+
+<a id=565></a>void <a href="../h_src/57699784.htm" class="function">luaX_next</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57927024.htm" class="localvar">ls</a>) {
+<a id=566></a>  <a href="../h_src/57927024.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701484.htm" class="variable">lastline</a> = <a href="../h_src/57927024.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701552.htm" class="variable">linenumber</a>;
+<a id=567></a>  if (<a href="../h_src/57927024.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701348.htm" class="variable">lookahead</a>.<a href="../h_src/57701960.htm" class="variable">token</a> != <a href="../h_src/57703116.htm" class="variable">TK_EOS</a>) {  <a  class="comments">/* is there a look-ahead token? */</a>
+<a id=568></a>    <a href="../h_src/57927024.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a> = <a href="../h_src/57927024.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701348.htm" class="variable">lookahead</a>;  <a  class="comments">/* use this one */</a>
+<a id=569></a>    <a href="../h_src/57927024.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701348.htm" class="variable">lookahead</a>.<a href="../h_src/57701960.htm" class="variable">token</a> = <a href="../h_src/57703116.htm" class="variable">TK_EOS</a>;  <a  class="comments">/* and discharge it */</a>
+  }
+  else
+<a id=572></a>    <a href="../h_src/57927024.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a> = <a href="../h_src/57927976.htm" class="function">llex</a>(<a href="../h_src/57927024.htm" class="localvar">ls</a>, &amp;<a href="../h_src/57927024.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701892.htm" class="variable">seminfo</a>);  <a  class="comments">/* read next token */</a>
+}
+
+
+<a id=576></a>int <a href="../h_src/57699716.htm" class="function">luaX_lookahead</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57926888.htm" class="localvar">ls</a>) {
+<a id=577></a>  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(ls-&gt;lookahead.token == TK_EOS);
+<a id=578></a>  <a href="../h_src/57926888.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701348.htm" class="variable">lookahead</a>.<a href="../h_src/57701960.htm" class="variable">token</a> = <a href="../h_src/57927976.htm" class="function">llex</a>(<a href="../h_src/57926888.htm" class="localvar">ls</a>, &amp;<a href="../h_src/57926888.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701348.htm" class="variable">lookahead</a>.<a href="../h_src/57701892.htm" class="variable">seminfo</a>);
+<a id=579></a>  return <a href="../h_src/57926888.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701348.htm" class="variable">lookahead</a>.<a href="../h_src/57701960.htm" class="variable">token</a>;
+}
+
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

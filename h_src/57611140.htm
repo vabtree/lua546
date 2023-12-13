@@ -1,0 +1,72 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaV_finishget</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57611140.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57611140.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57611140.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57611140.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57611140.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57611140.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58062016.htm#287" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+void <a href="../h_src/57611140.htm" class="function">luaV_finishget</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58214172.htm" class="localvar">L</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58214036.htm" class="localvar">t</a>, <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58213900.htm" class="localvar">key</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58213764.htm" class="localvar">val</a>,
+                      const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58213628.htm" class="localvar">slot</a>) {
+  int <a href="../h_src/58213492.htm" class="localvar">loop</a>;  <a  class="comments">/* counter to avoid infinite loops */</a>
+  const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58213356.htm" class="localvar">tm</a>;  <a  class="comments">/* metamethod */</a>
+  for (<a href="../h_src/58213492.htm" class="localvar">loop</a> = 0; <a href="../h_src/58213492.htm" class="localvar">loop</a> &lt; <a href="../h_src/58061404.htm" class="macro">MAXTAGLOOP</a>; <a href="../h_src/58213492.htm" class="localvar">loop</a>++) {
+    if (<a href="../h_src/58213628.htm" class="localvar">slot</a> == NULL) {  <a  class="comments">/* 't' is not a table? */</a>
+      <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!<a href="../h_src/57507300.htm" class="macro">ttistable</a>(t));
+      <a href="../h_src/58213356.htm" class="localvar">tm</a> = <a href="../h_src/57498052.htm" class="function">luaT_gettmbyobj</a>(<a href="../h_src/58214172.htm" class="localvar">L</a>, <a href="../h_src/58214036.htm" class="localvar">t</a>, <a href="../h_src/57500908.htm" class="variable">TM_INDEX</a>);
+      if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57498800.htm" class="macro">notm</a>(<a href="../h_src/58213356.htm" class="localvar">tm</a>)))
+        <a href="../h_src/57635756.htm" class="function">luaG_typeerror</a>(<a href="../h_src/58214172.htm" class="localvar">L</a>, <a href="../h_src/58214036.htm" class="localvar">t</a>, &quot;index&quot;);  <a  class="comments">/* no metamethod */</a>
+      <a  class="comments">/* else will try the metamethod */</a>
+    }
+    else {  <a  class="comments">/* 't' is a table */</a>
+      <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57530488.htm" class="macro">isempty</a>(slot));
+      <a href="../h_src/58213356.htm" class="localvar">tm</a> = <a href="../h_src/57498528.htm" class="macro">fasttm</a>(<a href="../h_src/58214172.htm" class="localvar">L</a>, <a href="../h_src/57507164.htm" class="macro">hvalue</a>(<a href="../h_src/58214036.htm" class="localvar">t</a>)-&gt;<a href="../h_src/57504444.htm" class="variable">metatable</a>, <a href="../h_src/57500908.htm" class="variable">TM_INDEX</a>);  <a  class="comments">/* table's metamethod */</a>
+      if (<a href="../h_src/58213356.htm" class="localvar">tm</a> == NULL) {  <a  class="comments">/* no metamethod? */</a>
+        <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57532732.htm" class="variable">val</a>));  <a  class="comments">/* result is nil */</a>
+        return;
+      }
+      <a  class="comments">/* else will try the metamethod */</a>
+    }
+    if (<a href="../h_src/57513216.htm" class="macro">ttisfunction</a>(<a href="../h_src/58213356.htm" class="localvar">tm</a>)) {  <a  class="comments">/* is metamethod a function? */</a>
+      <a href="../h_src/57497848.htm" class="function">luaT_callTMres</a>(<a href="../h_src/58214172.htm" class="localvar">L</a>, <a href="../h_src/58213356.htm" class="localvar">tm</a>, <a href="../h_src/58214036.htm" class="localvar">t</a>, <a href="../h_src/58213900.htm" class="localvar">key</a>, <a href="../h_src/58213764.htm" class="localvar">val</a>);  <a  class="comments">/* call it */</a>
+      return;
+    }
+    <a href="../h_src/58214036.htm" class="localvar">t</a> = <a href="../h_src/58213356.htm" class="localvar">tm</a>;  <a  class="comments">/* else try to access 'tm[key]' */</a>
+    if (<a href="../h_src/57612296.htm" class="macro">luaV_fastget</a>(L, <a href="../h_src/58214036.htm" class="localvar">t</a>, <a href="../h_src/58213900.htm" class="localvar">key</a>, <a href="../h_src/58213628.htm" class="localvar">slot</a>, <a href="../h_src/57616784.htm" class="function">luaH_get</a>)) {  <a  class="comments">/* fast track? */</a>
+      <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58214172.htm" class="localvar">L</a>, <a href="../h_src/57532732.htm" class="variable">val</a>, <a href="../h_src/58213628.htm" class="localvar">slot</a>);  <a  class="comments">/* done */</a>
+      return;
+    }
+    <a  class="comments">/* else repeat (tail call 'luaV_finishget') */</a>
+  }
+  <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/58214172.htm" class="localvar">L</a>, &quot;'__index' chain too long; possible loop&quot;);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,1019 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>ltable.c</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58121924.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/58121924.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/58121924.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/58121924.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_uf/58121924.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_df/58121924.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/58121924.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58121924.htm" class="file" target="_self">Source Code</a></li>
+<li><a href="../h_sc/58121924.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<pre class=src>
+<a id=1></a><a  class="comments">/*</a>
+<a id=2></a><a  class="comments">** $Id: ltable.c $</a>
+<a id=3></a><a  class="comments">** Lua tables (hash)</a>
+<a id=4></a><a  class="comments">** See Copyright Notice in lua.h</a>
+<a id=5></a><a  class="comments">*/</a>
+
+<a id=7></a>#define <a href="../h_src/58121856.htm" class="macro">ltable_c</a>
+<a id=8></a>#define <a href="../h_src/58121720.htm" class="macro">LUA_CORE</a>
+
+<a id=10></a>#include &quot;<a href="../h_src/57461592.htm" class="file">lprefix.h</a>&quot;
+
+
+<a id=13></a><a  class="comments">/*</a>
+<a id=14></a><a  class="comments">** Implementation of tables (aka arrays, objects, or hash tables).</a>
+<a id=15></a><a  class="comments">** Tables keep its elements in two parts: an array part and a hash part.</a>
+<a id=16></a><a  class="comments">** Non-negative integer keys are all candidates to be kept in the array</a>
+<a id=17></a><a  class="comments">** part. The actual size of the array is the largest 'n' such that</a>
+<a id=18></a><a  class="comments">** more than half the slots between 1 and n are in use.</a>
+<a id=19></a><a  class="comments">** Hash uses a mix of chained scatter table with Brent's variation.</a>
+<a id=20></a><a  class="comments">** A main invariant of these tables is that, if an element is not</a>
+<a id=21></a><a  class="comments">** in its main position (i.e. the 'original' position that its hash gives</a>
+<a id=22></a><a  class="comments">** to it), then the colliding element is in its own main position.</a>
+<a id=23></a><a  class="comments">** Hence even when the load factor reaches 100%, performance remains good.</a>
+<a id=24></a><a  class="comments">*/</a>
+
+#include &lt;math.h&gt;
+#include &lt;limits.h&gt;
+
+<a id=29></a>#include &quot;<a href="../h_src/57460028.htm" class="file">lua.h</a>&quot;
+
+<a id=31></a>#include &quot;<a href="../h_src/57637116.htm" class="file">ldebug.h</a>&quot;
+<a id=32></a>#include &quot;<a href="../h_src/57635008.htm" class="file">ldo.h</a>&quot;
+<a id=33></a>#include &quot;<a href="../h_src/57630112.htm" class="file">lgc.h</a>&quot;
+<a id=34></a>#include &quot;<a href="../h_src/57496896.htm" class="file">lmem.h</a>&quot;
+<a id=35></a>#include &quot;<a href="../h_src/57537696.htm" class="file">lobject.h</a>&quot;
+<a id=36></a>#include &quot;<a href="../h_src/57538104.htm" class="file">lstate.h</a>&quot;
+<a id=37></a>#include &quot;<a href="../h_src/57620184.htm" class="file">lstring.h</a>&quot;
+<a id=38></a>#include &quot;<a href="../h_src/57618348.htm" class="file">ltable.h</a>&quot;
+<a id=39></a>#include &quot;<a href="../h_src/57614676.htm" class="file">lvm.h</a>&quot;
+
+
+<a id=42></a><a  class="comments">/*</a>
+<a id=43></a><a  class="comments">** MAXABITS is the largest integer such that MAXASIZE fits in an</a>
+<a id=44></a><a  class="comments">** unsigned int.</a>
+<a id=45></a><a  class="comments">*/</a>
+<a id=46></a>#define <a href="../h_src/58121584.htm" class="macro">MAXABITS</a>	cast_int(sizeof(int) * CHAR_BIT - 1)
+
+
+<a id=49></a><a  class="comments">/*</a>
+<a id=50></a><a  class="comments">** MAXASIZE is the maximum size of the array part. It is the minimum</a>
+<a id=51></a><a  class="comments">** between 2^MAXABITS and the maximum size that, measured in bytes,</a>
+<a id=52></a><a  class="comments">** fits in a 'size_t'.</a>
+<a id=53></a><a  class="comments">*/</a>
+<a id=54></a>#define <a href="../h_src/58121448.htm" class="macro">MAXASIZE</a>	luaM_limitN(1u &lt;&lt; MAXABITS, TValue)
+
+<a id=56></a><a  class="comments">/*</a>
+<a id=57></a><a  class="comments">** MAXHBITS is the largest integer such that 2^MAXHBITS fits in a</a>
+<a id=58></a><a  class="comments">** signed int.</a>
+<a id=59></a><a  class="comments">*/</a>
+<a id=60></a>#define <a href="../h_src/58121312.htm" class="macro">MAXHBITS</a>	(MAXABITS - 1)
+
+
+<a id=63></a><a  class="comments">/*</a>
+<a id=64></a><a  class="comments">** MAXHSIZE is the maximum size of the hash part. It is the minimum</a>
+<a id=65></a><a  class="comments">** between 2^MAXHBITS and the maximum size such that, measured in bytes,</a>
+<a id=66></a><a  class="comments">** it fits in a 'size_t'.</a>
+<a id=67></a><a  class="comments">*/</a>
+<a id=68></a>#define <a href="../h_src/58121176.htm" class="macro">MAXHSIZE</a>	luaM_limitN(1u &lt;&lt; MAXHBITS, Node)
+
+
+<a id=71></a><a  class="comments">/*</a>
+<a id=72></a><a  class="comments">** When the original hash value is good, hashing by a power of 2</a>
+<a id=73></a><a  class="comments">** avoids the cost of '%'.</a>
+<a id=74></a><a  class="comments">*/</a>
+<a id=75></a>#define <a href="../h_src/58121040.htm" class="macro">hashpow2</a>(t,n)		(gnode(t, lmod((n), sizenode(t))))
+
+<a id=77></a><a  class="comments">/*</a>
+<a id=78></a><a  class="comments">** for other types, it is better to avoid modulo by power of 2, as</a>
+<a id=79></a><a  class="comments">** they can have many 2 factors.</a>
+<a id=80></a><a  class="comments">*/</a>
+<a id=81></a>#define <a href="../h_src/58120904.htm" class="macro">hashmod</a>(t,n)	(gnode(t, ((n) % ((sizenode(t)-1)|1))))
+
+
+<a id=84></a>#define <a href="../h_src/58120768.htm" class="macro">hashstr</a>(t,str)		hashpow2(t, (str)-&gt;hash)
+<a id=85></a>#define <a href="../h_src/58120632.htm" class="macro">hashboolean</a>(t,p)	hashpow2(t, p)
+
+
+<a id=88></a>#define <a href="../h_src/58120496.htm" class="macro">hashpointer</a>(t,p)	hashmod(t, point2uint(p))
+
+
+<a id=91></a>#define <a href="../h_src/58120360.htm" class="macro">dummynode</a>		(&amp;dummynode_)
+
+<a id=93></a>static const <a href="../h_src/57506008.htm" class="type">Node</a> <a href="../h_src/58120224.htm" class="variable">dummynode_</a> = {
+<a id=94></a>  {{NULL}, <a href="../h_src/57531440.htm" class="macro">LUA_VEMPTY</a>,  <a  class="comments">/* value's value and type */</a>
+<a id=95></a>   <a href="../h_src/57531576.htm" class="macro">LUA_VNIL</a>, 0, {NULL}}  <a  class="comments">/* key type, next, and key value */</a>
+};
+
+
+<a id=99></a>static const <a href="../h_src/57535384.htm" class="type">TValue</a> <a href="../h_src/58120156.htm" class="variable">absentkey</a> = {<a href="../h_src/57530352.htm" class="macro">ABSTKEYCONSTANT</a>};
+
+
+<a id=102></a><a  class="comments">/*</a>
+<a id=103></a><a  class="comments">** Hash for integers. To allow a good hash, use the remainder operator</a>
+<a id=104></a><a  class="comments">** ('%'). If integer fits as a non-negative int, compute an int</a>
+<a id=105></a><a  class="comments">** remainder, which is faster. Otherwise, use an unsigned-integer</a>
+<a id=106></a><a  class="comments">** remainder, which uses all bits and ensures a non-negative result.</a>
+<a id=107></a><a  class="comments">*/</a>
+<a id=108></a>static <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/58120088.htm" class="function">hashint</a> (const <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58119952.htm" class="localvar">t</a>, <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/58119816.htm" class="localvar">i</a>) {
+<a id=109></a>  <a href="../h_src/57438132.htm" class="function">lua_Unsigned</a> <a href="../h_src/58119680.htm" class="localvar">ui</a> = <a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/58119816.htm" class="localvar">i</a>);
+<a id=110></a>  if (<a href="../h_src/58119680.htm" class="localvar">ui</a> &lt;= <a href="../h_src/57547080.htm" class="macro">cast_uint</a>(INT_MAX))
+<a id=111></a>    return <a href="../h_src/58120904.htm" class="macro">hashmod</a>(<a href="../h_src/58119952.htm" class="localvar">t</a>, <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/58119680.htm" class="localvar">ui</a>));
+  else
+<a id=113></a>    return <a href="../h_src/58120904.htm" class="macro">hashmod</a>(<a href="../h_src/58119952.htm" class="localvar">t</a>, <a href="../h_src/58119680.htm" class="localvar">ui</a>);
+}
+
+
+<a id=117></a><a  class="comments">/*</a>
+<a id=118></a><a  class="comments">** Hash for floating-point numbers.</a>
+<a id=119></a><a  class="comments">** The main computation should be just</a>
+<a id=120></a><a  class="comments">**     n = frexp(n, &amp;i); return (n * INT_MAX) + i</a>
+<a id=121></a><a  class="comments">** but there are some numerical subtleties.</a>
+<a id=122></a><a  class="comments">** In a two-complement representation, INT_MAX does not has an exact</a>
+<a id=123></a><a  class="comments">** representation as a float, but INT_MIN does; because the absolute</a>
+<a id=124></a><a  class="comments">** value of 'frexp' is smaller than 1 (unless 'n' is inf/NaN), the</a>
+<a id=125></a><a  class="comments">** absolute value of the product 'frexp * -INT_MIN' is smaller or equal</a>
+<a id=126></a><a  class="comments">** to INT_MAX. Next, the use of 'unsigned int' avoids overflows when</a>
+<a id=127></a><a  class="comments">** adding 'i'; the use of '~u' (instead of '-u') avoids problems with</a>
+<a id=128></a><a  class="comments">** INT_MIN.</a>
+<a id=129></a><a  class="comments">*/</a>
+<a id=130></a>#if !defined(<a href="../h_src/58119544.htm" class="macro">l_hashfloat</a>)
+<a id=131></a>static int <a href="../h_src/58119408.htm" class="function">l_hashfloat</a> (<a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/58119272.htm" class="localvar">n</a>) {
+<a id=132></a>  int <a href="../h_src/58119136.htm" class="localvar">i</a>;
+<a id=133></a>  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/58119000.htm" class="localvar">ni</a>;
+<a id=134></a>  <a href="../h_src/58119272.htm" class="localvar">n</a> = <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/58118864.htm" class="libfunc">frexp</a>)(<a href="../h_src/58119272.htm" class="localvar">n</a>, &amp;<a href="../h_src/58119136.htm" class="localvar">i</a>) * -<a href="../h_src/57547352.htm" class="macro">cast_num</a>(INT_MIN);
+<a id=135></a>  if (!<a href="../h_src/57452140.htm" class="macro">lua_numbertointeger</a>(<a href="../h_src/58119272.htm" class="localvar">n</a>, &amp;<a href="../h_src/58119000.htm" class="localvar">ni</a>)) {  <a  class="comments">/* is 'n' inf/-inf/NaN? */</a>
+<a id=136></a>    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57538784.htm" class="macro">luai_numisnan</a>(n) || <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(fabs)(n) == <a href="../h_src/57547352.htm" class="macro">cast_num</a>(HUGE_VAL));
+    return 0;
+  }
+<a id=139></a>  else {  <a  class="comments">/* normal case */</a>
+<a id=140></a>    unsigned int <a href="../h_src/58118796.htm" class="localvar">u</a> = <a href="../h_src/57547080.htm" class="macro">cast_uint</a>(<a href="../h_src/58119136.htm" class="localvar">i</a>) + <a href="../h_src/57547080.htm" class="macro">cast_uint</a>(<a href="../h_src/58119000.htm" class="localvar">ni</a>);
+<a id=141></a>    return <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/58118796.htm" class="localvar">u</a> &lt;= <a href="../h_src/57547080.htm" class="macro">cast_uint</a>(INT_MAX) ? u : ~<a href="../h_src/58118796.htm" class="localvar">u</a>);
+  }
+}
+#endif
+
+
+<a id=147></a><a  class="comments">/*</a>
+<a id=148></a><a  class="comments">** returns the 'main' position of an element in a table (that is,</a>
+<a id=149></a><a  class="comments">** the index of its hash value).</a>
+<a id=150></a><a  class="comments">*/</a>
+<a id=151></a>static <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/58118660.htm" class="function">mainpositionTV</a> (const <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58118524.htm" class="localvar">t</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58118388.htm" class="localvar">key</a>) {
+<a id=152></a>  switch (<a href="../h_src/57534636.htm" class="macro">ttypetag</a>(<a href="../h_src/58118388.htm" class="localvar">key</a>)) {
+<a id=153></a>    case <a href="../h_src/57527088.htm" class="macro">LUA_VNUMINT</a>: {
+<a id=154></a>      <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/58118252.htm" class="localvar">i</a> = <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58118388.htm" class="localvar">key</a>);
+<a id=155></a>      return <a href="../h_src/58120088.htm" class="function">hashint</a>(<a href="../h_src/58118524.htm" class="localvar">t</a>, <a href="../h_src/58118252.htm" class="localvar">i</a>);
+    }
+<a id=157></a>    case <a href="../h_src/57526952.htm" class="macro">LUA_VNUMFLT</a>: {
+<a id=158></a>      <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/58118116.htm" class="localvar">n</a> = <a href="../h_src/57526272.htm" class="macro">fltvalue</a>(<a href="../h_src/58118388.htm" class="localvar">key</a>);
+<a id=159></a>      return <a href="../h_src/58120904.htm" class="macro">hashmod</a>(<a href="../h_src/58118524.htm" class="localvar">t</a>, <a href="../h_src/58119408.htm" class="function">l_hashfloat</a>(<a href="../h_src/58118116.htm" class="localvar">n</a>));
+    }
+<a id=161></a>    case <a href="../h_src/57525184.htm" class="macro">LUA_VSHRSTR</a>: {
+<a id=162></a>      <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/58117980.htm" class="localvar">ts</a> = <a href="../h_src/57524368.htm" class="macro">tsvalue</a>(<a href="../h_src/58118388.htm" class="localvar">key</a>);
+<a id=163></a>      return <a href="../h_src/58120768.htm" class="macro">hashstr</a>(<a href="../h_src/58118524.htm" class="localvar">t</a>, <a href="../h_src/58117980.htm" class="localvar">ts</a>);
+    }
+<a id=165></a>    case <a href="../h_src/57525048.htm" class="macro">LUA_VLNGSTR</a>: {
+<a id=166></a>      <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/58117844.htm" class="localvar">ts</a> = <a href="../h_src/57524368.htm" class="macro">tsvalue</a>(<a href="../h_src/58118388.htm" class="localvar">key</a>);
+<a id=167></a>      return <a href="../h_src/58121040.htm" class="macro">hashpow2</a>(<a href="../h_src/58118524.htm" class="localvar">t</a>, <a href="../h_src/57619096.htm" class="function">luaS_hashlongstr</a>(<a href="../h_src/58117844.htm" class="localvar">ts</a>));
+    }
+<a id=169></a>    case <a href="../h_src/57530080.htm" class="macro">LUA_VFALSE</a>:
+<a id=170></a>      return <a href="../h_src/58120632.htm" class="macro">hashboolean</a>(<a href="../h_src/58118524.htm" class="localvar">t</a>, 0);
+<a id=171></a>    case <a href="../h_src/57529944.htm" class="macro">LUA_VTRUE</a>:
+<a id=172></a>      return <a href="../h_src/58120632.htm" class="macro">hashboolean</a>(<a href="../h_src/58118524.htm" class="localvar">t</a>, 1);
+<a id=173></a>    case <a href="../h_src/57522124.htm" class="macro">LUA_VLIGHTUSERDATA</a>: {
+<a id=174></a>      void *<a href="../h_src/58117708.htm" class="localvar">p</a> = <a href="../h_src/57521580.htm" class="macro">pvalue</a>(<a href="../h_src/58118388.htm" class="localvar">key</a>);
+<a id=175></a>      return <a href="../h_src/58120496.htm" class="macro">hashpointer</a>(<a href="../h_src/58118524.htm" class="localvar">t</a>, <a href="../h_src/58117708.htm" class="localvar">p</a>);
+    }
+<a id=177></a>    case <a href="../h_src/57513488.htm" class="macro">LUA_VLCF</a>: {
+<a id=178></a>      <a href="../h_src/57441736.htm" class="type">lua_CFunction</a> <a href="../h_src/58117572.htm" class="localvar">f</a> = <a href="../h_src/57512128.htm" class="macro">fvalue</a>(<a href="../h_src/58118388.htm" class="localvar">key</a>);
+<a id=179></a>      return <a href="../h_src/58120496.htm" class="macro">hashpointer</a>(<a href="../h_src/58118524.htm" class="localvar">t</a>, <a href="../h_src/58117572.htm" class="localvar">f</a>);
+    }
+    default: {
+<a id=182></a>      <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/58117436.htm" class="localvar">o</a> = <a href="../h_src/57527496.htm" class="macro">gcvalue</a>(<a href="../h_src/58118388.htm" class="localvar">key</a>);
+<a id=183></a>      return <a href="../h_src/58120496.htm" class="macro">hashpointer</a>(<a href="../h_src/58118524.htm" class="localvar">t</a>, <a href="../h_src/58117436.htm" class="localvar">o</a>);
+    }
+  }
+}
+
+
+<a id=189></a><a href="../h_src/57545312.htm" class="macro">l_sinline</a> <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/58117300.htm" class="function">mainpositionfromnode</a> (const <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58117164.htm" class="localvar">t</a>, <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/58117028.htm" class="localvar">nd</a>) {
+<a id=190></a>  <a href="../h_src/57535384.htm" class="type">TValue</a> <a href="../h_src/58116892.htm" class="localvar">key</a>;
+<a id=191></a>  <a href="../h_src/57505804.htm" class="macro">getnodekey</a>(<a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57444252.htm" class="type">lua_State</a> *, NULL), &amp;<a href="../h_src/58116892.htm" class="localvar">key</a>, <a href="../h_src/58117028.htm" class="localvar">nd</a>);
+<a id=192></a>  return <a href="../h_src/58118660.htm" class="function">mainpositionTV</a>(<a href="../h_src/58117164.htm" class="localvar">t</a>, &amp;<a href="../h_src/58116892.htm" class="localvar">key</a>);
+}
+
+
+<a id=196></a><a  class="comments">/*</a>
+<a id=197></a><a  class="comments">** Check whether key 'k1' is equal to the key in node 'n2'. This</a>
+<a id=198></a><a  class="comments">** equality is raw, so there are no metamethods. Floats with integer</a>
+<a id=199></a><a  class="comments">** values have been normalized, so integers cannot be equal to</a>
+<a id=200></a><a  class="comments">** floats. It is assumed that 'eqshrstr' is simply pointer equality, so</a>
+<a id=201></a><a  class="comments">** that short strings are handled in the default case.</a>
+<a id=202></a><a  class="comments">** A true 'deadok' means to accept dead keys as equal to their original</a>
+<a id=203></a><a  class="comments">** values. All dead keys are compared in the default case, by pointer</a>
+<a id=204></a><a  class="comments">** identity. (Only collectable objects can produce dead keys.) Note that</a>
+<a id=205></a><a  class="comments">** dead long strings are also compared by identity.</a>
+<a id=206></a><a  class="comments">** Once a key is dead, its corresponding value may be collected, and</a>
+<a id=207></a><a  class="comments">** then another value can be created with the same address. If this</a>
+<a id=208></a><a  class="comments">** other value is given to 'next', 'equalkey' will signal a false</a>
+<a id=209></a><a  class="comments">** positive. In a regular traversal, this situation should never happen,</a>
+<a id=210></a><a  class="comments">** as all keys given to 'next' came from the table itself, and therefore</a>
+<a id=211></a><a  class="comments">** could not have been collected. Outside a regular traversal, we</a>
+<a id=212></a><a  class="comments">** have garbage in, garbage out. What is relevant is that this false</a>
+<a id=213></a><a  class="comments">** positive does not break anything.  (In particular, 'next' will return</a>
+<a id=214></a><a  class="comments">** some other valid item on the table or nil.)</a>
+<a id=215></a><a  class="comments">*/</a>
+<a id=216></a>static int <a href="../h_src/58116484.htm" class="function">equalkey</a> (const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58116348.htm" class="localvar">k1</a>, const <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/58116212.htm" class="localvar">n2</a>, int <a href="../h_src/58116076.htm" class="localvar">deadok</a>) {
+<a id=217></a>  if ((<a href="../h_src/57535044.htm" class="macro">rawtt</a>(<a href="../h_src/58116348.htm" class="localvar">k1</a>) != <a href="../h_src/57504240.htm" class="macro">keytt</a>(<a href="../h_src/58116212.htm" class="localvar">n2</a>)) &amp;&amp;  <a  class="comments">/* not the same variants? */</a>
+<a id=218></a>       !(<a href="../h_src/58116076.htm" class="localvar">deadok</a> &amp;&amp; <a href="../h_src/57502608.htm" class="macro">keyisdead</a>(<a href="../h_src/58116212.htm" class="localvar">n2</a>) &amp;&amp; <a href="../h_src/57527768.htm" class="macro">iscollectable</a>(<a href="../h_src/58116348.htm" class="localvar">k1</a>)))
+<a id=219></a>   return 0;  <a  class="comments">/* cannot be same key */</a>
+<a id=220></a>  switch (<a href="../h_src/57504240.htm" class="macro">keytt</a>(<a href="../h_src/58116212.htm" class="localvar">n2</a>)) {
+<a id=221></a>    case <a href="../h_src/57531576.htm" class="macro">LUA_VNIL</a>: case <a href="../h_src/57530080.htm" class="macro">LUA_VFALSE</a>: case <a href="../h_src/57529944.htm" class="macro">LUA_VTRUE</a>:
+      return 1;
+<a id=223></a>    case <a href="../h_src/57527088.htm" class="macro">LUA_VNUMINT</a>:
+<a id=224></a>      return (<a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58116348.htm" class="localvar">k1</a>) == <a href="../h_src/57503696.htm" class="macro">keyival</a>(<a href="../h_src/58116212.htm" class="localvar">n2</a>));
+<a id=225></a>    case <a href="../h_src/57526952.htm" class="macro">LUA_VNUMFLT</a>:
+<a id=226></a>      return <a href="../h_src/57539464.htm" class="macro">luai_numeq</a>(<a href="../h_src/57526272.htm" class="macro">fltvalue</a>(<a href="../h_src/58116348.htm" class="localvar">k1</a>), <a href="../h_src/57526000.htm" class="macro">fltvalueraw</a>(<a href="../h_src/57504104.htm" class="macro">keyval</a>(<a href="../h_src/58116212.htm" class="localvar">n2</a>)));
+<a id=227></a>    case <a href="../h_src/57522124.htm" class="macro">LUA_VLIGHTUSERDATA</a>:
+<a id=228></a>      return <a href="../h_src/57521580.htm" class="macro">pvalue</a>(<a href="../h_src/58116348.htm" class="localvar">k1</a>) == <a href="../h_src/57521308.htm" class="macro">pvalueraw</a>(<a href="../h_src/57504104.htm" class="macro">keyval</a>(<a href="../h_src/58116212.htm" class="localvar">n2</a>));
+<a id=229></a>    case <a href="../h_src/57513488.htm" class="macro">LUA_VLCF</a>:
+<a id=230></a>      return <a href="../h_src/57512128.htm" class="macro">fvalue</a>(<a href="../h_src/58116348.htm" class="localvar">k1</a>) == <a href="../h_src/57511856.htm" class="macro">fvalueraw</a>(<a href="../h_src/57504104.htm" class="macro">keyval</a>(<a href="../h_src/58116212.htm" class="localvar">n2</a>));
+<a id=231></a>    case <a href="../h_src/57527632.htm" class="macro">ctb</a>(<a href="../h_src/57525048.htm" class="macro">LUA_VLNGSTR</a>):
+<a id=232></a>      return <a href="../h_src/57619028.htm" class="function">luaS_eqlngstr</a>(<a href="../h_src/57524368.htm" class="macro">tsvalue</a>(<a href="../h_src/58116348.htm" class="localvar">k1</a>), <a href="../h_src/57503424.htm" class="macro">keystrval</a>(<a href="../h_src/58116212.htm" class="localvar">n2</a>));
+    default:
+<a id=234></a>      return <a href="../h_src/57527496.htm" class="macro">gcvalue</a>(<a href="../h_src/58116348.htm" class="localvar">k1</a>) == <a href="../h_src/57527360.htm" class="macro">gcvalueraw</a>(<a href="../h_src/57504104.htm" class="macro">keyval</a>(<a href="../h_src/58116212.htm" class="localvar">n2</a>));
+  }
+}
+
+
+<a id=239></a><a  class="comments">/*</a>
+<a id=240></a><a  class="comments">** True if value of 'alimit' is equal to the real size of the array</a>
+<a id=241></a><a  class="comments">** part of table 't'. (Otherwise, the array part must be larger than</a>
+<a id=242></a><a  class="comments">** 'alimit'.)</a>
+<a id=243></a><a  class="comments">*/</a>
+<a id=244></a>#define <a href="../h_src/58115940.htm" class="macro">limitequalsasize</a>(t)	(isrealasize(t) || ispow2((t)-&gt;alimit))
+
+
+<a id=247></a><a  class="comments">/*</a>
+<a id=248></a><a  class="comments">** Returns the real size of the 'array' array</a>
+<a id=249></a><a  class="comments">*/</a>
+<a id=250></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> unsigned int <a href="../h_src/57616172.htm" class="function">luaH_realasize</a> (const <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58115804.htm" class="localvar">t</a>) {
+<a id=251></a>  if (<a href="../h_src/58115940.htm" class="macro">limitequalsasize</a>(<a href="../h_src/58115804.htm" class="localvar">t</a>))
+<a id=252></a>    return <a href="../h_src/58115804.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a>;  <a  class="comments">/* this is the size */</a>
+  else {
+<a id=254></a>    unsigned int <a href="../h_src/58115668.htm" class="localvar">size</a> = <a href="../h_src/58115804.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a>;
+<a id=255></a>    <a  class="comments">/* compute the smallest power of 2 not smaller than 'n' */</a>
+<a id=256></a>    <a href="../h_src/58115668.htm" class="localvar">size</a> |= (<a href="../h_src/58115668.htm" class="localvar">size</a> &gt;&gt; 1);
+<a id=257></a>    <a href="../h_src/58115668.htm" class="localvar">size</a> |= (<a href="../h_src/58115668.htm" class="localvar">size</a> &gt;&gt; 2);
+<a id=258></a>    <a href="../h_src/58115668.htm" class="localvar">size</a> |= (<a href="../h_src/58115668.htm" class="localvar">size</a> &gt;&gt; 4);
+<a id=259></a>    <a href="../h_src/58115668.htm" class="localvar">size</a> |= (<a href="../h_src/58115668.htm" class="localvar">size</a> &gt;&gt; 8);
+<a id=260></a>#if (UINT_MAX &gt;&gt; 14) &gt; 3  <a  class="comments">/* unsigned int has more than 16 bits */</a>
+<a id=261></a>    <a href="../h_src/58115668.htm" class="localvar">size</a> |= (<a href="../h_src/58115668.htm" class="localvar">size</a> &gt;&gt; 16);
+#if (UINT_MAX &gt;&gt; 30) &gt; 3
+<a id=263></a>    size |= (size &gt;&gt; 32);  <a  class="comments">/* unsigned int has more than 32 bits */</a>
+#endif
+#endif
+<a id=266></a>    <a href="../h_src/58115668.htm" class="localvar">size</a>++;
+<a id=267></a>    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57549528.htm" class="macro">ispow2</a>(size) &amp;&amp; size/2 &lt; t-&gt;alimit &amp;&amp; t-&gt;alimit &lt; size);
+<a id=268></a>    return <a href="../h_src/58115668.htm" class="localvar">size</a>;
+  }
+}
+
+
+<a id=273></a><a  class="comments">/*</a>
+<a id=274></a><a  class="comments">** Check whether real size of the array is a power of 2.</a>
+<a id=275></a><a  class="comments">** (If it is not, 'alimit' cannot be changed to any other value</a>
+<a id=276></a><a  class="comments">** without changing the real size.)</a>
+<a id=277></a><a  class="comments">*/</a>
+<a id=278></a>static int <a href="../h_src/58115532.htm" class="function">ispow2realasize</a> (const <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58115396.htm" class="localvar">t</a>) {
+<a id=279></a>  return (!<a href="../h_src/57505532.htm" class="macro">isrealasize</a>(<a href="../h_src/58115396.htm" class="localvar">t</a>) || <a href="../h_src/57549528.htm" class="macro">ispow2</a>(<a href="../h_src/58115396.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a>));
+}
+
+
+<a id=283></a>static unsigned int <a href="../h_src/58115260.htm" class="function">setlimittosize</a> (<a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58115124.htm" class="localvar">t</a>) {
+<a id=284></a>  <a href="../h_src/58115124.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a> = <a href="../h_src/57616172.htm" class="function">luaH_realasize</a>(<a href="../h_src/58115124.htm" class="localvar">t</a>);
+<a id=285></a>  <a href="../h_src/57505396.htm" class="macro">setrealasize</a>(<a href="../h_src/58115124.htm" class="localvar">t</a>);
+<a id=286></a>  return <a href="../h_src/58115124.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a>;
+}
+
+
+<a id=290></a>#define <a href="../h_src/58114988.htm" class="macro">limitasasize</a>(t)	check_exp(isrealasize(t), t-&gt;alimit)
+
+
+
+<a id=294></a><a  class="comments">/*</a>
+<a id=295></a><a  class="comments">** &quot;Generic&quot; get version. (Not that generic: not valid for integers,</a>
+<a id=296></a><a  class="comments">** which may be in array part, nor for floats with integral values.)</a>
+<a id=297></a><a  class="comments">** See explanation about 'deadok' in function 'equalkey'.</a>
+<a id=298></a><a  class="comments">*/</a>
+<a id=299></a>static const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58114852.htm" class="function">getgeneric</a> (<a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58114716.htm" class="localvar">t</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58114580.htm" class="localvar">key</a>, int <a href="../h_src/58114444.htm" class="localvar">deadok</a>) {
+<a id=300></a>  <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/58114308.htm" class="localvar">n</a> = <a href="../h_src/58118660.htm" class="function">mainpositionTV</a>(<a href="../h_src/58114716.htm" class="localvar">t</a>, <a href="../h_src/58114580.htm" class="localvar">key</a>);
+<a id=301></a>  for (;;) {  <a  class="comments">/* check whether 'key' is somewhere in the chain */</a>
+<a id=302></a>    if (<a href="../h_src/58116484.htm" class="function">equalkey</a>(<a href="../h_src/58114580.htm" class="localvar">key</a>, <a href="../h_src/58114308.htm" class="localvar">n</a>, <a href="../h_src/58114444.htm" class="localvar">deadok</a>))
+<a id=303></a>      return <a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58114308.htm" class="localvar">n</a>);  <a  class="comments">/* that's it */</a>
+    else {
+<a id=305></a>      int <a href="../h_src/58114172.htm" class="localvar">nx</a> = <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58114308.htm" class="localvar">n</a>);
+<a id=306></a>      if (<a href="../h_src/58114172.htm" class="localvar">nx</a> == 0)
+<a id=307></a>        return &amp;<a href="../h_src/58120156.htm" class="variable">absentkey</a>;  <a  class="comments">/* not found */</a>
+<a id=308></a>      <a href="../h_src/58114308.htm" class="localvar">n</a> += <a href="../h_src/58114172.htm" class="localvar">nx</a>;
+    }
+  }
+}
+
+
+<a id=314></a><a  class="comments">/*</a>
+<a id=315></a><a  class="comments">** returns the index for 'k' if 'k' is an appropriate key to live in</a>
+<a id=316></a><a  class="comments">** the array part of a table, 0 otherwise.</a>
+<a id=317></a><a  class="comments">*/</a>
+<a id=318></a>static unsigned int <a href="../h_src/58114036.htm" class="function">arrayindex</a> (<a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/58113900.htm" class="localvar">k</a>) {
+<a id=319></a>  if (<a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/58113900.htm" class="localvar">k</a>) - 1u &lt; <a href="../h_src/58121448.htm" class="macro">MAXASIZE</a>)  <a  class="comments">/* 'k' in [1, MAXASIZE]? */</a>
+<a id=320></a>    return <a href="../h_src/57547080.htm" class="macro">cast_uint</a>(<a href="../h_src/58113900.htm" class="localvar">k</a>);  <a  class="comments">/* 'key' is an appropriate array index */</a>
+  else
+    return 0;
+}
+
+
+<a id=326></a><a  class="comments">/*</a>
+<a id=327></a><a  class="comments">** returns the index of a 'key' for table traversals. First goes all</a>
+<a id=328></a><a  class="comments">** elements in the array part, then elements in the hash part. The</a>
+<a id=329></a><a  class="comments">** beginning of a traversal is signaled by 0.</a>
+<a id=330></a><a  class="comments">*/</a>
+<a id=331></a>static unsigned int <a href="../h_src/58113764.htm" class="function">findindex</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58113628.htm" class="localvar">L</a>, <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58113492.htm" class="localvar">t</a>, <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58113356.htm" class="localvar">key</a>,
+<a id=332></a>                               unsigned int <a href="../h_src/58113220.htm" class="localvar">asize</a>) {
+<a id=333></a>  unsigned int <a href="../h_src/58113084.htm" class="localvar">i</a>;
+<a id=334></a>  if (<a href="../h_src/57531168.htm" class="macro">ttisnil</a>(<a href="../h_src/58113356.htm" class="localvar">key</a>)) return 0;  <a  class="comments">/* first iteration */</a>
+<a id=335></a>  <a href="../h_src/58113084.htm" class="localvar">i</a> = <a href="../h_src/57526544.htm" class="macro">ttisinteger</a>(<a href="../h_src/58113356.htm" class="localvar">key</a>) ? <a href="../h_src/58114036.htm" class="function">arrayindex</a>(<a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58113356.htm" class="localvar">key</a>)) : 0;
+<a id=336></a>  if (<a href="../h_src/58113084.htm" class="localvar">i</a> - 1u &lt; <a href="../h_src/58113220.htm" class="localvar">asize</a>)  <a  class="comments">/* is 'key' inside array part? */</a>
+<a id=337></a>    return <a href="../h_src/58113084.htm" class="localvar">i</a>;  <a  class="comments">/* yes; that's the index */</a>
+  else {
+<a id=339></a>    const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58112948.htm" class="localvar">n</a> = <a href="../h_src/58114852.htm" class="function">getgeneric</a>(<a href="../h_src/58113492.htm" class="localvar">t</a>, <a href="../h_src/58113356.htm" class="localvar">key</a>, 1);
+<a id=340></a>    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57530760.htm" class="macro">isabstkey</a>(<a href="../h_src/58112948.htm" class="localvar">n</a>)))
+<a id=341></a>      <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/58113628.htm" class="localvar">L</a>, &quot;invalid key to 'next'&quot;);  <a  class="comments">/* key not found */</a>
+<a id=342></a>    <a href="../h_src/58113084.htm" class="localvar">i</a> = <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/57617192.htm" class="macro">nodefromval</a>(<a href="../h_src/58112948.htm" class="localvar">n</a>) - <a href="../h_src/57618008.htm" class="macro">gnode</a>(<a href="../h_src/58113492.htm" class="localvar">t</a>, 0));  <a  class="comments">/* key index in hash table */</a>
+<a id=343></a>    <a  class="comments">/* hash elements are numbered after array ones */</a>
+<a id=344></a>    return (<a href="../h_src/58113084.htm" class="localvar">i</a> + 1) + <a href="../h_src/58113220.htm" class="localvar">asize</a>;
+  }
+}
+
+
+<a id=349></a>int <a href="../h_src/57616240.htm" class="function">luaH_next</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58112812.htm" class="localvar">L</a>, <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58112676.htm" class="localvar">t</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58112540.htm" class="localvar">key</a>) {
+<a id=350></a>  unsigned int <a href="../h_src/58112404.htm" class="localvar">asize</a> = <a href="../h_src/57616172.htm" class="function">luaH_realasize</a>(<a href="../h_src/58112676.htm" class="localvar">t</a>);
+<a id=351></a>  unsigned int <a href="../h_src/58112268.htm" class="localvar">i</a> = <a href="../h_src/58113764.htm" class="function">findindex</a>(<a href="../h_src/58112812.htm" class="localvar">L</a>, <a href="../h_src/58112676.htm" class="localvar">t</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58112540.htm" class="localvar">key</a>), <a href="../h_src/58112404.htm" class="localvar">asize</a>);  <a  class="comments">/* find original key */</a>
+<a id=352></a>  for (; <a href="../h_src/58112268.htm" class="localvar">i</a> &lt; <a href="../h_src/58112404.htm" class="localvar">asize</a>; <a href="../h_src/58112268.htm" class="localvar">i</a>++) {  <a  class="comments">/* try first array part */</a>
+<a id=353></a>    if (!<a href="../h_src/57530488.htm" class="macro">isempty</a>(&amp;<a href="../h_src/58112676.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58112268.htm" class="localvar">i</a>])) {  <a  class="comments">/* a non-empty entry? */</a>
+<a id=354></a>      <a href="../h_src/57525456.htm" class="macro">setivalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58112540.htm" class="localvar">key</a>), <a href="../h_src/57536064.htm" class="variable">i</a> + 1);
+<a id=355></a>      <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58112812.htm" class="localvar">L</a>, <a href="../h_src/58112540.htm" class="localvar">key</a> + 1, &amp;<a href="../h_src/58112676.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58112268.htm" class="localvar">i</a>]);
+      return 1;
+    }
+  }
+<a id=359></a>  for (<a href="../h_src/58112268.htm" class="localvar">i</a> -= <a href="../h_src/58112404.htm" class="localvar">asize</a>; <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/58112268.htm" class="localvar">i</a>) &lt; <a href="../h_src/57502200.htm" class="macro">sizenode</a>(<a href="../h_src/58112676.htm" class="localvar">t</a>); <a href="../h_src/58112268.htm" class="localvar">i</a>++) {  <a  class="comments">/* hash part */</a>
+<a id=360></a>    if (!<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/57618008.htm" class="macro">gnode</a>(<a href="../h_src/58112676.htm" class="localvar">t</a>, <a href="../h_src/58112268.htm" class="localvar">i</a>)))) {  <a  class="comments">/* a non-empty entry? */</a>
+<a id=361></a>      <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/58111724.htm" class="localvar">n</a> = <a href="../h_src/57618008.htm" class="macro">gnode</a>(<a href="../h_src/58112676.htm" class="localvar">t</a>, <a href="../h_src/58112268.htm" class="localvar">i</a>);
+<a id=362></a>      <a href="../h_src/57505804.htm" class="macro">getnodekey</a>(<a href="../h_src/58112812.htm" class="localvar">L</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58112540.htm" class="localvar">key</a>), <a href="../h_src/58111724.htm" class="localvar">n</a>);
+<a id=363></a>      <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58112812.htm" class="localvar">L</a>, <a href="../h_src/58112540.htm" class="localvar">key</a> + 1, <a href="../h_src/57617872.htm" class="macro">gval</a><a href="../h_src/57532732.htm" class="variable">val</a>(<a href="../h_src/58111724.htm" class="localvar">n</a>));
+      return 1;
+    }
+  }
+<a id=367></a>  return 0;  <a  class="comments">/* no more elements */</a>
+}
+
+
+<a id=371></a>static void <a href="../h_src/58111044.htm" class="function">freehash</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58110908.htm" class="localvar">L</a>, <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58110772.htm" class="localvar">t</a>) {
+<a id=372></a>  if (!<a href="../h_src/57617464.htm" class="macro">isdummy</a>(<a href="../h_src/58110772.htm" class="localvar">t</a>))
+<a id=373></a>    <a href="../h_src/57495604.htm" class="macro">luaM_freearray</a>(<a href="../h_src/58110908.htm" class="localvar">L</a>, <a href="../h_src/58110772.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504580.htm" class="variable">node</a>, <a href="../h_src/57546400.htm" class="macro">cast_sizet</a>(<a href="../h_src/57502200.htm" class="macro">sizenode</a>(<a href="../h_src/58110772.htm" class="localvar">t</a>)));
+}
+
+
+<a id=377></a><a  class="comments">/*</a>
+<a id=378></a><a  class="comments">** {=============================================================</a>
+<a id=379></a><a  class="comments">** Rehash</a>
+<a id=380></a><a  class="comments">** ==============================================================</a>
+<a id=381></a><a  class="comments">*/</a>
+
+<a id=383></a><a  class="comments">/*</a>
+<a id=384></a><a  class="comments">** Compute the optimal size for the array part of table 't'. 'nums' is a</a>
+<a id=385></a><a  class="comments">** &quot;count array&quot; where 'nums[i]' is the number of integers in the table</a>
+<a id=386></a><a  class="comments">** between 2^(i - 1) + 1 and 2^i. 'pna' enters with the total number of</a>
+<a id=387></a><a  class="comments">** integer keys in the table and leaves with the number of keys that</a>
+<a id=388></a><a  class="comments">** will go to the array part; return the optimal size.  (The condition</a>
+<a id=389></a><a  class="comments">** 'twotoi &gt; 0' in the for loop stops the loop if 'twotoi' overflows.)</a>
+<a id=390></a><a  class="comments">*/</a>
+<a id=391></a>static unsigned int <a href="../h_src/58110636.htm" class="function">computesizes</a> (unsigned int <a href="../h_src/58110500.htm" class="localvar">nums</a>[], unsigned int *<a href="../h_src/58110364.htm" class="localvar">pna</a>) {
+<a id=392></a>  int <a href="../h_src/58110228.htm" class="localvar">i</a>;
+<a id=393></a>  unsigned int <a href="../h_src/58110092.htm" class="localvar">twotoi</a>;  <a  class="comments">/* 2^i (candidate for optimal size) */</a>
+<a id=394></a>  unsigned int <a href="../h_src/58109956.htm" class="localvar">a</a> = 0;  <a  class="comments">/* number of elements smaller than 2^i */</a>
+<a id=395></a>  unsigned int <a href="../h_src/58109820.htm" class="localvar">na</a> = 0;  <a  class="comments">/* number of elements to go to array part */</a>
+<a id=396></a>  unsigned int <a href="../h_src/58109684.htm" class="localvar">optimal</a> = 0;  <a  class="comments">/* optimal size for array part */</a>
+<a id=397></a>  <a  class="comments">/* loop while keys can fill more than half of total size */</a>
+<a id=398></a>  for (<a href="../h_src/58110228.htm" class="localvar">i</a> = 0, <a href="../h_src/58110092.htm" class="localvar">twotoi</a> = 1;
+<a id=399></a>       <a href="../h_src/58110092.htm" class="localvar">twotoi</a> &gt; 0 &amp;&amp; *<a href="../h_src/58110364.htm" class="localvar">pna</a> &gt; <a href="../h_src/58110092.htm" class="localvar">twotoi</a> / 2;
+<a id=400></a>       <a href="../h_src/58110228.htm" class="localvar">i</a>++, <a href="../h_src/58110092.htm" class="localvar">twotoi</a> *= 2) {
+<a id=401></a>    <a href="../h_src/58109956.htm" class="localvar">a</a> += <a href="../h_src/58110500.htm" class="localvar">nums</a>[<a href="../h_src/58110228.htm" class="localvar">i</a>];
+<a id=402></a>    if (<a href="../h_src/58109956.htm" class="localvar">a</a> &gt; <a href="../h_src/58110092.htm" class="localvar">twotoi</a>/2) {  <a  class="comments">/* more than half elements present? */</a>
+<a id=403></a>      <a href="../h_src/58109684.htm" class="localvar">optimal</a> = <a href="../h_src/58110092.htm" class="localvar">twotoi</a>;  <a  class="comments">/* optimal size (till now) */</a>
+<a id=404></a>      <a href="../h_src/58109820.htm" class="localvar">na</a> = <a href="../h_src/58109956.htm" class="localvar">a</a>;  <a  class="comments">/* all elements up to 'optimal' will go to array part */</a>
+    }
+  }
+<a id=407></a>  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>((optimal == 0 || optimal / 2 &lt; na) &amp;&amp; na &lt;= optimal);
+<a id=408></a>  *<a href="../h_src/58110364.htm" class="localvar">pna</a> = <a href="../h_src/58109820.htm" class="localvar">na</a>;
+<a id=409></a>  return <a href="../h_src/58109684.htm" class="localvar">optimal</a>;
+}
+
+
+<a id=413></a>static int <a href="../h_src/58109548.htm" class="function">countint</a> (<a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/58109412.htm" class="localvar">key</a>, unsigned int *<a href="../h_src/58109276.htm" class="localvar">nums</a>) {
+<a id=414></a>  unsigned int <a href="../h_src/58109140.htm" class="localvar">k</a> = <a href="../h_src/58114036.htm" class="function">arrayindex</a>(<a href="../h_src/58109412.htm" class="localvar">key</a>);
+<a id=415></a>  if (<a href="../h_src/58109140.htm" class="localvar">k</a> != 0) {  <a  class="comments">/* is 'key' an appropriate array index? */</a>
+<a id=416></a>    <a href="../h_src/58109276.htm" class="localvar">nums</a>[<a href="../h_src/57501860.htm" class="function">luaO_ceillog2</a>(<a href="../h_src/58109140.htm" class="localvar">k</a>)]++;  <a  class="comments">/* count as such */</a>
+    return 1;
+  }
+  else
+    return 0;
+}
+
+
+<a id=424></a><a  class="comments">/*</a>
+<a id=425></a><a  class="comments">** Count keys in array part of table 't': Fill 'nums[i]' with</a>
+<a id=426></a><a  class="comments">** number of keys that will go into corresponding slice and return</a>
+<a id=427></a><a  class="comments">** total number of non-nil keys.</a>
+<a id=428></a><a  class="comments">*/</a>
+<a id=429></a>static unsigned int <a href="../h_src/58109004.htm" class="function">numusearray</a> (const <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58108868.htm" class="localvar">t</a>, unsigned int *<a href="../h_src/58108732.htm" class="localvar">nums</a>) {
+<a id=430></a>  int <a href="../h_src/58108596.htm" class="localvar">lg</a>;
+<a id=431></a>  unsigned int <a href="../h_src/58108460.htm" class="localvar">ttlg</a>;  <a  class="comments">/* 2^lg */</a>
+<a id=432></a>  unsigned int <a href="../h_src/58108324.htm" class="localvar">ause</a> = 0;  <a  class="comments">/* summation of 'nums' */</a>
+<a id=433></a>  unsigned int <a href="../h_src/58108188.htm" class="localvar">i</a> = 1;  <a  class="comments">/* count to traverse all array keys */</a>
+<a id=434></a>  unsigned int <a href="../h_src/58108052.htm" class="localvar">asize</a> = <a href="../h_src/58114988.htm" class="macro">limitasasize</a>(<a href="../h_src/58108868.htm" class="localvar">t</a>);  <a  class="comments">/* real array size */</a>
+<a id=435></a>  <a  class="comments">/* traverse each slice */</a>
+<a id=436></a>  for (<a href="../h_src/58108596.htm" class="localvar">lg</a> = 0, <a href="../h_src/58108460.htm" class="localvar">ttlg</a> = 1; <a href="../h_src/58108596.htm" class="localvar">lg</a> &lt;= <a href="../h_src/58121584.htm" class="macro">MAXABITS</a>; <a href="../h_src/58108596.htm" class="localvar">lg</a>++, <a href="../h_src/58108460.htm" class="localvar">ttlg</a> *= 2) {
+<a id=437></a>    unsigned int <a href="../h_src/58107916.htm" class="localvar">lc</a> = 0;  <a  class="comments">/* counter */</a>
+<a id=438></a>    unsigned int <a href="../h_src/58107780.htm" class="localvar">lim</a> = <a href="../h_src/58108460.htm" class="localvar">ttlg</a>;
+<a id=439></a>    if (<a href="../h_src/58107780.htm" class="localvar">lim</a> &gt; <a href="../h_src/58108052.htm" class="localvar">asize</a>) {
+<a id=440></a>      <a href="../h_src/58107780.htm" class="localvar">lim</a> = <a href="../h_src/58108052.htm" class="localvar">asize</a>;  <a  class="comments">/* adjust upper limit */</a>
+<a id=441></a>      if (<a href="../h_src/58108188.htm" class="localvar">i</a> &gt; <a href="../h_src/58107780.htm" class="localvar">lim</a>)
+<a id=442></a>        break;  <a  class="comments">/* no more elements to count */</a>
+    }
+<a id=444></a>    <a  class="comments">/* count elements in range (2^(lg - 1), 2^lg] */</a>
+<a id=445></a>    for (; <a href="../h_src/58108188.htm" class="localvar">i</a> &lt;= <a href="../h_src/58107780.htm" class="localvar">lim</a>; <a href="../h_src/58108188.htm" class="localvar">i</a>++) {
+<a id=446></a>      if (!<a href="../h_src/57530488.htm" class="macro">isempty</a>(&amp;<a href="../h_src/58108868.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58108188.htm" class="localvar">i</a>-1]))
+<a id=447></a>        <a href="../h_src/58107916.htm" class="localvar">lc</a>++;
+    }
+<a id=449></a>    <a href="../h_src/58108732.htm" class="localvar">nums</a>[<a href="../h_src/58108596.htm" class="localvar">lg</a>] += <a href="../h_src/58107916.htm" class="localvar">lc</a>;
+<a id=450></a>    <a href="../h_src/58108324.htm" class="localvar">ause</a> += <a href="../h_src/58107916.htm" class="localvar">lc</a>;
+  }
+<a id=452></a>  return <a href="../h_src/58108324.htm" class="localvar">ause</a>;
+}
+
+
+<a id=456></a>static int <a href="../h_src/58107644.htm" class="function">numusehash</a> (const <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58107508.htm" class="localvar">t</a>, unsigned int *<a href="../h_src/58107372.htm" class="localvar">nums</a>, unsigned int *<a href="../h_src/58107236.htm" class="localvar">pna</a>) {
+<a id=457></a>  int <a href="../h_src/58107100.htm" class="localvar">totaluse</a> = 0;  <a  class="comments">/* total number of elements */</a>
+<a id=458></a>  int <a href="../h_src/58106964.htm" class="localvar">ause</a> = 0;  <a  class="comments">/* elements added to 'nums' (can go to array part) */</a>
+<a id=459></a>  int <a href="../h_src/58106828.htm" class="localvar">i</a> = <a href="../h_src/57502200.htm" class="macro">sizenode</a>(<a href="../h_src/58107508.htm" class="localvar">t</a>);
+<a id=460></a>  while (<a href="../h_src/58106828.htm" class="localvar">i</a>--) {
+<a id=461></a>    <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/58106692.htm" class="localvar">n</a> = &amp;<a href="../h_src/58107508.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504580.htm" class="variable">node</a>[<a href="../h_src/58106828.htm" class="localvar">i</a>];
+<a id=462></a>    if (!<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58106692.htm" class="localvar">n</a>))) {
+<a id=463></a>      if (<a href="../h_src/57503832.htm" class="macro">keyisinteger</a>(<a href="../h_src/58106692.htm" class="localvar">n</a>))
+<a id=464></a>        <a href="../h_src/58106964.htm" class="localvar">ause</a> += <a href="../h_src/58109548.htm" class="function">countint</a>(<a href="../h_src/57503696.htm" class="macro">keyival</a>(<a href="../h_src/58106692.htm" class="localvar">n</a>), <a href="../h_src/58107372.htm" class="localvar">nums</a>);
+<a id=465></a>      <a href="../h_src/58107100.htm" class="localvar">totaluse</a>++;
+    }
+  }
+<a id=468></a>  *<a href="../h_src/58107236.htm" class="localvar">pna</a> += <a href="../h_src/58106964.htm" class="localvar">ause</a>;
+<a id=469></a>  return <a href="../h_src/58107100.htm" class="localvar">totaluse</a>;
+}
+
+
+<a id=473></a><a  class="comments">/*</a>
+<a id=474></a><a  class="comments">** Creates an array for the hash part of a table with the given</a>
+<a id=475></a><a  class="comments">** size, or reuses the dummy node if size is zero.</a>
+<a id=476></a><a  class="comments">** The computation for size overflow is in two steps: the first</a>
+<a id=477></a><a  class="comments">** comparison ensures that the shift in the second one does not</a>
+<a id=478></a><a  class="comments">** overflow.</a>
+<a id=479></a><a  class="comments">*/</a>
+<a id=480></a>static void <a href="../h_src/58106556.htm" class="function">setnodevector</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58106420.htm" class="localvar">L</a>, <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58106284.htm" class="localvar">t</a>, unsigned int <a href="../h_src/58106148.htm" class="localvar">size</a>) {
+<a id=481></a>  if (<a href="../h_src/58106148.htm" class="localvar">size</a> == 0) {  <a  class="comments">/* no elements to hash part? */</a>
+<a id=482></a>    <a href="../h_src/58106284.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504580.htm" class="variable">node</a> = <a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57506008.htm" class="type">Node</a> *, <a href="../h_src/58120360.htm" class="macro">dummynode</a>);  <a  class="comments">/* use common 'dummynode' */</a>
+<a id=483></a>    <a href="../h_src/58106284.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504852.htm" class="variable">lsizenode</a> = 0;
+<a id=484></a>    <a href="../h_src/58106284.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504512.htm" class="variable">lastfree</a> = NULL;  <a  class="comments">/* signal that it is using dummy node */</a>
+  }
+  else {
+<a id=487></a>    int <a href="../h_src/58106012.htm" class="localvar">i</a>;
+<a id=488></a>    int <a href="../h_src/58105876.htm" class="localvar">lsize</a> = <a href="../h_src/57501860.htm" class="function">luaO_ceillog2</a>(<a href="../h_src/58106148.htm" class="localvar">size</a>);
+<a id=489></a>    if (<a href="../h_src/58105876.htm" class="localvar">lsize</a> &gt; <a href="../h_src/58121312.htm" class="macro">MAXHBITS</a> || (1u &lt;&lt; <a href="../h_src/58105876.htm" class="localvar">lsize</a>) &gt; <a href="../h_src/58121176.htm" class="macro">MAXHSIZE</a>)
+<a id=490></a>      <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/58106420.htm" class="localvar">L</a>, &quot;table overflow&quot;);
+<a id=491></a>    <a href="../h_src/58106148.htm" class="localvar">size</a> = <a href="../h_src/57502336.htm" class="macro">twoto</a>(<a href="../h_src/58105876.htm" class="localvar">lsize</a>);
+<a id=492></a>    <a href="../h_src/58106284.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504580.htm" class="variable">node</a> = <a href="../h_src/57495332.htm" class="macro">luaM_newvector</a>(<a href="../h_src/58106420.htm" class="localvar">L</a>, <a href="../h_src/58106148.htm" class="localvar">size</a>, <a href="../h_src/57506008.htm" class="type">Node</a>);
+<a id=493></a>    for (<a href="../h_src/58106012.htm" class="localvar">i</a> = 0; <a href="../h_src/58106012.htm" class="localvar">i</a> &lt; <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/58106148.htm" class="localvar">size</a>); <a href="../h_src/58106012.htm" class="localvar">i</a>++) {
+<a id=494></a>      <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/58105740.htm" class="localvar">n</a> = <a href="../h_src/57618008.htm" class="macro">gnode</a>(<a href="../h_src/58106284.htm" class="localvar">t</a>, <a href="../h_src/58106012.htm" class="localvar">i</a>);
+<a id=495></a>      <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58105740.htm" class="localvar">n</a>) = 0;
+<a id=496></a>      <a href="../h_src/57503288.htm" class="macro">setnilkey</a>(<a href="../h_src/58105740.htm" class="localvar">n</a>);
+<a id=497></a>      <a href="../h_src/57530216.htm" class="macro">setempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58105740.htm" class="localvar">n</a>));
+    }
+<a id=499></a>    <a href="../h_src/58106284.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504852.htm" class="variable">lsizenode</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/58105876.htm" class="localvar">lsize</a>);
+<a id=500></a>    <a href="../h_src/58106284.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504512.htm" class="variable">lastfree</a> = <a href="../h_src/57618008.htm" class="macro">gnode</a>(<a href="../h_src/58106284.htm" class="localvar">t</a>, <a href="../h_src/58106148.htm" class="localvar">size</a>);  <a  class="comments">/* all positions are free */</a>
+  }
+}
+
+
+<a id=505></a><a  class="comments">/*</a>
+<a id=506></a><a  class="comments">** (Re)insert all elements from the hash part of 'ot' into table 't'.</a>
+<a id=507></a><a  class="comments">*/</a>
+<a id=508></a>static void <a href="../h_src/58105604.htm" class="function">reinsert</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58105468.htm" class="localvar">L</a>, <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58105332.htm" class="localvar">ot</a>, <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58105196.htm" class="localvar">t</a>) {
+<a id=509></a>  int <a href="../h_src/58105060.htm" class="localvar">j</a>;
+<a id=510></a>  int <a href="../h_src/58104924.htm" class="localvar">size</a> = <a href="../h_src/57502200.htm" class="macro">sizenode</a>(<a href="../h_src/58105332.htm" class="localvar">ot</a>);
+<a id=511></a>  for (<a href="../h_src/58105060.htm" class="localvar">j</a> = 0; <a href="../h_src/58105060.htm" class="localvar">j</a> &lt; <a href="../h_src/58104924.htm" class="localvar">size</a>; <a href="../h_src/58105060.htm" class="localvar">j</a>++) {
+<a id=512></a>    <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/58104788.htm" class="localvar">old</a> = <a href="../h_src/57618008.htm" class="macro">gnode</a>(<a href="../h_src/58105332.htm" class="localvar">ot</a>, <a href="../h_src/58105060.htm" class="localvar">j</a>);
+<a id=513></a>    if (!<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58104788.htm" class="localvar">old</a>))) {
+<a id=514></a>      <a  class="comments">/* doesn't need barrier/invalidate cache, as entry was</a>
+<a id=515></a><a  class="comments">         already present in the table */</a>
+<a id=516></a>      <a href="../h_src/57535384.htm" class="type">TValue</a> <a href="../h_src/58104652.htm" class="localvar">k</a>;
+<a id=517></a>      <a href="../h_src/57505804.htm" class="macro">getnodekey</a>(<a href="../h_src/58105468.htm" class="localvar">L</a>, &amp;<a href="../h_src/58104652.htm" class="localvar">k</a>, <a href="../h_src/58104788.htm" class="localvar">old</a>);
+<a id=518></a>      <a href="../h_src/57616648.htm" class="function">luaH_set</a>(<a href="../h_src/58105468.htm" class="localvar">L</a>, <a href="../h_src/58105196.htm" class="localvar">t</a>, &amp;<a href="../h_src/58104652.htm" class="localvar">k</a>, <a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58104788.htm" class="localvar">old</a>));
+    }
+  }
+}
+
+
+<a id=524></a><a  class="comments">/*</a>
+<a id=525></a><a  class="comments">** Exchange the hash part of 't1' and 't2'.</a>
+<a id=526></a><a  class="comments">*/</a>
+<a id=527></a>static void <a href="../h_src/58104244.htm" class="function">exchangehashpart</a> (<a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58104108.htm" class="localvar">t1</a>, <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58103972.htm" class="localvar">t2</a>) {
+<a id=528></a>  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/58103836.htm" class="localvar">lsizenode</a> = <a href="../h_src/58104108.htm" class="localvar">t1</a>-&gt;<a href="../h_src/57504852.htm" class="variable">lsizenode</a>;
+<a id=529></a>  <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/58103700.htm" class="localvar">node</a> = <a href="../h_src/58104108.htm" class="localvar">t1</a>-&gt;<a href="../h_src/57504580.htm" class="variable">node</a>;
+<a id=530></a>  <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/58103564.htm" class="localvar">lastfree</a> = <a href="../h_src/58104108.htm" class="localvar">t1</a>-&gt;<a href="../h_src/57504512.htm" class="variable">lastfree</a>;
+<a id=531></a>  <a href="../h_src/58104108.htm" class="localvar">t1</a>-&gt;<a href="../h_src/57504852.htm" class="variable">lsizenode</a> = <a href="../h_src/58103972.htm" class="localvar">t2</a>-&gt;<a href="../h_src/57504852.htm" class="variable">lsizenode</a>;
+<a id=532></a>  <a href="../h_src/58104108.htm" class="localvar">t1</a>-&gt;<a href="../h_src/57504580.htm" class="variable">node</a> = <a href="../h_src/58103972.htm" class="localvar">t2</a>-&gt;<a href="../h_src/57504580.htm" class="variable">node</a>;
+<a id=533></a>  <a href="../h_src/58104108.htm" class="localvar">t1</a>-&gt;<a href="../h_src/57504512.htm" class="variable">lastfree</a> = <a href="../h_src/58103972.htm" class="localvar">t2</a>-&gt;<a href="../h_src/57504512.htm" class="variable">lastfree</a>;
+<a id=534></a>  <a href="../h_src/58103972.htm" class="localvar">t2</a>-&gt;<a href="../h_src/57504852.htm" class="variable">lsizenode</a> = <a href="../h_src/58103836.htm" class="localvar">lsizenode</a>;
+<a id=535></a>  <a href="../h_src/58103972.htm" class="localvar">t2</a>-&gt;<a href="../h_src/57504580.htm" class="variable">node</a> = <a href="../h_src/58103700.htm" class="localvar">node</a>;
+<a id=536></a>  <a href="../h_src/58103972.htm" class="localvar">t2</a>-&gt;<a href="../h_src/57504512.htm" class="variable">lastfree</a> = <a href="../h_src/58103564.htm" class="localvar">lastfree</a>;
+}
+
+
+<a id=540></a><a  class="comments">/*</a>
+<a id=541></a><a  class="comments">** Resize table 't' for the new given sizes. Both allocations (for</a>
+<a id=542></a><a  class="comments">** the hash part and for the array part) can fail, which creates some</a>
+<a id=543></a><a  class="comments">** subtleties. If the first allocation, for the hash part, fails, an</a>
+<a id=544></a><a  class="comments">** error is raised and that is it. Otherwise, it copies the elements from</a>
+<a id=545></a><a  class="comments">** the shrinking part of the array (if it is shrinking) into the new</a>
+<a id=546></a><a  class="comments">** hash. Then it reallocates the array part.  If that fails, the table</a>
+<a id=547></a><a  class="comments">** is in its original state; the function frees the new hash part and then</a>
+<a id=548></a><a  class="comments">** raises the allocation error. Otherwise, it sets the new hash part</a>
+<a id=549></a><a  class="comments">** into the table, initializes the new part of the array (if any) with</a>
+<a id=550></a><a  class="comments">** nils and reinserts the elements of the old hash back into the new</a>
+<a id=551></a><a  class="comments">** parts of the table.</a>
+<a id=552></a><a  class="comments">*/</a>
+<a id=553></a>void <a href="../h_src/57616444.htm" class="function">luaH_resize</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58103428.htm" class="localvar">L</a>, <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58103292.htm" class="localvar">t</a>, unsigned int <a href="../h_src/58103156.htm" class="localvar">newasize</a>,
+<a id=554></a>                                          unsigned int <a href="../h_src/58103020.htm" class="localvar">nhsize</a>) {
+<a id=555></a>  unsigned int <a href="../h_src/58102884.htm" class="localvar">i</a>;
+<a id=556></a>  <a href="../h_src/57504308.htm" class="type">Table</a> <a href="../h_src/58102748.htm" class="localvar">newt</a>;  <a  class="comments">/* to keep the new hash part */</a>
+<a id=557></a>  unsigned int <a href="../h_src/58102612.htm" class="localvar">oldasize</a> = <a href="../h_src/58115260.htm" class="function">setlimittosize</a>(<a href="../h_src/58103292.htm" class="localvar">t</a>);
+<a id=558></a>  <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58102476.htm" class="localvar">newarray</a>;
+<a id=559></a>  <a  class="comments">/* create new hash part with appropriate size into 'newt' */</a>
+<a id=560></a>  <a href="../h_src/58106556.htm" class="function">setnodevector</a>(<a href="../h_src/58103428.htm" class="localvar">L</a>, &amp;<a href="../h_src/58102748.htm" class="localvar">newt</a>, <a href="../h_src/58103020.htm" class="localvar">nhsize</a>);
+<a id=561></a>  if (<a href="../h_src/58103156.htm" class="localvar">newasize</a> &lt; <a href="../h_src/58102612.htm" class="localvar">oldasize</a>) {  <a  class="comments">/* will array shrink? */</a>
+<a id=562></a>    <a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a> = <a href="../h_src/58103156.htm" class="localvar">newasize</a>;  <a  class="comments">/* pretend array has new size... */</a>
+<a id=563></a>    <a href="../h_src/58104244.htm" class="function">exchangehashpart</a>(<a href="../h_src/58103292.htm" class="localvar">t</a>, &amp;<a href="../h_src/58102748.htm" class="localvar">newt</a>);  <a  class="comments">/* and new hash */</a>
+<a id=564></a>    <a  class="comments">/* re-insert into the new hash the elements from vanishing slice */</a>
+<a id=565></a>    for (<a href="../h_src/58102884.htm" class="localvar">i</a> = <a href="../h_src/58103156.htm" class="localvar">newasize</a>; <a href="../h_src/58102884.htm" class="localvar">i</a> &lt; <a href="../h_src/58102612.htm" class="localvar">oldasize</a>; <a href="../h_src/58102884.htm" class="localvar">i</a>++) {
+<a id=566></a>      if (!<a href="../h_src/57530488.htm" class="macro">isempty</a>(&amp;<a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58102884.htm" class="localvar">i</a>]))
+<a id=567></a>        <a href="../h_src/57616988.htm" class="function">luaH_setint</a>(<a href="../h_src/58103428.htm" class="localvar">L</a>, <a href="../h_src/58103292.htm" class="localvar">t</a>, <a href="../h_src/58102884.htm" class="localvar">i</a> + 1, &amp;<a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58102884.htm" class="localvar">i</a>]);
+    }
+<a id=569></a>    <a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a> = <a href="../h_src/58102612.htm" class="localvar">oldasize</a>;  <a  class="comments">/* restore current size... */</a>
+<a id=570></a>    <a href="../h_src/58104244.htm" class="function">exchangehashpart</a>(<a href="../h_src/58103292.htm" class="localvar">t</a>, &amp;<a href="../h_src/58102748.htm" class="localvar">newt</a>);  <a  class="comments">/* and hash (in case of errors) */</a>
+  }
+<a id=572></a>  <a  class="comments">/* allocate new array */</a>
+<a id=573></a>  <a href="../h_src/58102476.htm" class="localvar">newarray</a> = <a href="../h_src/57657244.htm" class="macro">luaM_reallocvector</a>(<a href="../h_src/58103428.htm" class="localvar">L</a>, <a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>, <a href="../h_src/58102612.htm" class="localvar">oldasize</a>, <a href="../h_src/58103156.htm" class="localvar">newasize</a>, <a href="../h_src/57535384.htm" class="type">TValue</a>);
+<a id=574></a>  if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/58102476.htm" class="localvar">newarray</a> == NULL &amp;&amp; <a href="../h_src/58103156.htm" class="localvar">newasize</a> &gt; 0)) {  <a  class="comments">/* allocation failed? */</a>
+<a id=575></a>    <a href="../h_src/58111044.htm" class="function">freehash</a>(<a href="../h_src/58103428.htm" class="localvar">L</a>, &amp;<a href="../h_src/58102748.htm" class="localvar">newt</a>);  <a  class="comments">/* release new hash part */</a>
+<a id=576></a>    <a href="../h_src/57496556.htm" class="macro">luaM_error</a>(<a href="../h_src/58103428.htm" class="localvar">L</a>);  <a  class="comments">/* raise error (with array unchanged) */</a>
+  }
+<a id=578></a>  <a  class="comments">/* allocation ok; initialize new part of the array */</a>
+<a id=579></a>  <a href="../h_src/58104244.htm" class="function">exchangehashpart</a>(<a href="../h_src/58103292.htm" class="localvar">t</a>, &amp;<a href="../h_src/58102748.htm" class="localvar">newt</a>);  <a  class="comments">/* 't' has the new hash ('newt' has the old) */</a>
+<a id=580></a>  <a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a> = <a href="../h_src/58102476.htm" class="localvar">newarray</a>;  <a  class="comments">/* set new array part */</a>
+<a id=581></a>  <a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a> = <a href="../h_src/58103156.htm" class="localvar">newasize</a>;
+<a id=582></a>  for (<a href="../h_src/58102884.htm" class="localvar">i</a> = <a href="../h_src/58102612.htm" class="localvar">oldasize</a>; <a href="../h_src/58102884.htm" class="localvar">i</a> &lt; <a href="../h_src/58103156.htm" class="localvar">newasize</a>; <a href="../h_src/58102884.htm" class="localvar">i</a>++)  <a  class="comments">/* clear new slice of the array */</a>
+<a id=583></a>     <a href="../h_src/57530216.htm" class="macro">setempty</a>(&amp;<a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58102884.htm" class="localvar">i</a>]);
+<a id=584></a>  <a  class="comments">/* re-insert elements from old hash part into new parts */</a>
+<a id=585></a>  <a href="../h_src/58105604.htm" class="function">reinsert</a>(<a href="../h_src/58103428.htm" class="localvar">L</a>, &amp;<a href="../h_src/58102748.htm" class="localvar">newt</a>, <a href="../h_src/58103292.htm" class="localvar">t</a>);  <a  class="comments">/* 'newt' now has the old hash */</a>
+<a id=586></a>  <a href="../h_src/58111044.htm" class="function">freehash</a>(<a href="../h_src/58103428.htm" class="localvar">L</a>, &amp;<a href="../h_src/58102748.htm" class="localvar">newt</a>);  <a  class="comments">/* free old hash part */</a>
+}
+
+
+<a id=590></a>void <a href="../h_src/57616376.htm" class="function">luaH_resizearray</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58102340.htm" class="localvar">L</a>, <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58102204.htm" class="localvar">t</a>, unsigned int <a href="../h_src/58102068.htm" class="localvar">nasize</a>) {
+<a id=591></a>  int <a href="../h_src/58101932.htm" class="localvar">nsize</a> = <a href="../h_src/57617328.htm" class="macro">allocsizenode</a>(<a href="../h_src/58102204.htm" class="localvar">t</a>);
+<a id=592></a>  <a href="../h_src/57616444.htm" class="function">luaH_resize</a>(<a href="../h_src/58102340.htm" class="localvar">L</a>, <a href="../h_src/58102204.htm" class="localvar">t</a>, <a href="../h_src/58102068.htm" class="localvar">nasize</a>, <a href="../h_src/58101932.htm" class="localvar">nsize</a>);
+}
+
+<a id=595></a><a  class="comments">/*</a>
+<a id=596></a><a  class="comments">** nums[i] = number of keys 'k' where 2^(i - 1) &lt; k &lt;= 2^i</a>
+<a id=597></a><a  class="comments">*/</a>
+<a id=598></a>static void <a href="../h_src/58101796.htm" class="function">rehash</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58101660.htm" class="localvar">L</a>, <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58101524.htm" class="localvar">t</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58101388.htm" class="localvar">ek</a>) {
+<a id=599></a>  unsigned int <a href="../h_src/58101252.htm" class="localvar">asize</a>;  <a  class="comments">/* optimal size for array part */</a>
+<a id=600></a>  unsigned int <a href="../h_src/58101116.htm" class="localvar">na</a>;  <a  class="comments">/* number of keys in the array part */</a>
+<a id=601></a>  unsigned int <a href="../h_src/58100980.htm" class="localvar">nums</a>[<a href="../h_src/58121584.htm" class="macro">MAXABITS</a> + 1];
+<a id=602></a>  int <a href="../h_src/58100844.htm" class="localvar">i</a>;
+<a id=603></a>  int <a href="../h_src/58100708.htm" class="localvar">totaluse</a>;
+<a id=604></a>  for (<a href="../h_src/58100844.htm" class="localvar">i</a> = 0; <a href="../h_src/58100844.htm" class="localvar">i</a> &lt;= <a href="../h_src/58121584.htm" class="macro">MAXABITS</a>; <a href="../h_src/58100844.htm" class="localvar">i</a>++) <a href="../h_src/58100980.htm" class="localvar">nums</a>[<a href="../h_src/58100844.htm" class="localvar">i</a>] = 0;  <a  class="comments">/* reset counts */</a>
+<a id=605></a>  <a href="../h_src/58115260.htm" class="function">setlimittosize</a>(<a href="../h_src/58101524.htm" class="localvar">t</a>);
+<a id=606></a>  <a href="../h_src/58101116.htm" class="localvar">na</a> = <a href="../h_src/58109004.htm" class="function">numusearray</a>(<a href="../h_src/58101524.htm" class="localvar">t</a>, <a href="../h_src/58100980.htm" class="localvar">nums</a>);  <a  class="comments">/* count keys in array part */</a>
+<a id=607></a>  <a href="../h_src/58100708.htm" class="localvar">totaluse</a> = <a href="../h_src/58101116.htm" class="localvar">na</a>;  <a  class="comments">/* all those keys are integer keys */</a>
+<a id=608></a>  <a href="../h_src/58100708.htm" class="localvar">totaluse</a> += <a href="../h_src/58107644.htm" class="function">numusehash</a>(<a href="../h_src/58101524.htm" class="localvar">t</a>, <a href="../h_src/58100980.htm" class="localvar">nums</a>, &amp;<a href="../h_src/58101116.htm" class="localvar">na</a>);  <a  class="comments">/* count keys in hash part */</a>
+<a id=609></a>  <a  class="comments">/* count extra key */</a>
+<a id=610></a>  if (<a href="../h_src/57526544.htm" class="macro">ttisinteger</a>(<a href="../h_src/58101388.htm" class="localvar">ek</a>))
+<a id=611></a>    <a href="../h_src/58101116.htm" class="localvar">na</a> += <a href="../h_src/58109548.htm" class="function">countint</a>(<a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58101388.htm" class="localvar">ek</a>), <a href="../h_src/58100980.htm" class="localvar">nums</a>);
+<a id=612></a>  <a href="../h_src/58100708.htm" class="localvar">totaluse</a>++;
+<a id=613></a>  <a  class="comments">/* compute new size for array part */</a>
+<a id=614></a>  <a href="../h_src/58101252.htm" class="localvar">asize</a> = <a href="../h_src/58110636.htm" class="function">computesizes</a>(<a href="../h_src/58100980.htm" class="localvar">nums</a>, &amp;<a href="../h_src/58101116.htm" class="localvar">na</a>);
+<a id=615></a>  <a  class="comments">/* resize the table to new computed sizes */</a>
+<a id=616></a>  <a href="../h_src/57616444.htm" class="function">luaH_resize</a>(<a href="../h_src/58101660.htm" class="localvar">L</a>, <a href="../h_src/58101524.htm" class="localvar">t</a>, <a href="../h_src/58101252.htm" class="localvar">asize</a>, <a href="../h_src/58100708.htm" class="localvar">totaluse</a> - <a href="../h_src/58101116.htm" class="localvar">na</a>);
+}
+
+
+
+<a id=621></a><a  class="comments">/*</a>
+<a id=622></a><a  class="comments">** }=============================================================</a>
+<a id=623></a><a  class="comments">*/</a>
+
+
+<a id=626></a><a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/57616512.htm" class="function">luaH_new</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58100572.htm" class="localvar">L</a>) {
+<a id=627></a>  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/58100436.htm" class="localvar">o</a> = <a href="../h_src/57620592.htm" class="function">luaC_newobj</a>(<a href="../h_src/58100572.htm" class="localvar">L</a>, <a href="../h_src/57507436.htm" class="macro">LUA_VTABLE</a>, sizeof(<a href="../h_src/57504308.htm" class="type">Table</a>));
+<a id=628></a>  <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58100300.htm" class="localvar">t</a> = <a href="../h_src/57639428.htm" class="macro">gco2t</a>(<a href="../h_src/58100436.htm" class="localvar">o</a>);
+<a id=629></a>  <a href="../h_src/58100300.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504444.htm" class="variable">metatable</a> = NULL;
+<a id=630></a>  <a href="../h_src/58100300.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504920.htm" class="variable">flags</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/57498936.htm" class="macro">maskflags</a>);  <a  class="comments">/* table has no metamethod fields */</a>
+<a id=631></a>  <a href="../h_src/58100300.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a> = NULL;
+<a id=632></a>  <a href="../h_src/58100300.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a> = 0;
+<a id=633></a>  <a href="../h_src/58106556.htm" class="function">setnodevector</a>(<a href="../h_src/58100572.htm" class="localvar">L</a>, <a href="../h_src/58100300.htm" class="localvar">t</a>, 0);
+<a id=634></a>  return <a href="../h_src/58100300.htm" class="localvar">t</a>;
+}
+
+
+<a id=638></a>void <a href="../h_src/57616308.htm" class="function">luaH_free</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58100164.htm" class="localvar">L</a>, <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58100028.htm" class="localvar">t</a>) {
+<a id=639></a>  <a href="../h_src/58111044.htm" class="function">freehash</a>(<a href="../h_src/58100164.htm" class="localvar">L</a>, <a href="../h_src/58100028.htm" class="localvar">t</a>);
+<a id=640></a>  <a href="../h_src/57495604.htm" class="macro">luaM_freearray</a>(<a href="../h_src/58100164.htm" class="localvar">L</a>, <a href="../h_src/58100028.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>, <a href="../h_src/57616172.htm" class="function">luaH_realasize</a>(<a href="../h_src/58100028.htm" class="localvar">t</a>));
+<a id=641></a>  <a href="../h_src/57495740.htm" class="macro">luaM_free</a>(<a href="../h_src/58100164.htm" class="localvar">L</a>, <a href="../h_src/58100028.htm" class="localvar">t</a>);
+}
+
+
+<a id=645></a>static <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/58099892.htm" class="function">getfreepos</a> (<a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58099756.htm" class="localvar">t</a>) {
+<a id=646></a>  if (!<a href="../h_src/57617464.htm" class="macro">isdummy</a>(<a href="../h_src/58099756.htm" class="localvar">t</a>)) {
+<a id=647></a>    while (<a href="../h_src/58099756.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504512.htm" class="variable">lastfree</a> &gt; <a href="../h_src/58099756.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504580.htm" class="variable">node</a>) {
+<a id=648></a>      <a href="../h_src/58099756.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504512.htm" class="variable">lastfree</a>--;
+<a id=649></a>      if (<a href="../h_src/57503968.htm" class="macro">keyisnil</a>(<a href="../h_src/58099756.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504512.htm" class="variable">lastfree</a>))
+<a id=650></a>        return <a href="../h_src/58099756.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504512.htm" class="variable">lastfree</a>;
+    }
+  }
+<a id=653></a>  return NULL;  <a  class="comments">/* could not find a free place */</a>
+}
+
+
+
+<a id=658></a><a  class="comments">/*</a>
+<a id=659></a><a  class="comments">** inserts a new key into a hash table; first, check whether key's main</a>
+<a id=660></a><a  class="comments">** position is free. If not, check whether colliding node is in its main</a>
+<a id=661></a><a  class="comments">** position or not: if it is not, move colliding node to an empty place and</a>
+<a id=662></a><a  class="comments">** put new key in its main position; otherwise (colliding node is in its main</a>
+<a id=663></a><a  class="comments">** position), new key goes to an empty position.</a>
+<a id=664></a><a  class="comments">*/</a>
+<a id=665></a>void <a href="../h_src/57616716.htm" class="function">luaH_newkey</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58099620.htm" class="localvar">L</a>, <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58099484.htm" class="localvar">t</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58099348.htm" class="localvar">key</a>, <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58099212.htm" class="localvar">value</a>) {
+<a id=666></a>  <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/58099076.htm" class="localvar">mp</a>;
+<a id=667></a>  <a href="../h_src/57535384.htm" class="type">TValue</a> <a href="../h_src/58098940.htm" class="localvar">aux</a>;
+<a id=668></a>  if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57531168.htm" class="macro">ttisnil</a>(<a href="../h_src/58099348.htm" class="localvar">key</a>)))
+<a id=669></a>    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, &quot;table index is nil&quot;);
+<a id=670></a>  else if (<a href="../h_src/57526680.htm" class="macro">ttisfloat</a>(<a href="../h_src/58099348.htm" class="localvar">key</a>)) {
+<a id=671></a>    <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/58098804.htm" class="localvar">f</a> = <a href="../h_src/57526272.htm" class="macro">fltvalue</a>(<a href="../h_src/58099348.htm" class="localvar">key</a>);
+<a id=672></a>    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/58098668.htm" class="localvar">k</a>;
+<a id=673></a>    if (<a href="../h_src/57611208.htm" class="function">luaV_flttointeger</a>(<a href="../h_src/58098804.htm" class="localvar">f</a>, &amp;<a href="../h_src/58098668.htm" class="localvar">k</a>, <a href="../h_src/57613520.htm" class="variable">F2Ieq</a>)) {  <a  class="comments">/* does key fit in an integer? */</a>
+<a id=674></a>      <a href="../h_src/57525456.htm" class="macro">setivalue</a>(&amp;<a href="../h_src/58098940.htm" class="localvar">aux</a>, <a href="../h_src/58098668.htm" class="localvar">k</a>);
+<a id=675></a>      <a href="../h_src/58099348.htm" class="localvar">key</a> = &amp;<a href="../h_src/58098940.htm" class="localvar">aux</a>;  <a  class="comments">/* insert it as an integer */</a>
+    }
+<a id=677></a>    else if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57538784.htm" class="macro">luai_numisnan</a>(<a href="../h_src/58098804.htm" class="localvar">f</a>)))
+<a id=678></a>      <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, &quot;table index is NaN&quot;);
+  }
+<a id=680></a>  if (<a href="../h_src/57531168.htm" class="macro">ttisnil</a>(<a href="../h_src/58099212.htm" class="localvar">value</a>))
+<a id=681></a>    return;  <a  class="comments">/* do not insert nil values */</a>
+<a id=682></a>  <a href="../h_src/58099076.htm" class="localvar">mp</a> = <a href="../h_src/58118660.htm" class="function">mainpositionTV</a>(<a href="../h_src/58099484.htm" class="localvar">t</a>, <a href="../h_src/58099348.htm" class="localvar">key</a>);
+<a id=683></a>  if (!<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>)) || <a href="../h_src/57617464.htm" class="macro">isdummy</a>(<a href="../h_src/58099484.htm" class="localvar">t</a>)) {  <a  class="comments">/* main position is taken? */</a>
+<a id=684></a>    <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/58098396.htm" class="localvar">othern</a>;
+<a id=685></a>    <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/58098260.htm" class="localvar">f</a> = <a href="../h_src/58099892.htm" class="function">getfreepos</a>(<a href="../h_src/58099484.htm" class="localvar">t</a>);  <a  class="comments">/* get a free place */</a>
+<a id=686></a>    if (<a href="../h_src/58098260.htm" class="localvar">f</a> == NULL) {  <a  class="comments">/* cannot find a free place? */</a>
+<a id=687></a>      <a href="../h_src/58101796.htm" class="function">rehash</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, <a href="../h_src/58099484.htm" class="localvar">t</a>, <a href="../h_src/58099348.htm" class="localvar">key</a>);  <a  class="comments">/* grow table */</a>
+<a id=688></a>      <a  class="comments">/* whatever called 'newkey' takes care of TM cache */</a>
+<a id=689></a>      <a href="../h_src/57616648.htm" class="function">luaH_set</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, <a href="../h_src/58099484.htm" class="localvar">t</a>, <a href="../h_src/58099348.htm" class="localvar">key</a>, <a href="../h_src/58099212.htm" class="localvar">value</a>);  <a  class="comments">/* insert key into grown table */</a>
+      return;
+    }
+<a id=692></a>    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!<a href="../h_src/57617464.htm" class="macro">isdummy</a>(t));
+<a id=693></a>    <a href="../h_src/58098396.htm" class="localvar">othern</a> = <a href="../h_src/58117300.htm" class="function">mainpositionfromnode</a>(<a href="../h_src/58099484.htm" class="localvar">t</a>, <a href="../h_src/58099076.htm" class="localvar">mp</a>);
+<a id=694></a>    if (<a href="../h_src/58098396.htm" class="localvar">othern</a> != <a href="../h_src/58099076.htm" class="localvar">mp</a>) {  <a  class="comments">/* is colliding node out of its main position? */</a>
+<a id=695></a>      <a  class="comments">/* yes; move colliding node into free position */</a>
+<a id=696></a>      while (<a href="../h_src/58098396.htm" class="localvar">othern</a> + <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58098396.htm" class="localvar">othern</a>) != <a href="../h_src/58099076.htm" class="localvar">mp</a>)  <a  class="comments">/* find previous */</a>
+<a id=697></a>        <a href="../h_src/58098396.htm" class="localvar">othern</a> += <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58098396.htm" class="localvar">othern</a>);
+<a id=698></a>      <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58098396.htm" class="localvar">othern</a>) = <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/58098260.htm" class="localvar">f</a> - <a href="../h_src/58098396.htm" class="localvar">othern</a>);  <a  class="comments">/* rechain to point to 'f' */</a>
+<a id=699></a>      *<a href="../h_src/58098260.htm" class="localvar">f</a> = *<a href="../h_src/58099076.htm" class="localvar">mp</a>;  <a  class="comments">/* copy colliding node into free pos. (mp-&gt;next also goes) */</a>
+<a id=700></a>      if (<a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>) != 0) {
+<a id=701></a>        <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58098260.htm" class="localvar">f</a>) += <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a> - <a href="../h_src/58098260.htm" class="localvar">f</a>);  <a  class="comments">/* correct 'next' */</a><a href="../h_src/57506280.htm" class="variable">next</a>' */
+<a id=702></a>        <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>) = 0;  <a  class="comments">/* now 'mp' is free */</a>
+      }
+<a id=704></a>      <a href="../h_src/57530216.htm" class="macro">setempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>));
+    }
+<a id=706></a>    else {  <a  class="comments">/* colliding node is in its own main position */</a>
+<a id=707></a>      <a  class="comments">/* new node will go into free position */</a>
+<a id=708></a>      if (<a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>) != 0)
+<a id=709></a>        <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58098260.htm" class="localvar">f</a>) = <a href="../h_src/57547216.htm" class="macro">cast_int</a>((<a href="../h_src/58099076.htm" class="localvar">mp</a> + <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>)) - <a href="../h_src/58098260.htm" class="localvar">f</a>);  <a  class="comments">/* chain new position */</a>
+<a id=710></a>      else <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57617736.htm" class="macro">gnext</a>(f) == 0);
+<a id=711></a>      <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>) = <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/58098260.htm" class="localvar">f</a> - <a href="../h_src/58099076.htm" class="localvar">mp</a>);
+<a id=712></a>      <a href="../h_src/58099076.htm" class="localvar">mp</a> = <a href="../h_src/58098260.htm" class="localvar">f</a>;
+    }
+  }
+<a id=715></a>  <a href="../h_src/57505940.htm" class="macro">setnodekey</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, <a href="../h_src/58099076.htm" class="localvar">mp</a>, <a href="../h_src/58099348.htm" class="localvar">key</a>);
+<a id=716></a>  <a href="../h_src/57621068.htm" class="macro">luaC_barrierback</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, <a href="../h_src/57638884.htm" class="macro">obj2gco</a>(<a href="../h_src/58099484.htm" class="localvar">t</a>), <a href="../h_src/58099348.htm" class="localvar">key</a>);
+<a id=717></a>  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(mp)));
+<a id=718></a>  <a href="../h_src/57533004.htm" class="macro">setobj2t</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, <a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>), <a href="../h_src/58099212.htm" class="localvar">value</a>);
+}
+
+
+<a id=722></a><a  class="comments">/*</a>
+<a id=723></a><a  class="comments">** Search function for integers. If integer is inside 'alimit', get it</a>
+<a id=724></a><a  class="comments">** directly from the array part. Otherwise, if 'alimit' is not equal to</a>
+<a id=725></a><a  class="comments">** the real size of the array, key still can be in the array part. In</a>
+<a id=726></a><a  class="comments">** this case, try to avoid a call to 'luaH_realasize' when key is just</a>
+<a id=727></a><a  class="comments">** one more than the limit (so that it can be incremented without</a>
+<a id=728></a><a  class="comments">** changing the real size of the array).</a>
+<a id=729></a><a  class="comments">*/</a>
+<a id=730></a>const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57617056.htm" class="function">luaH_getint</a> (<a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58097580.htm" class="localvar">t</a>, <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/58097444.htm" class="localvar">key</a>) {
+<a id=731></a>  if (<a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/58097444.htm" class="localvar">key</a>) - 1u &lt; <a href="../h_src/58097580.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a>)  <a  class="comments">/* 'key' in [1, t-&gt;alimit]? */</a>
+<a id=732></a>    return &amp;<a href="../h_src/58097580.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58097444.htm" class="localvar">key</a> - 1];
+<a id=733></a>  else if (!<a href="../h_src/58115940.htm" class="macro">limitequalsasize</a>(<a href="../h_src/58097580.htm" class="localvar">t</a>) &amp;&amp;  <a  class="comments">/* key still may be in the array part? */</a>
+<a id=734></a>           (<a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/58097444.htm" class="localvar">key</a>) == <a href="../h_src/58097580.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a> + 1 ||
+<a id=735></a>            <a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/58097444.htm" class="localvar">key</a>) - 1u &lt; <a href="../h_src/57616172.htm" class="function">luaH_realasize</a>(<a href="../h_src/58097580.htm" class="localvar">t</a>))) {
+<a id=736></a>    <a href="../h_src/58097580.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a> = <a href="../h_src/57547080.htm" class="macro">cast_uint</a>(<a href="../h_src/58097444.htm" class="localvar">key</a>);  <a  class="comments">/* probably '#t' is here now */</a>
+<a id=737></a>    return &amp;<a href="../h_src/58097580.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58097444.htm" class="localvar">key</a> - 1];
+  }
+  else {
+<a id=740></a>    <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/58097308.htm" class="localvar">n</a> = <a href="../h_src/58120088.htm" class="function">hashint</a>(<a href="../h_src/58097580.htm" class="localvar">t</a>, <a href="../h_src/58097444.htm" class="localvar">key</a>);
+<a id=741></a>    for (;;) {  <a  class="comments">/* check whether 'key' is somewhere in the chain */</a>
+<a id=742></a>      if (<a href="../h_src/57503832.htm" class="macro">keyisinteger</a>(<a href="../h_src/58097308.htm" class="localvar">n</a>) &amp;&amp; <a href="../h_src/57503696.htm" class="macro">keyival</a>(<a href="../h_src/58097308.htm" class="localvar">n</a>) == <a href="../h_src/58097444.htm" class="localvar">key</a>)
+<a id=743></a>        return <a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58097308.htm" class="localvar">n</a>);  <a  class="comments">/* that's it */</a>
+      else {
+<a id=745></a>        int <a href="../h_src/58097172.htm" class="localvar">nx</a> = <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58097308.htm" class="localvar">n</a>);
+<a id=746></a>        if (<a href="../h_src/58097172.htm" class="localvar">nx</a> == 0) break;
+<a id=747></a>        <a href="../h_src/58097308.htm" class="localvar">n</a> += <a href="../h_src/58097172.htm" class="localvar">nx</a>;
+      }
+    }
+<a id=750></a>    return &amp;<a href="../h_src/58120156.htm" class="variable">absentkey</a>;
+  }
+}
+
+
+<a id=755></a><a  class="comments">/*</a>
+<a id=756></a><a  class="comments">** search function for short strings</a>
+<a id=757></a><a  class="comments">*/</a>
+<a id=758></a>const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57616920.htm" class="function">luaH_getshortstr</a> (<a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58097036.htm" class="localvar">t</a>, <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/58096900.htm" class="localvar">key</a>) {
+<a id=759></a>  <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/58096764.htm" class="localvar">n</a> = <a href="../h_src/58120768.htm" class="macro">hashstr</a>(<a href="../h_src/58097036.htm" class="localvar">t</a>, <a href="../h_src/58096900.htm" class="localvar">key</a>);
+<a id=760></a>  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(key-&gt;tt == <a href="../h_src/57525184.htm" class="macro">LUA_VSHRSTR</a>);
+<a id=761></a>  for (;;) {  <a  class="comments">/* check whether 'key' is somewhere in the chain */</a>
+<a id=762></a>    if (<a href="../h_src/57503560.htm" class="macro">keyisshrstr</a>(<a href="../h_src/58096764.htm" class="localvar">n</a>) &amp;&amp; <a href="../h_src/57619300.htm" class="macro">eqshrstr</a>(<a href="../h_src/57503424.htm" class="macro">keystrval</a>(<a href="../h_src/58096764.htm" class="localvar">n</a>), <a href="../h_src/58096900.htm" class="localvar">key</a>))
+<a id=763></a>      return <a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58096764.htm" class="localvar">n</a>);  <a  class="comments">/* that's it */</a>
+    else {
+<a id=765></a>      int <a href="../h_src/58096628.htm" class="localvar">nx</a> = <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58096764.htm" class="localvar">n</a>);
+<a id=766></a>      if (<a href="../h_src/58096628.htm" class="localvar">nx</a> == 0)
+<a id=767></a>        return &amp;<a href="../h_src/58120156.htm" class="variable">absentkey</a>;  <a  class="comments">/* not found */</a>
+<a id=768></a>      <a href="../h_src/58096764.htm" class="localvar">n</a> += <a href="../h_src/58096628.htm" class="localvar">nx</a>;
+    }
+  }
+}
+
+
+<a id=774></a>const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57616852.htm" class="function">luaH_getstr</a> (<a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58096492.htm" class="localvar">t</a>, <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/58096356.htm" class="localvar">key</a>) {
+<a id=775></a>  if (<a href="../h_src/58096356.htm" class="localvar">key</a>-&gt;<a href="../h_src/57523620.htm" class="variable">tt</a> == <a href="../h_src/57525184.htm" class="macro">LUA_VSHRSTR</a>)
+<a id=776></a>    return <a href="../h_src/57616920.htm" class="function">luaH_getshortstr</a>(<a href="../h_src/58096492.htm" class="localvar">t</a>, <a href="../h_src/58096356.htm" class="localvar">key</a>);
+<a id=777></a>  else {  <a  class="comments">/* for long strings, use generic case */</a>
+<a id=778></a>    <a href="../h_src/57535384.htm" class="type">TValue</a> <a href="../h_src/58096220.htm" class="localvar">ko</a>;
+<a id=779></a>    <a href="../h_src/57524232.htm" class="macro">setsvalue</a>(<a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57444252.htm" class="type">lua_State</a> *, NULL), &amp;<a href="../h_src/58096220.htm" class="localvar">ko</a>, <a href="../h_src/58096356.htm" class="localvar">key</a>);
+<a id=780></a>    return <a href="../h_src/58114852.htm" class="function">getgeneric</a>(<a href="../h_src/58096492.htm" class="localvar">t</a>, &amp;<a href="../h_src/58096220.htm" class="localvar">ko</a>, 0);
+  }
+}
+
+
+<a id=785></a><a  class="comments">/*</a>
+<a id=786></a><a  class="comments">** main search function</a>
+<a id=787></a><a  class="comments">*/</a>
+<a id=788></a>const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57616784.htm" class="function">luaH_get</a> (<a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58095812.htm" class="localvar">t</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58095676.htm" class="localvar">key</a>) {
+<a id=789></a>  switch (<a href="../h_src/57534636.htm" class="macro">ttypetag</a>(<a href="../h_src/58095676.htm" class="localvar">key</a>)) {
+<a id=790></a>    case <a href="../h_src/57525184.htm" class="macro">LUA_VSHRSTR</a>: return <a href="../h_src/57616920.htm" class="function">luaH_getshortstr</a>(<a href="../h_src/58095812.htm" class="localvar">t</a>, <a href="../h_src/57524368.htm" class="macro">tsvalue</a>(<a href="../h_src/58095676.htm" class="localvar">key</a>));
+<a id=791></a>    case <a href="../h_src/57527088.htm" class="macro">LUA_VNUMINT</a>: return <a href="../h_src/57617056.htm" class="function">luaH_getint</a>(<a href="../h_src/58095812.htm" class="localvar">t</a>, <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58095676.htm" class="localvar">key</a>));
+<a id=792></a>    case <a href="../h_src/57531576.htm" class="macro">LUA_VNIL</a>: return &amp;<a href="../h_src/58120156.htm" class="variable">absentkey</a>;
+<a id=793></a>    case <a href="../h_src/57526952.htm" class="macro">LUA_VNUMFLT</a>: {
+<a id=794></a>      <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/58095540.htm" class="localvar">k</a>;
+<a id=795></a>      if (<a href="../h_src/57611208.htm" class="function">luaV_flttointeger</a>(<a href="../h_src/57526272.htm" class="macro">fltvalue</a>(<a href="../h_src/58095676.htm" class="localvar">key</a>), &amp;<a href="../h_src/58095540.htm" class="localvar">k</a>, <a href="../h_src/57613520.htm" class="variable">F2Ieq</a>)) <a  class="comments">/* integral index? */</a>
+<a id=796></a>        return <a href="../h_src/57617056.htm" class="function">luaH_getint</a>(<a href="../h_src/58095812.htm" class="localvar">t</a>, <a href="../h_src/58095540.htm" class="localvar">k</a>);  <a  class="comments">/* use specialized version */</a>
+<a id=797></a>      <a  class="comments">/* else... */</a>
+<a id=798></a>    }  <a  class="comments">/* FALLTHROUGH */</a>
+    default:
+<a id=800></a>      return <a href="../h_src/58114852.htm" class="function">getgeneric</a>(<a href="../h_src/58095812.htm" class="localvar">t</a>, <a href="../h_src/58095676.htm" class="localvar">key</a>, 0);
+  }
+}
+
+
+<a id=805></a><a  class="comments">/*</a>
+<a id=806></a><a  class="comments">** Finish a raw &quot;set table&quot; operation, where 'slot' is where the value</a>
+<a id=807></a><a  class="comments">** should have been (the result of a previous &quot;get table&quot;).</a>
+<a id=808></a><a  class="comments">** Beware: when using this function you probably need to check a GC</a>
+<a id=809></a><a  class="comments">** barrier and invalidate the TM cache.</a>
+<a id=810></a><a  class="comments">*/</a>
+<a id=811></a>void <a href="../h_src/57616580.htm" class="function">luaH_finishset</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58095404.htm" class="localvar">L</a>, <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58095268.htm" class="localvar">t</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58095132.htm" class="localvar">key</a>,
+<a id=812></a>                                   const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58094996.htm" class="localvar">slot</a>, <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58094860.htm" class="localvar">value</a>) {
+<a id=813></a>  if (<a href="../h_src/57530760.htm" class="macro">isabstkey</a>(<a href="../h_src/58094996.htm" class="localvar">slot</a>))
+<a id=814></a>    <a href="../h_src/57616716.htm" class="function">luaH_newkey</a>(<a href="../h_src/58095404.htm" class="localvar">L</a>, <a href="../h_src/58095268.htm" class="localvar">t</a>, <a href="../h_src/58095132.htm" class="localvar">key</a>, <a href="../h_src/58094860.htm" class="localvar">value</a>);
+  else
+<a id=816></a>    <a href="../h_src/57533004.htm" class="macro">setobj2t</a>(<a href="../h_src/58095404.htm" class="localvar">L</a>, <a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57535384.htm" class="type">TValue</a> *, <a href="../h_src/58094996.htm" class="localvar">slot</a>), <a href="../h_src/58094860.htm" class="localvar">value</a>);
+}
+
+
+<a id=820></a><a  class="comments">/*</a>
+<a id=821></a><a  class="comments">** beware: when using this function you probably need to check a GC</a>
+<a id=822></a><a  class="comments">** barrier and invalidate the TM cache.</a>
+<a id=823></a><a  class="comments">*/</a>
+<a id=824></a>void <a href="../h_src/57616648.htm" class="function">luaH_set</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58094452.htm" class="localvar">L</a>, <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58094316.htm" class="localvar">t</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58094180.htm" class="localvar">key</a>, <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58094044.htm" class="localvar">value</a>) {
+<a id=825></a>  const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58093908.htm" class="localvar">slot</a> = <a href="../h_src/57616784.htm" class="function">luaH_get</a>(<a href="../h_src/58094316.htm" class="localvar">t</a>, <a href="../h_src/58094180.htm" class="localvar">key</a>);
+<a id=826></a>  <a href="../h_src/57616580.htm" class="function">luaH_finishset</a>(<a href="../h_src/58094452.htm" class="localvar">L</a>, <a href="../h_src/58094316.htm" class="localvar">t</a>, <a href="../h_src/58094180.htm" class="localvar">key</a>, <a href="../h_src/58093908.htm" class="localvar">slot</a>, <a href="../h_src/58094044.htm" class="localvar">value</a>);
+}
+
+
+<a id=830></a>void <a href="../h_src/57616988.htm" class="function">luaH_setint</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58093772.htm" class="localvar">L</a>, <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58093636.htm" class="localvar">t</a>, <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/58093500.htm" class="localvar">key</a>, <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58093364.htm" class="localvar">value</a>) {
+<a id=831></a>  const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58093228.htm" class="localvar">p</a> = <a href="../h_src/57617056.htm" class="function">luaH_getint</a>(<a href="../h_src/58093636.htm" class="localvar">t</a>, <a href="../h_src/58093500.htm" class="localvar">key</a>);
+<a id=832></a>  if (<a href="../h_src/57530760.htm" class="macro">isabstkey</a>(<a href="../h_src/58093228.htm" class="localvar">p</a>)) {
+<a id=833></a>    <a href="../h_src/57535384.htm" class="type">TValue</a> <a href="../h_src/58093092.htm" class="localvar">k</a>;
+<a id=834></a>    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(&amp;<a href="../h_src/58093092.htm" class="localvar">k</a>, <a href="../h_src/58093500.htm" class="localvar">key</a>);
+<a id=835></a>    <a href="../h_src/57616716.htm" class="function">luaH_newkey</a>(<a href="../h_src/58093772.htm" class="localvar">L</a>, <a href="../h_src/58093636.htm" class="localvar">t</a>, &amp;<a href="../h_src/58093092.htm" class="localvar">k</a>, <a href="../h_src/58093364.htm" class="localvar">value</a>);
+  }
+  else
+<a id=838></a>    <a href="../h_src/57533004.htm" class="macro">setobj2t</a>(<a href="../h_src/58093772.htm" class="localvar">L</a>, <a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57535384.htm" class="type">TValue</a> *, <a href="../h_src/58093228.htm" class="localvar">p</a>), <a href="../h_src/58093364.htm" class="localvar">value</a>);
+}
+
+
+<a id=842></a><a  class="comments">/*</a>
+<a id=843></a><a  class="comments">** Try to find a boundary in the hash part of table 't'. From the</a>
+<a id=844></a><a  class="comments">** caller, we know that 'j' is zero or present and that 'j + 1' is</a>
+<a id=845></a><a  class="comments">** present. We want to find a larger key that is absent from the</a>
+<a id=846></a><a  class="comments">** table, so that we can do a binary search between the two keys to</a>
+<a id=847></a><a  class="comments">** find a boundary. We keep doubling 'j' until we get an absent index.</a>
+<a id=848></a><a  class="comments">** If the doubling would overflow, we try LUA_MAXINTEGER. If it is</a>
+<a id=849></a><a  class="comments">** absent, we are ready for the binary search. ('j', being max integer,</a>
+<a id=850></a><a  class="comments">** is larger or equal to 'i', but it cannot be equal because it is</a>
+<a id=851></a><a  class="comments">** absent while 'i' is present; so 'j &gt; i'.) Otherwise, 'j' is a</a>
+<a id=852></a><a  class="comments">** boundary. ('j + 1' cannot be a present integer key because it is</a>
+<a id=853></a><a  class="comments">** not a valid integer in Lua.)</a>
+<a id=854></a><a  class="comments">*/</a>
+<a id=855></a>static <a href="../h_src/57438132.htm" class="function">lua_Unsigned</a> hash_search (<a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58092548.htm" class="localvar">t</a>, lua_Unsigned <a href="../h_src/58092412.htm" class="localvar">j</a>) {
+<a id=856></a>  <a href="../h_src/57438132.htm" class="function">lua_Unsigned</a> <a href="../h_src/58092276.htm" class="localvar">i</a>;
+<a id=857></a>  if (<a href="../h_src/58092412.htm" class="localvar">j</a> == 0) <a href="../h_src/58092412.htm" class="localvar">j</a>++;  <a  class="comments">/* the caller ensures 'j + 1' is present */</a>
+  do {
+<a id=859></a>    <a href="../h_src/58092276.htm" class="localvar">i</a> = <a href="../h_src/58092412.htm" class="localvar">j</a>;  <a  class="comments">/* 'i' is a present index */</a>
+<a id=860></a>    if (<a href="../h_src/58092412.htm" class="localvar">j</a> &lt;= <a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/57450100.htm" class="macro">LUA_MAXINTEGER</a>) / 2)
+<a id=861></a>      <a href="../h_src/58092412.htm" class="localvar">j</a> *= 2;
+    else {
+<a id=863></a>      <a href="../h_src/58092412.htm" class="localvar">j</a> = <a href="../h_src/57450100.htm" class="macro">LUA_MAXINTEGER</a>;
+<a id=864></a>      if (<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617056.htm" class="function">luaH_getint</a>(<a href="../h_src/58092548.htm" class="localvar">t</a>, <a href="../h_src/58092412.htm" class="localvar">j</a>)))  <a  class="comments">/* t[j] not present? */</a>
+<a id=865></a>        break;  <a  class="comments">/* 'j' now is an absent index */</a>
+<a id=866></a>      else  <a  class="comments">/* weird case */</a>
+<a id=867></a>        return <a href="../h_src/58092412.htm" class="localvar">j</a>;  <a  class="comments">/* well, max integer is a boundary... */</a>
+    }
+<a id=869></a>  } while (!<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617056.htm" class="function">luaH_getint</a>(<a href="../h_src/58092548.htm" class="localvar">t</a>, <a href="../h_src/58092412.htm" class="localvar">j</a>)));  <a  class="comments">/* repeat until an absent t[j] */</a>
+<a id=870></a>  <a  class="comments">/* i &lt; j  &amp;&amp;  t[i] present  &amp;&amp;  t[j] absent */</a>
+<a id=871></a>  while (<a href="../h_src/58092412.htm" class="localvar">j</a> - <a href="../h_src/58092276.htm" class="localvar">i</a> &gt; 1u) {  <a  class="comments">/* do a binary search between them */</a>
+<a id=872></a>    <a href="../h_src/57438132.htm" class="function">lua_Unsigned</a> <a href="../h_src/58092140.htm" class="localvar">m</a> = (<a href="../h_src/58092276.htm" class="localvar">i</a> + <a href="../h_src/58092412.htm" class="localvar">j</a>) / 2;
+<a id=873></a>    if (<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617056.htm" class="function">luaH_getint</a>(<a href="../h_src/58092548.htm" class="localvar">t</a>, <a href="../h_src/58092140.htm" class="localvar">m</a>))) <a href="../h_src/58092412.htm" class="localvar">j</a> = <a href="../h_src/58092140.htm" class="localvar">m</a>;
+<a id=874></a>    else <a href="../h_src/58092276.htm" class="localvar">i</a> = <a href="../h_src/58092140.htm" class="localvar">m</a>;
+  }
+<a id=876></a>  return <a href="../h_src/58092276.htm" class="localvar">i</a>;
+}
+
+
+<a id=880></a>static unsigned int <a href="../h_src/58092004.htm" class="function">binsearch</a> (const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58091868.htm" class="localvar">array</a>, unsigned int <a href="../h_src/58091732.htm" class="localvar">i</a>,
+<a id=881></a>                                                    unsigned int <a href="../h_src/58091596.htm" class="localvar">j</a>) {
+<a id=882></a>  while (<a href="../h_src/58091596.htm" class="localvar">j</a> - <a href="../h_src/58091732.htm" class="localvar">i</a> &gt; 1u) {  <a  class="comments">/* binary search */</a>
+<a id=883></a>    unsigned int <a href="../h_src/58091460.htm" class="localvar">m</a> = (<a href="../h_src/58091732.htm" class="localvar">i</a> + <a href="../h_src/58091596.htm" class="localvar">j</a>) / 2;
+<a id=884></a>    if (<a href="../h_src/57530488.htm" class="macro">isempty</a>(&amp;<a href="../h_src/58091868.htm" class="localvar">array</a>[<a href="../h_src/58091460.htm" class="localvar">m</a> - 1])) <a href="../h_src/58091596.htm" class="localvar">j</a> = <a href="../h_src/58091460.htm" class="localvar">m</a>;
+<a id=885></a>    else <a href="../h_src/58091732.htm" class="localvar">i</a> = <a href="../h_src/58091460.htm" class="localvar">m</a>;
+  }
+<a id=887></a>  return <a href="../h_src/58091732.htm" class="localvar">i</a>;
+}
+
+
+<a id=891></a><a  class="comments">/*</a>
+<a id=892></a><a  class="comments">** Try to find a boundary in table 't'. (A 'boundary' is an integer index</a>
+<a id=893></a><a  class="comments">** such that t[i] is present and t[i+1] is absent, or 0 if t[1] is absent</a>
+<a id=894></a><a  class="comments">** and 'maxinteger' if t[maxinteger] is present.)</a>
+<a id=895></a><a  class="comments">** (In the next explanation, we use Lua indices, that is, with base 1.</a>
+<a id=896></a><a  class="comments">** The code itself uses base 0 when indexing the array part of the table.)</a>
+<a id=897></a><a  class="comments">** The code starts with 'limit = t-&gt;alimit', a position in the array</a>
+<a id=898></a><a  class="comments">** part that may be a boundary.</a>
+<a id=899></a><a  class="comments">**</a>
+<a id=900></a><a  class="comments">** (1) If 't[limit]' is empty, there must be a boundary before it.</a>
+<a id=901></a><a  class="comments">** As a common case (e.g., after 't[#t]=nil'), check whether 'limit-1'</a>
+<a id=902></a><a  class="comments">** is present. If so, it is a boundary. Otherwise, do a binary search</a>
+<a id=903></a><a  class="comments">** between 0 and limit to find a boundary. In both cases, try to</a>
+<a id=904></a><a  class="comments">** use this boundary as the new 'alimit', as a hint for the next call.</a>
+<a id=905></a><a  class="comments">**</a>
+<a id=906></a><a  class="comments">** (2) If 't[limit]' is not empty and the array has more elements</a>
+<a id=907></a><a  class="comments">** after 'limit', try to find a boundary there. Again, try first</a>
+<a id=908></a><a  class="comments">** the special case (which should be quite frequent) where 'limit+1'</a>
+<a id=909></a><a  class="comments">** is empty, so that 'limit' is a boundary. Otherwise, check the</a>
+<a id=910></a><a  class="comments">** last element of the array part. If it is empty, there must be a</a>
+<a id=911></a><a  class="comments">** boundary between the old limit (present) and the last element</a>
+<a id=912></a><a  class="comments">** (absent), which is found with a binary search. (This boundary always</a>
+<a id=913></a><a  class="comments">** can be a new limit.)</a>
+<a id=914></a><a  class="comments">**</a>
+<a id=915></a><a  class="comments">** (3) The last case is when there are no elements in the array part</a>
+<a id=916></a><a  class="comments">** (limit == 0) or its last element (the new limit) is present.</a>
+<a id=917></a><a  class="comments">** In this case, must check the hash part. If there is no hash part</a>
+<a id=918></a><a  class="comments">** or 'limit+1' is absent, 'limit' is a boundary.  Otherwise, call</a>
+<a id=919></a><a  class="comments">** 'hash_search' to find a boundary in the hash part of the table.</a>
+<a id=920></a><a  class="comments">** (In those cases, the boundary is not inside the array part, and</a>
+<a id=921></a><a  class="comments">** therefore cannot be used as a new limit.)</a>
+<a id=922></a><a  class="comments">*/</a>
+<a id=923></a><a href="../h_src/57438132.htm" class="function">lua_Unsigned</a> <a href="../h_src/57592440.htm" class="function">luaH_getn</a> (<a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58091324.htm" class="localvar">t</a>) {
+<a id=924></a>  unsigned int <a href="../h_src/58091188.htm" class="localvar">limit</a> = <a href="../h_src/58091324.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a>;
+<a id=925></a>  if (<a href="../h_src/58091188.htm" class="localvar">limit</a> &gt; 0 &amp;&amp; <a href="../h_src/57530488.htm" class="macro">isempty</a>(&amp;<a href="../h_src/58091324.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58091188.htm" class="localvar">limit</a> - 1])) {  <a  class="comments">/* (1)? */</a>
+<a id=926></a>    <a  class="comments">/* there must be a boundary before 'limit' */</a>
+<a id=927></a>    if (<a href="../h_src/58091188.htm" class="localvar">limit</a> &gt;= 2 &amp;&amp; !<a href="../h_src/57530488.htm" class="macro">isempty</a>(&amp;<a href="../h_src/58091324.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58091188.htm" class="localvar">limit</a> - 2])) {
+<a id=928></a>      <a  class="comments">/* 'limit - 1' is a boundary; can it be a new limit? */</a>
+<a id=929></a>      if (<a href="../h_src/58115532.htm" class="function">ispow2realasize</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>) &amp;&amp; !<a href="../h_src/57549528.htm" class="macro">ispow2</a>(<a href="../h_src/58091188.htm" class="localvar">limit</a> - 1)) {
+<a id=930></a>        <a href="../h_src/58091324.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a> = <a href="../h_src/58091188.htm" class="localvar">limit</a> - 1;
+<a id=931></a>        <a href="../h_src/57505260.htm" class="macro">setnorealasize</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>);  <a  class="comments">/* now 'alimit' is not the real size */</a>
+      }
+<a id=933></a>      return <a href="../h_src/58091188.htm" class="localvar">limit</a> - 1;
+    }
+<a id=935></a>    else {  <a  class="comments">/* must search for a boundary in [0, limit] */</a>
+<a id=936></a>      unsigned int <a href="../h_src/58091052.htm" class="localvar">boundary</a> = <a href="../h_src/58092004.htm" class="function">binsearch</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>, 0, <a href="../h_src/58091188.htm" class="localvar">limit</a>);
+<a id=937></a>      <a  class="comments">/* can this boundary represent the real size of the array? */</a>
+<a id=938></a>      if (<a href="../h_src/58115532.htm" class="function">ispow2realasize</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>) &amp;&amp; <a href="../h_src/58091052.htm" class="localvar">boundary</a> &gt; <a href="../h_src/57616172.htm" class="function">luaH_realasize</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>) / 2) {
+<a id=939></a>        <a href="../h_src/58091324.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a> = <a href="../h_src/58091052.htm" class="localvar">boundary</a>;  <a  class="comments">/* use it as the new limit */</a>
+<a id=940></a>        <a href="../h_src/57505260.htm" class="macro">setnorealasize</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>);
+      }
+<a id=942></a>      return <a href="../h_src/58091052.htm" class="localvar">boundary</a>;
+    }
+  }
+<a id=945></a>  <a  class="comments">/* 'limit' is zero or present in table */</a>
+<a id=946></a>  if (!<a href="../h_src/58115940.htm" class="macro">limitequalsasize</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>)) {  <a  class="comments">/* (2)? */</a>
+<a id=947></a>    <a  class="comments">/* 'limit' &gt; 0 and array has more elements after 'limit' */</a>
+<a id=948></a>    if (<a href="../h_src/57530488.htm" class="macro">isempty</a>(&amp;<a href="../h_src/58091324.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58091188.htm" class="localvar">limit</a>]))  <a  class="comments">/* 'limit + 1' is empty? */</a>
+<a id=949></a>      return <a href="../h_src/58091188.htm" class="localvar">limit</a>;  <a  class="comments">/* this is the boundary */</a>
+<a id=950></a>    <a  class="comments">/* else, try last element in the array */</a>
+<a id=951></a>    <a href="../h_src/58091188.htm" class="localvar">limit</a> = <a href="../h_src/57616172.htm" class="function">luaH_realasize</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>);
+<a id=952></a>    if (<a href="../h_src/57530488.htm" class="macro">isempty</a>(&amp;<a href="../h_src/58091324.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58091188.htm" class="localvar">limit</a> - 1])) {  <a  class="comments">/* empty? */</a>
+<a id=953></a>      <a  class="comments">/* there must be a boundary in the array after old limit,</a>
+<a id=954></a><a  class="comments">         and it must be a valid new limit */</a>
+<a id=955></a>      unsigned int <a href="../h_src/58090916.htm" class="localvar">boundary</a> = <a href="../h_src/58092004.htm" class="function">binsearch</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>, <a href="../h_src/58091324.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a>, <a href="../h_src/58091188.htm" class="localvar">limit</a>);
+<a id=956></a>      <a href="../h_src/58091324.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a> = <a href="../h_src/58090916.htm" class="localvar">boundary</a>;
+<a id=957></a>      return <a href="../h_src/58090916.htm" class="localvar">boundary</a>;
+    }
+<a id=959></a>    <a  class="comments">/* else, new limit is present in the table; check the hash part */</a>
+  }
+<a id=961></a>  <a  class="comments">/* (3) 'limit' is the last element and either is zero or present in table */</a>
+<a id=962></a>  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(limit == luaH_realasize(t) &amp;&amp;
+<a id=963></a>             (limit == 0 || !<a href="../h_src/57530488.htm" class="macro">isempty</a>(&amp;t-&gt;array[limit - 1])));
+<a id=964></a>  if (<a href="../h_src/57617464.htm" class="macro">isdummy</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>) || <a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617056.htm" class="function">luaH_getint</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>, <a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57442076.htm" class="type">lua_Integer</a>, <a href="../h_src/58091188.htm" class="localvar">limit</a> + 1))))
+<a id=965></a>    return <a href="../h_src/58091188.htm" class="localvar">limit</a>;  <a  class="comments">/* 'limit + 1' is absent */</a>
+<a id=966></a>  else  <a  class="comments">/* 'limit + 1' is also present */</a>
+<a id=967></a>    return <a href="../h_aa/58090780.htm" class="libfunc">hash_search</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>, <a href="../h_src/58091188.htm" class="localvar">limit</a>);
+}
+
+
+
+<a id=972></a>#if defined(<a href="../h_src/57616104.htm" class="macro">LUA_DEBUG</a>)
+
+<a id=974></a><a  class="comments">/* export these functions for the test library */</a>
+
+Node *luaH_mainposition (const Table *t, const TValue *key) {
+  return mainpositionTV(t, key);
+}
+
+#endif
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

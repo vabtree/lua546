@@ -1,0 +1,45 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>checkliteral</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58064736.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58064736.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58064736.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58064736.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58064736.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58064736.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58075888.htm#275" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/58064736.htm" class="function">checkliteral</a> (<a href="../h_src/58074936.htm" class="type">LoadState</a> *<a href="../h_src/58064600.htm" class="localvar">S</a>, const char *<a href="../h_src/58064464.htm" class="localvar">s</a>, const char *<a href="../h_src/58064328.htm" class="localvar">msg</a>) {
+  char <a href="../h_src/58064192.htm" class="localvar">buff</a>[sizeof(<a href="../h_src/57445748.htm" class="macro">LUA_SIGNATURE</a>) + sizeof(<a href="../h_src/57615628.htm" class="macro">LUAC_DATA</a>)]; <a  class="comments">/* larger than both */</a>
+  <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58064056.htm" class="localvar">len</a> = <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/58064464.htm" class="localvar">s</a>);
+  <a href="../h_src/58074392.htm" class="macro">loadVector</a>(<a href="../h_src/58064600.htm" class="localvar">S</a>, <a href="../h_src/58064192.htm" class="localvar">buff</a>, <a href="../h_src/58064056.htm" class="localvar">len</a>);
+  if (<a href="../h_aa/58131444.htm" class="libfunc">memcmp</a>(<a href="../h_src/58064464.htm" class="localvar">s</a>, <a href="../h_src/58064192.htm" class="localvar">buff</a>, <a href="../h_src/58064056.htm" class="localvar">len</a>) != 0)
+    <a href="../h_src/58074868.htm" class="function">error</a>(<a href="../h_src/58064600.htm" class="localvar">S</a>, <a href="../h_src/58064328.htm" class="localvar">msg</a>);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

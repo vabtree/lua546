@@ -1,0 +1,50 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>ifstat</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57994452.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57994452.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57994452.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57994452.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57994452.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57994452.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58057080.htm#1675" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/57994452.htm" class="function">ifstat</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57994316.htm" class="localvar">ls</a>, int <a href="../h_src/57994180.htm" class="localvar">line</a>) {
+  <a  class="comments">/* ifstat -&gt; IF cond THEN block {ELSEIF cond THEN block} [ELSE block] END */</a>
+  <a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57994044.htm" class="localvar">fs</a> = <a href="../h_src/57994316.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>;
+  int <a href="../h_src/57993908.htm" class="localvar">escapelist</a> = <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>;  <a  class="comments">/* exit list for finished parts */</a>
+  <a href="../h_src/57995540.htm" class="function">test_then_block</a>(<a href="../h_src/57994316.htm" class="localvar">ls</a>, &amp;<a href="../h_src/57993908.htm" class="localvar">escapelist</a>);  <a  class="comments">/* IF cond THEN block */</a>
+  while (<a href="../h_src/57994316.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a> == <a href="../h_src/57705020.htm" class="variable">TK_ELSEIF</a>)
+    <a href="../h_src/57995540.htm" class="function">test_then_block</a>(<a href="../h_src/57994316.htm" class="localvar">ls</a>, &amp;<a href="../h_src/57993908.htm" class="localvar">escapelist</a>);  <a  class="comments">/* ELSEIF cond THEN block */</a>
+  if (<a href="../h_src/58053340.htm" class="function">testnext</a>(<a href="../h_src/57994316.htm" class="localvar">ls</a>, <a href="../h_src/57705088.htm" class="variable">TK_ELSE</a>))
+    <a href="../h_src/58009344.htm" class="function">block</a>(<a href="../h_src/57994316.htm" class="localvar">ls</a>);  <a  class="comments">/* 'else' part */</a>
+  <a href="../h_src/58051980.htm" class="function">check_match</a>(<a href="../h_src/57994316.htm" class="localvar">ls</a>, <a href="../h_src/57704952.htm" class="variable">TK_END</a>, <a href="../h_src/57704612.htm" class="variable">TK_IF</a>, <a href="../h_src/57994180.htm" class="localvar">line</a>);
+  <a href="../h_src/57669388.htm" class="function">luaK_patchtohere</a>(<a href="../h_src/57994044.htm" class="localvar">fs</a>, <a href="../h_src/57993908.htm" class="localvar">escapelist</a>);  <a  class="comments">/* patch escape list to 'if' end */</a>
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

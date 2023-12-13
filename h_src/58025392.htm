@@ -1,0 +1,63 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>open_func</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58025392.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58025392.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58025392.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58025392.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58025392.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58025392.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58057080.htm#729" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/58025392.htm" class="function">open_func</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/58025256.htm" class="localvar">ls</a>, <a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/58025120.htm" class="localvar">fs</a>, <a href="../h_src/58055856.htm" class="type">BlockCnt</a> *<a href="../h_src/58024984.htm" class="localvar">bl</a>) {
+  <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/58024848.htm" class="localvar">f</a> = <a href="../h_src/58025120.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57676052.htm" class="variable">f</a>;
+  <a href="../h_src/58025120.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675984.htm" class="variable">prev</a> = <a href="../h_src/58025256.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>;  <a  class="comments">/* linked list of funcstates */</a>
+  <a href="../h_src/58025120.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a> = <a href="../h_src/58025256.htm" class="localvar">ls</a>;
+  <a href="../h_src/58025256.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a> = <a href="../h_src/58025120.htm" class="localvar">fs</a>;
+  <a href="../h_src/58025120.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675508.htm" class="variable">pc</a> = 0;
+  <a href="../h_src/58025120.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675372.htm" class="variable">previousline</a> = <a href="../h_src/58024848.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515256.htm" class="variable">linedefined</a>;
+  <a href="../h_src/58025120.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674692.htm" class="variable">iwthabs</a> = 0;
+  <a href="../h_src/58025120.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675440.htm" class="variable">lasttarget</a> = 0;
+  <a href="../h_src/58025120.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a> = 0;
+  <a href="../h_src/58025120.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675304.htm" class="variable">nk</a> = 0;
+  <a href="../h_src/58025120.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675168.htm" class="variable">nabslineinfo</a> = 0;
+  <a href="../h_src/58025120.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675236.htm" class="variable">np</a> = 0;
+  <a href="../h_src/58025120.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674828.htm" class="variable">nups</a> = 0;
+  <a href="../h_src/58025120.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674964.htm" class="variable">ndebugvars</a> = 0;
+  <a href="../h_src/58025120.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674896.htm" class="variable">nactvar</a> = 0;
+  <a href="../h_src/58025120.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674624.htm" class="variable">needclose</a> = 0;
+  <a href="../h_src/58025120.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675100.htm" class="variable">firstlocal</a> = <a href="../h_src/58025256.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700328.htm" class="variable">dyd</a>-&gt;<a href="../h_src/57676460.htm" class="variable">actvar</a>.<a href="../h_src/57676664.htm" class="variable">n</a>;
+  <a href="../h_src/58025120.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675032.htm" class="variable">firstlabel</a> = <a href="../h_src/58025256.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700328.htm" class="variable">dyd</a>-&gt;<a href="../h_src/57676324.htm" class="variable">label</a>.<a href="../h_src/57677072.htm" class="variable">n</a>;
+  <a href="../h_src/58025120.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675576.htm" class="variable">bl</a> = NULL;
+  <a href="../h_src/58024848.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a> = <a href="../h_src/58025256.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700260.htm" class="variable">source</a>;
+  <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/58025256.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/58024848.htm" class="localvar">f</a>, <a href="../h_src/58024848.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>);
+  <a href="../h_src/58024848.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515800.htm" class="variable">maxstacksize</a> = 2;  <a  class="comments">/* registers 0/1 are always valid */</a>
+  <a href="../h_src/58028792.htm" class="function">enterblock</a>(<a href="../h_src/58025120.htm" class="localvar">fs</a>, <a href="../h_src/58024984.htm" class="localvar">bl</a>, 0);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

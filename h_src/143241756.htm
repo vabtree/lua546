@@ -1,0 +1,803 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lmathlib.c</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143241756.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/143241756.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/143241756.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/143241756.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_uf/143241756.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_df/143241756.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/143241756.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143241756.htm" class="file" target="_self">Source Code</a></li>
+<li><a href="../h_sc/143241756.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<pre class=src>
+<a id=1></a><a  class="comments">/*</a>
+<a id=2></a><a  class="comments">** $Id: lmathlib.c $</a>
+<a id=3></a><a  class="comments">** Standard mathematical library</a>
+<a id=4></a><a  class="comments">** See Copyright Notice in lua.h</a>
+<a id=5></a><a  class="comments">*/</a>
+
+<a id=7></a>#define <a href="../h_src/143241688.htm" class="macro">lmathlib_c</a>
+<a id=8></a>#define <a href="../h_src/143241552.htm" class="macro">LUA_LIB</a>
+
+<a id=10></a>#include &quot;<a href="../h_src/57461592.htm" class="file">lprefix.h</a>&quot;
+
+
+#include &lt;float.h&gt;
+#include &lt;limits.h&gt;
+#include &lt;math.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;
+
+<a id=19></a>#include &quot;<a href="../h_src/57460028.htm" class="file">lua.h</a>&quot;
+
+<a id=21></a>#include &quot;<a href="../h_src/57422356.htm" class="file">lauxlib.h</a>&quot;
+<a id=22></a>#include &quot;<a href="../h_src/57410932.htm" class="file">lualib.h</a>&quot;
+
+
+<a id=25></a>#undef <a href="../h_src/143241416.htm" class="macro">PI</a>
+<a id=26></a>#define <a href="../h_src/143241280.htm" class="macro">PI</a>	(l_mathop(3.141592653589793238462643383279502884))
+
+
+<a id=29></a>static int <a href="../h_src/143241144.htm" class="function">math_abs</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143241008.htm" class="localvar">L</a>) {
+<a id=30></a>  if (<a href="../h_src/57438676.htm" class="function">lua_isinteger</a>(<a href="../h_src/143241008.htm" class="localvar">L</a>, 1)) {
+<a id=31></a>    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143240872.htm" class="localvar">n</a> = <a href="../h_src/57429428.htm" class="macro">lua_tointeger</a>(<a href="../h_src/143241008.htm" class="localvar">L</a>, 1);
+<a id=32></a>    if (<a href="../h_src/143240872.htm" class="localvar">n</a> &lt; 0) n = (lua_Integer)(0u - (lua_Unsigned)n);
+<a id=33></a>    <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143241008.htm" class="localvar">L</a>, <a href="../h_src/143240872.htm" class="localvar">n</a>);
+  }
+  else
+<a id=36></a>    <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143241008.htm" class="localvar">L</a>, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143240736.htm" class="libfunc">fabs</a>)(<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143241008.htm" class="localvar">L</a>, 1)));
+  return 1;
+}
+
+<a id=40></a>static int <a href="../h_src/143240668.htm" class="function">math_sin</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143240532.htm" class="localvar">L</a>) {
+<a id=41></a>  <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143240532.htm" class="localvar">L</a>, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143240396.htm" class="libfunc">sin</a>)(<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143240532.htm" class="localvar">L</a>, 1)));
+  return 1;
+}
+
+<a id=45></a>static int <a href="../h_src/143240328.htm" class="function">math_cos</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143240192.htm" class="localvar">L</a>) {
+<a id=46></a>  <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143240192.htm" class="localvar">L</a>, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143240056.htm" class="libfunc">cos</a>)(<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143240192.htm" class="localvar">L</a>, 1)));
+  return 1;
+}
+
+<a id=50></a>static int <a href="../h_src/143239988.htm" class="function">math_tan</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143239852.htm" class="localvar">L</a>) {
+<a id=51></a>  <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143239852.htm" class="localvar">L</a>, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143239716.htm" class="libfunc">tan</a>)(<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143239852.htm" class="localvar">L</a>, 1)));
+  return 1;
+}
+
+<a id=55></a>static int <a href="../h_src/143239648.htm" class="function">math_asin</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143239512.htm" class="localvar">L</a>) {
+<a id=56></a>  <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143239512.htm" class="localvar">L</a>, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143239376.htm" class="libfunc">asin</a>)(<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143239512.htm" class="localvar">L</a>, 1)));
+  return 1;
+}
+
+<a id=60></a>static int <a href="../h_src/143239308.htm" class="function">math_acos</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143239172.htm" class="localvar">L</a>) {
+<a id=61></a>  <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143239172.htm" class="localvar">L</a>, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143239036.htm" class="libfunc">acos</a>)(<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143239172.htm" class="localvar">L</a>, 1)));
+  return 1;
+}
+
+<a id=65></a>static int <a href="../h_src/143238968.htm" class="function">math_atan</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143238832.htm" class="localvar">L</a>) {
+<a id=66></a>  <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/143238696.htm" class="localvar">y</a> = <a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143238832.htm" class="localvar">L</a>, 1);
+<a id=67></a>  <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/143238560.htm" class="localvar">x</a> = <a href="../h_src/57420044.htm" class="function">luaL_optnumber</a>(<a href="../h_src/143238832.htm" class="localvar">L</a>, 2, 1);
+<a id=68></a>  <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143238832.htm" class="localvar">L</a>, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143238424.htm" class="libfunc">atan2</a>)(<a href="../h_src/143238696.htm" class="localvar">y</a>, <a href="../h_src/143238560.htm" class="localvar">x</a>));
+  return 1;
+}
+
+
+<a id=73></a>static int <a href="../h_src/143238356.htm" class="function">math_toint</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143238220.htm" class="localvar">L</a>) {
+<a id=74></a>  int <a href="../h_src/143238084.htm" class="localvar">valid</a>;
+<a id=75></a>  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143237948.htm" class="localvar">n</a> = <a href="../h_src/57438336.htm" class="function">lua_tointegerx</a>(<a href="../h_src/143238220.htm" class="localvar">L</a>, 1, &amp;<a href="../h_src/143238084.htm" class="localvar">valid</a>);
+<a id=76></a>  if (<a href="../h_src/57551704.htm" class="macro">l_likely</a>(<a href="../h_src/143238084.htm" class="localvar">valid</a>))
+<a id=77></a>    <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143238220.htm" class="localvar">L</a>, <a href="../h_src/143237948.htm" class="localvar">n</a>);
+  else {
+<a id=79></a>    <a href="../h_src/57419704.htm" class="function">luaL_checkany</a>(<a href="../h_src/143238220.htm" class="localvar">L</a>, 1);
+<a id=80></a>    <a href="../h_src/57415760.htm" class="macro">luaL_pushfail</a>(<a href="../h_src/143238220.htm" class="localvar">L</a>);  <a  class="comments">/* value is not convertible to integer */</a>
+  }
+  return 1;
+}
+
+
+<a id=86></a>static void <a href="../h_src/143237812.htm" class="function">pushnumint</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143237676.htm" class="localvar">L</a>, <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/143237540.htm" class="localvar">d</a>) {
+<a id=87></a>  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143237404.htm" class="localvar">n</a>;
+<a id=88></a>  if (<a href="../h_src/57452140.htm" class="macro">lua_numbertointeger</a>(<a href="../h_src/143237540.htm" class="localvar">d</a>, &amp;<a href="../h_src/143237404.htm" class="localvar">n</a>))  <a  class="comments">/* does 'd' fit in an integer? */</a>
+<a id=89></a>    <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143237676.htm" class="localvar">L</a>, <a href="../h_src/143237404.htm" class="localvar">n</a>);  <a  class="comments">/* result is integer */</a>
+  else
+<a id=91></a>    <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143237676.htm" class="localvar">L</a>, <a href="../h_src/143237540.htm" class="localvar">d</a>);  <a  class="comments">/* result is float */</a>
+}
+
+
+<a id=95></a>static int <a href="../h_src/143237268.htm" class="function">math_floor</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143237132.htm" class="localvar">L</a>) {
+<a id=96></a>  if (<a href="../h_src/57438676.htm" class="function">lua_isinteger</a>(<a href="../h_src/143237132.htm" class="localvar">L</a>, 1))
+<a id=97></a>    <a href="../h_src/57439288.htm" class="function">lua_settop</a>(<a href="../h_src/143237132.htm" class="localvar">L</a>, 1);  <a  class="comments">/* integer is its own floor */</a>
+  else {
+<a id=99></a>    <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/143236996.htm" class="localvar">d</a> = <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/57917572.htm" class="libfunc">floor</a>)(<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143237132.htm" class="localvar">L</a>, 1));
+<a id=100></a>    <a href="../h_src/143237812.htm" class="function">pushnumint</a>(<a href="../h_src/143237132.htm" class="localvar">L</a>, <a href="../h_src/143236996.htm" class="localvar">d</a>);
+  }
+  return 1;
+}
+
+
+<a id=106></a>static int <a href="../h_src/143236860.htm" class="function">math_ceil</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143236724.htm" class="localvar">L</a>) {
+<a id=107></a>  if (<a href="../h_src/57438676.htm" class="function">lua_isinteger</a>(<a href="../h_src/143236724.htm" class="localvar">L</a>, 1))
+<a id=108></a>    <a href="../h_src/57439288.htm" class="function">lua_settop</a>(<a href="../h_src/143236724.htm" class="localvar">L</a>, 1);  <a  class="comments">/* integer is its own ceil */</a>
+  else {
+<a id=110></a>    <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/143236520.htm" class="localvar">d</a> = <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143236588.htm" class="libfunc">ceil</a>)(<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143236724.htm" class="localvar">L</a>, 1));
+<a id=111></a>    <a href="../h_src/143237812.htm" class="function">pushnumint</a>(<a href="../h_src/143236724.htm" class="localvar">L</a>, <a href="../h_src/143236520.htm" class="localvar">d</a>);
+  }
+  return 1;
+}
+
+
+<a id=117></a>static int <a href="../h_src/143236384.htm" class="function">math_fmod</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143236248.htm" class="localvar">L</a>) {
+<a id=118></a>  if (<a href="../h_src/57438676.htm" class="function">lua_isinteger</a>(<a href="../h_src/143236248.htm" class="localvar">L</a>, 1) &amp;&amp; <a href="../h_src/57438676.htm" class="function">lua_isinteger</a>(<a href="../h_src/143236248.htm" class="localvar">L</a>, 2)) {
+<a id=119></a>    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143236112.htm" class="localvar">d</a> = <a href="../h_src/57429428.htm" class="macro">lua_tointeger</a>(<a href="../h_src/143236248.htm" class="localvar">L</a>, 2);
+<a id=120></a>    if ((<a href="../h_src/57438132.htm" class="function">lua_Unsigned</a>)d + 1u &lt;= 1u) {  <a  class="comments">/* special cases: -1 or 0 */</a>
+<a id=121></a>      <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(L, d != 0, 2, &quot;zero&quot;);
+<a id=122></a>      <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143236248.htm" class="localvar">L</a>, 0);  <a  class="comments">/* avoid overflow with 0x80000... / -1 */</a>
+    }
+    else
+<a id=125></a>      <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143236248.htm" class="localvar">L</a>, <a href="../h_src/57429428.htm" class="macro">lua_tointeger</a>(<a href="../h_src/143236248.htm" class="localvar">L</a>, 1) % d);
+  }
+  else
+<a id=128></a>    lua_pushnumber(L, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(fmod)(luaL_checknumber(L, 1),
+                                     luaL_checknumber(L, 2)));
+  return 1;
+}
+
+
+<a id=134></a><a  class="comments">/*</a>
+<a id=135></a><a  class="comments">** next function does not use 'modf', avoiding problems with 'double*'</a>
+<a id=136></a><a  class="comments">** (which is not compatible with 'float*') when lua_Number is not</a>
+<a id=137></a><a  class="comments">** 'double'.</a>
+<a id=138></a><a  class="comments">*/</a>
+<a id=139></a>static int <a href="../h_src/143235976.htm" class="function">math_modf</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143235840.htm" class="localvar">L</a>) {
+<a id=140></a>  if (<a href="../h_src/57438676.htm" class="function">lua_isinteger</a>(<a href="../h_src/143235840.htm" class="localvar">L</a> ,1)) {
+<a id=141></a>    <a href="../h_src/57439288.htm" class="function">lua_settop</a>(<a href="../h_src/143235840.htm" class="localvar">L</a>, 1);  <a  class="comments">/* number is its own integer part */</a>
+<a id=142></a>    <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143235840.htm" class="localvar">L</a>, 0);  <a  class="comments">/* no fractional part */</a>
+  }
+  else {
+<a id=145></a>    <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/143235704.htm" class="localvar">n</a> = <a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143235840.htm" class="localvar">L</a>, 1);
+<a id=146></a>    <a  class="comments">/* integer part (rounds toward zero) */</a>
+<a id=147></a>    <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/143235568.htm" class="localvar">ip</a> = (<a href="../h_src/143235704.htm" class="localvar">n</a> &lt; 0) ? <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143236588.htm" class="libfunc">ceil</a>)(<a href="../h_src/143235704.htm" class="localvar">n</a>) : <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/57917572.htm" class="libfunc">floor</a>)(<a href="../h_src/143235704.htm" class="localvar">n</a>);
+<a id=148></a>    <a href="../h_src/143237812.htm" class="function">pushnumint</a>(<a href="../h_src/143235840.htm" class="localvar">L</a>, <a href="../h_src/143235568.htm" class="localvar">ip</a>);
+<a id=149></a>    <a  class="comments">/* fractional part (test needed for inf/-inf) */</a>
+<a id=150></a>    <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143235840.htm" class="localvar">L</a>, (<a href="../h_src/143235704.htm" class="localvar">n</a> == <a href="../h_src/143235568.htm" class="localvar">ip</a>) ? <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(0.0) : (<a href="../h_src/143235704.htm" class="localvar">n</a> - <a href="../h_src/143235568.htm" class="localvar">ip</a>));
+  }
+  return 2;
+}
+
+
+<a id=156></a>static int <a href="../h_src/143235432.htm" class="function">math_sqrt</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143235296.htm" class="localvar">L</a>) {
+<a id=157></a>  <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143235296.htm" class="localvar">L</a>, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143235160.htm" class="libfunc">sqrt</a>)(<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143235296.htm" class="localvar">L</a>, 1)));
+  return 1;
+}
+
+
+<a id=162></a>static int <a href="../h_src/143235092.htm" class="function">math_ult</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143234956.htm" class="localvar">L</a>) {
+<a id=163></a>  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143234820.htm" class="localvar">a</a> = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143234956.htm" class="localvar">L</a>, 1);
+<a id=164></a>  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143234684.htm" class="localvar">b</a> = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143234956.htm" class="localvar">L</a>, 2);
+<a id=165></a>  lua_pushboolean(L, (<a href="../h_src/57438132.htm" class="function">lua_Unsigned</a>)a &lt; (lua_Unsigned)b);
+  return 1;
+}
+
+<a id=169></a>static int <a href="../h_src/143234548.htm" class="function">math_log</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143234412.htm" class="localvar">L</a>) {
+<a id=170></a>  <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/143234276.htm" class="localvar">x</a> = <a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143234412.htm" class="localvar">L</a>, 1);
+<a id=171></a>  <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/143234140.htm" class="localvar">res</a>;
+<a id=172></a>  if (<a href="../h_src/57427796.htm" class="macro">lua_isnoneornil</a>(<a href="../h_src/143234412.htm" class="localvar">L</a>, 2))
+<a id=173></a>    <a href="../h_src/143234140.htm" class="localvar">res</a> = <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143234004.htm" class="libfunc">log</a>)(<a href="../h_src/143234276.htm" class="localvar">x</a>);
+  else {
+<a id=175></a>    <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/143233936.htm" class="localvar">base</a> = <a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143234412.htm" class="localvar">L</a>, 2);
+<a id=176></a>#if !defined(<a href="../h_src/57458940.htm" class="macro">LUA_USE_C89</a>)
+    if (base == l_mathop(2.0))
+      res = l_mathop(log2)(x);
+    else
+#endif
+<a id=181></a>    if (<a href="../h_src/143233936.htm" class="localvar">base</a> == <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(10.0))
+<a id=182></a>      <a href="../h_src/143234140.htm" class="localvar">res</a> = <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143233800.htm" class="libfunc">log10</a>)(<a href="../h_src/143234276.htm" class="localvar">x</a>);
+    else
+<a id=184></a>      <a href="../h_src/143234140.htm" class="localvar">res</a> = <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143234004.htm" class="libfunc">log</a>)(<a href="../h_src/143234276.htm" class="localvar">x</a>)/<a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143234004.htm" class="libfunc">log</a>)(<a href="../h_src/143233936.htm" class="localvar">base</a>);
+  }
+<a id=186></a>  <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143234412.htm" class="localvar">L</a>, <a href="../h_src/143234140.htm" class="localvar">res</a>);
+  return 1;
+}
+
+<a id=190></a>static int <a href="../h_src/143233732.htm" class="function">math_exp</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143233596.htm" class="localvar">L</a>) {
+<a id=191></a>  <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143233596.htm" class="localvar">L</a>, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143233460.htm" class="libfunc">exp</a>)(<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143233596.htm" class="localvar">L</a>, 1)));
+  return 1;
+}
+
+<a id=195></a>static int <a href="../h_src/143233392.htm" class="function">math_deg</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143233256.htm" class="localvar">L</a>) {
+<a id=196></a>  <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143233256.htm" class="localvar">L</a>, <a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143233256.htm" class="localvar">L</a>, 1) * (<a href="../h_src/57449148.htm" class="macro">l_mathop</a>(180.0) / <a href="../h_src/143241280.htm" class="macro">PI</a>));
+  return 1;
+}
+
+<a id=200></a>static int <a href="../h_src/143233120.htm" class="function">math_rad</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143232984.htm" class="localvar">L</a>) {
+<a id=201></a>  <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143232984.htm" class="localvar">L</a>, <a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143232984.htm" class="localvar">L</a>, 1) * (<a href="../h_src/143241280.htm" class="macro">PI</a> / <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(180.0)));
+  return 1;
+}
+
+
+<a id=206></a>static int <a href="../h_src/143232848.htm" class="function">math_min</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143232712.htm" class="localvar">L</a>) {
+<a id=207></a>  int <a href="../h_src/143232576.htm" class="localvar">n</a> = <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/143232712.htm" class="localvar">L</a>);  <a  class="comments">/* number of arguments */</a>
+<a id=208></a>  int <a href="../h_src/143232440.htm" class="localvar">imin</a> = 1;  <a  class="comments">/* index of current minimum value */</a>
+<a id=209></a>  int <a href="../h_src/143232304.htm" class="localvar">i</a>;
+<a id=210></a>  <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143232712.htm" class="localvar">L</a>, <a href="../h_src/143232576.htm" class="localvar">n</a> &gt;= 1, 1, &quot;value expected&quot;);
+<a id=211></a>  for (<a href="../h_src/143232304.htm" class="localvar">i</a> = 2; <a href="../h_src/143232304.htm" class="localvar">i</a> &lt;= <a href="../h_src/143232576.htm" class="localvar">n</a>; <a href="../h_src/143232304.htm" class="localvar">i</a>++) {
+<a id=212></a>    if (<a href="../h_src/57435344.htm" class="function">lua_compare</a>(<a href="../h_src/143232712.htm" class="localvar">L</a>, <a href="../h_src/143232304.htm" class="localvar">i</a>, <a href="../h_src/143232440.htm" class="localvar">imin</a>, <a href="../h_src/57435684.htm" class="macro">LUA_OPLT</a>))
+<a id=213></a>      <a href="../h_src/143232440.htm" class="localvar">imin</a> = <a href="../h_src/143232304.htm" class="localvar">i</a>;
+  }
+<a id=215></a>  <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/143232712.htm" class="localvar">L</a>, <a href="../h_src/143232440.htm" class="localvar">imin</a>);
+  return 1;
+}
+
+
+<a id=220></a>static int <a href="../h_src/143232168.htm" class="function">math_max</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143232032.htm" class="localvar">L</a>) {
+<a id=221></a>  int <a href="../h_src/143231896.htm" class="localvar">n</a> = <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/143232032.htm" class="localvar">L</a>);  <a  class="comments">/* number of arguments */</a>
+<a id=222></a>  int <a href="../h_src/143231760.htm" class="localvar">imax</a> = 1;  <a  class="comments">/* index of current maximum value */</a>
+<a id=223></a>  int <a href="../h_src/143231624.htm" class="localvar">i</a>;
+<a id=224></a>  <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143232032.htm" class="localvar">L</a>, <a href="../h_src/143231896.htm" class="localvar">n</a> &gt;= 1, 1, &quot;value expected&quot;);
+<a id=225></a>  for (<a href="../h_src/143231624.htm" class="localvar">i</a> = 2; <a href="../h_src/143231624.htm" class="localvar">i</a> &lt;= <a href="../h_src/143231896.htm" class="localvar">n</a>; <a href="../h_src/143231624.htm" class="localvar">i</a>++) {
+<a id=226></a>    if (<a href="../h_src/57435344.htm" class="function">lua_compare</a>(<a href="../h_src/143232032.htm" class="localvar">L</a>, <a href="../h_src/143231760.htm" class="localvar">imax</a>, <a href="../h_src/143231624.htm" class="localvar">i</a>, <a href="../h_src/57435684.htm" class="macro">LUA_OPLT</a>))
+<a id=227></a>      <a href="../h_src/143231760.htm" class="localvar">imax</a> = <a href="../h_src/143231624.htm" class="localvar">i</a>;
+  }
+<a id=229></a>  <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/143232032.htm" class="localvar">L</a>, <a href="../h_src/143231760.htm" class="localvar">imax</a>);
+  return 1;
+}
+
+
+<a id=234></a>static int <a href="../h_src/143231488.htm" class="function">math_type</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143231352.htm" class="localvar">L</a>) {
+<a id=235></a>  if (<a href="../h_src/57438540.htm" class="function">lua_type</a>(<a href="../h_src/143231352.htm" class="localvar">L</a>, 1) == <a href="../h_src/57443640.htm" class="macro">LUA_TNUMBER</a>)
+<a id=236></a>    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/143231352.htm" class="localvar">L</a>, (<a href="../h_src/57438676.htm" class="function">lua_isinteger</a>(<a href="../h_src/143231352.htm" class="localvar">L</a>, 1)) ? &quot;integer&quot; : &quot;float&quot;);
+  else {
+<a id=238></a>    <a href="../h_src/57419704.htm" class="function">luaL_checkany</a>(<a href="../h_src/143231352.htm" class="localvar">L</a>, 1);
+<a id=239></a>    <a href="../h_src/57415760.htm" class="macro">luaL_pushfail</a>(<a href="../h_src/143231352.htm" class="localvar">L</a>);
+  }
+  return 1;
+}
+
+
+
+<a id=246></a><a  class="comments">/*</a>
+<a id=247></a><a  class="comments">** {==================================================================</a>
+<a id=248></a><a  class="comments">** Pseudo-Random Number Generator based on 'xoshiro256**'.</a>
+<a id=249></a><a  class="comments">** ===================================================================</a>
+<a id=250></a><a  class="comments">*/</a>
+
+<a id=252></a><a  class="comments">/* number of binary digits in the mantissa of a float */</a>
+<a id=253></a>#define <a href="../h_src/143231216.htm" class="macro">FIGS</a>	l_floatatt(MANT_DIG)
+
+<a id=255></a>#if <a href="../h_src/143231216.htm" class="macro">FIGS</a> &gt; 64
+<a id=256></a><a  class="comments">/* there are only 64 random bits; use them all */</a>
+#undef FIGS
+#define FIGS	64
+#endif
+
+
+<a id=262></a><a  class="comments">/*</a>
+<a id=263></a><a  class="comments">** LUA_RAND32 forces the use of 32-bit integers in the implementation</a>
+<a id=264></a><a  class="comments">** of the PRN generator (mainly for testing).</a>
+<a id=265></a><a  class="comments">*/</a>
+<a id=266></a>#if !defined(<a href="../h_src/143231080.htm" class="macro">LUA_RAND32</a>) &amp;&amp; !defined(<a href="../h_src/143230944.htm" class="macro">Rand64</a>)
+
+<a id=268></a><a  class="comments">/* try to find an integer type with at least 64 bits */</a>
+
+#if ((ULONG_MAX &gt;&gt; 31) &gt;&gt; 31) &gt;= 3
+
+<a id=272></a><a  class="comments">/* 'long' has at least 64 bits */</a>
+#define Rand64		unsigned long
+
+<a id=275></a>#elif !defined(<a href="../h_src/57458940.htm" class="macro">LUA_USE_C89</a>) &amp;&amp; defined(<a href="../h_src/57450508.htm" class="macro">LLONG_MAX</a>)
+
+<a id=277></a><a  class="comments">/* there is a 'long long' type (which must have at least 64 bits) */</a>
+#define Rand64		unsigned long long
+
+<a id=280></a>#elif ((<a href="../h_src/57449828.htm" class="macro">LUA_MAXUNSIGNED</a> &gt;&gt; 31) &gt;&gt; 31) &gt;= 3
+
+<a id=282></a><a  class="comments">/* 'lua_Unsigned' has at least 64 bits */</a>
+#define Rand64		lua_Unsigned
+
+#endif
+
+#endif
+
+
+<a id=290></a>#if defined(<a href="../h_src/143230944.htm" class="macro">Rand64</a>)  <a  class="comments">/* { */</a>
+
+<a id=292></a><a  class="comments">/*</a>
+<a id=293></a><a  class="comments">** Standard implementation, using 64-bit integers.</a>
+<a id=294></a><a  class="comments">** If 'Rand64' has more than 64 bits, the extra bits do not interfere</a>
+<a id=295></a><a  class="comments">** with the 64 initial bits, except in a right shift. Moreover, the</a>
+<a id=296></a><a  class="comments">** final result has to discard the extra bits.</a>
+<a id=297></a><a  class="comments">*/</a>
+
+<a id=299></a><a  class="comments">/* avoid using extra bits when needed */</a>
+#define trim64(x)	((x) &amp; 0xffffffffffffffffu)
+
+
+<a id=303></a><a  class="comments">/* rotate left 'x' by 'n' bits */</a>
+static Rand64 rotl (Rand64 x, int n) {
+  return (x &lt;&lt; n) | (trim64(x) &gt;&gt; (64 - n));
+}
+
+static Rand64 nextrand (Rand64 *state) {
+  Rand64 state0 = state[0];
+  Rand64 state1 = state[1];
+  Rand64 state2 = state[2] ^ state0;
+  Rand64 state3 = state[3] ^ state1;
+  Rand64 res = rotl(state1 * 5, 7) * 9;
+  state[0] = state0 ^ state3;
+  state[1] = state1 ^ state2;
+  state[2] = state2 ^ (state1 &lt;&lt; 17);
+  state[3] = rotl(state3, 45);
+  return res;
+}
+
+
+<a id=322></a><a  class="comments">/* must take care to not shift stuff by more than 63 slots */</a>
+
+
+<a id=325></a><a  class="comments">/*</a>
+<a id=326></a><a  class="comments">** Convert bits from a random integer into a float in the</a>
+<a id=327></a><a  class="comments">** interval [0,1), getting the higher FIG bits from the</a>
+<a id=328></a><a  class="comments">** random unsigned integer and converting that to a float.</a>
+<a id=329></a><a  class="comments">*/</a>
+
+<a id=331></a><a  class="comments">/* must throw out the extra (64 - FIGS) bits */</a>
+#define shift64_FIG	(64 - FIGS)
+
+<a id=334></a><a  class="comments">/* to scale to [0, 1), multiply by scaleFIG = 2^(-FIGS) */</a>
+#define scaleFIG	(l_mathop(0.5) / ((Rand64)1 &lt;&lt; (FIGS - 1)))
+
+static lua_Number I2d (Rand64 x) {
+  return (lua_Number)(trim64(x) &gt;&gt; shift64_FIG) * scaleFIG;
+}
+
+<a id=341></a><a  class="comments">/* convert a 'Rand64' to a 'lua_Unsigned' */</a>
+#define I2UInt(x)	((lua_Unsigned)trim64(x))
+
+<a id=344></a><a  class="comments">/* convert a 'lua_Unsigned' to a 'Rand64' */</a>
+#define Int2I(x)	((Rand64)(x))
+
+
+<a id=348></a>#else	<a  class="comments">/* no 'Rand64'   }{ */</a>
+
+<a id=350></a><a  class="comments">/* get an integer with at least 32 bits */</a>
+<a id=351></a>#if <a href="../h_src/57458396.htm" class="macro">LUAI_IS32INT</a>
+<a id=352></a>typedef unsigned int <a href="../h_src/143230808.htm" class="type">lu_int32</a>;
+#else
+typedef unsigned long lu_int32;
+#endif
+
+
+<a id=358></a><a  class="comments">/*</a>
+<a id=359></a><a  class="comments">** Use two 32-bit integers to represent a 64-bit quantity.</a>
+<a id=360></a><a  class="comments">*/</a>
+<a id=361></a>typedef struct <a href="../h_src/143230740.htm" class="class">Rand64</a> {
+<a id=362></a>  <a href="../h_src/143230808.htm" class="type">lu_int32</a> <a href="../h_src/143230604.htm" class="variable">h</a>;  <a  class="comments">/* higher half */</a>
+<a id=363></a>  <a href="../h_src/143230808.htm" class="type">lu_int32</a> <a href="../h_src/143230536.htm" class="variable">l</a>;  <a  class="comments">/* lower half */</a>
+<a id=364></a>} <a href="../h_src/143230468.htm" class="type">Rand64</a>;
+
+
+<a id=367></a><a  class="comments">/*</a>
+<a id=368></a><a  class="comments">** If 'lu_int32' has more than 32 bits, the extra bits do not interfere</a>
+<a id=369></a><a  class="comments">** with the 32 initial bits, except in a right shift and comparisons.</a>
+<a id=370></a><a  class="comments">** Moreover, the final result has to discard the extra bits.</a>
+<a id=371></a><a  class="comments">*/</a>
+
+<a id=373></a><a  class="comments">/* avoid using extra bits when needed */</a>
+<a id=374></a>#define <a href="../h_src/143230400.htm" class="macro">trim32</a>(x)	((x) &amp; 0xffffffffu)
+
+
+<a id=377></a><a  class="comments">/*</a>
+<a id=378></a><a  class="comments">** basic operations on 'Rand64' values</a>
+<a id=379></a><a  class="comments">*/</a>
+
+<a id=381></a><a  class="comments">/* build a new Rand64 value */</a>
+<a id=382></a>static <a href="../h_src/143230468.htm" class="type">Rand64</a> <a href="../h_src/143230264.htm" class="function">packI</a> (<a href="../h_src/143230808.htm" class="type">lu_int32</a> <a href="../h_src/143230128.htm" class="localvar">h</a>, <a href="../h_src/143230808.htm" class="type">lu_int32</a> <a href="../h_src/143229992.htm" class="localvar">l</a>) {
+<a id=383></a>  <a href="../h_src/143230468.htm" class="type">Rand64</a> <a href="../h_src/143229856.htm" class="localvar">result</a>;
+<a id=384></a>  <a href="../h_src/143229856.htm" class="localvar">result</a>.<a href="../h_src/143230604.htm" class="variable">h</a> = <a href="../h_src/143230128.htm" class="localvar">h</a>;
+<a id=385></a>  <a href="../h_src/143229856.htm" class="localvar">result</a>.<a href="../h_src/143230536.htm" class="variable">l</a> = <a href="../h_src/143229992.htm" class="localvar">l</a>;
+<a id=386></a>  return <a href="../h_src/143229856.htm" class="localvar">result</a>;
+}
+
+<a id=389></a><a  class="comments">/* return i &lt;&lt; n */</a>
+<a id=390></a>static <a href="../h_src/143230468.htm" class="type">Rand64</a> <a href="../h_src/143229720.htm" class="function">Ishl</a> (<a href="../h_src/143230468.htm" class="type">Rand64</a> <a href="../h_src/143229584.htm" class="localvar">i</a>, int <a href="../h_src/143229448.htm" class="localvar">n</a>) {
+<a id=391></a>  <a href="../h_src/57415352.htm" class="macro">lua_assert</a>(n &gt; 0 &amp;&amp; n &lt; 32);
+<a id=392></a>  return <a href="../h_src/143230264.htm" class="function">packI</a>((<a href="../h_src/143229584.htm" class="localvar">i</a>.<a href="../h_src/143230604.htm" class="variable">h</a> &lt;&lt; <a href="../h_src/143229448.htm" class="localvar">n</a>) | (<a href="../h_src/143230400.htm" class="macro">trim32</a>(<a href="../h_src/143229584.htm" class="localvar">i</a>.<a href="../h_src/143230536.htm" class="variable">l</a>) &gt;&gt; (32 - <a href="../h_src/143229448.htm" class="localvar">n</a>)), <a href="../h_src/143229584.htm" class="localvar">i</a>.<a href="../h_src/143230536.htm" class="variable">l</a> &lt;&lt; <a href="../h_src/143229448.htm" class="localvar">n</a>);
+}
+
+<a id=395></a><a  class="comments">/* i1 ^= i2 */</a>
+<a id=396></a>static void <a href="../h_src/143229312.htm" class="function">Ixor</a> (<a href="../h_src/143230468.htm" class="type">Rand64</a> *<a href="../h_src/143229108.htm" class="localvar">i1</a>, <a href="../h_src/143230468.htm" class="type">Rand64</a> <a href="../h_src/143228972.htm" class="localvar">i2</a>) {
+<a id=397></a>  <a href="../h_src/143229108.htm" class="localvar">i1</a>-&gt;<a href="../h_src/143230604.htm" class="variable">h</a> ^= <a href="../h_src/143228972.htm" class="localvar">i2</a>.<a href="../h_src/143230604.htm" class="variable">h</a>;
+<a id=398></a>  <a href="../h_src/143229108.htm" class="localvar">i1</a>-&gt;<a href="../h_src/143230536.htm" class="variable">l</a> ^= <a href="../h_src/143228972.htm" class="localvar">i2</a>.<a href="../h_src/143230536.htm" class="variable">l</a>;
+}
+
+<a id=401></a><a  class="comments">/* return i1 + i2 */</a>
+<a id=402></a>static <a href="../h_src/143230468.htm" class="type">Rand64</a> <a href="../h_src/143228836.htm" class="function">Iadd</a> (<a href="../h_src/143230468.htm" class="type">Rand64</a> <a href="../h_src/143228700.htm" class="localvar">i1</a>, <a href="../h_src/143230468.htm" class="type">Rand64</a> <a href="../h_src/143228564.htm" class="localvar">i2</a>) {
+<a id=403></a>  <a href="../h_src/143230468.htm" class="type">Rand64</a> <a href="../h_src/143228428.htm" class="localvar">result</a> = <a href="../h_src/143230264.htm" class="function">packI</a>(<a href="../h_src/143228700.htm" class="localvar">i1</a>.<a href="../h_src/143230604.htm" class="variable">h</a> + <a href="../h_src/143228564.htm" class="localvar">i2</a>.<a href="../h_src/143230604.htm" class="variable">h</a>, <a href="../h_src/143228700.htm" class="localvar">i1</a>.<a href="../h_src/143230536.htm" class="variable">l</a> + <a href="../h_src/143228564.htm" class="localvar">i2</a>.<a href="../h_src/143230536.htm" class="variable">l</a>);
+<a id=404></a>  if (<a href="../h_src/143230400.htm" class="macro">trim32</a>(<a href="../h_src/143228428.htm" class="localvar">result</a>.<a href="../h_src/143230536.htm" class="variable">l</a>) &lt; <a href="../h_src/143230400.htm" class="macro">trim32</a>(<a href="../h_src/143228700.htm" class="localvar">i1</a>.<a href="../h_src/143230536.htm" class="variable">l</a>))  <a  class="comments">/* carry? */</a>
+<a id=405></a>    <a href="../h_src/143228428.htm" class="localvar">result</a>.<a href="../h_src/143230604.htm" class="variable">h</a>++;
+<a id=406></a>  return <a href="../h_src/143228428.htm" class="localvar">result</a>;
+}
+
+<a id=409></a><a  class="comments">/* return i * 5 */</a>
+<a id=410></a>static <a href="../h_src/143230468.htm" class="type">Rand64</a> <a href="../h_src/143228292.htm" class="function">times5</a> (<a href="../h_src/143230468.htm" class="type">Rand64</a> <a href="../h_src/143228156.htm" class="localvar">i</a>) {
+<a id=411></a>  return <a href="../h_src/143228836.htm" class="function">Iadd</a>(<a href="../h_src/143229720.htm" class="function">Ishl</a>(<a href="../h_src/143228156.htm" class="localvar">i</a>, 2), <a href="../h_src/143228156.htm" class="localvar">i</a>);  <a  class="comments">/* i * 5 == (i &lt;&lt; 2) + i */</a>
+}
+
+<a id=414></a><a  class="comments">/* return i * 9 */</a>
+<a id=415></a>static <a href="../h_src/143230468.htm" class="type">Rand64</a> <a href="../h_src/143228020.htm" class="function">times9</a> (<a href="../h_src/143230468.htm" class="type">Rand64</a> <a href="../h_src/143227884.htm" class="localvar">i</a>) {
+<a id=416></a>  return <a href="../h_src/143228836.htm" class="function">Iadd</a>(<a href="../h_src/143229720.htm" class="function">Ishl</a>(<a href="../h_src/143227884.htm" class="localvar">i</a>, 3), <a href="../h_src/143227884.htm" class="localvar">i</a>);  <a  class="comments">/* i * 9 == (i &lt;&lt; 3) + i */</a>
+}
+
+<a id=419></a><a  class="comments">/* return 'i' rotated left 'n' bits */</a>
+<a id=420></a>static <a href="../h_src/143230468.htm" class="type">Rand64</a> <a href="../h_src/143227748.htm" class="function">rotl</a> (<a href="../h_src/143230468.htm" class="type">Rand64</a> <a href="../h_src/143227612.htm" class="localvar">i</a>, int <a href="../h_src/143227476.htm" class="localvar">n</a>) {
+<a id=421></a>  <a href="../h_src/57415352.htm" class="macro">lua_assert</a>(n &gt; 0 &amp;&amp; n &lt; 32);
+<a id=422></a>  return <a href="../h_src/143230264.htm" class="function">packI</a>((<a href="../h_src/143227612.htm" class="localvar">i</a>.<a href="../h_src/143230604.htm" class="variable">h</a> &lt;&lt; <a href="../h_src/143227476.htm" class="localvar">n</a>) | (<a href="../h_src/143230400.htm" class="macro">trim32</a>(<a href="../h_src/143227612.htm" class="localvar">i</a>.<a href="../h_src/143230536.htm" class="variable">l</a>) &gt;&gt; (32 - <a href="../h_src/143227476.htm" class="localvar">n</a>)),
+<a id=423></a>               (<a href="../h_src/143230400.htm" class="macro">trim32</a>(<a href="../h_src/143227612.htm" class="localvar">i</a>.<a href="../h_src/143230604.htm" class="variable">h</a>) &gt;&gt; (32 - <a href="../h_src/143227476.htm" class="localvar">n</a>)) | (<a href="../h_src/143227612.htm" class="localvar">i</a>.<a href="../h_src/143230536.htm" class="variable">l</a> &lt;&lt; <a href="../h_src/143227476.htm" class="localvar">n</a>));
+}
+
+<a id=426></a><a  class="comments">/* for offsets larger than 32, rotate right by 64 - offset */</a>
+<a id=427></a>static <a href="../h_src/143230468.htm" class="type">Rand64</a> <a href="../h_src/143227340.htm" class="function">rotl1</a> (<a href="../h_src/143230468.htm" class="type">Rand64</a> <a href="../h_src/143227204.htm" class="localvar">i</a>, int <a href="../h_src/143227068.htm" class="localvar">n</a>) {
+<a id=428></a>  <a href="../h_src/57415352.htm" class="macro">lua_assert</a>(n &gt; 32 &amp;&amp; n &lt; 64);
+<a id=429></a>  <a href="../h_src/143227068.htm" class="localvar">n</a> = 64 - <a href="../h_src/143227068.htm" class="localvar">n</a>;
+<a id=430></a>  return <a href="../h_src/143230264.htm" class="function">packI</a>((<a href="../h_src/143230400.htm" class="macro">trim32</a>(<a href="../h_src/143227204.htm" class="localvar">i</a>.<a href="../h_src/143230604.htm" class="variable">h</a>) &gt;&gt; <a href="../h_src/143227068.htm" class="localvar">n</a>) | (<a href="../h_src/143227204.htm" class="localvar">i</a>.<a href="../h_src/143230536.htm" class="variable">l</a> &lt;&lt; (32 - <a href="../h_src/143227068.htm" class="localvar">n</a>)),
+<a id=431></a>               (<a href="../h_src/143227204.htm" class="localvar">i</a>.<a href="../h_src/143230604.htm" class="variable">h</a> &lt;&lt; (32 - <a href="../h_src/143227068.htm" class="localvar">n</a>)) | (<a href="../h_src/143230400.htm" class="macro">trim32</a>(<a href="../h_src/143227204.htm" class="localvar">i</a>.<a href="../h_src/143230536.htm" class="variable">l</a>) &gt;&gt; <a href="../h_src/143227068.htm" class="localvar">n</a>));
+}
+
+<a id=434></a><a  class="comments">/*</a>
+<a id=435></a><a  class="comments">** implementation of 'xoshiro256**' algorithm on 'Rand64' values</a>
+<a id=436></a><a  class="comments">*/</a>
+<a id=437></a>static <a href="../h_src/143230468.htm" class="type">Rand64</a> <a href="../h_src/143226932.htm" class="function">nextrand</a> (<a href="../h_src/143230468.htm" class="type">Rand64</a> *<a href="../h_src/143226796.htm" class="localvar">state</a>) {
+<a id=438></a>  <a href="../h_src/143230468.htm" class="type">Rand64</a> <a href="../h_src/143226660.htm" class="localvar">res</a> = <a href="../h_src/143228020.htm" class="function">times9</a>(<a href="../h_src/143227748.htm" class="function">rotl</a>(<a href="../h_src/143228292.htm" class="function">times5</a>(<a href="../h_src/143226796.htm" class="localvar">state</a>[1]), 7));
+<a id=439></a>  <a href="../h_src/143230468.htm" class="type">Rand64</a> <a href="../h_src/143226524.htm" class="localvar">t</a> = <a href="../h_src/143229720.htm" class="function">Ishl</a>(<a href="../h_src/143226796.htm" class="localvar">state</a>[1], 17);
+<a id=440></a>  <a href="../h_src/143229312.htm" class="function">Ixor</a>(&amp;<a href="../h_src/143226796.htm" class="localvar">state</a>[2], <a href="../h_src/143226796.htm" class="localvar">state</a>[0]);
+<a id=441></a>  <a href="../h_src/143229312.htm" class="function">Ixor</a>(&amp;<a href="../h_src/143226796.htm" class="localvar">state</a>[3], <a href="../h_src/143226796.htm" class="localvar">state</a>[1]);
+<a id=442></a>  <a href="../h_src/143229312.htm" class="function">Ixor</a>(&amp;<a href="../h_src/143226796.htm" class="localvar">state</a>[1], <a href="../h_src/143226796.htm" class="localvar">state</a>[2]);
+<a id=443></a>  <a href="../h_src/143229312.htm" class="function">Ixor</a>(&amp;<a href="../h_src/143226796.htm" class="localvar">state</a>[0], <a href="../h_src/143226796.htm" class="localvar">state</a>[3]);
+<a id=444></a>  <a href="../h_src/143229312.htm" class="function">Ixor</a>(&amp;<a href="../h_src/143226796.htm" class="localvar">state</a>[2], <a href="../h_src/143226524.htm" class="localvar">t</a>);
+<a id=445></a>  <a href="../h_src/143226796.htm" class="localvar">state</a>[3] = <a href="../h_src/143227340.htm" class="function">rotl1</a>(<a href="../h_src/143226796.htm" class="localvar">state</a>[3], 45);
+<a id=446></a>  return <a href="../h_src/143226660.htm" class="localvar">res</a>;
+}
+
+
+<a id=450></a><a  class="comments">/*</a>
+<a id=451></a><a  class="comments">** Converts a 'Rand64' into a float.</a>
+<a id=452></a><a  class="comments">*/</a>
+
+<a id=454></a><a  class="comments">/* an unsigned 1 with proper type */</a>
+<a id=455></a>#define <a href="../h_src/143226388.htm" class="macro">UONE</a>		((lu_int32)1)
+
+
+<a id=458></a>#if <a href="../h_src/143231216.htm" class="macro">FIGS</a> &lt;= 32
+
+<a id=460></a><a  class="comments">/* 2^(-FIGS) */</a>
+#define scaleFIG       (l_mathop(0.5) / (UONE &lt;&lt; (FIGS - 1)))
+
+<a id=463></a><a  class="comments">/*</a>
+<a id=464></a><a  class="comments">** get up to 32 bits from higher half, shifting right to</a>
+<a id=465></a><a  class="comments">** throw out the extra bits.</a>
+<a id=466></a><a  class="comments">*/</a>
+static lua_Number I2d (Rand64 x) {
+  lua_Number h = (lua_Number)(trim32(x.h) &gt;&gt; (32 - FIGS));
+  return h * scaleFIG;
+}
+
+<a id=472></a>#else	<a  class="comments">/* 32 &lt; FIGS &lt;= 64 */</a>
+
+<a id=474></a><a  class="comments">/* must take care to not shift stuff by more than 31 slots */</a>
+
+<a id=476></a><a  class="comments">/* 2^(-FIGS) = 1.0 / 2^30 / 2^3 / 2^(FIGS-33) */</a>
+<a id=477></a>#define <a href="../h_src/143226252.htm" class="macro">scaleFIG</a>  \
+    (l_mathop(1.0) / (UONE &lt;&lt; 30) / l_mathop(8.0) / (UONE &lt;&lt; (FIGS - 33)))
+
+<a id=480></a><a  class="comments">/*</a>
+<a id=481></a><a  class="comments">** use FIGS - 32 bits from lower half, throwing out the other</a>
+<a id=482></a><a  class="comments">** (32 - (FIGS - 32)) = (64 - FIGS) bits</a>
+<a id=483></a><a  class="comments">*/</a>
+<a id=484></a>#define <a href="../h_src/143226116.htm" class="macro">shiftLOW</a>	(64 - FIGS)
+
+<a id=486></a><a  class="comments">/*</a>
+<a id=487></a><a  class="comments">** higher 32 bits go after those (FIGS - 32) bits: shiftHI = 2^(FIGS - 32)</a>
+<a id=488></a><a  class="comments">*/</a>
+<a id=489></a>#define <a href="../h_src/143225980.htm" class="macro">shiftHI</a>		((lua_Number)(UONE &lt;&lt; (FIGS - 33)) * l_mathop(2.0))
+
+
+<a id=492></a>static <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/143225844.htm" class="function">I2d</a> (<a href="../h_src/143230468.htm" class="type">Rand64</a> <a href="../h_src/143225708.htm" class="localvar">x</a>) {
+<a id=493></a>  <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/143225572.htm" class="localvar">h</a> = (<a href="../h_src/57442144.htm" class="type">lua_Number</a>)<a href="../h_src/143230400.htm" class="macro">trim32</a>(<a href="../h_src/143225708.htm" class="localvar">x</a>.<a href="../h_src/143230604.htm" class="variable">h</a>) * <a href="../h_src/143225980.htm" class="macro">shiftHI</a>;
+<a id=494></a>  <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/143225436.htm" class="localvar">l</a> = (<a href="../h_src/57442144.htm" class="type">lua_Number</a>)(<a href="../h_src/143230400.htm" class="macro">trim32</a>(<a href="../h_src/143225708.htm" class="localvar">x</a>.<a href="../h_src/143230536.htm" class="variable">l</a>) &gt;&gt; <a href="../h_src/143226116.htm" class="macro">shiftLOW</a>);
+<a id=495></a>  return (<a href="../h_src/143225572.htm" class="localvar">h</a> + <a href="../h_src/143225436.htm" class="localvar">l</a>) * <a href="../h_src/143226252.htm" class="macro">scaleFIG</a>;
+}
+
+#endif
+
+
+<a id=501></a><a  class="comments">/* convert a 'Rand64' to a 'lua_Unsigned' */</a>
+<a id=502></a>static lua_Unsigned I2UInt (<a href="../h_src/143230468.htm" class="type">Rand64</a> x) {
+<a id=503></a>  return (((<a href="../h_src/143225300.htm" class="function">lua_Unsigned</a>)<a href="../h_src/143230400.htm" class="macro">trim32</a>(<a href="../h_src/143225232.htm" class="localvar">x</a>.<a href="../h_src/143230604.htm" class="variable">h</a>) &lt;&lt; 31) &lt;&lt; 1) | (<a href="../h_src/143225300.htm" class="function">lua_Unsigned</a>)<a href="../h_src/143230400.htm" class="macro">trim32</a>(<a href="../h_src/143225232.htm" class="localvar">x</a>.<a href="../h_src/143230536.htm" class="variable">l</a>);
+}
+
+<a id=506></a><a  class="comments">/* convert a 'lua_Unsigned' to a 'Rand64' */</a>
+<a id=507></a>static <a href="../h_src/143230468.htm" class="type">Rand64</a> <a href="../h_src/143225096.htm" class="function">Int2I</a> (lua_Unsigned <a href="../h_src/143224960.htm" class="localvar">n</a>) {
+<a id=508></a>  return <a href="../h_src/143230264.htm" class="function">packI</a>((<a href="../h_src/143230808.htm" class="type">lu_int32</a>)((<a href="../h_src/143224960.htm" class="localvar">n</a> &gt;&gt; 31) &gt;&gt; 1), (<a href="../h_src/143230808.htm" class="type">lu_int32</a>)<a href="../h_src/143224960.htm" class="localvar">n</a>);
+}
+
+<a id=511></a>#endif  <a  class="comments">/* } */</a>
+
+
+<a id=514></a><a  class="comments">/*</a>
+<a id=515></a><a  class="comments">** A state uses four 'Rand64' values.</a>
+<a id=516></a><a  class="comments">*/</a>
+typedef struct {
+<a id=518></a>  <a href="../h_src/143230468.htm" class="type">Rand64</a> <a href="../h_src/143224688.htm" class="variable">s</a>[4];
+<a id=519></a>} <a href="../h_src/143224552.htm" class="type">RanState</a>;
+
+
+<a id=522></a><a  class="comments">/*</a>
+<a id=523></a><a  class="comments">** Project the random integer 'ran' into the interval [0, n].</a>
+<a id=524></a><a  class="comments">** Because 'ran' has 2^B possible values, the projection can only be</a>
+<a id=525></a><a  class="comments">** uniform when the size of the interval is a power of 2 (exact</a>
+<a id=526></a><a  class="comments">** division). Otherwise, to get a uniform projection into [0, n], we</a>
+<a id=527></a><a  class="comments">** first compute 'lim', the smallest Mersenne number not smaller than</a>
+<a id=528></a><a  class="comments">** 'n'. We then project 'ran' into the interval [0, lim].  If the result</a>
+<a id=529></a><a  class="comments">** is inside [0, n], we are done. Otherwise, we try with another 'ran',</a>
+<a id=530></a><a  class="comments">** until we have a result inside the interval.</a>
+<a id=531></a><a  class="comments">*/</a>
+<a id=532></a>static <a href="../h_src/143225300.htm" class="function">lua_Unsigned</a> project (lua_Unsigned ran, lua_Unsigned <a href="../h_src/143224484.htm" class="localvar">n</a>,
+<a id=533></a>                             <a href="../h_src/143224552.htm" class="type">RanState</a> *<a href="../h_src/143224280.htm" class="localvar">state</a>) {
+<a id=534></a>  if ((<a href="../h_src/143224484.htm" class="localvar">n</a> &amp; (<a href="../h_src/143224484.htm" class="localvar">n</a> + 1)) == 0)  <a  class="comments">/* is 'n + 1' a power of 2? */</a>
+<a id=535></a>    return ran &amp; <a href="../h_src/143224484.htm" class="localvar">n</a>;  <a  class="comments">/* no bias */</a>
+  else {
+<a id=537></a>    <a href="../h_src/143225300.htm" class="function">lua_Unsigned</a> <a href="../h_src/143224144.htm" class="localvar">lim</a> = <a href="../h_src/143224484.htm" class="localvar">n</a>;
+<a id=538></a>    <a  class="comments">/* compute the smallest (2^b - 1) not smaller than 'n' */</a>
+<a id=539></a>    <a href="../h_src/143224144.htm" class="localvar">lim</a> |= (<a href="../h_src/143224144.htm" class="localvar">lim</a> &gt;&gt; 1);
+<a id=540></a>    <a href="../h_src/143224144.htm" class="localvar">lim</a> |= (<a href="../h_src/143224144.htm" class="localvar">lim</a> &gt;&gt; 2);
+<a id=541></a>    <a href="../h_src/143224144.htm" class="localvar">lim</a> |= (<a href="../h_src/143224144.htm" class="localvar">lim</a> &gt;&gt; 4);
+<a id=542></a>    <a href="../h_src/143224144.htm" class="localvar">lim</a> |= (<a href="../h_src/143224144.htm" class="localvar">lim</a> &gt;&gt; 8);
+<a id=543></a>    <a href="../h_src/143224144.htm" class="localvar">lim</a> |= (<a href="../h_src/143224144.htm" class="localvar">lim</a> &gt;&gt; 16);
+<a id=544></a>#if (<a href="../h_src/57449828.htm" class="macro">LUA_MAXUNSIGNED</a> &gt;&gt; 31) &gt;= 3
+<a id=545></a>    lim |= (lim &gt;&gt; 32);  <a  class="comments">/* integer type has more than 32 bits */</a>
+#endif
+<a id=547></a>    <a href="../h_src/57415352.htm" class="macro">lua_assert</a>((lim &amp; (lim + 1)) == 0  <a  class="comments">/* 'lim + 1' is a power of 2, */</a>
+<a id=548></a>      &amp;&amp; lim &gt;= n  <a  class="comments">/* not smaller than 'n', */</a>
+<a id=549></a>      &amp;&amp; (lim &gt;&gt; 1) &lt; n);  <a  class="comments">/* and it is the smallest one */</a>
+<a id=550></a>    while ((ran &amp;= <a href="../h_src/143224144.htm" class="localvar">lim</a>) &gt; <a href="../h_src/143224484.htm" class="localvar">n</a>)  <a  class="comments">/* project 'ran' into [0..lim] */</a>
+<a id=551></a>      ran = <a href="../h_aa/143224008.htm" class="libfunc">I2UInt</a>(<a href="../h_src/143226932.htm" class="function">nextrand</a>(<a href="../h_src/143224280.htm" class="localvar">state</a>-&gt;<a href="../h_src/143224688.htm" class="variable">s</a>));  <a  class="comments">/* not inside [0..n]? try again */</a>
+    return ran;
+  }
+}
+
+
+<a id=557></a>static int <a href="../h_src/143223940.htm" class="function">math_random</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143223804.htm" class="localvar">L</a>) {
+<a id=558></a>  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143223668.htm" class="localvar">low</a>, <a href="../h_src/143223532.htm" class="localvar">up</a>;
+<a id=559></a>  <a href="../h_src/143225300.htm" class="function">lua_Unsigned</a> <a href="../h_src/143223396.htm" class="localvar">p</a>;
+<a id=560></a>  <a href="../h_src/143224552.htm" class="type">RanState</a> *<a href="../h_src/143223260.htm" class="localvar">state</a> = (<a href="../h_src/143224552.htm" class="type">RanState</a> *)<a href="../h_src/57437996.htm" class="function">lua_touserdata</a>(<a href="../h_src/143223804.htm" class="localvar">L</a>, <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(1));
+<a id=561></a>  <a href="../h_src/143230468.htm" class="type">Rand64</a> <a href="../h_src/143223124.htm" class="localvar">rv</a> = <a href="../h_src/143226932.htm" class="function">nextrand</a>(<a href="../h_src/143223260.htm" class="localvar">state</a>-&gt;<a href="../h_src/143224688.htm" class="variable">s</a>);  <a  class="comments">/* next pseudo-random value */</a>
+<a id=562></a>  switch (<a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/143223804.htm" class="localvar">L</a>)) {  <a  class="comments">/* check number of arguments */</a>
+<a id=563></a>    case 0: {  <a  class="comments">/* no arguments */</a>
+<a id=564></a>      <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143223804.htm" class="localvar">L</a>, <a href="../h_src/143225844.htm" class="function">I2d</a>(<a href="../h_src/143223124.htm" class="localvar">rv</a>));  <a  class="comments">/* float between 0 and 1 */</a>
+      return 1;
+    }
+<a id=567></a>    case 1: {  <a  class="comments">/* only upper limit */</a>
+<a id=568></a>      <a href="../h_src/143223668.htm" class="localvar">low</a> = 1;
+<a id=569></a>      <a href="../h_src/143223532.htm" class="localvar">up</a> = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143223804.htm" class="localvar">L</a>, 1);
+<a id=570></a>      if (<a href="../h_src/143223532.htm" class="localvar">up</a> == 0) {  <a  class="comments">/* single 0 as argument? */</a>
+<a id=571></a>        <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143223804.htm" class="localvar">L</a>, <a href="../h_aa/143224008.htm" class="libfunc">I2UInt</a>(<a href="../h_src/143223124.htm" class="localvar">rv</a>));  <a  class="comments">/* full random integer */</a>
+        return 1;
+      }
+      break;
+    }
+<a id=576></a>    case 2: {  <a  class="comments">/* lower and upper limits */</a>
+<a id=577></a>      <a href="../h_src/143223668.htm" class="localvar">low</a> = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143223804.htm" class="localvar">L</a>, 1);
+<a id=578></a>      <a href="../h_src/143223532.htm" class="localvar">up</a> = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143223804.htm" class="localvar">L</a>, 2);
+      break;
+    }
+<a id=581></a>    default: return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143223804.htm" class="localvar">L</a>, &quot;wrong number of arguments&quot;);
+  }
+<a id=583></a>  <a  class="comments">/* random integer in the interval [low, up] */</a>
+<a id=584></a>  <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143223804.htm" class="localvar">L</a>, <a href="../h_src/143223668.htm" class="localvar">low</a> &lt;= <a href="../h_src/143223532.htm" class="localvar">up</a>, 1, &quot;interval is empty&quot;);
+<a id=585></a>  <a  class="comments">/* project random integer into the interval [0, up - low] */</a>
+<a id=586></a>  <a href="../h_src/143223396.htm" class="localvar">p</a> = <a href="../h_aa/143222988.htm" class="libfunc">project</a>(<a href="../h_aa/143224008.htm" class="libfunc">I2UInt</a>(<a href="../h_src/143223124.htm" class="localvar">rv</a>), (<a href="../h_src/143225300.htm" class="function">lua_Unsigned</a>)<a href="../h_src/143223532.htm" class="localvar">up</a> - (<a href="../h_src/143225300.htm" class="function">lua_Unsigned</a>)<a href="../h_src/143223668.htm" class="localvar">low</a>, <a href="../h_src/143223260.htm" class="localvar">state</a>);
+<a id=587></a>  <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143223804.htm" class="localvar">L</a>, <a href="../h_src/143223396.htm" class="localvar">p</a> + (<a href="../h_src/143225300.htm" class="function">lua_Unsigned</a>)<a href="../h_src/143223668.htm" class="localvar">low</a>);
+  return 1;
+}
+
+
+<a id=592></a>static void <a href="../h_src/143222920.htm" class="function">setseed</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143222784.htm" class="localvar">L</a>, <a href="../h_src/143230468.htm" class="type">Rand64</a> *<a href="../h_src/143222648.htm" class="localvar">state</a>,
+<a id=593></a>                     lua_Unsigned <a href="../h_src/143222512.htm" class="localvar">n1</a>, lua_Unsigned <a href="../h_src/143222376.htm" class="localvar">n2</a>) {
+<a id=594></a>  int <a href="../h_src/143222240.htm" class="localvar">i</a>;
+<a id=595></a>  <a href="../h_src/143222648.htm" class="localvar">state</a>[0] = <a href="../h_src/143225096.htm" class="function">Int2I</a>(<a href="../h_src/143222512.htm" class="localvar">n1</a>);
+<a id=596></a>  <a href="../h_src/143222648.htm" class="localvar">state</a>[1] = <a href="../h_src/143225096.htm" class="function">Int2I</a>(0xff);  <a  class="comments">/* avoid a zero state */</a>
+<a id=597></a>  <a href="../h_src/143222648.htm" class="localvar">state</a>[2] = <a href="../h_src/143225096.htm" class="function">Int2I</a>(<a href="../h_src/143222376.htm" class="localvar">n2</a>);
+<a id=598></a>  <a href="../h_src/143222648.htm" class="localvar">state</a>[3] = <a href="../h_src/143225096.htm" class="function">Int2I</a>(0);
+<a id=599></a>  for (<a href="../h_src/143222240.htm" class="localvar">i</a> = 0; <a href="../h_src/143222240.htm" class="localvar">i</a> &lt; 16; <a href="../h_src/143222240.htm" class="localvar">i</a>++)
+<a id=600></a>    <a href="../h_src/143226932.htm" class="function">nextrand</a>(<a href="../h_src/143222648.htm" class="localvar">state</a>);  <a  class="comments">/* discard initial values to &quot;spread&quot; seed */</a>
+<a id=601></a>  <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143222784.htm" class="localvar">L</a>, <a href="../h_src/143222512.htm" class="localvar">n1</a>);
+<a id=602></a>  <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143222784.htm" class="localvar">L</a>, <a href="../h_src/143222376.htm" class="localvar">n2</a>);
+}
+
+
+<a id=606></a><a  class="comments">/*</a>
+<a id=607></a><a  class="comments">** Set a &quot;random&quot; seed. To get some randomness, use the current time</a>
+<a id=608></a><a  class="comments">** and the address of 'L' (in case the machine does address space layout</a>
+<a id=609></a><a  class="comments">** randomization).</a>
+<a id=610></a><a  class="comments">*/</a>
+<a id=611></a>static void <a href="../h_src/143222104.htm" class="function">randseed</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143221968.htm" class="localvar">L</a>, <a href="../h_src/143224552.htm" class="type">RanState</a> *<a href="../h_src/143221832.htm" class="localvar">state</a>) {
+<a id=612></a>  <a href="../h_src/143225300.htm" class="function">lua_Unsigned</a> <a href="../h_src/143221696.htm" class="localvar">seed1</a> = (<a href="../h_src/143225300.htm" class="function">lua_Unsigned</a>)<a href="../h_aa/57983504.htm" class="libfunc">time</a>(NULL);
+<a id=613></a>  <a href="../h_src/143225300.htm" class="function">lua_Unsigned</a> <a href="../h_src/143221560.htm" class="localvar">seed2</a> = (<a href="../h_src/143225300.htm" class="function">lua_Unsigned</a>)(<a href="../h_aa/57441192.htm" class="type">size_t</a>)<a href="../h_src/143221968.htm" class="localvar">L</a>;
+<a id=614></a>  <a href="../h_src/143222920.htm" class="function">setseed</a>(<a href="../h_src/143221968.htm" class="localvar">L</a>, <a href="../h_src/143221832.htm" class="localvar">state</a>-&gt;<a href="../h_src/143224688.htm" class="variable">s</a>, <a href="../h_src/143221696.htm" class="localvar">seed1</a>, <a href="../h_src/143221560.htm" class="localvar">seed2</a>);
+}
+
+
+<a id=618></a>static int <a href="../h_src/143221424.htm" class="function">math_randomseed</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143221288.htm" class="localvar">L</a>) {
+<a id=619></a>  <a href="../h_src/143224552.htm" class="type">RanState</a> *<a href="../h_src/143221152.htm" class="localvar">state</a> = (<a href="../h_src/143224552.htm" class="type">RanState</a> *)<a href="../h_src/57437996.htm" class="function">lua_touserdata</a>(<a href="../h_src/143221288.htm" class="localvar">L</a>, <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(1));
+<a id=620></a>  if (<a href="../h_src/57427932.htm" class="macro">lua_isnone</a>(<a href="../h_src/143221288.htm" class="localvar">L</a>, 1)) {
+<a id=621></a>    <a href="../h_src/143222104.htm" class="function">randseed</a>(<a href="../h_src/143221288.htm" class="localvar">L</a>, <a href="../h_src/143221152.htm" class="localvar">state</a>);
+  }
+  else {
+<a id=624></a>    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143221016.htm" class="localvar">n1</a> = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143221288.htm" class="localvar">L</a>, 1);
+<a id=625></a>    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143220880.htm" class="localvar">n2</a> = <a href="../h_src/57419908.htm" class="function">luaL_optinteger</a>(<a href="../h_src/143221288.htm" class="localvar">L</a>, 2, 0);
+<a id=626></a>    <a href="../h_src/143222920.htm" class="function">setseed</a>(<a href="../h_src/143221288.htm" class="localvar">L</a>, <a href="../h_src/143221152.htm" class="localvar">state</a>-&gt;<a href="../h_src/143224688.htm" class="variable">s</a>, <a href="../h_src/143221016.htm" class="localvar">n1</a>, <a href="../h_src/143220880.htm" class="localvar">n2</a>);
+  }
+<a id=628></a>  return 2;  <a  class="comments">/* return seeds */</a>
+}
+
+
+<a id=632></a>static const <a href="../h_src/57420996.htm" class="type">luaL_Reg</a> <a href="../h_src/143220744.htm" class="variable">randfuncs</a>[] = {
+<a id=633></a>  {&quot;random&quot;, <a href="../h_src/143223940.htm" class="function">math_random</a>},
+<a id=634></a>  {&quot;randomseed&quot;, <a href="../h_src/143221424.htm" class="function">math_randomseed</a>},
+  {NULL, NULL}
+};
+
+
+<a id=639></a><a  class="comments">/*</a>
+<a id=640></a><a  class="comments">** Register the random functions and initialize their state.</a>
+<a id=641></a><a  class="comments">*/</a>
+<a id=642></a>static void <a href="../h_src/143220676.htm" class="function">setrandfunc</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143220540.htm" class="localvar">L</a>) {
+<a id=643></a>  <a href="../h_src/143224552.htm" class="type">RanState</a> *<a href="../h_src/143220404.htm" class="localvar">state</a> = (<a href="../h_src/143224552.htm" class="type">RanState</a> *)<a href="../h_src/57433848.htm" class="function">lua_newuserdatauv</a>(<a href="../h_src/143220540.htm" class="localvar">L</a>, sizeof(<a href="../h_src/143224552.htm" class="type">RanState</a>), 0);
+<a id=644></a>  <a href="../h_src/143222104.htm" class="function">randseed</a>(<a href="../h_src/143220540.htm" class="localvar">L</a>, <a href="../h_src/143220404.htm" class="localvar">state</a>);  <a  class="comments">/* initialize with a &quot;random&quot; seed */</a>
+<a id=645></a>  <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143220540.htm" class="localvar">L</a>, 2);  <a  class="comments">/* remove pushed seeds */</a>
+<a id=646></a>  <a href="../h_src/57417868.htm" class="function">luaL_setfuncs</a>(<a href="../h_src/143220540.htm" class="localvar">L</a>, <a href="../h_src/143220744.htm" class="variable">randfuncs</a>, 1);
+}
+
+<a id=649></a><a  class="comments">/* }================================================================== */</a>
+
+
+<a id=652></a><a  class="comments">/*</a>
+<a id=653></a><a  class="comments">** {==================================================================</a>
+<a id=654></a><a  class="comments">** Deprecated functions (for compatibility only)</a>
+<a id=655></a><a  class="comments">** ===================================================================</a>
+<a id=656></a><a  class="comments">*/</a>
+<a id=657></a>#if defined(<a href="../h_src/57453364.htm" class="macro">LUA_COMPAT_MATHLIB</a>)
+
+<a id=659></a>static int <a href="../h_src/143220268.htm" class="function">math_cosh</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143220132.htm" class="localvar">L</a>) {
+<a id=660></a>  <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143220132.htm" class="localvar">L</a>, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143219996.htm" class="libfunc">cosh</a>)(<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143220132.htm" class="localvar">L</a>, 1)));
+  return 1;
+}
+
+<a id=664></a>static int <a href="../h_src/143219928.htm" class="function">math_sinh</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143219792.htm" class="localvar">L</a>) {
+<a id=665></a>  <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143219792.htm" class="localvar">L</a>, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143219656.htm" class="libfunc">sinh</a>)(<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143219792.htm" class="localvar">L</a>, 1)));
+  return 1;
+}
+
+<a id=669></a>static int <a href="../h_src/143219588.htm" class="function">math_tanh</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143219452.htm" class="localvar">L</a>) {
+<a id=670></a>  <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143219452.htm" class="localvar">L</a>, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143219316.htm" class="libfunc">tanh</a>)(<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143219452.htm" class="localvar">L</a>, 1)));
+  return 1;
+}
+
+<a id=674></a>static int <a href="../h_src/143219248.htm" class="function">math_pow</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143219112.htm" class="localvar">L</a>) {
+<a id=675></a>  <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/143218976.htm" class="localvar">x</a> = <a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143219112.htm" class="localvar">L</a>, 1);
+<a id=676></a>  <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/143218840.htm" class="localvar">y</a> = <a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143219112.htm" class="localvar">L</a>, 2);
+<a id=677></a>  <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143219112.htm" class="localvar">L</a>, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/57917640.htm" class="libfunc">pow</a>)(<a href="../h_src/143218976.htm" class="localvar">x</a>, <a href="../h_src/143218840.htm" class="localvar">y</a>));
+  return 1;
+}
+
+<a id=681></a>static int <a href="../h_src/143218704.htm" class="function">math_frexp</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143218568.htm" class="localvar">L</a>) {
+<a id=682></a>  int <a href="../h_src/143218432.htm" class="localvar">e</a>;
+<a id=683></a>  <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143218568.htm" class="localvar">L</a>, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/58118864.htm" class="libfunc">frexp</a>)(<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143218568.htm" class="localvar">L</a>, 1), &amp;<a href="../h_src/143218432.htm" class="localvar">e</a>));
+<a id=684></a>  <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143218568.htm" class="localvar">L</a>, <a href="../h_src/143218432.htm" class="localvar">e</a>);
+  return 2;
+}
+
+<a id=688></a>static int <a href="../h_src/143218296.htm" class="function">math_ldexp</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143218160.htm" class="localvar">L</a>) {
+<a id=689></a>  <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/143218024.htm" class="localvar">x</a> = <a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143218160.htm" class="localvar">L</a>, 1);
+<a id=690></a>  int <a href="../h_src/143217888.htm" class="localvar">ep</a> = (int)<a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143218160.htm" class="localvar">L</a>, 2);
+<a id=691></a>  <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143218160.htm" class="localvar">L</a>, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/57804272.htm" class="libfunc">ldexp</a>)(<a href="../h_src/143218024.htm" class="localvar">x</a>, <a href="../h_src/143217888.htm" class="localvar">ep</a>));
+  return 1;
+}
+
+<a id=695></a>static int <a href="../h_src/143217752.htm" class="function">math_log10</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143217616.htm" class="localvar">L</a>) {
+<a id=696></a>  <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143217616.htm" class="localvar">L</a>, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143233800.htm" class="libfunc">log10</a>)(<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143217616.htm" class="localvar">L</a>, 1)));
+  return 1;
+}
+
+#endif
+<a id=701></a><a  class="comments">/* }================================================================== */</a>
+
+
+
+<a id=705></a>static const <a href="../h_src/57420996.htm" class="type">luaL_Reg</a> <a href="../h_src/143217480.htm" class="variable">mathlib</a>[] = {
+<a id=706></a>  {&quot;abs&quot;,   <a href="../h_src/143241144.htm" class="function">math_abs</a>},
+<a id=707></a>  {&quot;acos&quot;,  <a href="../h_src/143239308.htm" class="function">math_acos</a>},
+<a id=708></a>  {&quot;asin&quot;,  <a href="../h_src/143239648.htm" class="function">math_asin</a>},
+<a id=709></a>  {&quot;atan&quot;,  <a href="../h_src/143238968.htm" class="function">math_atan</a>},
+<a id=710></a>  {&quot;ceil&quot;,  <a href="../h_src/143236860.htm" class="function">math_ceil</a>},
+<a id=711></a>  {&quot;cos&quot;,   <a href="../h_src/143240328.htm" class="function">math_cos</a>},
+<a id=712></a>  {&quot;deg&quot;,   <a href="../h_src/143233392.htm" class="function">math_deg</a>},
+<a id=713></a>  {&quot;exp&quot;,   <a href="../h_src/143233732.htm" class="function">math_exp</a>},
+<a id=714></a>  {&quot;tointeger&quot;, <a href="../h_src/143238356.htm" class="function">math_toint</a>},
+<a id=715></a>  {&quot;floor&quot;, <a href="../h_src/143237268.htm" class="function">math_floor</a>},
+<a id=716></a>  {&quot;fmod&quot;,   <a href="../h_src/143236384.htm" class="function">math_fmod</a>},
+<a id=717></a>  {&quot;ult&quot;,   <a href="../h_src/143235092.htm" class="function">math_ult</a>},
+<a id=718></a>  {&quot;log&quot;,   <a href="../h_src/143234548.htm" class="function">math_log</a>},
+<a id=719></a>  {&quot;max&quot;,   <a href="../h_src/143232168.htm" class="function">math_max</a>},
+<a id=720></a>  {&quot;min&quot;,   <a href="../h_src/143232848.htm" class="function">math_min</a>},
+<a id=721></a>  {&quot;modf&quot;,   <a href="../h_src/143235976.htm" class="function">math_modf</a>},
+<a id=722></a>  {&quot;rad&quot;,   <a href="../h_src/143233120.htm" class="function">math_rad</a>},
+<a id=723></a>  {&quot;sin&quot;,   <a href="../h_src/143240668.htm" class="function">math_sin</a>},
+<a id=724></a>  {&quot;sqrt&quot;,  <a href="../h_src/143235432.htm" class="function">math_sqrt</a>},
+<a id=725></a>  {&quot;tan&quot;,   <a href="../h_src/143239988.htm" class="function">math_tan</a>},
+<a id=726></a>  {&quot;type&quot;, <a href="../h_src/143231488.htm" class="function">math_type</a>},
+<a id=727></a>#if defined(<a href="../h_src/57453364.htm" class="macro">LUA_COMPAT_MATHLIB</a>)
+<a id=728></a>  {&quot;atan2&quot;, <a href="../h_src/143238968.htm" class="function">math_atan</a>},
+<a id=729></a>  {&quot;cosh&quot;,   <a href="../h_src/143220268.htm" class="function">math_cosh</a>},
+<a id=730></a>  {&quot;sinh&quot;,   <a href="../h_src/143219928.htm" class="function">math_sinh</a>},
+<a id=731></a>  {&quot;tanh&quot;,   <a href="../h_src/143219588.htm" class="function">math_tanh</a>},
+<a id=732></a>  {&quot;pow&quot;,   <a href="../h_src/143219248.htm" class="function">math_pow</a>},
+<a id=733></a>  {&quot;frexp&quot;, <a href="../h_src/143218704.htm" class="function">math_frexp</a>},
+<a id=734></a>  {&quot;ldexp&quot;, <a href="../h_src/143218296.htm" class="function">math_ldexp</a>},
+<a id=735></a>  {&quot;log10&quot;, <a href="../h_src/143217752.htm" class="function">math_log10</a>},
+#endif
+<a id=737></a>  <a  class="comments">/* placeholders */</a>
+  {&quot;random&quot;, NULL},
+  {&quot;randomseed&quot;, NULL},
+  {&quot;pi&quot;, NULL},
+  {&quot;huge&quot;, NULL},
+  {&quot;maxinteger&quot;, NULL},
+  {&quot;mininteger&quot;, NULL},
+  {NULL, NULL}
+};
+
+
+<a id=748></a><a  class="comments">/*</a>
+<a id=749></a><a  class="comments">** Open math library</a>
+<a id=750></a><a  class="comments">*/</a>
+<a id=751></a><a href="../h_src/57454180.htm" class="macro">LUAMOD_API</a> int <a href="../h_src/57574212.htm" class="function">luaopen_math</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143217412.htm" class="localvar">L</a>) {
+<a id=752></a>  <a href="../h_src/57417392.htm" class="macro">luaL_newlib</a>(<a href="../h_src/143217412.htm" class="localvar">L</a>, <a href="../h_src/143217480.htm" class="variable">mathlib</a>);
+<a id=753></a>  <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143217412.htm" class="localvar">L</a>, <a href="../h_src/143241280.htm" class="macro">PI</a>);
+<a id=754></a>  <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/143217412.htm" class="localvar">L</a>, -2, &quot;pi&quot;);
+<a id=755></a>  <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143217412.htm" class="localvar">L</a>, (<a href="../h_src/57442144.htm" class="type">lua_Number</a>)HUGE_VAL);
+<a id=756></a>  <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/143217412.htm" class="localvar">L</a>, -2, &quot;huge&quot;);
+<a id=757></a>  <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143217412.htm" class="localvar">L</a>, <a href="../h_src/57450100.htm" class="macro">LUA_MAXINTEGER</a>);
+<a id=758></a>  <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/143217412.htm" class="localvar">L</a>, -2, &quot;maxinteger&quot;);
+<a id=759></a>  <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143217412.htm" class="localvar">L</a>, <a href="../h_src/57449964.htm" class="macro">LUA_MININTEGER</a>);
+<a id=760></a>  <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/143217412.htm" class="localvar">L</a>, -2, &quot;mininteger&quot;);
+<a id=761></a>  <a href="../h_src/143220676.htm" class="function">setrandfunc</a>(<a href="../h_src/143217412.htm" class="localvar">L</a>);
+  return 1;
+}
+
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

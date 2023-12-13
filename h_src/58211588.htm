@@ -1,0 +1,59 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>l_strcmp</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58211588.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58211588.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58211588.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58211588.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58211588.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58211588.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58062016.htm#375" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/58211588.htm" class="function">l_strcmp</a> (const <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/58211452.htm" class="localvar">ls</a>, const <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/58211316.htm" class="localvar">rs</a>) {
+  const char *<a href="../h_src/58211180.htm" class="localvar">l</a> = <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58211452.htm" class="localvar">ls</a>);
+  <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58211044.htm" class="localvar">ll</a> = <a href="../h_src/57522396.htm" class="macro">tsslen</a>(<a href="../h_src/58211452.htm" class="localvar">ls</a>);
+  const char *<a href="../h_src/58210908.htm" class="localvar">r</a> = <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58211316.htm" class="localvar">rs</a>);
+  <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58210772.htm" class="localvar">lr</a> = <a href="../h_src/57522396.htm" class="macro">tsslen</a>(<a href="../h_src/58211316.htm" class="localvar">rs</a>);
+  for (;;) {  <a  class="comments">/* for each segment */</a>
+    int <a href="../h_src/58210568.htm" class="localvar">temp</a> = <a href="../h_aa/58210636.htm" class="libfunc">strcoll</a>(<a href="../h_src/58211180.htm" class="localvar">l</a>, <a href="../h_src/58210908.htm" class="localvar">r</a>);
+    if (<a href="../h_src/58210568.htm" class="localvar">temp</a> != 0)  <a  class="comments">/* not equal? */</a>
+      return <a href="../h_src/58210568.htm" class="localvar">temp</a>;  <a  class="comments">/* done */</a>
+    else {  <a  class="comments">/* strings are equal up to a '\0' */</a>
+      <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58210432.htm" class="localvar">len</a> = <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/58211180.htm" class="localvar">l</a>);  <a  class="comments">/* index of first '\0' in both strings */</a>
+      if (<a href="../h_src/58210432.htm" class="localvar">len</a> == <a href="../h_src/58210772.htm" class="localvar">lr</a>)  <a  class="comments">/* 'rs' is finished? */</a>
+        return (<a href="../h_src/58210432.htm" class="localvar">len</a> == <a href="../h_src/58211044.htm" class="localvar">ll</a>) ? 0 : 1;  <a  class="comments">/* check 'ls' */</a>
+      else if (<a href="../h_src/58210432.htm" class="localvar">len</a> == <a href="../h_src/58211044.htm" class="localvar">ll</a>)  <a  class="comments">/* 'ls' is finished? */</a>
+        return -1;  <a  class="comments">/* 'ls' is less than 'rs' ('rs' is not finished) */</a>
+      <a  class="comments">/* both strings longer than 'len'; go on comparing after the '\0' */</a>
+      <a href="../h_src/58210432.htm" class="localvar">len</a>++;
+      <a href="../h_src/58211180.htm" class="localvar">l</a> += <a href="../h_src/58210432.htm" class="localvar">len</a>; <a href="../h_src/58211044.htm" class="localvar">ll</a> -= <a href="../h_src/58210432.htm" class="localvar">len</a>; <a href="../h_src/58210908.htm" class="localvar">r</a> += <a href="../h_src/58210432.htm" class="localvar">len</a>; <a href="../h_src/58210772.htm" class="localvar">lr</a> -= <a href="../h_src/58210432.htm" class="localvar">len</a>;
+    }
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

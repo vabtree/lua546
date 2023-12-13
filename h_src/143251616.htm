@@ -1,0 +1,47 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>aux_lines</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143251616.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143251616.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143251616.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143251616.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143251616.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143251616.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143264808.htm#363" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/143251616.htm" class="function">aux_lines</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143251480.htm" class="localvar">L</a>, int <a href="../h_src/143251344.htm" class="localvar">toclose</a>) {
+  int <a href="../h_src/143251208.htm" class="localvar">n</a> = <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/143251480.htm" class="localvar">L</a>) - 1;  <a  class="comments">/* number of arguments to read */</a>
+  <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143251480.htm" class="localvar">L</a>, <a href="../h_src/143251208.htm" class="localvar">n</a> &lt;= <a href="../h_src/143251752.htm" class="macro">MAXARGLINE</a>, <a href="../h_src/143251752.htm" class="macro">MAXARGLINE</a> + 2, &quot;too many arguments&quot;);
+  <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/143251480.htm" class="localvar">L</a>, 1);  <a  class="comments">/* file */</a>
+  <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143251480.htm" class="localvar">L</a>, <a href="../h_src/143251208.htm" class="localvar">n</a>);  <a  class="comments">/* number of arguments to read */</a>
+  <a href="../h_src/57434596.htm" class="function">lua_pushboolean</a>(<a href="../h_src/143251480.htm" class="localvar">L</a>, <a href="../h_src/143251344.htm" class="localvar">toclose</a>);  <a  class="comments">/* close/not close file when finished */</a>
+  <a href="../h_src/57439152.htm" class="function">lua_rotate</a>(<a href="../h_src/143251480.htm" class="localvar">L</a>, 2, 3);  <a  class="comments">/* move the three values to their positions */</a>
+  <a href="../h_src/57434664.htm" class="function">lua_pushcclosure</a>(<a href="../h_src/143251480.htm" class="localvar">L</a>, <a href="../h_src/143251888.htm" class="function">io_readline</a>, 3 + <a href="../h_src/143251208.htm" class="localvar">n</a>);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,53 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>loadFunction</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58068816.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58068816.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58068816.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58068816.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58068816.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58068816.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58075888.htm#258" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/58068816.htm" class="function">loadFunction</a> (<a href="../h_src/58074936.htm" class="type">LoadState</a> *<a href="../h_src/58065144.htm" class="localvar">S</a>, <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/58065008.htm" class="localvar">f</a>, <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/58064872.htm" class="localvar">psource</a>) {
+  <a href="../h_src/58065008.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a> = <a href="../h_src/58071128.htm" class="function">loadStringN</a>(<a href="../h_src/58065144.htm" class="localvar">S</a>, <a href="../h_src/58065008.htm" class="localvar">f</a>);
+  if (<a href="../h_src/58065008.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a> == NULL)  <a  class="comments">/* no source in dump? */</a>
+    <a href="../h_src/58065008.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a> = <a href="../h_src/58064872.htm" class="localvar">psource</a>;  <a  class="comments">/* reuse parent's source */</a>
+  <a href="../h_src/58065008.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515256.htm" class="variable">linedefined</a> = <a href="../h_src/58072216.htm" class="function">loadInt</a>(<a href="../h_src/58065144.htm" class="localvar">S</a>);
+  <a href="../h_src/58065008.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515188.htm" class="variable">lastlinedefined</a> = <a href="../h_src/58072216.htm" class="function">loadInt</a>(<a href="../h_src/58065144.htm" class="localvar">S</a>);
+  <a href="../h_src/58065008.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515936.htm" class="variable">numparams</a> = <a href="../h_src/58073576.htm" class="function">loadByte</a>(<a href="../h_src/58065144.htm" class="localvar">S</a>);
+  <a href="../h_src/58065008.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515868.htm" class="variable">is_vararg</a> = <a href="../h_src/58073576.htm" class="function">loadByte</a>(<a href="../h_src/58065144.htm" class="localvar">S</a>);
+  <a href="../h_src/58065008.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515800.htm" class="variable">maxstacksize</a> = <a href="../h_src/58073576.htm" class="function">loadByte</a>(<a href="../h_src/58065144.htm" class="localvar">S</a>);
+  <a href="../h_src/58069360.htm" class="function">loadCode</a>(<a href="../h_src/58065144.htm" class="localvar">S</a>, <a href="../h_src/58065008.htm" class="localvar">f</a>);
+  <a href="../h_src/58068680.htm" class="function">loadConstants</a>(<a href="../h_src/58065144.htm" class="localvar">S</a>, <a href="../h_src/58065008.htm" class="localvar">f</a>);
+  <a href="../h_src/58066504.htm" class="function">loadUpvalues</a>(<a href="../h_src/58065144.htm" class="localvar">S</a>, <a href="../h_src/58065008.htm" class="localvar">f</a>);
+  <a href="../h_src/58067184.htm" class="function">loadProtos</a>(<a href="../h_src/58065144.htm" class="localvar">S</a>, <a href="../h_src/58065008.htm" class="localvar">f</a>);
+  <a href="../h_src/58065824.htm" class="function">loadDebug</a>(<a href="../h_src/58065144.htm" class="localvar">S</a>, <a href="../h_src/58065008.htm" class="localvar">f</a>);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

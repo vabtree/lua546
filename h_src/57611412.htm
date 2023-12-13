@@ -1,0 +1,44 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaV_tointeger</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57611412.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57611412.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57611412.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57611412.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57611412.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57611412.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58062016.htm#152" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+int <a href="../h_src/57611412.htm" class="function">luaV_tointeger</a> (const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58059228.htm" class="localvar">obj</a>, <a href="../h_src/57442076.htm" class="type">lua_Integer</a> *<a href="../h_src/58059092.htm" class="localvar">p</a>, <a href="../h_src/57613180.htm" class="type">F2Imod</a> <a href="../h_src/58058956.htm" class="localvar">mode</a>) {
+  <a href="../h_src/57535384.htm" class="type">TValue</a> <a href="../h_src/58058820.htm" class="localvar">v</a>;
+  if (<a href="../h_src/58060996.htm" class="function">l_strton</a>(<a href="../h_src/58059228.htm" class="localvar">obj</a>, &amp;<a href="../h_src/58058820.htm" class="localvar">v</a>))  <a  class="comments">/* does 'obj' point to a numerical string? */</a>
+    <a href="../h_src/58059228.htm" class="localvar">obj</a> = &amp;<a href="../h_src/58058820.htm" class="localvar">v</a>;  <a  class="comments">/* change it to point to its corresponding number */</a>
+  return <a href="../h_src/57611276.htm" class="function">luaV_tointegerns</a>(<a href="../h_src/58059228.htm" class="localvar">obj</a>, <a href="../h_src/58059092.htm" class="localvar">p</a>, <a href="../h_src/58058956.htm" class="localvar">mode</a>);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

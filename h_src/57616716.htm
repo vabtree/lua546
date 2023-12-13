@@ -1,0 +1,93 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaH_newkey</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57616716.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57616716.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57616716.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57616716.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57616716.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57616716.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58121924.htm#665" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+void <a href="../h_src/57616716.htm" class="function">luaH_newkey</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58099620.htm" class="localvar">L</a>, <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58099484.htm" class="localvar">t</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58099348.htm" class="localvar">key</a>, <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58099212.htm" class="localvar">value</a>) {
+  <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/58099076.htm" class="localvar">mp</a>;
+  <a href="../h_src/57535384.htm" class="type">TValue</a> <a href="../h_src/58098940.htm" class="localvar">aux</a>;
+  if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57531168.htm" class="macro">ttisnil</a>(<a href="../h_src/58099348.htm" class="localvar">key</a>)))
+    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, &quot;table index is nil&quot;);
+  else if (<a href="../h_src/57526680.htm" class="macro">ttisfloat</a>(<a href="../h_src/58099348.htm" class="localvar">key</a>)) {
+    <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/58098804.htm" class="localvar">f</a> = <a href="../h_src/57526272.htm" class="macro">fltvalue</a>(<a href="../h_src/58099348.htm" class="localvar">key</a>);
+    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/58098668.htm" class="localvar">k</a>;
+    if (<a href="../h_src/57611208.htm" class="function">luaV_flttointeger</a>(<a href="../h_src/58098804.htm" class="localvar">f</a>, &amp;<a href="../h_src/58098668.htm" class="localvar">k</a>, <a href="../h_src/57613520.htm" class="variable">F2Ieq</a>)) {  <a  class="comments">/* does key fit in an integer? */</a>
+      <a href="../h_src/57525456.htm" class="macro">setivalue</a>(&amp;<a href="../h_src/58098940.htm" class="localvar">aux</a>, <a href="../h_src/58098668.htm" class="localvar">k</a>);
+      <a href="../h_src/58099348.htm" class="localvar">key</a> = &amp;<a href="../h_src/58098940.htm" class="localvar">aux</a>;  <a  class="comments">/* insert it as an integer */</a>
+    }
+    else if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57538784.htm" class="macro">luai_numisnan</a>(<a href="../h_src/58098804.htm" class="localvar">f</a>)))
+      <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, &quot;table index is NaN&quot;);
+  }
+  if (<a href="../h_src/57531168.htm" class="macro">ttisnil</a>(<a href="../h_src/58099212.htm" class="localvar">value</a>))
+    return;  <a  class="comments">/* do not insert nil values */</a>
+  <a href="../h_src/58099076.htm" class="localvar">mp</a> = <a href="../h_src/58118660.htm" class="function">mainpositionTV</a>(<a href="../h_src/58099484.htm" class="localvar">t</a>, <a href="../h_src/58099348.htm" class="localvar">key</a>);
+  if (!<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>)) || <a href="../h_src/57617464.htm" class="macro">isdummy</a>(<a href="../h_src/58099484.htm" class="localvar">t</a>)) {  <a  class="comments">/* main position is taken? */</a>
+    <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/58098396.htm" class="localvar">othern</a>;
+    <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/58098260.htm" class="localvar">f</a> = <a href="../h_src/58099892.htm" class="function">getfreepos</a>(<a href="../h_src/58099484.htm" class="localvar">t</a>);  <a  class="comments">/* get a free place */</a>
+    if (<a href="../h_src/58098260.htm" class="localvar">f</a> == NULL) {  <a  class="comments">/* cannot find a free place? */</a>
+      <a href="../h_src/58101796.htm" class="function">rehash</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, <a href="../h_src/58099484.htm" class="localvar">t</a>, <a href="../h_src/58099348.htm" class="localvar">key</a>);  <a  class="comments">/* grow table */</a>
+      <a  class="comments">/* whatever called 'newkey' takes care of TM cache */</a>
+      <a href="../h_src/57616648.htm" class="function">luaH_set</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, <a href="../h_src/58099484.htm" class="localvar">t</a>, <a href="../h_src/58099348.htm" class="localvar">key</a>, <a href="../h_src/58099212.htm" class="localvar">value</a>);  <a  class="comments">/* insert key into grown table */</a>
+      return;
+    }
+    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!<a href="../h_src/57617464.htm" class="macro">isdummy</a>(t));
+    <a href="../h_src/58098396.htm" class="localvar">othern</a> = <a href="../h_src/58117300.htm" class="function">mainpositionfromnode</a>(<a href="../h_src/58099484.htm" class="localvar">t</a>, <a href="../h_src/58099076.htm" class="localvar">mp</a>);
+    if (<a href="../h_src/58098396.htm" class="localvar">othern</a> != <a href="../h_src/58099076.htm" class="localvar">mp</a>) {  <a  class="comments">/* is colliding node out of its main position? */</a>
+      <a  class="comments">/* yes; move colliding node into free position */</a>
+      while (<a href="../h_src/58098396.htm" class="localvar">othern</a> + <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58098396.htm" class="localvar">othern</a>) != <a href="../h_src/58099076.htm" class="localvar">mp</a>)  <a  class="comments">/* find previous */</a>
+        <a href="../h_src/58098396.htm" class="localvar">othern</a> += <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58098396.htm" class="localvar">othern</a>);
+      <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58098396.htm" class="localvar">othern</a>) = <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/58098260.htm" class="localvar">f</a> - <a href="../h_src/58098396.htm" class="localvar">othern</a>);  <a  class="comments">/* rechain to point to 'f' */</a>
+      *<a href="../h_src/58098260.htm" class="localvar">f</a> = *<a href="../h_src/58099076.htm" class="localvar">mp</a>;  <a  class="comments">/* copy colliding node into free pos. (mp-&gt;next also goes) */</a>
+      if (<a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>) != 0) {
+        <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58098260.htm" class="localvar">f</a>) += <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a> - <a href="../h_src/58098260.htm" class="localvar">f</a>);  <a  class="comments">/* correct 'next' */</a><a href="../h_src/57506280.htm" class="variable">next</a>' */
+        <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>) = 0;  <a  class="comments">/* now 'mp' is free */</a>
+      }
+      <a href="../h_src/57530216.htm" class="macro">setempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>));
+    }
+    else {  <a  class="comments">/* colliding node is in its own main position */</a>
+      <a  class="comments">/* new node will go into free position */</a>
+      if (<a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>) != 0)
+        <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58098260.htm" class="localvar">f</a>) = <a href="../h_src/57547216.htm" class="macro">cast_int</a>((<a href="../h_src/58099076.htm" class="localvar">mp</a> + <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>)) - <a href="../h_src/58098260.htm" class="localvar">f</a>);  <a  class="comments">/* chain new position */</a>
+      else <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57617736.htm" class="macro">gnext</a>(f) == 0);
+      <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>) = <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/58098260.htm" class="localvar">f</a> - <a href="../h_src/58099076.htm" class="localvar">mp</a>);
+      <a href="../h_src/58099076.htm" class="localvar">mp</a> = <a href="../h_src/58098260.htm" class="localvar">f</a>;
+    }
+  }
+  <a href="../h_src/57505940.htm" class="macro">setnodekey</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, <a href="../h_src/58099076.htm" class="localvar">mp</a>, <a href="../h_src/58099348.htm" class="localvar">key</a>);
+  <a href="../h_src/57621068.htm" class="macro">luaC_barrierback</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, <a href="../h_src/57638884.htm" class="macro">obj2gco</a>(<a href="../h_src/58099484.htm" class="localvar">t</a>), <a href="../h_src/58099348.htm" class="localvar">key</a>);
+  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(mp)));
+  <a href="../h_src/57533004.htm" class="macro">setobj2t</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, <a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>), <a href="../h_src/58099212.htm" class="localvar">value</a>);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

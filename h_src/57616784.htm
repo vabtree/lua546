@@ -1,0 +1,53 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaH_get</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57616784.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57616784.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57616784.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57616784.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57616784.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57616784.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58121924.htm#788" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57616784.htm" class="function">luaH_get</a> (<a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58095812.htm" class="localvar">t</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58095676.htm" class="localvar">key</a>) {
+  switch (<a href="../h_src/57534636.htm" class="macro">ttypetag</a>(<a href="../h_src/58095676.htm" class="localvar">key</a>)) {
+    case <a href="../h_src/57525184.htm" class="macro">LUA_VSHRSTR</a>: return <a href="../h_src/57616920.htm" class="function">luaH_getshortstr</a>(<a href="../h_src/58095812.htm" class="localvar">t</a>, <a href="../h_src/57524368.htm" class="macro">tsvalue</a>(<a href="../h_src/58095676.htm" class="localvar">key</a>));
+    case <a href="../h_src/57527088.htm" class="macro">LUA_VNUMINT</a>: return <a href="../h_src/57617056.htm" class="function">luaH_getint</a>(<a href="../h_src/58095812.htm" class="localvar">t</a>, <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58095676.htm" class="localvar">key</a>));
+    case <a href="../h_src/57531576.htm" class="macro">LUA_VNIL</a>: return &amp;<a href="../h_src/58120156.htm" class="variable">absentkey</a>;
+    case <a href="../h_src/57526952.htm" class="macro">LUA_VNUMFLT</a>: {
+      <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/58095540.htm" class="localvar">k</a>;
+      if (<a href="../h_src/57611208.htm" class="function">luaV_flttointeger</a>(<a href="../h_src/57526272.htm" class="macro">fltvalue</a>(<a href="../h_src/58095676.htm" class="localvar">key</a>), &amp;<a href="../h_src/58095540.htm" class="localvar">k</a>, <a href="../h_src/57613520.htm" class="variable">F2Ieq</a>)) <a  class="comments">/* integral index? */</a>
+        return <a href="../h_src/57617056.htm" class="function">luaH_getint</a>(<a href="../h_src/58095812.htm" class="localvar">t</a>, <a href="../h_src/58095540.htm" class="localvar">k</a>);  <a  class="comments">/* use specialized version */</a>
+      <a  class="comments">/* else... */</a>
+    }  <a  class="comments">/* FALLTHROUGH */</a>
+    default:
+      return <a href="../h_src/58114852.htm" class="function">getgeneric</a>(<a href="../h_src/58095812.htm" class="localvar">t</a>, <a href="../h_src/58095676.htm" class="localvar">key</a>, 0);
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

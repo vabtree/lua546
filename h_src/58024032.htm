@@ -1,0 +1,47 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>block_follow</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58024032.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58024032.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58024032.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58024032.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58024032.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58024032.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58057080.htm#788" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/58024032.htm" class="function">block_follow</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/58023896.htm" class="localvar">ls</a>, int <a href="../h_src/58023760.htm" class="localvar">withuntil</a>) {
+  switch (<a href="../h_src/58023896.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a>) {
+    case <a href="../h_src/57705088.htm" class="variable">TK_ELSE</a>: case <a href="../h_src/57705020.htm" class="variable">TK_ELSEIF</a>:
+    case <a href="../h_src/57704952.htm" class="variable">TK_END</a>: case <a href="../h_src/57703116.htm" class="variable">TK_EOS</a>:
+      return 1;
+    case <a href="../h_src/57703932.htm" class="variable">TK_UNTIL</a>: return <a href="../h_src/58023760.htm" class="localvar">withuntil</a>;
+    default: return 0;
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

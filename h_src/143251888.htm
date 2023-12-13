@@ -1,0 +1,65 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>io_readline</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143251888.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143251888.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143251888.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143251888.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143251888.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143251888.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143264808.htm#629" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/143251888.htm" class="function">io_readline</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143246788.htm" class="localvar">L</a>) {
+  <a href="../h_src/143261204.htm" class="type">LStream</a> *<a href="../h_src/143246652.htm" class="localvar">p</a> = (<a href="../h_src/143261204.htm" class="type">LStream</a> *)<a href="../h_src/57437996.htm" class="function">lua_touserdata</a>(<a href="../h_src/143246788.htm" class="localvar">L</a>, <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(1));
+  int <a href="../h_src/143246516.htm" class="localvar">i</a>;
+  int <a href="../h_src/143246380.htm" class="localvar">n</a> = (int)<a href="../h_src/57429428.htm" class="macro">lua_tointeger</a>(<a href="../h_src/143246788.htm" class="localvar">L</a>, <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(2));
+  if (<a href="../h_src/143261000.htm" class="macro">isclosed</a>(<a href="../h_src/143246652.htm" class="localvar">p</a>))  <a  class="comments">/* file is already closed? */</a>
+    return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143246788.htm" class="localvar">L</a>, &quot;file is already closed&quot;);
+  <a href="../h_src/57439288.htm" class="function">lua_settop</a>(<a href="../h_src/143246788.htm" class="localvar">L</a> , 1);
+  <a href="../h_src/57419840.htm" class="function">luaL_checkstack</a>(<a href="../h_src/143246788.htm" class="localvar">L</a>, <a href="../h_src/143246380.htm" class="localvar">n</a>, &quot;too many arguments&quot;);
+  for (<a href="../h_src/143246516.htm" class="localvar">i</a> = 1; <a href="../h_src/143246516.htm" class="localvar">i</a> &lt;= <a href="../h_src/143246380.htm" class="localvar">n</a>; <a href="../h_src/143246516.htm" class="localvar">i</a>++)  <a  class="comments">/* push arguments to 'g_read' */</a>
+    <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/143246788.htm" class="localvar">L</a>, <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(3 + <a href="../h_src/143246516.htm" class="localvar">i</a>));
+  <a href="../h_src/143246380.htm" class="localvar">n</a> = <a href="../h_aa/143247128.htm" class="libfunc">g_read</a>(<a href="../h_src/143246788.htm" class="localvar">L</a>, <a href="../h_src/143246652.htm" class="localvar">p</a>-&gt;f, 2);  <a  class="comments">/* 'n' is number of results */</a>
+  <a href="../h_src/57415352.htm" class="macro">lua_assert</a>(n &gt; 0);  <a  class="comments">/* should return at least a nil */</a>
+  if (<a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/143246788.htm" class="localvar">L</a>, -<a href="../h_src/143246380.htm" class="localvar">n</a>))  <a  class="comments">/* read at least one value? */</a>
+    return <a href="../h_src/143246380.htm" class="localvar">n</a>;  <a  class="comments">/* return them */</a>
+  else {  <a  class="comments">/* first result is false: EOF or error */</a>
+    if (<a href="../h_src/143246380.htm" class="localvar">n</a> &gt; 1) {  <a  class="comments">/* is there error information? */</a>
+      <a  class="comments">/* 2nd result is error message */</a>
+      return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143246788.htm" class="localvar">L</a>, &quot;%s&quot;, <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143246788.htm" class="localvar">L</a>, -<a href="../h_src/143246380.htm" class="localvar">n</a> + 1));
+    }
+    if (<a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/143246788.htm" class="localvar">L</a>, <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(3))) {  <a  class="comments">/* generator created file? */</a>
+      <a href="../h_src/57439288.htm" class="function">lua_settop</a>(<a href="../h_src/143246788.htm" class="localvar">L</a>, 0);  <a  class="comments">/* clear stack */</a>
+      <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/143246788.htm" class="localvar">L</a>, <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(1));  <a  class="comments">/* push file at index 1 */</a>
+      <a href="../h_src/143259232.htm" class="function">aux_close</a>(<a href="../h_src/143246788.htm" class="localvar">L</a>);  <a  class="comments">/* close it */</a>
+    }
+    return 0;
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

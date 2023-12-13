@@ -1,0 +1,58 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lua_upvalueid</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57424260.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57424260.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57424260.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57424260.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57424260.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57424260.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57552180.htm#1431" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57551840.htm" class="macro">LUA_API</a> void *<a href="../h_src/57424260.htm" class="function">lua_upvalueid</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57708488.htm" class="localvar">L</a>, int <a href="../h_src/57708352.htm" class="localvar">fidx</a>, int <a href="../h_src/57708216.htm" class="localvar">n</a>) {
+  <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57708080.htm" class="localvar">fi</a> = <a href="../h_src/57610052.htm" class="function">index2value</a>(<a href="../h_src/57708488.htm" class="localvar">L</a>, <a href="../h_src/57708352.htm" class="localvar">fidx</a>);
+  switch (<a href="../h_src/57534636.htm" class="macro">ttypetag</a>(<a href="../h_src/57708080.htm" class="localvar">fi</a>)) {
+    case <a href="../h_src/57513624.htm" class="macro">LUA_VLCL</a>: {  <a  class="comments">/* lua closure */</a>
+      return *<a href="../h_src/57709644.htm" class="function">getupvalref</a>(<a href="../h_src/57708488.htm" class="localvar">L</a>, <a href="../h_src/57708352.htm" class="localvar">fidx</a>, <a href="../h_src/57708216.htm" class="localvar">n</a>, NULL);
+    }
+    case <a href="../h_src/57513352.htm" class="macro">LUA_VCCL</a>: {  <a  class="comments">/* C closure */</a>
+      <a href="../h_src/57508728.htm" class="type">CClosure</a> *<a href="../h_src/57707944.htm" class="localvar">f</a> = <a href="../h_src/57511992.htm" class="macro">clCvalue</a>(<a href="../h_src/57708080.htm" class="localvar">fi</a>);
+      if (1 &lt;= <a href="../h_src/57708216.htm" class="localvar">n</a> &amp;&amp; <a href="../h_src/57708216.htm" class="localvar">n</a> &lt;= <a href="../h_src/57707944.htm" class="localvar">f</a>-&gt;<a href="../h_src/57509068.htm" class="variable">nupvalues</a>)
+        return &amp;<a href="../h_src/57707944.htm" class="localvar">f</a>-&gt;<a href="../h_src/57508796.htm" class="variable">upvalue</a>[<a href="../h_src/57708216.htm" class="localvar">n</a> - 1];
+      <a  class="comments">/* else */</a>
+    }  <a  class="comments">/* FALLTHROUGH */</a>
+    case <a href="../h_src/57513488.htm" class="macro">LUA_VLCF</a>:
+      return NULL;  <a  class="comments">/* light C functions have no upvalues */</a>
+    default: {
+      <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57708488.htm" class="localvar">L</a>, 0, &quot;function expected&quot;);
+      return NULL;
+    }
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

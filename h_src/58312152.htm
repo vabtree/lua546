@@ -1,0 +1,52 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaB_print</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58312152.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58312152.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58312152.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58312152.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58312152.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58312152.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58312492.htm#24" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/58312152.htm" class="function">luaB_print</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58312016.htm" class="localvar">L</a>) {
+  int <a href="../h_src/58311880.htm" class="localvar">n</a> = <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/58312016.htm" class="localvar">L</a>);  <a  class="comments">/* number of arguments */</a>
+  int <a href="../h_src/58311744.htm" class="localvar">i</a>;
+  for (<a href="../h_src/58311744.htm" class="localvar">i</a> = 1; <a href="../h_src/58311744.htm" class="localvar">i</a> &lt;= <a href="../h_src/58311880.htm" class="localvar">n</a>; <a href="../h_src/58311744.htm" class="localvar">i</a>++) {  <a  class="comments">/* for each argument */</a>
+    <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58311608.htm" class="localvar">l</a>;
+    const char *<a href="../h_src/58311472.htm" class="localvar">s</a> = <a href="../h_src/57420452.htm" class="function">luaL_tolstring</a>(<a href="../h_src/58312016.htm" class="localvar">L</a>, <a href="../h_src/58311744.htm" class="localvar">i</a>, &amp;<a href="../h_src/58311608.htm" class="localvar">l</a>);  <a  class="comments">/* convert it to string */</a>
+    if (<a href="../h_src/58311744.htm" class="localvar">i</a> &gt; 1)  <a  class="comments">/* not the first element? */</a>
+      <a href="../h_src/57412428.htm" class="macro">lua_writestring</a>(&quot;\t&quot;, 1);  <a  class="comments">/* add a tab before it */</a>
+    <a href="../h_src/57412428.htm" class="macro">lua_writestring</a>(<a href="../h_src/58311472.htm" class="localvar">s</a>, <a href="../h_src/58311608.htm" class="localvar">l</a>);  <a  class="comments">/* print it */</a>
+    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/58312016.htm" class="localvar">L</a>, 1);  <a  class="comments">/* pop result */</a>
+  }
+  <a href="../h_src/57412156.htm" class="macro">lua_writeline</a>();
+  return 0;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

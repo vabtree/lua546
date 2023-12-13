@@ -1,0 +1,64 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>traversethread</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57971836.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57971836.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57971836.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57971836.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57971836.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57971836.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57829404.htm#627" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/57971836.htm" class="function">traversethread</a> (<a href="../h_src/57643100.htm" class="type">global_State</a> *<a href="../h_src/57971700.htm" class="localvar">g</a>, <a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57971564.htm" class="localvar">th</a>) {
+  <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57971428.htm" class="localvar">uv</a>;
+  <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57971292.htm" class="localvar">o</a> = <a href="../h_src/57971564.htm" class="localvar">th</a>-&gt;<a href="../h_src/57642284.htm" class="variable">stack</a>.<a href="../h_src/57531984.htm" class="variable">p</a>;
+  if (<a href="../h_src/57623652.htm" class="macro">isold</a>(<a href="../h_src/57971564.htm" class="localvar">th</a>) || <a href="../h_src/57971700.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646024.htm" class="variable">gcstate</a> == <a href="../h_src/57629772.htm" class="macro">GCSpropagate</a>)
+    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57971564.htm" class="localvar">th</a>, <a href="../h_src/57971700.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a>);  <a  class="comments">/* insert into 'grayagain' list */</a>
+  if (<a href="../h_src/57971292.htm" class="localvar">o</a> == NULL)
+    return 1;  <a  class="comments">/* stack not completely built yet */</a>
+  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(g-&gt;gcstate == <a href="../h_src/57629500.htm" class="macro">GCSatomic</a> ||
+             th-&gt;openupval == NULL || <a href="../h_src/57631812.htm" class="macro">isintwups</a>(th));
+  for (; <a href="../h_src/57971292.htm" class="localvar">o</a> &lt; <a href="../h_src/57971564.htm" class="localvar">th</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>; <a href="../h_src/57971292.htm" class="localvar">o</a>++)  <a  class="comments">/* mark live elements in the stack */</a>
+    <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57971700.htm" class="localvar">g</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57971292.htm" class="localvar">o</a>));
+  for (<a href="../h_src/57971428.htm" class="localvar">uv</a> = <a href="../h_src/57971564.htm" class="localvar">th</a>-&gt;<a href="../h_src/57642216.htm" class="variable">openupval</a>; <a href="../h_src/57971428.htm" class="localvar">uv</a> != NULL; <a href="../h_src/57971428.htm" class="localvar">uv</a> = <a href="../h_src/57971428.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57509680.htm" class="variable">u</a>.<a href="../h_src/57509884.htm" class="variable">open</a>.<a href="../h_src/57510224.htm" class="variable">next</a>)
+    <a href="../h_src/57827024.htm" class="macro">markobject</a>(<a href="../h_src/57971700.htm" class="localvar">g</a>, <a href="../h_src/57971428.htm" class="localvar">uv</a>);  <a  class="comments">/* open upvalues cannot be collected */</a>
+  if (<a href="../h_src/57971700.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646024.htm" class="variable">gcstate</a> == <a href="../h_src/57629500.htm" class="macro">GCSatomic</a>) {  <a  class="comments">/* final traversal? */</a>
+    for (; <a href="../h_src/57971292.htm" class="localvar">o</a> &lt; <a href="../h_src/57971564.htm" class="localvar">th</a>-&gt;<a href="../h_src/57642352.htm" class="variable">stack_last</a>.<a href="../h_src/57531984.htm" class="variable">p</a> + <a href="../h_src/57652688.htm" class="macro">EXTRA_STACK</a>; <a href="../h_src/57971292.htm" class="localvar">o</a>++)
+      <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57971292.htm" class="localvar">o</a>));  <a  class="comments">/* clear dead stack slice */</a>
+    <a  class="comments">/* 'remarkupvals' may have removed thread from 'twups' list */</a>
+    if (!<a href="../h_src/57631812.htm" class="macro">isintwups</a>(<a href="../h_src/57971564.htm" class="localvar">th</a>) &amp;&amp; <a href="../h_src/57971564.htm" class="localvar">th</a>-&gt;<a href="../h_src/57642216.htm" class="variable">openupval</a> != NULL) {
+      <a href="../h_src/57971564.htm" class="localvar">th</a>-&gt;<a href="../h_src/57642012.htm" class="variable">twups</a> = <a href="../h_src/57971700.htm" class="localvar">g</a>-&gt;<a href="../h_src/57643984.htm" class="variable">twups</a>;  <a  class="comments">/* link it back to the list */</a>
+      <a href="../h_src/57971700.htm" class="localvar">g</a>-&gt;<a href="../h_src/57643984.htm" class="variable">twups</a> = <a href="../h_src/57971564.htm" class="localvar">th</a>;
+    }
+  }
+  else if (!<a href="../h_src/57971700.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645616.htm" class="variable">gcemergency</a>)
+    <a href="../h_src/57632696.htm" class="function">luaD_shrinkstack</a>(<a href="../h_src/57971564.htm" class="localvar">th</a>); <a  class="comments">/* do not change stack in emergency cycle */</a>
+  return 1 + <a href="../h_src/57652416.htm" class="macro">stacksize</a>(<a href="../h_src/57971564.htm" class="localvar">th</a>);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

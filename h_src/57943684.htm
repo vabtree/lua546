@@ -1,0 +1,99 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>singlestep</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57943684.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57943684.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57943684.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57943684.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57943684.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57943684.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57829404.htm#1583" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static <a href="../h_src/57550616.htm" class="type">lu_mem</a> <a href="../h_src/57943684.htm" class="function">singlestep</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57943548.htm" class="localvar">L</a>) {
+  <a href="../h_src/57643100.htm" class="type">global_State</a> *<a href="../h_src/57943412.htm" class="localvar">g</a> = <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57943548.htm" class="localvar">L</a>);
+  <a href="../h_src/57550616.htm" class="type">lu_mem</a> <a href="../h_src/57943276.htm" class="localvar">work</a>;
+  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!g-&gt;gcstopem);  <a  class="comments">/* collector is not reentrant */</a>
+  <a href="../h_src/57943412.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645888.htm" class="variable">gcstopem</a> = 1;  <a  class="comments">/* no emergency collections while collecting */</a>
+  switch (<a href="../h_src/57943412.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646024.htm" class="variable">gcstate</a>) {
+    case <a href="../h_src/57628684.htm" class="macro">GCSpause</a>: {
+      <a href="../h_src/57818932.htm" class="function">restartcollection</a>(<a href="../h_src/57943412.htm" class="localvar">g</a>);
+      <a href="../h_src/57943412.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646024.htm" class="variable">gcstate</a> = <a href="../h_src/57629772.htm" class="macro">GCSpropagate</a>;
+      <a href="../h_src/57943276.htm" class="localvar">work</a> = 1;
+      break;
+    }
+    case <a href="../h_src/57629772.htm" class="macro">GCSpropagate</a>: {
+      if (<a href="../h_src/57943412.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645072.htm" class="variable">gray</a> == NULL) {  <a  class="comments">/* no more gray objects? */</a>
+        <a href="../h_src/57943412.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646024.htm" class="variable">gcstate</a> = <a href="../h_src/57629636.htm" class="macro">GCSenteratomic</a>;  <a  class="comments">/* finish propagate phase */</a>
+        <a href="../h_src/57943276.htm" class="localvar">work</a> = 0;
+      }
+      else
+        <a href="../h_src/57943276.htm" class="localvar">work</a> = <a href="../h_src/57971156.htm" class="function">propagatemark</a>(<a href="../h_src/57943412.htm" class="localvar">g</a>);  <a  class="comments">/* traverse one gray object */</a>
+      break;
+    }
+    case <a href="../h_src/57629636.htm" class="macro">GCSenteratomic</a>: {
+      <a href="../h_src/57943276.htm" class="localvar">work</a> = <a href="../h_src/57826616.htm" class="function">atomic</a>(<a href="../h_src/57943548.htm" class="localvar">L</a>);  <a  class="comments">/* work is what was traversed by 'atomic' */</a>
+      <a href="../h_src/57826480.htm" class="function">entersweep</a>(<a href="../h_src/57943548.htm" class="localvar">L</a>);
+      <a href="../h_src/57943412.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646500.htm" class="variable">GCestimate</a> = <a href="../h_src/57638748.htm" class="macro">gettotalbytes</a>(<a href="../h_src/57943412.htm" class="localvar">g</a>);  <a  class="comments">/* first estimate */</a>;
+      break;
+    }
+    case <a href="../h_src/57629364.htm" class="macro">GCSswpallgc</a>: {  <a  class="comments">/* sweep &quot;regular&quot; objects */</a>
+      <a href="../h_src/57943276.htm" class="localvar">work</a> = <a href="../h_src/57944636.htm" class="function">sweepstep</a>(<a href="../h_src/57943548.htm" class="localvar">L</a>, <a href="../h_src/57943412.htm" class="localvar">g</a>, <a href="../h_src/57629228.htm" class="macro">GCSswpfinobj</a>, &amp;<a href="../h_src/57943412.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645140.htm" class="variable">finobj</a>);
+      break;
+    }
+    case <a href="../h_src/57629228.htm" class="macro">GCSswpfinobj</a>: {  <a  class="comments">/* sweep objects with finalizers */</a>
+      <a href="../h_src/57943276.htm" class="localvar">work</a> = <a href="../h_src/57944636.htm" class="function">sweepstep</a>(<a href="../h_src/57943548.htm" class="localvar">L</a>, <a href="../h_src/57943412.htm" class="localvar">g</a>, <a href="../h_src/57629092.htm" class="macro">GCSswptobefnz</a>, &amp;<a href="../h_src/57943412.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644732.htm" class="variable">tobefnz</a>);
+      break;
+    }
+    case <a href="../h_src/57629092.htm" class="macro">GCSswptobefnz</a>: {  <a  class="comments">/* sweep objects to be finalized */</a>
+      <a href="../h_src/57943276.htm" class="localvar">work</a> = <a href="../h_src/57944636.htm" class="function">sweepstep</a>(<a href="../h_src/57943548.htm" class="localvar">L</a>, <a href="../h_src/57943412.htm" class="localvar">g</a>, <a href="../h_src/57628956.htm" class="macro">GCSswpend</a>, NULL);
+      break;
+    }
+    case <a href="../h_src/57628956.htm" class="macro">GCSswpend</a>: {  <a  class="comments">/* finish sweeps */</a>
+      <a href="../h_src/57963676.htm" class="function">checkSizes</a>(<a href="../h_src/57943548.htm" class="localvar">L</a>, <a href="../h_src/57943412.htm" class="localvar">g</a>);
+      <a href="../h_src/57943412.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646024.htm" class="variable">gcstate</a> = <a href="../h_src/57628820.htm" class="macro">GCScallfin</a>;
+      <a href="../h_src/57943276.htm" class="localvar">work</a> = 0;
+      break;
+    }
+    case <a href="../h_src/57628820.htm" class="macro">GCScallfin</a>: {  <a  class="comments">/* call remaining finalizers */</a>
+      if (<a href="../h_src/57943412.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644732.htm" class="variable">tobefnz</a> &amp;&amp; !<a href="../h_src/57943412.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645616.htm" class="variable">gcemergency</a>) {
+        <a href="../h_src/57943412.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645888.htm" class="variable">gcstopem</a> = 0;  <a  class="comments">/* ok collections during finalizers */</a>
+        <a href="../h_src/57943276.htm" class="localvar">work</a> = <a href="../h_src/57960412.htm" class="function">runafewfinalizers</a>(<a href="../h_src/57943548.htm" class="localvar">L</a>, <a href="../h_src/57828928.htm" class="macro">GCFINMAX</a>) * <a href="../h_src/57828792.htm" class="macro">GCFINALIZECOST</a>;
+      }
+      else {  <a  class="comments">/* emergency mode or no more finalizers */</a>
+        <a href="../h_src/57943412.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646024.htm" class="variable">gcstate</a> = <a href="../h_src/57628684.htm" class="macro">GCSpause</a>;  <a  class="comments">/* finish collection */</a>
+        <a href="../h_src/57943276.htm" class="localvar">work</a> = 0;
+      }
+      break;
+    }
+    default: <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(0); return 0;
+  }
+  <a href="../h_src/57943412.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645888.htm" class="variable">gcstopem</a> = 0;
+  return <a href="../h_src/57943276.htm" class="localvar">work</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

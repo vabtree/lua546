@@ -1,0 +1,54 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>utfchar</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143412680.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143412680.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143412680.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143412680.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143412680.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143412680.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143418664.htm#165" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/143412680.htm" class="function">utfchar</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143412544.htm" class="localvar">L</a>) {
+  int <a href="../h_src/143412408.htm" class="localvar">n</a> = <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/143412544.htm" class="localvar">L</a>);  <a  class="comments">/* number of arguments */</a>
+  if (<a href="../h_src/143412408.htm" class="localvar">n</a> == 1)  <a  class="comments">/* optimize common case of single char */</a>
+    <a href="../h_src/143413224.htm" class="function">pushutfchar</a>(<a href="../h_src/143412544.htm" class="localvar">L</a>, 1);
+  else {
+    int <a href="../h_src/143412272.htm" class="localvar">i</a>;
+    <a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> <a href="../h_src/143412136.htm" class="localvar">b</a>;
+    <a href="../h_src/57413652.htm" class="function">luaL_buffinit</a>(<a href="../h_src/143412544.htm" class="localvar">L</a>, &amp;<a href="../h_src/143412136.htm" class="localvar">b</a>);
+    for (<a href="../h_src/143412272.htm" class="localvar">i</a> = 1; <a href="../h_src/143412272.htm" class="localvar">i</a> &lt;= <a href="../h_src/143412408.htm" class="localvar">n</a>; <a href="../h_src/143412272.htm" class="localvar">i</a>++) {
+      <a href="../h_src/143413224.htm" class="function">pushutfchar</a>(<a href="../h_src/143412544.htm" class="localvar">L</a>, <a href="../h_src/143412272.htm" class="localvar">i</a>);
+      <a href="../h_src/57413380.htm" class="function">luaL_addvalue</a>(&amp;<a href="../h_src/143412136.htm" class="localvar">b</a>);
+    }
+    <a href="../h_src/57413312.htm" class="function">luaL_pushresult</a>(&amp;<a href="../h_src/143412136.htm" class="localvar">b</a>);
+  }
+  return 1;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

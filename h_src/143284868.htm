@@ -1,0 +1,80 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>getoption</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143284868.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143284868.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143284868.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143284868.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143284868.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143284868.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143344164.htm#1488" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static <a href="../h_src/143286908.htm" class="type">KOption</a> <a href="../h_src/143284868.htm" class="function">getoption</a> (<a href="../h_src/143287860.htm" class="type">Header</a> *<a href="../h_src/143284732.htm" class="localvar">h</a>, const char **<a href="../h_src/143284596.htm" class="localvar">fmt</a>, int *<a href="../h_src/143284460.htm" class="localvar">size</a>) {
+  <a  class="comments">/* dummy structure to get native alignment requirements */</a>
+  struct <a href="../h_src/143284324.htm" class="class">cD</a> { char <a href="../h_src/143284188.htm" class="variable">c</a>; <a href="../h_src/143284120.htm" class="class">u</a>nion { <a href="../h_src/57447108.htm" class="macro">LUAI_MAXALIGN</a>; } <a href="../h_src/143283984.htm" class="variable">u</a>; };
+  int <a href="../h_src/143283576.htm" class="localvar">opt</a> = *((*<a href="../h_src/143284596.htm" class="localvar">fmt</a>)++);
+  *<a href="../h_src/143284460.htm" class="localvar">size</a> = 0;  <a  class="comments">/* default */</a>
+  switch (<a href="../h_src/143283576.htm" class="localvar">opt</a>) {
+    case 'b': *<a href="../h_src/143284460.htm" class="localvar">size</a> = sizeof(char); return <a href="../h_src/143287792.htm" class="variable">Kint</a>;
+    case 'B': *<a href="../h_src/143284460.htm" class="localvar">size</a> = sizeof(char); return <a href="../h_src/143287724.htm" class="variable">Kuint</a>;
+    case 'h': *<a href="../h_src/143284460.htm" class="localvar">size</a> = sizeof(short); return <a href="../h_src/143287792.htm" class="variable">Kint</a>;
+    case 'H': *<a href="../h_src/143284460.htm" class="localvar">size</a> = sizeof(short); return <a href="../h_src/143287724.htm" class="variable">Kuint</a>;
+    case 'l': *<a href="../h_src/143284460.htm" class="localvar">size</a> = sizeof(long); return <a href="../h_src/143287792.htm" class="variable">Kint</a>;
+    case 'L': *<a href="../h_src/143284460.htm" class="localvar">size</a> = sizeof(long); return <a href="../h_src/143287724.htm" class="variable">Kuint</a>;
+    case 'j': *<a href="../h_src/143284460.htm" class="localvar">size</a> = sizeof(<a href="../h_src/57442076.htm" class="type">lua_Integer</a>); return <a href="../h_src/143287792.htm" class="variable">Kint</a>;
+    case 'J': *<a href="../h_src/143284460.htm" class="localvar">size</a> = sizeof(<a href="../h_src/57442076.htm" class="type">lua_Integer</a>); return <a href="../h_src/143287724.htm" class="variable">Kuint</a>;
+    case 'T': *<a href="../h_src/143284460.htm" class="localvar">size</a> = sizeof(<a href="../h_aa/57441192.htm" class="type">size_t</a>); return <a href="../h_src/143287724.htm" class="variable">Kuint</a>;
+    case 'f': *<a href="../h_src/143284460.htm" class="localvar">size</a> = sizeof(float); return <a href="../h_src/143287656.htm" class="variable">Kfloat</a>;
+    case 'n': *<a href="../h_src/143284460.htm" class="localvar">size</a> = sizeof(<a href="../h_src/57442144.htm" class="type">lua_Number</a>); return <a href="../h_src/143287588.htm" class="variable">Knumber</a>;
+    case 'd': *<a href="../h_src/143284460.htm" class="localvar">size</a> = sizeof(double); return <a href="../h_src/143287520.htm" class="variable">Kdouble</a>;
+    case 'i': *<a href="../h_src/143284460.htm" class="localvar">size</a> = <a href="../h_src/143286024.htm" class="function">getnumlimit</a>(<a href="../h_src/143284732.htm" class="localvar">h</a>, <a href="../h_src/143284596.htm" class="localvar">fmt</a>, sizeof(int)); return <a href="../h_src/143287792.htm" class="variable">Kint</a>;
+    case 'I': *<a href="../h_src/143284460.htm" class="localvar">size</a> = <a href="../h_src/143286024.htm" class="function">getnumlimit</a>(<a href="../h_src/143284732.htm" class="localvar">h</a>, <a href="../h_src/143284596.htm" class="localvar">fmt</a>, sizeof(int)); return <a href="../h_src/143287724.htm" class="variable">Kuint</a>;
+    case 's': *<a href="../h_src/143284460.htm" class="localvar">size</a> = <a href="../h_src/143286024.htm" class="function">getnumlimit</a>(<a href="../h_src/143284732.htm" class="localvar">h</a>, <a href="../h_src/143284596.htm" class="localvar">fmt</a>, sizeof(<a href="../h_aa/57441192.htm" class="type">size_t</a>)); return <a href="../h_src/143287384.htm" class="variable">Kstring</a>;
+    case 'c':
+      *<a href="../h_src/143284460.htm" class="localvar">size</a> = <a href="../h_src/143286568.htm" class="function">getnum</a>(<a href="../h_src/143284596.htm" class="localvar">fmt</a>, -1);
+      if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(*<a href="../h_src/143284460.htm" class="localvar">size</a> == -1))
+        <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143284732.htm" class="localvar">h</a>-&gt;<a href="../h_src/143288064.htm" class="variable">L</a>, &quot;missing size for format option 'c'&quot;);
+      return <a href="../h_src/143287452.htm" class="variable">Kchar</a>;
+    case 'z': return <a href="../h_src/143287316.htm" class="variable">Kzstr</a>;
+    case 'x': *<a href="../h_src/143284460.htm" class="localvar">size</a> = 1; return <a href="../h_src/143287248.htm" class="variable">Kpadding</a>;
+    case 'X': return <a href="../h_src/143287180.htm" class="variable">Kpaddalign</a>;
+    case ' ': break;
+    case '&lt;': <a href="../h_src/143284732.htm" class="localvar">h</a>-&gt;<a href="../h_src/143287996.htm" class="variable">islittle</a> = 1; break;
+    case '&gt;': <a href="../h_src/143284732.htm" class="localvar">h</a>-&gt;<a href="../h_src/143287996.htm" class="variable">islittle</a> = 0; break;
+    case '=': <a href="../h_src/143284732.htm" class="localvar">h</a>-&gt;<a href="../h_src/143287996.htm" class="variable">islittle</a> = <a href="../h_src/143288268.htm" class="variable">nativeendian</a>.<a href="../h_src/143288404.htm" class="variable">little</a>; break;
+    case '!': {
+      const int <a href="../h_src/143283440.htm" class="localvar">maxalign</a> = offsetof(struct <a href="../h_src/143284324.htm" class="class">cD</a>, u);
+      <a href="../h_src/143284732.htm" class="localvar">h</a>-&gt;<a href="../h_src/143287928.htm" class="variable">maxalign</a> = <a href="../h_src/143286024.htm" class="function">getnumlimit</a>(<a href="../h_src/143284732.htm" class="localvar">h</a>, <a href="../h_src/143284596.htm" class="localvar">fmt</a>, <a href="../h_src/143283440.htm" class="localvar">maxalign</a>);
+      break;
+    }
+    default: <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143284732.htm" class="localvar">h</a>-&gt;<a href="../h_src/143288064.htm" class="variable">L</a>, &quot;invalid format option '%c'&quot;, <a href="../h_src/143283576.htm" class="localvar">opt</a>);
+  }
+  return <a href="../h_src/143287112.htm" class="variable">Knop</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,562 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lua.h</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57460028.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/57460028.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/57460028.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/57460028.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_ua/57460028.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_da/57460028.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57460028.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57460028.htm" class="file" target="_self">Source Code</a></li>
+<li><a href="../h_sc/57460028.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<pre class=src>
+<a id=1></a><a  class="comments">/*</a>
+<a id=2></a><a  class="comments">** $Id: lua.h $</a>
+<a id=3></a><a  class="comments">** Lua - A Scripting Language</a>
+<a id=4></a><a  class="comments">** Lua.org, PUC-Rio, Brazil (http://www.lua.org)</a>
+<a id=5></a><a  class="comments">** See Copyright Notice at the end of this file</a>
+<a id=6></a><a  class="comments">*/</a>
+
+
+<a id=9></a>#ifndef <a href="../h_src/57459960.htm" class="macro">lua_h</a>
+<a id=10></a>#define <a href="../h_src/57459824.htm" class="macro">lua_h</a>
+
+#include &lt;stdarg.h&gt;
+#include &lt;stddef.h&gt;
+
+
+<a id=16></a>#include &quot;<a href="../h_src/57459688.htm" class="file">luaconf.h</a>&quot;
+
+
+<a id=19></a>#define <a href="../h_src/57446972.htm" class="macro">LUA_VERSION_MAJOR</a>	&quot;5&quot;
+<a id=20></a>#define <a href="../h_src/57446836.htm" class="macro">LUA_VERSION_MINOR</a>	&quot;4&quot;
+<a id=21></a>#define <a href="../h_src/57446700.htm" class="macro">LUA_VERSION_RELEASE</a>	&quot;6&quot;
+
+<a id=23></a>#define <a href="../h_src/57446564.htm" class="macro">LUA_VERSION_NUM</a>			504
+<a id=24></a>#define <a href="../h_src/57446428.htm" class="macro">LUA_VERSION_RELEASE_NUM</a>		(LUA_VERSION_NUM * 100 + 6)
+
+<a id=26></a>#define <a href="../h_src/57446292.htm" class="macro">LUA_VERSION</a>	&quot;Lua &quot; LUA_VERSION_MAJOR &quot;.&quot; LUA_VERSION_MINOR
+<a id=27></a>#define <a href="../h_src/57446156.htm" class="macro">LUA_RELEASE</a>	LUA_VERSION &quot;.&quot; LUA_VERSION_RELEASE
+<a id=28></a>#define <a href="../h_src/57446020.htm" class="macro">LUA_COPYRIGHT</a>	LUA_RELEASE &quot;  Copyright (C) 1994-2023 Lua.org, PUC-Rio&quot;
+<a id=29></a>#define <a href="../h_src/57445884.htm" class="macro">LUA_AUTHORS</a>	&quot;R. Ierusalimschy, L. H. de Figueiredo, W. Celes&quot;
+
+
+<a id=32></a><a  class="comments">/* mark for precompiled code ('&lt;esc&gt;Lua') */</a>
+<a id=33></a>#define <a href="../h_src/57445748.htm" class="macro">LUA_SIGNATURE</a>	&quot;\x1bLua&quot;
+
+<a id=35></a><a  class="comments">/* option for multiple returns in 'lua_pcall' and 'lua_call' */</a>
+<a id=36></a>#define <a href="../h_src/57445612.htm" class="macro">LUA_MULTRET</a>	(-1)
+
+
+<a id=39></a><a  class="comments">/*</a>
+<a id=40></a><a  class="comments">** Pseudo-indices</a>
+<a id=41></a><a  class="comments">** (-LUAI_MAXSTACK is the minimum valid index; we keep some free empty</a>
+<a id=42></a><a  class="comments">** space after that to help overflow detection)</a>
+<a id=43></a><a  class="comments">*/</a>
+<a id=44></a>#define <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>	(-LUAI_MAXSTACK - 1000)
+<a id=45></a>#define <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(i)	(LUA_REGISTRYINDEX - (i))
+
+
+<a id=48></a><a  class="comments">/* thread status */</a>
+<a id=49></a>#define <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>		0
+<a id=50></a>#define <a href="../h_src/57445068.htm" class="macro">LUA_YIELD</a>	1
+<a id=51></a>#define <a href="../h_src/57444932.htm" class="macro">LUA_ERRRUN</a>	2
+<a id=52></a>#define <a href="../h_src/57444796.htm" class="macro">LUA_ERRSYNTAX</a>	3
+<a id=53></a>#define <a href="../h_src/57444660.htm" class="macro">LUA_ERRMEM</a>	4
+<a id=54></a>#define <a href="../h_src/57444524.htm" class="macro">LUA_ERRERR</a>	5
+
+
+<a id=57></a>typedef struct <a href="../h_src/57444388.htm" class="class">lua_State</a> <a href="../h_src/57444252.htm" class="type">lua_State</a>;
+
+
+<a id=60></a><a  class="comments">/*</a>
+<a id=61></a><a  class="comments">** basic types</a>
+<a id=62></a><a  class="comments">*/</a>
+<a id=63></a>#define <a href="../h_src/57444184.htm" class="macro">LUA_TNONE</a>		(-1)
+
+<a id=65></a>#define <a href="../h_src/57444048.htm" class="macro">LUA_TNIL</a>		0
+<a id=66></a>#define <a href="../h_src/57443912.htm" class="macro">LUA_TBOOLEAN</a>		1
+<a id=67></a>#define <a href="../h_src/57443776.htm" class="macro">LUA_TLIGHTUSERDATA</a>	2
+<a id=68></a>#define <a href="../h_src/57443640.htm" class="macro">LUA_TNUMBER</a>		3
+<a id=69></a>#define <a href="../h_src/57443504.htm" class="macro">LUA_TSTRING</a>		4
+<a id=70></a>#define <a href="../h_src/57443368.htm" class="macro">LUA_TTABLE</a>		5
+<a id=71></a>#define <a href="../h_src/57443232.htm" class="macro">LUA_TFUNCTION</a>		6
+<a id=72></a>#define <a href="../h_src/57443096.htm" class="macro">LUA_TUSERDATA</a>		7
+<a id=73></a>#define <a href="../h_src/57442960.htm" class="macro">LUA_TTHREAD</a>		8
+
+<a id=75></a>#define <a href="../h_src/57442824.htm" class="macro">LUA_NUMTYPES</a>		9
+
+
+
+<a id=79></a><a  class="comments">/* minimum Lua stack available to a C function */</a>
+<a id=80></a>#define <a href="../h_src/57442688.htm" class="macro">LUA_MINSTACK</a>	20
+
+
+<a id=83></a><a  class="comments">/* predefined values in the registry */</a>
+<a id=84></a>#define <a href="../h_src/57442552.htm" class="macro">LUA_RIDX_MAINTHREAD</a>	1
+<a id=85></a>#define <a href="../h_src/57442416.htm" class="macro">LUA_RIDX_GLOBALS</a>	2
+<a id=86></a>#define <a href="../h_src/57442280.htm" class="macro">LUA_RIDX_LAST</a>		LUA_RIDX_GLOBALS
+
+
+<a id=89></a><a  class="comments">/* type of numbers in Lua */</a>
+<a id=90></a>typedef <a href="../h_src/57452004.htm" class="macro">LUA_NUMBER</a> <a href="../h_src/57442144.htm" class="type">lua_Number</a>;
+
+
+<a id=93></a><a  class="comments">/* type for integer functions */</a>
+<a id=94></a>typedef <a href="../h_src/57450372.htm" class="macro">LUA_INTEGER</a> <a href="../h_src/57442076.htm" class="type">lua_Integer</a>;
+
+<a id=96></a><a  class="comments">/* unsigned integer type */</a>
+<a id=97></a>typedef <a href="../h_src/57450644.htm" class="macro">LUA_UNSIGNED</a> lua_Unsigned;
+
+<a id=99></a><a  class="comments">/* type for continuation-function contexts */</a>
+<a id=100></a>typedef <a href="../h_src/57448876.htm" class="macro">LUA_KCONTEXT</a> <a href="../h_src/57441940.htm" class="type">lua_KContext</a>;
+
+
+<a id=103></a><a  class="comments">/*</a>
+<a id=104></a><a  class="comments">** Type for C functions registered with Lua</a>
+<a id=105></a><a  class="comments">*/</a>
+<a id=106></a>typedef int (*<a href="../h_src/57441736.htm" class="type">lua_CFunction</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L);
+
+<a id=108></a><a  class="comments">/*</a>
+<a id=109></a><a  class="comments">** Type for continuation functions</a>
+<a id=110></a><a  class="comments">*/</a>
+<a id=111></a>typedef int (*<a href="../h_src/57441464.htm" class="type">lua_KFunction</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int status, <a href="../h_src/57441940.htm" class="type">lua_KContext</a> ctx);
+
+
+<a id=114></a><a  class="comments">/*</a>
+<a id=115></a><a  class="comments">** Type for functions that read/write blocks when loading/dumping Lua chunks</a>
+<a id=116></a><a  class="comments">*/</a>
+<a id=117></a>typedef const char * (*<a href="../h_src/57441396.htm" class="type">lua_Reader</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, void *ud, <a href="../h_aa/57441192.htm" class="type">size_t</a> *sz);
+
+<a id=119></a>typedef int (*<a href="../h_src/57440920.htm" class="type">lua_Writer</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const void *p, <a href="../h_aa/57441192.htm" class="type">size_t</a> sz, void *ud);
+
+
+<a id=122></a><a  class="comments">/*</a>
+<a id=123></a><a  class="comments">** Type for memory-allocation functions</a>
+<a id=124></a><a  class="comments">*/</a>
+<a id=125></a>typedef void * (*<a href="../h_src/57440852.htm" class="type">lua_Alloc</a>) (void *ud, void *ptr, <a href="../h_aa/57441192.htm" class="type">size_t</a> osize, <a href="../h_aa/57441192.htm" class="type">size_t</a> nsize);
+
+
+<a id=128></a><a  class="comments">/*</a>
+<a id=129></a><a  class="comments">** Type for warning functions</a>
+<a id=130></a><a  class="comments">*/</a>
+<a id=131></a>typedef void (*<a href="../h_src/57440648.htm" class="type">lua_WarnFunction</a>) (void *ud, const char *msg, int tocont);
+
+
+<a id=134></a><a  class="comments">/*</a>
+<a id=135></a><a  class="comments">** Type used by the debug API to collect debug information</a>
+<a id=136></a><a  class="comments">*/</a>
+<a id=137></a>typedef struct <a href="../h_src/57440444.htm" class="class">lua_Debug</a> <a href="../h_src/57440308.htm" class="type">lua_Debug</a>;
+
+
+<a id=140></a><a  class="comments">/*</a>
+<a id=141></a><a  class="comments">** Functions to be called by the debugger in specific events</a>
+<a id=142></a><a  class="comments">*/</a>
+<a id=143></a>typedef void (*<a href="../h_src/57440240.htm" class="type">lua_Hook</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57440308.htm" class="type">lua_Debug</a> *ar);
+
+
+<a id=146></a><a  class="comments">/*</a>
+<a id=147></a><a  class="comments">** generic extra include file</a>
+<a id=148></a><a  class="comments">*/</a>
+<a id=149></a>#if defined(<a href="../h_src/57440104.htm" class="macro">LUA_USER_H</a>)
+#include LUA_USER_H
+#endif
+
+
+<a id=154></a><a  class="comments">/*</a>
+<a id=155></a><a  class="comments">** RCS ident string</a>
+<a id=156></a><a  class="comments">*/</a>
+<a id=157></a>extern const char <a href="../h_src/57439968.htm" class="variable">lua_ident</a>[];
+
+
+<a id=160></a><a  class="comments">/*</a>
+<a id=161></a><a  class="comments">** state manipulation</a>
+<a id=162></a><a  class="comments">*/</a>
+<a id=163></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> <a href="../h_src/57444252.htm" class="type">lua_State</a> *(<a href="../h_src/57439900.htm" class="function">lua_newstate</a>) (<a href="../h_src/57440852.htm" class="type">lua_Alloc</a> f, void *ud);
+<a id=164></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> void       (<a href="../h_src/57439832.htm" class="function">lua_close</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L);
+<a id=165></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> <a href="../h_src/57444252.htm" class="type">lua_State</a> *(<a href="../h_src/57439764.htm" class="function">lua_newthread</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L);
+<a id=166></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int        (<a href="../h_src/57439696.htm" class="function">lua_closethread</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57444252.htm" class="type">lua_State</a> *from);
+<a id=167></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int        (<a href="../h_src/57439628.htm" class="function">lua_resetthread</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L);  <a  class="comments">/* Deprecated! */</a>
+
+<a id=169></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> <a href="../h_src/57441736.htm" class="type">lua_CFunction</a> (<a href="../h_src/57439560.htm" class="function">lua_atpanic</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57441736.htm" class="type">lua_CFunction</a> panicf);
+
+
+<a id=172></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> <a href="../h_src/57442144.htm" class="type">lua_Number</a> (<a href="../h_src/57439492.htm" class="function">lua_version</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L);
+
+
+<a id=175></a><a  class="comments">/*</a>
+<a id=176></a><a  class="comments">** basic stack manipulation</a>
+<a id=177></a><a  class="comments">*/</a>
+<a id=178></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int   (<a href="../h_src/57439424.htm" class="function">lua_absindex</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx);
+<a id=179></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int   (<a href="../h_src/57439356.htm" class="function">lua_gettop</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L);
+<a id=180></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> void  (<a href="../h_src/57439288.htm" class="function">lua_settop</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx);
+<a id=181></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> void  (<a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx);
+<a id=182></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> void  (<a href="../h_src/57439152.htm" class="function">lua_rotate</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx, int n);
+<a id=183></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> void  (<a href="../h_src/57439084.htm" class="function">lua_copy</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int fromidx, int toidx);
+<a id=184></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int   (<a href="../h_src/57439016.htm" class="function">lua_checkstack</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int n);
+
+<a id=186></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> void  (<a href="../h_src/57438948.htm" class="function">lua_xmove</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *from, <a href="../h_src/57444252.htm" class="type">lua_State</a> *to, int n);
+
+
+<a id=189></a><a  class="comments">/*</a>
+<a id=190></a><a  class="comments">** access functions (stack -&gt; C)</a>
+<a id=191></a><a  class="comments">*/</a>
+
+<a id=193></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int             (<a href="../h_src/57438880.htm" class="function">lua_isnumber</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx);
+<a id=194></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int             (<a href="../h_src/57438812.htm" class="function">lua_isstring</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx);
+<a id=195></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int             (<a href="../h_src/57438744.htm" class="function">lua_iscfunction</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx);
+<a id=196></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int             (<a href="../h_src/57438676.htm" class="function">lua_isinteger</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx);
+<a id=197></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int             (<a href="../h_src/57438608.htm" class="function">lua_isuserdata</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx);
+<a id=198></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int             (<a href="../h_src/57438540.htm" class="function">lua_type</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx);
+<a id=199></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> const char     *(<a href="../h_src/57438472.htm" class="function">lua_typename</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int tp);
+
+<a id=201></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> <a href="../h_src/57442144.htm" class="type">lua_Number</a>      (<a href="../h_src/57438404.htm" class="function">lua_tonumberx</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx, int *isnum);
+<a id=202></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> <a href="../h_src/57442076.htm" class="type">lua_Integer</a>     (<a href="../h_src/57438336.htm" class="function">lua_tointegerx</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx, int *isnum);
+<a id=203></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int             (<a href="../h_src/57438268.htm" class="function">lua_toboolean</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx);
+<a id=204></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> const char     *(<a href="../h_src/57438200.htm" class="function">lua_tolstring</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx, <a href="../h_aa/57441192.htm" class="type">size_t</a> *len);
+<a id=205></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> <a href="../h_src/57438132.htm" class="function">lua_Unsigned</a>    (lua_rawlen) (lua_State *L, int idx);
+<a id=206></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> <a href="../h_src/57441736.htm" class="type">lua_CFunction</a>   (<a href="../h_src/57438064.htm" class="function">lua_tocfunction</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx);
+<a id=207></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> void	       *(<a href="../h_src/57437996.htm" class="function">lua_touserdata</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx);
+<a id=208></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> <a href="../h_src/57444252.htm" class="type">lua_State</a>      *(<a href="../h_src/57437928.htm" class="function">lua_tothread</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx);
+<a id=209></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> const void     *(<a href="../h_src/57437860.htm" class="function">lua_topointer</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx);
+
+
+<a id=212></a><a  class="comments">/*</a>
+<a id=213></a><a  class="comments">** Comparison and arithmetic functions</a>
+<a id=214></a><a  class="comments">*/</a>
+
+<a id=216></a>#define <a href="../h_src/57437792.htm" class="macro">LUA_OPADD</a>	0	<a  class="comments">/* ORDER TM, ORDER OP */</a>
+<a id=217></a>#define <a href="../h_src/57437656.htm" class="macro">LUA_OPSUB</a>	1
+<a id=218></a>#define <a href="../h_src/57437520.htm" class="macro">LUA_OPMUL</a>	2
+<a id=219></a>#define <a href="../h_src/57437384.htm" class="macro">LUA_OPMOD</a>	3
+<a id=220></a>#define <a href="../h_src/57437248.htm" class="macro">LUA_OPPOW</a>	4
+<a id=221></a>#define <a href="../h_src/57437112.htm" class="macro">LUA_OPDIV</a>	5
+<a id=222></a>#define <a href="../h_src/57436976.htm" class="macro">LUA_OPIDIV</a>	6
+<a id=223></a>#define <a href="../h_src/57436840.htm" class="macro">LUA_OPBAND</a>	7
+<a id=224></a>#define <a href="../h_src/57436704.htm" class="macro">LUA_OPBOR</a>	8
+<a id=225></a>#define <a href="../h_src/57436568.htm" class="macro">LUA_OPBXOR</a>	9
+<a id=226></a>#define <a href="../h_src/57436432.htm" class="macro">LUA_OPSHL</a>	10
+<a id=227></a>#define <a href="../h_src/57436296.htm" class="macro">LUA_OPSHR</a>	11
+<a id=228></a>#define <a href="../h_src/57436160.htm" class="macro">LUA_OPUNM</a>	12
+<a id=229></a>#define <a href="../h_src/57436024.htm" class="macro">LUA_OPBNOT</a>	13
+
+<a id=231></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> void  (<a href="../h_src/57435888.htm" class="function">lua_arith</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int op);
+
+<a id=233></a>#define <a href="../h_src/57435820.htm" class="macro">LUA_OPEQ</a>	0
+<a id=234></a>#define <a href="../h_src/57435684.htm" class="macro">LUA_OPLT</a>	1
+<a id=235></a>#define <a href="../h_src/57435548.htm" class="macro">LUA_OPLE</a>	2
+
+<a id=237></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int   (<a href="../h_src/57435412.htm" class="function">lua_rawequal</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx1, int idx2);
+<a id=238></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int   (<a href="../h_src/57435344.htm" class="function">lua_compare</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx1, int idx2, int op);
+
+
+<a id=241></a><a  class="comments">/*</a>
+<a id=242></a><a  class="comments">** push functions (C -&gt; stack)</a>
+<a id=243></a><a  class="comments">*/</a>
+<a id=244></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> void        (<a href="../h_src/57435276.htm" class="function">lua_pushnil</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L);
+<a id=245></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> void        (<a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57442144.htm" class="type">lua_Number</a> n);
+<a id=246></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> void        (<a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57442076.htm" class="type">lua_Integer</a> n);
+<a id=247></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> const char *(<a href="../h_src/57435072.htm" class="function">lua_pushlstring</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const char *s, <a href="../h_aa/57441192.htm" class="type">size_t</a> len);
+<a id=248></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> const char *(<a href="../h_src/57435004.htm" class="function">lua_pushstring</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const char *s);
+<a id=249></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> const char *(<a href="../h_src/57434936.htm" class="function">lua_pushvfstring</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const char *fmt,
+<a id=250></a>                                                      <a href="../h_aa/57434868.htm" class="type">va_list</a> argp);
+<a id=251></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> const char *(<a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const char *fmt, ...);
+<a id=252></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> void  (<a href="../h_src/57434664.htm" class="function">lua_pushcclosure</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57441736.htm" class="type">lua_CFunction</a> fn, int n);
+<a id=253></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> void  (<a href="../h_src/57434596.htm" class="function">lua_pushboolean</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int b);
+<a id=254></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> void  (<a href="../h_src/57434528.htm" class="function">lua_pushlightuserdata</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, void *p);
+<a id=255></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int   (<a href="../h_src/57434460.htm" class="function">lua_pushthread</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L);
+
+
+<a id=258></a><a  class="comments">/*</a>
+<a id=259></a><a  class="comments">** get functions (Lua -&gt; stack)</a>
+<a id=260></a><a  class="comments">*/</a>
+<a id=261></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int (<a href="../h_src/57434392.htm" class="function">lua_getglobal</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const char *name);
+<a id=262></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int (<a href="../h_src/57434324.htm" class="function">lua_gettable</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx);
+<a id=263></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int (<a href="../h_src/57434256.htm" class="function">lua_getfield</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx, const char *k);
+<a id=264></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int (<a href="../h_src/57434188.htm" class="function">lua_geti</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx, <a href="../h_src/57442076.htm" class="type">lua_Integer</a> n);
+<a id=265></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int (<a href="../h_src/57434120.htm" class="function">lua_rawget</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx);
+<a id=266></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int (<a href="../h_src/57434052.htm" class="function">lua_rawgeti</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx, <a href="../h_src/57442076.htm" class="type">lua_Integer</a> n);
+<a id=267></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int (<a href="../h_src/57433984.htm" class="function">lua_rawgetp</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx, const void *p);
+
+<a id=269></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> void  (<a href="../h_src/57433916.htm" class="function">lua_createtable</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int narr, int nrec);
+<a id=270></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> void *(<a href="../h_src/57433848.htm" class="function">lua_newuserdatauv</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_aa/57441192.htm" class="type">size_t</a> sz, int nuvalue);
+<a id=271></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int   (<a href="../h_src/57433780.htm" class="function">lua_getmetatable</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int objindex);
+<a id=272></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int  (<a href="../h_src/57433712.htm" class="function">lua_getiuservalue</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx, int n);
+
+
+<a id=275></a><a  class="comments">/*</a>
+<a id=276></a><a  class="comments">** set functions (stack -&gt; Lua)</a>
+<a id=277></a><a  class="comments">*/</a>
+<a id=278></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> void  (<a href="../h_src/57433644.htm" class="function">lua_setglobal</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const char *name);
+<a id=279></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> void  (<a href="../h_src/57433576.htm" class="function">lua_settable</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx);
+<a id=280></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> void  (<a href="../h_src/57433508.htm" class="function">lua_setfield</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx, const char *k);
+<a id=281></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> void  (<a href="../h_src/57433440.htm" class="function">lua_seti</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx, <a href="../h_src/57442076.htm" class="type">lua_Integer</a> n);
+<a id=282></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> void  (<a href="../h_src/57433372.htm" class="function">lua_rawset</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx);
+<a id=283></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> void  (<a href="../h_src/57433304.htm" class="function">lua_rawseti</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx, <a href="../h_src/57442076.htm" class="type">lua_Integer</a> n);
+<a id=284></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> void  (<a href="../h_src/57433236.htm" class="function">lua_rawsetp</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx, const void *p);
+<a id=285></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int   (<a href="../h_src/57433168.htm" class="function">lua_setmetatable</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int objindex);
+<a id=286></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int   (<a href="../h_src/57433100.htm" class="function">lua_setiuservalue</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx, int n);
+
+
+<a id=289></a><a  class="comments">/*</a>
+<a id=290></a><a  class="comments">** 'load' and 'call' functions (load and run Lua code)</a>
+<a id=291></a><a  class="comments">*/</a>
+<a id=292></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> void  (<a href="../h_src/57433032.htm" class="function">lua_callk</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int nargs, int nresults,
+<a id=293></a>                           <a href="../h_src/57441940.htm" class="type">lua_KContext</a> ctx, <a href="../h_src/57441464.htm" class="type">lua_KFunction</a> k);
+<a id=294></a>#define <a href="../h_src/57432964.htm" class="macro">lua_call</a>(L,n,r)		lua_callk(L, (n), (r), 0, NULL)
+
+<a id=296></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int   (<a href="../h_src/57432828.htm" class="function">lua_pcallk</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int nargs, int nresults, int errfunc,
+<a id=297></a>                            <a href="../h_src/57441940.htm" class="type">lua_KContext</a> ctx, <a href="../h_src/57441464.htm" class="type">lua_KFunction</a> k);
+<a id=298></a>#define <a href="../h_src/57432760.htm" class="macro">lua_pcall</a>(L,n,r,f)	lua_pcallk(L, (n), (r), (f), 0, NULL)
+
+<a id=300></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int   (<a href="../h_src/57432624.htm" class="function">lua_load</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57441396.htm" class="type">lua_Reader</a> reader, void *dt,
+                          const char *chunkname, const char *mode);
+
+<a id=303></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int (<a href="../h_src/57432556.htm" class="function">lua_dump</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57440920.htm" class="type">lua_Writer</a> writer, void *data, int strip);
+
+
+<a id=306></a><a  class="comments">/*</a>
+<a id=307></a><a  class="comments">** coroutine functions</a>
+<a id=308></a><a  class="comments">*/</a>
+<a id=309></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int  (<a href="../h_src/57432488.htm" class="function">lua_yieldk</a>)     (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int nresults, <a href="../h_src/57441940.htm" class="type">lua_KContext</a> ctx,
+<a id=310></a>                               <a href="../h_src/57441464.htm" class="type">lua_KFunction</a> k);
+<a id=311></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int  (<a href="../h_src/57432420.htm" class="function">lua_resume</a>)     (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57444252.htm" class="type">lua_State</a> *from, int narg,
+                               int *nres);
+<a id=313></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int  (<a href="../h_src/57432352.htm" class="function">lua_status</a>)     (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L);
+<a id=314></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int (<a href="../h_src/57432284.htm" class="function">lua_isyieldable</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L);
+
+<a id=316></a>#define <a href="../h_src/57432216.htm" class="macro">lua_yield</a>(L,n)		lua_yieldk(L, (n), 0, NULL)
+
+
+<a id=319></a><a  class="comments">/*</a>
+<a id=320></a><a  class="comments">** Warning-related functions</a>
+<a id=321></a><a  class="comments">*/</a>
+<a id=322></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> void (<a href="../h_src/57432080.htm" class="function">lua_setwarnf</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57440648.htm" class="type">lua_WarnFunction</a> f, void *ud);
+<a id=323></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> void (<a href="../h_src/57432012.htm" class="function">lua_warning</a>)  (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const char *msg, int tocont);
+
+
+<a id=326></a><a  class="comments">/*</a>
+<a id=327></a><a  class="comments">** garbage-collection function and options</a>
+<a id=328></a><a  class="comments">*/</a>
+
+<a id=330></a>#define <a href="../h_src/57431944.htm" class="macro">LUA_GCSTOP</a>		0
+<a id=331></a>#define <a href="../h_src/57431808.htm" class="macro">LUA_GCRESTART</a>		1
+<a id=332></a>#define <a href="../h_src/57431672.htm" class="macro">LUA_GCCOLLECT</a>		2
+<a id=333></a>#define <a href="../h_src/57431536.htm" class="macro">LUA_GCCOUNT</a>		3
+<a id=334></a>#define <a href="../h_src/57431400.htm" class="macro">LUA_GCCOUNTB</a>		4
+<a id=335></a>#define <a href="../h_src/57431264.htm" class="macro">LUA_GCSTEP</a>		5
+<a id=336></a>#define <a href="../h_src/57431128.htm" class="macro">LUA_GCSETPAUSE</a>		6
+<a id=337></a>#define <a href="../h_src/57430992.htm" class="macro">LUA_GCSETSTEPMUL</a>	7
+<a id=338></a>#define <a href="../h_src/57430856.htm" class="macro">LUA_GCISRUNNING</a>		9
+<a id=339></a>#define <a href="../h_src/57430720.htm" class="macro">LUA_GCGEN</a>		10
+<a id=340></a>#define <a href="../h_src/57430584.htm" class="macro">LUA_GCINC</a>		11
+
+<a id=342></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int (<a href="../h_src/57430448.htm" class="function">lua_gc</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int what, ...);
+
+
+<a id=345></a><a  class="comments">/*</a>
+<a id=346></a><a  class="comments">** miscellaneous functions</a>
+<a id=347></a><a  class="comments">*/</a>
+
+<a id=349></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int   (<a href="../h_src/57430380.htm" class="function">lua_error</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L);
+
+<a id=351></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int   (<a href="../h_src/57430312.htm" class="function">lua_next</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx);
+
+<a id=353></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> void  (<a href="../h_src/57430244.htm" class="function">lua_concat</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int n);
+<a id=354></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> void  (<a href="../h_src/57430176.htm" class="function">lua_len</a>)    (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx);
+
+<a id=356></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> <a href="../h_aa/57441192.htm" class="type">size_t</a>   (<a href="../h_src/57430108.htm" class="function">lua_stringtonumber</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const char *s);
+
+<a id=358></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> <a href="../h_src/57440852.htm" class="type">lua_Alloc</a> (<a href="../h_src/57430040.htm" class="function">lua_getallocf</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, void **ud);
+<a id=359></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> void      (<a href="../h_src/57429904.htm" class="function">lua_setallocf</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57440852.htm" class="type">lua_Alloc</a> f, void *ud);
+
+<a id=361></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> void (<a href="../h_src/57429836.htm" class="function">lua_toclose</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx);
+<a id=362></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> void (<a href="../h_src/57429768.htm" class="function">lua_closeslot</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx);
+
+
+<a id=365></a><a  class="comments">/*</a>
+<a id=366></a><a  class="comments">** {==============================================================</a>
+<a id=367></a><a  class="comments">** some useful macros</a>
+<a id=368></a><a  class="comments">** ===============================================================</a>
+<a id=369></a><a  class="comments">*/</a>
+
+<a id=371></a>#define <a href="../h_src/57429700.htm" class="macro">lua_getextraspace</a>(L)	((void *)((char *)(L) - LUA_EXTRASPACE))
+
+<a id=373></a>#define <a href="../h_src/57429564.htm" class="macro">lua_tonumber</a>(L,i)	lua_tonumberx(L,(i),NULL)
+<a id=374></a>#define <a href="../h_src/57429428.htm" class="macro">lua_tointeger</a>(L,i)	lua_tointegerx(L,(i),NULL)
+
+<a id=376></a>#define <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(L,n)		lua_settop(L, -(n)-1)
+
+<a id=378></a>#define <a href="../h_src/57429156.htm" class="macro">lua_newtable</a>(L)		lua_createtable(L, 0, 0)
+
+<a id=380></a>#define <a href="../h_src/57429020.htm" class="macro">lua_register</a>(L,n,f) (lua_pushcfunction(L, (f)), lua_setglobal(L, (n)))
+
+<a id=382></a>#define <a href="../h_src/57428884.htm" class="macro">lua_pushcfunction</a>(L,f)	lua_pushcclosure(L, (f), 0)
+
+<a id=384></a>#define <a href="../h_src/57428748.htm" class="macro">lua_isfunction</a>(L,n)	(lua_type(L, (n)) == LUA_TFUNCTION)
+<a id=385></a>#define <a href="../h_src/57428612.htm" class="macro">lua_istable</a>(L,n)	(lua_type(L, (n)) == LUA_TTABLE)
+<a id=386></a>#define <a href="../h_src/57428476.htm" class="macro">lua_islightuserdata</a>(L,n)	(lua_type(L, (n)) == LUA_TLIGHTUSERDATA)
+<a id=387></a>#define <a href="../h_src/57428340.htm" class="macro">lua_isnil</a>(L,n)		(lua_type(L, (n)) == LUA_TNIL)
+<a id=388></a>#define <a href="../h_src/57428204.htm" class="macro">lua_isboolean</a>(L,n)	(lua_type(L, (n)) == LUA_TBOOLEAN)
+<a id=389></a>#define <a href="../h_src/57428068.htm" class="macro">lua_isthread</a>(L,n)	(lua_type(L, (n)) == LUA_TTHREAD)
+<a id=390></a>#define <a href="../h_src/57427932.htm" class="macro">lua_isnone</a>(L,n)		(lua_type(L, (n)) == LUA_TNONE)
+<a id=391></a>#define <a href="../h_src/57427796.htm" class="macro">lua_isnoneornil</a>(L, n)	(lua_type(L, (n)) &lt;= 0)
+
+<a id=393></a>#define <a href="../h_src/57427660.htm" class="macro">lua_pushliteral</a>(L, s)	lua_pushstring(L, &quot;&quot; s)
+
+<a id=395></a>#define <a href="../h_src/57427524.htm" class="macro">lua_pushglobaltable</a>(L)  \
+	((void)lua_rawgeti(L, LUA_REGISTRYINDEX, LUA_RIDX_GLOBALS))
+
+<a id=398></a>#define <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(L,i)	lua_tolstring(L, (i), NULL)
+
+
+<a id=401></a>#define <a href="../h_src/57427252.htm" class="macro">lua_insert</a>(L,idx)	lua_rotate(L, (idx), 1)
+
+<a id=403></a>#define <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(L,idx)	(lua_rotate(L, (idx), -1), lua_pop(L, 1))
+
+<a id=405></a>#define <a href="../h_src/57426980.htm" class="macro">lua_replace</a>(L,idx)	(lua_copy(L, -1, (idx)), lua_pop(L, 1))
+
+<a id=407></a><a  class="comments">/* }============================================================== */</a>
+
+
+<a id=410></a><a  class="comments">/*</a>
+<a id=411></a><a  class="comments">** {==============================================================</a>
+<a id=412></a><a  class="comments">** compatibility macros</a>
+<a id=413></a><a  class="comments">** ===============================================================</a>
+<a id=414></a><a  class="comments">*/</a>
+<a id=415></a>#if defined(<a href="../h_src/57453228.htm" class="macro">LUA_COMPAT_APIINTCASTS</a>)
+
+<a id=417></a>#define <a href="../h_src/57426844.htm" class="macro">lua_pushunsigned</a>(L,n)	lua_pushinteger(L, (lua_Integer)(n))
+<a id=418></a>#define <a href="../h_src/57426708.htm" class="macro">lua_tounsignedx</a>(L,i,is)	((lua_Unsigned)lua_tointegerx(L,i,is))
+<a id=419></a>#define <a href="../h_src/57426572.htm" class="macro">lua_tounsigned</a>(L,i)	lua_tounsignedx(L,(i),NULL)
+
+#endif
+
+<a id=423></a>#define <a href="../h_src/57426436.htm" class="macro">lua_newuserdata</a>(L,s)	lua_newuserdatauv(L,s,1)
+<a id=424></a>#define <a href="../h_src/57426300.htm" class="macro">lua_getuservalue</a>(L,idx)	lua_getiuservalue(L,idx,1)
+<a id=425></a>#define <a href="../h_src/57426164.htm" class="macro">lua_setuservalue</a>(L,idx)	lua_setiuservalue(L,idx,1)
+
+<a id=427></a>#define <a href="../h_src/57426028.htm" class="macro">LUA_NUMTAGS</a>		LUA_NUMTYPES
+
+<a id=429></a><a  class="comments">/* }============================================================== */</a>
+
+<a id=431></a><a  class="comments">/*</a>
+<a id=432></a><a  class="comments">** {======================================================================</a>
+<a id=433></a><a  class="comments">** Debug API</a>
+<a id=434></a><a  class="comments">** =======================================================================</a>
+<a id=435></a><a  class="comments">*/</a>
+
+
+<a id=438></a><a  class="comments">/*</a>
+<a id=439></a><a  class="comments">** Event codes</a>
+<a id=440></a><a  class="comments">*/</a>
+<a id=441></a>#define <a href="../h_src/57425892.htm" class="macro">LUA_HOOKCALL</a>	0
+<a id=442></a>#define <a href="../h_src/57425756.htm" class="macro">LUA_HOOKRET</a>	1
+<a id=443></a>#define <a href="../h_src/57425620.htm" class="macro">LUA_HOOKLINE</a>	2
+<a id=444></a>#define <a href="../h_src/57425484.htm" class="macro">LUA_HOOKCOUNT</a>	3
+<a id=445></a>#define <a href="../h_src/57425348.htm" class="macro">LUA_HOOKTAILCALL</a> 4
+
+
+<a id=448></a><a  class="comments">/*</a>
+<a id=449></a><a  class="comments">** Event masks</a>
+<a id=450></a><a  class="comments">*/</a>
+<a id=451></a>#define <a href="../h_src/57425212.htm" class="macro">LUA_MASKCALL</a>	(1 &lt;&lt; LUA_HOOKCALL)
+<a id=452></a>#define <a href="../h_src/57425076.htm" class="macro">LUA_MASKRET</a>	(1 &lt;&lt; LUA_HOOKRET)
+<a id=453></a>#define <a href="../h_src/57424940.htm" class="macro">LUA_MASKLINE</a>	(1 &lt;&lt; LUA_HOOKLINE)
+<a id=454></a>#define <a href="../h_src/57424804.htm" class="macro">LUA_MASKCOUNT</a>	(1 &lt;&lt; LUA_HOOKCOUNT)
+
+
+<a id=457></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int (<a href="../h_src/57424668.htm" class="function">lua_getstack</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int level, <a href="../h_src/57440308.htm" class="type">lua_Debug</a> *ar);
+<a id=458></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int (<a href="../h_src/57424600.htm" class="function">lua_getinfo</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const char *what, <a href="../h_src/57440308.htm" class="type">lua_Debug</a> *ar);
+<a id=459></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> const char *(<a href="../h_src/57424532.htm" class="function">lua_getlocal</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const <a href="../h_src/57440308.htm" class="type">lua_Debug</a> *ar, int n);
+<a id=460></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> const char *(<a href="../h_src/57424464.htm" class="function">lua_setlocal</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const <a href="../h_src/57440308.htm" class="type">lua_Debug</a> *ar, int n);
+<a id=461></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> const char *(<a href="../h_src/57424396.htm" class="function">lua_getupvalue</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int funcindex, int n);
+<a id=462></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> const char *(<a href="../h_src/57424328.htm" class="function">lua_setupvalue</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int funcindex, int n);
+
+<a id=464></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> void *(<a href="../h_src/57424260.htm" class="function">lua_upvalueid</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int fidx, int n);
+<a id=465></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> void  (<a href="../h_src/57424192.htm" class="function">lua_upvaluejoin</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int fidx1, int n1,
+                                               int fidx2, int n2);
+
+<a id=468></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> void (<a href="../h_src/57424124.htm" class="function">lua_sethook</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57440240.htm" class="type">lua_Hook</a> func, int mask, int count);
+<a id=469></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> <a href="../h_src/57440240.htm" class="type">lua_Hook</a> (<a href="../h_src/57424056.htm" class="function">lua_gethook</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L);
+<a id=470></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int (<a href="../h_src/57423988.htm" class="function">lua_gethookmask</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L);
+<a id=471></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int (<a href="../h_src/57423920.htm" class="function">lua_gethookcount</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L);
+
+<a id=473></a><a href="../h_src/57454452.htm" class="macro">LUA_API</a> int (<a href="../h_src/57423852.htm" class="function">lua_setcstacklimit</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, unsigned int limit);
+
+<a id=475></a>struct <a href="../h_src/57440444.htm" class="class">lua_Debug</a> {
+<a id=476></a>  int <a href="../h_src/57423784.htm" class="variable">event</a>;
+<a id=477></a>  const char *<a href="../h_src/57423716.htm" class="variable">name</a>;	<a  class="comments">/* (n) */</a>
+<a id=478></a>  const char *<a href="../h_src/57423648.htm" class="variable">namewhat</a>;	<a  class="comments">/* (n) 'global', 'local', 'field', 'method' */</a>
+<a id=479></a>  const char *<a href="../h_src/57423580.htm" class="variable">what</a>;	<a  class="comments">/* (S) 'Lua', 'C', 'main', 'tail' */</a>
+<a id=480></a>  const char *<a href="../h_src/57423512.htm" class="variable">source</a>;	<a  class="comments">/* (S) */</a>
+<a id=481></a>  <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/57423444.htm" class="variable">srclen</a>;	<a  class="comments">/* (S) */</a>
+<a id=482></a>  int <a href="../h_src/57423376.htm" class="variable">currentline</a>;	<a  class="comments">/* (l) */</a>
+<a id=483></a>  int <a href="../h_src/57423308.htm" class="variable">linedefined</a>;	<a  class="comments">/* (S) */</a>
+<a id=484></a>  int <a href="../h_src/57423240.htm" class="variable">lastlinedefined</a>;	<a  class="comments">/* (S) */</a>
+<a id=485></a>  unsigned char <a href="../h_src/57423172.htm" class="variable">nups</a>;	<a  class="comments">/* (u) number of upvalues */</a>
+<a id=486></a>  unsigned char <a href="../h_src/57423104.htm" class="variable">nparams</a>;<a  class="comments">/* (u) number of parameters */</a>
+<a id=487></a>  char <a href="../h_src/57423036.htm" class="variable">isvararg</a>;        <a  class="comments">/* (u) */</a>
+<a id=488></a>  char <a href="../h_src/57422968.htm" class="variable">istailcall</a>;	<a  class="comments">/* (t) */</a>
+<a id=489></a>  unsigned short <a href="../h_src/57422900.htm" class="variable">ftransfer</a>;   <a  class="comments">/* (r) index of first value transferred */</a>
+<a id=490></a>  unsigned short <a href="../h_src/57422832.htm" class="variable">ntransfer</a>;   <a  class="comments">/* (r) number of transferred values */</a>
+<a id=491></a>  char <a href="../h_src/57422764.htm" class="variable">short_src</a>[<a href="../h_src/57447380.htm" class="macro">LUA_IDSIZE</a>]; <a  class="comments">/* (S) */</a>
+<a id=492></a>  <a  class="comments">/* private part */</a>
+<a id=493></a>  struct <a href="../h_src/57422696.htm" class="class">CallInfo</a> *<a href="../h_src/57422424.htm" class="variable">i_ci</a>;  <a  class="comments">/* active function */</a>
+};
+
+<a id=496></a><a  class="comments">/* }====================================================================== */</a>
+
+
+<a id=499></a><a  class="comments">/******************************************************************************</a>
+<a id=500></a><a  class="comments">* Copyright (C) 1994-2023 Lua.org, PUC-Rio.</a>
+<a id=501></a><a  class="comments">*</a>
+<a id=502></a><a  class="comments">* Permission is hereby granted, free of charge, to any person obtaining</a>
+<a id=503></a><a  class="comments">* a copy of this software and associated documentation files (the</a>
+<a id=504></a><a  class="comments">* &quot;Software&quot;), to deal in the Software without restriction, including</a>
+<a id=505></a><a  class="comments">* without limitation the rights to use, copy, modify, merge, publish,</a>
+<a id=506></a><a  class="comments">* distribute, sublicense, and/or sell copies of the Software, and to</a>
+<a id=507></a><a  class="comments">* permit persons to whom the Software is furnished to do so, subject to</a>
+<a id=508></a><a  class="comments">* the following conditions:</a>
+<a id=509></a><a  class="comments">*</a>
+<a id=510></a><a  class="comments">* The above copyright notice and this permission notice shall be</a>
+<a id=511></a><a  class="comments">* included in all copies or substantial portions of the Software.</a>
+<a id=512></a><a  class="comments">*</a>
+<a id=513></a><a  class="comments">* THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,</a>
+<a id=514></a><a  class="comments">* EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF</a>
+<a id=515></a><a  class="comments">* MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.</a>
+<a id=516></a><a  class="comments">* IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY</a>
+<a id=517></a><a  class="comments">* CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,</a>
+<a id=518></a><a  class="comments">* TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE</a>
+<a id=519></a><a  class="comments">* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</a>
+<a id=520></a><a  class="comments">******************************************************************************/</a>
+
+
+#endif
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

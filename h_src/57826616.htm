@@ -1,0 +1,79 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>atomic</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57826616.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57826616.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57826616.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57826616.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57826616.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57826616.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57829404.htm#1523" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static <a href="../h_src/57550616.htm" class="type">lu_mem</a> <a href="../h_src/57826616.htm" class="function">atomic</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57945452.htm" class="localvar">L</a>) {
+  <a href="../h_src/57643100.htm" class="type">global_State</a> *<a href="../h_src/57945316.htm" class="localvar">g</a> = <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57945452.htm" class="localvar">L</a>);
+  <a href="../h_src/57550616.htm" class="type">lu_mem</a> <a href="../h_src/57945180.htm" class="localvar">work</a> = 0;
+  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57945044.htm" class="localvar">origweak</a>, *<a href="../h_src/57944908.htm" class="localvar">origall</a>;
+  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57944772.htm" class="localvar">grayagain</a> = <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a>;  <a  class="comments">/* save original list */</a>
+  <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a> = NULL;
+  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(g-&gt;ephemeron == NULL &amp;&amp; g-&gt;weak == NULL);
+  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!<a href="../h_src/57626372.htm" class="macro">iswhite</a>(g-&gt;mainthread));
+  <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646024.htm" class="variable">gcstate</a> = <a href="../h_src/57629500.htm" class="macro">GCSatomic</a>;
+  <a href="../h_src/57827024.htm" class="macro">markobject</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>, <a href="../h_src/57945452.htm" class="localvar">L</a>);  <a  class="comments">/* mark running thread */</a>
+  <a  class="comments">/* registry and global metatables may be changed by API */</a>
+  <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>, &amp;<a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646296.htm" class="variable">l_registry</a>);
+  <a href="../h_src/57821040.htm" class="function">markmt</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>);  <a  class="comments">/* mark global metatables */</a>
+  <a href="../h_src/57945180.htm" class="localvar">work</a> += <a href="../h_src/57970748.htm" class="function">propagateall</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>);  <a  class="comments">/* empties 'gray' list */</a>
+  <a  class="comments">/* remark occasional upvalues of (maybe) dead threads */</a>
+  <a href="../h_src/57945180.htm" class="localvar">work</a> += <a href="../h_src/57820088.htm" class="function">remarkupvals</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>);
+  <a href="../h_src/57945180.htm" class="localvar">work</a> += <a href="../h_src/57970748.htm" class="function">propagateall</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>);  <a  class="comments">/* propagate changes */</a>
+  <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645072.htm" class="variable">gray</a> = <a href="../h_src/57944772.htm" class="localvar">grayagain</a>;
+  <a href="../h_src/57945180.htm" class="localvar">work</a> += <a href="../h_src/57970748.htm" class="function">propagateall</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>);  <a  class="comments">/* traverse 'grayagain' list */</a>
+  <a href="../h_src/57970340.htm" class="function">convergeephemerons</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>);
+  <a  class="comments">/* at this point, all strongly accessible objects are marked. */</a>
+  <a  class="comments">/* Clear values from weak tables, before checking finalizers */</a>
+  <a href="../h_src/57968572.htm" class="function">clearbyvalues</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>, <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644936.htm" class="variable">weak</a>, NULL);
+  <a href="../h_src/57968572.htm" class="function">clearbyvalues</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>, <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644800.htm" class="variable">allweak</a>, NULL);
+  <a href="../h_src/57945044.htm" class="localvar">origweak</a> = <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644936.htm" class="variable">weak</a>; <a href="../h_src/57944908.htm" class="localvar">origall</a> = <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644800.htm" class="variable">allweak</a>;
+  <a href="../h_src/57959052.htm" class="function">separatetobefnz</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>, 0);  <a  class="comments">/* separate objects to be finalized */</a>
+  <a href="../h_src/57945180.htm" class="localvar">work</a> += <a href="../h_src/57820632.htm" class="function">markbeingfnz</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>);  <a  class="comments">/* mark objects that will be finalized */</a>
+  <a href="../h_src/57945180.htm" class="localvar">work</a> += <a href="../h_src/57970748.htm" class="function">propagateall</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>);  <a  class="comments">/* remark, to propagate 'resurrection' */</a>
+  <a href="../h_src/57970340.htm" class="function">convergeephemerons</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>);
+  <a  class="comments">/* at this point, all resurrected objects are marked. */</a>
+  <a  class="comments">/* remove dead objects from weak tables */</a>
+  <a href="../h_src/57969388.htm" class="function">clearbykeys</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>, <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644868.htm" class="variable">ephemeron</a>);  <a  class="comments">/* clear keys from all ephemeron tables */</a>
+  <a href="../h_src/57969388.htm" class="function">clearbykeys</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>, <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644800.htm" class="variable">allweak</a>);  <a  class="comments">/* clear keys from all 'allweak' tables */</a>
+  <a  class="comments">/* clear values from resurrected weak tables */</a>
+  <a href="../h_src/57968572.htm" class="function">clearbyvalues</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>, <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644936.htm" class="variable">weak</a>, <a href="../h_src/57945044.htm" class="localvar">origweak</a>);
+  <a href="../h_src/57968572.htm" class="function">clearbyvalues</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>, <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644800.htm" class="variable">allweak</a>, <a href="../h_src/57944908.htm" class="localvar">origall</a>);
+  <a href="../h_src/57618892.htm" class="function">luaS_clearcache</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>);
+  <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646092.htm" class="variable">currentwhite</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/57625828.htm" class="macro">otherwhite</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>));  <a  class="comments">/* flip current white */</a>
+  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(g-&gt;gray == NULL);
+  return <a href="../h_src/57945180.htm" class="localvar">work</a>;  <a  class="comments">/* estimate of slots marked by 'atomic' */</a>
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,51 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>setprogdir</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143214624.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143214624.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143214624.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143214624.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143214624.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143214624.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143217276.htm#177" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/143214624.htm" class="function">setprogdir</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143214488.htm" class="localvar">L</a>) {
+  char <a href="../h_src/143214352.htm" class="localvar">buff</a>[MAX_PATH + 1];
+  char *<a href="../h_src/143214216.htm" class="localvar">lb</a>;
+  DWORD <a href="../h_src/143214080.htm" class="localvar">nsize</a> = sizeof(<a href="../h_src/143214352.htm" class="localvar">buff</a>)/sizeof(char);
+  DWORD <a href="../h_src/143213876.htm" class="localvar">n</a> = <a href="../h_aa/143213944.htm" class="libfunc">GetModuleFileNameA</a>(NULL, <a href="../h_src/143214352.htm" class="localvar">buff</a>, <a href="../h_src/143214080.htm" class="localvar">nsize</a>);  <a  class="comments">/* get exec. name */</a>
+  if (<a href="../h_src/143213876.htm" class="localvar">n</a> == 0 || <a href="../h_src/143213876.htm" class="localvar">n</a> == <a href="../h_src/143214080.htm" class="localvar">nsize</a> || (<a href="../h_src/143214216.htm" class="localvar">lb</a> = <a href="../h_aa/143213740.htm" class="libfunc">strrchr</a>(<a href="../h_src/143214352.htm" class="localvar">buff</a>, '\\')) == NULL)
+    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143214488.htm" class="localvar">L</a>, &quot;unable to get ModuleFileName&quot;);
+  else {
+    *<a href="../h_src/143214216.htm" class="localvar">lb</a> = '\0';  <a  class="comments">/* cut name on the last '\\' to get the path */</a>
+    <a href="../h_src/57417936.htm" class="function">luaL_gsub</a>(<a href="../h_src/143214488.htm" class="localvar">L</a>, <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143214488.htm" class="localvar">L</a>, -1), <a href="../h_src/57456356.htm" class="macro">LUA_EXEC_DIR</a>, <a href="../h_src/143214352.htm" class="localvar">buff</a>);
+    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/143214488.htm" class="localvar">L</a>, -2);  <a  class="comments">/* remove original string */</a>
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

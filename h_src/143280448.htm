@@ -1,0 +1,135 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>str_pack</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143280448.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143280448.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143280448.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143280448.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143280448.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143280448.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143344164.htm#1601" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/143280448.htm" class="function">str_pack</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143280312.htm" class="localvar">L</a>) {
+  <a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> <a href="../h_src/143280176.htm" class="localvar">b</a>;
+  <a href="../h_src/143287860.htm" class="type">Header</a> <a href="../h_src/143280040.htm" class="localvar">h</a>;
+  const char *<a href="../h_src/143279904.htm" class="localvar">fmt</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143280312.htm" class="localvar">L</a>, 1);  <a  class="comments">/* format string */</a>
+  int <a href="../h_src/143279768.htm" class="localvar">arg</a> = 1;  <a  class="comments">/* current argument to pack */</a>
+  <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/143279632.htm" class="localvar">totalsize</a> = 0;  <a  class="comments">/* accumulate total size of result */</a>
+  <a href="../h_src/143285276.htm" class="function">initheader</a>(<a href="../h_src/143280312.htm" class="localvar">L</a>, &amp;<a href="../h_src/143280040.htm" class="localvar">h</a>);
+  <a href="../h_src/57435276.htm" class="function">lua_pushnil</a>(<a href="../h_src/143280312.htm" class="localvar">L</a>);  <a  class="comments">/* mark to separate arguments from string buffer */</a>
+  <a href="../h_src/57413652.htm" class="function">luaL_buffinit</a>(<a href="../h_src/143280312.htm" class="localvar">L</a>, &amp;<a href="../h_src/143280176.htm" class="localvar">b</a>);
+  while (*<a href="../h_src/143279904.htm" class="localvar">fmt</a> != '\0') {
+    int <a href="../h_src/143279496.htm" class="localvar">size</a>, <a href="../h_src/143279360.htm" class="localvar">ntoalign</a>;
+    <a href="../h_src/143286908.htm" class="type">KOption</a> <a href="../h_src/143439200.htm" class="localvar">opt</a> = <a href="../h_src/143283304.htm" class="function">getdetails</a>(&amp;<a href="../h_src/143280040.htm" class="localvar">h</a>, <a href="../h_src/143279632.htm" class="localvar">totalsize</a>, &amp;<a href="../h_src/143279904.htm" class="localvar">fmt</a>, &amp;<a href="../h_src/143279496.htm" class="localvar">size</a>, &amp;<a href="../h_src/143279360.htm" class="localvar">ntoalign</a>);
+    <a href="../h_src/143279632.htm" class="localvar">totalsize</a> += <a href="../h_src/143279360.htm" class="localvar">ntoalign</a> + <a href="../h_src/143279496.htm" class="localvar">size</a>;
+    while (<a href="../h_src/143279360.htm" class="localvar">ntoalign</a>-- &gt; 0)
+     <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143280176.htm" class="localvar">b</a>, <a href="../h_src/143289220.htm" class="macro">LUAL_PACKPADBYTE</a>);  <a  class="comments">/* fill alignment */</a>
+    <a href="../h_src/143279768.htm" class="localvar">arg</a>++;
+    switch (<a href="../h_src/143439200.htm" class="localvar">opt</a>) {
+      case <a href="../h_src/143287792.htm" class="variable">Kint</a>: {  <a  class="comments">/* signed integers */</a>
+        <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143439064.htm" class="localvar">n</a> = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143280312.htm" class="localvar">L</a>, <a href="../h_src/143279768.htm" class="localvar">arg</a>);
+        if (<a href="../h_src/143279496.htm" class="localvar">size</a> &lt; <a href="../h_src/143288676.htm" class="macro">SZINT</a>) {  <a  class="comments">/* need overflow check? */</a>
+          <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143438928.htm" class="localvar">lim</a> = (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)1 &lt;&lt; ((<a href="../h_src/143279496.htm" class="localvar">size</a> * <a href="../h_src/143288948.htm" class="macro">NB</a>) - 1);
+          <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143280312.htm" class="localvar">L</a>, -<a href="../h_src/143438928.htm" class="localvar">lim</a> &lt;= <a href="../h_src/143439064.htm" class="localvar">n</a> &amp;&amp; <a href="../h_src/143439064.htm" class="localvar">n</a> &lt; <a href="../h_src/143438928.htm" class="localvar">lim</a>, <a href="../h_src/143279768.htm" class="localvar">arg</a>, &quot;integer overflow&quot;);
+        }
+        packint(&amp;b, (<a href="../h_src/57438132.htm" class="function">lua_Unsigned</a>)n, h.islittle, size, (n &lt; 0));
+        break;
+      }
+      case <a href="../h_src/143287724.htm" class="variable">Kuint</a>: {  <a  class="comments">/* unsigned integers */</a>
+        <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143438792.htm" class="localvar">n</a> = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143280312.htm" class="localvar">L</a>, <a href="../h_src/143279768.htm" class="localvar">arg</a>);
+        if (<a href="../h_src/143279496.htm" class="localvar">size</a> &lt; <a href="../h_src/143288676.htm" class="macro">SZINT</a>)  <a  class="comments">/* need overflow check? */</a>
+          <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(L, (lua_Unsigned)n &lt; ((lua_Unsigned)1 &lt;&lt; (size * <a href="../h_src/143288948.htm" class="macro">NB</a>)),
+                           arg, &quot;unsigned overflow&quot;);
+        packint(&amp;b, (<a href="../h_src/57438132.htm" class="function">lua_Unsigned</a>)n, h.islittle, size, 0);
+        break;
+      }
+      case <a href="../h_src/143287656.htm" class="variable">Kfloat</a>: {  <a  class="comments">/* C float */</a>
+        float <a href="../h_src/143438656.htm" class="localvar">f</a> = (float)<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143280312.htm" class="localvar">L</a>, <a href="../h_src/143279768.htm" class="localvar">arg</a>);  <a  class="comments">/* get argument */</a>
+        char *<a href="../h_src/143438520.htm" class="localvar">buff</a> = <a href="../h_src/57413584.htm" class="function">luaL_prepbuffsize</a>(&amp;<a href="../h_src/143280176.htm" class="localvar">b</a>, sizeof(<a href="../h_src/143438656.htm" class="localvar">f</a>));
+        <a  class="comments">/* move 'f' to final result, correcting endianness if needed */</a>
+        <a href="../h_src/143281128.htm" class="function">copywithendian</a>(<a href="../h_src/143438520.htm" class="localvar">buff</a>, (char *)&amp;<a href="../h_src/143438656.htm" class="localvar">f</a>, sizeof(<a href="../h_src/143438656.htm" class="localvar">f</a>), <a href="../h_src/143280040.htm" class="localvar">h</a>.<a href="../h_src/143287996.htm" class="variable">islittle</a>);
+        <a href="../h_src/57413924.htm" class="macro">luaL_addsize</a>(&amp;<a href="../h_src/143280176.htm" class="localvar">b</a>, <a href="../h_src/143279496.htm" class="localvar">size</a>);
+        break;
+      }
+      case <a href="../h_src/143287588.htm" class="variable">Knumber</a>: {  <a  class="comments">/* Lua float */</a>
+        <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/143438384.htm" class="localvar">f</a> = <a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143280312.htm" class="localvar">L</a>, <a href="../h_src/143279768.htm" class="localvar">arg</a>);  <a  class="comments">/* get argument */</a>
+        char *<a href="../h_src/143438248.htm" class="localvar">buff</a> = <a href="../h_src/57413584.htm" class="function">luaL_prepbuffsize</a>(&amp;<a href="../h_src/143280176.htm" class="localvar">b</a>, sizeof(<a href="../h_src/143438384.htm" class="localvar">f</a>));
+        <a  class="comments">/* move 'f' to final result, correcting endianness if needed */</a>
+        <a href="../h_src/143281128.htm" class="function">copywithendian</a>(<a href="../h_src/143438248.htm" class="localvar">buff</a>, (char *)&amp;<a href="../h_src/143438384.htm" class="localvar">f</a>, sizeof(<a href="../h_src/143438384.htm" class="localvar">f</a>), <a href="../h_src/143280040.htm" class="localvar">h</a>.<a href="../h_src/143287996.htm" class="variable">islittle</a>);
+        <a href="../h_src/57413924.htm" class="macro">luaL_addsize</a>(&amp;<a href="../h_src/143280176.htm" class="localvar">b</a>, <a href="../h_src/143279496.htm" class="localvar">size</a>);
+        break;
+      }
+      case <a href="../h_src/143287520.htm" class="variable">Kdouble</a>: {  <a  class="comments">/* C double */</a>
+        double <a href="../h_src/143438112.htm" class="localvar">f</a> = (double)<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143280312.htm" class="localvar">L</a>, <a href="../h_src/143279768.htm" class="localvar">arg</a>);  <a  class="comments">/* get argument */</a>
+        char *<a href="../h_src/143437976.htm" class="localvar">buff</a> = <a href="../h_src/57413584.htm" class="function">luaL_prepbuffsize</a>(&amp;<a href="../h_src/143280176.htm" class="localvar">b</a>, sizeof(<a href="../h_src/143438112.htm" class="localvar">f</a>));
+        <a  class="comments">/* move 'f' to final result, correcting endianness if needed */</a>
+        <a href="../h_src/143281128.htm" class="function">copywithendian</a>(<a href="../h_src/143437976.htm" class="localvar">buff</a>, (char *)&amp;<a href="../h_src/143438112.htm" class="localvar">f</a>, sizeof(<a href="../h_src/143438112.htm" class="localvar">f</a>), <a href="../h_src/143280040.htm" class="localvar">h</a>.<a href="../h_src/143287996.htm" class="variable">islittle</a>);
+        <a href="../h_src/57413924.htm" class="macro">luaL_addsize</a>(&amp;<a href="../h_src/143280176.htm" class="localvar">b</a>, <a href="../h_src/143279496.htm" class="localvar">size</a>);
+        break;
+      }
+      case <a href="../h_src/143287452.htm" class="variable">Kchar</a>: {  <a  class="comments">/* fixed-size string */</a>
+        <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/143437840.htm" class="localvar">len</a>;
+        const char *<a href="../h_src/143437704.htm" class="localvar">s</a> = <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/143280312.htm" class="localvar">L</a>, <a href="../h_src/143279768.htm" class="localvar">arg</a>, &amp;<a href="../h_src/143437840.htm" class="localvar">len</a>);
+        <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143280312.htm" class="localvar">L</a>, <a href="../h_src/143437840.htm" class="localvar">len</a> &lt;= (<a href="../h_aa/57441192.htm" class="type">size_t</a>)<a href="../h_src/143279496.htm" class="localvar">size</a>, <a href="../h_src/143279768.htm" class="localvar">arg</a>,
+                         &quot;string longer than given size&quot;);
+        <a href="../h_src/57413516.htm" class="function">luaL_addlstring</a>(&amp;<a href="../h_src/143280176.htm" class="localvar">b</a>, <a href="../h_src/143437704.htm" class="localvar">s</a>, <a href="../h_src/143437840.htm" class="localvar">len</a>);  <a  class="comments">/* add string */</a>
+        while (<a href="../h_src/143437840.htm" class="localvar">len</a>++ &lt; (<a href="../h_aa/57441192.htm" class="type">size_t</a>)<a href="../h_src/143279496.htm" class="localvar">size</a>)  <a  class="comments">/* pad extra space */</a>
+          <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143280176.htm" class="localvar">b</a>, <a href="../h_src/143289220.htm" class="macro">LUAL_PACKPADBYTE</a>);
+        break;
+      }
+      case <a href="../h_src/143287384.htm" class="variable">Kstring</a>: {  <a  class="comments">/* strings with length count */</a>
+        <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/143437568.htm" class="localvar">len</a>;
+        const char *<a href="../h_src/143437432.htm" class="localvar">s</a> = <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/143280312.htm" class="localvar">L</a>, <a href="../h_src/143279768.htm" class="localvar">arg</a>, &amp;<a href="../h_src/143437568.htm" class="localvar">len</a>);
+        <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143280312.htm" class="localvar">L</a>, <a href="../h_src/143279496.htm" class="localvar">size</a> &gt;= (int)sizeof(<a href="../h_aa/57441192.htm" class="type">size_t</a>) ||
+                         <a href="../h_src/143437568.htm" class="localvar">len</a> &lt; ((<a href="../h_aa/57441192.htm" class="type">size_t</a>)1 &lt;&lt; (<a href="../h_src/143279496.htm" class="localvar">size</a> * <a href="../h_src/143288948.htm" class="macro">NB</a>)),
+                         <a href="../h_src/143279768.htm" class="localvar">arg</a>, &quot;string length does not fit in given size&quot;);
+        packint(&amp;b, (<a href="../h_src/57438132.htm" class="function">lua_Unsigned</a>)len, h.islittle, size, 0);  <a  class="comments">/* pack length */</a>
+        <a href="../h_src/57413516.htm" class="function">luaL_addlstring</a>(&amp;<a href="../h_src/143280176.htm" class="localvar">b</a>, <a href="../h_src/143437432.htm" class="localvar">s</a>, <a href="../h_src/143437568.htm" class="localvar">len</a>);
+        <a href="../h_src/143279632.htm" class="localvar">totalsize</a> += <a href="../h_src/143437568.htm" class="localvar">len</a>;
+        break;
+      }
+      case <a href="../h_src/143287316.htm" class="variable">Kzstr</a>: {  <a  class="comments">/* zero-terminated string */</a>
+        <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/143437296.htm" class="localvar">len</a>;
+        const char *<a href="../h_src/143437160.htm" class="localvar">s</a> = <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/143280312.htm" class="localvar">L</a>, <a href="../h_src/143279768.htm" class="localvar">arg</a>, &amp;<a href="../h_src/143437296.htm" class="localvar">len</a>);
+        <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143280312.htm" class="localvar">L</a>, <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/143437160.htm" class="localvar">s</a>) == <a href="../h_src/143437296.htm" class="localvar">len</a>, <a href="../h_src/143279768.htm" class="localvar">arg</a>, &quot;string contains zeros&quot;);
+        <a href="../h_src/57413516.htm" class="function">luaL_addlstring</a>(&amp;<a href="../h_src/143280176.htm" class="localvar">b</a>, <a href="../h_src/143437160.htm" class="localvar">s</a>, <a href="../h_src/143437296.htm" class="localvar">len</a>);
+        <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143280176.htm" class="localvar">b</a>, '\0');  <a  class="comments">/* add zero at the end */</a>
+        <a href="../h_src/143279632.htm" class="localvar">totalsize</a> += <a href="../h_src/143437296.htm" class="localvar">len</a> + 1;
+        break;
+      }
+      case <a href="../h_src/143287248.htm" class="variable">Kpadding</a>: <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143280176.htm" class="localvar">b</a>, <a href="../h_src/143289220.htm" class="macro">LUAL_PACKPADBYTE</a>);  <a  class="comments">/* FALLTHROUGH */</a>
+      case <a href="../h_src/143287180.htm" class="variable">Kpaddalign</a>: case <a href="../h_src/143287112.htm" class="variable">Knop</a>:
+        <a href="../h_src/143279768.htm" class="localvar">arg</a>--;  <a  class="comments">/* undo increment */</a>
+        break;
+    }
+  }
+  <a href="../h_src/57413312.htm" class="function">luaL_pushresult</a>(&amp;<a href="../h_src/143280176.htm" class="localvar">b</a>);
+  return 1;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

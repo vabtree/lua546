@@ -1,0 +1,44 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>searcher_C</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143200140.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143200140.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143200140.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143200140.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143200140.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143200140.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143217276.htm#580" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/143200140.htm" class="function">searcher_C</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143200004.htm" class="localvar">L</a>) {
+  const char *<a href="../h_src/143199868.htm" class="localvar">name</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143200004.htm" class="localvar">L</a>, 1);
+  const char *<a href="../h_src/143199732.htm" class="localvar">filename</a> = <a href="../h_src/143202996.htm" class="function">findfile</a>(<a href="../h_src/143200004.htm" class="localvar">L</a>, <a href="../h_src/143199868.htm" class="localvar">name</a>, &quot;cpath&quot;, <a href="../h_src/143216528.htm" class="macro">LUA_CSUBSEP</a>);
+  if (<a href="../h_src/143199732.htm" class="localvar">filename</a> == NULL) return 1;  <a  class="comments">/* module not found in this path */</a>
+  return <a href="../h_src/143202180.htm" class="function">checkload</a>(<a href="../h_src/143200004.htm" class="localvar">L</a>, (<a href="../h_src/143201092.htm" class="function">loadfunc</a>(<a href="../h_src/143200004.htm" class="localvar">L</a>, <a href="../h_src/143199732.htm" class="localvar">filename</a>, <a href="../h_src/143199868.htm" class="localvar">name</a>) == 0), <a href="../h_src/143199732.htm" class="localvar">filename</a>);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

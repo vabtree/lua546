@@ -1,0 +1,444 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lopcodes.h</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57699512.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/57699512.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/57699512.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/57699512.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_ua/57699512.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_da/57699512.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57699512.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57699512.htm" class="file" target="_self">Source Code</a></li>
+<li><a href="../h_sc/57699512.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<pre class=src>
+<a id=1></a><a  class="comments">/*</a>
+<a id=2></a><a  class="comments">** $Id: lopcodes.h $</a>
+<a id=3></a><a  class="comments">** Opcodes for Lua virtual machine</a>
+<a id=4></a><a  class="comments">** See Copyright Notice in lua.h</a>
+<a id=5></a><a  class="comments">*/</a>
+
+<a id=7></a>#ifndef <a href="../h_src/57699444.htm" class="macro">lopcodes_h</a>
+<a id=8></a>#define <a href="../h_src/57699308.htm" class="macro">lopcodes_h</a>
+
+<a id=10></a>#include &quot;<a href="../h_src/57551092.htm" class="file">llimits.h</a>&quot;
+
+
+<a id=13></a><a  class="comments">/*===========================================================================</a>
+<a id=14></a><a  class="comments">  We assume that instructions are unsigned 32-bit integers.</a>
+<a id=15></a><a  class="comments">  All instructions have an opcode in the first 7 bits.</a>
+<a id=16></a><a  class="comments">  Instructions can have the following formats:</a>
+<a id=17></a><a  class="comments"></a>
+<a id=18></a><a  class="comments">        3 3 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0</a>
+<a id=19></a><a  class="comments">        1 0 9 8 7 6 5 4 3 2 1 0 9 8 7 6 5 4 3 2 1 0 9 8 7 6 5 4 3 2 1 0</a>
+<a id=20></a><a  class="comments">iABC          C(8)     |      B(8)     |k|     A(8)      |   Op(7)     |</a>
+<a id=21></a><a  class="comments">iABx                Bx(17)               |     A(8)      |   Op(7)     |</a>
+<a id=22></a><a  class="comments">iAsBx              sBx (signed)(17)      |     A(8)      |   Op(7)     |</a>
+<a id=23></a><a  class="comments">iAx                           Ax(25)                     |   Op(7)     |</a>
+<a id=24></a><a  class="comments">isJ                           sJ (signed)(25)            |   Op(7)     |</a>
+<a id=25></a><a  class="comments"></a>
+<a id=26></a><a  class="comments">  A signed argument is represented in excess K: the represented value is</a>
+<a id=27></a><a  class="comments">  the written unsigned value minus K, where K is half the maximum for the</a>
+<a id=28></a><a  class="comments">  corresponding unsigned argument.</a>
+<a id=29></a><a  class="comments">===========================================================================*/</a>
+
+
+<a id=32></a>enum <a href="../h_src/57698832.htm" class="type">OpMode</a> {<a href="../h_src/57699172.htm" class="variable">iABC</a>, <a href="../h_src/57699104.htm" class="variable">iABx</a>, <a href="../h_src/57699036.htm" class="variable">iAsBx</a>, <a href="../h_src/57698968.htm" class="variable">iAx</a>, <a href="../h_src/57698900.htm" class="variable">isJ</a>};  <a  class="comments">/* basic instruction formats */</a>
+
+
+<a id=35></a><a  class="comments">/*</a>
+<a id=36></a><a  class="comments">** size and position of opcode arguments.</a>
+<a id=37></a><a  class="comments">*/</a>
+<a id=38></a>#define <a href="../h_src/57698696.htm" class="macro">SIZE_C</a>		8
+<a id=39></a>#define <a href="../h_src/57698560.htm" class="macro">SIZE_B</a>		8
+<a id=40></a>#define <a href="../h_src/57698424.htm" class="macro">SIZE_Bx</a>		(SIZE_C + SIZE_B + 1)
+<a id=41></a>#define <a href="../h_src/57698288.htm" class="macro">SIZE_A</a>		8
+<a id=42></a>#define <a href="../h_src/57698152.htm" class="macro">SIZE_Ax</a>		(SIZE_Bx + SIZE_A)
+<a id=43></a>#define <a href="../h_src/57698016.htm" class="macro">SIZE_sJ</a>		(SIZE_Bx + SIZE_A)
+
+<a id=45></a>#define <a href="../h_src/57697880.htm" class="macro">SIZE_OP</a>		7
+
+<a id=47></a>#define <a href="../h_src/57697744.htm" class="macro">POS_OP</a>		0
+
+<a id=49></a>#define <a href="../h_src/57697608.htm" class="macro">POS_A</a>		(POS_OP + SIZE_OP)
+<a id=50></a>#define <a href="../h_src/57697472.htm" class="macro">POS_k</a>		(POS_A + SIZE_A)
+<a id=51></a>#define <a href="../h_src/57697336.htm" class="macro">POS_B</a>		(POS_k + 1)
+<a id=52></a>#define <a href="../h_src/57697200.htm" class="macro">POS_C</a>		(POS_B + SIZE_B)
+
+<a id=54></a>#define <a href="../h_src/57697064.htm" class="macro">POS_Bx</a>		POS_k
+
+<a id=56></a>#define <a href="../h_src/57696928.htm" class="macro">POS_Ax</a>		POS_A
+
+<a id=58></a>#define <a href="../h_src/57696792.htm" class="macro">POS_sJ</a>		POS_A
+
+
+<a id=61></a><a  class="comments">/*</a>
+<a id=62></a><a  class="comments">** limits for opcode arguments.</a>
+<a id=63></a><a  class="comments">** we use (signed) 'int' to manipulate most arguments,</a>
+<a id=64></a><a  class="comments">** so they must fit in ints.</a>
+<a id=65></a><a  class="comments">*/</a>
+
+<a id=67></a><a  class="comments">/* Check whether type 'int' has at least 'b' bits ('b' &lt; 32) */</a>
+<a id=68></a>#define <a href="../h_src/57696656.htm" class="macro">L_INTHASBITS</a>(b)		((UINT_MAX &gt;&gt; ((b) - 1)) &gt;= 1)
+
+
+<a id=71></a>#if <a href="../h_src/57696656.htm" class="macro">L_INTHASBITS</a>(<a href="../h_src/57698424.htm" class="macro">SIZE_Bx</a>)
+<a id=72></a>#define <a href="../h_src/57696520.htm" class="macro">MAXARG_Bx</a>	((1&lt;&lt;SIZE_Bx)-1)
+#else
+#define MAXARG_Bx	MAX_INT
+#endif
+
+<a id=77></a>#define <a href="../h_src/57696384.htm" class="macro">OFFSET_sBx</a>	(MAXARG_Bx&gt;&gt;1)         <a  class="comments">/* 'sBx' is signed */</a>
+
+
+<a id=80></a>#if <a href="../h_src/57696656.htm" class="macro">L_INTHASBITS</a>(<a href="../h_src/57698152.htm" class="macro">SIZE_Ax</a>)
+<a id=81></a>#define <a href="../h_src/57696248.htm" class="macro">MAXARG_Ax</a>	((1&lt;&lt;SIZE_Ax)-1)
+#else
+#define MAXARG_Ax	MAX_INT
+#endif
+
+<a id=86></a>#if <a href="../h_src/57696656.htm" class="macro">L_INTHASBITS</a>(<a href="../h_src/57698016.htm" class="macro">SIZE_sJ</a>)
+<a id=87></a>#define <a href="../h_src/57696112.htm" class="macro">MAXARG_sJ</a>	((1 &lt;&lt; SIZE_sJ) - 1)
+#else
+#define MAXARG_sJ	MAX_INT
+#endif
+
+<a id=92></a>#define <a href="../h_src/57695976.htm" class="macro">OFFSET_sJ</a>	(MAXARG_sJ &gt;&gt; 1)
+
+
+<a id=95></a>#define <a href="../h_src/57695840.htm" class="macro">MAXARG_A</a>	((1&lt;&lt;SIZE_A)-1)
+<a id=96></a>#define <a href="../h_src/57695704.htm" class="macro">MAXARG_B</a>	((1&lt;&lt;SIZE_B)-1)
+<a id=97></a>#define <a href="../h_src/57695568.htm" class="macro">MAXARG_C</a>	((1&lt;&lt;SIZE_C)-1)
+<a id=98></a>#define <a href="../h_src/57695432.htm" class="macro">OFFSET_sC</a>	(MAXARG_C &gt;&gt; 1)
+
+<a id=100></a>#define <a href="../h_src/57695296.htm" class="macro">int2sC</a>(i)	((i) + OFFSET_sC)
+<a id=101></a>#define <a href="../h_src/57695160.htm" class="macro">sC2int</a>(i)	((i) - OFFSET_sC)
+
+
+<a id=104></a><a  class="comments">/* creates a mask with 'n' 1 bits at position 'p' */</a>
+<a id=105></a>#define <a href="../h_src/57695024.htm" class="macro">MASK1</a>(n,p)	((~((~(Instruction)0)&lt;&lt;(n)))&lt;&lt;(p))
+
+<a id=107></a><a  class="comments">/* creates a mask with 'n' 0 bits at position 'p' */</a>
+<a id=108></a>#define <a href="../h_src/57694888.htm" class="macro">MASK0</a>(n,p)	(~MASK1(n,p))
+
+<a id=110></a><a  class="comments">/*</a>
+<a id=111></a><a  class="comments">** the following macros help to manipulate instructions</a>
+<a id=112></a><a  class="comments">*/</a>
+
+<a id=114></a>#define <a href="../h_src/57694752.htm" class="macro">GET_OPCODE</a>(i)	(cast(OpCode, ((i)&gt;&gt;POS_OP) &amp; MASK1(SIZE_OP,0)))
+<a id=115></a>#define <a href="../h_src/57694616.htm" class="macro">SET_OPCODE</a>(i,o)	((i) = (((i)&amp;MASK0(SIZE_OP,POS_OP)) | \
+		((cast(Instruction, o)&lt;&lt;POS_OP)&amp;MASK1(SIZE_OP,POS_OP))))
+
+<a id=118></a>#define <a href="../h_src/57694480.htm" class="macro">checkopm</a>(i,m)	(getOpMode(GET_OPCODE(i)) == m)
+
+
+<a id=121></a>#define <a href="../h_src/57694344.htm" class="macro">getarg</a>(i,pos,size)	(cast_int(((i)&gt;&gt;(pos)) &amp; MASK1(size,0)))
+<a id=122></a>#define <a href="../h_src/57694208.htm" class="macro">setarg</a>(i,v,pos,size)	((i) = (((i)&amp;MASK0(size,pos)) | \
+                ((cast(Instruction, v)&lt;&lt;pos)&amp;MASK1(size,pos))))
+
+<a id=125></a>#define <a href="../h_src/57694072.htm" class="macro">GETARG_A</a>(i)	getarg(i, POS_A, SIZE_A)
+<a id=126></a>#define <a href="../h_src/57693936.htm" class="macro">SETARG_A</a>(i,v)	setarg(i, v, POS_A, SIZE_A)
+
+<a id=128></a>#define <a href="../h_src/57693800.htm" class="macro">GETARG_B</a>(i)	check_exp(checkopm(i, iABC), getarg(i, POS_B, SIZE_B))
+<a id=129></a>#define <a href="../h_src/57693664.htm" class="macro">GETARG_sB</a>(i)	sC2int(GETARG_B(i))
+<a id=130></a>#define <a href="../h_src/57693528.htm" class="macro">SETARG_B</a>(i,v)	setarg(i, v, POS_B, SIZE_B)
+
+<a id=132></a>#define <a href="../h_src/57693392.htm" class="macro">GETARG_C</a>(i)	check_exp(checkopm(i, iABC), getarg(i, POS_C, SIZE_C))
+<a id=133></a>#define <a href="../h_src/57693256.htm" class="macro">GETARG_sC</a>(i)	sC2int(GETARG_C(i))
+<a id=134></a>#define <a href="../h_src/57693120.htm" class="macro">SETARG_C</a>(i,v)	setarg(i, v, POS_C, SIZE_C)
+
+<a id=136></a>#define <a href="../h_src/57692984.htm" class="macro">TESTARG_k</a>(i)	check_exp(checkopm(i, iABC), (cast_int(((i) &amp; (1u &lt;&lt; POS_k)))))
+<a id=137></a>#define <a href="../h_src/57692848.htm" class="macro">GETARG_k</a>(i)	check_exp(checkopm(i, iABC), getarg(i, POS_k, 1))
+<a id=138></a>#define <a href="../h_src/57692712.htm" class="macro">SETARG_k</a>(i,v)	setarg(i, v, POS_k, 1)
+
+<a id=140></a>#define <a href="../h_src/57692576.htm" class="macro">GETARG_Bx</a>(i)	check_exp(checkopm(i, iABx), getarg(i, POS_Bx, SIZE_Bx))
+<a id=141></a>#define <a href="../h_src/57692440.htm" class="macro">SETARG_Bx</a>(i,v)	setarg(i, v, POS_Bx, SIZE_Bx)
+
+<a id=143></a>#define <a href="../h_src/57692304.htm" class="macro">GETARG_Ax</a>(i)	check_exp(checkopm(i, iAx), getarg(i, POS_Ax, SIZE_Ax))
+<a id=144></a>#define <a href="../h_src/57692168.htm" class="macro">SETARG_Ax</a>(i,v)	setarg(i, v, POS_Ax, SIZE_Ax)
+
+<a id=146></a>#define <a href="../h_src/57692032.htm" class="macro">GETARG_sBx</a>(i)  \
+	check_exp(checkopm(i, iAsBx), getarg(i, POS_Bx, SIZE_Bx) - OFFSET_sBx)
+<a id=148></a>#define <a href="../h_src/57691896.htm" class="macro">SETARG_sBx</a>(i,b)	SETARG_Bx((i),cast_uint((b)+OFFSET_sBx))
+
+<a id=150></a>#define <a href="../h_src/57691760.htm" class="macro">GETARG_sJ</a>(i)  \
+	check_exp(checkopm(i, isJ), getarg(i, POS_sJ, SIZE_sJ) - OFFSET_sJ)
+<a id=152></a>#define <a href="../h_src/57691624.htm" class="macro">SETARG_sJ</a>(i,j) \
+	setarg(i, cast_uint((j)+OFFSET_sJ), POS_sJ, SIZE_sJ)
+
+
+<a id=156></a>#define <a href="../h_src/57691488.htm" class="macro">CREATE_ABCk</a>(o,a,b,c,k)	((cast(Instruction, o)&lt;&lt;POS_OP) \
+			| (cast(Instruction, a)&lt;&lt;POS_A) \
+			| (cast(Instruction, b)&lt;&lt;POS_B) \
+			| (cast(Instruction, c)&lt;&lt;POS_C) \
+			| (cast(Instruction, k)&lt;&lt;POS_k))
+
+<a id=162></a>#define <a href="../h_src/57691352.htm" class="macro">CREATE_ABx</a>(o,a,bc)	((cast(Instruction, o)&lt;&lt;POS_OP) \
+			| (cast(Instruction, a)&lt;&lt;POS_A) \
+			| (cast(Instruction, bc)&lt;&lt;POS_Bx))
+
+<a id=166></a>#define <a href="../h_src/57691216.htm" class="macro">CREATE_Ax</a>(o,a)		((cast(Instruction, o)&lt;&lt;POS_OP) \
+			| (cast(Instruction, a)&lt;&lt;POS_Ax))
+
+<a id=169></a>#define <a href="../h_src/57691080.htm" class="macro">CREATE_sJ</a>(o,j,k)	((cast(Instruction, o) &lt;&lt; POS_OP) \
+			| (cast(Instruction, j) &lt;&lt; POS_sJ) \
+			| (cast(Instruction, k) &lt;&lt; POS_k))
+
+
+<a id=174></a>#if !defined(<a href="../h_src/57690944.htm" class="macro">MAXINDEXRK</a>)  <a  class="comments">/* (for debugging only) */</a>
+<a id=175></a>#define <a href="../h_src/57690808.htm" class="macro">MAXINDEXRK</a>	MAXARG_B
+#endif
+
+
+<a id=179></a><a  class="comments">/*</a>
+<a id=180></a><a  class="comments">** invalid register that fits in 8 bits</a>
+<a id=181></a><a  class="comments">*/</a>
+<a id=182></a>#define <a href="../h_src/57690672.htm" class="macro">NO_REG</a>		MAXARG_A
+
+
+<a id=185></a><a  class="comments">/*</a>
+<a id=186></a><a  class="comments">** R[x] - register</a>
+<a id=187></a><a  class="comments">** K[x] - constant (in constant table)</a>
+<a id=188></a><a  class="comments">** RK(x) == if k(i) then K[x] else R[x]</a>
+<a id=189></a><a  class="comments">*/</a>
+
+
+<a id=192></a><a  class="comments">/*</a>
+<a id=193></a><a  class="comments">** Grep &quot;ORDER OP&quot; if you change these enums. Opcodes marked with a (*)</a>
+<a id=194></a><a  class="comments">** has extra descriptions in the notes after the enumeration.</a>
+<a id=195></a><a  class="comments">*/</a>
+
+typedef enum {
+<a id=198></a><a  class="comments">/*----------------------------------------------------------------------</a>
+<a id=199></a><a  class="comments">  name		args	description</a>
+<a id=200></a><a  class="comments">------------------------------------------------------------------------*/</a>
+<a id=201></a><a href="../h_src/57690536.htm" class="variable">OP_MOVE</a>,<a  class="comments">/*	A B	R[A] := R[B]					*/</a>
+<a id=202></a><a href="../h_src/57690468.htm" class="variable">OP_LOADI</a>,<a  class="comments">/*	A sBx	R[A] := sBx					*/</a>
+<a id=203></a><a href="../h_src/57690400.htm" class="variable">OP_LOADF</a>,<a  class="comments">/*	A sBx	R[A] := (lua_Number)sBx				*/</a>
+<a id=204></a><a href="../h_src/57690332.htm" class="variable">OP_LOADK</a>,<a  class="comments">/*	A Bx	R[A] := K[Bx]					*/</a>
+<a id=205></a><a href="../h_src/57690264.htm" class="variable">OP_LOADKX</a>,<a  class="comments">/*	A	R[A] := K[extra arg]				*/</a>
+<a id=206></a><a href="../h_src/57690196.htm" class="variable">OP_LOADFALSE</a>,<a  class="comments">/*	A	R[A] := false					*/</a>
+<a id=207></a><a href="../h_src/57690128.htm" class="variable">OP_LFALSESKIP</a>,<a  class="comments">/*A	R[A] := false; pc++	(*)			*/</a>
+<a id=208></a><a href="../h_src/57690060.htm" class="variable">OP_LOADTRUE</a>,<a  class="comments">/*	A	R[A] := true					*/</a>
+<a id=209></a><a href="../h_src/57689992.htm" class="variable">OP_LOADNIL</a>,<a  class="comments">/*	A B	R[A], R[A+1], ..., R[A+B] := nil		*/</a>
+<a id=210></a><a href="../h_src/57689924.htm" class="variable">OP_GETUPVAL</a>,<a  class="comments">/*	A B	R[A] := UpValue[B]				*/</a>
+<a id=211></a><a href="../h_src/57689856.htm" class="variable">OP_SETUPVAL</a>,<a  class="comments">/*	A B	UpValue[B] := R[A]				*/</a>
+
+<a id=213></a><a href="../h_src/57689788.htm" class="variable">OP_GETTABUP</a>,<a  class="comments">/*	A B C	R[A] := UpValue[B][K[C]:string]			*/</a>
+<a id=214></a><a href="../h_src/57689720.htm" class="variable">OP_GETTABLE</a>,<a  class="comments">/*	A B C	R[A] := R[B][R[C]]				*/</a>
+<a id=215></a><a href="../h_src/57689652.htm" class="variable">OP_GETI</a>,<a  class="comments">/*	A B C	R[A] := R[B][C]					*/</a>
+<a id=216></a><a href="../h_src/57689584.htm" class="variable">OP_GETFIELD</a>,<a  class="comments">/*	A B C	R[A] := R[B][K[C]:string]			*/</a>
+
+<a id=218></a><a href="../h_src/57689516.htm" class="variable">OP_SETTABUP</a>,<a  class="comments">/*	A B C	UpValue[A][K[B]:string] := RK(C)		*/</a>
+<a id=219></a><a href="../h_src/57689448.htm" class="variable">OP_SETTABLE</a>,<a  class="comments">/*	A B C	R[A][R[B]] := RK(C)				*/</a>
+<a id=220></a><a href="../h_src/57689380.htm" class="variable">OP_SETI</a>,<a  class="comments">/*	A B C	R[A][B] := RK(C)				*/</a>
+<a id=221></a><a href="../h_src/57689312.htm" class="variable">OP_SETFIELD</a>,<a  class="comments">/*	A B C	R[A][K[B]:string] := RK(C)			*/</a>
+
+<a id=223></a><a href="../h_src/57689244.htm" class="variable">OP_NEWTABLE</a>,<a  class="comments">/*	A B C k	R[A] := {}					*/</a>
+
+<a id=225></a><a href="../h_src/57689176.htm" class="variable">OP_SELF</a>,<a  class="comments">/*	A B C	R[A+1] := R[B]; R[A] := R[B][RK(C):string]	*/</a>
+
+<a id=227></a><a href="../h_src/57689108.htm" class="variable">OP_ADDI</a>,<a  class="comments">/*	A B sC	R[A] := R[B] + sC				*/</a>
+
+<a id=229></a><a href="../h_src/57689040.htm" class="variable">OP_ADDK</a>,<a  class="comments">/*	A B C	R[A] := R[B] + K[C]:number			*/</a>
+<a id=230></a><a href="../h_src/57688972.htm" class="variable">OP_SUBK</a>,<a  class="comments">/*	A B C	R[A] := R[B] - K[C]:number			*/</a>
+<a id=231></a><a href="../h_src/57688904.htm" class="variable">OP_MULK</a>,<a  class="comments">/*	A B C	R[A] := R[B] * K[C]:number			*/</a>
+<a id=232></a><a href="../h_src/57688836.htm" class="variable">OP_MODK</a>,<a  class="comments">/*	A B C	R[A] := R[B] % K[C]:number			*/</a>
+<a id=233></a><a href="../h_src/57688768.htm" class="variable">OP_POWK</a>,<a  class="comments">/*	A B C	R[A] := R[B] ^ K[C]:number			*/</a>
+<a id=234></a><a href="../h_src/57688700.htm" class="variable">OP_DIVK</a>,<a  class="comments">/*	A B C	R[A] := R[B] / K[C]:number			*/</a>
+<a id=235></a><a href="../h_src/57688632.htm" class="variable">OP_IDIVK</a>,<a  class="comments">/*	A B C	R[A] := R[B] // K[C]:number			*/</a>
+
+<a id=237></a><a href="../h_src/57688564.htm" class="variable">OP_BANDK</a>,<a  class="comments">/*	A B C	R[A] := R[B] &amp; K[C]:integer			*/</a>
+<a id=238></a><a href="../h_src/57688496.htm" class="variable">OP_BORK</a>,<a  class="comments">/*	A B C	R[A] := R[B] | K[C]:integer			*/</a>
+<a id=239></a><a href="../h_src/57688428.htm" class="variable">OP_BXORK</a>,<a  class="comments">/*	A B C	R[A] := R[B] ~ K[C]:integer			*/</a>
+
+<a id=241></a><a href="../h_src/57688360.htm" class="variable">OP_SHRI</a>,<a  class="comments">/*	A B sC	R[A] := R[B] &gt;&gt; sC				*/</a>
+<a id=242></a><a href="../h_src/57688292.htm" class="variable">OP_SHLI</a>,<a  class="comments">/*	A B sC	R[A] := sC &lt;&lt; R[B]				*/</a>
+
+<a id=244></a><a href="../h_src/57688224.htm" class="variable">OP_ADD</a>,<a  class="comments">/*	A B C	R[A] := R[B] + R[C]				*/</a>
+<a id=245></a><a href="../h_src/57688156.htm" class="variable">OP_SUB</a>,<a  class="comments">/*	A B C	R[A] := R[B] - R[C]				*/</a>
+<a id=246></a><a href="../h_src/57688088.htm" class="variable">OP_MUL</a>,<a  class="comments">/*	A B C	R[A] := R[B] * R[C]				*/</a>
+<a id=247></a><a href="../h_src/57688020.htm" class="variable">OP_MOD</a>,<a  class="comments">/*	A B C	R[A] := R[B] % R[C]				*/</a>
+<a id=248></a><a href="../h_src/57687952.htm" class="variable">OP_POW</a>,<a  class="comments">/*	A B C	R[A] := R[B] ^ R[C]				*/</a>
+<a id=249></a><a href="../h_src/57687884.htm" class="variable">OP_DIV</a>,<a  class="comments">/*	A B C	R[A] := R[B] / R[C]				*/</a>
+<a id=250></a><a href="../h_src/57687816.htm" class="variable">OP_IDIV</a>,<a  class="comments">/*	A B C	R[A] := R[B] // R[C]				*/</a>
+
+<a id=252></a><a href="../h_src/57687748.htm" class="variable">OP_BAND</a>,<a  class="comments">/*	A B C	R[A] := R[B] &amp; R[C]				*/</a>
+<a id=253></a><a href="../h_src/57687680.htm" class="variable">OP_BOR</a>,<a  class="comments">/*	A B C	R[A] := R[B] | R[C]				*/</a>
+<a id=254></a><a href="../h_src/57687612.htm" class="variable">OP_BXOR</a>,<a  class="comments">/*	A B C	R[A] := R[B] ~ R[C]				*/</a>
+<a id=255></a><a href="../h_src/57687544.htm" class="variable">OP_SHL</a>,<a  class="comments">/*	A B C	R[A] := R[B] &lt;&lt; R[C]				*/</a>
+<a id=256></a><a href="../h_src/57687476.htm" class="variable">OP_SHR</a>,<a  class="comments">/*	A B C	R[A] := R[B] &gt;&gt; R[C]				*/</a>
+
+<a id=258></a><a href="../h_src/57687408.htm" class="variable">OP_MMBIN</a>,<a  class="comments">/*	A B C	call C metamethod over R[A] and R[B]	(*)	*/</a>
+<a id=259></a><a href="../h_src/57687340.htm" class="variable">OP_MMBINI</a>,<a  class="comments">/*	A sB C k	call C metamethod over R[A] and sB	*/</a>
+<a id=260></a><a href="../h_src/57687272.htm" class="variable">OP_MMBINK</a>,<a  class="comments">/*	A B C k		call C metamethod over R[A] and K[B]	*/</a>
+
+<a id=262></a><a href="../h_src/57687204.htm" class="variable">OP_UNM</a>,<a  class="comments">/*	A B	R[A] := -R[B]					*/</a>
+<a id=263></a><a href="../h_src/57687136.htm" class="variable">OP_BNOT</a>,<a  class="comments">/*	A B	R[A] := ~R[B]					*/</a>
+<a id=264></a><a href="../h_src/57687068.htm" class="variable">OP_NOT</a>,<a  class="comments">/*	A B	R[A] := not R[B]				*/</a>
+<a id=265></a><a href="../h_src/57687000.htm" class="variable">OP_LEN</a>,<a  class="comments">/*	A B	R[A] := #R[B] (length operator)			*/</a>
+
+<a id=267></a><a href="../h_src/57686932.htm" class="variable">OP_CONCAT</a>,<a  class="comments">/*	A B	R[A] := R[A].. ... ..R[A + B - 1]		*/</a>
+
+<a id=269></a><a href="../h_src/57686864.htm" class="variable">OP_CLOSE</a>,<a  class="comments">/*	A	close all upvalues &gt;= R[A]			*/</a>
+<a id=270></a><a href="../h_src/57686796.htm" class="variable">OP_TBC</a>,<a  class="comments">/*	A	mark variable A &quot;to be closed&quot;			*/</a>
+<a id=271></a><a href="../h_src/57686728.htm" class="variable">OP_JMP</a>,<a  class="comments">/*	sJ	pc += sJ					*/</a>
+<a id=272></a><a href="../h_src/57686660.htm" class="variable">OP_EQ</a>,<a  class="comments">/*	A B k	if ((R[A] == R[B]) ~= k) then pc++		*/</a>
+<a id=273></a><a href="../h_src/57686592.htm" class="variable">OP_LT</a>,<a  class="comments">/*	A B k	if ((R[A] &lt;  R[B]) ~= k) then pc++		*/</a>
+<a id=274></a><a href="../h_src/57686524.htm" class="variable">OP_LE</a>,<a  class="comments">/*	A B k	if ((R[A] &lt;= R[B]) ~= k) then pc++		*/</a>
+
+<a id=276></a><a href="../h_src/57686456.htm" class="variable">OP_EQK</a>,<a  class="comments">/*	A B k	if ((R[A] == K[B]) ~= k) then pc++		*/</a>
+<a id=277></a><a href="../h_src/57686388.htm" class="variable">OP_EQI</a>,<a  class="comments">/*	A sB k	if ((R[A] == sB) ~= k) then pc++		*/</a>
+<a id=278></a><a href="../h_src/57686320.htm" class="variable">OP_LTI</a>,<a  class="comments">/*	A sB k	if ((R[A] &lt; sB) ~= k) then pc++			*/</a>
+<a id=279></a><a href="../h_src/57686252.htm" class="variable">OP_LEI</a>,<a  class="comments">/*	A sB k	if ((R[A] &lt;= sB) ~= k) then pc++		*/</a>
+<a id=280></a><a href="../h_src/57686184.htm" class="variable">OP_GTI</a>,<a  class="comments">/*	A sB k	if ((R[A] &gt; sB) ~= k) then pc++			*/</a>
+<a id=281></a><a href="../h_src/57686116.htm" class="variable">OP_GEI</a>,<a  class="comments">/*	A sB k	if ((R[A] &gt;= sB) ~= k) then pc++		*/</a>
+
+<a id=283></a><a href="../h_src/57686048.htm" class="variable">OP_TEST</a>,<a  class="comments">/*	A k	if (not R[A] == k) then pc++			*/</a>
+<a id=284></a><a href="../h_src/57685980.htm" class="variable">OP_TESTSET</a>,<a  class="comments">/*	A B k	if (not R[B] == k) then pc++ else R[A] := R[B] (*) */</a>
+
+<a id=286></a><a href="../h_src/57685912.htm" class="variable">OP_CALL</a>,<a  class="comments">/*	A B C	R[A], ... ,R[A+C-2] := R[A](R[A+1], ... ,R[A+B-1]) */</a>
+<a id=287></a><a href="../h_src/57685844.htm" class="variable">OP_TAILCALL</a>,<a  class="comments">/*	A B C k	return R[A](R[A+1], ... ,R[A+B-1])		*/</a>
+
+<a id=289></a><a href="../h_src/57685776.htm" class="variable">OP_RETURN</a>,<a  class="comments">/*	A B C k	return R[A], ... ,R[A+B-2]	(see note)	*/</a>
+<a id=290></a><a href="../h_src/57685708.htm" class="variable">OP_RETURN0</a>,<a  class="comments">/*		return						*/</a>
+<a id=291></a><a href="../h_src/57685640.htm" class="variable">OP_RETURN1</a>,<a  class="comments">/*	A	return R[A]					*/</a>
+
+<a id=293></a><a href="../h_src/57685572.htm" class="variable">OP_FORLOOP</a>,<a  class="comments">/*	A Bx	update counters; if loop continues then pc-=Bx; */</a>
+<a id=294></a><a href="../h_src/57685504.htm" class="variable">OP_FORPREP</a>,<a  class="comments">/*	A Bx	&lt;check values and prepare counters&gt;;</a>
+<a id=295></a><a  class="comments">                        if not to run then pc+=Bx+1;			*/</a>
+
+<a id=297></a><a href="../h_src/57685436.htm" class="variable">OP_TFORPREP</a>,<a  class="comments">/*	A Bx	create upvalue for R[A + 3]; pc+=Bx		*/</a>
+<a id=298></a><a href="../h_src/57685368.htm" class="variable">OP_TFORCALL</a>,<a  class="comments">/*	A C	R[A+4], ... ,R[A+3+C] := R[A](R[A+1], R[A+2]);	*/</a>
+<a id=299></a><a href="../h_src/57685300.htm" class="variable">OP_TFORLOOP</a>,<a  class="comments">/*	A Bx	if R[A+2] ~= nil then { R[A]=R[A+2]; pc -= Bx }	*/</a>
+
+<a id=301></a><a href="../h_src/57685232.htm" class="variable">OP_SETLIST</a>,<a  class="comments">/*	A B C k	R[A][C+i] := R[A+i], 1 &lt;= i &lt;= B		*/</a>
+
+<a id=303></a><a href="../h_src/57685164.htm" class="variable">OP_CLOSURE</a>,<a  class="comments">/*	A Bx	R[A] := closure(KPROTO[Bx])			*/</a>
+
+<a id=305></a><a href="../h_src/57685096.htm" class="variable">OP_VARARG</a>,<a  class="comments">/*	A C	R[A], R[A+1], ..., R[A+C-2] = vararg		*/</a>
+
+<a id=307></a><a href="../h_src/57685028.htm" class="variable">OP_VARARGPREP</a>,<a  class="comments">/*A	(adjust vararg parameters)			*/</a>
+
+<a id=309></a><a href="../h_src/57684960.htm" class="variable">OP_EXTRAARG</a><a  class="comments">/*	Ax	extra (larger) argument for previous opcode	*/</a>
+<a id=310></a>} <a href="../h_src/57684756.htm" class="type">OpCode</a>;
+
+
+<a id=313></a>#define <a href="../h_src/57684688.htm" class="macro">NUM_OPCODES</a>	((int)(OP_EXTRAARG) + 1)
+
+
+
+<a id=317></a><a  class="comments">/*===========================================================================</a>
+<a id=318></a><a  class="comments">  Notes:</a>
+<a id=319></a><a  class="comments"></a>
+<a id=320></a><a  class="comments">  (*) Opcode OP_LFALSESKIP is used to convert a condition to a boolean</a>
+<a id=321></a><a  class="comments">  value, in a code equivalent to (not cond ? false : true).  (It</a>
+<a id=322></a><a  class="comments">  produces false and skips the next instruction producing true.)</a>
+<a id=323></a><a  class="comments"></a>
+<a id=324></a><a  class="comments">  (*) Opcodes OP_MMBIN and variants follow each arithmetic and</a>
+<a id=325></a><a  class="comments">  bitwise opcode. If the operation succeeds, it skips this next</a>
+<a id=326></a><a  class="comments">  opcode. Otherwise, this opcode calls the corresponding metamethod.</a>
+<a id=327></a><a  class="comments"></a>
+<a id=328></a><a  class="comments">  (*) Opcode OP_TESTSET is used in short-circuit expressions that need</a>
+<a id=329></a><a  class="comments">  both to jump and to produce a value, such as (a = b or c).</a>
+<a id=330></a><a  class="comments"></a>
+<a id=331></a><a  class="comments">  (*) In OP_CALL, if (B == 0) then B = top - A. If (C == 0), then</a>
+<a id=332></a><a  class="comments">  'top' is set to last_result+1, so next open instruction (OP_CALL,</a>
+<a id=333></a><a  class="comments">  OP_RETURN*, OP_SETLIST) may use 'top'.</a>
+<a id=334></a><a  class="comments"></a>
+<a id=335></a><a  class="comments">  (*) In OP_VARARG, if (C == 0) then use actual number of varargs and</a>
+<a id=336></a><a  class="comments">  set top (like in OP_CALL with C == 0).</a>
+<a id=337></a><a  class="comments"></a>
+<a id=338></a><a  class="comments">  (*) In OP_RETURN, if (B == 0) then return up to 'top'.</a>
+<a id=339></a><a  class="comments"></a>
+<a id=340></a><a  class="comments">  (*) In OP_LOADKX and OP_NEWTABLE, the next instruction is always</a>
+<a id=341></a><a  class="comments">  OP_EXTRAARG.</a>
+<a id=342></a><a  class="comments"></a>
+<a id=343></a><a  class="comments">  (*) In OP_SETLIST, if (B == 0) then real B = 'top'; if k, then</a>
+<a id=344></a><a  class="comments">  real C = EXTRAARG _ C (the bits of EXTRAARG concatenated with the</a>
+<a id=345></a><a  class="comments">  bits of C).</a>
+<a id=346></a><a  class="comments"></a>
+<a id=347></a><a  class="comments">  (*) In OP_NEWTABLE, B is log2 of the hash size (which is always a</a>
+<a id=348></a><a  class="comments">  power of 2) plus 1, or zero for size zero. If not k, the array size</a>
+<a id=349></a><a  class="comments">  is C. Otherwise, the array size is EXTRAARG _ C.</a>
+<a id=350></a><a  class="comments"></a>
+<a id=351></a><a  class="comments">  (*) For comparisons, k specifies what condition the test should accept</a>
+<a id=352></a><a  class="comments">  (true or false).</a>
+<a id=353></a><a  class="comments"></a>
+<a id=354></a><a  class="comments">  (*) In OP_MMBINI/OP_MMBINK, k means the arguments were flipped</a>
+<a id=355></a><a  class="comments">   (the constant is the first operand).</a>
+<a id=356></a><a  class="comments"></a>
+<a id=357></a><a  class="comments">  (*) All 'skips' (pc++) assume that next instruction is a jump.</a>
+<a id=358></a><a  class="comments"></a>
+<a id=359></a><a  class="comments">  (*) In instructions OP_RETURN/OP_TAILCALL, 'k' specifies that the</a>
+<a id=360></a><a  class="comments">  function builds upvalues, which may need to be closed. C &gt; 0 means</a>
+<a id=361></a><a  class="comments">  the function is vararg, so that its 'func' must be corrected before</a>
+<a id=362></a><a  class="comments">  returning; in this case, (C - 1) is its number of fixed parameters.</a>
+<a id=363></a><a  class="comments"></a>
+<a id=364></a><a  class="comments">  (*) In comparisons with an immediate operand, C signals whether the</a>
+<a id=365></a><a  class="comments">  original operand was a float. (It must be corrected in case of</a>
+<a id=366></a><a  class="comments">  metamethods.)</a>
+<a id=367></a><a  class="comments"></a>
+<a id=368></a><a  class="comments">===========================================================================*/</a>
+
+
+<a id=371></a><a  class="comments">/*</a>
+<a id=372></a><a  class="comments">** masks for instruction properties. The format is:</a>
+<a id=373></a><a  class="comments">** bits 0-2: op mode</a>
+<a id=374></a><a  class="comments">** bit 3: instruction set register A</a>
+<a id=375></a><a  class="comments">** bit 4: operator is a test (next instruction must be a jump)</a>
+<a id=376></a><a  class="comments">** bit 5: instruction uses 'L-&gt;top' set by previous instruction (when B == 0)</a>
+<a id=377></a><a  class="comments">** bit 6: instruction sets 'L-&gt;top' for next instruction (when C == 0)</a>
+<a id=378></a><a  class="comments">** bit 7: instruction is an MM instruction (call a metamethod)</a>
+<a id=379></a><a  class="comments">*/</a>
+
+<a id=381></a><a href="../h_src/57453772.htm" class="macro">LUAI_DDEC</a>(const <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57684484.htm" class="variable">luaP_opmodes</a>[<a href="../h_src/57684688.htm" class="macro">NUM_OPCODES</a>];)
+
+<a id=383></a>#define <a href="../h_src/57684416.htm" class="macro">getOpMode</a>(m)	(cast(enum OpMode, luaP_opmodes[m] &amp; 7))
+<a id=384></a>#define <a href="../h_src/57684280.htm" class="macro">testAMode</a>(m)	(luaP_opmodes[m] &amp; (1 &lt;&lt; 3))
+<a id=385></a>#define <a href="../h_src/57684144.htm" class="macro">testTMode</a>(m)	(luaP_opmodes[m] &amp; (1 &lt;&lt; 4))
+<a id=386></a>#define <a href="../h_src/57684008.htm" class="macro">testITMode</a>(m)	(luaP_opmodes[m] &amp; (1 &lt;&lt; 5))
+<a id=387></a>#define <a href="../h_src/57683872.htm" class="macro">testOTMode</a>(m)	(luaP_opmodes[m] &amp; (1 &lt;&lt; 6))
+<a id=388></a>#define <a href="../h_src/57683736.htm" class="macro">testMMMode</a>(m)	(luaP_opmodes[m] &amp; (1 &lt;&lt; 7))
+
+<a id=390></a><a  class="comments">/* &quot;out top&quot; (set top for next instruction) */</a>
+<a id=391></a>#define <a href="../h_src/57683600.htm" class="macro">isOT</a>(i)  \
+	((testOTMode(GET_OPCODE(i)) &amp;&amp; GETARG_C(i) == 0) || \
+          GET_OPCODE(i) == OP_TAILCALL)
+
+<a id=395></a><a  class="comments">/* &quot;in top&quot; (uses top from previous instruction) */</a>
+<a id=396></a>#define <a href="../h_src/57683464.htm" class="macro">isIT</a>(i)		(testITMode(GET_OPCODE(i)) &amp;&amp; GETARG_B(i) == 0)
+
+<a id=398></a>#define <a href="../h_src/57683328.htm" class="macro">opmode</a>(mm,ot,it,t,a,m)  \
+    (((mm) &lt;&lt; 7) | ((ot) &lt;&lt; 6) | ((it) &lt;&lt; 5) | ((t) &lt;&lt; 4) | ((a) &lt;&lt; 3) | (m))
+
+
+<a id=402></a><a  class="comments">/* number of list items to accumulate before a SETLIST instruction */</a>
+<a id=403></a>#define <a href="../h_src/57683192.htm" class="macro">LFIELDS_PER_FLUSH</a>	50
+
+#endif
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

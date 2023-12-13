@@ -1,0 +1,63 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>numusearray</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58109004.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58109004.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58109004.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58109004.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58109004.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58109004.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58121924.htm#429" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static unsigned int <a href="../h_src/58109004.htm" class="function">numusearray</a> (const <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58108868.htm" class="localvar">t</a>, unsigned int *<a href="../h_src/58108732.htm" class="localvar">nums</a>) {
+  int <a href="../h_src/58108596.htm" class="localvar">lg</a>;
+  unsigned int <a href="../h_src/58108460.htm" class="localvar">ttlg</a>;  <a  class="comments">/* 2^lg */</a>
+  unsigned int <a href="../h_src/58108324.htm" class="localvar">ause</a> = 0;  <a  class="comments">/* summation of 'nums' */</a>
+  unsigned int <a href="../h_src/58108188.htm" class="localvar">i</a> = 1;  <a  class="comments">/* count to traverse all array keys */</a>
+  unsigned int <a href="../h_src/58108052.htm" class="localvar">asize</a> = <a href="../h_src/58114988.htm" class="macro">limitasasize</a>(<a href="../h_src/58108868.htm" class="localvar">t</a>);  <a  class="comments">/* real array size */</a>
+  <a  class="comments">/* traverse each slice */</a>
+  for (<a href="../h_src/58108596.htm" class="localvar">lg</a> = 0, <a href="../h_src/58108460.htm" class="localvar">ttlg</a> = 1; <a href="../h_src/58108596.htm" class="localvar">lg</a> &lt;= <a href="../h_src/58121584.htm" class="macro">MAXABITS</a>; <a href="../h_src/58108596.htm" class="localvar">lg</a>++, <a href="../h_src/58108460.htm" class="localvar">ttlg</a> *= 2) {
+    unsigned int <a href="../h_src/58107916.htm" class="localvar">lc</a> = 0;  <a  class="comments">/* counter */</a>
+    unsigned int <a href="../h_src/58107780.htm" class="localvar">lim</a> = <a href="../h_src/58108460.htm" class="localvar">ttlg</a>;
+    if (<a href="../h_src/58107780.htm" class="localvar">lim</a> &gt; <a href="../h_src/58108052.htm" class="localvar">asize</a>) {
+      <a href="../h_src/58107780.htm" class="localvar">lim</a> = <a href="../h_src/58108052.htm" class="localvar">asize</a>;  <a  class="comments">/* adjust upper limit */</a>
+      if (<a href="../h_src/58108188.htm" class="localvar">i</a> &gt; <a href="../h_src/58107780.htm" class="localvar">lim</a>)
+        break;  <a  class="comments">/* no more elements to count */</a>
+    }
+    <a  class="comments">/* count elements in range (2^(lg - 1), 2^lg] */</a>
+    for (; <a href="../h_src/58108188.htm" class="localvar">i</a> &lt;= <a href="../h_src/58107780.htm" class="localvar">lim</a>; <a href="../h_src/58108188.htm" class="localvar">i</a>++) {
+      if (!<a href="../h_src/57530488.htm" class="macro">isempty</a>(&amp;<a href="../h_src/58108868.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58108188.htm" class="localvar">i</a>-1]))
+        <a href="../h_src/58107916.htm" class="localvar">lc</a>++;
+    }
+    <a href="../h_src/58108732.htm" class="localvar">nums</a>[<a href="../h_src/58108596.htm" class="localvar">lg</a>] += <a href="../h_src/58107916.htm" class="localvar">lc</a>;
+    <a href="../h_src/58108324.htm" class="localvar">ause</a> += <a href="../h_src/58107916.htm" class="localvar">lc</a>;
+  }
+  return <a href="../h_src/58108324.htm" class="localvar">ause</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

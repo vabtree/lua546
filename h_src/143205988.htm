@@ -1,0 +1,54 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>getnextfilename</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143205988.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143205988.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143205988.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143205988.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143205988.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143205988.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143217276.htm#447" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static const char *<a href="../h_src/143205988.htm" class="function">getnextfilename</a> (char **<a href="../h_src/143205852.htm" class="localvar">path</a>, char *<a href="../h_src/143205716.htm" class="localvar">end</a>) {
+  char *<a href="../h_src/143205580.htm" class="localvar">sep</a>;
+  char *<a href="../h_src/143205444.htm" class="localvar">name</a> = *<a href="../h_src/143205852.htm" class="localvar">path</a>;
+  if (<a href="../h_src/143205444.htm" class="localvar">name</a> == <a href="../h_src/143205716.htm" class="localvar">end</a>)
+    return NULL;  <a  class="comments">/* no more names */</a>
+  else if (*<a href="../h_src/143205444.htm" class="localvar">name</a> == '\0') {  <a  class="comments">/* from previous iteration? */</a>
+    *<a href="../h_src/143205444.htm" class="localvar">name</a> = *<a href="../h_src/57456628.htm" class="macro">LUA_PATH_SEP</a>;  <a  class="comments">/* restore separator */</a>
+    <a href="../h_src/143205444.htm" class="localvar">name</a>++;  <a  class="comments">/* skip it */</a>
+  }
+  <a href="../h_src/143205580.htm" class="localvar">sep</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143205444.htm" class="localvar">name</a>, *<a href="../h_src/57456628.htm" class="macro">LUA_PATH_SEP</a>);  <a  class="comments">/* find next separator */</a>
+  if (<a href="../h_src/143205580.htm" class="localvar">sep</a> == NULL)  <a  class="comments">/* separator not found? */</a>
+    <a href="../h_src/143205580.htm" class="localvar">sep</a> = <a href="../h_src/143205716.htm" class="localvar">end</a>;  <a  class="comments">/* name goes until the end */</a>
+  *<a href="../h_src/143205580.htm" class="localvar">sep</a> = '\0';  <a  class="comments">/* finish file name */</a>
+  *<a href="../h_src/143205852.htm" class="localvar">path</a> = <a href="../h_src/143205580.htm" class="localvar">sep</a>;  <a  class="comments">/* will start next search from here */</a>
+  return <a href="../h_src/143205444.htm" class="localvar">name</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

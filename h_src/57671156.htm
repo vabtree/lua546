@@ -1,0 +1,44 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaK_codeAsBx</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57671156.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57671156.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57671156.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57671156.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57671156.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57671156.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57706720.htm#418" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+int <a href="../h_src/57671156.htm" class="function">luaK_codeAsBx</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57813792.htm" class="localvar">fs</a>, <a href="../h_src/57684756.htm" class="type">OpCode</a> <a href="../h_src/57813656.htm" class="localvar">o</a>, int <a href="../h_src/57813520.htm" class="localvar">a</a>, int <a href="../h_src/57813384.htm" class="localvar">bc</a>) {
+  unsigned int <a href="../h_src/57813248.htm" class="localvar">b</a> = <a href="../h_src/57813384.htm" class="localvar">bc</a> + <a href="../h_src/57696384.htm" class="macro">OFFSET_sBx</a>;
+  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57684416.htm" class="macro">getOpMode</a>(o) == iAsBx);
+  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(a &lt;= <a href="../h_src/57695840.htm" class="macro">MAXARG_A</a> &amp;&amp; b &lt;= <a href="../h_src/57696520.htm" class="macro">MAXARG_Bx</a>);
+  return <a href="../h_src/57671292.htm" class="function">luaK_code</a>(<a href="../h_src/57813792.htm" class="localvar">fs</a>, <a href="../h_src/57691352.htm" class="macro">CREATE_ABx</a>(<a href="../h_src/57813656.htm" class="localvar">o</a>, <a href="../h_src/57813520.htm" class="localvar">a</a>, <a href="../h_src/57813248.htm" class="localvar">b</a>));
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

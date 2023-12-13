@@ -1,0 +1,98 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>getobjname</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57745588.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57745588.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57745588.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57745588.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57745588.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57745588.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57759256.htm#526" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static const char *<a href="../h_src/57745588.htm" class="function">getobjname</a> (const <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57739876.htm" class="localvar">p</a>, int <a href="../h_src/57739740.htm" class="localvar">lastpc</a>, int <a href="../h_src/57739604.htm" class="localvar">reg</a>,
+                               const char **<a href="../h_src/57739468.htm" class="localvar">name</a>) {
+  int <a href="../h_src/57739332.htm" class="localvar">pc</a>;
+  *<a href="../h_src/57739468.htm" class="localvar">name</a> = <a href="../h_src/57630180.htm" class="function">luaF_getlocalname</a>(<a href="../h_src/57739876.htm" class="localvar">p</a>, <a href="../h_src/57739604.htm" class="localvar">reg</a> + 1, <a href="../h_src/57739740.htm" class="localvar">lastpc</a>);
+  if (*<a href="../h_src/57739468.htm" class="localvar">name</a>)  <a  class="comments">/* is a local? */</a>
+    return &quot;local&quot;;
+  <a  class="comments">/* else try symbolic execution */</a>
+  <a href="../h_src/57739332.htm" class="localvar">pc</a> = <a href="../h_src/57742732.htm" class="function">findsetreg</a>(<a href="../h_src/57739876.htm" class="localvar">p</a>, <a href="../h_src/57739740.htm" class="localvar">lastpc</a>, <a href="../h_src/57739604.htm" class="localvar">reg</a>);
+  if (<a href="../h_src/57739332.htm" class="localvar">pc</a> != -1) {  <a  class="comments">/* could find instruction? */</a>
+    <a href="../h_src/57545108.htm" class="type">Instruction</a> <a href="../h_src/57739196.htm" class="localvar">i</a> = <a href="../h_src/57739876.htm" class="localvar">p</a>-&gt;<a href="../h_src/57514916.htm" class="variable">code</a>[<a href="../h_src/57739332.htm" class="localvar">pc</a>];
+    <a href="../h_src/57684756.htm" class="type">OpCode</a> <a href="../h_src/57739060.htm" class="localvar">op</a> = <a href="../h_src/57694752.htm" class="macro">GET_OPCODE</a>(<a href="../h_src/57739196.htm" class="localvar">i</a>);
+    switch (<a href="../h_src/57739060.htm" class="localvar">op</a>) {
+      case <a href="../h_src/57690536.htm" class="variable">OP_MOVE</a>: {
+        int <a href="../h_src/57738924.htm" class="localvar">b</a> = <a href="../h_src/57693800.htm" class="macro">GETARG_B</a>(<a href="../h_src/57739196.htm" class="localvar">i</a>);  <a  class="comments">/* move from 'b' to 'a' */</a>
+        if (<a href="../h_src/57738924.htm" class="localvar">b</a> &lt; <a href="../h_src/57694072.htm" class="macro">GETARG_A</a>(<a href="../h_src/57739196.htm" class="localvar">i</a>))
+          return <a href="../h_src/57745588.htm" class="function">getobjname</a>(<a href="../h_src/57739876.htm" class="localvar">p</a>, <a href="../h_src/57739332.htm" class="localvar">pc</a>, <a href="../h_src/57738924.htm" class="localvar">b</a>, <a href="../h_src/57739468.htm" class="localvar">name</a>);  <a  class="comments">/* get name for 'b' */</a>
+        break;
+      }
+      case <a href="../h_src/57689788.htm" class="variable">OP_GETTABUP</a>: {
+        int <a href="../h_src/57738788.htm" class="localvar">k</a> = <a href="../h_src/57693392.htm" class="macro">GETARG_C</a>(<a href="../h_src/57739196.htm" class="localvar">i</a>);  <a  class="comments">/* key index */</a>
+        <a href="../h_src/57745452.htm" class="function">kname</a>(<a href="../h_src/57739876.htm" class="localvar">p</a>, <a href="../h_src/57738788.htm" class="localvar">k</a>, <a href="../h_src/57739468.htm" class="localvar">name</a>);
+        return <a href="../h_src/57740828.htm" class="function">gxf</a>(<a href="../h_src/57739876.htm" class="localvar">p</a>, <a href="../h_src/57739332.htm" class="localvar">pc</a>, <a href="../h_src/57739196.htm" class="localvar">i</a>, 1);
+      }
+      case <a href="../h_src/57689720.htm" class="variable">OP_GETTABLE</a>: {
+        int <a href="../h_src/57738652.htm" class="localvar">k</a> = <a href="../h_src/57693392.htm" class="macro">GETARG_C</a>(<a href="../h_src/57739196.htm" class="localvar">i</a>);  <a  class="comments">/* key index */</a>
+        <a href="../h_src/57744772.htm" class="function">rname</a>(<a href="../h_src/57739876.htm" class="localvar">p</a>, <a href="../h_src/57739332.htm" class="localvar">pc</a>, <a href="../h_src/57738652.htm" class="localvar">k</a>, <a href="../h_src/57739468.htm" class="localvar">name</a>);
+        return <a href="../h_src/57740828.htm" class="function">gxf</a>(<a href="../h_src/57739876.htm" class="localvar">p</a>, <a href="../h_src/57739332.htm" class="localvar">pc</a>, <a href="../h_src/57739196.htm" class="localvar">i</a>, 0);
+      }
+      case <a href="../h_src/57689652.htm" class="variable">OP_GETI</a>: {
+        *<a href="../h_src/57739468.htm" class="localvar">name</a> = &quot;integer index&quot;;
+        return &quot;field&quot;;
+      }
+      case <a href="../h_src/57689584.htm" class="variable">OP_GETFIELD</a>: {
+        int <a href="../h_src/57738516.htm" class="localvar">k</a> = <a href="../h_src/57693392.htm" class="macro">GETARG_C</a>(<a href="../h_src/57739196.htm" class="localvar">i</a>);  <a  class="comments">/* key index */</a>
+        <a href="../h_src/57745452.htm" class="function">kname</a>(<a href="../h_src/57739876.htm" class="localvar">p</a>, <a href="../h_src/57738516.htm" class="localvar">k</a>, <a href="../h_src/57739468.htm" class="localvar">name</a>);
+        return <a href="../h_src/57740828.htm" class="function">gxf</a>(<a href="../h_src/57739876.htm" class="localvar">p</a>, <a href="../h_src/57739332.htm" class="localvar">pc</a>, <a href="../h_src/57739196.htm" class="localvar">i</a>, 0);
+      }
+      case <a href="../h_src/57689924.htm" class="variable">OP_GETUPVAL</a>: {
+        *<a href="../h_src/57739468.htm" class="localvar">name</a> = <a href="../h_src/57754904.htm" class="function">upvalname</a>(<a href="../h_src/57739876.htm" class="localvar">p</a>, <a href="../h_src/57693800.htm" class="macro">GETARG_B</a>(<a href="../h_src/57739196.htm" class="localvar">i</a>));
+        return &quot;upvalue&quot;;
+      }
+      case <a href="../h_src/57690332.htm" class="variable">OP_LOADK</a>:
+      case <a href="../h_src/57690264.htm" class="variable">OP_LOADKX</a>: {
+        int <a href="../h_src/57738380.htm" class="localvar">b</a> = (<a href="../h_src/57739060.htm" class="localvar">op</a> == <a href="../h_src/57690332.htm" class="variable">OP_LOADK</a>) ? <a href="../h_src/57692576.htm" class="macro">GETARG_Bx</a>(<a href="../h_src/57739196.htm" class="localvar">i</a>)
+                                 : <a href="../h_src/57692304.htm" class="macro">GETARG_Ax</a>(<a href="../h_src/57739876.htm" class="localvar">p</a>-&gt;<a href="../h_src/57514916.htm" class="variable">code</a>[<a href="../h_src/57739332.htm" class="localvar">pc</a> + 1]);
+        if (<a href="../h_src/57524912.htm" class="macro">ttisstring</a>(&amp;<a href="../h_src/57739876.htm" class="localvar">p</a>-&gt;<a href="../h_src/57515052.htm" class="variable">k</a>[<a href="../h_src/57738380.htm" class="localvar">b</a>])) {
+          *<a href="../h_src/57739468.htm" class="localvar">name</a> = <a href="../h_src/57522532.htm" class="macro">svalue</a>(&amp;<a href="../h_src/57739876.htm" class="localvar">p</a>-&gt;<a href="../h_src/57515052.htm" class="variable">k</a>[<a href="../h_src/57738380.htm" class="localvar">b</a>]);
+          return &quot;constant&quot;;
+        }
+        break;
+      }
+      case <a href="../h_src/57689176.htm" class="variable">OP_SELF</a>: {
+        <a href="../h_src/57743956.htm" class="function">rkname</a>(<a href="../h_src/57739876.htm" class="localvar">p</a>, <a href="../h_src/57739332.htm" class="localvar">pc</a>, <a href="../h_src/57739196.htm" class="localvar">i</a>, <a href="../h_src/57739468.htm" class="localvar">name</a>);
+        return &quot;method&quot;;
+      }
+      default: break;  <a  class="comments">/* go through to return NULL */</a>
+    }
+  }
+  return NULL;  <a  class="comments">/* could not find reasonable name */</a>
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

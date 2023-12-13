@@ -1,0 +1,55 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>LEnum</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58207440.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58207440.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58207440.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58207440.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58207440.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58207440.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58062016.htm#498" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57545312.htm" class="macro">l_sinline</a> int <a href="../h_src/58207440.htm" class="function">LEnum</a> (const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58207304.htm" class="localvar">l</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58207168.htm" class="localvar">r</a>) {
+  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57526816.htm" class="macro">ttisnumber</a>(l) &amp;&amp; <a href="../h_src/57526816.htm" class="macro">ttisnumber</a>(r));
+  if (<a href="../h_src/57526544.htm" class="macro">ttisinteger</a>(<a href="../h_src/58207304.htm" class="localvar">l</a>)) {
+    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/58207032.htm" class="localvar">li</a> = <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58207304.htm" class="localvar">l</a>);
+    if (<a href="../h_src/57526544.htm" class="macro">ttisinteger</a>(<a href="../h_src/58207168.htm" class="localvar">r</a>))
+      return <a href="../h_src/58207032.htm" class="localvar">li</a> &lt;= <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58207168.htm" class="localvar">r</a>);  <a  class="comments">/* both are integers */</a>
+    else  <a  class="comments">/* 'l' is int and 'r' is float */</a>
+      return <a href="../h_src/58209752.htm" class="function">LEintfloat</a>(<a href="../h_src/58207032.htm" class="localvar">li</a>, <a href="../h_src/57526272.htm" class="macro">fltvalue</a>(<a href="../h_src/58207168.htm" class="localvar">r</a>));  <a  class="comments">/* l &lt;= r ? */</a>
+  }
+  else {
+    <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/58206896.htm" class="localvar">lf</a> = <a href="../h_src/57526272.htm" class="macro">fltvalue</a>(<a href="../h_src/58207304.htm" class="localvar">l</a>);  <a  class="comments">/* 'l' must be float */</a>
+    if (<a href="../h_src/57526680.htm" class="macro">ttisfloat</a>(<a href="../h_src/58207168.htm" class="localvar">r</a>))
+      return <a href="../h_src/57539192.htm" class="macro">luai_numle</a>(<a href="../h_src/58206896.htm" class="localvar">lf</a>, <a href="../h_src/57526272.htm" class="macro">fltvalue</a>(<a href="../h_src/58207168.htm" class="localvar">r</a>));  <a  class="comments">/* both are float */</a>
+    else  <a  class="comments">/* 'l' is float and 'r' is int */</a>
+      return <a href="../h_src/58208664.htm" class="function">LEfloatint</a>(<a href="../h_src/58206896.htm" class="localvar">lf</a>, <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58207168.htm" class="localvar">r</a>));
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

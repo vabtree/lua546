@@ -1,0 +1,854 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lobject.h</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57537696.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/57537696.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/57537696.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/57537696.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_ua/57537696.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_da/57537696.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57537696.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57537696.htm" class="file" target="_self">Source Code</a></li>
+<li><a href="../h_sc/57537696.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<pre class=src>
+<a id=1></a><a  class="comments">/*</a>
+<a id=2></a><a  class="comments">** $Id: lobject.h $</a>
+<a id=3></a><a  class="comments">** Type definitions for Lua objects</a>
+<a id=4></a><a  class="comments">** See Copyright Notice in lua.h</a>
+<a id=5></a><a  class="comments">*/</a>
+
+
+<a id=8></a>#ifndef <a href="../h_src/57537628.htm" class="macro">lobject_h</a>
+<a id=9></a>#define <a href="../h_src/57537492.htm" class="macro">lobject_h</a>
+
+
+#include &lt;stdarg.h&gt;
+
+
+<a id=15></a>#include &quot;<a href="../h_src/57551092.htm" class="file">llimits.h</a>&quot;
+<a id=16></a>#include &quot;<a href="../h_src/57460028.htm" class="file">lua.h</a>&quot;
+
+
+<a id=19></a><a  class="comments">/*</a>
+<a id=20></a><a  class="comments">** Extra types for collectable non-values</a>
+<a id=21></a><a  class="comments">*/</a>
+<a id=22></a>#define <a href="../h_src/57537356.htm" class="macro">LUA_TUPVAL</a>	LUA_NUMTYPES  <a  class="comments">/* upvalues */</a>
+<a id=23></a>#define <a href="../h_src/57537220.htm" class="macro">LUA_TPROTO</a>	(LUA_NUMTYPES+1)  <a  class="comments">/* function prototypes */</a>
+<a id=24></a>#define <a href="../h_src/57537084.htm" class="macro">LUA_TDEADKEY</a>	(LUA_NUMTYPES+2)  <a  class="comments">/* removed keys in tables */</a>
+
+
+
+<a id=28></a><a  class="comments">/*</a>
+<a id=29></a><a  class="comments">** number of all possible types (including LUA_TNONE but excluding DEADKEY)</a>
+<a id=30></a><a  class="comments">*/</a>
+<a id=31></a>#define <a href="../h_src/57536948.htm" class="macro">LUA_TOTALTYPES</a>		(LUA_TPROTO + 2)
+
+
+<a id=34></a><a  class="comments">/*</a>
+<a id=35></a><a  class="comments">** tags for Tagged Values have the following use of bits:</a>
+<a id=36></a><a  class="comments">** bits 0-3: actual tag (a LUA_T* constant)</a>
+<a id=37></a><a  class="comments">** bits 4-5: variant bits</a>
+<a id=38></a><a  class="comments">** bit 6: whether value is collectable</a>
+<a id=39></a><a  class="comments">*/</a>
+
+<a id=41></a><a  class="comments">/* add variant bits to a type */</a>
+<a id=42></a>#define <a href="../h_src/57536812.htm" class="macro">makevariant</a>(t,v)	((t) | ((v) &lt;&lt; 4))
+
+
+
+<a id=46></a><a  class="comments">/*</a>
+<a id=47></a><a  class="comments">** Union of all Lua values</a>
+<a id=48></a><a  class="comments">*/</a>
+<a id=49></a>typedef union <a href="../h_src/57536676.htm" class="class">Value</a> {
+<a id=50></a>  struct <a href="../h_src/57536540.htm" class="class">GCObject</a> *<a href="../h_src/57536268.htm" class="variable">gc</a>;    <a  class="comments">/* collectable objects */</a>
+<a id=51></a>  void *<a href="../h_src/57536200.htm" class="variable">p</a>;         <a  class="comments">/* light userdata */</a>
+<a id=52></a>  <a href="../h_src/57441736.htm" class="type">lua_CFunction</a> <a href="../h_src/57536132.htm" class="variable">f</a>; <a  class="comments">/* light C functions */</a>
+<a id=53></a>  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/57536064.htm" class="variable">i</a>;   <a  class="comments">/* integer numbers */</a>
+<a id=54></a>  <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/57535996.htm" class="variable">n</a>;    <a  class="comments">/* float numbers */</a>
+<a id=55></a>  <a  class="comments">/* not used, but may avoid warnings for uninitialized value */</a>
+<a id=56></a>  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57535928.htm" class="variable">ub</a>;
+<a id=57></a>} <a href="../h_src/57535860.htm" class="type">Value</a>;
+
+
+<a id=60></a><a  class="comments">/*</a>
+<a id=61></a><a  class="comments">** Tagged Values. This is the basic representation of values in Lua:</a>
+<a id=62></a><a  class="comments">** an actual value plus a tag with its type.</a>
+<a id=63></a><a  class="comments">*/</a>
+
+<a id=65></a>#define <a href="../h_src/57535792.htm" class="macro">TValuefields</a>	Value value_; lu_byte tt_
+
+<a id=67></a>typedef struct <a href="../h_src/57535656.htm" class="class">TValue</a> {
+<a id=68></a>  <a href="../h_src/57535792.htm" class="macro">TValuefields</a><a href="../h_src/57535860.htm" class="type">Value</a>fields;
+<a id=69></a>} <a href="../h_src/57535384.htm" class="type">TValue</a>;
+
+
+<a id=72></a>#define <a href="../h_src/57535316.htm" class="macro">val_</a>(o)		((o)-&gt;value_)
+<a id=73></a>#define <a href="../h_src/57535180.htm" class="macro">valraw</a>(o)	(val_(o))
+
+
+<a id=76></a><a  class="comments">/* raw type tag of a TValue */</a>
+<a id=77></a>#define <a href="../h_src/57535044.htm" class="macro">rawtt</a>(o)	((o)-&gt;tt_)
+
+<a id=79></a><a  class="comments">/* tag with no variants (bits 0-3) */</a>
+<a id=80></a>#define <a href="../h_src/57534908.htm" class="macro">novariant</a>(t)	((t) &amp; 0x0F)
+
+<a id=82></a><a  class="comments">/* type tag of a TValue (bits 0-3 for tags + variant bits 4-5) */</a>
+<a id=83></a>#define <a href="../h_src/57534772.htm" class="macro">withvariant</a>(t)	((t) &amp; 0x3F)
+<a id=84></a>#define <a href="../h_src/57534636.htm" class="macro">ttypetag</a>(o)	withvariant(rawtt(o))
+
+<a id=86></a><a  class="comments">/* type of a TValue */</a>
+<a id=87></a>#define <a href="../h_src/57534500.htm" class="macro">ttype</a>(o)	(novariant(rawtt(o)))
+
+
+<a id=90></a><a  class="comments">/* Macros to test type */</a>
+<a id=91></a>#define <a href="../h_src/57534364.htm" class="macro">checktag</a>(o,t)		(rawtt(o) == (t))
+<a id=92></a>#define <a href="../h_src/57534228.htm" class="macro">checktype</a>(o,t)		(ttype(o) == (t))
+
+
+<a id=95></a><a  class="comments">/* Macros for internal tests */</a>
+
+<a id=97></a><a  class="comments">/* collectable object has the same tag as the original value */</a>
+<a id=98></a>#define <a href="../h_src/57534092.htm" class="macro">righttt</a>(obj)		(ttypetag(obj) == gcvalue(obj)-&gt;tt)
+
+<a id=100></a><a  class="comments">/*</a>
+<a id=101></a><a  class="comments">** Any value being manipulated by the program either is non</a>
+<a id=102></a><a  class="comments">** collectable, or the collectable object has the right tag</a>
+<a id=103></a><a  class="comments">** and it is not dead. The option 'L == NULL' allows other</a>
+<a id=104></a><a  class="comments">** macros using this one to be used where L is not available.</a>
+<a id=105></a><a  class="comments">*/</a>
+<a id=106></a>#define <a href="../h_src/57533956.htm" class="macro">checkliveness</a>(L,obj) \
+	((void)L, lua_longassert(!iscollectable(obj) || \
+		(righttt(obj) &amp;&amp; (L == NULL || !isdead(G(L),gcvalue(obj))))))
+
+
+<a id=111></a><a  class="comments">/* Macros to set values */</a>
+
+<a id=113></a><a  class="comments">/* set a value's tag */</a>
+<a id=114></a>#define <a href="../h_src/57533820.htm" class="macro">settt_</a>(o,t)	((o)-&gt;tt_=(t))
+
+
+<a id=117></a><a  class="comments">/* main macro to copy values (from 'obj2' to 'obj1') */</a>
+<a id=118></a>#define <a href="../h_src/57533684.htm" class="macro">setobj</a>(L,obj1,obj2) \
+	{ TValue *io1=(obj1); const TValue *io2=(obj2); \
+          io1-&gt;value_ = io2-&gt;value_; settt_(io1, io2-&gt;tt_); \
+	  checkliveness(L,io1); lua_assert(!isnonstrictnil(io1)); }
+
+<a id=123></a><a  class="comments">/*</a>
+<a id=124></a><a  class="comments">** Different types of assignments, according to source and destination.</a>
+<a id=125></a><a  class="comments">** (They are mostly equal now, but may be different in the future.)</a>
+<a id=126></a><a  class="comments">*/</a>
+
+<a id=128></a><a  class="comments">/* from stack to stack */</a>
+<a id=129></a>#define <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(L,o1,o2)	setobj(L,s2v(o1),s2v(o2))
+<a id=130></a><a  class="comments">/* to stack (not from same stack) */</a>
+<a id=131></a>#define <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(L,o1,o2)	setobj(L,s2v(o1),o2)
+<a id=132></a><a  class="comments">/* from table to same table */</a>
+<a id=133></a>#define <a href="../h_src/57533276.htm" class="macro">setobjt2t</a>	setobj
+<a id=134></a><a  class="comments">/* to new object */</a>
+<a id=135></a>#define <a href="../h_src/57533140.htm" class="macro">setobj2n</a>	setobj
+<a id=136></a><a  class="comments">/* to table */</a>
+<a id=137></a>#define <a href="../h_src/57533004.htm" class="macro">setobj2t</a>	setobj
+
+
+<a id=140></a><a  class="comments">/*</a>
+<a id=141></a><a  class="comments">** Entries in a Lua stack. Field 'tbclist' forms a list of all</a>
+<a id=142></a><a  class="comments">** to-be-closed variables active in this stack. Dummy entries are</a>
+<a id=143></a><a  class="comments">** used when the distance between two tbc variables does not fit</a>
+<a id=144></a><a  class="comments">** in an unsigned short. They are represented by delta==0, and</a>
+<a id=145></a><a  class="comments">** their real delta is always the maximum value that fits in</a>
+<a id=146></a><a  class="comments">** that field.</a>
+<a id=147></a><a  class="comments">*/</a>
+<a id=148></a>typedef union <a href="../h_src/57532868.htm" class="class">StackValue</a> {
+<a id=149></a>  <a href="../h_src/57535384.htm" class="type">TValue</a> <a href="../h_src/57532732.htm" class="variable">val</a>;
+  struct {
+<a id=151></a>    <a href="../h_src/57535792.htm" class="macro">TValuefields</a><a href="../h_src/57535860.htm" class="type">Value</a>fields;
+<a id=152></a>    unsigned short <a href="../h_src/57532460.htm" class="variable">delta</a>;
+<a id=153></a>  } <a href="../h_src/57532324.htm" class="variable">tbclist</a>;
+<a id=154></a>} <a href="../h_src/57532256.htm" class="type">StackValue</a>;
+
+
+<a id=157></a><a  class="comments">/* index to stack elements */</a>
+<a id=158></a>typedef <a href="../h_src/57532256.htm" class="type">StackValue</a> *<a href="../h_src/57532188.htm" class="type">StkId</a>;
+
+
+<a id=161></a><a  class="comments">/*</a>
+<a id=162></a><a  class="comments">** When reallocating the stack, change all pointers to the stack into</a>
+<a id=163></a><a  class="comments">** proper offsets.</a>
+<a id=164></a><a  class="comments">*/</a>
+typedef union {
+<a id=166></a>  <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57531984.htm" class="variable">p</a>;  <a  class="comments">/* actual pointer */</a>
+<a id=167></a>  <a href="../h_aa/57441872.htm" class="type">ptrdiff_t</a> <a href="../h_src/57531916.htm" class="variable">offset</a>;  <a  class="comments">/* used while the stack is being reallocated */</a>
+<a id=168></a>} <a href="../h_src/57531780.htm" class="type">StkIdRel</a>;
+
+
+<a id=171></a><a  class="comments">/* convert a 'StackValue' to a 'TValue' */</a>
+<a id=172></a>#define <a href="../h_src/57531712.htm" class="macro">s2v</a>(o)	(&amp;(o)-&gt;val)
+
+
+
+<a id=176></a><a  class="comments">/*</a>
+<a id=177></a><a  class="comments">** {==================================================================</a>
+<a id=178></a><a  class="comments">** Nil</a>
+<a id=179></a><a  class="comments">** ===================================================================</a>
+<a id=180></a><a  class="comments">*/</a>
+
+<a id=182></a><a  class="comments">/* Standard nil */</a>
+<a id=183></a>#define <a href="../h_src/57531576.htm" class="macro">LUA_VNIL</a>	makevariant(LUA_TNIL, 0)
+
+<a id=185></a><a  class="comments">/* Empty slot (which might be different from a slot containing nil) */</a>
+<a id=186></a>#define <a href="../h_src/57531440.htm" class="macro">LUA_VEMPTY</a>	makevariant(LUA_TNIL, 1)
+
+<a id=188></a><a  class="comments">/* Value returned for a key not found in a table (absent key) */</a>
+<a id=189></a>#define <a href="../h_src/57531304.htm" class="macro">LUA_VABSTKEY</a>	makevariant(LUA_TNIL, 2)
+
+
+<a id=192></a><a  class="comments">/* macro to test for (any kind of) nil */</a>
+<a id=193></a>#define <a href="../h_src/57531168.htm" class="macro">ttisnil</a>(v)		checktype((v), LUA_TNIL)
+
+
+<a id=196></a><a  class="comments">/* macro to test for a standard nil */</a>
+<a id=197></a>#define <a href="../h_src/57531032.htm" class="macro">ttisstrictnil</a>(o)	checktag((o), LUA_VNIL)
+
+
+<a id=200></a>#define <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(obj) settt_(obj, LUA_VNIL)
+
+
+<a id=203></a>#define <a href="../h_src/57530760.htm" class="macro">isabstkey</a>(v)		checktag((v), LUA_VABSTKEY)
+
+
+<a id=206></a><a  class="comments">/*</a>
+<a id=207></a><a  class="comments">** macro to detect non-standard nils (used only in assertions)</a>
+<a id=208></a><a  class="comments">*/</a>
+<a id=209></a>#define <a href="../h_src/57530624.htm" class="macro">isnonstrictnil</a>(v)	(ttisnil(v) &amp;&amp; !ttisstrictnil(v))
+
+
+<a id=212></a><a  class="comments">/*</a>
+<a id=213></a><a  class="comments">** By default, entries with any kind of nil are considered empty.</a>
+<a id=214></a><a  class="comments">** (In any definition, values associated with absent keys must also</a>
+<a id=215></a><a  class="comments">** be accepted as empty.)</a>
+<a id=216></a><a  class="comments">*/</a>
+<a id=217></a>#define <a href="../h_src/57530488.htm" class="macro">isempty</a>(v)		ttisnil(v)
+
+
+<a id=220></a><a  class="comments">/* macro defining a value corresponding to an absent key */</a>
+<a id=221></a>#define <a href="../h_src/57530352.htm" class="macro">ABSTKEYCONSTANT</a>		{NULL}, LUA_VABSTKEY
+
+
+<a id=224></a><a  class="comments">/* mark an entry as empty */</a>
+<a id=225></a>#define <a href="../h_src/57530216.htm" class="macro">setempty</a>(v)		settt_(v, LUA_VEMPTY)
+
+
+
+<a id=229></a><a  class="comments">/* }================================================================== */</a>
+
+
+<a id=232></a><a  class="comments">/*</a>
+<a id=233></a><a  class="comments">** {==================================================================</a>
+<a id=234></a><a  class="comments">** Booleans</a>
+<a id=235></a><a  class="comments">** ===================================================================</a>
+<a id=236></a><a  class="comments">*/</a>
+
+
+<a id=239></a>#define <a href="../h_src/57530080.htm" class="macro">LUA_VFALSE</a>	makevariant(LUA_TBOOLEAN, 0)
+<a id=240></a>#define <a href="../h_src/57529944.htm" class="macro">LUA_VTRUE</a>	makevariant(LUA_TBOOLEAN, 1)
+
+<a id=242></a>#define <a href="../h_src/57529808.htm" class="macro">ttisboolean</a>(o)		checktype((o), LUA_TBOOLEAN)
+<a id=243></a>#define <a href="../h_src/57529672.htm" class="macro">ttisfalse</a>(o)		checktag((o), LUA_VFALSE)
+<a id=244></a>#define <a href="../h_src/57529536.htm" class="macro">ttistrue</a>(o)		checktag((o), LUA_VTRUE)
+
+
+<a id=247></a>#define <a href="../h_src/57529400.htm" class="macro">l_isfalse</a>(o)	(ttisfalse(o) || ttisnil(o))
+
+
+<a id=250></a>#define <a href="../h_src/57529264.htm" class="macro">setbfvalue</a>(obj)		settt_(obj, LUA_VFALSE)
+<a id=251></a>#define <a href="../h_src/57529128.htm" class="macro">setbtvalue</a>(obj)		settt_(obj, LUA_VTRUE)
+
+<a id=253></a><a  class="comments">/* }================================================================== */</a>
+
+
+<a id=256></a><a  class="comments">/*</a>
+<a id=257></a><a  class="comments">** {==================================================================</a>
+<a id=258></a><a  class="comments">** Threads</a>
+<a id=259></a><a  class="comments">** ===================================================================</a>
+<a id=260></a><a  class="comments">*/</a>
+
+<a id=262></a>#define <a href="../h_src/57528992.htm" class="macro">LUA_VTHREAD</a>		makevariant(LUA_TTHREAD, 0)
+
+<a id=264></a>#define <a href="../h_src/57528856.htm" class="macro">ttisthread</a>(o)		checktag((o), ctb(LUA_VTHREAD))
+
+<a id=266></a>#define <a href="../h_src/57528720.htm" class="macro">thvalue</a>(o)	check_exp(ttisthread(o), gco2th(val_(o).gc))
+
+<a id=268></a>#define <a href="../h_src/57528584.htm" class="macro">setthvalue</a>(L,obj,x) \
+  { TValue *io = (obj); lua_State *x_ = (x); \
+    val_(io).gc = obj2gco(x_); settt_(io, ctb(LUA_VTHREAD)); \
+    checkliveness(L,io); }
+
+<a id=273></a>#define <a href="../h_src/57528448.htm" class="macro">setthvalue2s</a>(L,o,t)	setthvalue(L,s2v(o),t)
+
+<a id=275></a><a  class="comments">/* }================================================================== */</a>
+
+
+<a id=278></a><a  class="comments">/*</a>
+<a id=279></a><a  class="comments">** {==================================================================</a>
+<a id=280></a><a  class="comments">** Collectable Objects</a>
+<a id=281></a><a  class="comments">** ===================================================================</a>
+<a id=282></a><a  class="comments">*/</a>
+
+<a id=284></a><a  class="comments">/*</a>
+<a id=285></a><a  class="comments">** Common Header for all collectable objects (in macro form, to be</a>
+<a id=286></a><a  class="comments">** included in other objects)</a>
+<a id=287></a><a  class="comments">*/</a>
+<a id=288></a>#define <a href="../h_src/57528312.htm" class="macro">CommonHeader</a>	struct GCObject *next; lu_byte tt; lu_byte marked
+
+
+<a id=291></a><a  class="comments">/* Common type for all collectable objects */</a>
+<a id=292></a>typedef struct <a href="../h_src/57536540.htm" class="class">GCObject</a> {
+<a id=293></a>  <a href="../h_src/57528312.htm" class="macro">CommonHeader</a>;
+<a id=294></a>} <a href="../h_src/57527972.htm" class="type">GCObject</a>;
+
+
+<a id=297></a><a  class="comments">/* Bit mark for collectable types */</a>
+<a id=298></a>#define <a href="../h_src/57527904.htm" class="macro">BIT_ISCOLLECTABLE</a>	(1 &lt;&lt; 6)
+
+<a id=300></a>#define <a href="../h_src/57527768.htm" class="macro">iscollectable</a>(o)	(rawtt(o) &amp; BIT_ISCOLLECTABLE)
+
+<a id=302></a><a  class="comments">/* mark a tag as collectable */</a>
+<a id=303></a>#define <a href="../h_src/57527632.htm" class="macro">ctb</a>(t)			((t) | BIT_ISCOLLECTABLE)
+
+<a id=305></a>#define <a href="../h_src/57527496.htm" class="macro">gcvalue</a>(o)	check_exp(iscollectable(o), val_(o).gc)
+
+<a id=307></a>#define <a href="../h_src/57527360.htm" class="macro">gcvalueraw</a>(v)	((v).gc)
+
+<a id=309></a>#define <a href="../h_src/57527224.htm" class="macro">setgcovalue</a>(L,obj,x) \
+  { TValue *io = (obj); GCObject *i_g=(x); \
+    val_(io).gc = i_g; settt_(io, ctb(i_g-&gt;tt)); }
+
+<a id=313></a><a  class="comments">/* }================================================================== */</a>
+
+
+<a id=316></a><a  class="comments">/*</a>
+<a id=317></a><a  class="comments">** {==================================================================</a>
+<a id=318></a><a  class="comments">** Numbers</a>
+<a id=319></a><a  class="comments">** ===================================================================</a>
+<a id=320></a><a  class="comments">*/</a>
+
+<a id=322></a><a  class="comments">/* Variant tags for numbers */</a>
+<a id=323></a>#define <a href="../h_src/57527088.htm" class="macro">LUA_VNUMINT</a>	makevariant(LUA_TNUMBER, 0)  <a  class="comments">/* integer numbers */</a>
+<a id=324></a>#define <a href="../h_src/57526952.htm" class="macro">LUA_VNUMFLT</a>	makevariant(LUA_TNUMBER, 1)  <a  class="comments">/* float numbers */</a>
+
+<a id=326></a>#define <a href="../h_src/57526816.htm" class="macro">ttisnumber</a>(o)		checktype((o), LUA_TNUMBER)
+<a id=327></a>#define <a href="../h_src/57526680.htm" class="macro">ttisfloat</a>(o)		checktag((o), LUA_VNUMFLT)
+<a id=328></a>#define <a href="../h_src/57526544.htm" class="macro">ttisinteger</a>(o)		checktag((o), LUA_VNUMINT)
+
+<a id=330></a>#define <a href="../h_src/57526408.htm" class="macro">nvalue</a>(o)	check_exp(ttisnumber(o), \
+	(ttisinteger(o) ? cast_num(ivalue(o)) : fltvalue(o)))
+<a id=332></a>#define <a href="../h_src/57526272.htm" class="macro">fltvalue</a>(o)	check_exp(ttisfloat(o), val_(o).n)
+<a id=333></a>#define <a href="../h_src/57526136.htm" class="macro">ivalue</a>(o)	check_exp(ttisinteger(o), val_(o).i)
+
+<a id=335></a>#define <a href="../h_src/57526000.htm" class="macro">fltvalueraw</a>(v)	((v).n)
+<a id=336></a>#define <a href="../h_src/57525864.htm" class="macro">ivalueraw</a>(v)	((v).i)
+
+<a id=338></a>#define <a href="../h_src/57525728.htm" class="macro">setfltvalue</a>(obj,x) \
+  { TValue *io=(obj); val_(io).n=(x); settt_(io, LUA_VNUMFLT); }
+
+<a id=341></a>#define <a href="../h_src/57525592.htm" class="macro">chgfltvalue</a>(obj,x) \
+  { TValue *io=(obj); lua_assert(ttisfloat(io)); val_(io).n=(x); }
+
+<a id=344></a>#define <a href="../h_src/57525456.htm" class="macro">setivalue</a>(obj,x) \
+  { TValue *io=(obj); val_(io).i=(x); settt_(io, LUA_VNUMINT); }
+
+<a id=347></a>#define <a href="../h_src/57525320.htm" class="macro">chgivalue</a>(obj,x) \
+  { TValue *io=(obj); lua_assert(ttisinteger(io)); val_(io).i=(x); }
+
+<a id=350></a><a  class="comments">/* }================================================================== */</a>
+
+
+<a id=353></a><a  class="comments">/*</a>
+<a id=354></a><a  class="comments">** {==================================================================</a>
+<a id=355></a><a  class="comments">** Strings</a>
+<a id=356></a><a  class="comments">** ===================================================================</a>
+<a id=357></a><a  class="comments">*/</a>
+
+<a id=359></a><a  class="comments">/* Variant tags for strings */</a>
+<a id=360></a>#define <a href="../h_src/57525184.htm" class="macro">LUA_VSHRSTR</a>	makevariant(LUA_TSTRING, 0)  <a  class="comments">/* short strings */</a>
+<a id=361></a>#define <a href="../h_src/57525048.htm" class="macro">LUA_VLNGSTR</a>	makevariant(LUA_TSTRING, 1)  <a  class="comments">/* long strings */</a>
+
+<a id=363></a>#define <a href="../h_src/57524912.htm" class="macro">ttisstring</a>(o)		checktype((o), LUA_TSTRING)
+<a id=364></a>#define <a href="../h_src/57524776.htm" class="macro">ttisshrstring</a>(o)	checktag((o), ctb(LUA_VSHRSTR))
+<a id=365></a>#define <a href="../h_src/57524640.htm" class="macro">ttislngstring</a>(o)	checktag((o), ctb(LUA_VLNGSTR))
+
+<a id=367></a>#define <a href="../h_src/57524504.htm" class="macro">tsvalueraw</a>(v)	(gco2ts((v).gc))
+
+<a id=369></a>#define <a href="../h_src/57524368.htm" class="macro">tsvalue</a>(o)	check_exp(ttisstring(o), gco2ts(val_(o).gc))
+
+<a id=371></a>#define <a href="../h_src/57524232.htm" class="macro">setsvalue</a>(L,obj,x) \
+  { TValue *io = (obj); TString *x_ = (x); \
+    val_(io).gc = obj2gco(x_); settt_(io, ctb(x_-&gt;tt)); \
+    checkliveness(L,io); }
+
+<a id=376></a><a  class="comments">/* set a string to the stack */</a>
+<a id=377></a>#define <a href="../h_src/57524096.htm" class="macro">setsvalue2s</a>(L,o,s)	setsvalue(L,s2v(o),s)
+
+<a id=379></a><a  class="comments">/* set a string to a new object */</a>
+<a id=380></a>#define <a href="../h_src/57523960.htm" class="macro">setsvalue2n</a>	setsvalue
+
+
+<a id=383></a><a  class="comments">/*</a>
+<a id=384></a><a  class="comments">** Header for a string value.</a>
+<a id=385></a><a  class="comments">*/</a>
+<a id=386></a>typedef struct <a href="../h_src/57523824.htm" class="class">TString</a> {
+<a id=387></a>  <a href="../h_src/57528312.htm" class="macro">CommonHeader</a>;
+<a id=388></a>  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57523484.htm" class="variable">extra</a>;  <a  class="comments">/* reserved words for short strings; &quot;has hash&quot; for longs */</a>
+<a id=389></a>  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57523416.htm" class="variable">shrlen</a>;  <a  class="comments">/* length for short strings */</a>
+<a id=390></a>  unsigned int <a href="../h_src/57523348.htm" class="variable">hash</a>;
+<a id=391></a>  <a href="../h_src/57523280.htm" class="class">u</a>nion {
+<a id=392></a>    <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/57523212.htm" class="variable">lnglen</a>;  <a  class="comments">/* length for long strings */</a>
+<a id=393></a>    struct <a href="../h_src/57523824.htm" class="class">TString</a> *<a href="../h_src/57523008.htm" class="variable">hnext</a>;  <a  class="comments">/* linked list for hash table */</a>
+<a id=394></a>  } <a href="../h_src/57522872.htm" class="variable">u</a>;
+<a id=395></a>  char <a href="../h_src/57522804.htm" class="variable">contents</a>[1];
+<a id=396></a>} <a href="../h_src/57522736.htm" class="type">TString</a>;
+
+
+
+<a id=400></a><a  class="comments">/*</a>
+<a id=401></a><a  class="comments">** Get the actual string (array of bytes) from a 'TString'.</a>
+<a id=402></a><a  class="comments">*/</a>
+<a id=403></a>#define <a href="../h_src/57522668.htm" class="macro">getstr</a>(ts)  ((ts)-&gt;contents)
+
+
+<a id=406></a><a  class="comments">/* get the actual string (array of bytes) from a Lua value */</a>
+<a id=407></a>#define <a href="../h_src/57522532.htm" class="macro">svalue</a>(o)       getstr(tsvalue(o))
+
+<a id=409></a><a  class="comments">/* get string length from 'TString *s' */</a>
+<a id=410></a>#define <a href="../h_src/57522396.htm" class="macro">tsslen</a>(s)	((s)-&gt;tt == LUA_VSHRSTR ? (s)-&gt;shrlen : (s)-&gt;u.lnglen)
+
+<a id=412></a><a  class="comments">/* get string length from 'TValue *o' */</a>
+<a id=413></a>#define <a href="../h_src/57522260.htm" class="macro">vslen</a>(o)	tsslen(tsvalue(o))
+
+<a id=415></a><a  class="comments">/* }================================================================== */</a>
+
+
+<a id=418></a><a  class="comments">/*</a>
+<a id=419></a><a  class="comments">** {==================================================================</a>
+<a id=420></a><a  class="comments">** Userdata</a>
+<a id=421></a><a  class="comments">** ===================================================================</a>
+<a id=422></a><a  class="comments">*/</a>
+
+
+<a id=425></a><a  class="comments">/*</a>
+<a id=426></a><a  class="comments">** Light userdata should be a variant of userdata, but for compatibility</a>
+<a id=427></a><a  class="comments">** reasons they are also different types.</a>
+<a id=428></a><a  class="comments">*/</a>
+<a id=429></a>#define <a href="../h_src/57522124.htm" class="macro">LUA_VLIGHTUSERDATA</a>	makevariant(LUA_TLIGHTUSERDATA, 0)
+
+<a id=431></a>#define <a href="../h_src/57521988.htm" class="macro">LUA_VUSERDATA</a>		makevariant(LUA_TUSERDATA, 0)
+
+<a id=433></a>#define <a href="../h_src/57521852.htm" class="macro">ttislightuserdata</a>(o)	checktag((o), LUA_VLIGHTUSERDATA)
+<a id=434></a>#define <a href="../h_src/57521716.htm" class="macro">ttisfulluserdata</a>(o)	checktag((o), ctb(LUA_VUSERDATA))
+
+<a id=436></a>#define <a href="../h_src/57521580.htm" class="macro">pvalue</a>(o)	check_exp(ttislightuserdata(o), val_(o).p)
+<a id=437></a>#define <a href="../h_src/57521444.htm" class="macro">uvalue</a>(o)	check_exp(ttisfulluserdata(o), gco2u(val_(o).gc))
+
+<a id=439></a>#define <a href="../h_src/57521308.htm" class="macro">pvalueraw</a>(v)	((v).p)
+
+<a id=441></a>#define <a href="../h_src/57521172.htm" class="macro">setpvalue</a>(obj,x) \
+  { TValue *io=(obj); val_(io).p=(x); settt_(io, LUA_VLIGHTUSERDATA); }
+
+<a id=444></a>#define <a href="../h_src/57521036.htm" class="macro">setuvalue</a>(L,obj,x) \
+  { TValue *io = (obj); Udata *x_ = (x); \
+    val_(io).gc = obj2gco(x_); settt_(io, ctb(LUA_VUSERDATA)); \
+    checkliveness(L,io); }
+
+
+<a id=450></a><a  class="comments">/* Ensures that addresses after this type are always fully aligned. */</a>
+<a id=451></a>typedef union <a href="../h_src/57520900.htm" class="class">UValue</a> {
+<a id=452></a>  <a href="../h_src/57535384.htm" class="type">TValue</a> <a href="../h_src/57520764.htm" class="variable">uv</a>;
+<a id=453></a>  <a href="../h_src/57447108.htm" class="macro">LUAI_MAXALIGN</a>;  <a  class="comments">/* ensures maximum alignment for udata bytes */</a><a href="../h_src/57520628.htm" class="variable">u</a>res maximum alignment for udata bytes */
+<a id=454></a>} <a href="../h_src/57520356.htm" class="type">UValue</a>;
+
+
+<a id=457></a><a  class="comments">/*</a>
+<a id=458></a><a  class="comments">** Header for userdata with user values;</a>
+<a id=459></a><a  class="comments">** memory area follows the end of this structure.</a>
+<a id=460></a><a  class="comments">*/</a>
+<a id=461></a>typedef struct <a href="../h_src/57520288.htm" class="class">Udata</a> {
+<a id=462></a>  <a href="../h_src/57528312.htm" class="macro">CommonHeader</a>;
+<a id=463></a>  unsigned short <a href="../h_src/57519948.htm" class="variable">nuvalue</a>;  <a  class="comments">/* number of user values */</a>
+<a id=464></a>  <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/57519880.htm" class="variable">len</a>;  <a  class="comments">/* number of bytes */</a>
+<a id=465></a>  struct <a href="../h_src/57519812.htm" class="class">Table</a> *<a href="../h_src/57519540.htm" class="variable">metatable</a>;
+<a id=466></a>  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57519472.htm" class="variable">gclist</a>;
+<a id=467></a>  <a href="../h_src/57520356.htm" class="type">UValue</a> <a href="../h_src/57519336.htm" class="variable">uv</a>[1];  <a  class="comments">/* user values */</a>
+<a id=468></a>} <a href="../h_src/57519268.htm" class="type">Udata</a>;
+
+
+<a id=471></a><a  class="comments">/*</a>
+<a id=472></a><a  class="comments">** Header for userdata with no user values. These userdata do not need</a>
+<a id=473></a><a  class="comments">** to be gray during GC, and therefore do not need a 'gclist' field.</a>
+<a id=474></a><a  class="comments">** To simplify, the code always use 'Udata' for both kinds of userdata,</a>
+<a id=475></a><a  class="comments">** making sure it never accesses 'gclist' on userdata with no user values.</a>
+<a id=476></a><a  class="comments">** This structure here is used only to compute the correct size for</a>
+<a id=477></a><a  class="comments">** this representation. (The 'bindata' field in its end ensures correct</a>
+<a id=478></a><a  class="comments">** alignment for binary data following this header.)</a>
+<a id=479></a><a  class="comments">*/</a>
+<a id=480></a>typedef struct <a href="../h_src/57519200.htm" class="class">Udata0</a> {
+<a id=481></a>  <a href="../h_src/57528312.htm" class="macro">CommonHeader</a>;
+<a id=482></a>  unsigned short <a href="../h_src/57518860.htm" class="variable">nuvalue</a>;  <a  class="comments">/* number of user values */</a>
+<a id=483></a>  <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/57518792.htm" class="variable">len</a>;  <a  class="comments">/* number of bytes */</a>
+<a id=484></a>  struct <a href="../h_src/57519812.htm" class="class">Table</a> *<a href="../h_src/57518724.htm" class="variable">metatable</a>;
+<a id=485></a>  union {<a href="../h_src/57447108.htm" class="macro">LUAI_MAXALIGN</a>;} <a href="../h_src/57518656.htm" class="class">bindata</a>;
+<a id=486></a>} <a href="../h_src/57518112.htm" class="type">Udata0</a>;
+
+
+<a id=489></a><a  class="comments">/* compute the offset of the memory area of a userdata */</a>
+<a id=490></a>#define <a href="../h_src/57518044.htm" class="macro">udatamemoffset</a>(nuv) \
+	((nuv) == 0 ? offsetof(Udata0, bindata)  \
+                    : offsetof(Udata, uv) + (sizeof(UValue) * (nuv)))
+
+<a id=494></a><a  class="comments">/* get the address of the memory block inside 'Udata' */</a>
+<a id=495></a>#define <a href="../h_src/57517908.htm" class="macro">getudatamem</a>(u)	(cast_charp(u) + udatamemoffset((u)-&gt;nuvalue))
+
+<a id=497></a><a  class="comments">/* compute the size of a userdata */</a>
+<a id=498></a>#define <a href="../h_src/57517772.htm" class="macro">sizeudata</a>(nuv,nb)	(udatamemoffset(nuv) + (nb))
+
+<a id=500></a><a  class="comments">/* }================================================================== */</a>
+
+
+<a id=503></a><a  class="comments">/*</a>
+<a id=504></a><a  class="comments">** {==================================================================</a>
+<a id=505></a><a  class="comments">** Prototypes</a>
+<a id=506></a><a  class="comments">** ===================================================================</a>
+<a id=507></a><a  class="comments">*/</a>
+
+<a id=509></a>#define <a href="../h_src/57517636.htm" class="macro">LUA_VPROTO</a>	makevariant(LUA_TPROTO, 0)
+
+
+<a id=512></a><a  class="comments">/*</a>
+<a id=513></a><a  class="comments">** Description of an upvalue for function prototypes</a>
+<a id=514></a><a  class="comments">*/</a>
+<a id=515></a>typedef struct <a href="../h_src/57517500.htm" class="class">Upvaldesc</a> {
+<a id=516></a>  <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/57517364.htm" class="variable">name</a>;  <a  class="comments">/* upvalue name (for debug information) */</a>
+<a id=517></a>  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57517296.htm" class="variable">instack</a>;  <a  class="comments">/* whether it is in stack (register) */</a>
+<a id=518></a>  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57517228.htm" class="variable">idx</a>;  <a  class="comments">/* index of upvalue (in stack or in outer function's list) */</a>
+<a id=519></a>  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57517160.htm" class="variable">kind</a>;  <a  class="comments">/* kind of corresponding variable */</a>
+<a id=520></a>} <a href="../h_src/57517092.htm" class="type">Upvaldesc</a>;
+
+
+<a id=523></a><a  class="comments">/*</a>
+<a id=524></a><a  class="comments">** Description of a local variable for function prototypes</a>
+<a id=525></a><a  class="comments">** (used for debug information)</a>
+<a id=526></a><a  class="comments">*/</a>
+<a id=527></a>typedef struct <a href="../h_src/57517024.htm" class="class">LocVar</a> {
+<a id=528></a>  <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/57516888.htm" class="variable">varname</a>;
+<a id=529></a>  int <a href="../h_src/57516820.htm" class="variable">startpc</a>;  <a  class="comments">/* first point where variable is active */</a>
+<a id=530></a>  int <a href="../h_src/57516752.htm" class="variable">endpc</a>;    <a  class="comments">/* first point where variable is dead */</a>
+<a id=531></a>} <a href="../h_src/57516684.htm" class="type">LocVar</a>;
+
+
+<a id=534></a><a  class="comments">/*</a>
+<a id=535></a><a  class="comments">** Associates the absolute line source for a given instruction ('pc').</a>
+<a id=536></a><a  class="comments">** The array 'lineinfo' gives, for each instruction, the difference in</a>
+<a id=537></a><a  class="comments">** lines from the previous instruction. When that difference does not</a>
+<a id=538></a><a  class="comments">** fit into a byte, Lua saves the absolute line for that instruction.</a>
+<a id=539></a><a  class="comments">** (Lua also saves the absolute line periodically, to speed up the</a>
+<a id=540></a><a  class="comments">** computation of a line number: we can use binary search in the</a>
+<a id=541></a><a  class="comments">** absolute-line array, but we must traverse the 'lineinfo' array</a>
+<a id=542></a><a  class="comments">** linearly to compute a line.)</a>
+<a id=543></a><a  class="comments">*/</a>
+<a id=544></a>typedef struct <a href="../h_src/57516616.htm" class="class">AbsLineInfo</a> {
+<a id=545></a>  int <a href="../h_src/57516480.htm" class="variable">pc</a>;
+<a id=546></a>  int <a href="../h_src/57516412.htm" class="variable">line</a>;
+<a id=547></a>} <a href="../h_src/57516344.htm" class="type">AbsLineInfo</a>;
+
+<a id=549></a><a  class="comments">/*</a>
+<a id=550></a><a  class="comments">** Function Prototypes</a>
+<a id=551></a><a  class="comments">*/</a>
+<a id=552></a>typedef struct <a href="../h_src/57516276.htm" class="class">Proto</a> {
+<a id=553></a>  <a href="../h_src/57528312.htm" class="macro">CommonHeader</a>;
+<a id=554></a>  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57515936.htm" class="variable">numparams</a>;  <a  class="comments">/* number of fixed (named) parameters */</a>
+<a id=555></a>  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57515868.htm" class="variable">is_vararg</a>;
+<a id=556></a>  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57515800.htm" class="variable">maxstacksize</a>;  <a  class="comments">/* number of registers needed by this function */</a>
+<a id=557></a>  int <a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>;  <a  class="comments">/* size of 'upvalues' */</a>
+<a id=558></a>  int <a href="../h_src/57515664.htm" class="variable">sizek</a>;  <a  class="comments">/* size of 'k' */</a>
+<a id=559></a>  int <a href="../h_src/57515596.htm" class="variable">sizecode</a>;
+<a id=560></a>  int <a href="../h_src/57515528.htm" class="variable">sizelineinfo</a>;
+<a id=561></a>  int <a href="../h_src/57515460.htm" class="variable">sizep</a>;  <a  class="comments">/* size of 'p' */</a>
+<a id=562></a>  int <a href="../h_src/57515392.htm" class="variable">sizelocvars</a>;
+<a id=563></a>  int <a href="../h_src/57515324.htm" class="variable">sizeabslineinfo</a>;  <a  class="comments">/* size of 'abslineinfo' */</a>
+<a id=564></a>  int <a href="../h_src/57515256.htm" class="variable">linedefined</a>;  <a  class="comments">/* debug information  */</a>
+<a id=565></a>  int <a href="../h_src/57515188.htm" class="variable">lastlinedefined</a>;  <a  class="comments">/* debug information  */</a>
+<a id=566></a>  <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57515052.htm" class="variable">k</a>;  <a  class="comments">/* constants used by the function */</a>
+<a id=567></a>  <a href="../h_src/57545108.htm" class="type">Instruction</a> *<a href="../h_src/57514916.htm" class="variable">code</a>;  <a  class="comments">/* opcodes */</a>
+<a id=568></a>  struct <a href="../h_src/57516276.htm" class="class">Proto</a> **<a href="../h_src/57514576.htm" class="variable">p</a>;  <a  class="comments">/* functions defined inside the function */</a>
+<a id=569></a>  <a href="../h_src/57517092.htm" class="type">Upvaldesc</a> *<a href="../h_src/57514440.htm" class="variable">upvalues</a>;  <a  class="comments">/* upvalue information */</a>
+<a id=570></a>  <a href="../h_src/57550412.htm" class="type">ls_byte</a> *<a href="../h_src/57514304.htm" class="variable">lineinfo</a>;  <a  class="comments">/* information about source lines (debug information) */</a>
+<a id=571></a>  <a href="../h_src/57516344.htm" class="type">AbsLineInfo</a> *<a href="../h_src/57514168.htm" class="variable">abslineinfo</a>;  <a  class="comments">/* idem */</a>
+<a id=572></a>  <a href="../h_src/57516684.htm" class="type">LocVar</a> *<a href="../h_src/57514032.htm" class="variable">locvars</a>;  <a  class="comments">/* information about local variables (debug information) */</a>
+<a id=573></a>  <a href="../h_src/57522736.htm" class="type">TString</a>  *<a href="../h_src/57513964.htm" class="variable">source</a>;  <a  class="comments">/* used for debug information */</a>
+<a id=574></a>  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57513896.htm" class="variable">gclist</a>;
+<a id=575></a>} <a href="../h_src/57513828.htm" class="type">Proto</a>;
+
+<a id=577></a><a  class="comments">/* }================================================================== */</a>
+
+
+<a id=580></a><a  class="comments">/*</a>
+<a id=581></a><a  class="comments">** {==================================================================</a>
+<a id=582></a><a  class="comments">** Functions</a>
+<a id=583></a><a  class="comments">** ===================================================================</a>
+<a id=584></a><a  class="comments">*/</a>
+
+<a id=586></a>#define <a href="../h_src/57513760.htm" class="macro">LUA_VUPVAL</a>	makevariant(LUA_TUPVAL, 0)
+
+
+<a id=589></a><a  class="comments">/* Variant tags for functions */</a>
+<a id=590></a>#define <a href="../h_src/57513624.htm" class="macro">LUA_VLCL</a>	makevariant(LUA_TFUNCTION, 0)  <a  class="comments">/* Lua closure */</a>
+<a id=591></a>#define <a href="../h_src/57513488.htm" class="macro">LUA_VLCF</a>	makevariant(LUA_TFUNCTION, 1)  <a  class="comments">/* light C function */</a>
+<a id=592></a>#define <a href="../h_src/57513352.htm" class="macro">LUA_VCCL</a>	makevariant(LUA_TFUNCTION, 2)  <a  class="comments">/* C closure */</a>
+
+<a id=594></a>#define <a href="../h_src/57513216.htm" class="macro">ttisfunction</a>(o)		checktype(o, LUA_TFUNCTION)
+<a id=595></a>#define <a href="../h_src/57513080.htm" class="macro">ttisLclosure</a>(o)		checktag((o), ctb(LUA_VLCL))
+<a id=596></a>#define <a href="../h_src/57512944.htm" class="macro">ttislcf</a>(o)		checktag((o), LUA_VLCF)
+<a id=597></a>#define <a href="../h_src/57512808.htm" class="macro">ttisCclosure</a>(o)		checktag((o), ctb(LUA_VCCL))
+<a id=598></a>#define <a href="../h_src/57512672.htm" class="macro">ttisclosure</a>(o)         (ttisLclosure(o) || ttisCclosure(o))
+
+
+<a id=601></a>#define <a href="../h_src/57512536.htm" class="macro">isLfunction</a>(o)	ttisLclosure(o)
+
+<a id=603></a>#define <a href="../h_src/57512400.htm" class="macro">clvalue</a>(o)	check_exp(ttisclosure(o), gco2cl(val_(o).gc))
+<a id=604></a>#define <a href="../h_src/57512264.htm" class="macro">clLvalue</a>(o)	check_exp(ttisLclosure(o), gco2lcl(val_(o).gc))
+<a id=605></a>#define <a href="../h_src/57512128.htm" class="macro">fvalue</a>(o)	check_exp(ttislcf(o), val_(o).f)
+<a id=606></a>#define <a href="../h_src/57511992.htm" class="macro">clCvalue</a>(o)	check_exp(ttisCclosure(o), gco2ccl(val_(o).gc))
+
+<a id=608></a>#define <a href="../h_src/57511856.htm" class="macro">fvalueraw</a>(v)	((v).f)
+
+<a id=610></a>#define <a href="../h_src/57511720.htm" class="macro">setclLvalue</a>(L,obj,x) \
+  { TValue *io = (obj); LClosure *x_ = (x); \
+    val_(io).gc = obj2gco(x_); settt_(io, ctb(LUA_VLCL)); \
+    checkliveness(L,io); }
+
+<a id=615></a>#define <a href="../h_src/57511584.htm" class="macro">setclLvalue2s</a>(L,o,cl)	setclLvalue(L,s2v(o),cl)
+
+<a id=617></a>#define <a href="../h_src/57511448.htm" class="macro">setfvalue</a>(obj,x) \
+  { TValue *io=(obj); val_(io).f=(x); settt_(io, LUA_VLCF); }
+
+<a id=620></a>#define <a href="../h_src/57511312.htm" class="macro">setclCvalue</a>(L,obj,x) \
+  { TValue *io = (obj); CClosure *x_ = (x); \
+    val_(io).gc = obj2gco(x_); settt_(io, ctb(LUA_VCCL)); \
+    checkliveness(L,io); }
+
+
+<a id=626></a><a  class="comments">/*</a>
+<a id=627></a><a  class="comments">** Upvalues for Lua closures</a>
+<a id=628></a><a  class="comments">*/</a>
+<a id=629></a>typedef struct <a href="../h_src/57511176.htm" class="class">UpVal</a> {
+<a id=630></a>  <a href="../h_src/57528312.htm" class="macro">CommonHeader</a>;
+  union {
+<a id=632></a>    <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57510768.htm" class="variable">p</a>;  <a  class="comments">/* points to stack or to its own value */</a>
+<a id=633></a>    <a href="../h_aa/57441872.htm" class="type">ptrdiff_t</a> <a href="../h_src/57510700.htm" class="variable">offset</a>;  <a  class="comments">/* used while the stack is being reallocated */</a>
+<a id=634></a>  } <a href="../h_src/57510564.htm" class="variable">v</a>;
+<a id=635></a>  <a href="../h_src/57510496.htm" class="class">u</a>nion {
+<a id=636></a>    struct {  <a  class="comments">/* (when open) */</a><a href="../h_src/57510428.htm" class="class">open</a>) */
+<a id=637></a>      struct <a href="../h_src/57511176.htm" class="class">UpVal</a> *<a href="../h_src/57510224.htm" class="variable">next</a>;  <a  class="comments">/* linked list */</a>
+<a id=638></a>      struct <a href="../h_src/57511176.htm" class="class">UpVal</a> **<a href="../h_src/57510020.htm" class="variable">previous</a>;
+<a id=639></a>    } <a href="../h_src/57509884.htm" class="variable">open</a>;
+<a id=640></a>    <a href="../h_src/57535384.htm" class="type">TValue</a> <a href="../h_src/57509816.htm" class="variable">value</a>;  <a  class="comments">/* the value (when closed) */</a>
+<a id=641></a>  } <a href="../h_src/57509680.htm" class="variable">u</a>;
+<a id=642></a>} <a href="../h_src/57509612.htm" class="type">UpVal</a>;
+
+
+
+<a id=646></a>#define <a href="../h_src/57509544.htm" class="macro">ClosureHeader</a> \
+	CommonHeader; lu_byte nupvalues; GCObject *gclist
+
+<a id=649></a>typedef struct <a href="../h_src/57509408.htm" class="class">CClosure</a> {
+<a id=650></a>  <a href="../h_src/57509544.htm" class="macro">ClosureHeader</a>;
+<a id=651></a>  <a href="../h_src/57441736.htm" class="type">lua_CFunction</a> <a href="../h_src/57508932.htm" class="variable">f</a>;
+<a id=652></a>  <a href="../h_src/57535384.htm" class="type">TValue</a> <a href="../h_src/57508796.htm" class="variable">upvalue</a>[1];  <a  class="comments">/* list of upvalues */</a>
+<a id=653></a>} <a href="../h_src/57508728.htm" class="type">CClosure</a>;
+
+
+<a id=656></a>typedef struct <a href="../h_src/57508660.htm" class="class">LClosure</a> {
+<a id=657></a>  <a href="../h_src/57509544.htm" class="macro">ClosureHeader</a>;
+<a id=658></a>  struct <a href="../h_src/57516276.htm" class="class">Proto</a> *<a href="../h_src/57508184.htm" class="variable">p</a>;
+<a id=659></a>  <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57508048.htm" class="variable">upvals</a>[1];  <a  class="comments">/* list of upvalues */</a>
+<a id=660></a>} <a href="../h_src/57507980.htm" class="type">LClosure</a>;
+
+
+<a id=663></a>typedef union <a href="../h_src/57507912.htm" class="class">Closure</a> {
+<a id=664></a>  <a href="../h_src/57508728.htm" class="type">CClosure</a> <a href="../h_src/57507776.htm" class="variable">c</a>;
+<a id=665></a>  <a href="../h_src/57507980.htm" class="type">LClosure</a> <a href="../h_src/57507708.htm" class="variable">l</a>;
+<a id=666></a>} <a href="../h_src/57507640.htm" class="type">Closure</a>;
+
+
+<a id=669></a>#define <a href="../h_src/57507572.htm" class="macro">getproto</a>(o)	(clLvalue(o)-&gt;p)
+
+<a id=671></a><a  class="comments">/* }================================================================== */</a>
+
+
+<a id=674></a><a  class="comments">/*</a>
+<a id=675></a><a  class="comments">** {==================================================================</a>
+<a id=676></a><a  class="comments">** Tables</a>
+<a id=677></a><a  class="comments">** ===================================================================</a>
+<a id=678></a><a  class="comments">*/</a>
+
+<a id=680></a>#define <a href="../h_src/57507436.htm" class="macro">LUA_VTABLE</a>	makevariant(LUA_TTABLE, 0)
+
+<a id=682></a>#define <a href="../h_src/57507300.htm" class="macro">ttistable</a>(o)		checktag((o), ctb(LUA_VTABLE))
+
+<a id=684></a>#define <a href="../h_src/57507164.htm" class="macro">hvalue</a>(o)	check_exp(ttistable(o), gco2t(val_(o).gc))
+
+<a id=686></a>#define <a href="../h_src/57507028.htm" class="macro">sethvalue</a>(L,obj,x) \
+  { TValue *io = (obj); Table *x_ = (x); \
+    val_(io).gc = obj2gco(x_); settt_(io, ctb(LUA_VTABLE)); \
+    checkliveness(L,io); }
+
+<a id=691></a>#define <a href="../h_src/57506892.htm" class="macro">sethvalue2s</a>(L,o,h)	sethvalue(L,s2v(o),h)
+
+
+<a id=694></a><a  class="comments">/*</a>
+<a id=695></a><a  class="comments">** Nodes for Hash tables: A pack of two TValue's (key-value pairs)</a>
+<a id=696></a><a  class="comments">** plus a 'next' field to link colliding entries. The distribution</a>
+<a id=697></a><a  class="comments">** of the key's fields ('key_tt' and 'key_val') not forming a proper</a>
+<a id=698></a><a  class="comments">** 'TValue' allows for a smaller size for 'Node' both in 4-byte</a>
+<a id=699></a><a  class="comments">** and 8-byte alignments.</a>
+<a id=700></a><a  class="comments">*/</a>
+<a id=701></a>typedef union <a href="../h_src/57506756.htm" class="class">Node</a> {
+<a id=702></a>  struct <a href="../h_src/57506620.htm" class="class">NodeKey</a> {
+<a id=703></a>    <a href="../h_src/57535792.htm" class="macro">TValuefields</a><a href="../h_src/57535860.htm" class="type">Value</a>fields;  <a  class="comments">/* fields for value */</a>
+<a id=704></a>    <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57506348.htm" class="variable">key_tt</a>;  <a  class="comments">/* key type */</a>
+<a id=705></a>    int <a href="../h_src/57506280.htm" class="variable">next</a>;  <a  class="comments">/* for chaining */</a>
+<a id=706></a>    <a href="../h_src/57535860.htm" class="type">Value</a> <a href="../h_src/57506212.htm" class="variable">key_val</a>;  <a  class="comments">/* key value */</a>
+<a id=707></a>  } <a href="../h_src/57506144.htm" class="variable">u</a>;
+<a id=708></a>  <a href="../h_src/57535384.htm" class="type">TValue</a> <a href="../h_src/57506076.htm" class="variable">i_val</a>;  <a  class="comments">/* direct access to node's value as a proper 'TValue' */</a>
+<a id=709></a>} <a href="../h_src/57506008.htm" class="type">Node</a>;
+
+
+<a id=712></a><a  class="comments">/* copy a value into a key */</a>
+<a id=713></a>#define <a href="../h_src/57505940.htm" class="macro">setnodekey</a>(L,node,obj) \
+	{ Node *n_=(node); const TValue *io_=(obj); \
+	  n_-&gt;u.key_val = io_-&gt;value_; n_-&gt;u.key_tt = io_-&gt;tt_; \
+	  checkliveness(L,io_); }
+
+
+<a id=719></a><a  class="comments">/* copy a value from a key */</a>
+<a id=720></a>#define <a href="../h_src/57505804.htm" class="macro">getnodekey</a>(L,obj,node) \
+	{ TValue *io_=(obj); const Node *n_=(node); \
+	  io_-&gt;value_ = n_-&gt;u.key_val; io_-&gt;tt_ = n_-&gt;u.key_tt; \
+	  checkliveness(L,io_); }
+
+
+<a id=726></a><a  class="comments">/*</a>
+<a id=727></a><a  class="comments">** About 'alimit': if 'isrealasize(t)' is true, then 'alimit' is the</a>
+<a id=728></a><a  class="comments">** real size of 'array'. Otherwise, the real size of 'array' is the</a>
+<a id=729></a><a  class="comments">** smallest power of two not smaller than 'alimit' (or zero iff 'alimit'</a>
+<a id=730></a><a  class="comments">** is zero); 'alimit' is then used as a hint for #t.</a>
+<a id=731></a><a  class="comments">*/</a>
+
+<a id=733></a>#define <a href="../h_src/57505668.htm" class="macro">BITRAS</a>		(1 &lt;&lt; 7)
+<a id=734></a>#define <a href="../h_src/57505532.htm" class="macro">isrealasize</a>(t)		(!((t)-&gt;flags &amp; BITRAS))
+<a id=735></a>#define <a href="../h_src/57505396.htm" class="macro">setrealasize</a>(t)		((t)-&gt;flags &amp;= cast_byte(~BITRAS))
+<a id=736></a>#define <a href="../h_src/57505260.htm" class="macro">setnorealasize</a>(t)	((t)-&gt;flags |= BITRAS)
+
+
+<a id=739></a>typedef struct <a href="../h_src/57519812.htm" class="class">Table</a> {
+<a id=740></a>  <a href="../h_src/57528312.htm" class="macro">CommonHeader</a>;
+<a id=741></a>  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57504920.htm" class="variable">flags</a>;  <a  class="comments">/* 1&lt;&lt;p means tagmethod(p) is not present */</a>
+<a id=742></a>  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57504852.htm" class="variable">lsizenode</a>;  <a  class="comments">/* log2 of size of 'node' array */</a>
+<a id=743></a>  unsigned int <a href="../h_src/57504784.htm" class="variable">alimit</a>;  <a  class="comments">/* &quot;limit&quot; of 'array' array */</a>
+<a id=744></a>  <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57504716.htm" class="variable">array</a>;  <a  class="comments">/* array part */</a>
+<a id=745></a>  <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/57504580.htm" class="variable">node</a>;
+<a id=746></a>  <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/57504512.htm" class="variable">lastfree</a>;  <a  class="comments">/* any free position is before this position */</a>
+<a id=747></a>  struct <a href="../h_src/57519812.htm" class="class">Table</a> *<a href="../h_src/57504444.htm" class="variable">metatable</a>;
+<a id=748></a>  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57504376.htm" class="variable">gclist</a>;
+<a id=749></a>} <a href="../h_src/57504308.htm" class="type">Table</a>;
+
+
+<a id=752></a><a  class="comments">/*</a>
+<a id=753></a><a  class="comments">** Macros to manipulate keys inserted in nodes</a>
+<a id=754></a><a  class="comments">*/</a>
+<a id=755></a>#define <a href="../h_src/57504240.htm" class="macro">keytt</a>(node)		((node)-&gt;u.key_tt)
+<a id=756></a>#define <a href="../h_src/57504104.htm" class="macro">keyval</a>(node)		((node)-&gt;u.key_val)
+
+<a id=758></a>#define <a href="../h_src/57503968.htm" class="macro">keyisnil</a>(node)		(keytt(node) == LUA_TNIL)
+<a id=759></a>#define <a href="../h_src/57503832.htm" class="macro">keyisinteger</a>(node)	(keytt(node) == LUA_VNUMINT)
+<a id=760></a>#define <a href="../h_src/57503696.htm" class="macro">keyival</a>(node)		(keyval(node).i)
+<a id=761></a>#define <a href="../h_src/57503560.htm" class="macro">keyisshrstr</a>(node)	(keytt(node) == ctb(LUA_VSHRSTR))
+<a id=762></a>#define <a href="../h_src/57503424.htm" class="macro">keystrval</a>(node)		(gco2ts(keyval(node).gc))
+
+<a id=764></a>#define <a href="../h_src/57503288.htm" class="macro">setnilkey</a>(node)		(keytt(node) = LUA_TNIL)
+
+<a id=766></a>#define <a href="../h_src/57503152.htm" class="macro">keyiscollectable</a>(n)	(keytt(n) &amp; BIT_ISCOLLECTABLE)
+
+<a id=768></a>#define <a href="../h_src/57503016.htm" class="macro">gckey</a>(n)	(keyval(n).gc)
+<a id=769></a>#define <a href="../h_src/57502880.htm" class="macro">gckeyN</a>(n)	(keyiscollectable(n) ? gckey(n) : NULL)
+
+
+<a id=772></a><a  class="comments">/*</a>
+<a id=773></a><a  class="comments">** Dead keys in tables have the tag DEADKEY but keep their original</a>
+<a id=774></a><a  class="comments">** gcvalue. This distinguishes them from regular keys but allows them to</a>
+<a id=775></a><a  class="comments">** be found when searched in a special way. ('next' needs that to find</a>
+<a id=776></a><a  class="comments">** keys removed from a table during a traversal.)</a>
+<a id=777></a><a  class="comments">*/</a>
+<a id=778></a>#define <a href="../h_src/57502744.htm" class="macro">setdeadkey</a>(node)	(keytt(node) = LUA_TDEADKEY)
+<a id=779></a>#define <a href="../h_src/57502608.htm" class="macro">keyisdead</a>(node)		(keytt(node) == LUA_TDEADKEY)
+
+<a id=781></a><a  class="comments">/* }================================================================== */</a>
+
+
+
+<a id=785></a><a  class="comments">/*</a>
+<a id=786></a><a  class="comments">** 'module' operation for hashing (size is always a power of 2)</a>
+<a id=787></a><a  class="comments">*/</a>
+<a id=788></a>#define <a href="../h_src/57502472.htm" class="macro">lmod</a>(s,size) \
+	(check_exp((size&amp;(size-1))==0, (cast_int((s) &amp; ((size)-1)))))
+
+
+<a id=792></a>#define <a href="../h_src/57502336.htm" class="macro">twoto</a>(x)	(1&lt;&lt;(x))
+<a id=793></a>#define <a href="../h_src/57502200.htm" class="macro">sizenode</a>(t)	(twoto((t)-&gt;lsizenode))
+
+
+<a id=796></a><a  class="comments">/* size of buffer for 'luaO_utf8esc' function */</a>
+<a id=797></a>#define <a href="../h_src/57502064.htm" class="macro">UTF8BUFFSZ</a>	8
+
+<a id=799></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> int <a href="../h_src/57501928.htm" class="function">luaO_utf8esc</a> (char *buff, unsigned long x);
+<a id=800></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> int <a href="../h_src/57501860.htm" class="function">luaO_ceillog2</a> (unsigned int x);
+<a id=801></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> int <a href="../h_src/57501792.htm" class="function">luaO_rawarith</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int op, const <a href="../h_src/57535384.htm" class="type">TValue</a> *p1,
+<a id=802></a>                             const <a href="../h_src/57535384.htm" class="type">TValue</a> *p2, <a href="../h_src/57535384.htm" class="type">TValue</a> *res);
+<a id=803></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57501724.htm" class="function">luaO_arith</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int op, const <a href="../h_src/57535384.htm" class="type">TValue</a> *p1,
+<a id=804></a>                           const <a href="../h_src/57535384.htm" class="type">TValue</a> *p2, <a href="../h_src/57532188.htm" class="type">StkId</a> res);
+<a id=805></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/57501656.htm" class="function">luaO_str2num</a> (const char *s, <a href="../h_src/57535384.htm" class="type">TValue</a> *o);
+<a id=806></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> int <a href="../h_src/57501588.htm" class="function">luaO_hexavalue</a> (int c);
+<a id=807></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57501520.htm" class="function">luaO_tostring</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57535384.htm" class="type">TValue</a> *obj);
+<a id=808></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> const char *<a href="../h_src/57501452.htm" class="function">luaO_pushvfstring</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const char *fmt,
+<a id=809></a>                                                       <a href="../h_aa/57434868.htm" class="type">va_list</a> argp);
+<a id=810></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> const char *<a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const char *fmt, ...);
+<a id=811></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57501316.htm" class="function">luaO_chunkid</a> (char *out, const char *source, <a href="../h_aa/57441192.htm" class="type">size_t</a> srclen);
+
+
+#endif
+
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

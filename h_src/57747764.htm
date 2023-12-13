@@ -1,0 +1,92 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>auxgetinfo</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57747764.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57747764.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57747764.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57747764.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57747764.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57747764.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57759256.htm#327" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/57747764.htm" class="function">auxgetinfo</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57747628.htm" class="localvar">L</a>, const char *<a href="../h_src/57747492.htm" class="localvar">what</a>, <a href="../h_src/57440308.htm" class="type">lua_Debug</a> *<a href="../h_src/57747356.htm" class="localvar">ar</a>,
+                       <a href="../h_src/57507640.htm" class="type">Closure</a> *<a href="../h_src/57747220.htm" class="localvar">f</a>, <a href="../h_src/57537764.htm" class="type">CallInfo</a> *<a href="../h_src/57747084.htm" class="localvar">ci</a>) {
+  int <a href="../h_src/57746948.htm" class="localvar">status</a> = 1;
+  for (; *<a href="../h_src/57747492.htm" class="localvar">what</a>; <a href="../h_src/57747492.htm" class="localvar">what</a>++) {
+    switch (*<a href="../h_src/57747492.htm" class="localvar">what</a>) {
+      case 'S': {
+        <a href="../h_src/57750824.htm" class="function">funcinfo</a>(<a href="../h_src/57747356.htm" class="localvar">ar</a>, <a href="../h_src/57747220.htm" class="localvar">f</a>);
+        break;
+      }
+      case 'l': {
+        <a href="../h_src/57747356.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423376.htm" class="variable">currentline</a> = (<a href="../h_src/57747084.htm" class="localvar">ci</a> &amp;&amp; <a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57747084.htm" class="localvar">ci</a>)) ? <a href="../h_src/57757148.htm" class="function">getcurrentline</a>(<a href="../h_src/57747084.htm" class="localvar">ci</a>) : -1;
+        break;
+      }
+      case 'u': {
+        <a href="../h_src/57747356.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423172.htm" class="variable">nups</a> = (<a href="../h_src/57747220.htm" class="localvar">f</a> == NULL) ? 0 : <a href="../h_src/57747220.htm" class="localvar">f</a>-&gt;<a href="../h_src/57507776.htm" class="variable">c</a>.<a href="../h_src/57509068.htm" class="variable">nupvalues</a>;
+        if (<a href="../h_src/57758916.htm" class="macro">noLuaClosure</a>(<a href="../h_src/57747220.htm" class="localvar">f</a>)) {
+          <a href="../h_src/57747356.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423036.htm" class="variable">isvararg</a> = 1;
+          <a href="../h_src/57747356.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423104.htm" class="variable">nparams</a> = 0;
+        }
+        else {
+          <a href="../h_src/57747356.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423036.htm" class="variable">isvararg</a> = <a href="../h_src/57747220.htm" class="localvar">f</a>-&gt;<a href="../h_src/57507708.htm" class="variable">l</a>.<a href="../h_src/57508184.htm" class="variable">p</a>-&gt;<a href="../h_src/57515868.htm" class="variable">is_vararg</a>;
+          <a href="../h_src/57747356.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423104.htm" class="variable">nparams</a> = <a href="../h_src/57747220.htm" class="localvar">f</a>-&gt;<a href="../h_src/57507708.htm" class="variable">l</a>.<a href="../h_src/57508184.htm" class="variable">p</a>-&gt;<a href="../h_src/57515936.htm" class="variable">numparams</a>;
+        }
+        break;
+      }
+      case 't': {
+        <a href="../h_src/57747356.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57422968.htm" class="variable">istailcall</a> = (<a href="../h_src/57747084.htm" class="localvar">ci</a>) ? <a href="../h_src/57747084.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp; <a href="../h_src/57648676.htm" class="macro">CIST_TAIL</a> : 0;
+        break;
+      }
+      case 'n': {
+        <a href="../h_src/57747356.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423648.htm" class="variable">namewhat</a> = <a href="../h_src/57748308.htm" class="function">getfuncname</a>(<a href="../h_src/57747628.htm" class="localvar">L</a>, <a href="../h_src/57747084.htm" class="localvar">ci</a>, &amp;<a href="../h_src/57747356.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423716.htm" class="variable">name</a>);
+        if (<a href="../h_src/57747356.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423648.htm" class="variable">namewhat</a> == NULL) {
+          <a href="../h_src/57747356.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423648.htm" class="variable">namewhat</a> = &quot;&quot;;  <a  class="comments">/* not found */</a>
+          <a href="../h_src/57747356.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423716.htm" class="variable">name</a> = NULL;
+        }
+        break;
+      }
+      case 'r': {
+        if (<a href="../h_src/57747084.htm" class="localvar">ci</a> == NULL || !(<a href="../h_src/57747084.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp; <a href="../h_src/57648268.htm" class="macro">CIST_TRAN</a>))
+          <a href="../h_src/57747356.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57422900.htm" class="variable">ftransfer</a> = <a href="../h_src/57747356.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57422832.htm" class="variable">ntransfer</a> = 0;
+        else {
+          <a href="../h_src/57747356.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57422900.htm" class="variable">ftransfer</a> = <a href="../h_src/57747084.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649560.htm" class="variable">u2</a>.<a href="../h_src/57649696.htm" class="variable">transferinfo</a>.<a href="../h_src/57649900.htm" class="variable">ftransfer</a>;
+          <a href="../h_src/57747356.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57422832.htm" class="variable">ntransfer</a> = <a href="../h_src/57747084.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649560.htm" class="variable">u2</a>.<a href="../h_src/57649696.htm" class="variable">transferinfo</a>.<a href="../h_src/57649832.htm" class="variable">ntransfer</a>;
+        }
+        break;
+      }
+      case 'L':
+      case 'f':  <a  class="comments">/* handled by lua_getinfo */</a>
+        break;
+      default: <a href="../h_src/57746948.htm" class="localvar">status</a> = 0;  <a  class="comments">/* invalid option */</a>
+    }
+  }
+  return <a href="../h_src/57746948.htm" class="localvar">status</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

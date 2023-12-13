@@ -1,0 +1,61 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaM_growaux_</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57656564.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57656564.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57656564.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57656564.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57656564.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57656564.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57926752.htm#97" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+void *<a href="../h_src/57656564.htm" class="function">luaM_growaux_</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57925732.htm" class="localvar">L</a>, void *<a href="../h_src/57925596.htm" class="localvar">block</a>, int <a href="../h_src/57925460.htm" class="localvar">nelems</a>, int *<a href="../h_src/57925324.htm" class="localvar">psize</a>,
+                     int <a href="../h_src/57925188.htm" class="localvar">size_elems</a>, int <a href="../h_src/57925052.htm" class="localvar">limit</a>, const char *<a href="../h_src/57924916.htm" class="localvar">what</a>) {
+  void *<a href="../h_src/57924780.htm" class="localvar">newblock</a>;
+  int <a href="../h_src/57924644.htm" class="localvar">size</a> = *<a href="../h_src/57925324.htm" class="localvar">psize</a>;
+  if (<a href="../h_src/57925460.htm" class="localvar">nelems</a> + 1 &lt;= <a href="../h_src/57924644.htm" class="localvar">size</a>)  <a  class="comments">/* does one extra element still fit? */</a>
+    return <a href="../h_src/57925596.htm" class="localvar">block</a>;  <a  class="comments">/* nothing to be done */</a>
+  if (<a href="../h_src/57924644.htm" class="localvar">size</a> &gt;= <a href="../h_src/57925052.htm" class="localvar">limit</a> / 2) {  <a  class="comments">/* cannot double it? */</a>
+    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57924644.htm" class="localvar">size</a> &gt;= <a href="../h_src/57925052.htm" class="localvar">limit</a>))  <a  class="comments">/* cannot grow even a little? */</a>
+      <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/57925732.htm" class="localvar">L</a>, &quot;too many %s (limit is %d)&quot;, <a href="../h_src/57924916.htm" class="localvar">what</a>, <a href="../h_src/57925052.htm" class="localvar">limit</a>);
+    <a href="../h_src/57924644.htm" class="localvar">size</a> = <a href="../h_src/57925052.htm" class="localvar">limit</a>;  <a  class="comments">/* still have at least one free place */</a>
+  }
+  else {
+    <a href="../h_src/57924644.htm" class="localvar">size</a> *= 2;
+    if (<a href="../h_src/57924644.htm" class="localvar">size</a> &lt; <a href="../h_src/57925868.htm" class="macro">MINSIZEARRAY</a>)
+      <a href="../h_src/57924644.htm" class="localvar">size</a> = <a href="../h_src/57925868.htm" class="macro">MINSIZEARRAY</a>;  <a  class="comments">/* minimum size */</a>
+  }
+  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(nelems + 1 &lt;= size &amp;&amp; size &lt;= limit);
+  <a  class="comments">/* 'limit' ensures that multiplication will not overflow */</a>
+  <a href="../h_src/57924780.htm" class="localvar">newblock</a> = <a href="../h_src/57656700.htm" class="function">luaM_saferealloc_</a>(<a href="../h_src/57925732.htm" class="localvar">L</a>, <a href="../h_src/57925596.htm" class="localvar">block</a>, <a href="../h_src/57546400.htm" class="macro">cast_sizet</a>(*<a href="../h_src/57925324.htm" class="localvar">psize</a>) * <a href="../h_src/57925188.htm" class="localvar">size_elems</a>,
+                                         <a href="../h_src/57546400.htm" class="macro">cast_sizet</a>(<a href="../h_src/57924644.htm" class="localvar">size</a>) * <a href="../h_src/57925188.htm" class="localvar">size_elems</a>);
+  *<a href="../h_src/57925324.htm" class="localvar">psize</a> = <a href="../h_src/57924644.htm" class="localvar">size</a>;  <a  class="comments">/* update only when everything else is OK */</a>
+  return <a href="../h_src/57924780.htm" class="localvar">newblock</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

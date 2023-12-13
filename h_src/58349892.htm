@@ -1,0 +1,57 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>pushglobalfuncname</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58349892.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58349892.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58349892.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58349892.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58349892.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58349892.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58351320.htm#79" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/58349892.htm" class="function">pushglobalfuncname</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58349756.htm" class="localvar">L</a>, <a href="../h_src/57440308.htm" class="type">lua_Debug</a> *<a href="../h_src/58349620.htm" class="localvar">ar</a>) {
+  int <a href="../h_src/58349484.htm" class="localvar">top</a> = <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/58349756.htm" class="localvar">L</a>);
+  <a href="../h_src/57424600.htm" class="function">lua_getinfo</a>(<a href="../h_src/58349756.htm" class="localvar">L</a>, &quot;f&quot;, <a href="../h_src/58349620.htm" class="localvar">ar</a>);  <a  class="comments">/* push function */</a>
+  <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/58349756.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/57421540.htm" class="macro">LUA_LOADED_TABLE</a>);
+  if (<a href="../h_src/58350436.htm" class="function">findfield</a>(<a href="../h_src/58349756.htm" class="localvar">L</a>, <a href="../h_src/58349484.htm" class="localvar">top</a> + 1, 2)) {
+    const char *<a href="../h_src/58349348.htm" class="localvar">name</a> = <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/58349756.htm" class="localvar">L</a>, -1);
+    if (<a href="../h_aa/58349212.htm" class="libfunc">strncmp</a>(<a href="../h_src/58349348.htm" class="localvar">name</a>, <a href="../h_src/57422016.htm" class="macro">LUA_GNAME</a> &quot;.&quot;, 3) == 0) {  <a  class="comments">/* name start with '_G.'? */</a>
+      <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/58349756.htm" class="localvar">L</a>, <a href="../h_src/58349348.htm" class="localvar">name</a> + 3);  <a  class="comments">/* push name without prefix */</a>
+      <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/58349756.htm" class="localvar">L</a>, -2);  <a  class="comments">/* remove original name */</a>
+    }
+    <a href="../h_src/57439084.htm" class="function">lua_copy</a>(<a href="../h_src/58349756.htm" class="localvar">L</a>, -1, <a href="../h_src/58349484.htm" class="localvar">top</a> + 1);  <a  class="comments">/* copy name to proper place */</a>
+    <a href="../h_src/57439288.htm" class="function">lua_settop</a>(<a href="../h_src/58349756.htm" class="localvar">L</a>, <a href="../h_src/58349484.htm" class="localvar">top</a> + 1);  <a  class="comments">/* remove table &quot;loaded&quot; and name copy */</a>
+    return 1;
+  }
+  else {
+    <a href="../h_src/57439288.htm" class="function">lua_settop</a>(<a href="../h_src/58349756.htm" class="localvar">L</a>, <a href="../h_src/58349484.htm" class="localvar">top</a>);  <a  class="comments">/* remove function and global table */</a>
+    return 0;
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

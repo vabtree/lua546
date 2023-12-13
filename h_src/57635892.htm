@@ -1,0 +1,60 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaG_findlocal</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57635892.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57635892.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57635892.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57635892.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57635892.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57635892.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57759256.htm#196" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+const char *<a href="../h_src/57635892.htm" class="function">luaG_findlocal</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57753680.htm" class="localvar">L</a>, <a href="../h_src/57537764.htm" class="type">CallInfo</a> *<a href="../h_src/57753544.htm" class="localvar">ci</a>, int <a href="../h_src/57753408.htm" class="localvar">n</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> *<a href="../h_src/57753272.htm" class="localvar">pos</a>) {
+  <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57753136.htm" class="localvar">base</a> = <a href="../h_src/57753544.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a> + 1;
+  const char *<a href="../h_src/57753000.htm" class="localvar">name</a> = NULL;
+  if (<a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57753544.htm" class="localvar">ci</a>)) {
+    if (<a href="../h_src/57753408.htm" class="localvar">n</a> &lt; 0)  <a  class="comments">/* access to vararg values? */</a>
+      return <a href="../h_src/57754360.htm" class="function">findvararg</a>(<a href="../h_src/57753544.htm" class="localvar">ci</a>, <a href="../h_src/57753408.htm" class="localvar">n</a>, <a href="../h_src/57753272.htm" class="localvar">pos</a>);
+    else
+      <a href="../h_src/57753000.htm" class="localvar">name</a> = <a href="../h_src/57630180.htm" class="function">luaF_getlocalname</a>(<a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57753544.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>, <a href="../h_src/57753408.htm" class="localvar">n</a>, <a href="../h_src/57758644.htm" class="function">currentpc</a>(<a href="../h_src/57753544.htm" class="localvar">ci</a>));
+  }
+  if (<a href="../h_src/57753000.htm" class="localvar">name</a> == NULL) {  <a  class="comments">/* no 'standard' name? */</a>
+    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57752864.htm" class="localvar">limit</a> = (<a href="../h_src/57753544.htm" class="localvar">ci</a> == <a href="../h_src/57753680.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>) ? <a href="../h_src/57753680.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> : <a href="../h_src/57753544.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651328.htm" class="variable">next</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a>;
+    if (<a href="../h_src/57752864.htm" class="localvar">limit</a> - <a href="../h_src/57753136.htm" class="localvar">base</a> &gt;= <a href="../h_src/57753408.htm" class="localvar">n</a> &amp;&amp; <a href="../h_src/57753408.htm" class="localvar">n</a> &gt; 0) {  <a  class="comments">/* is 'n' inside 'ci' stack? */</a>
+      <a  class="comments">/* generic name for any valid slot */</a>
+      <a href="../h_src/57753000.htm" class="localvar">name</a> = <a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57753544.htm" class="localvar">ci</a>) ? &quot;(temporary)&quot; : &quot;(C temporary)&quot;;
+    }
+    else
+      return NULL;  <a  class="comments">/* no name */</a>
+  }
+  if (<a href="../h_src/57753272.htm" class="localvar">pos</a>)
+    *<a href="../h_src/57753272.htm" class="localvar">pos</a> = <a href="../h_src/57753136.htm" class="localvar">base</a> + (<a href="../h_src/57753408.htm" class="localvar">n</a> - 1);
+  return <a href="../h_src/57753000.htm" class="localvar">name</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

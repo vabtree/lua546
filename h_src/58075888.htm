@@ -1,0 +1,374 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lundump.c</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58075888.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/58075888.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/58075888.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/58075888.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_uf/58075888.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_df/58075888.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/58075888.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58075888.htm" class="file" target="_self">Source Code</a></li>
+<li><a href="../h_sc/58075888.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<pre class=src>
+<a id=1></a><a  class="comments">/*</a>
+<a id=2></a><a  class="comments">** $Id: lundump.c $</a>
+<a id=3></a><a  class="comments">** load precompiled Lua chunks</a>
+<a id=4></a><a  class="comments">** See Copyright Notice in lua.h</a>
+<a id=5></a><a  class="comments">*/</a>
+
+<a id=7></a>#define <a href="../h_src/58075820.htm" class="macro">lundump_c</a>
+<a id=8></a>#define <a href="../h_src/58075684.htm" class="macro">LUA_CORE</a>
+
+<a id=10></a>#include &quot;<a href="../h_src/57461592.htm" class="file">lprefix.h</a>&quot;
+
+
+#include &lt;limits.h&gt;
+#include &lt;string.h&gt;
+
+<a id=16></a>#include &quot;<a href="../h_src/57460028.htm" class="file">lua.h</a>&quot;
+
+<a id=18></a>#include &quot;<a href="../h_src/57637116.htm" class="file">ldebug.h</a>&quot;
+<a id=19></a>#include &quot;<a href="../h_src/57635008.htm" class="file">ldo.h</a>&quot;
+<a id=20></a>#include &quot;<a href="../h_src/57632424.htm" class="file">lfunc.h</a>&quot;
+<a id=21></a>#include &quot;<a href="../h_src/57496896.htm" class="file">lmem.h</a>&quot;
+<a id=22></a>#include &quot;<a href="../h_src/57537696.htm" class="file">lobject.h</a>&quot;
+<a id=23></a>#include &quot;<a href="../h_src/57620184.htm" class="file">lstring.h</a>&quot;
+<a id=24></a>#include &quot;<a href="../h_src/57615968.htm" class="file">lundump.h</a>&quot;
+<a id=25></a>#include &quot;<a href="../h_src/57497236.htm" class="file">lzio.h</a>&quot;
+
+
+<a id=28></a>#if !defined(<a href="../h_src/58075548.htm" class="macro">luai_verifycode</a>)
+<a id=29></a>#define <a href="../h_src/58075412.htm" class="macro">luai_verifycode</a>(L,f)  <a  class="comments">/* empty */</a>
+#endif
+
+
+typedef struct {
+<a id=34></a>  <a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58075208.htm" class="variable">L</a>;
+<a id=35></a>  <a href="../h_src/57656088.htm" class="type">ZIO</a> *<a href="../h_src/58075140.htm" class="variable">Z</a>;
+<a id=36></a>  const char *<a href="../h_src/58075072.htm" class="variable">name</a>;
+<a id=37></a>} <a href="../h_src/58074936.htm" class="type">LoadState</a>;
+
+
+<a id=40></a>static <a href="../h_src/57545584.htm" class="macro">l_noret</a> <a href="../h_src/58074868.htm" class="function">error</a> (<a href="../h_src/58074936.htm" class="type">LoadState</a> *<a href="../h_src/58074664.htm" class="localvar">S</a>, const char *<a href="../h_src/58074528.htm" class="localvar">why</a>) {
+<a id=41></a>  <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/58074664.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, &quot;%s: bad binary format (%s)&quot;, <a href="../h_src/58074664.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075072.htm" class="variable">name</a>, <a href="../h_src/58074528.htm" class="localvar">why</a>);
+<a id=42></a>  <a href="../h_src/57632560.htm" class="function">luaD_throw</a>(<a href="../h_src/58074664.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, <a href="../h_src/57444796.htm" class="macro">LUA_ERRSYNTAX</a>);
+}
+
+
+<a id=46></a><a  class="comments">/*</a>
+<a id=47></a><a  class="comments">** All high-level loads go through loadVector; you can change it to</a>
+<a id=48></a><a  class="comments">** adapt to the endianness of the input</a>
+<a id=49></a><a  class="comments">*/</a>
+<a id=50></a>#define <a href="../h_src/58074392.htm" class="macro">loadVector</a>(S,b,n)	loadBlock(S,b,(n)*sizeof((b)[0]))
+
+<a id=52></a>static void <a href="../h_src/58074256.htm" class="function">loadBlock</a> (<a href="../h_src/58074936.htm" class="type">LoadState</a> *<a href="../h_src/58074120.htm" class="localvar">S</a>, void *<a href="../h_src/58073984.htm" class="localvar">b</a>, <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58073848.htm" class="localvar">size</a>) {
+<a id=53></a>  if (<a href="../h_src/57654252.htm" class="function">luaZ_read</a>(<a href="../h_src/58074120.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075140.htm" class="variable">Z</a>, <a href="../h_src/58073984.htm" class="localvar">b</a>, <a href="../h_src/58073848.htm" class="localvar">size</a>) != 0)
+<a id=54></a>    <a href="../h_src/58074868.htm" class="function">error</a>(<a href="../h_src/58074120.htm" class="localvar">S</a>, &quot;truncated chunk&quot;);
+}
+
+
+<a id=58></a>#define <a href="../h_src/58073712.htm" class="macro">loadVar</a>(S,x)		loadVector(S,&amp;x,1)
+
+
+<a id=61></a>static <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/58073576.htm" class="function">loadByte</a> (<a href="../h_src/58074936.htm" class="type">LoadState</a> *<a href="../h_src/58073440.htm" class="localvar">S</a>) {
+<a id=62></a>  int <a href="../h_src/58073304.htm" class="localvar">b</a> = <a href="../h_src/57656020.htm" class="macro">zgetc</a>(<a href="../h_src/58073440.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075140.htm" class="variable">Z</a>);
+<a id=63></a>  if (<a href="../h_src/58073304.htm" class="localvar">b</a> == <a href="../h_src/57656360.htm" class="macro">EOZ</a>)
+<a id=64></a>    <a href="../h_src/58074868.htm" class="function">error</a>(<a href="../h_src/58073440.htm" class="localvar">S</a>, &quot;truncated chunk&quot;);
+<a id=65></a>  return <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/58073304.htm" class="localvar">b</a>);
+}
+
+
+<a id=69></a>static <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58073168.htm" class="function">loadUnsigned</a> (<a href="../h_src/58074936.htm" class="type">LoadState</a> *<a href="../h_src/58073032.htm" class="localvar">S</a>, <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58072896.htm" class="localvar">limit</a>) {
+<a id=70></a>  <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58072760.htm" class="localvar">x</a> = 0;
+<a id=71></a>  int <a href="../h_src/58072624.htm" class="localvar">b</a>;
+<a id=72></a>  <a href="../h_src/58072896.htm" class="localvar">limit</a> &gt;&gt;= 7;
+  do {
+<a id=74></a>    <a href="../h_src/58072624.htm" class="localvar">b</a> = <a href="../h_src/58073576.htm" class="function">loadByte</a>(<a href="../h_src/58073032.htm" class="localvar">S</a>);
+<a id=75></a>    if (<a href="../h_src/58072760.htm" class="localvar">x</a> &gt;= <a href="../h_src/58072896.htm" class="localvar">limit</a>)
+<a id=76></a>      <a href="../h_src/58074868.htm" class="function">error</a>(<a href="../h_src/58073032.htm" class="localvar">S</a>, &quot;integer overflow&quot;);
+<a id=77></a>    <a href="../h_src/58072760.htm" class="localvar">x</a> = (<a href="../h_src/58072760.htm" class="localvar">x</a> &lt;&lt; 7) | (<a href="../h_src/58072624.htm" class="localvar">b</a> &amp; 0x7f);
+<a id=78></a>  } while ((<a href="../h_src/58072624.htm" class="localvar">b</a> &amp; 0x80) == 0);
+<a id=79></a>  return <a href="../h_src/58072760.htm" class="localvar">x</a>;
+}
+
+
+<a id=83></a>static <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58072488.htm" class="function">loadSize</a> (<a href="../h_src/58074936.htm" class="type">LoadState</a> *<a href="../h_src/58072352.htm" class="localvar">S</a>) {
+<a id=84></a>  return <a href="../h_src/58073168.htm" class="function">loadUnsigned</a>(<a href="../h_src/58072352.htm" class="localvar">S</a>, ~(<a href="../h_aa/57441192.htm" class="type">size_t</a>)0);
+}
+
+
+<a id=88></a>static int <a href="../h_src/58072216.htm" class="function">loadInt</a> (<a href="../h_src/58074936.htm" class="type">LoadState</a> *<a href="../h_src/58072080.htm" class="localvar">S</a>) {
+<a id=89></a>  return <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/58073168.htm" class="function">loadUnsigned</a>(<a href="../h_src/58072080.htm" class="localvar">S</a>, INT_MAX));
+}
+
+
+<a id=93></a>static <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/58071944.htm" class="function">loadNumber</a> (<a href="../h_src/58074936.htm" class="type">LoadState</a> *<a href="../h_src/58071808.htm" class="localvar">S</a>) {
+<a id=94></a>  <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/58071672.htm" class="localvar">x</a>;
+<a id=95></a>  <a href="../h_src/58073712.htm" class="macro">loadVar</a>(<a href="../h_src/58071808.htm" class="localvar">S</a>, <a href="../h_src/58071672.htm" class="localvar">x</a>);
+<a id=96></a>  return <a href="../h_src/58071672.htm" class="localvar">x</a>;
+}
+
+
+<a id=100></a>static <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/58071536.htm" class="function">loadInteger</a> (<a href="../h_src/58074936.htm" class="type">LoadState</a> *<a href="../h_src/58071400.htm" class="localvar">S</a>) {
+<a id=101></a>  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/58071264.htm" class="localvar">x</a>;
+<a id=102></a>  <a href="../h_src/58073712.htm" class="macro">loadVar</a>(<a href="../h_src/58071400.htm" class="localvar">S</a>, <a href="../h_src/58071264.htm" class="localvar">x</a>);
+<a id=103></a>  return <a href="../h_src/58071264.htm" class="localvar">x</a>;
+}
+
+
+<a id=107></a><a  class="comments">/*</a>
+<a id=108></a><a  class="comments">** Load a nullable string into prototype 'p'.</a>
+<a id=109></a><a  class="comments">*/</a>
+<a id=110></a>static <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/58071128.htm" class="function">loadStringN</a> (<a href="../h_src/58074936.htm" class="type">LoadState</a> *<a href="../h_src/58070992.htm" class="localvar">S</a>, <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/58070856.htm" class="localvar">p</a>) {
+<a id=111></a>  <a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58070720.htm" class="localvar">L</a> = <a href="../h_src/58070992.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>;
+<a id=112></a>  <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/58070584.htm" class="localvar">ts</a>;
+<a id=113></a>  <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58070448.htm" class="localvar">size</a> = <a href="../h_src/58072488.htm" class="function">loadSize</a>(<a href="../h_src/58070992.htm" class="localvar">S</a>);
+<a id=114></a>  if (<a href="../h_src/58070448.htm" class="localvar">size</a> == 0)  <a  class="comments">/* no string? */</a>
+    return NULL;
+<a id=116></a>  else if (--<a href="../h_src/58070448.htm" class="localvar">size</a> &lt;= <a href="../h_src/57544904.htm" class="macro">LUAI_MAXSHORTLEN</a>) {  <a  class="comments">/* short string? */</a>
+<a id=117></a>    char <a href="../h_src/58070312.htm" class="localvar">buff</a>[<a href="../h_src/57544904.htm" class="macro">LUAI_MAXSHORTLEN</a>];
+<a id=118></a>    <a href="../h_src/58074392.htm" class="macro">loadVector</a>(<a href="../h_src/58070992.htm" class="localvar">S</a>, <a href="../h_src/58070312.htm" class="localvar">buff</a>, <a href="../h_src/58070448.htm" class="localvar">size</a>);  <a  class="comments">/* load string into buffer */</a>
+<a id=119></a>    <a href="../h_src/58070584.htm" class="localvar">ts</a> = <a href="../h_src/57618552.htm" class="function">luaS_newlstr</a>(<a href="../h_src/58070720.htm" class="localvar">L</a>, <a href="../h_src/58070312.htm" class="localvar">buff</a>, <a href="../h_src/58070448.htm" class="localvar">size</a>);  <a  class="comments">/* create string */</a>
+  }
+<a id=121></a>  else {  <a  class="comments">/* long string */</a>
+<a id=122></a>    <a href="../h_src/58070584.htm" class="localvar">ts</a> = <a href="../h_src/57618416.htm" class="function">luaS_createlngstrobj</a>(<a href="../h_src/58070720.htm" class="localvar">L</a>, <a href="../h_src/58070448.htm" class="localvar">size</a>);  <a  class="comments">/* create string */</a>
+<a id=123></a>    <a href="../h_src/57524096.htm" class="macro">setsvalue2s</a>(<a href="../h_src/58070720.htm" class="localvar">L</a>, <a href="../h_src/58070720.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/58070584.htm" class="localvar">ts</a>);  <a  class="comments">/* anchor it ('loadVector' can GC) */</a>
+<a id=124></a>    <a href="../h_src/57632628.htm" class="function">luaD_inctop</a>(<a href="../h_src/58070720.htm" class="localvar">L</a>);
+<a id=125></a>    <a href="../h_src/58074392.htm" class="macro">loadVector</a>(<a href="../h_src/58070992.htm" class="localvar">S</a>, <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58070584.htm" class="localvar">ts</a>), <a href="../h_src/58070448.htm" class="localvar">size</a>);  <a  class="comments">/* load directly in final place */</a>
+<a id=126></a>    <a href="../h_src/58070720.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>--;  <a  class="comments">/* pop string */</a>
+  }
+<a id=128></a>  <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/58070720.htm" class="localvar">L</a>, <a href="../h_src/58070856.htm" class="localvar">p</a>, <a href="../h_src/58070584.htm" class="localvar">ts</a>);
+<a id=129></a>  return <a href="../h_src/58070584.htm" class="localvar">ts</a>;
+}
+
+
+<a id=133></a><a  class="comments">/*</a>
+<a id=134></a><a  class="comments">** Load a non-nullable string into prototype 'p'.</a>
+<a id=135></a><a  class="comments">*/</a>
+<a id=136></a>static <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/58069904.htm" class="function">loadString</a> (<a href="../h_src/58074936.htm" class="type">LoadState</a> *<a href="../h_src/58069768.htm" class="localvar">S</a>, <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/58069632.htm" class="localvar">p</a>) {
+<a id=137></a>  <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/58069496.htm" class="localvar">st</a> = <a href="../h_src/58071128.htm" class="function">loadStringN</a>(<a href="../h_src/58069768.htm" class="localvar">S</a>, <a href="../h_src/58069632.htm" class="localvar">p</a>);
+<a id=138></a>  if (<a href="../h_src/58069496.htm" class="localvar">st</a> == NULL)
+<a id=139></a>    <a href="../h_src/58074868.htm" class="function">error</a>(<a href="../h_src/58069768.htm" class="localvar">S</a>, &quot;bad format for constant string&quot;);
+<a id=140></a>  return <a href="../h_src/58069496.htm" class="localvar">st</a>;
+}
+
+
+<a id=144></a>static void <a href="../h_src/58069360.htm" class="function">loadCode</a> (<a href="../h_src/58074936.htm" class="type">LoadState</a> *<a href="../h_src/58069224.htm" class="localvar">S</a>, <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/58069088.htm" class="localvar">f</a>) {
+<a id=145></a>  int <a href="../h_src/58068952.htm" class="localvar">n</a> = <a href="../h_src/58072216.htm" class="function">loadInt</a>(<a href="../h_src/58069224.htm" class="localvar">S</a>);
+<a id=146></a>  <a href="../h_src/58069088.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514916.htm" class="variable">code</a> = <a href="../h_src/57495196.htm" class="macro">luaM_newvectorchecked</a>(<a href="../h_src/58069224.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, <a href="../h_src/58068952.htm" class="localvar">n</a>, <a href="../h_src/57545108.htm" class="type">Instruction</a>);
+<a id=147></a>  <a href="../h_src/58069088.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515596.htm" class="variable">sizecode</a> = <a href="../h_src/58068952.htm" class="localvar">n</a>;
+<a id=148></a>  <a href="../h_src/58074392.htm" class="macro">loadVector</a>(<a href="../h_src/58069224.htm" class="localvar">S</a>, <a href="../h_src/58069088.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514916.htm" class="variable">code</a>, <a href="../h_src/58068952.htm" class="localvar">n</a>);
+}
+
+
+<a id=152></a>static void <a href="../h_src/58068816.htm" class="function">loadFunction</a>(<a href="../h_src/58074936.htm" class="type">LoadState</a> *S, <a href="../h_src/57513828.htm" class="type">Proto</a> *f, <a href="../h_src/57522736.htm" class="type">TString</a> *psource);
+
+
+<a id=155></a>static void <a href="../h_src/58068680.htm" class="function">loadConstants</a> (<a href="../h_src/58074936.htm" class="type">LoadState</a> *<a href="../h_src/58068544.htm" class="localvar">S</a>, <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/58068408.htm" class="localvar">f</a>) {
+<a id=156></a>  int <a href="../h_src/58068272.htm" class="localvar">i</a>;
+<a id=157></a>  int <a href="../h_src/58068136.htm" class="localvar">n</a> = <a href="../h_src/58072216.htm" class="function">loadInt</a>(<a href="../h_src/58068544.htm" class="localvar">S</a>);
+<a id=158></a>  <a href="../h_src/58068408.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515052.htm" class="variable">k</a> = <a href="../h_src/57495196.htm" class="macro">luaM_newvectorchecked</a>(<a href="../h_src/58068544.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, <a href="../h_src/58068136.htm" class="localvar">n</a>, <a href="../h_src/57535384.htm" class="type">TValue</a>);
+<a id=159></a>  <a href="../h_src/58068408.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515664.htm" class="variable">sizek</a> = <a href="../h_src/58068136.htm" class="localvar">n</a>;
+<a id=160></a>  for (<a href="../h_src/58068272.htm" class="localvar">i</a> = 0; <a href="../h_src/58068272.htm" class="localvar">i</a> &lt; <a href="../h_src/58068136.htm" class="localvar">n</a>; <a href="../h_src/58068272.htm" class="localvar">i</a>++)
+<a id=161></a>    <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(&amp;<a href="../h_src/58068408.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515052.htm" class="variable">k</a>[<a href="../h_src/58068272.htm" class="localvar">i</a>]);
+<a id=162></a>  for (<a href="../h_src/58068272.htm" class="localvar">i</a> = 0; <a href="../h_src/58068272.htm" class="localvar">i</a> &lt; <a href="../h_src/58068136.htm" class="localvar">n</a>; <a href="../h_src/58068272.htm" class="localvar">i</a>++) {
+<a id=163></a>    <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58068000.htm" class="localvar">o</a> = &amp;<a href="../h_src/58068408.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515052.htm" class="variable">k</a>[<a href="../h_src/58068272.htm" class="localvar">i</a>];
+<a id=164></a>    int <a href="../h_src/58067864.htm" class="localvar">t</a> = <a href="../h_src/58073576.htm" class="function">loadByte</a>(<a href="../h_src/58068544.htm" class="localvar">S</a>);
+<a id=165></a>    switch (<a href="../h_src/58067864.htm" class="localvar">t</a>) {
+<a id=166></a>      case <a href="../h_src/57531576.htm" class="macro">LUA_VNIL</a>:
+<a id=167></a>        <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(<a href="../h_src/58068000.htm" class="localvar">o</a>);
+        break;
+<a id=169></a>      case <a href="../h_src/57530080.htm" class="macro">LUA_VFALSE</a>:
+<a id=170></a>        <a href="../h_src/57529264.htm" class="macro">setbfvalue</a>(<a href="../h_src/58068000.htm" class="localvar">o</a>);
+        break;
+<a id=172></a>      case <a href="../h_src/57529944.htm" class="macro">LUA_VTRUE</a>:
+<a id=173></a>        <a href="../h_src/57529128.htm" class="macro">setbtvalue</a>(<a href="../h_src/58068000.htm" class="localvar">o</a>);
+        break;
+<a id=175></a>      case <a href="../h_src/57526952.htm" class="macro">LUA_VNUMFLT</a>:
+<a id=176></a>        <a href="../h_src/57525728.htm" class="macro">setfltvalue</a>(<a href="../h_src/58068000.htm" class="localvar">o</a>, <a href="../h_src/58071944.htm" class="function">loadNumber</a>(<a href="../h_src/58068544.htm" class="localvar">S</a>));
+        break;
+<a id=178></a>      case <a href="../h_src/57527088.htm" class="macro">LUA_VNUMINT</a>:
+<a id=179></a>        <a href="../h_src/57525456.htm" class="macro">setivalue</a>(<a href="../h_src/58068000.htm" class="localvar">o</a>, <a href="../h_src/58071536.htm" class="function">loadInteger</a>(<a href="../h_src/58068544.htm" class="localvar">S</a>));
+        break;
+<a id=181></a>      case <a href="../h_src/57525184.htm" class="macro">LUA_VSHRSTR</a>:
+<a id=182></a>      case <a href="../h_src/57525048.htm" class="macro">LUA_VLNGSTR</a>:
+<a id=183></a>        <a href="../h_src/57523960.htm" class="macro">setsvalue2n</a>(<a href="../h_src/58068544.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, o, <a href="../h_src/58069904.htm" class="function">loadString</a>(<a href="../h_src/58068544.htm" class="localvar">S</a>, <a href="../h_src/58068408.htm" class="localvar">f</a>));
+        break;
+<a id=185></a>      default: <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(0);
+    }
+  }
+}
+
+
+<a id=191></a>static void <a href="../h_src/58067184.htm" class="function">loadProtos</a> (<a href="../h_src/58074936.htm" class="type">LoadState</a> *<a href="../h_src/58067048.htm" class="localvar">S</a>, <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/58066912.htm" class="localvar">f</a>) {
+<a id=192></a>  int <a href="../h_src/58066776.htm" class="localvar">i</a>;
+<a id=193></a>  int <a href="../h_src/58066640.htm" class="localvar">n</a> = <a href="../h_src/58072216.htm" class="function">loadInt</a>(<a href="../h_src/58067048.htm" class="localvar">S</a>);
+<a id=194></a>  <a href="../h_src/58066912.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a> = <a href="../h_src/57495196.htm" class="macro">luaM_newvectorchecked</a>(<a href="../h_src/58067048.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, <a href="../h_src/58066640.htm" class="localvar">n</a>, <a href="../h_src/57513828.htm" class="type">Proto</a> *);
+<a id=195></a>  <a href="../h_src/58066912.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515460.htm" class="variable">sizep</a> = <a href="../h_src/58066640.htm" class="localvar">n</a>;
+<a id=196></a>  for (<a href="../h_src/58066776.htm" class="localvar">i</a> = 0; <a href="../h_src/58066776.htm" class="localvar">i</a> &lt; <a href="../h_src/58066640.htm" class="localvar">n</a>; <a href="../h_src/58066776.htm" class="localvar">i</a>++)
+<a id=197></a>    <a href="../h_src/58066912.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a>[<a href="../h_src/58066776.htm" class="localvar">i</a>] = NULL;
+<a id=198></a>  for (<a href="../h_src/58066776.htm" class="localvar">i</a> = 0; <a href="../h_src/58066776.htm" class="localvar">i</a> &lt; <a href="../h_src/58066640.htm" class="localvar">n</a>; <a href="../h_src/58066776.htm" class="localvar">i</a>++) {
+<a id=199></a>    <a href="../h_src/58066912.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a>[<a href="../h_src/58066776.htm" class="localvar">i</a>] = <a href="../h_src/57630996.htm" class="function">luaF_newproto</a>(<a href="../h_src/58067048.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>);
+<a id=200></a>    <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/58067048.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, <a href="../h_src/58066912.htm" class="localvar">f</a>, <a href="../h_src/58066912.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a>[<a href="../h_src/58066776.htm" class="localvar">i</a>]);
+<a id=201></a>    <a href="../h_src/58068816.htm" class="function">loadFunction</a>(<a href="../h_src/58067048.htm" class="localvar">S</a>, <a href="../h_src/58066912.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a>[<a href="../h_src/58066776.htm" class="localvar">i</a>], <a href="../h_src/58066912.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>);
+  }
+}
+
+
+<a id=206></a><a  class="comments">/*</a>
+<a id=207></a><a  class="comments">** Load the upvalues for a function. The names must be filled first,</a>
+<a id=208></a><a  class="comments">** because the filling of the other fields can raise read errors and</a>
+<a id=209></a><a  class="comments">** the creation of the error message can call an emergency collection;</a>
+<a id=210></a><a  class="comments">** in that case all prototypes must be consistent for the GC.</a>
+<a id=211></a><a  class="comments">*/</a>
+<a id=212></a>static void <a href="../h_src/58066504.htm" class="function">loadUpvalues</a> (<a href="../h_src/58074936.htm" class="type">LoadState</a> *<a href="../h_src/58066368.htm" class="localvar">S</a>, <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/58066232.htm" class="localvar">f</a>) {
+<a id=213></a>  int <a href="../h_src/58066096.htm" class="localvar">i</a>, <a href="../h_src/58065960.htm" class="localvar">n</a>;
+<a id=214></a>  <a href="../h_src/58065960.htm" class="localvar">n</a> = <a href="../h_src/58072216.htm" class="function">loadInt</a>(<a href="../h_src/58066368.htm" class="localvar">S</a>);
+<a id=215></a>  <a href="../h_src/58066232.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a> = <a href="../h_src/57495196.htm" class="macro">luaM_newvectorchecked</a>(<a href="../h_src/58066368.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, <a href="../h_src/58065960.htm" class="localvar">n</a>, <a href="../h_src/57517092.htm" class="type">Upvaldesc</a>);
+<a id=216></a>  <a href="../h_src/58066232.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a> = <a href="../h_src/58065960.htm" class="localvar">n</a>;
+<a id=217></a>  for (<a href="../h_src/58066096.htm" class="localvar">i</a> = 0; <a href="../h_src/58066096.htm" class="localvar">i</a> &lt; <a href="../h_src/58065960.htm" class="localvar">n</a>; <a href="../h_src/58066096.htm" class="localvar">i</a>++)  <a  class="comments">/* make array valid for GC */</a>
+<a id=218></a>    <a href="../h_src/58066232.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/58066096.htm" class="localvar">i</a>].<a href="../h_src/57517364.htm" class="variable">name</a> = NULL;
+<a id=219></a>  for (<a href="../h_src/58066096.htm" class="localvar">i</a> = 0; <a href="../h_src/58066096.htm" class="localvar">i</a> &lt; <a href="../h_src/58065960.htm" class="localvar">n</a>; <a href="../h_src/58066096.htm" class="localvar">i</a>++) {  <a  class="comments">/* following calls can raise errors */</a>
+<a id=220></a>    <a href="../h_src/58066232.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/58066096.htm" class="localvar">i</a>].<a href="../h_src/57517296.htm" class="variable">instack</a> = <a href="../h_src/58073576.htm" class="function">loadByte</a>(<a href="../h_src/58066368.htm" class="localvar">S</a>);
+<a id=221></a>    <a href="../h_src/58066232.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/58066096.htm" class="localvar">i</a>].<a href="../h_src/57517228.htm" class="variable">idx</a> = <a href="../h_src/58073576.htm" class="function">loadByte</a>(<a href="../h_src/58066368.htm" class="localvar">S</a>);
+<a id=222></a>    <a href="../h_src/58066232.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/58066096.htm" class="localvar">i</a>].<a href="../h_src/57517160.htm" class="variable">kind</a> = <a href="../h_src/58073576.htm" class="function">loadByte</a>(<a href="../h_src/58066368.htm" class="localvar">S</a>);
+  }
+}
+
+
+<a id=227></a>static void <a href="../h_src/58065824.htm" class="function">loadDebug</a> (<a href="../h_src/58074936.htm" class="type">LoadState</a> *<a href="../h_src/58065688.htm" class="localvar">S</a>, <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/58065552.htm" class="localvar">f</a>) {
+<a id=228></a>  int <a href="../h_src/58065416.htm" class="localvar">i</a>, <a href="../h_src/58065280.htm" class="localvar">n</a>;
+<a id=229></a>  <a href="../h_src/58065280.htm" class="localvar">n</a> = <a href="../h_src/58072216.htm" class="function">loadInt</a>(<a href="../h_src/58065688.htm" class="localvar">S</a>);
+<a id=230></a>  <a href="../h_src/58065552.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514304.htm" class="variable">lineinfo</a> = <a href="../h_src/57495196.htm" class="macro">luaM_newvectorchecked</a>(<a href="../h_src/58065688.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, <a href="../h_src/58065280.htm" class="localvar">n</a>, <a href="../h_src/57550412.htm" class="type">ls_byte</a>);
+<a id=231></a>  <a href="../h_src/58065552.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515528.htm" class="variable">sizelineinfo</a> = <a href="../h_src/58065280.htm" class="localvar">n</a>;
+<a id=232></a>  <a href="../h_src/58074392.htm" class="macro">loadVector</a>(<a href="../h_src/58065688.htm" class="localvar">S</a>, <a href="../h_src/58065552.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514304.htm" class="variable">lineinfo</a>, <a href="../h_src/58065280.htm" class="localvar">n</a>);
+<a id=233></a>  <a href="../h_src/58065280.htm" class="localvar">n</a> = <a href="../h_src/58072216.htm" class="function">loadInt</a>(<a href="../h_src/58065688.htm" class="localvar">S</a>);
+<a id=234></a>  <a href="../h_src/58065552.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514168.htm" class="variable">abslineinfo</a> = <a href="../h_src/57495196.htm" class="macro">luaM_newvectorchecked</a>(<a href="../h_src/58065688.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, <a href="../h_src/58065280.htm" class="localvar">n</a>, <a href="../h_src/57516344.htm" class="type">AbsLineInfo</a>);
+<a id=235></a>  <a href="../h_src/58065552.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515324.htm" class="variable">sizeabslineinfo</a> = <a href="../h_src/58065280.htm" class="localvar">n</a>;
+<a id=236></a>  for (<a href="../h_src/58065416.htm" class="localvar">i</a> = 0; <a href="../h_src/58065416.htm" class="localvar">i</a> &lt; <a href="../h_src/58065280.htm" class="localvar">n</a>; <a href="../h_src/58065416.htm" class="localvar">i</a>++) {
+<a id=237></a>    <a href="../h_src/58065552.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514168.htm" class="variable">abslineinfo</a>[<a href="../h_src/58065416.htm" class="localvar">i</a>].<a href="../h_src/57516480.htm" class="variable">pc</a> = <a href="../h_src/58072216.htm" class="function">loadInt</a>(<a href="../h_src/58065688.htm" class="localvar">S</a>);
+<a id=238></a>    <a href="../h_src/58065552.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514168.htm" class="variable">abslineinfo</a>[<a href="../h_src/58065416.htm" class="localvar">i</a>].<a href="../h_src/57516412.htm" class="variable">line</a> = <a href="../h_src/58072216.htm" class="function">loadInt</a>(<a href="../h_src/58065688.htm" class="localvar">S</a>);
+  }
+<a id=240></a>  <a href="../h_src/58065280.htm" class="localvar">n</a> = <a href="../h_src/58072216.htm" class="function">loadInt</a>(<a href="../h_src/58065688.htm" class="localvar">S</a>);
+<a id=241></a>  <a href="../h_src/58065552.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514032.htm" class="variable">locvars</a> = <a href="../h_src/57495196.htm" class="macro">luaM_newvectorchecked</a>(<a href="../h_src/58065688.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, <a href="../h_src/58065280.htm" class="localvar">n</a>, <a href="../h_src/57516684.htm" class="type">LocVar</a>);
+<a id=242></a>  <a href="../h_src/58065552.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515392.htm" class="variable">sizelocvars</a> = <a href="../h_src/58065280.htm" class="localvar">n</a>;
+<a id=243></a>  for (<a href="../h_src/58065416.htm" class="localvar">i</a> = 0; <a href="../h_src/58065416.htm" class="localvar">i</a> &lt; <a href="../h_src/58065280.htm" class="localvar">n</a>; <a href="../h_src/58065416.htm" class="localvar">i</a>++)
+<a id=244></a>    <a href="../h_src/58065552.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514032.htm" class="variable">locvars</a>[<a href="../h_src/58065416.htm" class="localvar">i</a>].<a href="../h_src/57516888.htm" class="variable">varname</a> = NULL;
+<a id=245></a>  for (<a href="../h_src/58065416.htm" class="localvar">i</a> = 0; <a href="../h_src/58065416.htm" class="localvar">i</a> &lt; <a href="../h_src/58065280.htm" class="localvar">n</a>; <a href="../h_src/58065416.htm" class="localvar">i</a>++) {
+<a id=246></a>    <a href="../h_src/58065552.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514032.htm" class="variable">locvars</a>[<a href="../h_src/58065416.htm" class="localvar">i</a>].<a href="../h_src/57516888.htm" class="variable">varname</a> = <a href="../h_src/58071128.htm" class="function">loadStringN</a>(<a href="../h_src/58065688.htm" class="localvar">S</a>, <a href="../h_src/58065552.htm" class="localvar">f</a>);
+<a id=247></a>    <a href="../h_src/58065552.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514032.htm" class="variable">locvars</a>[<a href="../h_src/58065416.htm" class="localvar">i</a>].<a href="../h_src/57516820.htm" class="variable">startpc</a> = <a href="../h_src/58072216.htm" class="function">loadInt</a>(<a href="../h_src/58065688.htm" class="localvar">S</a>);
+<a id=248></a>    <a href="../h_src/58065552.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514032.htm" class="variable">locvars</a>[<a href="../h_src/58065416.htm" class="localvar">i</a>].<a href="../h_src/57516752.htm" class="variable">endpc</a> = <a href="../h_src/58072216.htm" class="function">loadInt</a>(<a href="../h_src/58065688.htm" class="localvar">S</a>);
+  }
+<a id=250></a>  <a href="../h_src/58065280.htm" class="localvar">n</a> = <a href="../h_src/58072216.htm" class="function">loadInt</a>(<a href="../h_src/58065688.htm" class="localvar">S</a>);
+<a id=251></a>  if (<a href="../h_src/58065280.htm" class="localvar">n</a> != 0)  <a  class="comments">/* does it have debug information? */</a>
+<a id=252></a>    <a href="../h_src/58065280.htm" class="localvar">n</a> = <a href="../h_src/58065552.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>;  <a  class="comments">/* must be this many */</a>
+<a id=253></a>  for (<a href="../h_src/58065416.htm" class="localvar">i</a> = 0; <a href="../h_src/58065416.htm" class="localvar">i</a> &lt; <a href="../h_src/58065280.htm" class="localvar">n</a>; <a href="../h_src/58065416.htm" class="localvar">i</a>++)
+<a id=254></a>    <a href="../h_src/58065552.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/58065416.htm" class="localvar">i</a>].<a href="../h_src/57517364.htm" class="variable">name</a> = <a href="../h_src/58071128.htm" class="function">loadStringN</a>(<a href="../h_src/58065688.htm" class="localvar">S</a>, <a href="../h_src/58065552.htm" class="localvar">f</a>);
+}
+
+
+<a id=258></a>static void <a href="../h_src/58068816.htm" class="function">loadFunction</a> (<a href="../h_src/58074936.htm" class="type">LoadState</a> *<a href="../h_src/58065144.htm" class="localvar">S</a>, <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/58065008.htm" class="localvar">f</a>, <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/58064872.htm" class="localvar">psource</a>) {
+<a id=259></a>  <a href="../h_src/58065008.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a> = <a href="../h_src/58071128.htm" class="function">loadStringN</a>(<a href="../h_src/58065144.htm" class="localvar">S</a>, <a href="../h_src/58065008.htm" class="localvar">f</a>);
+<a id=260></a>  if (<a href="../h_src/58065008.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a> == NULL)  <a  class="comments">/* no source in dump? */</a>
+<a id=261></a>    <a href="../h_src/58065008.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a> = <a href="../h_src/58064872.htm" class="localvar">psource</a>;  <a  class="comments">/* reuse parent's source */</a>
+<a id=262></a>  <a href="../h_src/58065008.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515256.htm" class="variable">linedefined</a> = <a href="../h_src/58072216.htm" class="function">loadInt</a>(<a href="../h_src/58065144.htm" class="localvar">S</a>);
+<a id=263></a>  <a href="../h_src/58065008.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515188.htm" class="variable">lastlinedefined</a> = <a href="../h_src/58072216.htm" class="function">loadInt</a>(<a href="../h_src/58065144.htm" class="localvar">S</a>);
+<a id=264></a>  <a href="../h_src/58065008.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515936.htm" class="variable">numparams</a> = <a href="../h_src/58073576.htm" class="function">loadByte</a>(<a href="../h_src/58065144.htm" class="localvar">S</a>);
+<a id=265></a>  <a href="../h_src/58065008.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515868.htm" class="variable">is_vararg</a> = <a href="../h_src/58073576.htm" class="function">loadByte</a>(<a href="../h_src/58065144.htm" class="localvar">S</a>);
+<a id=266></a>  <a href="../h_src/58065008.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515800.htm" class="variable">maxstacksize</a> = <a href="../h_src/58073576.htm" class="function">loadByte</a>(<a href="../h_src/58065144.htm" class="localvar">S</a>);
+<a id=267></a>  <a href="../h_src/58069360.htm" class="function">loadCode</a>(<a href="../h_src/58065144.htm" class="localvar">S</a>, <a href="../h_src/58065008.htm" class="localvar">f</a>);
+<a id=268></a>  <a href="../h_src/58068680.htm" class="function">loadConstants</a>(<a href="../h_src/58065144.htm" class="localvar">S</a>, <a href="../h_src/58065008.htm" class="localvar">f</a>);
+<a id=269></a>  <a href="../h_src/58066504.htm" class="function">loadUpvalues</a>(<a href="../h_src/58065144.htm" class="localvar">S</a>, <a href="../h_src/58065008.htm" class="localvar">f</a>);
+<a id=270></a>  <a href="../h_src/58067184.htm" class="function">loadProtos</a>(<a href="../h_src/58065144.htm" class="localvar">S</a>, <a href="../h_src/58065008.htm" class="localvar">f</a>);
+<a id=271></a>  <a href="../h_src/58065824.htm" class="function">loadDebug</a>(<a href="../h_src/58065144.htm" class="localvar">S</a>, <a href="../h_src/58065008.htm" class="localvar">f</a>);
+}
+
+
+<a id=275></a>static void <a href="../h_src/58064736.htm" class="function">checkliteral</a> (<a href="../h_src/58074936.htm" class="type">LoadState</a> *<a href="../h_src/58064600.htm" class="localvar">S</a>, const char *<a href="../h_src/58064464.htm" class="localvar">s</a>, const char *<a href="../h_src/58064328.htm" class="localvar">msg</a>) {
+<a id=276></a>  char <a href="../h_src/58064192.htm" class="localvar">buff</a>[sizeof(<a href="../h_src/57445748.htm" class="macro">LUA_SIGNATURE</a>) + sizeof(<a href="../h_src/57615628.htm" class="macro">LUAC_DATA</a>)]; <a  class="comments">/* larger than both */</a>
+<a id=277></a>  <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58064056.htm" class="localvar">len</a> = <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/58064464.htm" class="localvar">s</a>);
+<a id=278></a>  <a href="../h_src/58074392.htm" class="macro">loadVector</a>(<a href="../h_src/58064600.htm" class="localvar">S</a>, <a href="../h_src/58064192.htm" class="localvar">buff</a>, <a href="../h_src/58064056.htm" class="localvar">len</a>);
+<a id=279></a>  if (<a href="../h_aa/58131444.htm" class="libfunc">memcmp</a>(<a href="../h_src/58064464.htm" class="localvar">s</a>, <a href="../h_src/58064192.htm" class="localvar">buff</a>, <a href="../h_src/58064056.htm" class="localvar">len</a>) != 0)
+<a id=280></a>    <a href="../h_src/58074868.htm" class="function">error</a>(<a href="../h_src/58064600.htm" class="localvar">S</a>, <a href="../h_src/58064328.htm" class="localvar">msg</a>);
+}
+
+
+<a id=284></a>static void <a href="../h_src/58063920.htm" class="function">fchecksize</a> (<a href="../h_src/58074936.htm" class="type">LoadState</a> *<a href="../h_src/58063784.htm" class="localvar">S</a>, <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58063648.htm" class="localvar">size</a>, const char *<a href="../h_src/58063512.htm" class="localvar">tname</a>) {
+<a id=285></a>  if (<a href="../h_src/58073576.htm" class="function">loadByte</a>(<a href="../h_src/58063784.htm" class="localvar">S</a>) != <a href="../h_src/58063648.htm" class="localvar">size</a>)
+<a id=286></a>    <a href="../h_src/58074868.htm" class="function">error</a>(<a href="../h_src/58063784.htm" class="localvar">S</a>, <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/58063784.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, &quot;%s size mismatch&quot;, <a href="../h_src/58063512.htm" class="localvar">tname</a>));
+}
+
+
+<a id=290></a>#define <a href="../h_src/58063376.htm" class="macro">checksize</a>(S,t)	fchecksize(S,sizeof(t),#t)
+
+<a id=292></a>static void <a href="../h_src/58063240.htm" class="function">checkHeader</a> (<a href="../h_src/58074936.htm" class="type">LoadState</a> *<a href="../h_src/58063104.htm" class="localvar">S</a>) {
+<a id=293></a>  <a  class="comments">/* skip 1st char (already read and checked) */</a>
+<a id=294></a>  <a href="../h_src/58064736.htm" class="function">checkliteral</a>(<a href="../h_src/58063104.htm" class="localvar">S</a>, &amp;<a href="../h_src/57445748.htm" class="macro">LUA_SIGNATURE</a>[1], &quot;not a binary chunk&quot;);
+<a id=295></a>  if (<a href="../h_src/58073576.htm" class="function">loadByte</a>(<a href="../h_src/58063104.htm" class="localvar">S</a>) != <a href="../h_src/57615084.htm" class="macro">LUAC_VERSION</a>)
+<a id=296></a>    <a href="../h_src/58074868.htm" class="function">error</a>(<a href="../h_src/58063104.htm" class="localvar">S</a>, &quot;version mismatch&quot;);
+<a id=297></a>  if (<a href="../h_src/58073576.htm" class="function">loadByte</a>(<a href="../h_src/58063104.htm" class="localvar">S</a>) != <a href="../h_src/57614948.htm" class="macro">LUAC_FORMAT</a>)
+<a id=298></a>    <a href="../h_src/58074868.htm" class="function">error</a>(<a href="../h_src/58063104.htm" class="localvar">S</a>, &quot;format mismatch&quot;);
+<a id=299></a>  <a href="../h_src/58064736.htm" class="function">checkliteral</a>(<a href="../h_src/58063104.htm" class="localvar">S</a>, <a href="../h_src/57615628.htm" class="macro">LUAC_DATA</a>, &quot;corrupted chunk&quot;);
+<a id=300></a>  <a href="../h_src/58063376.htm" class="macro">checksize</a>(<a href="../h_src/58063104.htm" class="localvar">S</a>, <a href="../h_src/57545108.htm" class="type">Instruction</a>);
+<a id=301></a>  <a href="../h_src/58063376.htm" class="macro">checksize</a>(<a href="../h_src/58063104.htm" class="localvar">S</a>, <a href="../h_src/57442076.htm" class="type">lua_Integer</a>);
+<a id=302></a>  <a href="../h_src/58063376.htm" class="macro">checksize</a>(<a href="../h_src/58063104.htm" class="localvar">S</a>, <a href="../h_src/57442144.htm" class="type">lua_Number</a>);
+<a id=303></a>  if (<a href="../h_src/58071536.htm" class="function">loadInteger</a>(<a href="../h_src/58063104.htm" class="localvar">S</a>) != <a href="../h_src/57615492.htm" class="macro">LUAC_INT</a>)
+<a id=304></a>    <a href="../h_src/58074868.htm" class="function">error</a>(<a href="../h_src/58063104.htm" class="localvar">S</a>, &quot;integer format mismatch&quot;);
+<a id=305></a>  if (<a href="../h_src/58071944.htm" class="function">loadNumber</a>(<a href="../h_src/58063104.htm" class="localvar">S</a>) != <a href="../h_src/57615356.htm" class="macro">LUAC_NUM</a>)
+<a id=306></a>    <a href="../h_src/58074868.htm" class="function">error</a>(<a href="../h_src/58063104.htm" class="localvar">S</a>, &quot;float format mismatch&quot;);
+}
+
+
+<a id=310></a><a  class="comments">/*</a>
+<a id=311></a><a  class="comments">** Load precompiled chunk.</a>
+<a id=312></a><a  class="comments">*/</a>
+<a id=313></a><a href="../h_src/57507980.htm" class="type">LClosure</a> *<a href="../h_src/57614812.htm" class="function">luaU_undump</a>(<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58062968.htm" class="localvar">L</a>, <a href="../h_src/57656088.htm" class="type">ZIO</a> *<a href="../h_src/58062832.htm" class="localvar">Z</a>, const char *<a href="../h_src/58062696.htm" class="localvar">name</a>) {
+<a id=314></a>  <a href="../h_src/58074936.htm" class="type">LoadState</a> <a href="../h_src/58062560.htm" class="localvar">S</a>;
+<a id=315></a>  <a href="../h_src/57507980.htm" class="type">LClosure</a> *<a href="../h_src/58062424.htm" class="localvar">cl</a>;
+<a id=316></a>  if (*<a href="../h_src/58062696.htm" class="localvar">name</a> == '@' || *<a href="../h_src/58062696.htm" class="localvar">name</a> == '=')
+<a id=317></a>    <a href="../h_src/58062560.htm" class="localvar">S</a>.<a href="../h_src/58075072.htm" class="variable">name</a> = <a href="../h_src/58062696.htm" class="localvar">name</a> + 1;
+<a id=318></a>  else if (*<a href="../h_src/58062696.htm" class="localvar">name</a> == <a href="../h_src/57445748.htm" class="macro">LUA_SIGNATURE</a>[0])
+<a id=319></a>    <a href="../h_src/58062560.htm" class="localvar">S</a>.<a href="../h_src/58075072.htm" class="variable">name</a> = &quot;binary string&quot;;
+  else
+<a id=321></a>    <a href="../h_src/58062560.htm" class="localvar">S</a>.<a href="../h_src/58075072.htm" class="variable">name</a> = <a href="../h_src/58062696.htm" class="localvar">name</a>;
+<a id=322></a>  <a href="../h_src/58062560.htm" class="localvar">S</a>.<a href="../h_src/58075208.htm" class="variable">L</a> = <a href="../h_src/58062968.htm" class="localvar">L</a>;
+<a id=323></a>  <a href="../h_src/58062560.htm" class="localvar">S</a>.<a href="../h_src/58075140.htm" class="variable">Z</a> = <a href="../h_src/58062832.htm" class="localvar">Z</a>;
+<a id=324></a>  <a href="../h_src/58063240.htm" class="function">checkHeader</a>(&amp;<a href="../h_src/58062560.htm" class="localvar">S</a>);
+<a id=325></a>  <a href="../h_src/58062424.htm" class="localvar">cl</a> = <a href="../h_src/57630724.htm" class="function">luaF_newLclosure</a>(<a href="../h_src/58062968.htm" class="localvar">L</a>, <a href="../h_src/58073576.htm" class="function">loadByte</a>(&amp;<a href="../h_src/58062560.htm" class="localvar">S</a>));
+<a id=326></a>  <a href="../h_src/57511584.htm" class="macro">setclLvalue2s</a>(<a href="../h_src/58062968.htm" class="localvar">L</a>, <a href="../h_src/58062968.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/58062424.htm" class="localvar">cl</a>);
+<a id=327></a>  <a href="../h_src/57632628.htm" class="function">luaD_inctop</a>(<a href="../h_src/58062968.htm" class="localvar">L</a>);
+<a id=328></a>  <a href="../h_src/58062424.htm" class="localvar">cl</a>-&gt;<a href="../h_src/57508184.htm" class="variable">p</a> = <a href="../h_src/57630996.htm" class="function">luaF_newproto</a>(<a href="../h_src/58062968.htm" class="localvar">L</a>);
+<a id=329></a>  <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/58062968.htm" class="localvar">L</a>, <a href="../h_src/58062424.htm" class="localvar">cl</a>, <a href="../h_src/58062424.htm" class="localvar">cl</a>-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>);
+<a id=330></a>  <a href="../h_src/58068816.htm" class="function">loadFunction</a>(&amp;<a href="../h_src/58062560.htm" class="localvar">S</a>, <a href="../h_src/58062424.htm" class="localvar">cl</a>-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>, NULL);
+<a id=331></a>  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(cl-&gt;nupvalues == cl-&gt;p-&gt;sizeupvalues);
+<a id=332></a>  <a href="../h_src/58075412.htm" class="macro">luai_verifycode</a>(L, cl-&gt;p);
+<a id=333></a>  return <a href="../h_src/58062424.htm" class="localvar">cl</a>;
+}
+
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

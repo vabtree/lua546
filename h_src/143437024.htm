@@ -1,0 +1,56 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>str_packsize</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143437024.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143437024.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143437024.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143437024.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143437024.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143437024.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143344164.htm#1700" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/143437024.htm" class="function">str_packsize</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143436888.htm" class="localvar">L</a>) {
+  <a href="../h_src/143287860.htm" class="type">Header</a> <a href="../h_src/143436752.htm" class="localvar">h</a>;
+  const char *<a href="../h_src/143436616.htm" class="localvar">fmt</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143436888.htm" class="localvar">L</a>, 1);  <a  class="comments">/* format string */</a>
+  <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/143436480.htm" class="localvar">totalsize</a> = 0;  <a  class="comments">/* accumulate total size of result */</a>
+  <a href="../h_src/143285276.htm" class="function">initheader</a>(<a href="../h_src/143436888.htm" class="localvar">L</a>, &amp;<a href="../h_src/143436752.htm" class="localvar">h</a>);
+  while (*<a href="../h_src/143436616.htm" class="localvar">fmt</a> != '\0') {
+    int <a href="../h_src/143436344.htm" class="localvar">size</a>, <a href="../h_src/143436208.htm" class="localvar">ntoalign</a>;
+    <a href="../h_src/143286908.htm" class="type">KOption</a> <a href="../h_src/143436072.htm" class="localvar">opt</a> = <a href="../h_src/143283304.htm" class="function">getdetails</a>(&amp;<a href="../h_src/143436752.htm" class="localvar">h</a>, <a href="../h_src/143436480.htm" class="localvar">totalsize</a>, &amp;<a href="../h_src/143436616.htm" class="localvar">fmt</a>, &amp;<a href="../h_src/143436344.htm" class="localvar">size</a>, &amp;<a href="../h_src/143436208.htm" class="localvar">ntoalign</a>);
+    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143436888.htm" class="localvar">L</a>, <a href="../h_src/143436072.htm" class="localvar">opt</a> != <a href="../h_src/143287384.htm" class="variable">Kstring</a> &amp;&amp; <a href="../h_src/143436072.htm" class="localvar">opt</a> != <a href="../h_src/143287316.htm" class="variable">Kzstr</a>, 1,
+                     &quot;variable-length format&quot;);
+    <a href="../h_src/143436344.htm" class="localvar">size</a> += <a href="../h_src/143436208.htm" class="localvar">ntoalign</a>;  <a  class="comments">/* total space used by option */</a>
+    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143436888.htm" class="localvar">L</a>, <a href="../h_src/143436480.htm" class="localvar">totalsize</a> &lt;= <a href="../h_src/143343280.htm" class="macro">MAXSIZE</a> - <a href="../h_src/143436344.htm" class="localvar">size</a>, 1,
+                     &quot;format result too large&quot;);
+    <a href="../h_src/143436480.htm" class="localvar">totalsize</a> += <a href="../h_src/143436344.htm" class="localvar">size</a>;
+  }
+  <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143436888.htm" class="localvar">L</a>, (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)<a href="../h_src/143436480.htm" class="localvar">totalsize</a>);
+  return 1;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

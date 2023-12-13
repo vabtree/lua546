@@ -1,0 +1,52 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lua_topointer</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57437860.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57437860.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57437860.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57437860.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57437860.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57437860.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57552180.htm#475" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57551840.htm" class="macro">LUA_API</a> const void *<a href="../h_src/57437860.htm" class="function">lua_topointer</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57590808.htm" class="localvar">L</a>, int <a href="../h_src/57590672.htm" class="localvar">idx</a>) {
+  const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57590536.htm" class="localvar">o</a> = <a href="../h_src/57610052.htm" class="function">index2value</a>(<a href="../h_src/57590808.htm" class="localvar">L</a>, <a href="../h_src/57590672.htm" class="localvar">idx</a>);
+  switch (<a href="../h_src/57534636.htm" class="macro">ttypetag</a>(<a href="../h_src/57590536.htm" class="localvar">o</a>)) {
+    case <a href="../h_src/57513488.htm" class="macro">LUA_VLCF</a>: return <a href="../h_src/57547488.htm" class="macro">cast_voidp</a>(<a href="../h_src/57546400.htm" class="macro">cast_sizet</a>(<a href="../h_src/57512128.htm" class="macro">fvalue</a>(<a href="../h_src/57590536.htm" class="localvar">o</a>)));
+    case <a href="../h_src/57521988.htm" class="macro">LUA_VUSERDATA</a>: case <a href="../h_src/57522124.htm" class="macro">LUA_VLIGHTUSERDATA</a>:
+      return <a href="../h_src/57591896.htm" class="function">touserdata</a>(<a href="../h_src/57590536.htm" class="localvar">o</a>);
+    default: {
+      if (<a href="../h_src/57527768.htm" class="macro">iscollectable</a>(<a href="../h_src/57590536.htm" class="localvar">o</a>))
+        return <a href="../h_src/57527496.htm" class="macro">gcvalue</a>(<a href="../h_src/57590536.htm" class="localvar">o</a>);
+      else
+        return NULL;
+    }
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

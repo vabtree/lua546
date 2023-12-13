@@ -1,0 +1,46 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaL_pushresult</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57413312.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57413312.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57413312.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57413312.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57413312.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57413312.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58351320.htm#594" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void <a href="../h_src/57413312.htm" class="function">luaL_pushresult</a> (<a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> *<a href="../h_src/58330580.htm" class="localvar">B</a>) {
+  <a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58330444.htm" class="localvar">L</a> = <a href="../h_src/58330580.htm" class="localvar">B</a>-&gt;<a href="../h_src/57415012.htm" class="variable">L</a>;
+  <a href="../h_src/58333300.htm" class="macro">checkbufferlevel</a>(B, -1);
+  <a href="../h_src/57435072.htm" class="function">lua_pushlstring</a>(<a href="../h_src/58330444.htm" class="localvar">L</a>, <a href="../h_src/58330580.htm" class="localvar">B</a>-&gt;<a href="../h_src/57415216.htm" class="variable">b</a>, <a href="../h_src/58330580.htm" class="localvar">B</a>-&gt;<a href="../h_src/57415080.htm" class="variable">n</a>);
+  if (<a href="../h_src/58333436.htm" class="macro">buffonstack</a>(<a href="../h_src/58330580.htm" class="localvar">B</a>))
+    <a href="../h_src/57429768.htm" class="function">lua_closeslot</a>(<a href="../h_src/58330444.htm" class="localvar">L</a>, -2);  <a  class="comments">/* close the box */</a>
+  <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/58330444.htm" class="localvar">L</a>, -2);  <a  class="comments">/* remove box or placeholder from the stack */</a>
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

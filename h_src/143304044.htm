@@ -1,0 +1,80 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>str_gsub</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143304044.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143304044.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143304044.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143304044.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143304044.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143304044.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143344164.htm#942" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/143304044.htm" class="function">str_gsub</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143303908.htm" class="localvar">L</a>) {
+  <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/143303772.htm" class="localvar">srcl</a>, <a href="../h_src/143303636.htm" class="localvar">lp</a>;
+  const char *<a href="../h_src/143303500.htm" class="localvar">src</a> = <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/143303908.htm" class="localvar">L</a>, 1, &amp;<a href="../h_src/143303772.htm" class="localvar">srcl</a>);  <a  class="comments">/* subject */</a>
+  const char *<a href="../h_src/143303364.htm" class="localvar">p</a> = <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/143303908.htm" class="localvar">L</a>, 2, &amp;<a href="../h_src/143303636.htm" class="localvar">lp</a>);  <a  class="comments">/* pattern */</a>
+  const char *<a href="../h_src/143303228.htm" class="localvar">lastmatch</a> = NULL;  <a  class="comments">/* end of last match */</a>
+  int <a href="../h_src/143303092.htm" class="localvar">tr</a> = <a href="../h_src/57438540.htm" class="function">lua_type</a>(<a href="../h_src/143303908.htm" class="localvar">L</a>, 3);  <a  class="comments">/* replacement type */</a>
+  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143302956.htm" class="localvar">max_s</a> = <a href="../h_src/57419908.htm" class="function">luaL_optinteger</a>(<a href="../h_src/143303908.htm" class="localvar">L</a>, 4, <a href="../h_src/143303772.htm" class="localvar">srcl</a> + 1);  <a  class="comments">/* max replacements */</a>
+  int <a href="../h_src/143302820.htm" class="localvar">anchor</a> = (*<a href="../h_src/143303364.htm" class="localvar">p</a> == '^');
+  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143302684.htm" class="localvar">n</a> = 0;  <a  class="comments">/* replacement count */</a>
+  int <a href="../h_src/143302548.htm" class="localvar">changed</a> = 0;  <a  class="comments">/* change flag */</a>
+  <a href="../h_src/143327300.htm" class="type">MatchState</a> <a href="../h_src/143302412.htm" class="localvar">ms</a>;
+  <a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> <a href="../h_src/143302276.htm" class="localvar">b</a>;
+  <a href="../h_src/57417120.htm" class="macro">luaL_argexpected</a>(<a href="../h_src/143303908.htm" class="localvar">L</a>, <a href="../h_src/143303092.htm" class="localvar">tr</a> == <a href="../h_src/57443640.htm" class="macro">LUA_TNUMBER</a> || tr == <a href="../h_src/57443504.htm" class="macro">LUA_TSTRING</a> ||
+                   <a href="../h_src/143303092.htm" class="localvar">tr</a> == <a href="../h_src/57443232.htm" class="macro">LUA_TFUNCTION</a> || tr == <a href="../h_src/57443368.htm" class="macro">LUA_TTABLE</a>, 3,
+                      &quot;string/function/table&quot;);
+  <a href="../h_src/57413652.htm" class="function">luaL_buffinit</a>(<a href="../h_src/143303908.htm" class="localvar">L</a>, &amp;<a href="../h_src/143302276.htm" class="localvar">b</a>);
+  if (<a href="../h_src/143302820.htm" class="localvar">anchor</a>) {
+    <a href="../h_src/143303364.htm" class="localvar">p</a>++; <a href="../h_src/143303636.htm" class="localvar">lp</a>--;  <a  class="comments">/* skip anchor character */</a>
+  }
+  <a href="../h_src/143312476.htm" class="function">prepstate</a>(&amp;<a href="../h_src/143302412.htm" class="localvar">ms</a>, <a href="../h_src/143303908.htm" class="localvar">L</a>, <a href="../h_src/143303500.htm" class="localvar">src</a>, <a href="../h_src/143303772.htm" class="localvar">srcl</a>, <a href="../h_src/143303364.htm" class="localvar">p</a>, <a href="../h_src/143303636.htm" class="localvar">lp</a>);
+  while (<a href="../h_src/143302684.htm" class="localvar">n</a> &lt; <a href="../h_src/143302956.htm" class="localvar">max_s</a>) {
+    const char *<a href="../h_src/143302140.htm" class="localvar">e</a>;
+    <a href="../h_src/143311524.htm" class="function">reprepstate</a>(&amp;<a href="../h_src/143302412.htm" class="localvar">ms</a>);  <a  class="comments">/* (re)prepare state for new match */</a>
+    if ((<a href="../h_src/143302140.htm" class="localvar">e</a> = <a href="../h_src/143327232.htm" class="function">match</a>(&amp;<a href="../h_src/143302412.htm" class="localvar">ms</a>, <a href="../h_src/143303500.htm" class="localvar">src</a>, <a href="../h_src/143303364.htm" class="localvar">p</a>)) != NULL &amp;&amp; <a href="../h_src/143302140.htm" class="localvar">e</a> != <a href="../h_src/143303228.htm" class="localvar">lastmatch</a>) {  <a  class="comments">/* match? */</a>
+      <a href="../h_src/143302684.htm" class="localvar">n</a>++;
+      <a href="../h_src/143302548.htm" class="localvar">changed</a> = <a href="../h_src/143305132.htm" class="function">add_value</a>(&amp;<a href="../h_src/143302412.htm" class="localvar">ms</a>, &amp;<a href="../h_src/143302276.htm" class="localvar">b</a>, <a href="../h_src/143303500.htm" class="localvar">src</a>, <a href="../h_src/143302140.htm" class="localvar">e</a>, <a href="../h_src/143303092.htm" class="localvar">tr</a>) | <a href="../h_src/143302548.htm" class="localvar">changed</a>;
+      <a href="../h_src/143303500.htm" class="localvar">src</a> = <a href="../h_src/143303228.htm" class="localvar">lastmatch</a> = <a href="../h_src/143302140.htm" class="localvar">e</a>;
+    }
+    else if (<a href="../h_src/143303500.htm" class="localvar">src</a> &lt; <a href="../h_src/143302412.htm" class="localvar">ms</a>.<a href="../h_src/143328116.htm" class="variable">src_end</a>)  <a  class="comments">/* otherwise, skip one character */</a>
+      <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143302276.htm" class="localvar">b</a>, *<a href="../h_src/143303500.htm" class="localvar">src</a>++);
+    else break;  <a  class="comments">/* end of subject */</a>
+    if (<a href="../h_src/143302820.htm" class="localvar">anchor</a>) break;
+  }
+  if (!<a href="../h_src/143302548.htm" class="localvar">changed</a>)  <a  class="comments">/* no changes? */</a>
+    <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/143303908.htm" class="localvar">L</a>, 1);  <a  class="comments">/* return original string */</a>
+  else {  <a  class="comments">/* something changed */</a>
+    <a href="../h_src/57413516.htm" class="function">luaL_addlstring</a>(&amp;<a href="../h_src/143302276.htm" class="localvar">b</a>, <a href="../h_src/143303500.htm" class="localvar">src</a>, <a href="../h_src/143302412.htm" class="localvar">ms</a>.<a href="../h_src/143328116.htm" class="variable">src_end</a>-<a href="../h_src/143303500.htm" class="localvar">src</a>);
+    <a href="../h_src/57413312.htm" class="function">luaL_pushresult</a>(&amp;<a href="../h_src/143302276.htm" class="localvar">b</a>);  <a  class="comments">/* create and return new string */</a>
+  }
+  <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143303908.htm" class="localvar">L</a>, <a href="../h_src/143302684.htm" class="localvar">n</a>);  <a  class="comments">/* number of substitutions */</a>
+  return 2;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

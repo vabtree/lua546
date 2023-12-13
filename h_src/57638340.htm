@@ -1,0 +1,56 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaE_shrinkCI</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57638340.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57638340.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57638340.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57638340.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57638340.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57638340.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57985340.htm#138" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+void <a href="../h_src/57638340.htm" class="function">luaE_shrinkCI</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57981396.htm" class="localvar">L</a>) {
+  <a href="../h_src/57537764.htm" class="type">CallInfo</a> *<a href="../h_src/57981260.htm" class="localvar">ci</a> = <a href="../h_src/57981396.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57651328.htm" class="variable">next</a>;  <a  class="comments">/* first free CallInfo */</a>
+  <a href="../h_src/57537764.htm" class="type">CallInfo</a> *<a href="../h_src/57981124.htm" class="localvar">next</a>;
+  if (<a href="../h_src/57981260.htm" class="localvar">ci</a> == NULL)
+    return;  <a  class="comments">/* no extra elements */</a>
+  while ((<a href="../h_src/57981124.htm" class="localvar">next</a> = <a href="../h_src/57981260.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651328.htm" class="variable">next</a>) != NULL) {  <a  class="comments">/* two extra elements? */</a>
+    <a href="../h_src/57537764.htm" class="type">CallInfo</a> *<a href="../h_src/57980988.htm" class="localvar">next2</a> = <a href="../h_src/57981124.htm" class="localvar">next</a>-&gt;<a href="../h_src/57651328.htm" class="variable">next</a>;  <a  class="comments">/* next's next */</a>
+    <a href="../h_src/57981260.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651328.htm" class="variable">next</a> = <a href="../h_src/57980988.htm" class="localvar">next2</a>;  <a  class="comments">/* remove next from the list */</a>
+    <a href="../h_src/57981396.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642692.htm" class="variable">nci</a>--;
+    <a href="../h_src/57495740.htm" class="macro">luaM_free</a>(<a href="../h_src/57981396.htm" class="localvar">L</a>, <a href="../h_src/57981124.htm" class="localvar">next</a>);  <a  class="comments">/* free next */</a>
+    if (<a href="../h_src/57980988.htm" class="localvar">next2</a> == NULL)
+      break;  <a  class="comments">/* no more elements */</a>
+    else {
+      <a href="../h_src/57980988.htm" class="localvar">next2</a>-&gt;<a href="../h_src/57651396.htm" class="variable">previous</a> = <a href="../h_src/57981260.htm" class="localvar">ci</a>;
+      <a href="../h_src/57981260.htm" class="localvar">ci</a> = <a href="../h_src/57980988.htm" class="localvar">next2</a>;  <a  class="comments">/* continue */</a>
+    }
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

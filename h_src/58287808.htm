@@ -1,0 +1,58 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaB_close</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58287808.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58287808.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58287808.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58287808.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58287808.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58287808.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58293928.htm#170" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/58287808.htm" class="function">luaB_close</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58287672.htm" class="localvar">L</a>) {
+  <a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58287536.htm" class="localvar">co</a> = <a href="../h_src/58293588.htm" class="function">getco</a>(<a href="../h_src/58287672.htm" class="localvar">L</a>);
+  int <a href="../h_src/58287400.htm" class="localvar">status</a> = <a href="../h_src/58289576.htm" class="function">auxstatus</a>(<a href="../h_src/58287672.htm" class="localvar">L</a>, <a href="../h_src/58287536.htm" class="localvar">co</a>);
+  switch (<a href="../h_src/58287400.htm" class="localvar">status</a>) {
+    case <a href="../h_src/58290052.htm" class="macro">COS_DEAD</a>: case <a href="../h_src/58289916.htm" class="macro">COS_YIELD</a>: {
+      <a href="../h_src/58287400.htm" class="localvar">status</a> = <a href="../h_src/57439696.htm" class="function">lua_closethread</a>(<a href="../h_src/58287536.htm" class="localvar">co</a>, <a href="../h_src/58287672.htm" class="localvar">L</a>);
+      if (<a href="../h_src/58287400.htm" class="localvar">status</a> == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) {
+        <a href="../h_src/57434596.htm" class="function">lua_pushboolean</a>(<a href="../h_src/58287672.htm" class="localvar">L</a>, 1);
+        return 1;
+      }
+      else {
+        <a href="../h_src/57434596.htm" class="function">lua_pushboolean</a>(<a href="../h_src/58287672.htm" class="localvar">L</a>, 0);
+        <a href="../h_src/57438948.htm" class="function">lua_xmove</a>(<a href="../h_src/58287536.htm" class="localvar">co</a>, <a href="../h_src/58287672.htm" class="localvar">L</a>, 1);  <a  class="comments">/* move error message */</a>
+        return 2;
+      }
+    }
+    default:  <a  class="comments">/* normal or running coroutine */</a>
+      return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/58287672.htm" class="localvar">L</a>, &quot;cannot close a %s coroutine&quot;, <a href="../h_src/58289644.htm" class="variable">statname</a>[<a href="../h_src/58287400.htm" class="localvar">status</a>]);
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

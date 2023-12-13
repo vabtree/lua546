@@ -1,0 +1,56 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaD_protectedparser</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57633580.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57633580.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57633580.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57633580.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57633580.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57633580.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57884484.htm#1005" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+int <a href="../h_src/57633580.htm" class="function">luaD_protectedparser</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57851504.htm" class="localvar">L</a>, <a href="../h_src/57656088.htm" class="type">ZIO</a> *<a href="../h_src/57851368.htm" class="localvar">z</a>, const char *<a href="../h_src/57851232.htm" class="localvar">name</a>,
+                                        const char *<a href="../h_src/57851096.htm" class="localvar">mode</a>) {
+  struct <a href="../h_src/57853476.htm" class="class">SParser</a> <a href="../h_src/57850960.htm" class="localvar">p</a>;
+  int <a href="../h_src/57850824.htm" class="localvar">status</a>;
+  <a href="../h_src/57653504.htm" class="macro">incnny</a>(<a href="../h_src/57851504.htm" class="localvar">L</a>);  <a  class="comments">/* cannot yield during parsing */</a>
+  <a href="../h_src/57850960.htm" class="localvar">p</a>.<a href="../h_src/57853340.htm" class="variable">z</a> = <a href="../h_src/57851368.htm" class="localvar">z</a>; <a href="../h_src/57850960.htm" class="localvar">p</a>.<a href="../h_src/57853068.htm" class="variable">name</a> = <a href="../h_src/57851232.htm" class="localvar">name</a>; <a href="../h_src/57850960.htm" class="localvar">p</a>.<a href="../h_src/57853136.htm" class="variable">mode</a> = <a href="../h_src/57851096.htm" class="localvar">mode</a>;
+  <a href="../h_src/57850960.htm" class="localvar">p</a>.<a href="../h_src/57853204.htm" class="variable">dyd</a>.<a href="../h_src/57676460.htm" class="variable">actvar</a>.<a href="../h_src/57676732.htm" class="variable">arr</a> = NULL; <a href="../h_src/57850960.htm" class="localvar">p</a>.<a href="../h_src/57853204.htm" class="variable">dyd</a>.<a href="../h_src/57676460.htm" class="variable">actvar</a>.<a href="../h_src/57676596.htm" class="variable">size</a> = 0;
+  <a href="../h_src/57850960.htm" class="localvar">p</a>.<a href="../h_src/57853204.htm" class="variable">dyd</a>.<a href="../h_src/57676392.htm" class="variable">gt</a>.<a href="../h_src/57677140.htm" class="variable">arr</a> = NULL; <a href="../h_src/57850960.htm" class="localvar">p</a>.<a href="../h_src/57853204.htm" class="variable">dyd</a>.<a href="../h_src/57676392.htm" class="variable">gt</a>.<a href="../h_src/57677004.htm" class="variable">size</a> = 0;
+  <a href="../h_src/57850960.htm" class="localvar">p</a>.<a href="../h_src/57853204.htm" class="variable">dyd</a>.<a href="../h_src/57676324.htm" class="variable">label</a>.<a href="../h_src/57677140.htm" class="variable">arr</a> = NULL; <a href="../h_src/57850960.htm" class="localvar">p</a>.<a href="../h_src/57853204.htm" class="variable">dyd</a>.<a href="../h_src/57676324.htm" class="variable">label</a>.<a href="../h_src/57677004.htm" class="variable">size</a> = 0;
+  <a href="../h_src/57655476.htm" class="macro">luaZ_initbuffer</a>(L, &amp;<a href="../h_src/57850960.htm" class="localvar">p</a>.<a href="../h_src/57853272.htm" class="variable">buff</a>);
+  <a href="../h_src/57850824.htm" class="localvar">status</a> = <a href="../h_src/57632968.htm" class="function">luaD_pcall</a>(<a href="../h_src/57851504.htm" class="localvar">L</a>, <a href="../h_src/57852456.htm" class="function">f_parser</a>, &amp;<a href="../h_src/57850960.htm" class="localvar">p</a>, <a href="../h_src/57634396.htm" class="macro">savestack</a>(<a href="../h_src/57851504.htm" class="localvar">L</a>, <a href="../h_src/57851504.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>), <a href="../h_src/57851504.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641604.htm" class="variable">errfunc</a>);
+  <a href="../h_src/57654524.htm" class="macro">luaZ_freebuffer</a>(<a href="../h_src/57851504.htm" class="localvar">L</a>, &amp;<a href="../h_src/57850960.htm" class="localvar">p</a>.<a href="../h_src/57853272.htm" class="variable">buff</a>);
+  <a href="../h_src/57495604.htm" class="macro">luaM_freearray</a>(<a href="../h_src/57851504.htm" class="localvar">L</a>, <a href="../h_src/57850960.htm" class="localvar">p</a>.<a href="../h_src/57853204.htm" class="variable">dyd</a>.<a href="../h_src/57676460.htm" class="variable">actvar</a>.<a href="../h_src/57676732.htm" class="variable">arr</a>, <a href="../h_src/57850960.htm" class="localvar">p</a>.<a href="../h_src/57853204.htm" class="variable">dyd</a>.<a href="../h_src/57676460.htm" class="variable">actvar</a>.<a href="../h_src/57676596.htm" class="variable">size</a>);
+  <a href="../h_src/57495604.htm" class="macro">luaM_freearray</a>(<a href="../h_src/57851504.htm" class="localvar">L</a>, <a href="../h_src/57850960.htm" class="localvar">p</a>.<a href="../h_src/57853204.htm" class="variable">dyd</a>.<a href="../h_src/57676392.htm" class="variable">gt</a>.<a href="../h_src/57677140.htm" class="variable">arr</a>, <a href="../h_src/57850960.htm" class="localvar">p</a>.<a href="../h_src/57853204.htm" class="variable">dyd</a>.<a href="../h_src/57676392.htm" class="variable">gt</a>.<a href="../h_src/57677004.htm" class="variable">size</a>);
+  <a href="../h_src/57495604.htm" class="macro">luaM_freearray</a>(<a href="../h_src/57851504.htm" class="localvar">L</a>, <a href="../h_src/57850960.htm" class="localvar">p</a>.<a href="../h_src/57853204.htm" class="variable">dyd</a>.<a href="../h_src/57676324.htm" class="variable">label</a>.<a href="../h_src/57677140.htm" class="variable">arr</a>, <a href="../h_src/57850960.htm" class="localvar">p</a>.<a href="../h_src/57853204.htm" class="variable">dyd</a>.<a href="../h_src/57676324.htm" class="variable">label</a>.<a href="../h_src/57677004.htm" class="variable">size</a>);
+  <a href="../h_src/57653368.htm" class="macro">decnny</a>(<a href="../h_src/57851504.htm" class="localvar">L</a>);
+  return <a href="../h_src/57850824.htm" class="localvar">status</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,48 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaT_objtypename</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57498188.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57498188.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57498188.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57498188.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57498188.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57498188.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58090712.htm#91" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+const char *<a href="../h_src/57498188.htm" class="function">luaT_objtypename</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58088808.htm" class="localvar">L</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58088672.htm" class="localvar">o</a>) {
+  <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58088536.htm" class="localvar">mt</a>;
+  if ((<a href="../h_src/57507300.htm" class="macro">ttistable</a>(<a href="../h_src/58088672.htm" class="localvar">o</a>) &amp;&amp; (<a href="../h_src/58088536.htm" class="localvar">mt</a> = <a href="../h_src/57507164.htm" class="macro">hvalue</a>(<a href="../h_src/58088672.htm" class="localvar">o</a>)-&gt;<a href="../h_src/57504444.htm" class="variable">metatable</a>) != NULL) ||
+      (<a href="../h_src/57521716.htm" class="macro">ttisfulluserdata</a>(<a href="../h_src/58088672.htm" class="localvar">o</a>) &amp;&amp; (<a href="../h_src/58088536.htm" class="localvar">mt</a> = <a href="../h_src/57521444.htm" class="macro">uvalue</a>(<a href="../h_src/58088672.htm" class="localvar">o</a>)-&gt;<a href="../h_src/57519540.htm" class="variable">metatable</a>) != NULL)) {
+    const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58088400.htm" class="localvar">name</a> = <a href="../h_src/57616920.htm" class="function">luaH_getshortstr</a>(<a href="../h_src/58088536.htm" class="localvar">mt</a>, <a href="../h_src/57618484.htm" class="function">luaS_new</a>(<a href="../h_src/58088808.htm" class="localvar">L</a>, &quot;__name&quot;));
+    if (<a href="../h_src/57524912.htm" class="macro">ttisstring</a>(<a href="../h_src/58088400.htm" class="localvar">name</a>))  <a  class="comments">/* is '__name' a string? */</a>
+      return <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/57524368.htm" class="macro">tsvalue</a>(<a href="../h_src/58088400.htm" class="localvar">name</a>));  <a  class="comments">/* use it as type name */</a>
+  }
+  return <a href="../h_src/57498392.htm" class="macro">ttypename</a>(<a href="../h_src/57534500.htm" class="macro">ttype</a>(<a href="../h_src/58088672.htm" class="localvar">o</a>));  <a  class="comments">/* else use standard type name */</a>
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,66 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>PrintType</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143399080.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143399080.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143399080.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143399080.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143399080.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143399080.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143407988.htm#265" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/143399080.htm" class="function">PrintType</a>(const <a href="../h_src/57513828.htm" class="type">Proto</a>* <a href="../h_src/143398944.htm" class="localvar">f</a>, int <a href="../h_src/143398808.htm" class="localvar">i</a>)
+{
+ const <a href="../h_src/57535384.htm" class="type">TValue</a>* <a href="../h_src/143398672.htm" class="localvar">o</a>=&amp;<a href="../h_src/143398944.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515052.htm" class="variable">k</a>[<a href="../h_src/143398808.htm" class="localvar">i</a>];
+ switch (<a href="../h_src/57534636.htm" class="macro">ttypetag</a>(<a href="../h_src/143398672.htm" class="localvar">o</a>))
+ {
+  case <a href="../h_src/57531576.htm" class="macro">LUA_VNIL</a>:
+	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;N&quot;);
+	break;
+  case <a href="../h_src/57530080.htm" class="macro">LUA_VFALSE</a>:
+  case <a href="../h_src/57529944.htm" class="macro">LUA_VTRUE</a>:
+	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;B&quot;);
+	break;
+  case <a href="../h_src/57526952.htm" class="macro">LUA_VNUMFLT</a>:
+	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;F&quot;);
+	break;
+  case <a href="../h_src/57527088.htm" class="macro">LUA_VNUMINT</a>:
+	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;I&quot;);
+	break;
+  case <a href="../h_src/57525184.htm" class="macro">LUA_VSHRSTR</a>:
+  case <a href="../h_src/57525048.htm" class="macro">LUA_VLNGSTR</a>:
+	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;S&quot;);
+	break;
+  default:				<a  class="comments">/* cannot happen */</a>
+	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;?%d&quot;,<a href="../h_src/57534636.htm" class="macro">ttypetag</a>(<a href="../h_src/143398672.htm" class="localvar">o</a>));
+	break;
+ }
+ <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;\t&quot;);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

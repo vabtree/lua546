@@ -1,0 +1,127 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>ldo.h</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57635008.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/57635008.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/57635008.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/57635008.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_ua/57635008.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_da/57635008.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57635008.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57635008.htm" class="file" target="_self">Source Code</a></li>
+<li><a href="../h_sc/57635008.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<pre class=src>
+<a id=1></a><a  class="comments">/*</a>
+<a id=2></a><a  class="comments">** $Id: ldo.h $</a>
+<a id=3></a><a  class="comments">** Stack and Call structure of Lua</a>
+<a id=4></a><a  class="comments">** See Copyright Notice in lua.h</a>
+<a id=5></a><a  class="comments">*/</a>
+
+<a id=7></a>#ifndef <a href="../h_src/57634940.htm" class="macro">ldo_h</a>
+<a id=8></a>#define <a href="../h_src/57634804.htm" class="macro">ldo_h</a>
+
+
+<a id=11></a>#include &quot;<a href="../h_src/57551092.htm" class="file">llimits.h</a>&quot;
+<a id=12></a>#include &quot;<a href="../h_src/57537696.htm" class="file">lobject.h</a>&quot;
+<a id=13></a>#include &quot;<a href="../h_src/57538104.htm" class="file">lstate.h</a>&quot;
+<a id=14></a>#include &quot;<a href="../h_src/57497236.htm" class="file">lzio.h</a>&quot;
+
+
+<a id=17></a><a  class="comments">/*</a>
+<a id=18></a><a  class="comments">** Macro to check stack size and grow stack if needed.  Parameters</a>
+<a id=19></a><a  class="comments">** 'pre'/'pos' allow the macro to preserve a pointer into the</a>
+<a id=20></a><a  class="comments">** stack across reallocations, doing the work only when needed.</a>
+<a id=21></a><a  class="comments">** It also allows the running of one GC step when the stack is</a>
+<a id=22></a><a  class="comments">** reallocated.</a>
+<a id=23></a><a  class="comments">** 'condmovestack' is used in heavy tests to force a stack reallocation</a>
+<a id=24></a><a  class="comments">** at every check.</a>
+<a id=25></a><a  class="comments">*/</a>
+<a id=26></a>#define <a href="../h_src/57634668.htm" class="macro">luaD_checkstackaux</a>(L,n,pre,pos)  \
+	if (l_unlikely(L-&gt;stack_last.p - L-&gt;top.p &lt;= (n))) \
+	  { pre; luaD_growstack(L, n, 1); pos; } \
+        else { condmovestack(L,pre,pos); }
+
+<a id=31></a><a  class="comments">/* In general, 'pre'/'pos' are empty (nothing to save) */</a>
+<a id=32></a>#define <a href="../h_src/57634532.htm" class="macro">luaD_checkstack</a>(L,n)	luaD_checkstackaux(L,n,(void)0,(void)0)
+
+
+
+<a id=36></a>#define <a href="../h_src/57634396.htm" class="macro">savestack</a>(L,pt)		(cast_charp(pt) - cast_charp(L-&gt;stack.p))
+<a id=37></a>#define <a href="../h_src/57634260.htm" class="macro">restorestack</a>(L,n)	cast(StkId, cast_charp(L-&gt;stack.p) + (n))
+
+
+<a id=40></a><a  class="comments">/* macro to check stack size, preserving 'p' */</a>
+<a id=41></a>#define <a href="../h_src/57634124.htm" class="macro">checkstackp</a>(L,n,p)  \
+  luaD_checkstackaux(L, n, \
+<a id=43></a>    ptrdiff_t t__ = savestack(L, p),  <a  class="comments">/* save 'p' */</a> \
+<a id=44></a>    p = restorestack(L, t__))  <a  class="comments">/* 'pos' part: restore 'p' */</a>
+
+
+<a id=47></a><a  class="comments">/* macro to check stack size and GC, preserving 'p' */</a>
+<a id=48></a>#define <a href="../h_src/57633988.htm" class="macro">checkstackGCp</a>(L,n,p)  \
+  luaD_checkstackaux(L, n, \
+<a id=50></a>    ptrdiff_t t__ = savestack(L, p);  <a  class="comments">/* save 'p' */</a> \
+<a id=51></a>    luaC_checkGC(L),  <a  class="comments">/* stack grow uses memory */</a> \
+<a id=52></a>    p = restorestack(L, t__))  <a  class="comments">/* 'pos' part: restore 'p' */</a>
+
+
+<a id=55></a><a  class="comments">/* macro to check stack size and GC */</a>
+<a id=56></a>#define <a href="../h_src/57633852.htm" class="macro">checkstackGC</a>(L,fsize)  \
+	luaD_checkstackaux(L, (fsize), luaC_checkGC(L), (void)0)
+
+
+<a id=60></a><a  class="comments">/* type of protected functions, to be ran by 'runprotected' */</a>
+<a id=61></a>typedef void (*<a href="../h_src/57633716.htm" class="type">Pfunc</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, void *ud);
+
+<a id=63></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57633648.htm" class="function">luaD_seterrorobj</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int errcode, <a href="../h_src/57532188.htm" class="type">StkId</a> oldtop);
+<a id=64></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> int <a href="../h_src/57633580.htm" class="function">luaD_protectedparser</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57656088.htm" class="type">ZIO</a> *z, const char *name,
+                                                  const char *mode);
+<a id=66></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57633512.htm" class="function">luaD_hook</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int event, int line,
+                                        int fTransfer, int nTransfer);
+<a id=68></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57633444.htm" class="function">luaD_hookcall</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57537764.htm" class="type">CallInfo</a> *ci);
+<a id=69></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> int <a href="../h_src/57633376.htm" class="function">luaD_pretailcall</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57537764.htm" class="type">CallInfo</a> *ci, <a href="../h_src/57532188.htm" class="type">StkId</a> func,
+                                              int narg1, int delta);
+<a id=71></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> <a href="../h_src/57537764.htm" class="type">CallInfo</a> *<a href="../h_src/57633308.htm" class="function">luaD_precall</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57532188.htm" class="type">StkId</a> func, int nResults);
+<a id=72></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57633240.htm" class="function">luaD_call</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57532188.htm" class="type">StkId</a> func, int nResults);
+<a id=73></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57633172.htm" class="function">luaD_callnoyield</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57532188.htm" class="type">StkId</a> func, int nResults);
+<a id=74></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57633104.htm" class="function">luaD_tryfuncTM</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57532188.htm" class="type">StkId</a> func);
+<a id=75></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> int <a href="../h_src/57633036.htm" class="function">luaD_closeprotected</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_aa/57441872.htm" class="type">ptrdiff_t</a> level, int status);
+<a id=76></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> int <a href="../h_src/57632968.htm" class="function">luaD_pcall</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57633716.htm" class="type">Pfunc</a> func, void *u,
+<a id=77></a>                                        <a href="../h_aa/57441872.htm" class="type">ptrdiff_t</a> oldtop, <a href="../h_aa/57441872.htm" class="type">ptrdiff_t</a> ef);
+<a id=78></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57632900.htm" class="function">luaD_poscall</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57537764.htm" class="type">CallInfo</a> *ci, int nres);
+<a id=79></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> int <a href="../h_src/57632832.htm" class="function">luaD_reallocstack</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int newsize, int raiseerror);
+<a id=80></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> int <a href="../h_src/57632764.htm" class="function">luaD_growstack</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int n, int raiseerror);
+<a id=81></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57632696.htm" class="function">luaD_shrinkstack</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L);
+<a id=82></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57632628.htm" class="function">luaD_inctop</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L);
+
+<a id=84></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> <a href="../h_src/57545584.htm" class="macro">l_noret</a> <a href="../h_src/57632560.htm" class="function">luaD_throw</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int errcode);
+<a id=85></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> int <a href="../h_src/57632492.htm" class="function">luaD_rawrunprotected</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57633716.htm" class="type">Pfunc</a> f, void *ud);
+
+#endif
+
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

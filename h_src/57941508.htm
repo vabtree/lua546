@@ -1,0 +1,49 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>fullinc</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57941508.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57941508.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57941508.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57941508.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57941508.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57941508.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57829404.htm#1708" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/57941508.htm" class="function">fullinc</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57941372.htm" class="localvar">L</a>, <a href="../h_src/57643100.htm" class="type">global_State</a> *<a href="../h_src/57941236.htm" class="localvar">g</a>) {
+  if (<a href="../h_src/57628412.htm" class="macro">keepinvariant</a>(<a href="../h_src/57941236.htm" class="localvar">g</a>))  <a  class="comments">/* black objects? */</a>
+    <a href="../h_src/57826480.htm" class="function">entersweep</a>(<a href="../h_src/57941372.htm" class="localvar">L</a>); <a  class="comments">/* sweep everything to turn them back to white */</a>
+  <a  class="comments">/* finish any pending sweep phase to start a new cycle */</a>
+  <a href="../h_src/57620728.htm" class="function">luaC_runtilstate</a>(<a href="../h_src/57941372.htm" class="localvar">L</a>, <a href="../h_src/57627868.htm" class="macro">bitmask</a>(<a href="../h_src/57628684.htm" class="macro">GCSpause</a>));
+  <a href="../h_src/57620728.htm" class="function">luaC_runtilstate</a>(<a href="../h_src/57941372.htm" class="localvar">L</a>, <a href="../h_src/57627868.htm" class="macro">bitmask</a>(<a href="../h_src/57628820.htm" class="macro">GCScallfin</a>));  <a  class="comments">/* run up to finalizers */</a>
+  <a  class="comments">/* estimate must be correct after a full GC cycle */</a>
+  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(g-&gt;GCestimate == <a href="../h_src/57638748.htm" class="macro">gettotalbytes</a>(g));
+  <a href="../h_src/57620728.htm" class="function">luaC_runtilstate</a>(<a href="../h_src/57941372.htm" class="localvar">L</a>, <a href="../h_src/57627868.htm" class="macro">bitmask</a>(<a href="../h_src/57628684.htm" class="macro">GCSpause</a>));  <a  class="comments">/* finish collection */</a>
+  <a href="../h_src/57956740.htm" class="function">setpause</a>(<a href="../h_src/57941236.htm" class="localvar">g</a>);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

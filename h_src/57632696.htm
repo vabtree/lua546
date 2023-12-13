@@ -1,0 +1,51 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaD_shrinkstack</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57632696.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57632696.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57632696.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57632696.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57632696.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57632696.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57884484.htm#300" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+void <a href="../h_src/57632696.htm" class="function">luaD_shrinkstack</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57876596.htm" class="localvar">L</a>) {
+  int <a href="../h_src/57876460.htm" class="localvar">inuse</a> = <a href="../h_src/57877276.htm" class="function">stackinuse</a>(<a href="../h_src/57876596.htm" class="localvar">L</a>);
+  int <a href="../h_src/57876324.htm" class="localvar">max</a> = (<a href="../h_src/57876460.htm" class="localvar">inuse</a> &gt; <a href="../h_src/57447652.htm" class="macro">LUAI_MAXSTACK</a> / 3) ? <a href="../h_src/57447652.htm" class="macro">LUAI_MAXSTACK</a> : <a href="../h_src/57876460.htm" class="localvar">inuse</a> * 3;
+  <a  class="comments">/* if thread is currently not handling a stack overflow and its</a>
+<a  class="comments">     size is larger than maximum &quot;reasonable&quot; size, shrink it */</a>
+  if (<a href="../h_src/57876460.htm" class="localvar">inuse</a> &lt;= <a href="../h_src/57447652.htm" class="macro">LUAI_MAXSTACK</a> &amp;&amp; <a href="../h_src/57652416.htm" class="macro">stacksize</a>(<a href="../h_src/57876596.htm" class="localvar">L</a>) &gt; <a href="../h_src/57876324.htm" class="localvar">max</a>) {
+    int <a href="../h_src/57876188.htm" class="localvar">nsize</a> = (<a href="../h_src/57876460.htm" class="localvar">inuse</a> &gt; <a href="../h_src/57447652.htm" class="macro">LUAI_MAXSTACK</a> / 2) ? <a href="../h_src/57447652.htm" class="macro">LUAI_MAXSTACK</a> : <a href="../h_src/57876460.htm" class="localvar">inuse</a> * 2;
+    <a href="../h_src/57632832.htm" class="function">luaD_reallocstack</a>(<a href="../h_src/57876596.htm" class="localvar">L</a>, <a href="../h_src/57876188.htm" class="localvar">nsize</a>, 0);  <a  class="comments">/* ok if that fails */</a>
+  }
+  else  <a  class="comments">/* don't change stack */</a>
+    <a href="../h_src/57538512.htm" class="macro">condmovestack</a>(L,{},{});  <a  class="comments">/* (change only for debugging) */</a>
+  <a href="../h_src/57638340.htm" class="function">luaE_shrinkCI</a>(<a href="../h_src/57876596.htm" class="localvar">L</a>);  <a  class="comments">/* shrink CI list */</a>
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,53 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>f_parser</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57852456.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57852456.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57852456.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57852456.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57852456.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57852456.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57884484.htm#988" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/57852456.htm" class="function">f_parser</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57852320.htm" class="localvar">L</a>, void *<a href="../h_src/57852184.htm" class="localvar">ud</a>) {
+  <a href="../h_src/57507980.htm" class="type">LClosure</a> *<a href="../h_src/57852048.htm" class="localvar">cl</a>;
+  struct <a href="../h_src/57853476.htm" class="class">SParser</a> *<a href="../h_src/57851776.htm" class="localvar">p</a> = <a href="../h_src/57547760.htm" class="macro">cast</a>(struct <a href="../h_src/57853476.htm" class="class">SParser</a> *, <a href="../h_src/57852184.htm" class="localvar">ud</a>);
+  int <a href="../h_src/57851640.htm" class="localvar">c</a> = <a href="../h_src/57656020.htm" class="macro">zgetc</a>(<a href="../h_src/57654116.htm" class="variable">p</a>-&gt;<a href="../h_src/57853340.htm" class="variable">z</a>);  <a  class="comments">/* read first character */</a>
+  if (<a href="../h_src/57851640.htm" class="localvar">c</a> == <a href="../h_src/57445748.htm" class="macro">LUA_SIGNATURE</a>[0]) {
+    <a href="../h_src/57853000.htm" class="function">checkmode</a>(<a href="../h_src/57852320.htm" class="localvar">L</a>, <a href="../h_src/57851776.htm" class="localvar">p</a>-&gt;<a href="../h_src/57853136.htm" class="variable">mode</a>, &quot;binary&quot;);
+    <a href="../h_src/57852048.htm" class="localvar">cl</a> = <a href="../h_src/57614812.htm" class="function">luaU_undump</a>(<a href="../h_src/57852320.htm" class="localvar">L</a>, <a href="../h_src/57851776.htm" class="localvar">p</a>-&gt;<a href="../h_src/57853340.htm" class="variable">z</a>, <a href="../h_src/57851776.htm" class="localvar">p</a>-&gt;<a href="../h_src/57853068.htm" class="variable">name</a>);
+  }
+  else {
+    <a href="../h_src/57853000.htm" class="function">checkmode</a>(<a href="../h_src/57852320.htm" class="localvar">L</a>, <a href="../h_src/57851776.htm" class="localvar">p</a>-&gt;<a href="../h_src/57853136.htm" class="variable">mode</a>, &quot;text&quot;);
+    <a href="../h_src/57852048.htm" class="localvar">cl</a> = <a href="../h_src/57674420.htm" class="function">luaY_parser</a>(<a href="../h_src/57852320.htm" class="localvar">L</a>, <a href="../h_src/57851776.htm" class="localvar">p</a>-&gt;<a href="../h_src/57853340.htm" class="variable">z</a>, &amp;<a href="../h_src/57851776.htm" class="localvar">p</a>-&gt;<a href="../h_src/57853272.htm" class="variable">buff</a>, &amp;<a href="../h_src/57851776.htm" class="localvar">p</a>-&gt;<a href="../h_src/57853204.htm" class="variable">dyd</a>, <a href="../h_src/57851776.htm" class="localvar">p</a>-&gt;<a href="../h_src/57853068.htm" class="variable">name</a>, <a href="../h_src/57851640.htm" class="localvar">c</a>);
+  }
+  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(cl-&gt;nupvalues == cl-&gt;p-&gt;sizeupvalues);
+  <a href="../h_src/57630656.htm" class="function">luaF_initupvals</a>(<a href="../h_src/57852320.htm" class="localvar">L</a>, <a href="../h_src/57852048.htm" class="localvar">cl</a>);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,76 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaL_loadfilex</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57418548.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57418548.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57418548.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57418548.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57418548.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57418548.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58351320.htm#778" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int <a href="../h_src/57418548.htm" class="function">luaL_loadfilex</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58325548.htm" class="localvar">L</a>, const char *<a href="../h_src/58325412.htm" class="localvar">filename</a>,
+                                             const char *<a href="../h_src/58325276.htm" class="localvar">mode</a>) {
+  <a href="../h_src/58327452.htm" class="type">LoadF</a> <a href="../h_src/58325140.htm" class="localvar">lf</a>;
+  int <a href="../h_src/58325004.htm" class="localvar">status</a>, <a href="../h_src/58324868.htm" class="localvar">readstatus</a>;
+  int <a href="../h_src/58324732.htm" class="localvar">c</a>;
+  int <a href="../h_src/58324596.htm" class="localvar">fnameindex</a> = <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/58325548.htm" class="localvar">L</a>) + 1;  <a  class="comments">/* index of filename on the stack */</a>
+  if (<a href="../h_src/58325412.htm" class="localvar">filename</a> == NULL) {
+    <a href="../h_src/57427660.htm" class="macro">lua_pushliteral</a>(<a href="../h_src/58325548.htm" class="localvar">L</a>, &quot;=stdin&quot;);
+    <a href="../h_src/58325140.htm" class="localvar">lf</a>.f = stdin;
+  }
+  else {
+    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58325548.htm" class="localvar">L</a>, &quot;@%s&quot;, <a href="../h_src/58325412.htm" class="localvar">filename</a>);
+    <a href="../h_src/58325140.htm" class="localvar">lf</a>.f = <a href="../h_aa/58324460.htm" class="libfunc">fopen</a>(<a href="../h_src/58325412.htm" class="localvar">filename</a>, &quot;r&quot;);
+    if (<a href="../h_src/58325140.htm" class="localvar">lf</a>.f == NULL) return <a href="../h_src/58326500.htm" class="function">errfile</a>(<a href="../h_src/58325548.htm" class="localvar">L</a>, &quot;open&quot;, <a href="../h_src/58324596.htm" class="localvar">fnameindex</a>);
+  }
+  <a href="../h_src/58325140.htm" class="localvar">lf</a>.n = 0;
+  if (<a href="../h_aa/58324392.htm" class="libfunc">skipcomment</a>(<a href="../h_src/58325140.htm" class="localvar">lf</a>.f, &amp;<a href="../h_src/58324732.htm" class="localvar">c</a>))  <a  class="comments">/* read initial portion */</a>
+    <a href="../h_src/58325140.htm" class="localvar">lf</a>.<a href="../h_src/58327520.htm" class="variable">buff</a>[<a href="../h_src/58325140.htm" class="localvar">lf</a>.n++] = '\n';  <a  class="comments">/* add newline to correct line numbers */</a>
+  if (<a href="../h_src/58324732.htm" class="localvar">c</a> == <a href="../h_src/57445748.htm" class="macro">LUA_SIGNATURE</a>[0]) {  <a  class="comments">/* binary file? */</a>
+    <a href="../h_src/58325140.htm" class="localvar">lf</a>.n = 0;  <a  class="comments">/* remove possible newline */</a>
+    if (<a href="../h_src/58325412.htm" class="localvar">filename</a>) {  <a  class="comments">/* &quot;real&quot; file? */</a>
+      <a href="../h_src/58325140.htm" class="localvar">lf</a>.f = <a href="../h_aa/58324324.htm" class="libfunc">freopen</a>(<a href="../h_src/58325412.htm" class="localvar">filename</a>, &quot;rb&quot;, <a href="../h_src/58325140.htm" class="localvar">lf</a>.f);  <a  class="comments">/* reopen in binary mode */</a>
+      if (<a href="../h_src/58325140.htm" class="localvar">lf</a>.f == NULL) return <a href="../h_src/58326500.htm" class="function">errfile</a>(<a href="../h_src/58325548.htm" class="localvar">L</a>, &quot;reopen&quot;, <a href="../h_src/58324596.htm" class="localvar">fnameindex</a>);
+      <a href="../h_aa/58324392.htm" class="libfunc">skipcomment</a>(<a href="../h_src/58325140.htm" class="localvar">lf</a>.f, &amp;<a href="../h_src/58324732.htm" class="localvar">c</a>);  <a  class="comments">/* re-read initial portion */</a>
+    }
+  }
+  if (<a href="../h_src/58324732.htm" class="localvar">c</a> != EOF)
+    <a href="../h_src/58325140.htm" class="localvar">lf</a>.<a href="../h_src/58327520.htm" class="variable">buff</a>[<a href="../h_src/58325140.htm" class="localvar">lf</a>.n++] = <a href="../h_src/58324732.htm" class="localvar">c</a>;  <a  class="comments">/* 'c' is the first character of the stream */</a>
+  <a href="../h_src/58325004.htm" class="localvar">status</a> = <a href="../h_src/57432624.htm" class="function">lua_load</a>(<a href="../h_src/58325548.htm" class="localvar">L</a>, <a href="../h_src/58327384.htm" class="function">getF</a>, &amp;<a href="../h_src/58325140.htm" class="localvar">lf</a>, <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/58325548.htm" class="localvar">L</a>, -1), <a href="../h_src/58325276.htm" class="localvar">mode</a>);
+  <a href="../h_src/58324868.htm" class="localvar">readstatus</a> = <a href="../h_aa/58324256.htm" class="libfunc">ferror</a>(<a href="../h_src/58325140.htm" class="localvar">lf</a>.f);
+  if (<a href="../h_src/58325412.htm" class="localvar">filename</a>) <a href="../h_aa/58324188.htm" class="libfunc">fclose</a>(<a href="../h_src/58325140.htm" class="localvar">lf</a>.f);  <a  class="comments">/* close file (even in case of errors) */</a>
+  if (<a href="../h_src/58324868.htm" class="localvar">readstatus</a>) {
+    <a href="../h_src/57439288.htm" class="function">lua_settop</a>(<a href="../h_src/58325548.htm" class="localvar">L</a>, <a href="../h_src/58324596.htm" class="localvar">fnameindex</a>);  <a  class="comments">/* ignore results from 'lua_load' */</a>
+    return <a href="../h_src/58326500.htm" class="function">errfile</a>(<a href="../h_src/58325548.htm" class="localvar">L</a>, &quot;read&quot;, <a href="../h_src/58324596.htm" class="localvar">fnameindex</a>);
+  }
+  <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/58325548.htm" class="localvar">L</a>, <a href="../h_src/58324596.htm" class="localvar">fnameindex</a>);
+  return <a href="../h_src/58325004.htm" class="localvar">status</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

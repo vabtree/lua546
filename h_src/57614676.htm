@@ -1,0 +1,180 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lvm.h</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57614676.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/57614676.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/57614676.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/57614676.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_ua/57614676.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_da/57614676.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57614676.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57614676.htm" class="file" target="_self">Source Code</a></li>
+<li><a href="../h_sc/57614676.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<pre class=src>
+<a id=1></a><a  class="comments">/*</a>
+<a id=2></a><a  class="comments">** $Id: lvm.h $</a>
+<a id=3></a><a  class="comments">** Lua virtual machine</a>
+<a id=4></a><a  class="comments">** See Copyright Notice in lua.h</a>
+<a id=5></a><a  class="comments">*/</a>
+
+<a id=7></a>#ifndef <a href="../h_src/57614608.htm" class="macro">lvm_h</a>
+<a id=8></a>#define <a href="../h_src/57614472.htm" class="macro">lvm_h</a>
+
+
+<a id=11></a>#include &quot;<a href="../h_src/57635008.htm" class="file">ldo.h</a>&quot;
+<a id=12></a>#include &quot;<a href="../h_src/57537696.htm" class="file">lobject.h</a>&quot;
+<a id=13></a>#include &quot;<a href="../h_src/57501248.htm" class="file">ltm.h</a>&quot;
+
+
+<a id=16></a>#if !defined(<a href="../h_src/57614336.htm" class="macro">LUA_NOCVTN2S</a>)
+<a id=17></a>#define <a href="../h_src/57614200.htm" class="macro">cvt2str</a>(o)	ttisnumber(o)
+#else
+<a id=19></a>#define cvt2str(o)	0	<a  class="comments">/* no conversion from numbers to strings */</a>
+#endif
+
+
+<a id=23></a>#if !defined(<a href="../h_src/57614064.htm" class="macro">LUA_NOCVTS2N</a>)
+<a id=24></a>#define <a href="../h_src/57613928.htm" class="macro">cvt2num</a>(o)	ttisstring(o)
+#else
+<a id=26></a>#define cvt2num(o)	0	<a  class="comments">/* no conversion from strings to numbers */</a>
+#endif
+
+
+<a id=30></a><a  class="comments">/*</a>
+<a id=31></a><a  class="comments">** You can define LUA_FLOORN2I if you want to convert floats to integers</a>
+<a id=32></a><a  class="comments">** by flooring them (instead of raising an error if they are not</a>
+<a id=33></a><a  class="comments">** integral values)</a>
+<a id=34></a><a  class="comments">*/</a>
+<a id=35></a>#if !defined(<a href="../h_src/57613792.htm" class="macro">LUA_FLOORN2I</a>)
+<a id=36></a>#define <a href="../h_src/57613656.htm" class="macro">LUA_FLOORN2I</a>		F2Ieq
+#endif
+
+
+<a id=40></a><a  class="comments">/*</a>
+<a id=41></a><a  class="comments">** Rounding modes for float-&gt;integer coercion</a>
+<a id=42></a><a  class="comments"> */</a>
+typedef enum {
+<a id=44></a>  <a href="../h_src/57613520.htm" class="variable">F2Ieq</a>,     <a  class="comments">/* no rounding; accepts only integral values */</a>
+<a id=45></a>  <a href="../h_src/57613452.htm" class="variable">F2Ifloor</a>,  <a  class="comments">/* takes the floor of the number */</a>
+<a id=46></a>  <a href="../h_src/57613384.htm" class="variable">F2Iceil</a>    <a  class="comments">/* takes the ceil of the number */</a>
+<a id=47></a>} <a href="../h_src/57613180.htm" class="type">F2Imod</a>;
+
+
+<a id=50></a><a  class="comments">/* convert an object to a float (including string coercion) */</a>
+<a id=51></a>#define <a href="../h_src/57613112.htm" class="macro">tonumber</a>(o,n) \
+	(ttisfloat(o) ? (*(n) = fltvalue(o), 1) : luaV_tonumber_(o,n))
+
+
+<a id=55></a><a  class="comments">/* convert an object to a float (without string coercion) */</a>
+<a id=56></a>#define <a href="../h_src/57612976.htm" class="macro">tonumberns</a>(o,n) \
+	(ttisfloat(o) ? ((n) = fltvalue(o), 1) : \
+	(ttisinteger(o) ? ((n) = cast_num(ivalue(o)), 1) : 0))
+
+
+<a id=61></a><a  class="comments">/* convert an object to an integer (including string coercion) */</a>
+<a id=62></a>#define <a href="../h_src/57612840.htm" class="macro">tointeger</a>(o,i) \
+  (l_likely(ttisinteger(o)) ? (*(i) = ivalue(o), 1) \
+                          : luaV_tointeger(o,i,LUA_FLOORN2I))
+
+
+<a id=67></a><a  class="comments">/* convert an object to an integer (without string coercion) */</a>
+<a id=68></a>#define <a href="../h_src/57612704.htm" class="macro">tointegerns</a>(o,i) \
+  (l_likely(ttisinteger(o)) ? (*(i) = ivalue(o), 1) \
+                          : luaV_tointegerns(o,i,LUA_FLOORN2I))
+
+
+<a id=73></a>#define <a href="../h_src/57612568.htm" class="macro">intop</a>(op,v1,v2) l_castU2S(l_castS2U(v1) op l_castS2U(v2))
+
+<a id=75></a>#define <a href="../h_src/57612432.htm" class="macro">luaV_rawequalobj</a>(t1,t2)		luaV_equalobj(NULL,t1,t2)
+
+
+<a id=78></a><a  class="comments">/*</a>
+<a id=79></a><a  class="comments">** fast track for 'gettable': if 't' is a table and 't[k]' is present,</a>
+<a id=80></a><a  class="comments">** return 1 with 'slot' pointing to 't[k]' (position of final result).</a>
+<a id=81></a><a  class="comments">** Otherwise, return 0 (meaning it will have to check metamethod)</a>
+<a id=82></a><a  class="comments">** with 'slot' pointing to an empty 't[k]' (if 't' is a table) or NULL</a>
+<a id=83></a><a  class="comments">** (otherwise). 'f' is the raw get function to use.</a>
+<a id=84></a><a  class="comments">*/</a>
+<a id=85></a>#define <a href="../h_src/57612296.htm" class="macro">luaV_fastget</a>(L,t,k,slot,f) \
+  (!ttistable(t)  \
+<a id=87></a>   ? (slot = NULL, 0)  <a  class="comments">/* not a table; 'slot' is NULL and result is 0 */</a>  \
+<a id=88></a>   : (slot = f(hvalue(t), k),  <a  class="comments">/* else, do raw access */</a>  \
+<a id=89></a>      !isempty(slot)))  <a  class="comments">/* result not empty? */</a>
+
+
+<a id=92></a><a  class="comments">/*</a>
+<a id=93></a><a  class="comments">** Special case of 'luaV_fastget' for integers, inlining the fast case</a>
+<a id=94></a><a  class="comments">** of 'luaH_getint'.</a>
+<a id=95></a><a  class="comments">*/</a>
+<a id=96></a>#define <a href="../h_src/57612160.htm" class="macro">luaV_fastgeti</a>(L,t,k,slot) \
+  (!ttistable(t)  \
+<a id=98></a>   ? (slot = NULL, 0)  <a  class="comments">/* not a table; 'slot' is NULL and result is 0 */</a>  \
+   : (slot = (l_castS2U(k) - 1u &lt; hvalue(t)-&gt;alimit) \
+              ? &amp;hvalue(t)-&gt;array[k - 1] : luaH_getint(hvalue(t), k), \
+<a id=101></a>      !isempty(slot)))  <a  class="comments">/* result not empty? */</a>
+
+
+<a id=104></a><a  class="comments">/*</a>
+<a id=105></a><a  class="comments">** Finish a fast set operation (when fast get succeeds). In that case,</a>
+<a id=106></a><a  class="comments">** 'slot' points to the place to put the value.</a>
+<a id=107></a><a  class="comments">*/</a>
+<a id=108></a>#define <a href="../h_src/57612024.htm" class="macro">luaV_finishfastset</a>(L,t,slot,v) \
+    { setobj2t(L, cast(TValue *,slot), v); \
+      luaC_barrierback(L, gcvalue(t), v); }
+
+
+<a id=113></a><a  class="comments">/*</a>
+<a id=114></a><a  class="comments">** Shift right is the same as shift left with a negative 'y'</a>
+<a id=115></a><a  class="comments">*/</a>
+<a id=116></a>#define <a href="../h_src/57611888.htm" class="macro">luaV_shiftr</a>(x,y)	luaV_shiftl(x,intop(-, 0, y))
+
+
+
+<a id=120></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> int <a href="../h_src/57611752.htm" class="function">luaV_equalobj</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const <a href="../h_src/57535384.htm" class="type">TValue</a> *t1, const <a href="../h_src/57535384.htm" class="type">TValue</a> *t2);
+<a id=121></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> int <a href="../h_src/57611684.htm" class="function">luaV_lessthan</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const <a href="../h_src/57535384.htm" class="type">TValue</a> *l, const <a href="../h_src/57535384.htm" class="type">TValue</a> *r);
+<a id=122></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> int <a href="../h_src/57611616.htm" class="function">luaV_lessequal</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const <a href="../h_src/57535384.htm" class="type">TValue</a> *l, const <a href="../h_src/57535384.htm" class="type">TValue</a> *r);
+<a id=123></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> int <a href="../h_src/57611548.htm" class="function">luaV_tonumber_</a> (const <a href="../h_src/57535384.htm" class="type">TValue</a> *obj, <a href="../h_src/57442144.htm" class="type">lua_Number</a> *n);
+<a id=124></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> int <a href="../h_src/57611412.htm" class="function">luaV_tointeger</a> (const <a href="../h_src/57535384.htm" class="type">TValue</a> *obj, <a href="../h_src/57442076.htm" class="type">lua_Integer</a> *p, <a href="../h_src/57613180.htm" class="type">F2Imod</a> mode);
+<a id=125></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> int <a href="../h_src/57611276.htm" class="function">luaV_tointegerns</a> (const <a href="../h_src/57535384.htm" class="type">TValue</a> *obj, <a href="../h_src/57442076.htm" class="type">lua_Integer</a> *p,
+<a id=126></a>                                <a href="../h_src/57613180.htm" class="type">F2Imod</a> mode);
+<a id=127></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> int <a href="../h_src/57611208.htm" class="function">luaV_flttointeger</a> (<a href="../h_src/57442144.htm" class="type">lua_Number</a> n, <a href="../h_src/57442076.htm" class="type">lua_Integer</a> *p, <a href="../h_src/57613180.htm" class="type">F2Imod</a> mode);
+<a id=128></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57611140.htm" class="function">luaV_finishget</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const <a href="../h_src/57535384.htm" class="type">TValue</a> *t, <a href="../h_src/57535384.htm" class="type">TValue</a> *key,
+<a id=129></a>                               <a href="../h_src/57532188.htm" class="type">StkId</a> val, const <a href="../h_src/57535384.htm" class="type">TValue</a> *slot);
+<a id=130></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57611072.htm" class="function">luaV_finishset</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const <a href="../h_src/57535384.htm" class="type">TValue</a> *t, <a href="../h_src/57535384.htm" class="type">TValue</a> *key,
+<a id=131></a>                               <a href="../h_src/57535384.htm" class="type">TValue</a> *val, const <a href="../h_src/57535384.htm" class="type">TValue</a> *slot);
+<a id=132></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57611004.htm" class="function">luaV_finishOp</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L);
+<a id=133></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57610936.htm" class="function">luaV_execute</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57537764.htm" class="type">CallInfo</a> *ci);
+<a id=134></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57610868.htm" class="function">luaV_concat</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int total);
+<a id=135></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/57610800.htm" class="function">luaV_idiv</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57442076.htm" class="type">lua_Integer</a> x, <a href="../h_src/57442076.htm" class="type">lua_Integer</a> y);
+<a id=136></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/57610732.htm" class="function">luaV_mod</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57442076.htm" class="type">lua_Integer</a> x, <a href="../h_src/57442076.htm" class="type">lua_Integer</a> y);
+<a id=137></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/57610664.htm" class="function">luaV_modf</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57442144.htm" class="type">lua_Number</a> x, <a href="../h_src/57442144.htm" class="type">lua_Number</a> y);
+<a id=138></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/57610596.htm" class="function">luaV_shiftl</a> (<a href="../h_src/57442076.htm" class="type">lua_Integer</a> x, <a href="../h_src/57442076.htm" class="type">lua_Integer</a> y);
+<a id=139></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57610528.htm" class="function">luaV_objlen</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57532188.htm" class="type">StkId</a> ra, const <a href="../h_src/57535384.htm" class="type">TValue</a> *rb);
+
+#endif
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

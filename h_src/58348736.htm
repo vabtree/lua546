@@ -1,0 +1,51 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lastlevel</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58348736.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58348736.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58348736.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58348736.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58348736.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58348736.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58351320.htm#116" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/58348736.htm" class="function">lastlevel</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58348600.htm" class="localvar">L</a>) {
+  <a href="../h_src/57440308.htm" class="type">lua_Debug</a> <a href="../h_src/58348464.htm" class="localvar">ar</a>;
+  int <a href="../h_src/58348328.htm" class="localvar">li</a> = 1, <a href="../h_src/58348192.htm" class="localvar">le</a> = 1;
+  <a  class="comments">/* find an upper bound */</a>
+  while (<a href="../h_src/57424668.htm" class="function">lua_getstack</a>(<a href="../h_src/58348600.htm" class="localvar">L</a>, <a href="../h_src/58348192.htm" class="localvar">le</a>, &amp;<a href="../h_src/58348464.htm" class="localvar">ar</a>)) { <a href="../h_src/58348328.htm" class="localvar">li</a> = <a href="../h_src/58348192.htm" class="localvar">le</a>; <a href="../h_src/58348192.htm" class="localvar">le</a> *= 2; }
+  <a  class="comments">/* do a binary search */</a>
+  while (<a href="../h_src/58348328.htm" class="localvar">li</a> &lt; <a href="../h_src/58348192.htm" class="localvar">le</a>) {
+    int <a href="../h_src/58348056.htm" class="localvar">m</a> = (<a href="../h_src/58348328.htm" class="localvar">li</a> + <a href="../h_src/58348192.htm" class="localvar">le</a>)/2;
+    if (<a href="../h_src/57424668.htm" class="function">lua_getstack</a>(<a href="../h_src/58348600.htm" class="localvar">L</a>, <a href="../h_src/58348056.htm" class="localvar">m</a>, &amp;<a href="../h_src/58348464.htm" class="localvar">ar</a>)) <a href="../h_src/58348328.htm" class="localvar">li</a> = <a href="../h_src/58348056.htm" class="localvar">m</a> + 1;
+    else <a href="../h_src/58348192.htm" class="localvar">le</a> = <a href="../h_src/58348056.htm" class="localvar">m</a>;
+  }
+  return <a href="../h_src/58348192.htm" class="localvar">le</a> - 1;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,467 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>loslib.c</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143359192.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/143359192.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/143359192.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/143359192.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_uf/143359192.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_df/143359192.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/143359192.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143359192.htm" class="file" target="_self">Source Code</a></li>
+<li><a href="../h_sc/143359192.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<pre class=src>
+<a id=1></a><a  class="comments">/*</a>
+<a id=2></a><a  class="comments">** $Id: loslib.c $</a>
+<a id=3></a><a  class="comments">** Standard Operating System library</a>
+<a id=4></a><a  class="comments">** See Copyright Notice in lua.h</a>
+<a id=5></a><a  class="comments">*/</a>
+
+<a id=7></a>#define <a href="../h_src/143359124.htm" class="macro">loslib_c</a>
+<a id=8></a>#define <a href="../h_src/143358988.htm" class="macro">LUA_LIB</a>
+
+<a id=10></a>#include &quot;<a href="../h_src/57461592.htm" class="file">lprefix.h</a>&quot;
+
+
+#include &lt;errno.h&gt;
+#include &lt;locale.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;time.h&gt;
+
+<a id=19></a>#include &quot;<a href="../h_src/57460028.htm" class="file">lua.h</a>&quot;
+
+<a id=21></a>#include &quot;<a href="../h_src/57422356.htm" class="file">lauxlib.h</a>&quot;
+<a id=22></a>#include &quot;<a href="../h_src/57410932.htm" class="file">lualib.h</a>&quot;
+
+
+<a id=25></a><a  class="comments">/*</a>
+<a id=26></a><a  class="comments">** {==================================================================</a>
+<a id=27></a><a  class="comments">** List of valid conversion specifiers for the 'strftime' function;</a>
+<a id=28></a><a  class="comments">** options are grouped by length; group of length 2 start with '||'.</a>
+<a id=29></a><a  class="comments">** ===================================================================</a>
+<a id=30></a><a  class="comments">*/</a>
+<a id=31></a>#if !defined(<a href="../h_src/143358852.htm" class="macro">LUA_STRFTIMEOPTIONS</a>)	<a  class="comments">/* { */</a>
+
+<a id=33></a>#if defined(<a href="../h_src/57459212.htm" class="macro">LUA_USE_WINDOWS</a>)
+<a id=34></a>#define <a href="../h_src/143358716.htm" class="macro">LUA_STRFTIMEOPTIONS</a>  &quot;aAbBcdHIjmMpSUwWxXyYzZ%&quot; \
+<a id=35></a>    &quot;||&quot; &quot;#c#x#d#H#I#j#m#M#S#U#w#W#y#Y&quot;  <a  class="comments">/* two-char options */</a>
+<a id=36></a>#elif defined(LUA_USE_C89)  <a  class="comments">/* ANSI C 89 (only 1-char options) */</a>
+#define LUA_STRFTIMEOPTIONS  &quot;aAbBcdHIjmMpSUwWxXyYZ%&quot;
+<a id=38></a>#else  <a  class="comments">/* C99 specification */</a>
+#define LUA_STRFTIMEOPTIONS  &quot;aAbBcCdDeFgGhHIjmMnprRStTuUVwWxXyYzZ%&quot; \
+<a id=40></a>    &quot;||&quot; &quot;EcECExEXEyEY&quot; &quot;OdOeOHOIOmOMOSOuOUOVOwOWOy&quot;  <a  class="comments">/* two-char options */</a>
+#endif
+
+<a id=43></a>#endif					<a  class="comments">/* } */</a>
+<a id=44></a><a  class="comments">/* }================================================================== */</a>
+
+
+<a id=47></a><a  class="comments">/*</a>
+<a id=48></a><a  class="comments">** {==================================================================</a>
+<a id=49></a><a  class="comments">** Configuration for time-related stuff</a>
+<a id=50></a><a  class="comments">** ===================================================================</a>
+<a id=51></a><a  class="comments">*/</a>
+
+<a id=53></a><a  class="comments">/*</a>
+<a id=54></a><a  class="comments">** type to represent time_t in Lua</a>
+<a id=55></a><a  class="comments">*/</a>
+<a id=56></a>#if !defined(<a href="../h_src/143358580.htm" class="macro">LUA_NUMTIME</a>)	<a  class="comments">/* { */</a>
+
+<a id=58></a>#define <a href="../h_src/143358444.htm" class="macro">l_timet</a>			lua_Integer
+<a id=59></a>#define <a href="../h_src/143358308.htm" class="macro">l_pushtime</a>(L,t)		lua_pushinteger(L,(lua_Integer)(t))
+<a id=60></a>#define <a href="../h_src/143358172.htm" class="macro">l_gettime</a>(L,arg)	luaL_checkinteger(L, arg)
+
+<a id=62></a>#else				<a  class="comments">/* }{ */</a>
+
+#define l_timet			lua_Number
+#define l_pushtime(L,t)		lua_pushnumber(L,(lua_Number)(t))
+#define l_gettime(L,arg)	luaL_checknumber(L, arg)
+
+<a id=68></a>#endif				<a  class="comments">/* } */</a>
+
+
+<a id=71></a>#if !defined(<a href="../h_src/143358036.htm" class="macro">l_gmtime</a>)		<a  class="comments">/* { */</a>
+<a id=72></a><a  class="comments">/*</a>
+<a id=73></a><a  class="comments">** By default, Lua uses gmtime/localtime, except when POSIX is available,</a>
+<a id=74></a><a  class="comments">** where it uses gmtime_r/localtime_r</a>
+<a id=75></a><a  class="comments">*/</a>
+
+<a id=77></a>#if defined(<a href="../h_src/57572852.htm" class="macro">LUA_USE_POSIX</a>)	<a  class="comments">/* { */</a>
+
+#define l_gmtime(t,r)		gmtime_r(t,r)
+#define l_localtime(t,r)	localtime_r(t,r)
+
+<a id=82></a>#else				<a  class="comments">/* }{ */</a>
+
+<a id=84></a><a  class="comments">/* ISO C definitions */</a>
+<a id=85></a>#define <a href="../h_src/143357900.htm" class="macro">l_gmtime</a>(t,r)		((void)(r)-&gt;tm_sec, gmtime(t))
+<a id=86></a>#define <a href="../h_src/143357764.htm" class="macro">l_localtime</a>(t,r)	((void)(r)-&gt;tm_sec, localtime(t))
+
+<a id=88></a>#endif				<a  class="comments">/* } */</a>
+
+<a id=90></a>#endif				<a  class="comments">/* } */</a>
+
+<a id=92></a><a  class="comments">/* }================================================================== */</a>
+
+
+<a id=95></a><a  class="comments">/*</a>
+<a id=96></a><a  class="comments">** {==================================================================</a>
+<a id=97></a><a  class="comments">** Configuration for 'tmpnam':</a>
+<a id=98></a><a  class="comments">** By default, Lua uses tmpnam except when POSIX is available, where</a>
+<a id=99></a><a  class="comments">** it uses mkstemp.</a>
+<a id=100></a><a  class="comments">** ===================================================================</a>
+<a id=101></a><a  class="comments">*/</a>
+<a id=102></a>#if !defined(<a href="../h_src/143357628.htm" class="macro">lua_tmpnam</a>)	<a  class="comments">/* { */</a>
+
+<a id=104></a>#if defined(<a href="../h_src/57572852.htm" class="macro">LUA_USE_POSIX</a>)	<a  class="comments">/* { */</a>
+
+#include &lt;unistd.h&gt;
+
+#define LUA_TMPNAMBUFSIZE	32
+
+#if !defined(LUA_TMPNAMTEMPLATE)
+#define LUA_TMPNAMTEMPLATE	&quot;/tmp/lua_XXXXXX&quot;
+#endif
+
+#define lua_tmpnam(b,e) { \
+        strcpy(b, LUA_TMPNAMTEMPLATE); \
+        e = mkstemp(b); \
+        if (e != -1) close(e); \
+        e = (e == -1); }
+
+<a id=120></a>#else				<a  class="comments">/* }{ */</a>
+
+<a id=122></a><a  class="comments">/* ISO C definitions */</a>
+<a id=123></a>#define <a href="../h_src/143357492.htm" class="macro">LUA_TMPNAMBUFSIZE</a>	L_tmpnam
+<a id=124></a>#define <a href="../h_src/143357356.htm" class="macro">lua_tmpnam</a>(b,e)		{ e = (tmpnam(b) == NULL); }
+
+<a id=126></a>#endif				<a  class="comments">/* } */</a>
+
+<a id=128></a>#endif				<a  class="comments">/* } */</a>
+<a id=129></a><a  class="comments">/* }================================================================== */</a>
+
+
+<a id=132></a>#if !defined(<a href="../h_src/143357220.htm" class="macro">l_system</a>)
+<a id=133></a>#if defined(<a href="../h_src/57458532.htm" class="macro">LUA_USE_IOS</a>)
+<a id=134></a><a  class="comments">/* Despite claiming to be ISO C, iOS does not implement 'system'. */</a>
+#define l_system(cmd) ((cmd) == NULL ? 0 : -1)
+#else
+<a id=137></a>#define <a href="../h_src/143357084.htm" class="macro">l_system</a>(cmd)	system(cmd)  <a  class="comments">/* default definition */</a>
+#endif
+#endif
+
+
+<a id=142></a>static int <a href="../h_src/143356948.htm" class="function">os_execute</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143356812.htm" class="localvar">L</a>) {
+<a id=143></a>  const char *<a href="../h_src/143356676.htm" class="localvar">cmd</a> = <a href="../h_src/57416848.htm" class="macro">luaL_optstring</a>(<a href="../h_src/143356812.htm" class="localvar">L</a>, 1, NULL);
+<a id=144></a>  int <a href="../h_src/143356540.htm" class="localvar">stat</a>;
+  errno = 0;
+<a id=146></a>  <a href="../h_src/143356540.htm" class="localvar">stat</a> = <a href="../h_src/143357084.htm" class="macro">l_system</a>(<a href="../h_src/143356676.htm" class="localvar">cmd</a>);
+<a id=147></a>  if (<a href="../h_src/143356676.htm" class="localvar">cmd</a> != NULL)
+<a id=148></a>    return <a href="../h_src/57419024.htm" class="function">luaL_execresult</a>(<a href="../h_src/143356812.htm" class="localvar">L</a>, <a href="../h_src/143356540.htm" class="localvar">stat</a>);
+  else {
+<a id=150></a>    <a href="../h_src/57434596.htm" class="function">lua_pushboolean</a>(<a href="../h_src/143356812.htm" class="localvar">L</a>, <a href="../h_src/143356540.htm" class="localvar">stat</a>);  <a  class="comments">/* true if there is a shell */</a>
+    return 1;
+  }
+}
+
+
+<a id=156></a>static int <a href="../h_src/143356336.htm" class="function">os_remove</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143356200.htm" class="localvar">L</a>) {
+<a id=157></a>  const char *<a href="../h_src/143356064.htm" class="localvar">filename</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143356200.htm" class="localvar">L</a>, 1);
+<a id=158></a>  return <a href="../h_src/57419092.htm" class="function">luaL_fileresult</a>(<a href="../h_src/143356200.htm" class="localvar">L</a>, <a href="../h_aa/143355928.htm" class="libfunc">remove</a>(<a href="../h_src/143356064.htm" class="localvar">filename</a>) == 0, <a href="../h_src/143356064.htm" class="localvar">filename</a>);
+}
+
+
+<a id=162></a>static int <a href="../h_src/143355860.htm" class="function">os_rename</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143355724.htm" class="localvar">L</a>) {
+<a id=163></a>  const char *<a href="../h_src/143355588.htm" class="localvar">fromname</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143355724.htm" class="localvar">L</a>, 1);
+<a id=164></a>  const char *<a href="../h_src/143355452.htm" class="localvar">toname</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143355724.htm" class="localvar">L</a>, 2);
+<a id=165></a>  return <a href="../h_src/57419092.htm" class="function">luaL_fileresult</a>(<a href="../h_src/143355724.htm" class="localvar">L</a>, <a href="../h_aa/143355316.htm" class="libfunc">rename</a>(<a href="../h_src/143355588.htm" class="localvar">fromname</a>, <a href="../h_src/143355452.htm" class="localvar">toname</a>) == 0, NULL);
+}
+
+
+<a id=169></a>static int <a href="../h_src/143355248.htm" class="function">os_tmpname</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143355112.htm" class="localvar">L</a>) {
+<a id=170></a>  char <a href="../h_src/143354976.htm" class="localvar">buff</a>[<a href="../h_src/143357492.htm" class="macro">LUA_TMPNAMBUFSIZE</a>];
+<a id=171></a>  int <a href="../h_src/143354840.htm" class="localvar">err</a>;
+<a id=172></a>  <a href="../h_src/143357356.htm" class="macro">lua_tmpnam</a>(<a href="../h_src/143354976.htm" class="localvar">buff</a>, <a href="../h_src/143354840.htm" class="localvar">err</a>);
+<a id=173></a>  if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/143354840.htm" class="localvar">err</a>))
+<a id=174></a>    return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143355112.htm" class="localvar">L</a>, &quot;unable to generate a unique filename&quot;);
+<a id=175></a>  <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/143355112.htm" class="localvar">L</a>, <a href="../h_src/143354976.htm" class="localvar">buff</a>);
+  return 1;
+}
+
+
+<a id=180></a>static int <a href="../h_src/143354636.htm" class="function">os_getenv</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143354500.htm" class="localvar">L</a>) {
+<a id=181></a>  <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/143354500.htm" class="localvar">L</a>, <a href="../h_aa/57561428.htm" class="libfunc">getenv</a>(<a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143354500.htm" class="localvar">L</a>, 1)));  <a  class="comments">/* if NULL push nil */</a>
+  return 1;
+}
+
+
+<a id=186></a>static int <a href="../h_src/143354364.htm" class="function">os_clock</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143354228.htm" class="localvar">L</a>) {
+<a id=187></a>  <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143354228.htm" class="localvar">L</a>, ((<a href="../h_src/57442144.htm" class="type">lua_Number</a>)<a href="../h_aa/143354092.htm" class="libfunc">clock</a>())/(<a href="../h_src/57442144.htm" class="type">lua_Number</a>)CLOCKS_PER_SEC);
+  return 1;
+}
+
+
+<a id=192></a><a  class="comments">/*</a>
+<a id=193></a><a  class="comments">** {======================================================</a>
+<a id=194></a><a  class="comments">** Time/Date operations</a>
+<a id=195></a><a  class="comments">** { year=%Y, month=%m, day=%d, hour=%H, min=%M, sec=%S,</a>
+<a id=196></a><a  class="comments">**   wday=%w+1, yday=%j, isdst=? }</a>
+<a id=197></a><a  class="comments">** =======================================================</a>
+<a id=198></a><a  class="comments">*/</a>
+
+<a id=200></a><a  class="comments">/*</a>
+<a id=201></a><a  class="comments">** About the overflow check: an overflow cannot occur when time</a>
+<a id=202></a><a  class="comments">** is represented by a lua_Integer, because either lua_Integer is</a>
+<a id=203></a><a  class="comments">** large enough to represent all int fields or it is not large enough</a>
+<a id=204></a><a  class="comments">** to represent a time that cause a field to overflow.  However, if</a>
+<a id=205></a><a  class="comments">** times are represented as doubles and lua_Integer is int, then the</a>
+<a id=206></a><a  class="comments">** time 0x1.e1853b0d184f6p+55 would cause an overflow when adding 1900</a>
+<a id=207></a><a  class="comments">** to compute the year.</a>
+<a id=208></a><a  class="comments">*/</a>
+<a id=209></a>static void <a href="../h_src/143354024.htm" class="function">setfield</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143353888.htm" class="localvar">L</a>, const char *<a href="../h_src/143353752.htm" class="localvar">key</a>, int <a href="../h_src/143353616.htm" class="localvar">value</a>, int <a href="../h_src/143353480.htm" class="localvar">delta</a>) {
+<a id=210></a>  #if (defined(<a href="../h_src/143358580.htm" class="macro">LUA_NUMTIME</a>) &amp;&amp; <a href="../h_src/57450100.htm" class="macro">LUA_MAXINTEGER</a> &lt;= INT_MAX)
+    if (l_unlikely(value &gt; LUA_MAXINTEGER - delta))
+      luaL_error(L, &quot;field '%s' is out-of-bound&quot;, key);
+  #endif
+<a id=214></a>  <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143353888.htm" class="localvar">L</a>, (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)<a href="../h_src/143353616.htm" class="localvar">value</a> + <a href="../h_src/143353480.htm" class="localvar">delta</a>);
+<a id=215></a>  <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/143353888.htm" class="localvar">L</a>, -2, <a href="../h_src/143353752.htm" class="localvar">key</a>);
+}
+
+
+<a id=219></a>static void <a href="../h_src/143353344.htm" class="function">setboolfield</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143353208.htm" class="localvar">L</a>, const char *<a href="../h_src/143353072.htm" class="localvar">key</a>, int <a href="../h_src/143352936.htm" class="localvar">value</a>) {
+<a id=220></a>  if (<a href="../h_src/143352936.htm" class="localvar">value</a> &lt; 0)  <a  class="comments">/* undefined? */</a>
+<a id=221></a>    return;  <a  class="comments">/* does not set field */</a>
+<a id=222></a>  <a href="../h_src/57434596.htm" class="function">lua_pushboolean</a>(<a href="../h_src/143353208.htm" class="localvar">L</a>, <a href="../h_src/143352936.htm" class="localvar">value</a>);
+<a id=223></a>  <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/143353208.htm" class="localvar">L</a>, -2, <a href="../h_src/143353072.htm" class="localvar">key</a>);
+}
+
+
+<a id=227></a><a  class="comments">/*</a>
+<a id=228></a><a  class="comments">** Set all fields from structure 'tm' in the table on top of the stack</a>
+<a id=229></a><a  class="comments">*/</a>
+<a id=230></a>static void <a href="../h_src/143352664.htm" class="function">setallfields</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143352528.htm" class="localvar">L</a>, struct <a href="../h_src/143352800.htm" class="class">tm</a> *<a href="../h_src/143352256.htm" class="localvar">stm</a>) {
+<a id=231></a>  <a href="../h_src/143354024.htm" class="function">setfield</a>(<a href="../h_src/143352528.htm" class="localvar">L</a>, &quot;year&quot;, <a href="../h_src/143352256.htm" class="localvar">stm</a>-&gt;tm_year, 1900);
+<a id=232></a>  <a href="../h_src/143354024.htm" class="function">setfield</a>(<a href="../h_src/143352528.htm" class="localvar">L</a>, &quot;month&quot;, <a href="../h_src/143352256.htm" class="localvar">stm</a>-&gt;tm_mon, 1);
+<a id=233></a>  <a href="../h_src/143354024.htm" class="function">setfield</a>(<a href="../h_src/143352528.htm" class="localvar">L</a>, &quot;day&quot;, <a href="../h_src/143352256.htm" class="localvar">stm</a>-&gt;tm_mday, 0);
+<a id=234></a>  <a href="../h_src/143354024.htm" class="function">setfield</a>(<a href="../h_src/143352528.htm" class="localvar">L</a>, &quot;hour&quot;, <a href="../h_src/143352256.htm" class="localvar">stm</a>-&gt;tm_hour, 0);
+<a id=235></a>  <a href="../h_src/143354024.htm" class="function">setfield</a>(<a href="../h_src/143352528.htm" class="localvar">L</a>, &quot;min&quot;, <a href="../h_src/143352256.htm" class="localvar">stm</a>-&gt;tm_min, 0);
+<a id=236></a>  <a href="../h_src/143354024.htm" class="function">setfield</a>(<a href="../h_src/143352528.htm" class="localvar">L</a>, &quot;sec&quot;, <a href="../h_src/143352256.htm" class="localvar">stm</a>-&gt;tm_sec, 0);
+<a id=237></a>  <a href="../h_src/143354024.htm" class="function">setfield</a>(<a href="../h_src/143352528.htm" class="localvar">L</a>, &quot;yday&quot;, <a href="../h_src/143352256.htm" class="localvar">stm</a>-&gt;tm_yday, 1);
+<a id=238></a>  <a href="../h_src/143354024.htm" class="function">setfield</a>(<a href="../h_src/143352528.htm" class="localvar">L</a>, &quot;wday&quot;, <a href="../h_src/143352256.htm" class="localvar">stm</a>-&gt;tm_wday, 1);
+<a id=239></a>  <a href="../h_src/143353344.htm" class="function">setboolfield</a>(<a href="../h_src/143352528.htm" class="localvar">L</a>, &quot;isdst&quot;, <a href="../h_src/143352256.htm" class="localvar">stm</a>-&gt;tm_isdst);
+}
+
+
+<a id=243></a>static int <a href="../h_src/143352120.htm" class="function">getboolfield</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143351984.htm" class="localvar">L</a>, const char *<a href="../h_src/143351848.htm" class="localvar">key</a>) {
+<a id=244></a>  int <a href="../h_src/143351712.htm" class="localvar">res</a>;
+<a id=245></a>  <a href="../h_src/143351712.htm" class="localvar">res</a> = (<a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143351984.htm" class="localvar">L</a>, -1, <a href="../h_src/143351848.htm" class="localvar">key</a>) == <a href="../h_src/57444048.htm" class="macro">LUA_TNIL</a>) ? -1 : <a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/143351984.htm" class="localvar">L</a>, -1);
+<a id=246></a>  <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143351984.htm" class="localvar">L</a>, 1);
+<a id=247></a>  return <a href="../h_src/143351712.htm" class="localvar">res</a>;
+}
+
+
+<a id=251></a>static int <a href="../h_src/143351576.htm" class="function">getfield</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143351440.htm" class="localvar">L</a>, const char *<a href="../h_src/143351304.htm" class="localvar">key</a>, int <a href="../h_src/143351168.htm" class="localvar">d</a>, int <a href="../h_src/143351032.htm" class="localvar">delta</a>) {
+<a id=252></a>  int <a href="../h_src/143350896.htm" class="localvar">isnum</a>;
+<a id=253></a>  int <a href="../h_src/143350760.htm" class="localvar">t</a> = <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143351440.htm" class="localvar">L</a>, -1, <a href="../h_src/143351304.htm" class="localvar">key</a>);  <a  class="comments">/* get field and its type */</a>
+<a id=254></a>  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143350624.htm" class="localvar">res</a> = <a href="../h_src/57438336.htm" class="function">lua_tointegerx</a>(<a href="../h_src/143351440.htm" class="localvar">L</a>, -1, &amp;<a href="../h_src/143350896.htm" class="localvar">isnum</a>);
+<a id=255></a>  if (!<a href="../h_src/143350896.htm" class="localvar">isnum</a>) {  <a  class="comments">/* field is not an integer? */</a>
+<a id=256></a>    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/143350760.htm" class="localvar">t</a> != <a href="../h_src/57444048.htm" class="macro">LUA_TNIL</a>))  <a  class="comments">/* some other value? */</a>
+<a id=257></a>      return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143351440.htm" class="localvar">L</a>, &quot;field '%s' is not an integer&quot;, <a href="../h_src/143351304.htm" class="localvar">key</a>);
+<a id=258></a>    else if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/143351168.htm" class="localvar">d</a> &lt; 0))  <a  class="comments">/* absent field; no default? */</a>
+<a id=259></a>      return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143351440.htm" class="localvar">L</a>, &quot;field '%s' missing in date table&quot;, <a href="../h_src/143351304.htm" class="localvar">key</a>);
+<a id=260></a>    <a href="../h_src/143350624.htm" class="localvar">res</a> = <a href="../h_src/143351168.htm" class="localvar">d</a>;
+  }
+  else {
+<a id=263></a>    if (!(<a href="../h_src/143350624.htm" class="localvar">res</a> &gt;= 0 ? <a href="../h_src/143350624.htm" class="localvar">res</a> - <a href="../h_src/143351032.htm" class="localvar">delta</a> &lt;= INT_MAX : INT_MIN + <a href="../h_src/143351032.htm" class="localvar">delta</a> &lt;= <a href="../h_src/143350624.htm" class="localvar">res</a>))
+<a id=264></a>      return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143351440.htm" class="localvar">L</a>, &quot;field '%s' is out-of-bound&quot;, <a href="../h_src/143351304.htm" class="localvar">key</a>);
+<a id=265></a>    <a href="../h_src/143350624.htm" class="localvar">res</a> -= <a href="../h_src/143351032.htm" class="localvar">delta</a>;
+  }
+<a id=267></a>  <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143351440.htm" class="localvar">L</a>, 1);
+<a id=268></a>  return (int)<a href="../h_src/143350624.htm" class="localvar">res</a>;
+}
+
+
+<a id=272></a>static const char *<a href="../h_src/143350488.htm" class="function">checkoption</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143350352.htm" class="localvar">L</a>, const char *<a href="../h_src/143350216.htm" class="localvar">conv</a>,
+<a id=273></a>                                <a href="../h_aa/57441872.htm" class="type">ptrdiff_t</a> <a href="../h_src/143350080.htm" class="localvar">convlen</a>, char *<a href="../h_src/143349944.htm" class="localvar">buff</a>) {
+<a id=274></a>  const char *<a href="../h_src/143349808.htm" class="localvar">option</a> = <a href="../h_src/143358716.htm" class="macro">LUA_STRFTIMEOPTIONS</a>;
+<a id=275></a>  int <a href="../h_src/143349672.htm" class="localvar">oplen</a> = 1;  <a  class="comments">/* length of options being checked */</a>
+<a id=276></a>  for (; *<a href="../h_src/143349808.htm" class="localvar">option</a> != '\0' &amp;&amp; <a href="../h_src/143349672.htm" class="localvar">oplen</a> &lt;= <a href="../h_src/143350080.htm" class="localvar">convlen</a>; <a href="../h_src/143349808.htm" class="localvar">option</a> += <a href="../h_src/143349672.htm" class="localvar">oplen</a>) {
+<a id=277></a>    if (*<a href="../h_src/143349808.htm" class="localvar">option</a> == '|')  <a  class="comments">/* next block? */</a>
+<a id=278></a>      <a href="../h_src/143349672.htm" class="localvar">oplen</a>++;  <a  class="comments">/* will check options with next length (+1) */</a>
+<a id=279></a>    else if (<a href="../h_aa/58131444.htm" class="libfunc">memcmp</a>(<a href="../h_src/143350216.htm" class="localvar">conv</a>, <a href="../h_src/143349808.htm" class="localvar">option</a>, <a href="../h_src/143349672.htm" class="localvar">oplen</a>) == 0) {  <a  class="comments">/* match? */</a>
+<a id=280></a>      <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/143349944.htm" class="localvar">buff</a>, <a href="../h_src/143350216.htm" class="localvar">conv</a>, <a href="../h_src/143349672.htm" class="localvar">oplen</a>);  <a  class="comments">/* copy valid option to buffer */</a>
+<a id=281></a>      <a href="../h_src/143349944.htm" class="localvar">buff</a>[<a href="../h_src/143349672.htm" class="localvar">oplen</a>] = '\0';
+<a id=282></a>      return <a href="../h_src/143350216.htm" class="localvar">conv</a> + <a href="../h_src/143349672.htm" class="localvar">oplen</a>;  <a  class="comments">/* return next item */</a>
+    }
+  }
+<a id=285></a>  <a href="../h_src/57420384.htm" class="function">luaL_argerror</a>(<a href="../h_src/143350352.htm" class="localvar">L</a>, 1,
+<a id=286></a>    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/143350352.htm" class="localvar">L</a>, &quot;invalid conversion specifier '%%%s'&quot;, <a href="../h_src/143350216.htm" class="localvar">conv</a>));
+<a id=287></a>  return <a href="../h_src/143350216.htm" class="localvar">conv</a>;  <a  class="comments">/* to avoid warnings */</a>
+}
+
+
+<a id=291></a>static <a href="../h_src/143349536.htm" class="function">time_t</a> l_checktime (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143349400.htm" class="localvar">L</a>, int <a href="../h_src/143349264.htm" class="localvar">arg</a>) {
+<a id=292></a>  <a href="../h_src/143358444.htm" class="macro">l_timet</a> <a href="../h_src/143349128.htm" class="localvar">t</a> = <a href="../h_src/143358172.htm" class="macro">l_gettime</a>(<a href="../h_src/143349400.htm" class="localvar">L</a>, <a href="../h_src/143349264.htm" class="localvar">arg</a>);
+<a id=293></a>  <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(L, (time_t)t == t, arg, &quot;time out-of-bounds&quot;);
+<a id=294></a>  return (<a href="../h_src/143349536.htm" class="function">time_t</a>)t;
+}
+
+
+<a id=298></a><a  class="comments">/* maximum size for an individual 'strftime' item */</a>
+<a id=299></a>#define <a href="../h_src/143348992.htm" class="macro">SIZETIMEFMT</a>	250
+
+
+<a id=302></a>static int <a href="../h_src/143348856.htm" class="function">os_date</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143348720.htm" class="localvar">L</a>) {
+<a id=303></a>  <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/143348584.htm" class="localvar">slen</a>;
+<a id=304></a>  const char *<a href="../h_src/143348448.htm" class="localvar">s</a> = <a href="../h_src/57420180.htm" class="function">luaL_optlstring</a>(<a href="../h_src/143348720.htm" class="localvar">L</a>, 1, &quot;%c&quot;, &amp;<a href="../h_src/143348584.htm" class="localvar">slen</a>);
+<a id=305></a>  <a href="../h_src/143349536.htm" class="function">time_t</a> <a href="../h_src/143348244.htm" class="localvar">t</a> = <a href="../h_src/57416168.htm" class="macro">luaL_opt</a>(<a href="../h_src/143348720.htm" class="localvar">L</a>, <a href="../h_aa/143348312.htm" class="libfunc">l_checktime</a>, 2, <a href="../h_aa/57983504.htm" class="libfunc">time</a>(NULL));
+<a id=306></a>  const char *<a href="../h_src/143348108.htm" class="localvar">se</a> = <a href="../h_src/143348448.htm" class="localvar">s</a> + <a href="../h_src/143348584.htm" class="localvar">slen</a>;  <a  class="comments">/* 's' end */</a>
+<a id=307></a>  struct <a href="../h_src/143352800.htm" class="class">tm</a> <a href="../h_src/143347972.htm" class="localvar">tmr</a>, *<a href="../h_src/143347836.htm" class="localvar">stm</a>;
+<a id=308></a>  if (*<a href="../h_src/143348448.htm" class="localvar">s</a> == '!') {  <a  class="comments">/* UTC? */</a>
+<a id=309></a>    <a href="../h_src/143347836.htm" class="localvar">stm</a> = <a href="../h_src/143357900.htm" class="macro">l_gmtime</a>(&amp;<a href="../h_src/143348244.htm" class="localvar">t</a>, &amp;<a href="../h_src/143347972.htm" class="localvar">tmr</a>);
+<a id=310></a>    <a href="../h_src/143348448.htm" class="localvar">s</a>++;  <a  class="comments">/* skip '!' */</a>
+  }
+  else
+<a id=313></a>    <a href="../h_src/143347836.htm" class="localvar">stm</a> = <a href="../h_src/143357764.htm" class="macro">l_localtime</a>(&amp;<a href="../h_src/143348244.htm" class="localvar">t</a>, &amp;<a href="../h_src/143347972.htm" class="localvar">tmr</a>);
+<a id=314></a>  if (<a href="../h_src/143347836.htm" class="localvar">stm</a> == NULL)  <a  class="comments">/* invalid date? */</a>
+<a id=315></a>    return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143348720.htm" class="localvar">L</a>,
+                 &quot;date result cannot be represented in this installation&quot;);
+<a id=317></a>  if (<a href="../h_aa/57564488.htm" class="libfunc">strcmp</a>(<a href="../h_src/143348448.htm" class="localvar">s</a>, &quot;*t&quot;) == 0) {
+<a id=318></a>    <a href="../h_src/57433916.htm" class="function">lua_createtable</a>(<a href="../h_src/143348720.htm" class="localvar">L</a>, 0, 9);  <a  class="comments">/* 9 = number of fields */</a>
+<a id=319></a>    <a href="../h_src/143352664.htm" class="function">setallfields</a>(<a href="../h_src/143348720.htm" class="localvar">L</a>, <a href="../h_src/143347836.htm" class="localvar">stm</a>);
+  }
+  else {
+<a id=322></a>    char <a href="../h_src/143347564.htm" class="localvar">cc</a>[4];  <a  class="comments">/* buffer for individual conversion specifiers */</a>
+<a id=323></a>    <a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> <a href="../h_src/143347428.htm" class="localvar">b</a>;
+<a id=324></a>    <a href="../h_src/143347564.htm" class="localvar">cc</a>[0] = '%';
+<a id=325></a>    <a href="../h_src/57413652.htm" class="function">luaL_buffinit</a>(<a href="../h_src/143348720.htm" class="localvar">L</a>, &amp;<a href="../h_src/143347428.htm" class="localvar">b</a>);
+<a id=326></a>    while (<a href="../h_src/143348448.htm" class="localvar">s</a> &lt; <a href="../h_src/143348108.htm" class="localvar">se</a>) {
+<a id=327></a>      if (*<a href="../h_src/143348448.htm" class="localvar">s</a> != '%')  <a  class="comments">/* not a conversion specifier? */</a>
+<a id=328></a>        <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143347428.htm" class="localvar">b</a>, *<a href="../h_src/143348448.htm" class="localvar">s</a>++);
+      else {
+<a id=330></a>        <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/143347292.htm" class="localvar">reslen</a>;
+<a id=331></a>        char *<a href="../h_src/143347156.htm" class="localvar">buff</a> = <a href="../h_src/57413584.htm" class="function">luaL_prepbuffsize</a>(&amp;<a href="../h_src/143347428.htm" class="localvar">b</a>, <a href="../h_src/143348992.htm" class="macro">SIZETIMEFMT</a>);
+<a id=332></a>        <a href="../h_src/143348448.htm" class="localvar">s</a>++;  <a  class="comments">/* skip '%' */</a>
+<a id=333></a>        <a href="../h_src/143348448.htm" class="localvar">s</a> = <a href="../h_src/143350488.htm" class="function">checkoption</a>(<a href="../h_src/143348720.htm" class="localvar">L</a>, <a href="../h_src/143348448.htm" class="localvar">s</a>, <a href="../h_src/143348108.htm" class="localvar">se</a> - <a href="../h_src/143348448.htm" class="localvar">s</a>, <a href="../h_src/143347564.htm" class="localvar">cc</a> + 1);  <a  class="comments">/* copy specifier to 'cc' */</a>
+<a id=334></a>        <a href="../h_src/143347292.htm" class="localvar">reslen</a> = <a href="../h_aa/143347020.htm" class="libfunc">strftime</a>(<a href="../h_src/143347156.htm" class="localvar">buff</a>, <a href="../h_src/143348992.htm" class="macro">SIZETIMEFMT</a>, <a href="../h_src/143347564.htm" class="localvar">cc</a>, <a href="../h_src/143347836.htm" class="localvar">stm</a>);
+<a id=335></a>        <a href="../h_src/57413924.htm" class="macro">luaL_addsize</a>(&amp;<a href="../h_src/143347428.htm" class="localvar">b</a>, <a href="../h_src/143347292.htm" class="localvar">reslen</a>);
+      }
+    }
+<a id=338></a>    <a href="../h_src/57413312.htm" class="function">luaL_pushresult</a>(&amp;<a href="../h_src/143347428.htm" class="localvar">b</a>);
+  }
+  return 1;
+}
+
+
+<a id=344></a>static int <a href="../h_src/143346952.htm" class="function">os_time</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143346816.htm" class="localvar">L</a>) {
+<a id=345></a>  <a href="../h_src/143349536.htm" class="function">time_t</a> <a href="../h_src/143346680.htm" class="localvar">t</a>;
+<a id=346></a>  if (<a href="../h_src/57427796.htm" class="macro">lua_isnoneornil</a>(<a href="../h_src/143346816.htm" class="localvar">L</a>, 1))  <a  class="comments">/* called without args? */</a>
+<a id=347></a>    <a href="../h_src/143346680.htm" class="localvar">t</a> = <a href="../h_aa/57983504.htm" class="libfunc">time</a>(NULL);  <a  class="comments">/* get current time */</a>
+  else {
+<a id=349></a>    struct <a href="../h_src/143352800.htm" class="class">tm</a> <a href="../h_src/143346544.htm" class="localvar">ts</a>;
+<a id=350></a>    <a href="../h_src/57419772.htm" class="function">luaL_checktype</a>(<a href="../h_src/143346816.htm" class="localvar">L</a>, 1, <a href="../h_src/57443368.htm" class="macro">LUA_TTABLE</a>);
+<a id=351></a>    <a href="../h_src/57439288.htm" class="function">lua_settop</a>(<a href="../h_src/143346816.htm" class="localvar">L</a>, 1);  <a  class="comments">/* make sure table is at the top */</a>
+<a id=352></a>    <a href="../h_src/143346544.htm" class="localvar">ts</a>.tm_year = <a href="../h_src/143351576.htm" class="function">getfield</a>(<a href="../h_src/143346816.htm" class="localvar">L</a>, &quot;year&quot;, -1, 1900);
+<a id=353></a>    <a href="../h_src/143346544.htm" class="localvar">ts</a>.tm_mon = <a href="../h_src/143351576.htm" class="function">getfield</a>(<a href="../h_src/143346816.htm" class="localvar">L</a>, &quot;month&quot;, -1, 1);
+<a id=354></a>    <a href="../h_src/143346544.htm" class="localvar">ts</a>.tm_mday = <a href="../h_src/143351576.htm" class="function">getfield</a>(<a href="../h_src/143346816.htm" class="localvar">L</a>, &quot;day&quot;, -1, 0);
+<a id=355></a>    <a href="../h_src/143346544.htm" class="localvar">ts</a>.tm_hour = <a href="../h_src/143351576.htm" class="function">getfield</a>(<a href="../h_src/143346816.htm" class="localvar">L</a>, &quot;hour&quot;, 12, 0);
+<a id=356></a>    <a href="../h_src/143346544.htm" class="localvar">ts</a>.tm_min = <a href="../h_src/143351576.htm" class="function">getfield</a>(<a href="../h_src/143346816.htm" class="localvar">L</a>, &quot;min&quot;, 0, 0);
+<a id=357></a>    <a href="../h_src/143346544.htm" class="localvar">ts</a>.tm_sec = <a href="../h_src/143351576.htm" class="function">getfield</a>(<a href="../h_src/143346816.htm" class="localvar">L</a>, &quot;sec&quot;, 0, 0);
+<a id=358></a>    <a href="../h_src/143346544.htm" class="localvar">ts</a>.tm_isdst = <a href="../h_src/143352120.htm" class="function">getboolfield</a>(<a href="../h_src/143346816.htm" class="localvar">L</a>, &quot;isdst&quot;);
+<a id=359></a>    <a href="../h_src/143346680.htm" class="localvar">t</a> = <a href="../h_aa/143346408.htm" class="libfunc">mktime</a>(&amp;<a href="../h_src/143346544.htm" class="localvar">ts</a>);
+<a id=360></a>    <a href="../h_src/143352664.htm" class="function">setallfields</a>(<a href="../h_src/143346816.htm" class="localvar">L</a>, &amp;<a href="../h_src/143346544.htm" class="localvar">ts</a>);  <a  class="comments">/* update fields with normalized values */</a>
+  }
+<a id=362></a>  if (<a href="../h_src/143346680.htm" class="localvar">t</a> != (<a href="../h_src/143349536.htm" class="function">time_t</a>)(<a href="../h_src/143358444.htm" class="macro">l_timet</a>)<a href="../h_src/143346680.htm" class="localvar">t</a> || <a href="../h_src/143346680.htm" class="localvar">t</a> == (<a href="../h_src/143349536.htm" class="function">time_t</a>)(-1))
+<a id=363></a>    return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143346816.htm" class="localvar">L</a>,
+                  &quot;time result cannot be represented in this installation&quot;);
+<a id=365></a>  <a href="../h_src/143358308.htm" class="macro">l_pushtime</a>(<a href="../h_src/143346816.htm" class="localvar">L</a>, <a href="../h_src/143346680.htm" class="localvar">t</a>);
+  return 1;
+}
+
+
+<a id=370></a>static int <a href="../h_src/143346340.htm" class="function">os_difftime</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143346204.htm" class="localvar">L</a>) {
+<a id=371></a>  <a href="../h_src/143349536.htm" class="function">time_t</a> <a href="../h_src/143346068.htm" class="localvar">t1</a> = <a href="../h_aa/143348312.htm" class="libfunc">l_checktime</a>(<a href="../h_src/143346204.htm" class="localvar">L</a>, 1);
+<a id=372></a>  <a href="../h_src/143349536.htm" class="function">time_t</a> <a href="../h_src/143345932.htm" class="localvar">t2</a> = <a href="../h_aa/143348312.htm" class="libfunc">l_checktime</a>(<a href="../h_src/143346204.htm" class="localvar">L</a>, 2);
+<a id=373></a>  <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143346204.htm" class="localvar">L</a>, (<a href="../h_src/57442144.htm" class="type">lua_Number</a>)<a href="../h_aa/143345796.htm" class="libfunc">difftime</a>(<a href="../h_src/143346068.htm" class="localvar">t1</a>, <a href="../h_src/143345932.htm" class="localvar">t2</a>));
+  return 1;
+}
+
+<a id=377></a><a  class="comments">/* }====================================================== */</a>
+
+
+<a id=380></a>static int <a href="../h_src/143345728.htm" class="function">os_setlocale</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143345592.htm" class="localvar">L</a>) {
+<a id=381></a>  static const int <a href="../h_src/143345456.htm" class="localvar">cat</a>[] = {LC_ALL, LC_COLLATE, LC_CTYPE, LC_MONETARY,
+                      LC_NUMERIC, LC_TIME};
+<a id=383></a>  static const char *const <a href="../h_src/143345320.htm" class="localvar">catnames</a>[] = {&quot;all&quot;, &quot;collate&quot;, &quot;ctype&quot;, &quot;monetary&quot;,
+     &quot;numeric&quot;, &quot;time&quot;, NULL};
+<a id=385></a>  const char *<a href="../h_src/143345184.htm" class="localvar">l</a> = <a href="../h_src/57416848.htm" class="macro">luaL_optstring</a>(<a href="../h_src/143345592.htm" class="localvar">L</a>, 1, NULL);
+<a id=386></a>  int <a href="../h_src/143345048.htm" class="localvar">op</a> = <a href="../h_src/57419228.htm" class="function">luaL_checkoption</a>(<a href="../h_src/143345592.htm" class="localvar">L</a>, 2, &quot;all&quot;, <a href="../h_src/143345320.htm" class="localvar">catnames</a>);
+<a id=387></a>  <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/143345592.htm" class="localvar">L</a>, <a href="../h_aa/143344912.htm" class="libfunc">setlocale</a>(<a href="../h_src/143345456.htm" class="localvar">cat</a>[<a href="../h_src/143345048.htm" class="localvar">op</a>], <a href="../h_src/143345184.htm" class="localvar">l</a>));
+  return 1;
+}
+
+
+<a id=392></a>static int <a href="../h_src/143344844.htm" class="function">os_exit</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143344708.htm" class="localvar">L</a>) {
+<a id=393></a>  int <a href="../h_src/143344572.htm" class="localvar">status</a>;
+<a id=394></a>  if (<a href="../h_src/57428204.htm" class="macro">lua_isboolean</a>(<a href="../h_src/143344708.htm" class="localvar">L</a>, 1))
+<a id=395></a>    <a href="../h_src/143344572.htm" class="localvar">status</a> = (<a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/143344708.htm" class="localvar">L</a>, 1) ? EXIT_SUCCESS : EXIT_FAILURE);
+  else
+<a id=397></a>    <a href="../h_src/143344572.htm" class="localvar">status</a> = (int)<a href="../h_src/57419908.htm" class="function">luaL_optinteger</a>(<a href="../h_src/143344708.htm" class="localvar">L</a>, 1, EXIT_SUCCESS);
+<a id=398></a>  if (<a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/143344708.htm" class="localvar">L</a>, 2))
+<a id=399></a>    <a href="../h_src/57439832.htm" class="function">lua_close</a>(<a href="../h_src/143344708.htm" class="localvar">L</a>);
+<a id=400></a>  if (<a href="../h_src/143344708.htm" class="localvar">L</a>) <a href="../h_aa/143344436.htm" class="libfunc">exit</a>(<a href="../h_src/143344572.htm" class="localvar">status</a>);  <a  class="comments">/* 'if' to avoid warnings for unreachable 'return' */</a>
+  return 0;
+}
+
+
+<a id=405></a>static const <a href="../h_src/57420996.htm" class="type">luaL_Reg</a> <a href="../h_src/143344368.htm" class="variable">syslib</a>[] = {
+<a id=406></a>  {&quot;clock&quot;,     <a href="../h_src/143354364.htm" class="function">os_clock</a>},
+<a id=407></a>  {&quot;date&quot;,      <a href="../h_src/143348856.htm" class="function">os_date</a>},
+<a id=408></a>  {&quot;difftime&quot;,  <a href="../h_src/143346340.htm" class="function">os_difftime</a>},
+<a id=409></a>  {&quot;execute&quot;,   <a href="../h_src/143356948.htm" class="function">os_execute</a>},
+<a id=410></a>  {&quot;exit&quot;,      <a href="../h_src/143344844.htm" class="function">os_exit</a>},
+<a id=411></a>  {&quot;getenv&quot;,    <a href="../h_src/143354636.htm" class="function">os_getenv</a>},
+<a id=412></a>  {&quot;remove&quot;,    <a href="../h_src/143356336.htm" class="function">os_remove</a>},
+<a id=413></a>  {&quot;rename&quot;,    <a href="../h_src/143355860.htm" class="function">os_rename</a>},
+<a id=414></a>  {&quot;setlocale&quot;, <a href="../h_src/143345728.htm" class="function">os_setlocale</a>},
+<a id=415></a>  {&quot;time&quot;,      <a href="../h_src/143346952.htm" class="function">os_time</a>},
+<a id=416></a>  {&quot;tmpname&quot;,   <a href="../h_src/143355248.htm" class="function">os_tmpname</a>},
+  {NULL, NULL}
+};
+
+<a id=420></a><a  class="comments">/* }====================================================== */</a>
+
+
+
+<a id=424></a><a href="../h_src/57454180.htm" class="macro">LUAMOD_API</a> int <a href="../h_src/57409640.htm" class="function">luaopen_os</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143344300.htm" class="localvar">L</a>) {
+<a id=425></a>  <a href="../h_src/57417392.htm" class="macro">luaL_newlib</a>(<a href="../h_src/143344300.htm" class="localvar">L</a>, <a href="../h_src/143344368.htm" class="variable">syslib</a>);
+  return 1;
+}
+
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

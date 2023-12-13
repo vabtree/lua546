@@ -1,0 +1,46 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>copy2buff</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58203768.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58203768.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58203768.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58203768.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58203768.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58203768.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58062016.htm#624" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/58203768.htm" class="function">copy2buff</a> (<a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58203632.htm" class="localvar">top</a>, int <a href="../h_src/58203496.htm" class="localvar">n</a>, char *<a href="../h_src/58203360.htm" class="localvar">buff</a>) {
+  <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58203224.htm" class="localvar">tl</a> = 0;  <a  class="comments">/* size already copied */</a>
+  do {
+    <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58203088.htm" class="localvar">l</a> = <a href="../h_src/57522260.htm" class="macro">vslen</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58203632.htm" class="localvar">top</a> - <a href="../h_src/58203496.htm" class="localvar">n</a>));  <a  class="comments">/* length of string being copied */</a>
+    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/58203360.htm" class="localvar">buff</a> + <a href="../h_src/58203224.htm" class="localvar">tl</a>, <a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58203632.htm" class="localvar">top</a> - <a href="../h_src/58203496.htm" class="localvar">n</a>)), <a href="../h_src/58203088.htm" class="localvar">l</a> * sizeof(char));
+    <a href="../h_src/58203224.htm" class="localvar">tl</a> += <a href="../h_src/58203088.htm" class="localvar">l</a>;
+  } while (--<a href="../h_src/58203496.htm" class="localvar">n</a> &gt; 0);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

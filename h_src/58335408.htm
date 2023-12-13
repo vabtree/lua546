@@ -1,0 +1,51 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>resizebox</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58335408.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58335408.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58335408.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58335408.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58335408.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58335408.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58351320.htm#473" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void *<a href="../h_src/58335408.htm" class="function">resizebox</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58335272.htm" class="localvar">L</a>, int <a href="../h_src/58335136.htm" class="localvar">idx</a>, <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58335000.htm" class="localvar">newsize</a>) {
+  void *<a href="../h_src/58334864.htm" class="localvar">ud</a>;
+  <a href="../h_src/57440852.htm" class="type">lua_Alloc</a> <a href="../h_src/58334728.htm" class="localvar">allocf</a> = <a href="../h_src/57430040.htm" class="function">lua_getallocf</a>(<a href="../h_src/58335272.htm" class="localvar">L</a>, &amp;<a href="../h_src/58334864.htm" class="localvar">ud</a>);
+  <a href="../h_src/58335476.htm" class="type">UBox</a> *<a href="../h_src/58334524.htm" class="localvar">box</a> = (<a href="../h_src/58335476.htm" class="type">UBox</a> *)<a href="../h_src/57437996.htm" class="function">lua_touserdata</a>(<a href="../h_src/58335272.htm" class="localvar">L</a>, <a href="../h_src/58335136.htm" class="localvar">idx</a>);
+  void *<a href="../h_src/58334388.htm" class="localvar">temp</a> = <a href="../h_src/58334728.htm" class="localvar">allocf</a>(<a href="../h_src/58334864.htm" class="localvar">ud</a>, <a href="../h_src/58334524.htm" class="localvar">box</a>-&gt;<a href="../h_src/58335612.htm" class="variable">box</a>, <a href="../h_src/58334524.htm" class="localvar">box</a>-&gt;<a href="../h_src/58335544.htm" class="variable">bsize</a>, <a href="../h_src/58335000.htm" class="localvar">newsize</a>);
+  if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/58334388.htm" class="localvar">temp</a> == NULL &amp;&amp; <a href="../h_src/58335000.htm" class="localvar">newsize</a> &gt; 0)) {  <a  class="comments">/* allocation error? */</a>
+    <a href="../h_src/57427660.htm" class="macro">lua_pushliteral</a>(<a href="../h_src/58335272.htm" class="localvar">L</a>, &quot;not enough memory&quot;);
+    <a href="../h_src/57430380.htm" class="function">lua_error</a>(<a href="../h_src/58335272.htm" class="localvar">L</a>);  <a  class="comments">/* raise a memory error */</a>
+  }
+  <a href="../h_src/58334524.htm" class="localvar">box</a>-&gt;<a href="../h_src/58335612.htm" class="variable">box</a> = <a href="../h_src/58334388.htm" class="localvar">temp</a>;
+  <a href="../h_src/58334524.htm" class="localvar">box</a>-&gt;<a href="../h_src/58335544.htm" class="variable">bsize</a> = <a href="../h_src/58335000.htm" class="localvar">newsize</a>;
+  return <a href="../h_src/58334388.htm" class="localvar">temp</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

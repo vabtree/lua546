@@ -1,0 +1,55 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>tconcat</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143426552.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143426552.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143426552.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143426552.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143426552.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143426552.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143431652.htm#156" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/143426552.htm" class="function">tconcat</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143426416.htm" class="localvar">L</a>) {
+  <a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> <a href="../h_src/143426280.htm" class="localvar">b</a>;
+  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143426144.htm" class="localvar">last</a> = <a href="../h_src/143430768.htm" class="macro">aux_getn</a>(<a href="../h_src/143426416.htm" class="localvar">L</a>, 1, <a href="../h_src/143431312.htm" class="macro">TAB_R</a>);
+  <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/143426008.htm" class="localvar">lsep</a>;
+  const char *<a href="../h_src/143425872.htm" class="localvar">sep</a> = <a href="../h_src/57420180.htm" class="function">luaL_optlstring</a>(<a href="../h_src/143426416.htm" class="localvar">L</a>, 2, &quot;&quot;, &amp;<a href="../h_src/143426008.htm" class="localvar">lsep</a>);
+  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143425736.htm" class="localvar">i</a> = <a href="../h_src/57419908.htm" class="function">luaL_optinteger</a>(<a href="../h_src/143426416.htm" class="localvar">L</a>, 3, 1);
+  <a href="../h_src/143426144.htm" class="localvar">last</a> = <a href="../h_src/57419908.htm" class="function">luaL_optinteger</a>(<a href="../h_src/143426416.htm" class="localvar">L</a>, 4, <a href="../h_src/143426144.htm" class="localvar">last</a>);
+  <a href="../h_src/57413652.htm" class="function">luaL_buffinit</a>(<a href="../h_src/143426416.htm" class="localvar">L</a>, &amp;<a href="../h_src/143426280.htm" class="localvar">b</a>);
+  for (; <a href="../h_src/143425736.htm" class="localvar">i</a> &lt; <a href="../h_src/143426144.htm" class="localvar">last</a>; <a href="../h_src/143425736.htm" class="localvar">i</a>++) {
+    <a href="../h_src/143427096.htm" class="function">addfield</a>(<a href="../h_src/143426416.htm" class="localvar">L</a>, &amp;<a href="../h_src/143426280.htm" class="localvar">b</a>, <a href="../h_src/143425736.htm" class="localvar">i</a>);
+    <a href="../h_src/57413516.htm" class="function">luaL_addlstring</a>(&amp;<a href="../h_src/143426280.htm" class="localvar">b</a>, <a href="../h_src/143425872.htm" class="localvar">sep</a>, <a href="../h_src/143426008.htm" class="localvar">lsep</a>);
+  }
+  if (<a href="../h_src/143425736.htm" class="localvar">i</a> == <a href="../h_src/143426144.htm" class="localvar">last</a>)  <a  class="comments">/* add last value (if interval was not empty) */</a>
+    <a href="../h_src/143427096.htm" class="function">addfield</a>(<a href="../h_src/143426416.htm" class="localvar">L</a>, &amp;<a href="../h_src/143426280.htm" class="localvar">b</a>, <a href="../h_src/143425736.htm" class="localvar">i</a>);
+  <a href="../h_src/57413312.htm" class="function">luaL_pushresult</a>(&amp;<a href="../h_src/143426280.htm" class="localvar">b</a>);
+  return 1;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

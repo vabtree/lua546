@@ -1,0 +1,52 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>hookf</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143270452.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143270452.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143270452.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143270452.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143270452.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143270452.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58287060.htm#323" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/143270452.htm" class="function">hookf</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143270316.htm" class="localvar">L</a>, <a href="../h_src/57440308.htm" class="type">lua_Debug</a> *<a href="../h_src/143270180.htm" class="localvar">ar</a>) {
+  static const char *const <a href="../h_src/143270044.htm" class="localvar">hooknames</a>[] =
+    {&quot;call&quot;, &quot;return&quot;, &quot;line&quot;, &quot;count&quot;, &quot;tail call&quot;};
+  <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143270316.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/58286720.htm" class="variable">HOOKKEY</a>);
+  <a href="../h_src/57434460.htm" class="function">lua_pushthread</a>(<a href="../h_src/143270316.htm" class="localvar">L</a>);
+  if (<a href="../h_src/57434120.htm" class="function">lua_rawget</a>(<a href="../h_src/143270316.htm" class="localvar">L</a>, -2) == <a href="../h_src/57443232.htm" class="macro">LUA_TFUNCTION</a>) {  <a  class="comments">/* is there a hook function? */</a>
+    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/143270316.htm" class="localvar">L</a>, <a href="../h_src/143270044.htm" class="localvar">hooknames</a>[(int)<a href="../h_src/143270180.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423784.htm" class="variable">event</a>]);  <a  class="comments">/* push event name */</a>
+    if (<a href="../h_src/143270180.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423376.htm" class="variable">currentline</a> &gt;= 0)
+      <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143270316.htm" class="localvar">L</a>, <a href="../h_src/143270180.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423376.htm" class="variable">currentline</a>);  <a  class="comments">/* push current line */</a>
+    else <a href="../h_src/57435276.htm" class="function">lua_pushnil</a>(<a href="../h_src/143270316.htm" class="localvar">L</a>);
+    <a href="../h_src/57415352.htm" class="macro">lua_assert</a>(lua_getinfo(L, &quot;lS&quot;, ar));
+    <a href="../h_src/57432964.htm" class="macro">lua_call</a>(<a href="../h_src/143270316.htm" class="localvar">L</a>, 2, 0);  <a  class="comments">/* call hook function */</a>
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

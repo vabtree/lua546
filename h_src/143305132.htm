@@ -1,0 +1,72 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>add_value</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143305132.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143305132.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143305132.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143305132.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143305132.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143305132.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143344164.htm#906" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/143305132.htm" class="function">add_value</a> (<a href="../h_src/143327300.htm" class="type">MatchState</a> *<a href="../h_src/143304996.htm" class="localvar">ms</a>, <a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> *<a href="../h_src/143304860.htm" class="localvar">b</a>, const char *<a href="../h_src/143304724.htm" class="localvar">s</a>,
+                                      const char *<a href="../h_src/143304588.htm" class="localvar">e</a>, int <a href="../h_src/143304452.htm" class="localvar">tr</a>) {
+  <a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143304316.htm" class="localvar">L</a> = <a href="../h_src/143304996.htm" class="localvar">ms</a>-&gt;<a href="../h_src/143327980.htm" class="variable">L</a>;
+  switch (<a href="../h_src/143304452.htm" class="localvar">tr</a>) {
+    case <a href="../h_src/57443232.htm" class="macro">LUA_TFUNCTION</a>: {  <a  class="comments">/* call the function */</a>
+      int <a href="../h_src/143304180.htm" class="localvar">n</a>;
+      <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/143304316.htm" class="localvar">L</a>, 3);  <a  class="comments">/* push the function */</a>
+      <a href="../h_src/143304180.htm" class="localvar">n</a> = <a href="../h_src/143313836.htm" class="function">push_captures</a>(<a href="../h_src/143304996.htm" class="localvar">ms</a>, <a href="../h_src/143304724.htm" class="localvar">s</a>, <a href="../h_src/143304588.htm" class="localvar">e</a>);  <a  class="comments">/* all captures as arguments */</a>
+      <a href="../h_src/57432964.htm" class="macro">lua_call</a>(<a href="../h_src/143304316.htm" class="localvar">L</a>, <a href="../h_src/143304180.htm" class="localvar">n</a>, 1);  <a  class="comments">/* call it */</a>
+      break;
+    }
+    case <a href="../h_src/57443368.htm" class="macro">LUA_TTABLE</a>: {  <a  class="comments">/* index the table */</a>
+      <a href="../h_src/143314788.htm" class="function">push_onecapture</a>(<a href="../h_src/143304996.htm" class="localvar">ms</a>, 0, <a href="../h_src/143304724.htm" class="localvar">s</a>, <a href="../h_src/143304588.htm" class="localvar">e</a>);  <a  class="comments">/* first capture is the index */</a>
+      <a href="../h_src/57434324.htm" class="function">lua_gettable</a>(<a href="../h_src/143304316.htm" class="localvar">L</a>, 3);
+      break;
+    }
+    default: {  <a  class="comments">/* LUA_TNUMBER or LUA_TSTRING */</a>
+      <a href="../h_src/143306628.htm" class="function">add_s</a>(<a href="../h_src/143304996.htm" class="localvar">ms</a>, <a href="../h_src/143304860.htm" class="localvar">b</a>, <a href="../h_src/143304724.htm" class="localvar">s</a>, <a href="../h_src/143304588.htm" class="localvar">e</a>);  <a  class="comments">/* add value to the buffer */</a>
+      return 1;  <a  class="comments">/* something changed */</a>
+    }
+  }
+  if (!<a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/143304316.htm" class="localvar">L</a>, -1)) {  <a  class="comments">/* nil or false? */</a>
+    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143304316.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove value */</a>
+    <a href="../h_src/57413516.htm" class="function">luaL_addlstring</a>(<a href="../h_src/143304860.htm" class="localvar">b</a>, <a href="../h_src/143304724.htm" class="localvar">s</a>, <a href="../h_src/143304588.htm" class="localvar">e</a> - <a href="../h_src/143304724.htm" class="localvar">s</a>);  <a  class="comments">/* keep original text */</a>
+    return 0;  <a  class="comments">/* no changes */</a>
+  }
+  else if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(!<a href="../h_src/57438812.htm" class="function">lua_isstring</a>(<a href="../h_src/143304316.htm" class="localvar">L</a>, -1)))
+    return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143304316.htm" class="localvar">L</a>, &quot;invalid replacement value (a %s)&quot;,
+                         <a href="../h_src/57416712.htm" class="macro">luaL_typename</a>(<a href="../h_src/143304316.htm" class="localvar">L</a>, -1));
+  else {
+    <a href="../h_src/57413380.htm" class="function">luaL_addvalue</a>(<a href="../h_src/143304860.htm" class="localvar">b</a>);  <a  class="comments">/* add result to accumulator */</a>
+    return 1;  <a  class="comments">/* something changed */</a>
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

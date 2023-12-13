@@ -1,0 +1,762 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luac.c</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143407988.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/143407988.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/143407988.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/143407988.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_uf/143407988.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_df/143407988.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/143407988.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143407988.htm" class="file" target="_self">Source Code</a></li>
+<li><a href="../h_sc/143407988.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<pre class=src>
+<a id=1></a><a  class="comments">/*</a>
+<a id=2></a><a  class="comments">** $Id: luac.c $</a>
+<a id=3></a><a  class="comments">** Lua compiler (saves bytecodes to files; also lists bytecodes)</a>
+<a id=4></a><a  class="comments">** See Copyright Notice in lua.h</a>
+<a id=5></a><a  class="comments">*/</a>
+
+<a id=7></a>#define <a href="../h_src/143407920.htm" class="macro">luac_c</a>
+<a id=8></a>#define <a href="../h_src/143407784.htm" class="macro">LUA_CORE</a>
+
+<a id=10></a>#include &quot;<a href="../h_src/57461592.htm" class="file">lprefix.h</a>&quot;
+
+#include &lt;ctype.h&gt;
+#include &lt;errno.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+<a id=18></a>#include &quot;<a href="../h_src/57460028.htm" class="file">lua.h</a>&quot;
+<a id=19></a>#include &quot;<a href="../h_src/57422356.htm" class="file">lauxlib.h</a>&quot;
+
+<a id=21></a>#include &quot;<a href="../h_src/57637116.htm" class="file">ldebug.h</a>&quot;
+<a id=22></a>#include &quot;<a href="../h_src/57537696.htm" class="file">lobject.h</a>&quot;
+<a id=23></a>#include &quot;<a href="../h_src/57699512.htm" class="file">lopcodes.h</a>&quot;
+<a id=24></a>#include &quot;<a href="../h_src/143407240.htm" class="file">lopnames.h</a>&quot;
+<a id=25></a>#include &quot;<a href="../h_src/57538104.htm" class="file">lstate.h</a>&quot;
+<a id=26></a>#include &quot;<a href="../h_src/57615968.htm" class="file">lundump.h</a>&quot;
+
+<a id=28></a>static void <a href="../h_src/143406832.htm" class="function">PrintFunction</a>(const <a href="../h_src/57513828.htm" class="type">Proto</a>* f, int full);
+<a id=29></a>#define <a href="../h_src/143406696.htm" class="macro">luaU_print</a>	PrintFunction
+
+<a id=31></a>#define <a href="../h_src/143406560.htm" class="macro">PROGNAME</a>	&quot;luac&quot;		<a  class="comments">/* default program name */</a>
+<a id=32></a>#define <a href="../h_src/143406424.htm" class="macro">OUTPUT</a>		PROGNAME &quot;.out&quot;	<a  class="comments">/* default output file */</a>
+
+<a id=34></a>static int <a href="../h_src/143406288.htm" class="variable">listing</a>=0;			<a  class="comments">/* list bytecodes? */</a>
+<a id=35></a>static int <a href="../h_src/143406220.htm" class="variable">dumping</a>=1;			<a  class="comments">/* dump bytecodes? */</a>
+<a id=36></a>static int <a href="../h_src/143406152.htm" class="variable">stripping</a>=0;			<a  class="comments">/* strip debug information? */</a>
+<a id=37></a>static char <a href="../h_src/143406084.htm" class="variable">Output</a>[]={ <a href="../h_src/143406424.htm" class="macro">OUTPUT</a> };	<a  class="comments">/* default output file name */</a>
+<a id=38></a>static const char* <a href="../h_src/143406016.htm" class="variable">output</a>=<a href="../h_src/143406084.htm" class="variable">Output</a>;	<a  class="comments">/* actual output file name */</a>
+<a id=39></a>static const char* <a href="../h_src/143405948.htm" class="variable">progname</a>=<a href="../h_src/143406560.htm" class="macro">PROGNAME</a>;	<a  class="comments">/* actual program name */</a>
+<a id=40></a>static <a href="../h_src/57522736.htm" class="type">TString</a> **<a href="../h_src/143405880.htm" class="variable">tmname</a>;
+
+<a id=42></a>static void <a href="../h_src/143405812.htm" class="function">fatal</a>(const char* <a href="../h_src/143405676.htm" class="localvar">message</a>)
+{
+<a id=44></a> <a href="../h_aa/57571424.htm" class="libfunc">fprintf</a>(stderr,&quot;%s: %s\n&quot;,<a href="../h_src/143405948.htm" class="variable">progname</a>,<a href="../h_src/143405676.htm" class="localvar">message</a>);
+<a id=45></a> <a href="../h_aa/143344436.htm" class="libfunc">exit</a>(EXIT_FAILURE);
+}
+
+<a id=48></a>static void <a href="../h_src/143405540.htm" class="function">cannot</a>(const char* <a href="../h_src/143405404.htm" class="localvar">what</a>)
+{
+<a id=50></a> <a href="../h_aa/57571424.htm" class="libfunc">fprintf</a>(stderr,&quot;%s: cannot %s %s: %s\n&quot;,<a href="../h_src/143405948.htm" class="variable">progname</a>,<a href="../h_src/143405404.htm" class="localvar">what</a>,<a href="../h_src/143406016.htm" class="variable">output</a>,<a href="../h_aa/58343432.htm" class="libfunc">strerror</a>(errno));
+<a id=51></a> <a href="../h_aa/143344436.htm" class="libfunc">exit</a>(EXIT_FAILURE);
+}
+
+<a id=54></a>static void <a href="../h_src/143405268.htm" class="function">usage</a>(const char* <a href="../h_src/143405132.htm" class="localvar">message</a>)
+{
+<a id=56></a> if (*<a href="../h_src/143405132.htm" class="localvar">message</a>=='-')
+<a id=57></a>  <a href="../h_aa/57571424.htm" class="libfunc">fprintf</a>(stderr,&quot;%s: unrecognized option '%s'\n&quot;,<a href="../h_src/143405948.htm" class="variable">progname</a>,<a href="../h_src/143405132.htm" class="localvar">message</a>);
+ else
+<a id=59></a>  <a href="../h_aa/57571424.htm" class="libfunc">fprintf</a>(stderr,&quot;%s: %s\n&quot;,<a href="../h_src/143405948.htm" class="variable">progname</a>,<a href="../h_src/143405132.htm" class="localvar">message</a>);
+<a id=60></a> <a href="../h_aa/57571424.htm" class="libfunc">fprintf</a>(stderr,
+  &quot;usage: %s [options] [filenames]\n&quot;
+  &quot;Available options are:\n&quot;
+  &quot;  -l       list (use -l -l for full listing)\n&quot;
+  &quot;  -o name  output to file 'name' (default is \&quot;%s\&quot;)\n&quot;
+  &quot;  -p       parse only\n&quot;
+  &quot;  -s       strip debug information\n&quot;
+  &quot;  -v       show version information\n&quot;
+  &quot;  --       stop handling options\n&quot;
+  &quot;  -        stop handling options and process stdin\n&quot;
+<a id=70></a>  ,<a href="../h_src/143405948.htm" class="variable">progname</a>,<a href="../h_src/143406084.htm" class="variable">Output</a>);
+<a id=71></a> <a href="../h_aa/143344436.htm" class="libfunc">exit</a>(EXIT_FAILURE);
+}
+
+<a id=74></a>#define <a href="../h_src/143404996.htm" class="macro">IS</a>(s)	(strcmp(argv[i],s)==0)
+
+<a id=76></a>static int <a href="../h_src/143404860.htm" class="function">doargs</a>(int <a href="../h_src/143404724.htm" class="localvar">argc</a>, char* <a href="../h_src/143404588.htm" class="localvar">argv</a>[])
+{
+<a id=78></a> int <a href="../h_src/143404452.htm" class="localvar">i</a>;
+<a id=79></a> int <a href="../h_src/143404316.htm" class="localvar">version</a>=0;
+<a id=80></a> if (<a href="../h_src/143404588.htm" class="localvar">argv</a>[0]!=NULL &amp;&amp; *<a href="../h_src/143404588.htm" class="localvar">argv</a>[0]!=0) <a href="../h_src/143405948.htm" class="variable">progname</a>=<a href="../h_src/143404588.htm" class="localvar">argv</a>[0];
+<a id=81></a> for (<a href="../h_src/143404452.htm" class="localvar">i</a>=1; <a href="../h_src/143404452.htm" class="localvar">i</a>&lt;<a href="../h_src/143404724.htm" class="localvar">argc</a>; <a href="../h_src/143404452.htm" class="localvar">i</a>++)
+ {
+<a id=83></a>  if (*<a href="../h_src/143404588.htm" class="localvar">argv</a>[<a href="../h_src/143404452.htm" class="localvar">i</a>]!='-')			<a  class="comments">/* end of options; keep it */</a>
+   break;
+<a id=85></a>  else if (<a href="../h_src/143404996.htm" class="macro">IS</a>(&quot;--&quot;))			<a  class="comments">/* end of options; skip it */</a>
+  {
+<a id=87></a>   ++<a href="../h_src/143404452.htm" class="localvar">i</a>;
+<a id=88></a>   if (<a href="../h_src/143404316.htm" class="localvar">version</a>) ++<a href="../h_src/143404316.htm" class="localvar">version</a>;
+   break;
+  }
+<a id=91></a>  else if (<a href="../h_src/143404996.htm" class="macro">IS</a>(&quot;-&quot;))			<a  class="comments">/* end of options; use stdin */</a>
+   break;
+<a id=93></a>  else if (<a href="../h_src/143404996.htm" class="macro">IS</a>(&quot;-l&quot;))			<a  class="comments">/* list */</a>
+<a id=94></a>   ++<a href="../h_src/143406288.htm" class="variable">listing</a>;
+<a id=95></a>  else if (<a href="../h_src/143404996.htm" class="macro">IS</a>(&quot;-o&quot;))			<a  class="comments">/* output file */</a>
+  {
+<a id=97></a>   <a href="../h_src/143406016.htm" class="variable">output</a>=<a href="../h_src/143404588.htm" class="localvar">argv</a>[++<a href="../h_src/143404452.htm" class="localvar">i</a>];
+<a id=98></a>   if (<a href="../h_src/143406016.htm" class="variable">output</a>==NULL || *<a href="../h_src/143406016.htm" class="variable">output</a>==0 || (*<a href="../h_src/143406016.htm" class="variable">output</a>=='-' &amp;&amp; <a href="../h_src/143406016.htm" class="variable">output</a>[1]!=0))
+<a id=99></a>    <a href="../h_src/143405268.htm" class="function">usage</a>(&quot;'-o' needs argument&quot;);
+<a id=100></a>   if (<a href="../h_src/143404996.htm" class="macro">IS</a>(&quot;-&quot;)) <a href="../h_src/143406016.htm" class="variable">output</a>=NULL;
+  }
+<a id=102></a>  else if (<a href="../h_src/143404996.htm" class="macro">IS</a>(&quot;-p&quot;))			<a  class="comments">/* parse only */</a>
+<a id=103></a>   <a href="../h_src/143406220.htm" class="variable">dumping</a>=0;
+<a id=104></a>  else if (<a href="../h_src/143404996.htm" class="macro">IS</a>(&quot;-s&quot;))			<a  class="comments">/* strip debug information */</a>
+<a id=105></a>   <a href="../h_src/143406152.htm" class="variable">stripping</a>=1;
+<a id=106></a>  else if (<a href="../h_src/143404996.htm" class="macro">IS</a>(&quot;-v&quot;))			<a  class="comments">/* show version */</a>
+<a id=107></a>   ++<a href="../h_src/143404316.htm" class="localvar">version</a>;
+<a id=108></a>  else					<a  class="comments">/* unknown option */</a>
+<a id=109></a>   <a href="../h_src/143405268.htm" class="function">usage</a>(<a href="../h_src/143404588.htm" class="localvar">argv</a>[<a href="../h_src/143404452.htm" class="localvar">i</a>]);
+ }
+<a id=111></a> if (<a href="../h_src/143404452.htm" class="localvar">i</a>==<a href="../h_src/143404724.htm" class="localvar">argc</a> &amp;&amp; (<a href="../h_src/143406288.htm" class="variable">listing</a> || !<a href="../h_src/143406220.htm" class="variable">dumping</a>))
+ {
+<a id=113></a>  <a href="../h_src/143406220.htm" class="variable">dumping</a>=0;
+<a id=114></a>  <a href="../h_src/143404588.htm" class="localvar">argv</a>[--<a href="../h_src/143404452.htm" class="localvar">i</a>]=<a href="../h_src/143406084.htm" class="variable">Output</a>;
+ }
+<a id=116></a> if (<a href="../h_src/143404316.htm" class="localvar">version</a>)
+ {
+<a id=118></a>  <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%s\n&quot;,<a href="../h_src/57446020.htm" class="macro">LUA_COPYRIGHT</a>);
+<a id=119></a>  if (<a href="../h_src/143404316.htm" class="localvar">version</a>==<a href="../h_src/143404724.htm" class="localvar">argc</a>-1) <a href="../h_aa/143344436.htm" class="libfunc">exit</a>(EXIT_SUCCESS);
+ }
+<a id=121></a> return <a href="../h_src/143404452.htm" class="localvar">i</a>;
+}
+
+<a id=124></a>#define <a href="../h_src/143404112.htm" class="macro">FUNCTION</a> &quot;(function()end)();\n&quot;
+
+<a id=126></a>static const char* <a href="../h_src/143403976.htm" class="function">reader</a>(<a href="../h_src/57444252.htm" class="type">lua_State</a>* <a href="../h_src/143403840.htm" class="localvar">L</a>, void* <a href="../h_src/143403704.htm" class="localvar">ud</a>, <a href="../h_aa/57441192.htm" class="type">size_t</a>* <a href="../h_src/143403568.htm" class="localvar">size</a>)
+{
+<a id=128></a> <a href="../h_src/57547896.htm" class="macro">UNUSED</a>(<a href="../h_src/143403840.htm" class="localvar">L</a>);
+<a id=129></a> if ((*(int*)<a href="../h_src/143403704.htm" class="localvar">ud</a>)--)
+ {
+<a id=131></a>  *<a href="../h_src/143403568.htm" class="localvar">size</a>=sizeof(<a href="../h_src/143404112.htm" class="macro">FUNCTION</a>)-1;
+<a id=132></a>  return <a href="../h_src/143404112.htm" class="macro">FUNCTION</a>;
+ }
+ else
+ {
+<a id=136></a>  *<a href="../h_src/143403568.htm" class="localvar">size</a>=0;
+  return NULL;
+ }
+}
+
+<a id=141></a>#define <a href="../h_src/143403432.htm" class="macro">toproto</a>(L,i) getproto(s2v(L-&gt;top.p+(i)))
+
+<a id=143></a>static const <a href="../h_src/57513828.htm" class="type">Proto</a>* <a href="../h_src/143403296.htm" class="function">combine</a>(<a href="../h_src/57444252.htm" class="type">lua_State</a>* <a href="../h_src/143403160.htm" class="localvar">L</a>, int <a href="../h_src/143403024.htm" class="localvar">n</a>)
+{
+<a id=145></a> if (<a href="../h_src/143403024.htm" class="localvar">n</a>==1)
+<a id=146></a>  return <a href="../h_src/143403432.htm" class="macro">toproto</a>(<a href="../h_src/143403160.htm" class="localvar">L</a>,-1);
+ else
+ {
+<a id=149></a>  <a href="../h_src/57513828.htm" class="type">Proto</a>* <a href="../h_src/143402888.htm" class="localvar">f</a>;
+<a id=150></a>  int <a href="../h_src/143402752.htm" class="localvar">i</a>=<a href="../h_src/143403024.htm" class="localvar">n</a>;
+<a id=151></a>  if (<a href="../h_src/57432624.htm" class="function">lua_load</a>(<a href="../h_src/143403160.htm" class="localvar">L</a>,<a href="../h_src/143403976.htm" class="function">reader</a>,&amp;<a href="../h_src/143402752.htm" class="localvar">i</a>,&quot;=(&quot; <a href="../h_src/143406560.htm" class="macro">PROGNAME</a> &quot;)&quot;,NULL)!=<a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) <a href="../h_src/143405812.htm" class="function">fatal</a>(<a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143403160.htm" class="localvar">L</a>,-1));
+<a id=152></a>  <a href="../h_src/143402888.htm" class="localvar">f</a>=<a href="../h_src/143403432.htm" class="macro">toproto</a>(<a href="../h_src/143403160.htm" class="localvar">L</a>,-1);
+<a id=153></a>  for (<a href="../h_src/143402752.htm" class="localvar">i</a>=0; <a href="../h_src/143402752.htm" class="localvar">i</a>&lt;<a href="../h_src/143403024.htm" class="localvar">n</a>; <a href="../h_src/143402752.htm" class="localvar">i</a>++)
+  {
+<a id=155></a>   <a href="../h_src/143402888.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a>[<a href="../h_src/143402752.htm" class="localvar">i</a>]=<a href="../h_src/143403432.htm" class="macro">toproto</a>(<a href="../h_src/143403160.htm" class="localvar">L</a>,<a href="../h_src/143402752.htm" class="localvar">i</a>-<a href="../h_src/143403024.htm" class="localvar">n</a>-1);
+<a id=156></a>   if (<a href="../h_src/143402888.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a>[<a href="../h_src/143402752.htm" class="localvar">i</a>]-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>&gt;0) <a href="../h_src/143402888.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a>[<a href="../h_src/143402752.htm" class="localvar">i</a>]-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[0].<a href="../h_src/57517296.htm" class="variable">instack</a>=0;
+  }
+<a id=158></a>  return <a href="../h_src/143402888.htm" class="localvar">f</a>;
+ }
+}
+
+<a id=162></a>static int <a href="../h_src/143402616.htm" class="function">writer</a>(<a href="../h_src/57444252.htm" class="type">lua_State</a>* <a href="../h_src/143402480.htm" class="localvar">L</a>, const void* <a href="../h_src/143402344.htm" class="localvar">p</a>, <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/143402208.htm" class="localvar">size</a>, void* <a href="../h_src/143402072.htm" class="localvar">u</a>)
+{
+<a id=164></a> <a href="../h_src/57547896.htm" class="macro">UNUSED</a>(<a href="../h_src/143402480.htm" class="localvar">L</a>);
+ return (fwrite(p,size,1,(FILE*)u)!=1) &amp;&amp; (size!=0);
+}
+
+<a id=168></a>static int <a href="../h_src/143401936.htm" class="function">pmain</a>(<a href="../h_src/57444252.htm" class="type">lua_State</a>* <a href="../h_src/143401800.htm" class="localvar">L</a>)
+{
+<a id=170></a> int <a href="../h_src/143401664.htm" class="localvar">argc</a>=(int)<a href="../h_src/57429428.htm" class="macro">lua_tointeger</a>(<a href="../h_src/143401800.htm" class="localvar">L</a>,1);
+<a id=171></a> char** <a href="../h_src/143401528.htm" class="localvar">argv</a>=(char**)<a href="../h_src/57437996.htm" class="function">lua_touserdata</a>(<a href="../h_src/143401800.htm" class="localvar">L</a>,2);
+<a id=172></a> const <a href="../h_src/57513828.htm" class="type">Proto</a>* <a href="../h_src/143401392.htm" class="localvar">f</a>;
+<a id=173></a> int <a href="../h_src/143401256.htm" class="localvar">i</a>;
+<a id=174></a> <a href="../h_src/143405880.htm" class="variable">tmname</a>=<a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/143401800.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57643644.htm" class="variable">tmname</a>;
+<a id=175></a> if (!<a href="../h_src/57439016.htm" class="function">lua_checkstack</a>(<a href="../h_src/143401800.htm" class="localvar">L</a>,<a href="../h_src/143401664.htm" class="localvar">argc</a>)) <a href="../h_src/143405812.htm" class="function">fatal</a>(&quot;too many input files&quot;);
+<a id=176></a> for (<a href="../h_src/143401256.htm" class="localvar">i</a>=0; <a href="../h_src/143401256.htm" class="localvar">i</a>&lt;<a href="../h_src/143401664.htm" class="localvar">argc</a>; <a href="../h_src/143401256.htm" class="localvar">i</a>++)
+ {
+<a id=178></a>  const char* <a href="../h_src/143401120.htm" class="localvar">filename</a>=<a href="../h_src/143404996.htm" class="macro">IS</a>(&quot;-&quot;) ? NULL : <a href="../h_src/143401528.htm" class="localvar">argv</a>[<a href="../h_src/143401256.htm" class="localvar">i</a>];
+<a id=179></a>  if (<a href="../h_src/57418480.htm" class="macro">luaL_loadfile</a>(<a href="../h_src/143401800.htm" class="localvar">L</a>,<a href="../h_src/143401120.htm" class="localvar">filename</a>)!=<a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) <a href="../h_src/143405812.htm" class="function">fatal</a>(<a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143401800.htm" class="localvar">L</a>,-1));
+ }
+<a id=181></a> <a href="../h_src/143401392.htm" class="localvar">f</a>=<a href="../h_src/143403296.htm" class="function">combine</a>(<a href="../h_src/143401800.htm" class="localvar">L</a>,<a href="../h_src/143401664.htm" class="localvar">argc</a>);
+<a id=182></a> if (<a href="../h_src/143406288.htm" class="variable">listing</a>) <a href="../h_src/143406696.htm" class="macro">luaU_print</a>(<a href="../h_src/143401392.htm" class="localvar">f</a>,<a href="../h_src/143406288.htm" class="variable">listing</a>&gt;1);
+<a id=183></a> if (<a href="../h_src/143406220.htm" class="variable">dumping</a>)
+ {
+<a id=185></a>  FILE* D= (<a href="../h_src/143406016.htm" class="variable">output</a>==NULL) ? stdout : <a href="../h_aa/58324460.htm" class="libfunc">fopen</a>(<a href="../h_src/143406016.htm" class="variable">output</a>,&quot;wb&quot;);
+<a id=186></a>  if (D==NULL) <a href="../h_src/143405540.htm" class="function">cannot</a>(&quot;open&quot;);
+<a id=187></a>  <a href="../h_src/57543408.htm" class="macro">lua_lock</a>(L);
+<a id=188></a>  <a href="../h_src/57614744.htm" class="function">luaU_dump</a>(<a href="../h_src/143401800.htm" class="localvar">L</a>,<a href="../h_src/143401392.htm" class="localvar">f</a>,<a href="../h_src/143402616.htm" class="function">writer</a>,D,<a href="../h_src/143406152.htm" class="variable">stripping</a>);
+<a id=189></a>  <a href="../h_src/57543272.htm" class="macro">lua_unlock</a>(L);
+<a id=190></a>  if (<a href="../h_aa/58324256.htm" class="libfunc">ferror</a>(D)) <a href="../h_src/143405540.htm" class="function">cannot</a>(&quot;write&quot;);
+<a id=191></a>  if (<a href="../h_aa/58324188.htm" class="libfunc">fclose</a>(D)) <a href="../h_src/143405540.htm" class="function">cannot</a>(&quot;close&quot;);
+ }
+ return 0;
+}
+
+<a id=196></a>int <a href="../h_src/143400984.htm" class="function">main</a>(int <a href="../h_src/143400916.htm" class="localvar">argc</a>, char* <a href="../h_src/143400780.htm" class="localvar">argv</a>[])
+{
+<a id=198></a> <a href="../h_src/57444252.htm" class="type">lua_State</a>* <a href="../h_src/143400644.htm" class="localvar">L</a>;
+<a id=199></a> int <a href="../h_src/143400508.htm" class="localvar">i</a>=<a href="../h_src/143404860.htm" class="function">doargs</a>(<a href="../h_src/143400916.htm" class="localvar">argc</a>,<a href="../h_src/143400780.htm" class="localvar">argv</a>);
+<a id=200></a> <a href="../h_src/143400916.htm" class="localvar">argc</a>-=<a href="../h_src/143400508.htm" class="localvar">i</a>; <a href="../h_src/143400780.htm" class="localvar">argv</a>+=<a href="../h_src/143400508.htm" class="localvar">i</a>;
+<a id=201></a> if (<a href="../h_src/143400916.htm" class="localvar">argc</a>&lt;=0) <a href="../h_src/143405268.htm" class="function">usage</a>(&quot;no input files given&quot;);
+<a id=202></a> <a href="../h_src/143400644.htm" class="localvar">L</a>=<a href="../h_src/57418208.htm" class="function">luaL_newstate</a>();
+<a id=203></a> if (<a href="../h_src/143400644.htm" class="localvar">L</a>==NULL) <a href="../h_src/143405812.htm" class="function">fatal</a>(&quot;cannot create state: not enough memory&quot;);
+<a id=204></a> <a href="../h_src/57428884.htm" class="macro">lua_pushcfunction</a>(<a href="../h_src/143400644.htm" class="localvar">L</a>,&amp;<a href="../h_src/143401936.htm" class="function">pmain</a>);
+<a id=205></a> <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143400644.htm" class="localvar">L</a>,<a href="../h_src/143400916.htm" class="localvar">argc</a>);
+<a id=206></a> <a href="../h_src/57434528.htm" class="function">lua_pushlightuserdata</a>(<a href="../h_src/143400644.htm" class="localvar">L</a>,<a href="../h_src/143400780.htm" class="localvar">argv</a>);
+<a id=207></a> if (<a href="../h_src/57432760.htm" class="macro">lua_pcall</a>(<a href="../h_src/143400644.htm" class="localvar">L</a>,2,0,0)!=<a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) <a href="../h_src/143405812.htm" class="function">fatal</a>(<a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143400644.htm" class="localvar">L</a>,-1));
+<a id=208></a> <a href="../h_src/57439832.htm" class="function">lua_close</a>(<a href="../h_src/143400644.htm" class="localvar">L</a>);
+ return EXIT_SUCCESS;
+}
+
+<a id=212></a><a  class="comments">/*</a>
+<a id=213></a><a  class="comments">** print bytecodes</a>
+<a id=214></a><a  class="comments">*/</a>
+
+<a id=216></a>#define <a href="../h_src/143400372.htm" class="macro">UPVALNAME</a>(x) ((f-&gt;upvalues[x].name) ? getstr(f-&gt;upvalues[x].name) : &quot;-&quot;)
+<a id=217></a>#define <a href="../h_src/143400236.htm" class="macro">VOID</a>(p) ((const void*)(p))
+<a id=218></a>#define <a href="../h_src/143400100.htm" class="macro">eventname</a>(i) (getstr(tmname[i]))
+
+<a id=220></a>static void <a href="../h_src/143399964.htm" class="function">PrintString</a>(const <a href="../h_src/57522736.htm" class="type">TString</a>* <a href="../h_src/143399828.htm" class="localvar">ts</a>)
+{
+<a id=222></a> const char* <a href="../h_src/143399692.htm" class="localvar">s</a>=<a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/143399828.htm" class="localvar">ts</a>);
+<a id=223></a> <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/143399556.htm" class="localvar">i</a>,<a href="../h_src/143399420.htm" class="localvar">n</a>=<a href="../h_src/57522396.htm" class="macro">tsslen</a>(<a href="../h_src/143399828.htm" class="localvar">ts</a>);
+<a id=224></a> <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;\&quot;&quot;);
+<a id=225></a> for (<a href="../h_src/143399556.htm" class="localvar">i</a>=0; <a href="../h_src/143399556.htm" class="localvar">i</a>&lt;<a href="../h_src/143399420.htm" class="localvar">n</a>; <a href="../h_src/143399556.htm" class="localvar">i</a>++)
+ {
+<a id=227></a>  int <a href="../h_src/143399284.htm" class="localvar">c</a>=(int)(unsigned char)<a href="../h_src/143399692.htm" class="localvar">s</a>[<a href="../h_src/143399556.htm" class="localvar">i</a>];
+<a id=228></a>  switch (<a href="../h_src/143399284.htm" class="localvar">c</a>)
+  {
+   case '&quot;':
+<a id=231></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;\\\&quot;&quot;);
+	break;
+   case '\\':
+<a id=234></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;\\\\&quot;);
+	break;
+   case '\a':
+<a id=237></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;\\a&quot;);
+	break;
+   case '\b':
+<a id=240></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;\\b&quot;);
+	break;
+   case '\f':
+<a id=243></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;\\f&quot;);
+	break;
+   case '\n':
+<a id=246></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;\\n&quot;);
+	break;
+   case '\r':
+<a id=249></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;\\r&quot;);
+	break;
+   case '\t':
+<a id=252></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;\\t&quot;);
+	break;
+   case '\v':
+<a id=255></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;\\v&quot;);
+	break;
+   default:
+<a id=258></a>	if (<a href="../h_aa/143399148.htm" class="libfunc">isprint</a>(<a href="../h_src/143399284.htm" class="localvar">c</a>)) <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%c&quot;,<a href="../h_src/143399284.htm" class="localvar">c</a>); else <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;\\%03d&quot;,<a href="../h_src/143399284.htm" class="localvar">c</a>);
+	break;
+  }
+ }
+<a id=262></a> <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;\&quot;&quot;);
+}
+
+<a id=265></a>static void <a href="../h_src/143399080.htm" class="function">PrintType</a>(const <a href="../h_src/57513828.htm" class="type">Proto</a>* <a href="../h_src/143398944.htm" class="localvar">f</a>, int <a href="../h_src/143398808.htm" class="localvar">i</a>)
+{
+<a id=267></a> const <a href="../h_src/57535384.htm" class="type">TValue</a>* <a href="../h_src/143398672.htm" class="localvar">o</a>=&amp;<a href="../h_src/143398944.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515052.htm" class="variable">k</a>[<a href="../h_src/143398808.htm" class="localvar">i</a>];
+<a id=268></a> switch (<a href="../h_src/57534636.htm" class="macro">ttypetag</a>(<a href="../h_src/143398672.htm" class="localvar">o</a>))
+ {
+<a id=270></a>  case <a href="../h_src/57531576.htm" class="macro">LUA_VNIL</a>:
+<a id=271></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;N&quot;);
+	break;
+<a id=273></a>  case <a href="../h_src/57530080.htm" class="macro">LUA_VFALSE</a>:
+<a id=274></a>  case <a href="../h_src/57529944.htm" class="macro">LUA_VTRUE</a>:
+<a id=275></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;B&quot;);
+	break;
+<a id=277></a>  case <a href="../h_src/57526952.htm" class="macro">LUA_VNUMFLT</a>:
+<a id=278></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;F&quot;);
+	break;
+<a id=280></a>  case <a href="../h_src/57527088.htm" class="macro">LUA_VNUMINT</a>:
+<a id=281></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;I&quot;);
+	break;
+<a id=283></a>  case <a href="../h_src/57525184.htm" class="macro">LUA_VSHRSTR</a>:
+<a id=284></a>  case <a href="../h_src/57525048.htm" class="macro">LUA_VLNGSTR</a>:
+<a id=285></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;S&quot;);
+	break;
+<a id=287></a>  default:				<a  class="comments">/* cannot happen */</a>
+<a id=288></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;?%d&quot;,<a href="../h_src/57534636.htm" class="macro">ttypetag</a>(<a href="../h_src/143398672.htm" class="localvar">o</a>));
+	break;
+ }
+<a id=291></a> <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;\t&quot;);
+}
+
+<a id=294></a>static void <a href="../h_src/143398536.htm" class="function">PrintConstant</a>(const <a href="../h_src/57513828.htm" class="type">Proto</a>* <a href="../h_src/143398400.htm" class="localvar">f</a>, int <a href="../h_src/143398264.htm" class="localvar">i</a>)
+{
+<a id=296></a> const <a href="../h_src/57535384.htm" class="type">TValue</a>* <a href="../h_src/143398128.htm" class="localvar">o</a>=&amp;<a href="../h_src/143398400.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515052.htm" class="variable">k</a>[<a href="../h_src/143398264.htm" class="localvar">i</a>];
+<a id=297></a> switch (<a href="../h_src/57534636.htm" class="macro">ttypetag</a>(<a href="../h_src/143398128.htm" class="localvar">o</a>))
+ {
+<a id=299></a>  case <a href="../h_src/57531576.htm" class="macro">LUA_VNIL</a>:
+<a id=300></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;nil&quot;);
+	break;
+<a id=302></a>  case <a href="../h_src/57530080.htm" class="macro">LUA_VFALSE</a>:
+<a id=303></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;false&quot;);
+	break;
+<a id=305></a>  case <a href="../h_src/57529944.htm" class="macro">LUA_VTRUE</a>:
+<a id=306></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;true&quot;);
+	break;
+<a id=308></a>  case <a href="../h_src/57526952.htm" class="macro">LUA_VNUMFLT</a>:
+	{
+<a id=310></a>	char <a href="../h_src/143397992.htm" class="localvar">buff</a>[100];
+<a id=311></a>	<a href="../h_aa/57906760.htm" class="libfunc">sprintf</a>(<a href="../h_src/143397992.htm" class="localvar">buff</a>,<a href="../h_src/57451460.htm" class="macro">LUA_NUMBER_FMT</a>,<a href="../h_src/57526272.htm" class="macro">fltvalue</a>(<a href="../h_src/143398128.htm" class="localvar">o</a>));
+<a id=312></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%s&quot;,<a href="../h_src/143397992.htm" class="localvar">buff</a>);
+<a id=313></a>	if (<a href="../h_src/143397992.htm" class="localvar">buff</a>[<a href="../h_aa/57906692.htm" class="libfunc">strspn</a>(<a href="../h_src/143397992.htm" class="localvar">buff</a>,&quot;-0123456789&quot;)]=='\0') <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;.0&quot;);
+	break;
+	}
+<a id=316></a>  case <a href="../h_src/57527088.htm" class="macro">LUA_VNUMINT</a>:
+<a id=317></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/57451052.htm" class="macro">LUA_INTEGER_FMT</a>,<a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/143398128.htm" class="localvar">o</a>));
+	break;
+<a id=319></a>  case <a href="../h_src/57525184.htm" class="macro">LUA_VSHRSTR</a>:
+<a id=320></a>  case <a href="../h_src/57525048.htm" class="macro">LUA_VLNGSTR</a>:
+<a id=321></a>	<a href="../h_src/143399964.htm" class="function">PrintString</a>(<a href="../h_src/57524368.htm" class="macro">tsvalue</a>(<a href="../h_src/143398128.htm" class="localvar">o</a>));
+	break;
+<a id=323></a>  default:				<a  class="comments">/* cannot happen */</a>
+<a id=324></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;?%d&quot;,<a href="../h_src/57534636.htm" class="macro">ttypetag</a>(<a href="../h_src/143398128.htm" class="localvar">o</a>));
+	break;
+ }
+}
+
+<a id=329></a>#define <a href="../h_src/143397856.htm" class="macro">COMMENT</a>		&quot;\t; &quot;
+<a id=330></a>#define <a href="../h_src/143397720.htm" class="macro">EXTRAARG</a>	GETARG_Ax(code[pc+1])
+<a id=331></a>#define <a href="../h_src/143397584.htm" class="macro">EXTRAARGC</a>	(EXTRAARG*(MAXARG_C+1))
+<a id=332></a>#define <a href="../h_src/143397448.htm" class="macro">ISK</a>		(isk ? &quot;k&quot; : &quot;&quot;)
+
+<a id=334></a>static void <a href="../h_src/143397312.htm" class="function">PrintCode</a>(const <a href="../h_src/57513828.htm" class="type">Proto</a>* <a href="../h_src/143397176.htm" class="localvar">f</a>)
+{
+<a id=336></a> const <a href="../h_src/57545108.htm" class="type">Instruction</a>* <a href="../h_src/143397040.htm" class="localvar">code</a>=<a href="../h_src/143397176.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514916.htm" class="variable">code</a>;
+<a id=337></a> int <a href="../h_src/143396904.htm" class="localvar">pc</a>,<a href="../h_src/143396768.htm" class="localvar">n</a>=<a href="../h_src/143397176.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515596.htm" class="variable">sizecode</a>;
+<a id=338></a> for (<a href="../h_src/143396904.htm" class="localvar">pc</a>=0; <a href="../h_src/143396904.htm" class="localvar">pc</a>&lt;<a href="../h_src/143396768.htm" class="localvar">n</a>; <a href="../h_src/143396904.htm" class="localvar">pc</a>++)
+ {
+<a id=340></a>  <a href="../h_src/57545108.htm" class="type">Instruction</a> <a href="../h_src/143396632.htm" class="localvar">i</a>=<a href="../h_src/143397040.htm" class="localvar">code</a>[<a href="../h_src/143396904.htm" class="localvar">pc</a>];
+<a id=341></a>  <a href="../h_src/57684756.htm" class="type">OpCode</a> <a href="../h_src/143396496.htm" class="localvar">o</a>=<a href="../h_src/57694752.htm" class="macro">GET_OPCODE</a>(<a href="../h_src/143396632.htm" class="localvar">i</a>);
+<a id=342></a>  int <a href="../h_src/143396360.htm" class="localvar">a</a>=<a href="../h_src/57694072.htm" class="macro">GETARG_A</a>(<a href="../h_src/143396632.htm" class="localvar">i</a>);
+<a id=343></a>  int <a href="../h_src/143396224.htm" class="localvar">b</a>=<a href="../h_src/57693800.htm" class="macro">GETARG_B</a>(<a href="../h_src/143396632.htm" class="localvar">i</a>);
+<a id=344></a>  int <a href="../h_src/143396088.htm" class="localvar">c</a>=<a href="../h_src/57693392.htm" class="macro">GETARG_C</a>(<a href="../h_src/143396632.htm" class="localvar">i</a>);
+<a id=345></a>  int <a href="../h_src/143395952.htm" class="localvar">ax</a>=<a href="../h_src/57692304.htm" class="macro">GETARG_Ax</a>(<a href="../h_src/143396632.htm" class="localvar">i</a>);
+<a id=346></a>  int <a href="../h_src/143395816.htm" class="localvar">bx</a>=<a href="../h_src/57692576.htm" class="macro">GETARG_Bx</a>(<a href="../h_src/143396632.htm" class="localvar">i</a>);
+<a id=347></a>  int <a href="../h_src/143395680.htm" class="localvar">sb</a>=<a href="../h_src/57693664.htm" class="macro">GETARG_sB</a>(<a href="../h_src/143396632.htm" class="localvar">i</a>);
+<a id=348></a>  int <a href="../h_src/143395544.htm" class="localvar">sc</a>=<a href="../h_src/57693256.htm" class="macro">GETARG_sC</a>(<a href="../h_src/143396632.htm" class="localvar">i</a>);
+<a id=349></a>  int <a href="../h_src/143395408.htm" class="localvar">sbx</a>=<a href="../h_src/57692032.htm" class="macro">GETARG_sBx</a>(<a href="../h_src/143396632.htm" class="localvar">i</a>);
+<a id=350></a>  int <a href="../h_src/143395272.htm" class="localvar">isk</a>=<a href="../h_src/57692848.htm" class="macro">GETARG_k</a>(<a href="../h_src/143396632.htm" class="localvar">i</a>);
+<a id=351></a>  int <a href="../h_src/143395136.htm" class="localvar">line</a>=<a href="../h_src/57635960.htm" class="function">luaG_getfuncline</a>(<a href="../h_src/143397176.htm" class="localvar">f</a>,<a href="../h_src/143396904.htm" class="localvar">pc</a>);
+<a id=352></a>  <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;\t%d\t&quot;,<a href="../h_src/143396904.htm" class="localvar">pc</a>+1);
+<a id=353></a>  if (<a href="../h_src/143395136.htm" class="localvar">line</a>&gt;0) <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;[%d]\t&quot;,<a href="../h_src/143395136.htm" class="localvar">line</a>); else <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;[-]\t&quot;);
+<a id=354></a>  <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%-9s\t&quot;,<a href="../h_src/143406900.htm" class="variable">opnames</a>[<a href="../h_src/143396496.htm" class="localvar">o</a>]);
+<a id=355></a>  switch (<a href="../h_src/143396496.htm" class="localvar">o</a>)
+  {
+<a id=357></a>   case <a href="../h_src/57690536.htm" class="variable">OP_MOVE</a>:
+<a id=358></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>);
+	break;
+<a id=360></a>   case <a href="../h_src/57690468.htm" class="variable">OP_LOADI</a>:
+<a id=361></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143395408.htm" class="localvar">sbx</a>);
+	break;
+<a id=363></a>   case <a href="../h_src/57690400.htm" class="variable">OP_LOADF</a>:
+<a id=364></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143395408.htm" class="localvar">sbx</a>);
+	break;
+<a id=366></a>   case <a href="../h_src/57690332.htm" class="variable">OP_LOADK</a>:
+<a id=367></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143395816.htm" class="localvar">bx</a>);
+<a id=368></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a>); <a href="../h_src/143398536.htm" class="function">PrintConstant</a>(<a href="../h_src/143397176.htm" class="localvar">f</a>,<a href="../h_src/143395816.htm" class="localvar">bx</a>);
+	break;
+<a id=370></a>   case <a href="../h_src/57690264.htm" class="variable">OP_LOADKX</a>:
+<a id=371></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>);
+<a id=372></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a>); <a href="../h_src/143398536.htm" class="function">PrintConstant</a>(<a href="../h_src/143397176.htm" class="localvar">f</a>,<a href="../h_src/143397720.htm" class="macro">EXTRAARG</a>);
+	break;
+<a id=374></a>   case <a href="../h_src/57690196.htm" class="variable">OP_LOADFALSE</a>:
+<a id=375></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>);
+	break;
+<a id=377></a>   case <a href="../h_src/57690128.htm" class="variable">OP_LFALSESKIP</a>:
+<a id=378></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>);
+	break;
+<a id=380></a>   case <a href="../h_src/57690060.htm" class="variable">OP_LOADTRUE</a>:
+<a id=381></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>);
+	break;
+<a id=383></a>   case <a href="../h_src/57689992.htm" class="variable">OP_LOADNIL</a>:
+<a id=384></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>);
+<a id=385></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a> &quot;%d out&quot;,<a href="../h_src/143396224.htm" class="localvar">b</a>+1);
+	break;
+<a id=387></a>   case <a href="../h_src/57689924.htm" class="variable">OP_GETUPVAL</a>:
+<a id=388></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>);
+<a id=389></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a> &quot;%s&quot;,<a href="../h_src/143400372.htm" class="macro">UPVALNAME</a>(<a href="../h_src/143396224.htm" class="localvar">b</a>));
+	break;
+<a id=391></a>   case <a href="../h_src/57689856.htm" class="variable">OP_SETUPVAL</a>:
+<a id=392></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>);
+<a id=393></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a> &quot;%s&quot;,<a href="../h_src/143400372.htm" class="macro">UPVALNAME</a>(<a href="../h_src/143396224.htm" class="localvar">b</a>));
+	break;
+<a id=395></a>   case <a href="../h_src/57689788.htm" class="variable">OP_GETTABUP</a>:
+<a id=396></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+<a id=397></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a> &quot;%s&quot;,<a href="../h_src/143400372.htm" class="macro">UPVALNAME</a>(<a href="../h_src/143396224.htm" class="localvar">b</a>));
+<a id=398></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot; &quot;); <a href="../h_src/143398536.htm" class="function">PrintConstant</a>(<a href="../h_src/143397176.htm" class="localvar">f</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+	break;
+<a id=400></a>   case <a href="../h_src/57689720.htm" class="variable">OP_GETTABLE</a>:
+<a id=401></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+	break;
+<a id=403></a>   case <a href="../h_src/57689652.htm" class="variable">OP_GETI</a>:
+<a id=404></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+	break;
+<a id=406></a>   case <a href="../h_src/57689584.htm" class="variable">OP_GETFIELD</a>:
+<a id=407></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+<a id=408></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a>); <a href="../h_src/143398536.htm" class="function">PrintConstant</a>(<a href="../h_src/143397176.htm" class="localvar">f</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+	break;
+<a id=410></a>   case <a href="../h_src/57689516.htm" class="variable">OP_SETTABUP</a>:
+<a id=411></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d%s&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>,<a href="../h_src/143397448.htm" class="macro">ISK</a>);
+<a id=412></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a> &quot;%s&quot;,<a href="../h_src/143400372.htm" class="macro">UPVALNAME</a>(<a href="../h_src/143396360.htm" class="localvar">a</a>));
+<a id=413></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot; &quot;); <a href="../h_src/143398536.htm" class="function">PrintConstant</a>(<a href="../h_src/143397176.htm" class="localvar">f</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>);
+<a id=414></a>	if (<a href="../h_src/143395272.htm" class="localvar">isk</a>) { <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot; &quot;); <a href="../h_src/143398536.htm" class="function">PrintConstant</a>(<a href="../h_src/143397176.htm" class="localvar">f</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>); }
+	break;
+<a id=416></a>   case <a href="../h_src/57689448.htm" class="variable">OP_SETTABLE</a>:
+<a id=417></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d%s&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>,<a href="../h_src/143397448.htm" class="macro">ISK</a>);
+<a id=418></a>	if (<a href="../h_src/143395272.htm" class="localvar">isk</a>) { <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a>); <a href="../h_src/143398536.htm" class="function">PrintConstant</a>(<a href="../h_src/143397176.htm" class="localvar">f</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>); }
+	break;
+<a id=420></a>   case <a href="../h_src/57689380.htm" class="variable">OP_SETI</a>:
+<a id=421></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d%s&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>,<a href="../h_src/143397448.htm" class="macro">ISK</a>);
+<a id=422></a>	if (<a href="../h_src/143395272.htm" class="localvar">isk</a>) { <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a>); <a href="../h_src/143398536.htm" class="function">PrintConstant</a>(<a href="../h_src/143397176.htm" class="localvar">f</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>); }
+	break;
+<a id=424></a>   case <a href="../h_src/57689312.htm" class="variable">OP_SETFIELD</a>:
+<a id=425></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d%s&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>,<a href="../h_src/143397448.htm" class="macro">ISK</a>);
+<a id=426></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a>); <a href="../h_src/143398536.htm" class="function">PrintConstant</a>(<a href="../h_src/143397176.htm" class="localvar">f</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>);
+<a id=427></a>	if (<a href="../h_src/143395272.htm" class="localvar">isk</a>) { <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot; &quot;); <a href="../h_src/143398536.htm" class="function">PrintConstant</a>(<a href="../h_src/143397176.htm" class="localvar">f</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>); }
+	break;
+<a id=429></a>   case <a href="../h_src/57689244.htm" class="variable">OP_NEWTABLE</a>:
+<a id=430></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+<a id=431></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a> &quot;%d&quot;,<a href="../h_src/143396088.htm" class="localvar">c</a>+<a href="../h_src/143397584.htm" class="macro">EXTRAARGC</a>);
+	break;
+<a id=433></a>   case <a href="../h_src/57689176.htm" class="variable">OP_SELF</a>:
+<a id=434></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d%s&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>,<a href="../h_src/143397448.htm" class="macro">ISK</a>);
+<a id=435></a>	if (<a href="../h_src/143395272.htm" class="localvar">isk</a>) { <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a>); <a href="../h_src/143398536.htm" class="function">PrintConstant</a>(<a href="../h_src/143397176.htm" class="localvar">f</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>); }
+	break;
+<a id=437></a>   case <a href="../h_src/57689108.htm" class="variable">OP_ADDI</a>:
+<a id=438></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143395544.htm" class="localvar">sc</a>);
+	break;
+<a id=440></a>   case <a href="../h_src/57689040.htm" class="variable">OP_ADDK</a>:
+<a id=441></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+<a id=442></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a>); <a href="../h_src/143398536.htm" class="function">PrintConstant</a>(<a href="../h_src/143397176.htm" class="localvar">f</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+	break;
+<a id=444></a>   case <a href="../h_src/57688972.htm" class="variable">OP_SUBK</a>:
+<a id=445></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+<a id=446></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a>); <a href="../h_src/143398536.htm" class="function">PrintConstant</a>(<a href="../h_src/143397176.htm" class="localvar">f</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+	break;
+<a id=448></a>   case <a href="../h_src/57688904.htm" class="variable">OP_MULK</a>:
+<a id=449></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+<a id=450></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a>); <a href="../h_src/143398536.htm" class="function">PrintConstant</a>(<a href="../h_src/143397176.htm" class="localvar">f</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+	break;
+<a id=452></a>   case <a href="../h_src/57688836.htm" class="variable">OP_MODK</a>:
+<a id=453></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+<a id=454></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a>); <a href="../h_src/143398536.htm" class="function">PrintConstant</a>(<a href="../h_src/143397176.htm" class="localvar">f</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+	break;
+<a id=456></a>   case <a href="../h_src/57688768.htm" class="variable">OP_POWK</a>:
+<a id=457></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+<a id=458></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a>); <a href="../h_src/143398536.htm" class="function">PrintConstant</a>(<a href="../h_src/143397176.htm" class="localvar">f</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+	break;
+<a id=460></a>   case <a href="../h_src/57688700.htm" class="variable">OP_DIVK</a>:
+<a id=461></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+<a id=462></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a>); <a href="../h_src/143398536.htm" class="function">PrintConstant</a>(<a href="../h_src/143397176.htm" class="localvar">f</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+	break;
+<a id=464></a>   case <a href="../h_src/57688632.htm" class="variable">OP_IDIVK</a>:
+<a id=465></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+<a id=466></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a>); <a href="../h_src/143398536.htm" class="function">PrintConstant</a>(<a href="../h_src/143397176.htm" class="localvar">f</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+	break;
+<a id=468></a>   case <a href="../h_src/57688564.htm" class="variable">OP_BANDK</a>:
+<a id=469></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+<a id=470></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a>); <a href="../h_src/143398536.htm" class="function">PrintConstant</a>(<a href="../h_src/143397176.htm" class="localvar">f</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+	break;
+<a id=472></a>   case <a href="../h_src/57688496.htm" class="variable">OP_BORK</a>:
+<a id=473></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+<a id=474></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a>); <a href="../h_src/143398536.htm" class="function">PrintConstant</a>(<a href="../h_src/143397176.htm" class="localvar">f</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+	break;
+<a id=476></a>   case <a href="../h_src/57688428.htm" class="variable">OP_BXORK</a>:
+<a id=477></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+<a id=478></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a>); <a href="../h_src/143398536.htm" class="function">PrintConstant</a>(<a href="../h_src/143397176.htm" class="localvar">f</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+	break;
+<a id=480></a>   case <a href="../h_src/57688360.htm" class="variable">OP_SHRI</a>:
+<a id=481></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143395544.htm" class="localvar">sc</a>);
+	break;
+<a id=483></a>   case <a href="../h_src/57688292.htm" class="variable">OP_SHLI</a>:
+<a id=484></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143395544.htm" class="localvar">sc</a>);
+	break;
+<a id=486></a>   case <a href="../h_src/57688224.htm" class="variable">OP_ADD</a>:
+<a id=487></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+	break;
+<a id=489></a>   case <a href="../h_src/57688156.htm" class="variable">OP_SUB</a>:
+<a id=490></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+	break;
+<a id=492></a>   case <a href="../h_src/57688088.htm" class="variable">OP_MUL</a>:
+<a id=493></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+	break;
+<a id=495></a>   case <a href="../h_src/57688020.htm" class="variable">OP_MOD</a>:
+<a id=496></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+	break;
+<a id=498></a>   case <a href="../h_src/57687952.htm" class="variable">OP_POW</a>:
+<a id=499></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+	break;
+<a id=501></a>   case <a href="../h_src/57687884.htm" class="variable">OP_DIV</a>:
+<a id=502></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+	break;
+<a id=504></a>   case <a href="../h_src/57687816.htm" class="variable">OP_IDIV</a>:
+<a id=505></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+	break;
+<a id=507></a>   case <a href="../h_src/57687748.htm" class="variable">OP_BAND</a>:
+<a id=508></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+	break;
+<a id=510></a>   case <a href="../h_src/57687680.htm" class="variable">OP_BOR</a>:
+<a id=511></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+	break;
+<a id=513></a>   case <a href="../h_src/57687612.htm" class="variable">OP_BXOR</a>:
+<a id=514></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+	break;
+<a id=516></a>   case <a href="../h_src/57687544.htm" class="variable">OP_SHL</a>:
+<a id=517></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+	break;
+<a id=519></a>   case <a href="../h_src/57687476.htm" class="variable">OP_SHR</a>:
+<a id=520></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+	break;
+<a id=522></a>   case <a href="../h_src/57687408.htm" class="variable">OP_MMBIN</a>:
+<a id=523></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+<a id=524></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a> &quot;%s&quot;,<a href="../h_src/143400100.htm" class="macro">eventname</a>(<a href="../h_src/143396088.htm" class="localvar">c</a>));
+	break;
+<a id=526></a>   case <a href="../h_src/57687340.htm" class="variable">OP_MMBINI</a>:
+<a id=527></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143395680.htm" class="localvar">sb</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>,<a href="../h_src/143395272.htm" class="localvar">isk</a>);
+<a id=528></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a> &quot;%s&quot;,<a href="../h_src/143400100.htm" class="macro">eventname</a>(<a href="../h_src/143396088.htm" class="localvar">c</a>));
+<a id=529></a>	if (<a href="../h_src/143395272.htm" class="localvar">isk</a>) <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot; flip&quot;);
+	break;
+<a id=531></a>   case <a href="../h_src/57687272.htm" class="variable">OP_MMBINK</a>:
+<a id=532></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>,<a href="../h_src/143395272.htm" class="localvar">isk</a>);
+<a id=533></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a> &quot;%s &quot;,<a href="../h_src/143400100.htm" class="macro">eventname</a>(<a href="../h_src/143396088.htm" class="localvar">c</a>)); <a href="../h_src/143398536.htm" class="function">PrintConstant</a>(<a href="../h_src/143397176.htm" class="localvar">f</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>);
+<a id=534></a>	if (<a href="../h_src/143395272.htm" class="localvar">isk</a>) <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot; flip&quot;);
+	break;
+<a id=536></a>   case <a href="../h_src/57687204.htm" class="variable">OP_UNM</a>:
+<a id=537></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>);
+	break;
+<a id=539></a>   case <a href="../h_src/57687136.htm" class="variable">OP_BNOT</a>:
+<a id=540></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>);
+	break;
+<a id=542></a>   case <a href="../h_src/57687068.htm" class="variable">OP_NOT</a>:
+<a id=543></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>);
+	break;
+<a id=545></a>   case <a href="../h_src/57687000.htm" class="variable">OP_LEN</a>:
+<a id=546></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>);
+	break;
+<a id=548></a>   case <a href="../h_src/57686932.htm" class="variable">OP_CONCAT</a>:
+<a id=549></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>);
+	break;
+<a id=551></a>   case <a href="../h_src/57686864.htm" class="variable">OP_CLOSE</a>:
+<a id=552></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>);
+	break;
+<a id=554></a>   case <a href="../h_src/57686796.htm" class="variable">OP_TBC</a>:
+<a id=555></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>);
+	break;
+<a id=557></a>   case <a href="../h_src/57686728.htm" class="variable">OP_JMP</a>:
+<a id=558></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d&quot;,<a href="../h_src/57691760.htm" class="macro">GETARG_sJ</a>(<a href="../h_src/143396632.htm" class="localvar">i</a>));
+<a id=559></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a> &quot;to %d&quot;,<a href="../h_src/57691760.htm" class="macro">GETARG_sJ</a>(<a href="../h_src/143396632.htm" class="localvar">i</a>)+<a href="../h_src/143396904.htm" class="localvar">pc</a>+2);
+	break;
+<a id=561></a>   case <a href="../h_src/57686660.htm" class="variable">OP_EQ</a>:
+<a id=562></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143395272.htm" class="localvar">isk</a>);
+	break;
+<a id=564></a>   case <a href="../h_src/57686592.htm" class="variable">OP_LT</a>:
+<a id=565></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143395272.htm" class="localvar">isk</a>);
+	break;
+<a id=567></a>   case <a href="../h_src/57686524.htm" class="variable">OP_LE</a>:
+<a id=568></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143395272.htm" class="localvar">isk</a>);
+	break;
+<a id=570></a>   case <a href="../h_src/57686456.htm" class="variable">OP_EQK</a>:
+<a id=571></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143395272.htm" class="localvar">isk</a>);
+<a id=572></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a>); <a href="../h_src/143398536.htm" class="function">PrintConstant</a>(<a href="../h_src/143397176.htm" class="localvar">f</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>);
+	break;
+<a id=574></a>   case <a href="../h_src/57686388.htm" class="variable">OP_EQI</a>:
+<a id=575></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143395680.htm" class="localvar">sb</a>,<a href="../h_src/143395272.htm" class="localvar">isk</a>);
+	break;
+<a id=577></a>   case <a href="../h_src/57686320.htm" class="variable">OP_LTI</a>:
+<a id=578></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143395680.htm" class="localvar">sb</a>,<a href="../h_src/143395272.htm" class="localvar">isk</a>);
+	break;
+<a id=580></a>   case <a href="../h_src/57686252.htm" class="variable">OP_LEI</a>:
+<a id=581></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143395680.htm" class="localvar">sb</a>,<a href="../h_src/143395272.htm" class="localvar">isk</a>);
+	break;
+<a id=583></a>   case <a href="../h_src/57686184.htm" class="variable">OP_GTI</a>:
+<a id=584></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143395680.htm" class="localvar">sb</a>,<a href="../h_src/143395272.htm" class="localvar">isk</a>);
+	break;
+<a id=586></a>   case <a href="../h_src/57686116.htm" class="variable">OP_GEI</a>:
+<a id=587></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143395680.htm" class="localvar">sb</a>,<a href="../h_src/143395272.htm" class="localvar">isk</a>);
+	break;
+<a id=589></a>   case <a href="../h_src/57686048.htm" class="variable">OP_TEST</a>:
+<a id=590></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143395272.htm" class="localvar">isk</a>);
+	break;
+<a id=592></a>   case <a href="../h_src/57685980.htm" class="variable">OP_TESTSET</a>:
+<a id=593></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143395272.htm" class="localvar">isk</a>);
+	break;
+<a id=595></a>   case <a href="../h_src/57685912.htm" class="variable">OP_CALL</a>:
+<a id=596></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+<a id=597></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a>);
+<a id=598></a>	if (<a href="../h_src/143396224.htm" class="localvar">b</a>==0) <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;all in &quot;); else <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d in &quot;,<a href="../h_src/143396224.htm" class="localvar">b</a>-1);
+<a id=599></a>	if (<a href="../h_src/143396088.htm" class="localvar">c</a>==0) <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;all out&quot;); else <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d out&quot;,<a href="../h_src/143396088.htm" class="localvar">c</a>-1);
+	break;
+<a id=601></a>   case <a href="../h_src/57685844.htm" class="variable">OP_TAILCALL</a>:
+<a id=602></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d%s&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>,<a href="../h_src/143397448.htm" class="macro">ISK</a>);
+<a id=603></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a> &quot;%d in&quot;,<a href="../h_src/143396224.htm" class="localvar">b</a>-1);
+	break;
+<a id=605></a>   case <a href="../h_src/57685776.htm" class="variable">OP_RETURN</a>:
+<a id=606></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d%s&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>,<a href="../h_src/143397448.htm" class="macro">ISK</a>);
+<a id=607></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a>);
+<a id=608></a>	if (<a href="../h_src/143396224.htm" class="localvar">b</a>==0) <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;all out&quot;); else <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d out&quot;,<a href="../h_src/143396224.htm" class="localvar">b</a>-1);
+	break;
+<a id=610></a>   case <a href="../h_src/57685708.htm" class="variable">OP_RETURN0</a>:
+	break;
+<a id=612></a>   case <a href="../h_src/57685640.htm" class="variable">OP_RETURN1</a>:
+<a id=613></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>);
+	break;
+<a id=615></a>   case <a href="../h_src/57685572.htm" class="variable">OP_FORLOOP</a>:
+<a id=616></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143395816.htm" class="localvar">bx</a>);
+<a id=617></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a> &quot;to %d&quot;,<a href="../h_src/143396904.htm" class="localvar">pc</a>-<a href="../h_src/143395816.htm" class="localvar">bx</a>+2);
+	break;
+<a id=619></a>   case <a href="../h_src/57685504.htm" class="variable">OP_FORPREP</a>:
+<a id=620></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143395816.htm" class="localvar">bx</a>);
+<a id=621></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a> &quot;exit to %d&quot;,<a href="../h_src/143396904.htm" class="localvar">pc</a>+<a href="../h_src/143395816.htm" class="localvar">bx</a>+3);
+	break;
+<a id=623></a>   case <a href="../h_src/57685436.htm" class="variable">OP_TFORPREP</a>:
+<a id=624></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143395816.htm" class="localvar">bx</a>);
+<a id=625></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a> &quot;to %d&quot;,<a href="../h_src/143396904.htm" class="localvar">pc</a>+<a href="../h_src/143395816.htm" class="localvar">bx</a>+2);
+	break;
+<a id=627></a>   case <a href="../h_src/57685368.htm" class="variable">OP_TFORCALL</a>:
+<a id=628></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+	break;
+<a id=630></a>   case <a href="../h_src/57685300.htm" class="variable">OP_TFORLOOP</a>:
+<a id=631></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143395816.htm" class="localvar">bx</a>);
+<a id=632></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a> &quot;to %d&quot;,<a href="../h_src/143396904.htm" class="localvar">pc</a>-<a href="../h_src/143395816.htm" class="localvar">bx</a>+2);
+	break;
+<a id=634></a>   case <a href="../h_src/57685232.htm" class="variable">OP_SETLIST</a>:
+<a id=635></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+<a id=636></a>	if (<a href="../h_src/143395272.htm" class="localvar">isk</a>) <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a> &quot;%d&quot;,<a href="../h_src/143396088.htm" class="localvar">c</a>+<a href="../h_src/143397584.htm" class="macro">EXTRAARGC</a>);
+	break;
+<a id=638></a>   case <a href="../h_src/57685164.htm" class="variable">OP_CLOSURE</a>:
+<a id=639></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143395816.htm" class="localvar">bx</a>);
+<a id=640></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a> &quot;%p&quot;,<a href="../h_src/143400236.htm" class="macro">VOID</a>(<a href="../h_src/143397176.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a>[<a href="../h_src/143395816.htm" class="localvar">bx</a>]));
+	break;
+<a id=642></a>   case <a href="../h_src/57685096.htm" class="variable">OP_VARARG</a>:
+<a id=643></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d %d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>,<a href="../h_src/143396088.htm" class="localvar">c</a>);
+<a id=644></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a>);
+<a id=645></a>	if (<a href="../h_src/143396088.htm" class="localvar">c</a>==0) <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;all out&quot;); else <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d out&quot;,<a href="../h_src/143396088.htm" class="localvar">c</a>-1);
+	break;
+<a id=647></a>   case <a href="../h_src/57685028.htm" class="variable">OP_VARARGPREP</a>:
+<a id=648></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d&quot;,<a href="../h_src/143396360.htm" class="localvar">a</a>);
+	break;
+<a id=650></a>   case <a href="../h_src/57684960.htm" class="variable">OP_EXTRAARG</a>:
+<a id=651></a>	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d&quot;,<a href="../h_src/143395952.htm" class="localvar">ax</a>);
+	break;
+#if 0
+   default:
+	printf(&quot;%d %d %d&quot;,a,b,c);
+	printf(COMMENT &quot;not handled&quot;);
+	break;
+#endif
+  }
+<a id=660></a>  <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;\n&quot;);
+ }
+}
+
+
+<a id=665></a>#define <a href="../h_src/143395000.htm" class="macro">SS</a>(x)	((x==1)?&quot;&quot;:&quot;s&quot;)
+<a id=666></a>#define <a href="../h_src/143394864.htm" class="macro">S</a>(x)	(int)(x),SS(x)
+
+<a id=668></a>static void <a href="../h_src/143394728.htm" class="function">PrintHeader</a>(const <a href="../h_src/57513828.htm" class="type">Proto</a>* <a href="../h_src/143394592.htm" class="localvar">f</a>)
+{
+<a id=670></a> const char* <a href="../h_src/143394456.htm" class="localvar">s</a>=<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a> ? <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>) : &quot;=?&quot;;
+<a id=671></a> if (*<a href="../h_src/143394456.htm" class="localvar">s</a>=='@' || *<a href="../h_src/143394456.htm" class="localvar">s</a>=='=')
+<a id=672></a>  <a href="../h_src/143394456.htm" class="localvar">s</a>++;
+<a id=673></a> else if (*<a href="../h_src/143394456.htm" class="localvar">s</a>==<a href="../h_src/57445748.htm" class="macro">LUA_SIGNATURE</a>[0])
+<a id=674></a>  <a href="../h_src/143394456.htm" class="localvar">s</a>=&quot;(bstring)&quot;;
+ else
+<a id=676></a>  <a href="../h_src/143394456.htm" class="localvar">s</a>=&quot;(string)&quot;;
+<a id=677></a> <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;\n%s &lt;%s:%d,%d&gt; (%d instruction%s at %p)\n&quot;,
+<a id=678></a>	(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515256.htm" class="variable">linedefined</a>==0)?&quot;main&quot;:&quot;function&quot;,<a href="../h_src/143394456.htm" class="localvar">s</a>,
+<a id=679></a>	<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515256.htm" class="variable">linedefined</a>,<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515188.htm" class="variable">lastlinedefined</a>,
+<a id=680></a>	<a href="../h_src/143394864.htm" class="macro">S</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515596.htm" class="variable">sizecode</a>),<a href="../h_src/143400236.htm" class="macro">VOID</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>));
+<a id=681></a> <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d%s param%s, %d slot%s, %d upvalue%s, &quot;,
+<a id=682></a>	(int)(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515936.htm" class="variable">numparams</a>),<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515868.htm" class="variable">is_vararg</a>?&quot;+&quot;:&quot;&quot;,<a href="../h_src/143395000.htm" class="macro">SS</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515936.htm" class="variable">numparams</a>),
+<a id=683></a>	<a href="../h_src/143394864.htm" class="macro">S</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515800.htm" class="variable">maxstacksize</a>),<a href="../h_src/143394864.htm" class="macro">S</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>));
+<a id=684></a> <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d local%s, %d constant%s, %d function%s\n&quot;,
+<a id=685></a>	<a href="../h_src/143394864.htm" class="macro">S</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515392.htm" class="variable">sizelocvars</a>),<a href="../h_src/143394864.htm" class="macro">S</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515664.htm" class="variable">sizek</a>),<a href="../h_src/143394864.htm" class="macro">S</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515460.htm" class="variable">sizep</a>));
+}
+
+<a id=688></a>static void <a href="../h_src/143394320.htm" class="function">PrintDebug</a>(const <a href="../h_src/57513828.htm" class="type">Proto</a>* <a href="../h_src/143394184.htm" class="localvar">f</a>)
+{
+<a id=690></a> int <a href="../h_src/143394048.htm" class="localvar">i</a>,<a href="../h_src/143393912.htm" class="localvar">n</a>;
+<a id=691></a> <a href="../h_src/143393912.htm" class="localvar">n</a>=<a href="../h_src/143394184.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515664.htm" class="variable">sizek</a>;
+<a id=692></a> <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;constants (%d) for %p:\n&quot;,<a href="../h_src/143393912.htm" class="localvar">n</a>,<a href="../h_src/143400236.htm" class="macro">VOID</a>(<a href="../h_src/143394184.htm" class="localvar">f</a>));
+<a id=693></a> for (<a href="../h_src/143394048.htm" class="localvar">i</a>=0; <a href="../h_src/143394048.htm" class="localvar">i</a>&lt;<a href="../h_src/143393912.htm" class="localvar">n</a>; <a href="../h_src/143394048.htm" class="localvar">i</a>++)
+ {
+<a id=695></a>  <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;\t%d\t&quot;,<a href="../h_src/143394048.htm" class="localvar">i</a>);
+<a id=696></a>  <a href="../h_src/143399080.htm" class="function">PrintType</a>(<a href="../h_src/143394184.htm" class="localvar">f</a>,<a href="../h_src/143394048.htm" class="localvar">i</a>);
+<a id=697></a>  <a href="../h_src/143398536.htm" class="function">PrintConstant</a>(<a href="../h_src/143394184.htm" class="localvar">f</a>,<a href="../h_src/143394048.htm" class="localvar">i</a>);
+<a id=698></a>  <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;\n&quot;);
+ }
+<a id=700></a> <a href="../h_src/143393912.htm" class="localvar">n</a>=<a href="../h_src/143394184.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515392.htm" class="variable">sizelocvars</a>;
+<a id=701></a> <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;locals (%d) for %p:\n&quot;,<a href="../h_src/143393912.htm" class="localvar">n</a>,<a href="../h_src/143400236.htm" class="macro">VOID</a>(<a href="../h_src/143394184.htm" class="localvar">f</a>));
+<a id=702></a> for (<a href="../h_src/143394048.htm" class="localvar">i</a>=0; <a href="../h_src/143394048.htm" class="localvar">i</a>&lt;<a href="../h_src/143393912.htm" class="localvar">n</a>; <a href="../h_src/143394048.htm" class="localvar">i</a>++)
+ {
+<a id=704></a>  <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;\t%d\t%s\t%d\t%d\n&quot;,
+<a id=705></a>  <a href="../h_src/143394048.htm" class="localvar">i</a>,<a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/143394184.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514032.htm" class="variable">locvars</a>[<a href="../h_src/143394048.htm" class="localvar">i</a>].<a href="../h_src/57516888.htm" class="variable">varname</a>),<a href="../h_src/143394184.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514032.htm" class="variable">locvars</a>[<a href="../h_src/143394048.htm" class="localvar">i</a>].<a href="../h_src/57516820.htm" class="variable">startpc</a>+1,<a href="../h_src/143394184.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514032.htm" class="variable">locvars</a>[<a href="../h_src/143394048.htm" class="localvar">i</a>].<a href="../h_src/57516752.htm" class="variable">endpc</a>+1);
+ }
+<a id=707></a> <a href="../h_src/143393912.htm" class="localvar">n</a>=<a href="../h_src/143394184.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>;
+<a id=708></a> <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;upvalues (%d) for %p:\n&quot;,<a href="../h_src/143393912.htm" class="localvar">n</a>,<a href="../h_src/143400236.htm" class="macro">VOID</a>(<a href="../h_src/143394184.htm" class="localvar">f</a>));
+<a id=709></a> for (<a href="../h_src/143394048.htm" class="localvar">i</a>=0; <a href="../h_src/143394048.htm" class="localvar">i</a>&lt;<a href="../h_src/143393912.htm" class="localvar">n</a>; <a href="../h_src/143394048.htm" class="localvar">i</a>++)
+ {
+<a id=711></a>  <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;\t%d\t%s\t%d\t%d\n&quot;,
+<a id=712></a>  <a href="../h_src/143394048.htm" class="localvar">i</a>,<a href="../h_src/143400372.htm" class="macro">UPVALNAME</a>(<a href="../h_src/143394048.htm" class="localvar">i</a>),<a href="../h_src/143394184.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/143394048.htm" class="localvar">i</a>].<a href="../h_src/57517296.htm" class="variable">instack</a>,<a href="../h_src/143394184.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/143394048.htm" class="localvar">i</a>].<a href="../h_src/57517228.htm" class="variable">idx</a>);
+ }
+}
+
+<a id=716></a>static void <a href="../h_src/143406832.htm" class="function">PrintFunction</a>(const <a href="../h_src/57513828.htm" class="type">Proto</a>* <a href="../h_src/143393776.htm" class="localvar">f</a>, int <a href="../h_src/143393640.htm" class="localvar">full</a>)
+{
+<a id=718></a> int <a href="../h_src/143393504.htm" class="localvar">i</a>,<a href="../h_src/143393368.htm" class="localvar">n</a>=<a href="../h_src/143393776.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515460.htm" class="variable">sizep</a>;
+<a id=719></a> <a href="../h_src/143394728.htm" class="function">PrintHeader</a>(<a href="../h_src/143393776.htm" class="localvar">f</a>);
+<a id=720></a> <a href="../h_src/143397312.htm" class="function">PrintCode</a>(<a href="../h_src/143393776.htm" class="localvar">f</a>);
+<a id=721></a> if (<a href="../h_src/143393640.htm" class="localvar">full</a>) <a href="../h_src/143394320.htm" class="function">PrintDebug</a>(<a href="../h_src/143393776.htm" class="localvar">f</a>);
+<a id=722></a> for (<a href="../h_src/143393504.htm" class="localvar">i</a>=0; <a href="../h_src/143393504.htm" class="localvar">i</a>&lt;<a href="../h_src/143393368.htm" class="localvar">n</a>; <a href="../h_src/143393504.htm" class="localvar">i</a>++) <a href="../h_src/143406832.htm" class="function">PrintFunction</a>(<a href="../h_src/143393776.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a>[<a href="../h_src/143393504.htm" class="localvar">i</a>],<a href="../h_src/143393640.htm" class="localvar">full</a>);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,51 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>udata2finalize</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57963132.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57963132.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57963132.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57963132.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57963132.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57963132.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57829404.htm#884" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57963132.htm" class="function">udata2finalize</a> (<a href="../h_src/57643100.htm" class="type">global_State</a> *<a href="../h_src/57962996.htm" class="localvar">g</a>) {
+  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57962860.htm" class="localvar">o</a> = <a href="../h_src/57962996.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644732.htm" class="variable">tobefnz</a>;  <a  class="comments">/* get first element */</a>
+  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57625964.htm" class="macro">tofinalize</a>(o));
+  <a href="../h_src/57962996.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644732.htm" class="variable">tobefnz</a> = <a href="../h_src/57962860.htm" class="localvar">o</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>;  <a  class="comments">/* remove it from 'tobefnz' list */</a>
+  <a href="../h_src/57962860.htm" class="localvar">o</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a> = <a href="../h_src/57962996.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645344.htm" class="variable">allgc</a>;  <a  class="comments">/* return it to 'allgc' list */</a>
+  <a href="../h_src/57962996.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645344.htm" class="variable">allgc</a> = <a href="../h_src/57962860.htm" class="localvar">o</a>;
+  <a href="../h_src/57627460.htm" class="macro">resetbit</a>(<a href="../h_src/57962860.htm" class="localvar">o</a>-&gt;<a href="../h_src/57528040.htm" class="variable">marked</a>, <a href="../h_src/57626780.htm" class="macro">FINALIZEDBIT</a>);  <a  class="comments">/* object is &quot;normal&quot; again */</a>
+  if (<a href="../h_src/57628548.htm" class="macro">issweepphase</a>(<a href="../h_src/57962996.htm" class="localvar">g</a>))
+    <a href="../h_src/57828112.htm" class="macro">makewhite</a>(<a href="../h_src/57962996.htm" class="localvar">g</a>, <a href="../h_src/57962860.htm" class="localvar">o</a>);  <a  class="comments">/* &quot;sweep&quot; object */</a>
+  else if (<a href="../h_src/57623924.htm" class="macro">getage</a>(<a href="../h_src/57962860.htm" class="localvar">o</a>) == <a href="../h_src/57624604.htm" class="macro">G_OLD1</a>)
+    <a href="../h_src/57962996.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644392.htm" class="variable">firstold1</a> = <a href="../h_src/57962860.htm" class="localvar">o</a>;  <a  class="comments">/* it is the first OLD1 object in the list */</a>
+  return <a href="../h_src/57962860.htm" class="localvar">o</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,65 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaV_objlen</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57610528.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57610528.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57610528.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57610528.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57610528.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57610528.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58062016.htm#685" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+void <a href="../h_src/57610528.htm" class="function">luaV_objlen</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58201320.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58201184.htm" class="localvar">ra</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58201048.htm" class="localvar">rb</a>) {
+  const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58200912.htm" class="localvar">tm</a>;
+  switch (<a href="../h_src/57534636.htm" class="macro">ttypetag</a>(<a href="../h_src/58201048.htm" class="localvar">rb</a>)) {
+    case <a href="../h_src/57507436.htm" class="macro">LUA_VTABLE</a>: {
+      <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58200776.htm" class="localvar">h</a> = <a href="../h_src/57507164.htm" class="macro">hvalue</a>(<a href="../h_src/58201048.htm" class="localvar">rb</a>);
+      <a href="../h_src/58200912.htm" class="localvar">tm</a> = <a href="../h_src/57498528.htm" class="macro">fasttm</a>(<a href="../h_src/58201320.htm" class="localvar">L</a>, <a href="../h_src/58200776.htm" class="localvar">h</a>-&gt;<a href="../h_src/57504444.htm" class="variable">metatable</a>, <a href="../h_src/57500636.htm" class="variable">TM_LEN</a>);
+      if (<a href="../h_src/58200912.htm" class="localvar">tm</a>) break;  <a  class="comments">/* metamethod? break switch to call it */</a>
+      <a href="../h_src/57525456.htm" class="macro">setivalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58201184.htm" class="localvar">ra</a>), <a href="../h_src/57592440.htm" class="function">luaH_getn</a>(<a href="../h_src/58200776.htm" class="localvar">h</a>));  <a  class="comments">/* else primitive len */</a>
+      return;
+    }
+    case <a href="../h_src/57525184.htm" class="macro">LUA_VSHRSTR</a>: {
+      <a href="../h_src/57525456.htm" class="macro">setivalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58201184.htm" class="localvar">ra</a>), <a href="../h_src/57524368.htm" class="macro">tsvalue</a>(<a href="../h_src/58201048.htm" class="localvar">rb</a>)-&gt;<a href="../h_src/57523416.htm" class="variable">shrlen</a>);
+      return;
+    }
+    case <a href="../h_src/57525048.htm" class="macro">LUA_VLNGSTR</a>: {
+      <a href="../h_src/57525456.htm" class="macro">setivalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58201184.htm" class="localvar">ra</a>), <a href="../h_src/57524368.htm" class="macro">tsvalue</a>(<a href="../h_src/58201048.htm" class="localvar">rb</a>)-&gt;<a href="../h_src/57522872.htm" class="variable">u</a>.<a href="../h_src/57523212.htm" class="variable">lnglen</a>);
+      return;
+    }
+    default: {  <a  class="comments">/* try metamethod */</a>
+      <a href="../h_src/58200912.htm" class="localvar">tm</a> = <a href="../h_src/57498052.htm" class="function">luaT_gettmbyobj</a>(<a href="../h_src/58201320.htm" class="localvar">L</a>, <a href="../h_src/58201048.htm" class="localvar">rb</a>, <a href="../h_src/57500636.htm" class="variable">TM_LEN</a>);
+      if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57498800.htm" class="macro">notm</a>(<a href="../h_src/58200912.htm" class="localvar">tm</a>)))  <a  class="comments">/* no metamethod? */</a>
+        <a href="../h_src/57635756.htm" class="function">luaG_typeerror</a>(<a href="../h_src/58201320.htm" class="localvar">L</a>, <a href="../h_src/58201048.htm" class="localvar">rb</a>, &quot;get length of&quot;);
+      break;
+    }
+  }
+  <a href="../h_src/57497848.htm" class="function">luaT_callTMres</a>(<a href="../h_src/58201320.htm" class="localvar">L</a>, <a href="../h_src/58200912.htm" class="localvar">tm</a>, <a href="../h_src/58201048.htm" class="localvar">rb</a>, <a href="../h_src/58201048.htm" class="localvar">rb</a>, <a href="../h_src/58201184.htm" class="localvar">ra</a>);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,46 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>traverseudata</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57974148.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57974148.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57974148.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57974148.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57974148.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57974148.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57829404.htm#563" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/57974148.htm" class="function">traverseudata</a> (<a href="../h_src/57643100.htm" class="type">global_State</a> *<a href="../h_src/57974012.htm" class="localvar">g</a>, <a href="../h_src/57519268.htm" class="type">Udata</a> *<a href="../h_src/57973876.htm" class="localvar">u</a>) {
+  int <a href="../h_src/57973740.htm" class="localvar">i</a>;
+  <a href="../h_src/57826888.htm" class="macro">markobjectN</a>(<a href="../h_src/57974012.htm" class="localvar">g</a>, <a href="../h_src/57973876.htm" class="localvar">u</a>-&gt;<a href="../h_src/57519540.htm" class="variable">metatable</a>);  <a  class="comments">/* mark its metatable */</a>
+  for (<a href="../h_src/57973740.htm" class="localvar">i</a> = 0; <a href="../h_src/57973740.htm" class="localvar">i</a> &lt; <a href="../h_src/57973876.htm" class="localvar">u</a>-&gt;<a href="../h_src/57519948.htm" class="variable">nuvalue</a>; <a href="../h_src/57973740.htm" class="localvar">i</a>++)
+    <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57974012.htm" class="localvar">g</a>, &amp;<a href="../h_src/57973876.htm" class="localvar">u</a>-&gt;<a href="../h_src/57519336.htm" class="variable">uv</a>[<a href="../h_src/57973740.htm" class="localvar">i</a>].<a href="../h_src/57520764.htm" class="variable">uv</a>);
+  <a href="../h_src/57818660.htm" class="function">genlink</a>(<a href="../h_src/57974012.htm" class="localvar">g</a>, <a href="../h_src/57638884.htm" class="macro">obj2gco</a>(<a href="../h_src/57973876.htm" class="localvar">u</a>));
+  return 1 + <a href="../h_src/57973876.htm" class="localvar">u</a>-&gt;<a href="../h_src/57519948.htm" class="variable">nuvalue</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,130 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>llex.h</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57706040.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/57706040.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/57706040.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/57706040.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_ua/57706040.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_da/57706040.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57706040.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57706040.htm" class="file" target="_self">Source Code</a></li>
+<li><a href="../h_sc/57706040.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<pre class=src>
+<a id=1></a><a  class="comments">/*</a>
+<a id=2></a><a  class="comments">** $Id: llex.h $</a>
+<a id=3></a><a  class="comments">** Lexical Analyzer</a>
+<a id=4></a><a  class="comments">** See Copyright Notice in lua.h</a>
+<a id=5></a><a  class="comments">*/</a>
+
+<a id=7></a>#ifndef <a href="../h_src/57705972.htm" class="macro">llex_h</a>
+<a id=8></a>#define <a href="../h_src/57705836.htm" class="macro">llex_h</a>
+
+#include &lt;limits.h&gt;
+
+<a id=12></a>#include &quot;<a href="../h_src/57537696.htm" class="file">lobject.h</a>&quot;
+<a id=13></a>#include &quot;<a href="../h_src/57497236.htm" class="file">lzio.h</a>&quot;
+
+
+<a id=16></a><a  class="comments">/*</a>
+<a id=17></a><a  class="comments">** Single-char tokens (terminal symbols) are represented by their own</a>
+<a id=18></a><a  class="comments">** numeric code. Other tokens start at the following value.</a>
+<a id=19></a><a  class="comments">*/</a>
+<a id=20></a>#define <a href="../h_src/57705700.htm" class="macro">FIRST_RESERVED</a>	(UCHAR_MAX + 1)
+
+
+<a id=23></a>#if !defined(<a href="../h_src/57705564.htm" class="macro">LUA_ENV</a>)
+<a id=24></a>#define <a href="../h_src/57705428.htm" class="macro">LUA_ENV</a>		&quot;_ENV&quot;
+#endif
+
+
+<a id=28></a><a  class="comments">/*</a>
+<a id=29></a><a  class="comments">* WARNING: if you change the order of this enumeration,</a>
+<a id=30></a><a  class="comments">* grep &quot;ORDER RESERVED&quot;</a>
+<a id=31></a><a  class="comments">*/</a>
+<a id=32></a>enum <a href="../h_src/57702776.htm" class="type">RESERVED</a> {
+<a id=33></a>  <a  class="comments">/* terminal symbols denoted by reserved words */</a>
+<a id=34></a>  <a href="../h_src/57705292.htm" class="variable">TK_AND</a> = <a href="../h_src/57705700.htm" class="macro">FIRST_RESERVED</a>, <a href="../h_src/57705224.htm" class="variable">TK_BREAK</a>,
+<a id=35></a>  <a href="../h_src/57705156.htm" class="variable">TK_DO</a>, <a href="../h_src/57705088.htm" class="variable">TK_ELSE</a>, <a href="../h_src/57705020.htm" class="variable">TK_ELSEIF</a>, <a href="../h_src/57704952.htm" class="variable">TK_END</a>, <a href="../h_src/57704884.htm" class="variable">TK_FALSE</a>, <a href="../h_src/57704816.htm" class="variable">TK_FOR</a>, <a href="../h_src/57704748.htm" class="variable">TK_FUNCTION</a>,
+<a id=36></a>  <a href="../h_src/57704680.htm" class="variable">TK_GOTO</a>, <a href="../h_src/57704612.htm" class="variable">TK_IF</a>, <a href="../h_src/57704544.htm" class="variable">TK_IN</a>, <a href="../h_src/57704476.htm" class="variable">TK_LOCAL</a>, <a href="../h_src/57704408.htm" class="variable">TK_NIL</a>, <a href="../h_src/57704340.htm" class="variable">TK_NOT</a>, <a href="../h_src/57704272.htm" class="variable">TK_OR</a>, <a href="../h_src/57704204.htm" class="variable">TK_REPEAT</a>,
+<a id=37></a>  <a href="../h_src/57704136.htm" class="variable">TK_RETURN</a>, <a href="../h_src/57704068.htm" class="variable">TK_THEN</a>, <a href="../h_src/57704000.htm" class="variable">TK_TRUE</a>, <a href="../h_src/57703932.htm" class="variable">TK_UNTIL</a>, <a href="../h_src/57703864.htm" class="variable">TK_WHILE</a>,
+<a id=38></a>  <a  class="comments">/* other terminal symbols */</a>
+<a id=39></a>  <a href="../h_src/57703796.htm" class="variable">TK_IDIV</a>, <a href="../h_src/57703728.htm" class="variable">TK_CONCAT</a>, <a href="../h_src/57703660.htm" class="variable">TK_DOTS</a>, <a href="../h_src/57703592.htm" class="variable">TK_EQ</a>, <a href="../h_src/57703524.htm" class="variable">TK_GE</a>, <a href="../h_src/57703456.htm" class="variable">TK_LE</a>, <a href="../h_src/57703388.htm" class="variable">TK_NE</a>,
+<a id=40></a>  <a href="../h_src/57703320.htm" class="variable">TK_SHL</a>, <a href="../h_src/57703252.htm" class="variable">TK_SHR</a>,
+<a id=41></a>  <a href="../h_src/57703184.htm" class="variable">TK_DBCOLON</a>, <a href="../h_src/57703116.htm" class="variable">TK_EOS</a>,
+<a id=42></a>  <a href="../h_src/57703048.htm" class="variable">TK_FLT</a>, <a href="../h_src/57702980.htm" class="variable">TK_INT</a>, <a href="../h_src/57702912.htm" class="variable">TK_NAME</a>, <a href="../h_src/57702844.htm" class="variable">TK_STRING</a>
+};
+
+<a id=45></a><a  class="comments">/* number of reserved words */</a>
+<a id=46></a>#define <a href="../h_src/57702640.htm" class="macro">NUM_RESERVED</a>	(cast_int(TK_WHILE-FIRST_RESERVED + 1))
+
+
+typedef union {
+<a id=50></a>  <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/57702436.htm" class="variable">r</a>;
+<a id=51></a>  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/57702368.htm" class="variable">i</a>;
+<a id=52></a>  <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/57702300.htm" class="variable">ts</a>;
+<a id=53></a>} <a href="../h_src/57702164.htm" class="type">SemInfo</a>;  <a  class="comments">/* semantics information */</a>
+
+
+<a id=56></a>typedef struct <a href="../h_src/57702096.htm" class="class">Token</a> {
+<a id=57></a>  int <a href="../h_src/57701960.htm" class="variable">token</a>;
+<a id=58></a>  <a href="../h_src/57702164.htm" class="type">SemInfo</a> <a href="../h_src/57701892.htm" class="variable">seminfo</a>;
+<a id=59></a>} <a href="../h_src/57701824.htm" class="type">Token</a>;
+
+
+<a id=62></a><a  class="comments">/* state of the lexer plus state of the parser when shared by all</a>
+<a id=63></a><a  class="comments">   functions */</a>
+<a id=64></a>typedef struct <a href="../h_src/57701756.htm" class="class">LexState</a> {
+<a id=65></a>  int <a href="../h_src/57701620.htm" class="variable">current</a>;  <a  class="comments">/* current character (charint) */</a>
+<a id=66></a>  int <a href="../h_src/57701552.htm" class="variable">linenumber</a>;  <a  class="comments">/* input line counter */</a>
+<a id=67></a>  int <a href="../h_src/57701484.htm" class="variable">lastline</a>;  <a  class="comments">/* line of last token 'consumed' */</a>
+<a id=68></a>  <a href="../h_src/57701824.htm" class="type">Token</a> <a href="../h_src/57701416.htm" class="variable">t</a>;  <a  class="comments">/* current token */</a>
+<a id=69></a>  <a href="../h_src/57701824.htm" class="type">Token</a> <a href="../h_src/57701348.htm" class="variable">lookahead</a>;  <a  class="comments">/* look ahead token */</a>
+<a id=70></a>  struct <a href="../h_src/57701280.htm" class="class">FuncState</a> *<a href="../h_src/57701008.htm" class="variable">fs</a>;  <a  class="comments">/* current function (parser) */</a>
+<a id=71></a>  struct <a href="../h_src/57444388.htm" class="class">lua_State</a> *<a href="../h_src/57700940.htm" class="variable">L</a>;
+<a id=72></a>  <a href="../h_src/57656088.htm" class="type">ZIO</a> *<a href="../h_src/57700872.htm" class="variable">z</a>;  <a  class="comments">/* input stream */</a>
+<a id=73></a>  <a href="../h_src/57655544.htm" class="type">Mbuffer</a> *<a href="../h_src/57700736.htm" class="variable">buff</a>;  <a  class="comments">/* buffer for tokens */</a>
+<a id=74></a>  <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/57700668.htm" class="variable">h</a>;  <a  class="comments">/* to avoid collection/reuse strings */</a>
+<a id=75></a>  struct <a href="../h_src/57700600.htm" class="class">Dyndata</a> *<a href="../h_src/57700328.htm" class="variable">dyd</a>;  <a  class="comments">/* dynamic structures used by the parser */</a>
+<a id=76></a>  <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/57700260.htm" class="variable">source</a>;  <a  class="comments">/* current source name */</a>
+<a id=77></a>  <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/57700192.htm" class="variable">envn</a>;  <a  class="comments">/* environment variable name */</a>
+<a id=78></a>} <a href="../h_src/57700124.htm" class="type">LexState</a>;
+
+
+<a id=81></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57700056.htm" class="function">luaX_init</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L);
+<a id=82></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57699988.htm" class="function">luaX_setinput</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57700124.htm" class="type">LexState</a> *ls, <a href="../h_src/57656088.htm" class="type">ZIO</a> *z,
+<a id=83></a>                              <a href="../h_src/57522736.htm" class="type">TString</a> *source, int firstchar);
+<a id=84></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/57699852.htm" class="function">luaX_newstring</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *ls, const char *str, <a href="../h_aa/57441192.htm" class="type">size_t</a> l);
+<a id=85></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57699784.htm" class="function">luaX_next</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *ls);
+<a id=86></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> int <a href="../h_src/57699716.htm" class="function">luaX_lookahead</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *ls);
+<a id=87></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> <a href="../h_src/57545584.htm" class="macro">l_noret</a> <a href="../h_src/57699648.htm" class="function">luaX_syntaxerror</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *ls, const char *s);
+<a id=88></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> const char *<a href="../h_src/57699580.htm" class="function">luaX_token2str</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *ls, int token);
+
+
+#endif
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,44 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lsys_load</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143215304.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143215304.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143215304.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143215304.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143215304.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143215304.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143217276.htm#209" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void *<a href="../h_src/143215304.htm" class="function">lsys_load</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143212856.htm" class="localvar">L</a>, const char *<a href="../h_src/143212720.htm" class="localvar">path</a>, int <a href="../h_src/143212584.htm" class="localvar">seeglb</a>) {
+  HMODULE <a href="../h_src/143212380.htm" class="localvar">lib</a> = <a href="../h_aa/143212448.htm" class="libfunc">LoadLibraryExA</a>(<a href="../h_src/143212720.htm" class="localvar">path</a>, NULL, <a href="../h_src/143214760.htm" class="macro">LUA_LLE_FLAGS</a>);
+  (void)(<a href="../h_src/143212584.htm" class="localvar">seeglb</a>);  <a  class="comments">/* not used: symbols are 'global' by default */</a>
+  if (<a href="../h_src/143212380.htm" class="localvar">lib</a> == NULL) <a href="../h_src/143213672.htm" class="function">pusherror</a>(<a href="../h_src/143212856.htm" class="localvar">L</a>);
+  return <a href="../h_src/143212380.htm" class="localvar">lib</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

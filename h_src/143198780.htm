@@ -1,0 +1,50 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>searcher_preload</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143198780.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143198780.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143198780.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143198780.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143198780.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143198780.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143217276.htm#610" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/143198780.htm" class="function">searcher_preload</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143198644.htm" class="localvar">L</a>) {
+  const char *<a href="../h_src/143198508.htm" class="localvar">name</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143198644.htm" class="localvar">L</a>, 1);
+  <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143198644.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/57421404.htm" class="macro">LUA_PRELOAD_TABLE</a>);
+  if (<a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143198644.htm" class="localvar">L</a>, -1, <a href="../h_src/143198508.htm" class="localvar">name</a>) == <a href="../h_src/57444048.htm" class="macro">LUA_TNIL</a>) {  <a  class="comments">/* not found? */</a>
+    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/143198644.htm" class="localvar">L</a>, &quot;no field package.preload['%s']&quot;, <a href="../h_src/143198508.htm" class="localvar">name</a>);
+    return 1;
+  }
+  else {
+    <a href="../h_src/57427660.htm" class="macro">lua_pushliteral</a>(<a href="../h_src/143198644.htm" class="localvar">L</a>, &quot;:preload:&quot;);
+    return 2;
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

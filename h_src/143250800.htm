@@ -1,0 +1,63 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>io_lines</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143250800.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143250800.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143250800.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143250800.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143250800.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143250800.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143264808.htm#386" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/143250800.htm" class="function">io_lines</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143250664.htm" class="localvar">L</a>) {
+  int <a href="../h_src/143250528.htm" class="localvar">toclose</a>;
+  if (<a href="../h_src/57427932.htm" class="macro">lua_isnone</a>(<a href="../h_src/143250664.htm" class="localvar">L</a>, 1)) <a href="../h_src/57435276.htm" class="function">lua_pushnil</a>(<a href="../h_src/143250664.htm" class="localvar">L</a>);  <a  class="comments">/* at least one argument */</a>
+  if (<a href="../h_src/57428340.htm" class="macro">lua_isnil</a>(<a href="../h_src/143250664.htm" class="localvar">L</a>, 1)) {  <a  class="comments">/* no file name? */</a>
+    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143250664.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/143261476.htm" class="macro">IO_INPUT</a>);  <a  class="comments">/* get default input */</a>
+    <a href="../h_src/57426980.htm" class="macro">lua_replace</a>(<a href="../h_src/143250664.htm" class="localvar">L</a>, 1);  <a  class="comments">/* put it at index 1 */</a>
+    <a href="../h_src/143259980.htm" class="function">tofile</a>(<a href="../h_src/143250664.htm" class="localvar">L</a>);  <a  class="comments">/* check that it's a valid file handle */</a>
+    <a href="../h_src/143250528.htm" class="localvar">toclose</a> = 0;  <a  class="comments">/* do not close it after iteration */</a>
+  }
+  else {  <a  class="comments">/* open a new file */</a>
+    const char *<a href="../h_src/143250392.htm" class="localvar">filename</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143250664.htm" class="localvar">L</a>, 1);
+    <a href="../h_src/143256784.htm" class="function">opencheck</a>(<a href="../h_src/143250664.htm" class="localvar">L</a>, <a href="../h_src/143250392.htm" class="localvar">filename</a>, &quot;r&quot;);
+    <a href="../h_src/57426980.htm" class="macro">lua_replace</a>(<a href="../h_src/143250664.htm" class="localvar">L</a>, 1);  <a  class="comments">/* put file at index 1 */</a>
+    <a href="../h_src/143250528.htm" class="localvar">toclose</a> = 1;  <a  class="comments">/* close it after iteration */</a>
+  }
+  <a href="../h_src/143251616.htm" class="function">aux_lines</a>(<a href="../h_src/143250664.htm" class="localvar">L</a>, <a href="../h_src/143250528.htm" class="localvar">toclose</a>);  <a  class="comments">/* push iteration function */</a>
+  if (<a href="../h_src/143250528.htm" class="localvar">toclose</a>) {
+    <a href="../h_src/57435276.htm" class="function">lua_pushnil</a>(<a href="../h_src/143250664.htm" class="localvar">L</a>);  <a  class="comments">/* state */</a>
+    <a href="../h_src/57435276.htm" class="function">lua_pushnil</a>(<a href="../h_src/143250664.htm" class="localvar">L</a>);  <a  class="comments">/* control */</a>
+    <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/143250664.htm" class="localvar">L</a>, 1);  <a  class="comments">/* file is the to-be-closed variable (4th result) */</a>
+    return 4;
+  }
+  else
+    return 1;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

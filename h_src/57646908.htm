@@ -1,0 +1,90 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>global_State</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57646908.htm" class="class" target="_self">Info</a></li>
+<li><a href="../h_im/57646908.htm" class="class" target="_self">Public Interface</a></li>
+<li><a href="../h_rx/57646908.htm" class="class" target="_self">Inheritance</a></li>
+<li><a href="../h_nm/57646908.htm" class="class" target="_self">Internals</a></li>
+<li><a href="../h_ua/57646908.htm" class="class" target="_self">Use of Members</a></li>
+<li><a href="../h_da/57646908.htm" class="class" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57646908.htm" class="class" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57646908.htm" class="class" target="_self">Declaration</a></li>
+<li><a href="../h_src/57538104.htm#254" class="class" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Declaration</h4>
+<pre class=src>
+typedef struct <a href="../h_src/57646908.htm" class="class">global_State</a> {
+  <a href="../h_src/57440852.htm" class="type">lua_Alloc</a> <a href="../h_src/57646772.htm" class="variable">frealloc</a>;  <a  class="comments">/* function to reallocate memory */</a>
+  void *<a href="../h_src/57646704.htm" class="variable">ud</a>;         <a  class="comments">/* auxiliary data to 'frealloc' */</a>
+  <a href="../h_src/57550548.htm" class="type">l_mem</a> <a href="../h_src/57646636.htm" class="variable">totalbytes</a>;  <a  class="comments">/* number of bytes currently allocated - GCdebt */</a>
+  <a href="../h_src/57550548.htm" class="type">l_mem</a> <a href="../h_src/57646568.htm" class="variable">GCdebt</a>;  <a  class="comments">/* bytes allocated not yet compensated by the collector */</a>
+  <a href="../h_src/57550616.htm" class="type">lu_mem</a> <a href="../h_src/57646500.htm" class="variable">GCestimate</a>;  <a  class="comments">/* an estimate of the non-garbage memory in use */</a>
+  <a href="../h_src/57550616.htm" class="type">lu_mem</a> <a href="../h_src/57646432.htm" class="variable">lastatomic</a>;  <a  class="comments">/* see function 'genstep' in file 'lgc.c' */</a>
+  <a href="../h_src/57651600.htm" class="type">stringtable</a> <a href="../h_src/57646364.htm" class="variable">strt</a>;  <a  class="comments">/* hash table for strings */</a>
+  <a href="../h_src/57535384.htm" class="type">TValue</a> <a href="../h_src/57646296.htm" class="variable">l_registry</a>;
+  <a href="../h_src/57535384.htm" class="type">TValue</a> <a href="../h_src/57646228.htm" class="variable">nilvalue</a>;  <a  class="comments">/* a nil value */</a>
+  unsigned int <a href="../h_src/57646160.htm" class="variable">seed</a>;  <a  class="comments">/* randomized seed for hashes */</a>
+  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57646092.htm" class="variable">currentwhite</a>;
+  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57646024.htm" class="variable">gcstate</a>;  <a  class="comments">/* state of garbage collector */</a>
+  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57645956.htm" class="variable">gckind</a>;  <a  class="comments">/* kind of GC running */</a>
+  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57645888.htm" class="variable">gcstopem</a>;  <a  class="comments">/* stops emergency collections */</a>
+  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57645820.htm" class="variable">genminormul</a>;  <a  class="comments">/* control for minor generational collections */</a>
+  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57645752.htm" class="variable">genmajormul</a>;  <a  class="comments">/* control for major generational collections */</a>
+  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57645684.htm" class="variable">gcstp</a>;  <a  class="comments">/* control whether GC is running */</a>
+  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57645616.htm" class="variable">gcemergency</a>;  <a  class="comments">/* true if this is an emergency collection */</a>
+  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57645548.htm" class="variable">gcpause</a>;  <a  class="comments">/* size of pause between successive GCs */</a>
+  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57645480.htm" class="variable">gcstepmul</a>;  <a  class="comments">/* GC &quot;speed&quot; */</a>
+  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57645412.htm" class="variable">gcstepsize</a>;  <a  class="comments">/* (log2 of) GC granularity */</a>
+  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57645344.htm" class="variable">allgc</a>;  <a  class="comments">/* list of all collectable objects */</a>
+  <a href="../h_src/57527972.htm" class="type">GCObject</a> **<a href="../h_src/57645208.htm" class="variable">sweepgc</a>;  <a  class="comments">/* current position of sweep in list */</a>
+  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57645140.htm" class="variable">finobj</a>;  <a  class="comments">/* list of collectable objects with finalizers */</a>
+  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57645072.htm" class="variable">gray</a>;  <a  class="comments">/* list of gray objects */</a>
+  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57645004.htm" class="variable">grayagain</a>;  <a  class="comments">/* list of objects to be traversed atomically */</a>
+  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57644936.htm" class="variable">weak</a>;  <a  class="comments">/* list of tables with weak values */</a>
+  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57644868.htm" class="variable">ephemeron</a>;  <a  class="comments">/* list of ephemeron tables (weak keys) */</a>
+  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57644800.htm" class="variable">allweak</a>;  <a  class="comments">/* list of all-weak tables */</a>
+  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57644732.htm" class="variable">tobefnz</a>;  <a  class="comments">/* list of userdata to be GC */</a>
+  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57644664.htm" class="variable">fixedgc</a>;  <a  class="comments">/* list of objects not to be collected */</a>
+  <a  class="comments">/* fields for generational collector */</a>
+  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57644596.htm" class="variable">survival</a>;  <a  class="comments">/* start of objects that survived one GC cycle */</a>
+  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57644528.htm" class="variable">old1</a>;  <a  class="comments">/* start of old1 objects */</a>
+  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57644460.htm" class="variable">reallyold</a>;  <a  class="comments">/* objects more than one cycle old (&quot;really old&quot;) */</a>
+  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57644392.htm" class="variable">firstold1</a>;  <a  class="comments">/* first OLD1 object in the list (if any) */</a>
+  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57644324.htm" class="variable">finobjsur</a>;  <a  class="comments">/* list of survival objects with finalizers */</a>
+  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57644256.htm" class="variable">finobjold1</a>;  <a  class="comments">/* list of old1 objects with finalizers */</a>
+  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57644188.htm" class="variable">finobjrold</a>;  <a  class="comments">/* list of really old objects with finalizers */</a>
+  struct <a href="../h_src/57444388.htm" class="class">lua_State</a> *<a href="../h_src/57643984.htm" class="variable">twups</a>;  <a  class="comments">/* list of threads with open upvalues */</a>
+  <a href="../h_src/57441736.htm" class="type">lua_CFunction</a> <a href="../h_src/57643916.htm" class="variable">panic</a>;  <a  class="comments">/* to be called in unprotected errors */</a>
+  struct <a href="../h_src/57444388.htm" class="class">lua_State</a> *<a href="../h_src/57643848.htm" class="variable">mainthread</a>;
+  <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/57643780.htm" class="variable">memerrmsg</a>;  <a  class="comments">/* message for memory-allocation errors */</a>
+  <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/57643644.htm" class="variable">tmname</a>[<a href="../h_src/57499208.htm" class="variable">TM_N</a>];  <a  class="comments">/* array with tag-method names */</a>
+  struct <a href="../h_src/57519812.htm" class="class">Table</a> *<a href="../h_src/57643440.htm" class="variable">mt</a>[<a href="../h_src/57442824.htm" class="macro">LUA_NUMTYPES</a>];  <a  class="comments">/* metatables for basic types */</a>
+  <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/57643304.htm" class="variable">strcache</a>[<a href="../h_src/57544360.htm" class="macro">STRCACHE_N</a>][<a href="../h_src/57544224.htm" class="macro">STRCACHE_M</a>];  <a  class="comments">/* cache for strings in API */</a>
+  <a href="../h_src/57440648.htm" class="type">lua_WarnFunction</a> <a href="../h_src/57643236.htm" class="variable">warnf</a>;  <a  class="comments">/* warning function */</a>
+  void *<a href="../h_src/57643168.htm" class="variable">ud_warn</a>;         <a  class="comments">/* auxiliary data to 'warnf' */</a>
+} <a href="../h_src/57643100.htm" class="type">global_State</a>;
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

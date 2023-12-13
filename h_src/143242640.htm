@@ -1,0 +1,46 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>createmeta</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143242640.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143242640.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143242640.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143242640.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143242640.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143242640.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143264808.htm#784" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/143242640.htm" class="function">createmeta</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143242504.htm" class="localvar">L</a>) {
+  <a href="../h_src/57419636.htm" class="function">luaL_newmetatable</a>(<a href="../h_src/143242504.htm" class="localvar">L</a>, <a href="../h_src/57412972.htm" class="macro">LUA_FILEHANDLE</a>);  <a  class="comments">/* metatable for file handles */</a>
+  <a href="../h_src/57417868.htm" class="function">luaL_setfuncs</a>(<a href="../h_src/143242504.htm" class="localvar">L</a>, <a href="../h_src/143242708.htm" class="variable">metameth</a>, 0);  <a  class="comments">/* add metamethods to new metatable */</a>
+  <a href="../h_src/57417528.htm" class="macro">luaL_newlibtable</a>(<a href="../h_src/143242504.htm" class="localvar">L</a>, <a href="../h_src/143242776.htm" class="variable">meth</a>);  <a  class="comments">/* create method table */</a>
+  <a href="../h_src/57417868.htm" class="function">luaL_setfuncs</a>(<a href="../h_src/143242504.htm" class="localvar">L</a>, <a href="../h_src/143242776.htm" class="variable">meth</a>, 0);  <a  class="comments">/* add file methods to method table */</a>
+  <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/143242504.htm" class="localvar">L</a>, -2, &quot;__index&quot;);  <a  class="comments">/* metatable.__index = method table */</a>
+  <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143242504.htm" class="localvar">L</a>, 1);  <a  class="comments">/* pop metatable */</a>
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

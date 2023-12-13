@@ -1,0 +1,53 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>auxgetstr</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57584212.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57584212.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57584212.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57584212.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57584212.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57584212.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57552180.htm#639" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57545312.htm" class="macro">l_sinline</a> int <a href="../h_src/57584212.htm" class="function">auxgetstr</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57584076.htm" class="localvar">L</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57583940.htm" class="localvar">t</a>, const char *<a href="../h_src/57583804.htm" class="localvar">k</a>) {
+  const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57583668.htm" class="localvar">slot</a>;
+  <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/57583532.htm" class="localvar">str</a> = <a href="../h_src/57618484.htm" class="function">luaS_new</a>(<a href="../h_src/57584076.htm" class="localvar">L</a>, <a href="../h_src/57583804.htm" class="localvar">k</a>);
+  if (<a href="../h_src/57612296.htm" class="macro">luaV_fastget</a>(L, <a href="../h_src/57583940.htm" class="localvar">t</a>, <a href="../h_src/57583532.htm" class="localvar">str</a>, <a href="../h_src/57583668.htm" class="localvar">slot</a>, <a href="../h_src/57616852.htm" class="function">luaH_getstr</a>)) {
+    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/57584076.htm" class="localvar">L</a>, <a href="../h_src/57584076.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57583668.htm" class="localvar">slot</a>);
+    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57584076.htm" class="localvar">L</a>);
+  }
+  else {
+    <a href="../h_src/57524096.htm" class="macro">setsvalue2s</a>(<a href="../h_src/57584076.htm" class="localvar">L</a>, <a href="../h_src/57584076.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57583532.htm" class="localvar">str</a>);
+    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57584076.htm" class="localvar">L</a>);
+    <a href="../h_src/57611140.htm" class="function">luaV_finishget</a>(<a href="../h_src/57584076.htm" class="localvar">L</a>, <a href="../h_src/57583940.htm" class="localvar">t</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57584076.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1), <a href="../h_src/57584076.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1, <a href="../h_src/57583668.htm" class="localvar">slot</a>);
+  }
+  <a href="../h_src/57543272.htm" class="macro">lua_unlock</a>(L);
+  return <a href="../h_src/57534500.htm" class="macro">ttype</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57584076.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1));
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

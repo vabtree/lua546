@@ -1,0 +1,151 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>ljumptab.h</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58187244.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/58187244.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/58187244.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/58187244.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_ua/58187244.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_da/58187244.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/58187244.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58187244.htm" class="file" target="_self">Source Code</a></li>
+<li><a href="../h_sc/58187244.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<pre class=src>
+<a id=1></a><a  class="comments">/*</a>
+<a id=2></a><a  class="comments">** $Id: ljumptab.h $</a>
+<a id=3></a><a  class="comments">** Jump Table for the Lua interpreter</a>
+<a id=4></a><a  class="comments">** See Copyright Notice in lua.h</a>
+<a id=5></a><a  class="comments">*/</a>
+
+
+<a id=8></a>#undef <a href="../h_src/58188604.htm" class="macro">vmdispatch</a>
+<a id=9></a>#undef <a href="../h_src/58188468.htm" class="macro">vmcase</a>
+<a id=10></a>#undef <a href="../h_src/58188332.htm" class="macro">vmbreak</a>
+
+<a id=12></a>#define <a href="../h_src/58187176.htm" class="macro">vmdispatch</a>(x)     goto *disptab[x];
+
+<a id=14></a>#define <a href="../h_src/58187040.htm" class="macro">vmcase</a>(l)     L_##l:
+
+<a id=16></a>#define <a href="../h_src/58186904.htm" class="macro">vmbreak</a>		vmfetch(); vmdispatch(GET_OPCODE(i));
+
+
+<a id=19></a>static const void *const <a href="../h_src/58186700.htm" class="localvar">disptab</a>[<a href="../h_src/57684688.htm" class="macro">NUM_OPCODES</a>] = {
+
+#if 0
+** you can update the following list with this command:
+**
+<a id=24></a>**  sed -n '/^OP_/\!d; s/OP_/\&amp;\&amp;L_OP_/ ; s/,.*/,/ ; s/\/.*<a  class="comments">// ; p'  lopcodes.h</a>
+<a id=25></a><a  class="comments"></a>**
+#endif
+
+&amp;&amp;L_OP_MOVE,
+&amp;&amp;L_OP_LOADI,
+&amp;&amp;L_OP_LOADF,
+&amp;&amp;L_OP_LOADK,
+&amp;&amp;L_OP_LOADKX,
+&amp;&amp;L_OP_LOADFALSE,
+&amp;&amp;L_OP_LFALSESKIP,
+&amp;&amp;L_OP_LOADTRUE,
+&amp;&amp;L_OP_LOADNIL,
+&amp;&amp;L_OP_GETUPVAL,
+&amp;&amp;L_OP_SETUPVAL,
+&amp;&amp;L_OP_GETTABUP,
+&amp;&amp;L_OP_GETTABLE,
+&amp;&amp;L_OP_GETI,
+&amp;&amp;L_OP_GETFIELD,
+&amp;&amp;L_OP_SETTABUP,
+&amp;&amp;L_OP_SETTABLE,
+&amp;&amp;L_OP_SETI,
+&amp;&amp;L_OP_SETFIELD,
+&amp;&amp;L_OP_NEWTABLE,
+&amp;&amp;L_OP_SELF,
+&amp;&amp;L_OP_ADDI,
+&amp;&amp;L_OP_ADDK,
+&amp;&amp;L_OP_SUBK,
+&amp;&amp;L_OP_MULK,
+&amp;&amp;L_OP_MODK,
+&amp;&amp;L_OP_POWK,
+&amp;&amp;L_OP_DIVK,
+&amp;&amp;L_OP_IDIVK,
+&amp;&amp;L_OP_BANDK,
+&amp;&amp;L_OP_BORK,
+&amp;&amp;L_OP_BXORK,
+&amp;&amp;L_OP_SHRI,
+&amp;&amp;L_OP_SHLI,
+&amp;&amp;L_OP_ADD,
+&amp;&amp;L_OP_SUB,
+&amp;&amp;L_OP_MUL,
+&amp;&amp;L_OP_MOD,
+&amp;&amp;L_OP_POW,
+&amp;&amp;L_OP_DIV,
+&amp;&amp;L_OP_IDIV,
+&amp;&amp;L_OP_BAND,
+&amp;&amp;L_OP_BOR,
+&amp;&amp;L_OP_BXOR,
+&amp;&amp;L_OP_SHL,
+&amp;&amp;L_OP_SHR,
+&amp;&amp;L_OP_MMBIN,
+&amp;&amp;L_OP_MMBINI,
+&amp;&amp;L_OP_MMBINK,
+&amp;&amp;L_OP_UNM,
+&amp;&amp;L_OP_BNOT,
+&amp;&amp;L_OP_NOT,
+&amp;&amp;L_OP_LEN,
+&amp;&amp;L_OP_CONCAT,
+&amp;&amp;L_OP_CLOSE,
+&amp;&amp;L_OP_TBC,
+&amp;&amp;L_OP_JMP,
+&amp;&amp;L_OP_EQ,
+&amp;&amp;L_OP_LT,
+&amp;&amp;L_OP_LE,
+&amp;&amp;L_OP_EQK,
+&amp;&amp;L_OP_EQI,
+&amp;&amp;L_OP_LTI,
+&amp;&amp;L_OP_LEI,
+&amp;&amp;L_OP_GTI,
+&amp;&amp;L_OP_GEI,
+&amp;&amp;L_OP_TEST,
+&amp;&amp;L_OP_TESTSET,
+&amp;&amp;L_OP_CALL,
+&amp;&amp;L_OP_TAILCALL,
+&amp;&amp;L_OP_RETURN,
+&amp;&amp;L_OP_RETURN0,
+&amp;&amp;L_OP_RETURN1,
+&amp;&amp;L_OP_FORLOOP,
+&amp;&amp;L_OP_FORPREP,
+&amp;&amp;L_OP_TFORPREP,
+&amp;&amp;L_OP_TFORCALL,
+&amp;&amp;L_OP_TFORLOOP,
+&amp;&amp;L_OP_SETLIST,
+&amp;&amp;L_OP_CLOSURE,
+&amp;&amp;L_OP_VARARG,
+&amp;&amp;L_OP_VARARGPREP,
+&amp;&amp;L_OP_EXTRAARG
+
+};
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

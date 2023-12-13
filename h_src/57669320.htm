@@ -1,0 +1,50 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaK_concat</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57669320.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57669320.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57669320.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57669320.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57669320.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57669320.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57706720.htm#181" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+void <a href="../h_src/57669320.htm" class="function">luaK_concat</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57663268.htm" class="localvar">fs</a>, int *<a href="../h_src/57663132.htm" class="localvar">l1</a>, int <a href="../h_src/57662996.htm" class="localvar">l2</a>) {
+  if (<a href="../h_src/57662996.htm" class="localvar">l2</a> == <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>) return;  <a  class="comments">/* nothing to concatenate? */</a>
+  else if (*<a href="../h_src/57663132.htm" class="localvar">l1</a> == <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>)  <a  class="comments">/* no original list? */</a>
+    *<a href="../h_src/57663132.htm" class="localvar">l1</a> = <a href="../h_src/57662996.htm" class="localvar">l2</a>;  <a  class="comments">/* 'l1' points to 'l2' */</a>
+  else {
+    int <a href="../h_src/57662860.htm" class="localvar">list</a> = *<a href="../h_src/57663132.htm" class="localvar">l1</a>;
+    int <a href="../h_src/57662724.htm" class="localvar">next</a>;
+    while ((<a href="../h_src/57662724.htm" class="localvar">next</a> = <a href="../h_src/57664628.htm" class="function">getjump</a>(<a href="../h_src/57663268.htm" class="localvar">fs</a>, <a href="../h_src/57662860.htm" class="localvar">list</a>)) != <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>)  <a  class="comments">/* find last element */</a>
+      <a href="../h_src/57662860.htm" class="localvar">list</a> = <a href="../h_src/57662724.htm" class="localvar">next</a>;
+    <a href="../h_src/57664084.htm" class="function">fixjump</a>(<a href="../h_src/57663268.htm" class="localvar">fs</a>, <a href="../h_src/57662860.htm" class="localvar">list</a>, <a href="../h_src/57662996.htm" class="localvar">l2</a>);  <a  class="comments">/* last element links to 'l2' */</a>
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

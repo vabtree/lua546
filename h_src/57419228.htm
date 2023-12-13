@@ -1,0 +1,49 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaL_checkoption</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57419228.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57419228.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57419228.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57419228.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57419228.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57419228.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58351320.htm#360" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int <a href="../h_src/57419228.htm" class="function">luaL_checkoption</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58341052.htm" class="localvar">L</a>, int <a href="../h_src/58340916.htm" class="localvar">arg</a>, const char *<a href="../h_src/58340780.htm" class="localvar">def</a>,
+                                 const char *const <a href="../h_src/58340644.htm" class="localvar">lst</a>[]) {
+  const char *<a href="../h_src/58340508.htm" class="localvar">name</a> = (<a href="../h_src/58340780.htm" class="localvar">def</a>) ? <a href="../h_src/57416848.htm" class="macro">luaL_optstring</a>(<a href="../h_src/58341052.htm" class="localvar">L</a>, <a href="../h_src/58340916.htm" class="localvar">arg</a>, <a href="../h_src/58340780.htm" class="localvar">def</a>) :
+                             <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/58341052.htm" class="localvar">L</a>, <a href="../h_src/58340916.htm" class="localvar">arg</a>);
+  int <a href="../h_src/58340372.htm" class="localvar">i</a>;
+  for (<a href="../h_src/58340372.htm" class="localvar">i</a>=0; <a href="../h_src/58340644.htm" class="localvar">lst</a>[<a href="../h_src/58340372.htm" class="localvar">i</a>]; <a href="../h_src/58340372.htm" class="localvar">i</a>++)
+    if (<a href="../h_aa/57564488.htm" class="libfunc">strcmp</a>(<a href="../h_src/58340644.htm" class="localvar">lst</a>[<a href="../h_src/58340372.htm" class="localvar">i</a>], <a href="../h_src/58340508.htm" class="localvar">name</a>) == 0)
+      return <a href="../h_src/58340372.htm" class="localvar">i</a>;
+  return <a href="../h_src/57420384.htm" class="function">luaL_argerror</a>(<a href="../h_src/58341052.htm" class="localvar">L</a>, <a href="../h_src/58340916.htm" class="localvar">arg</a>,
+                       <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58341052.htm" class="localvar">L</a>, &quot;invalid option '%s'&quot;, <a href="../h_src/58340508.htm" class="localvar">name</a>));
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

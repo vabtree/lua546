@@ -1,0 +1,54 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaT_init</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57497984.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57497984.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57497984.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57497984.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57497984.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57497984.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58090712.htm#38" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+void <a href="../h_src/57497984.htm" class="function">luaT_init</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58090304.htm" class="localvar">L</a>) {
+  static const char *const <a href="../h_src/58090168.htm" class="localvar">luaT_eventname</a>[] = {  <a  class="comments">/* ORDER TM */</a>
+    &quot;__index&quot;, &quot;__newindex&quot;,
+    &quot;__gc&quot;, &quot;__mode&quot;, &quot;__len&quot;, &quot;__eq&quot;,
+    &quot;__add&quot;, &quot;__sub&quot;, &quot;__mul&quot;, &quot;__mod&quot;, &quot;__pow&quot;,
+    &quot;__div&quot;, &quot;__idiv&quot;,
+    &quot;__band&quot;, &quot;__bor&quot;, &quot;__bxor&quot;, &quot;__shl&quot;, &quot;__shr&quot;,
+    &quot;__unm&quot;, &quot;__bnot&quot;, &quot;__lt&quot;, &quot;__le&quot;,
+    &quot;__concat&quot;, &quot;__call&quot;, &quot;__close&quot;
+  };
+  int <a href="../h_src/58090032.htm" class="localvar">i</a>;
+  for (<a href="../h_src/58090032.htm" class="localvar">i</a>=0; <a href="../h_src/58090032.htm" class="localvar">i</a>&lt;<a href="../h_src/57499208.htm" class="variable">TM_N</a>; <a href="../h_src/58090032.htm" class="localvar">i</a>++) {
+    <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/58090304.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57643644.htm" class="variable">tmname</a>[<a href="../h_src/58090032.htm" class="localvar">i</a>] = <a href="../h_src/57618484.htm" class="function">luaS_new</a>(<a href="../h_src/58090304.htm" class="localvar">L</a>, <a href="../h_src/58090168.htm" class="localvar">luaT_eventname</a>[<a href="../h_src/58090032.htm" class="localvar">i</a>]);
+    <a href="../h_src/57620932.htm" class="function">luaC_fix</a>(<a href="../h_src/58090304.htm" class="localvar">L</a>, <a href="../h_src/57638884.htm" class="macro">obj2gco</a>(<a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/58090304.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57643644.htm" class="variable">tmname</a>[<a href="../h_src/58090032.htm" class="localvar">i</a>]));  <a  class="comments">/* never collect these names */</a>
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

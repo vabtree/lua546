@@ -1,0 +1,47 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaK_settablesize</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57668980.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57668980.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57668980.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57668980.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57668980.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57668980.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57706720.htm#1789" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+void <a href="../h_src/57668980.htm" class="function">luaK_settablesize</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57765852.htm" class="localvar">fs</a>, int <a href="../h_src/57765716.htm" class="localvar">pc</a>, int <a href="../h_src/57765580.htm" class="localvar">ra</a>, int <a href="../h_src/57765444.htm" class="localvar">asize</a>, int <a href="../h_src/57765308.htm" class="localvar">hsize</a>) {
+  <a href="../h_src/57545108.htm" class="type">Instruction</a> *<a href="../h_src/57765172.htm" class="localvar">inst</a> = &amp;<a href="../h_src/57765852.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57676052.htm" class="variable">f</a>-&gt;<a href="../h_src/57514916.htm" class="variable">code</a>[<a href="../h_src/57765716.htm" class="localvar">pc</a>];
+  int <a href="../h_src/57765036.htm" class="localvar">rb</a> = (<a href="../h_src/57765308.htm" class="localvar">hsize</a> != 0) ? <a href="../h_src/57501860.htm" class="function">luaO_ceillog2</a>(<a href="../h_src/57765308.htm" class="localvar">hsize</a>) + 1 : 0;  <a  class="comments">/* hash size */</a>
+  int <a href="../h_src/57764900.htm" class="localvar">extra</a> = <a href="../h_src/57765444.htm" class="localvar">asize</a> / (<a href="../h_src/57695568.htm" class="macro">MAXARG_C</a> + 1);  <a  class="comments">/* higher bits of array size */</a>
+  int <a href="../h_src/57764764.htm" class="localvar">rc</a> = <a href="../h_src/57765444.htm" class="localvar">asize</a> % (<a href="../h_src/57695568.htm" class="macro">MAXARG_C</a> + 1);  <a  class="comments">/* lower bits of array size */</a>
+  int <a href="../h_src/57764628.htm" class="localvar">k</a> = (<a href="../h_src/57764900.htm" class="localvar">extra</a> &gt; 0);  <a  class="comments">/* true iff needs extra argument */</a>
+  *<a href="../h_src/57765172.htm" class="localvar">inst</a> = <a href="../h_src/57691488.htm" class="macro">CREATE_ABCk</a>(<a href="../h_src/57689244.htm" class="variable">OP_NEWTABLE</a>, <a href="../h_src/57765580.htm" class="localvar">ra</a>, <a href="../h_src/57765036.htm" class="localvar">rb</a>, <a href="../h_src/57764764.htm" class="localvar">rc</a>, <a href="../h_src/57764628.htm" class="localvar">k</a>);
+  *(<a href="../h_src/57765172.htm" class="localvar">inst</a> + 1) = <a href="../h_src/57691216.htm" class="macro">CREATE_Ax</a>(<a href="../h_src/57684960.htm" class="variable">OP_EXTRAARG</a>, <a href="../h_src/57764900.htm" class="localvar">extra</a>);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

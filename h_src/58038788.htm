@@ -1,0 +1,60 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>singlevaraux</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58038788.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58038788.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58038788.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58038788.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58038788.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58038788.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58057080.htm#435" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/58038788.htm" class="function">singlevaraux</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/58038652.htm" class="localvar">fs</a>, <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/58038516.htm" class="localvar">n</a>, <a href="../h_src/57679384.htm" class="type">expdesc</a> *<a href="../h_src/58038380.htm" class="localvar">var</a>, int <a href="../h_src/58038244.htm" class="localvar">base</a>) {
+  if (<a href="../h_src/58038652.htm" class="localvar">fs</a> == NULL)  <a  class="comments">/* no more levels? */</a>
+    <a href="../h_src/58050892.htm" class="function">init_exp</a>(<a href="../h_src/58038380.htm" class="localvar">var</a>, <a href="../h_src/57682716.htm" class="variable">VVOID</a>, 0);  <a  class="comments">/* default is global */</a>
+  else {
+    int <a href="../h_src/58038108.htm" class="localvar">v</a> = <a href="../h_src/58040556.htm" class="function">searchvar</a>(<a href="../h_src/58038652.htm" class="localvar">fs</a>, <a href="../h_src/58038516.htm" class="localvar">n</a>, <a href="../h_src/58038380.htm" class="localvar">var</a>);  <a  class="comments">/* look up locals at current level */</a>
+    if (<a href="../h_src/58038108.htm" class="localvar">v</a> &gt;= 0) {  <a  class="comments">/* found? */</a>
+      if (<a href="../h_src/58038108.htm" class="localvar">v</a> == <a href="../h_src/57682104.htm" class="variable">VLOCAL</a> &amp;&amp; !<a href="../h_src/58038244.htm" class="localvar">base</a>)
+        <a href="../h_src/58039740.htm" class="function">markupval</a>(<a href="../h_src/58038652.htm" class="localvar">fs</a>, <a href="../h_src/58038380.htm" class="localvar">var</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57679724.htm" class="variable">var</a>.<a href="../h_src/57679860.htm" class="variable">vidx</a>);  <a  class="comments">/* local will be used as an upval */</a>
+    }
+    else {  <a  class="comments">/* not found as local at current level; try upvalues */</a>
+      int <a href="../h_src/58037972.htm" class="localvar">idx</a> = <a href="../h_src/58042596.htm" class="function">searchupvalue</a>(<a href="../h_src/58038652.htm" class="localvar">fs</a>, <a href="../h_src/58038516.htm" class="localvar">n</a>);  <a  class="comments">/* try existing upvalues */</a>
+      if (<a href="../h_src/58037972.htm" class="localvar">idx</a> &lt; 0) {  <a  class="comments">/* not found? */</a>
+        <a href="../h_src/58038788.htm" class="function">singlevaraux</a>(<a href="../h_src/58038652.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675984.htm" class="variable">prev</a>, <a href="../h_src/58038516.htm" class="localvar">n</a>, <a href="../h_src/58038380.htm" class="localvar">var</a>, 0);  <a  class="comments">/* try upper levels */</a>
+        if (<a href="../h_src/58038380.htm" class="localvar">var</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a> == <a href="../h_src/57682104.htm" class="variable">VLOCAL</a> || <a href="../h_src/58038380.htm" class="localvar">var</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a> == <a href="../h_src/57682036.htm" class="variable">VUPVAL</a>)  <a  class="comments">/* local or upvalue? */</a>
+          <a href="../h_src/58037972.htm" class="localvar">idx</a>  = <a href="../h_src/58041372.htm" class="function">newupvalue</a>(<a href="../h_src/58038652.htm" class="localvar">fs</a>, <a href="../h_src/58038516.htm" class="localvar">n</a>, <a href="../h_src/58038380.htm" class="localvar">var</a>);  <a  class="comments">/* will be a new upvalue */</a>
+        else  <a  class="comments">/* it is a global or a constant */</a>
+          return;  <a  class="comments">/* don't need to do anything at this level */</a>
+      }
+      <a href="../h_src/58050892.htm" class="function">init_exp</a>(<a href="../h_src/58038380.htm" class="localvar">var</a>, <a href="../h_src/57682036.htm" class="variable">VUPVAL</a>, <a href="../h_src/58037972.htm" class="localvar">idx</a>);  <a  class="comments">/* new or old upvalue */</a>
+    }
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

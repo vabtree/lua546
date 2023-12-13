@@ -1,0 +1,61 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>db_gethook</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143267732.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143267732.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143267732.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143267732.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143267732.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143267732.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58287060.htm#395" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/143267732.htm" class="function">db_gethook</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143267596.htm" class="localvar">L</a>) {
+  int <a href="../h_src/143267460.htm" class="localvar">arg</a>;
+  <a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143267324.htm" class="localvar">L1</a> = <a href="../h_src/58284340.htm" class="function">getthread</a>(<a href="../h_src/143267596.htm" class="localvar">L</a>, &amp;<a href="../h_src/143267460.htm" class="localvar">arg</a>);
+  char <a href="../h_src/143267188.htm" class="localvar">buff</a>[5];
+  int <a href="../h_src/143267052.htm" class="localvar">mask</a> = <a href="../h_src/57423988.htm" class="function">lua_gethookmask</a>(<a href="../h_src/143267324.htm" class="localvar">L1</a>);
+  <a href="../h_src/57440240.htm" class="type">lua_Hook</a> <a href="../h_src/143266916.htm" class="localvar">hook</a> = <a href="../h_src/57424056.htm" class="function">lua_gethook</a>(<a href="../h_src/143267324.htm" class="localvar">L1</a>);
+  if (<a href="../h_src/143266916.htm" class="localvar">hook</a> == NULL) {  <a  class="comments">/* no hook? */</a>
+    <a href="../h_src/57415760.htm" class="macro">luaL_pushfail</a>(<a href="../h_src/143267596.htm" class="localvar">L</a>);
+    return 1;
+  }
+  else if (<a href="../h_src/143266916.htm" class="localvar">hook</a> != <a href="../h_src/143270452.htm" class="function">hookf</a>)  <a  class="comments">/* external hook? */</a>
+    <a href="../h_src/57427660.htm" class="macro">lua_pushliteral</a>(<a href="../h_src/143267596.htm" class="localvar">L</a>, &quot;external hook&quot;);
+  else {  <a  class="comments">/* hook table must exist */</a>
+    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143267596.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/58286720.htm" class="variable">HOOKKEY</a>);
+    <a href="../h_src/58286652.htm" class="function">checkstack</a>(<a href="../h_src/143267596.htm" class="localvar">L</a>, <a href="../h_src/143267324.htm" class="localvar">L1</a>, 1);
+    <a href="../h_src/57434460.htm" class="function">lua_pushthread</a>(<a href="../h_src/143267324.htm" class="localvar">L1</a>); <a href="../h_src/57438948.htm" class="function">lua_xmove</a>(<a href="../h_src/143267324.htm" class="localvar">L1</a>, <a href="../h_src/143267596.htm" class="localvar">L</a>, 1);
+    <a href="../h_src/57434120.htm" class="function">lua_rawget</a>(<a href="../h_src/143267596.htm" class="localvar">L</a>, -2);   <a  class="comments">/* 1st result = hooktable[L1] */</a>
+    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/143267596.htm" class="localvar">L</a>, -2);  <a  class="comments">/* remove hook table */</a>
+  }
+  <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/143267596.htm" class="localvar">L</a>, <a href="../h_src/143269364.htm" class="function">unmakemask</a>(<a href="../h_src/143267052.htm" class="localvar">mask</a>, <a href="../h_src/143267188.htm" class="localvar">buff</a>));  <a  class="comments">/* 2nd result = mask */</a>
+  <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143267596.htm" class="localvar">L</a>, <a href="../h_src/57423920.htm" class="function">lua_gethookcount</a>(<a href="../h_src/143267324.htm" class="localvar">L1</a>));  <a  class="comments">/* 3rd result = count */</a>
+  return 3;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,74 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>mainpositionTV</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58118660.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58118660.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58118660.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58118660.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58118660.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58118660.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58121924.htm#151" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/58118660.htm" class="function">mainpositionTV</a> (const <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58118524.htm" class="localvar">t</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58118388.htm" class="localvar">key</a>) {
+  switch (<a href="../h_src/57534636.htm" class="macro">ttypetag</a>(<a href="../h_src/58118388.htm" class="localvar">key</a>)) {
+    case <a href="../h_src/57527088.htm" class="macro">LUA_VNUMINT</a>: {
+      <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/58118252.htm" class="localvar">i</a> = <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58118388.htm" class="localvar">key</a>);
+      return <a href="../h_src/58120088.htm" class="function">hashint</a>(<a href="../h_src/58118524.htm" class="localvar">t</a>, <a href="../h_src/58118252.htm" class="localvar">i</a>);
+    }
+    case <a href="../h_src/57526952.htm" class="macro">LUA_VNUMFLT</a>: {
+      <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/58118116.htm" class="localvar">n</a> = <a href="../h_src/57526272.htm" class="macro">fltvalue</a>(<a href="../h_src/58118388.htm" class="localvar">key</a>);
+      return <a href="../h_src/58120904.htm" class="macro">hashmod</a>(<a href="../h_src/58118524.htm" class="localvar">t</a>, <a href="../h_src/58119408.htm" class="function">l_hashfloat</a>(<a href="../h_src/58118116.htm" class="localvar">n</a>));
+    }
+    case <a href="../h_src/57525184.htm" class="macro">LUA_VSHRSTR</a>: {
+      <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/58117980.htm" class="localvar">ts</a> = <a href="../h_src/57524368.htm" class="macro">tsvalue</a>(<a href="../h_src/58118388.htm" class="localvar">key</a>);
+      return <a href="../h_src/58120768.htm" class="macro">hashstr</a>(<a href="../h_src/58118524.htm" class="localvar">t</a>, <a href="../h_src/58117980.htm" class="localvar">ts</a>);
+    }
+    case <a href="../h_src/57525048.htm" class="macro">LUA_VLNGSTR</a>: {
+      <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/58117844.htm" class="localvar">ts</a> = <a href="../h_src/57524368.htm" class="macro">tsvalue</a>(<a href="../h_src/58118388.htm" class="localvar">key</a>);
+      return <a href="../h_src/58121040.htm" class="macro">hashpow2</a>(<a href="../h_src/58118524.htm" class="localvar">t</a>, <a href="../h_src/57619096.htm" class="function">luaS_hashlongstr</a>(<a href="../h_src/58117844.htm" class="localvar">ts</a>));
+    }
+    case <a href="../h_src/57530080.htm" class="macro">LUA_VFALSE</a>:
+      return <a href="../h_src/58120632.htm" class="macro">hashboolean</a>(<a href="../h_src/58118524.htm" class="localvar">t</a>, 0);
+    case <a href="../h_src/57529944.htm" class="macro">LUA_VTRUE</a>:
+      return <a href="../h_src/58120632.htm" class="macro">hashboolean</a>(<a href="../h_src/58118524.htm" class="localvar">t</a>, 1);
+    case <a href="../h_src/57522124.htm" class="macro">LUA_VLIGHTUSERDATA</a>: {
+      void *<a href="../h_src/58117708.htm" class="localvar">p</a> = <a href="../h_src/57521580.htm" class="macro">pvalue</a>(<a href="../h_src/58118388.htm" class="localvar">key</a>);
+      return <a href="../h_src/58120496.htm" class="macro">hashpointer</a>(<a href="../h_src/58118524.htm" class="localvar">t</a>, <a href="../h_src/58117708.htm" class="localvar">p</a>);
+    }
+    case <a href="../h_src/57513488.htm" class="macro">LUA_VLCF</a>: {
+      <a href="../h_src/57441736.htm" class="type">lua_CFunction</a> <a href="../h_src/58117572.htm" class="localvar">f</a> = <a href="../h_src/57512128.htm" class="macro">fvalue</a>(<a href="../h_src/58118388.htm" class="localvar">key</a>);
+      return <a href="../h_src/58120496.htm" class="macro">hashpointer</a>(<a href="../h_src/58118524.htm" class="localvar">t</a>, <a href="../h_src/58117572.htm" class="localvar">f</a>);
+    }
+    default: {
+      <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/58117436.htm" class="localvar">o</a> = <a href="../h_src/57527496.htm" class="macro">gcvalue</a>(<a href="../h_src/58118388.htm" class="localvar">key</a>);
+      return <a href="../h_src/58120496.htm" class="macro">hashpointer</a>(<a href="../h_src/58118524.htm" class="localvar">t</a>, <a href="../h_src/58117436.htm" class="localvar">o</a>);
+    }
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

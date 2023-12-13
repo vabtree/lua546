@@ -1,0 +1,104 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>linit.c</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143408668.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/143408668.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/143408668.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/143408668.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_uf/143408668.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_df/143408668.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/143408668.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143408668.htm" class="file" target="_self">Source Code</a></li>
+<li><a href="../h_sc/143408668.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<pre class=src>
+<a id=1></a><a  class="comments">/*</a>
+<a id=2></a><a  class="comments">** $Id: linit.c $</a>
+<a id=3></a><a  class="comments">** Initialization of libraries for lua.c and other clients</a>
+<a id=4></a><a  class="comments">** See Copyright Notice in lua.h</a>
+<a id=5></a><a  class="comments">*/</a>
+
+
+<a id=8></a>#define <a href="../h_src/143408600.htm" class="macro">linit_c</a>
+<a id=9></a>#define <a href="../h_src/143408464.htm" class="macro">LUA_LIB</a>
+
+<a id=11></a><a  class="comments">/*</a>
+<a id=12></a><a  class="comments">** If you embed Lua in your program and need to open the standard</a>
+<a id=13></a><a  class="comments">** libraries, call luaL_openlibs in your program. If you need a</a>
+<a id=14></a><a  class="comments">** different set of libraries, copy this file to your project and edit</a>
+<a id=15></a><a  class="comments">** it to suit your needs.</a>
+<a id=16></a><a  class="comments">**</a>
+<a id=17></a><a  class="comments">** You can also *preload* libraries, so that a later 'require' can</a>
+<a id=18></a><a  class="comments">** open the library, which is already linked to the application.</a>
+<a id=19></a><a  class="comments">** For that, do the following code:</a>
+<a id=20></a><a  class="comments">**</a>
+<a id=21></a><a  class="comments">**  luaL_getsubtable(L, LUA_REGISTRYINDEX, LUA_PRELOAD_TABLE);</a>
+<a id=22></a><a  class="comments">**  lua_pushcfunction(L, luaopen_modname);</a>
+<a id=23></a><a  class="comments">**  lua_setfield(L, -2, modname);</a>
+<a id=24></a><a  class="comments">**  lua_pop(L, 1);  // remove PRELOAD table</a>
+<a id=25></a><a  class="comments">*/</a>
+
+<a id=27></a>#include &quot;<a href="../h_src/57461592.htm" class="file">lprefix.h</a>&quot;
+
+
+#include &lt;stddef.h&gt;
+
+<a id=32></a>#include &quot;<a href="../h_src/57460028.htm" class="file">lua.h</a>&quot;
+
+<a id=34></a>#include &quot;<a href="../h_src/57410932.htm" class="file">lualib.h</a>&quot;
+<a id=35></a>#include &quot;<a href="../h_src/57422356.htm" class="file">lauxlib.h</a>&quot;
+
+
+<a id=38></a><a  class="comments">/*</a>
+<a id=39></a><a  class="comments">** these libs are loaded by lua.c and are readily available to any Lua</a>
+<a id=40></a><a  class="comments">** program</a>
+<a id=41></a><a  class="comments">*/</a>
+<a id=42></a>static const <a href="../h_src/57420996.htm" class="type">luaL_Reg</a> <a href="../h_src/143408328.htm" class="variable">loadedlibs</a>[] = {
+<a id=43></a>  {<a href="../h_src/57422016.htm" class="macro">LUA_GNAME</a>, <a href="../h_src/57410456.htm" class="function">luaopen_base</a>},
+<a id=44></a>  {<a href="../h_src/57573940.htm" class="macro">LUA_LOADLIBNAME</a>, <a href="../h_src/57573804.htm" class="function">luaopen_package</a>},
+<a id=45></a>  {<a href="../h_src/57410388.htm" class="macro">LUA_COLIBNAME</a>, <a href="../h_src/57410252.htm" class="function">luaopen_coroutine</a>},
+<a id=46></a>  {<a href="../h_src/57410184.htm" class="macro">LUA_TABLIBNAME</a>, <a href="../h_src/57410048.htm" class="function">luaopen_table</a>},
+<a id=47></a>  {<a href="../h_src/57409980.htm" class="macro">LUA_IOLIBNAME</a>, <a href="../h_src/57409844.htm" class="function">luaopen_io</a>},
+<a id=48></a>  {<a href="../h_src/57409776.htm" class="macro">LUA_OSLIBNAME</a>, <a href="../h_src/57409640.htm" class="function">luaopen_os</a>},
+<a id=49></a>  {<a href="../h_src/57574756.htm" class="macro">LUA_STRLIBNAME</a>, <a href="../h_src/57574620.htm" class="function">luaopen_string</a>},
+<a id=50></a>  {<a href="../h_src/57574348.htm" class="macro">LUA_MATHLIBNAME</a>, <a href="../h_src/57574212.htm" class="function">luaopen_math</a>},
+<a id=51></a>  {<a href="../h_src/57574552.htm" class="macro">LUA_UTF8LIBNAME</a>, <a href="../h_src/57574416.htm" class="function">luaopen_utf8</a>},
+<a id=52></a>  {<a href="../h_src/57574144.htm" class="macro">LUA_DBLIBNAME</a>, <a href="../h_src/57574008.htm" class="function">luaopen_debug</a>},
+  {NULL, NULL}
+};
+
+
+<a id=57></a><a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void <a href="../h_src/57573736.htm" class="function">luaL_openlibs</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143408260.htm" class="localvar">L</a>) {
+<a id=58></a>  const <a href="../h_src/57420996.htm" class="type">luaL_Reg</a> *<a href="../h_src/143408124.htm" class="localvar">lib</a>;
+<a id=59></a>  <a  class="comments">/* &quot;require&quot; functions from 'loadedlibs' and set results to global table */</a>
+<a id=60></a>  for (<a href="../h_src/143408124.htm" class="localvar">lib</a> = <a href="../h_src/143408328.htm" class="variable">loadedlibs</a>; <a href="../h_src/143408124.htm" class="localvar">lib</a>-&gt;<a href="../h_src/57421064.htm" class="variable">func</a>; <a href="../h_src/143408124.htm" class="localvar">lib</a>++) {
+<a id=61></a>    <a href="../h_src/57417596.htm" class="function">luaL_requiref</a>(<a href="../h_src/143408260.htm" class="localvar">L</a>, <a href="../h_src/143408124.htm" class="localvar">lib</a>-&gt;<a href="../h_src/57421132.htm" class="variable">name</a>, <a href="../h_src/143408124.htm" class="localvar">lib</a>-&gt;<a href="../h_src/57421064.htm" class="variable">func</a>, 1);
+<a id=62></a>    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143408260.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove lib */</a>
+  }
+}
+
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,72 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>sweepgen</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57955108.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57955108.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57955108.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57955108.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57955108.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57955108.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57829404.htm#1113" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static <a href="../h_src/57527972.htm" class="type">GCObject</a> **<a href="../h_src/57955108.htm" class="function">sweepgen</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57954972.htm" class="localvar">L</a>, <a href="../h_src/57643100.htm" class="type">global_State</a> *<a href="../h_src/57954836.htm" class="localvar">g</a>, <a href="../h_src/57527972.htm" class="type">GCObject</a> **<a href="../h_src/57954700.htm" class="localvar">p</a>,
+                            <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57954564.htm" class="localvar">limit</a>, <a href="../h_src/57527972.htm" class="type">GCObject</a> **<a href="../h_src/57954428.htm" class="localvar">pfirstold1</a>) {
+  static const <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57954292.htm" class="localvar">nextage</a>[] = {
+    <a href="../h_src/57624876.htm" class="macro">G_SURVIVAL</a>,  <a  class="comments">/* from G_NEW */</a>
+    <a href="../h_src/57624604.htm" class="macro">G_OLD1</a>,      <a  class="comments">/* from G_SURVIVAL */</a>
+    <a href="../h_src/57624604.htm" class="macro">G_OLD1</a>,      <a  class="comments">/* from G_OLD0 */</a>
+    <a href="../h_src/57624468.htm" class="macro">G_OLD</a>,       <a  class="comments">/* from G_OLD1 */</a>
+    <a href="../h_src/57624468.htm" class="macro">G_OLD</a>,       <a  class="comments">/* from G_OLD (do not change) */</a>
+    <a href="../h_src/57624332.htm" class="macro">G_TOUCHED1</a>,  <a  class="comments">/* from G_TOUCHED1 (do not change) */</a>
+    <a href="../h_src/57624196.htm" class="macro">G_TOUCHED2</a>   <a  class="comments">/* from G_TOUCHED2 (do not change) */</a>
+  };
+  int <a href="../h_src/57954156.htm" class="localvar">white</a> = <a href="../h_src/57625148.htm" class="macro">luaC_white</a>(<a href="../h_src/57954836.htm" class="localvar">g</a>);
+  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57954020.htm" class="localvar">curr</a>;
+  while ((<a href="../h_src/57954020.htm" class="localvar">curr</a> = *<a href="../h_src/57954700.htm" class="localvar">p</a>) != <a href="../h_src/57954564.htm" class="localvar">limit</a>) {
+    if (<a href="../h_src/57626372.htm" class="macro">iswhite</a>(<a href="../h_src/57954020.htm" class="localvar">curr</a>)) {  <a  class="comments">/* is 'curr' dead? */</a>
+      <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!<a href="../h_src/57623652.htm" class="macro">isold</a>(curr) &amp;&amp; <a href="../h_src/57625556.htm" class="macro">isdead</a>(g, curr));
+      *<a href="../h_src/57954700.htm" class="localvar">p</a> = <a href="../h_src/57954020.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>;  <a  class="comments">/* remove 'curr' from list */</a>
+      <a href="../h_src/57966804.htm" class="function">freeobj</a>(<a href="../h_src/57954972.htm" class="localvar">L</a>, <a href="../h_src/57954020.htm" class="localvar">curr</a>);  <a  class="comments">/* erase 'curr' */</a>
+    }
+    else {  <a  class="comments">/* correct mark and age */</a>
+      if (<a href="../h_src/57623924.htm" class="macro">getage</a>(<a href="../h_src/57954020.htm" class="localvar">curr</a>) == <a href="../h_src/57625012.htm" class="macro">G_NEW</a>) {  <a  class="comments">/* new objects go back to white */</a>
+        int <a href="../h_src/57953884.htm" class="localvar">marked</a> = <a href="../h_src/57954020.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528040.htm" class="variable">marked</a> &amp; ~<a href="../h_src/57828248.htm" class="macro">maskgcbits</a>;  <a  class="comments">/* erase GC bits */</a>
+        <a href="../h_src/57954020.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528040.htm" class="variable">marked</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/57953884.htm" class="localvar">marked</a> | <a href="../h_src/57624876.htm" class="macro">G_SURVIVAL</a> | <a href="../h_src/57954156.htm" class="localvar">white</a>);
+      }
+      else {  <a  class="comments">/* all other objects will be old, and so keep their color */</a>
+        <a href="../h_src/57623788.htm" class="macro">setage</a>(<a href="../h_src/57954020.htm" class="localvar">curr</a>, <a href="../h_src/57954292.htm" class="localvar">nextage</a>[<a href="../h_src/57623924.htm" class="macro">getage</a>(<a href="../h_src/57954020.htm" class="localvar">curr</a>)]);
+        if (<a href="../h_src/57623924.htm" class="macro">getage</a>(<a href="../h_src/57954020.htm" class="localvar">curr</a>) == <a href="../h_src/57624604.htm" class="macro">G_OLD1</a> &amp;&amp; *<a href="../h_src/57954428.htm" class="localvar">pfirstold1</a> == NULL)
+          *<a href="../h_src/57954428.htm" class="localvar">pfirstold1</a> = <a href="../h_src/57954020.htm" class="localvar">curr</a>;  <a  class="comments">/* first OLD1 object in the list */</a>
+      }
+      <a href="../h_src/57954700.htm" class="localvar">p</a> = &amp;<a href="../h_src/57954020.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>;  <a  class="comments">/* go to next element */</a>
+    }
+  }
+  return <a href="../h_src/57954700.htm" class="localvar">p</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

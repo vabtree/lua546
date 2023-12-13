@@ -1,0 +1,53 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaX_token2str</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57699580.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57699580.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57699580.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57699580.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57699580.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57699580.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57940692.htm#82" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+const char *<a href="../h_src/57699580.htm" class="function">luaX_token2str</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57938516.htm" class="localvar">ls</a>, int <a href="../h_src/57938380.htm" class="localvar">token</a>) {
+  if (<a href="../h_src/57938380.htm" class="localvar">token</a> &lt; <a href="../h_src/57705700.htm" class="macro">FIRST_RESERVED</a>) {  <a  class="comments">/* single-byte symbols? */</a>
+    if (<a href="../h_src/57760004.htm" class="macro">lisprint</a>(<a href="../h_src/57938380.htm" class="localvar">token</a>))
+      return <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/57938516.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, &quot;'%c'&quot;, <a href="../h_src/57938380.htm" class="localvar">token</a>);
+    else  <a  class="comments">/* control character */</a>
+      return <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/57938516.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, &quot;'&lt;\\%d&gt;'&quot;, <a href="../h_src/57938380.htm" class="localvar">token</a>);
+  }
+  else {
+    const char *<a href="../h_src/57938244.htm" class="localvar">s</a> = <a href="../h_src/57940080.htm" class="variable">luaX_tokens</a>[<a href="../h_src/57938380.htm" class="localvar">token</a> - <a href="../h_src/57705700.htm" class="macro">FIRST_RESERVED</a>];
+    if (<a href="../h_src/57938380.htm" class="localvar">token</a> &lt; <a href="../h_src/57703116.htm" class="variable">TK_EOS</a>)  <a  class="comments">/* fixed format (symbols and reserved words)? */</a>
+      return <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/57938516.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, &quot;'%s'&quot;, <a href="../h_src/57938244.htm" class="localvar">s</a>);
+    else  <a  class="comments">/* names, strings, and numerals */</a>
+      return <a href="../h_src/57938244.htm" class="localvar">s</a>;
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

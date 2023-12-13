@@ -1,0 +1,419 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>llimits.h</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57551092.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/57551092.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/57551092.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/57551092.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_ua/57551092.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_da/57551092.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57551092.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57551092.htm" class="file" target="_self">Source Code</a></li>
+<li><a href="../h_sc/57551092.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<pre class=src>
+<a id=1></a><a  class="comments">/*</a>
+<a id=2></a><a  class="comments">** $Id: llimits.h $</a>
+<a id=3></a><a  class="comments">** Limits, basic types, and some other 'installation-dependent' definitions</a>
+<a id=4></a><a  class="comments">** See Copyright Notice in lua.h</a>
+<a id=5></a><a  class="comments">*/</a>
+
+<a id=7></a>#ifndef <a href="../h_src/57551024.htm" class="macro">llimits_h</a>
+<a id=8></a>#define <a href="../h_src/57550888.htm" class="macro">llimits_h</a>
+
+
+#include &lt;limits.h&gt;
+#include &lt;stddef.h&gt;
+
+
+<a id=15></a>#include &quot;<a href="../h_src/57460028.htm" class="file">lua.h</a>&quot;
+
+
+<a id=18></a><a  class="comments">/*</a>
+<a id=19></a><a  class="comments">** 'lu_mem' and 'l_mem' are unsigned/signed integers big enough to count</a>
+<a id=20></a><a  class="comments">** the total memory used by Lua (in bytes). Usually, 'size_t' and</a>
+<a id=21></a><a  class="comments">** 'ptrdiff_t' should work, but we use 'long' for 16-bit machines.</a>
+<a id=22></a><a  class="comments">*/</a>
+<a id=23></a>#if defined(<a href="../h_src/57550752.htm" class="macro">LUAI_MEM</a>)		<a  class="comments">/* { external definitions? */</a>
+typedef LUAI_UMEM lu_mem;
+typedef LUAI_MEM l_mem;
+<a id=26></a>#elif <a href="../h_src/57458396.htm" class="macro">LUAI_IS32INT</a>	<a  class="comments">/* }{ */</a>
+<a id=27></a>typedef <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/57550616.htm" class="type">lu_mem</a>;
+<a id=28></a>typedef <a href="../h_aa/57441872.htm" class="type">ptrdiff_t</a> <a href="../h_src/57550548.htm" class="type">l_mem</a>;
+<a id=29></a>#else  <a  class="comments">/* 16-bit ints */</a>	<a  class="comments">/* }{ */</a>
+typedef unsigned long lu_mem;
+typedef long l_mem;
+<a id=32></a>#endif				<a  class="comments">/* } */</a>
+
+
+<a id=35></a><a  class="comments">/* chars used as small naturals (so that 'char' is reserved for characters) */</a>
+<a id=36></a>typedef unsigned char <a href="../h_src/57550480.htm" class="type">lu_byte</a>;
+<a id=37></a>typedef signed char <a href="../h_src/57550412.htm" class="type">ls_byte</a>;
+
+
+<a id=40></a><a  class="comments">/* maximum value for size_t */</a>
+<a id=41></a>#define <a href="../h_src/57550344.htm" class="macro">MAX_SIZET</a>	((size_t)(~(size_t)0))
+
+<a id=43></a><a  class="comments">/* maximum size visible for Lua (must be representable in a lua_Integer) */</a>
+<a id=44></a>#define <a href="../h_src/57550208.htm" class="macro">MAX_SIZE</a>	(sizeof(size_t) &lt; sizeof(lua_Integer) ? MAX_SIZET \
+                          : (size_t)(LUA_MAXINTEGER))
+
+
+<a id=48></a>#define <a href="../h_src/57550072.htm" class="macro">MAX_LUMEM</a>	((lu_mem)(~(lu_mem)0))
+
+<a id=50></a>#define <a href="../h_src/57549936.htm" class="macro">MAX_LMEM</a>	((l_mem)(MAX_LUMEM &gt;&gt; 1))
+
+
+<a id=53></a>#define <a href="../h_src/57549800.htm" class="macro">MAX_INT</a>		INT_MAX  <a  class="comments">/* maximum value of an int */</a>
+
+
+<a id=56></a><a  class="comments">/*</a>
+<a id=57></a><a  class="comments">** floor of the log2 of the maximum signed value for integral type 't'.</a>
+<a id=58></a><a  class="comments">** (That is, maximum 'n' such that '2^n' fits in the given signed type.)</a>
+<a id=59></a><a  class="comments">*/</a>
+<a id=60></a>#define <a href="../h_src/57549664.htm" class="macro">log2maxs</a>(t)	(sizeof(t) * 8 - 2)
+
+
+<a id=63></a><a  class="comments">/*</a>
+<a id=64></a><a  class="comments">** test whether an unsigned value is a power of 2 (or zero)</a>
+<a id=65></a><a  class="comments">*/</a>
+<a id=66></a>#define <a href="../h_src/57549528.htm" class="macro">ispow2</a>(x)	(((x) &amp; ((x) - 1)) == 0)
+
+
+<a id=69></a><a  class="comments">/* number of chars of a literal string without the ending \0 */</a>
+<a id=70></a>#define <a href="../h_src/57549392.htm" class="macro">LL</a>(x)   (sizeof(x)/sizeof(char) - 1)
+
+
+<a id=73></a><a  class="comments">/*</a>
+<a id=74></a><a  class="comments">** conversion of pointer to unsigned integer: this is for hashing only;</a>
+<a id=75></a><a  class="comments">** there is no problem if the integer cannot hold the whole pointer</a>
+<a id=76></a><a  class="comments">** value. (In strict ISO C this may cause undefined behavior, but no</a>
+<a id=77></a><a  class="comments">** actual machine seems to bother.)</a>
+<a id=78></a><a  class="comments">*/</a>
+<a id=79></a>#if !defined(<a href="../h_src/57458940.htm" class="macro">LUA_USE_C89</a>) &amp;&amp; defined(<a href="../h_src/57448740.htm" class="macro">__STDC_VERSION__</a>) &amp;&amp; \
+    __STDC_VERSION__ &gt;= 199901L
+#include &lt;stdint.h&gt;
+<a id=82></a>#if defined(UINTPTR_MAX)  <a  class="comments">/* even in C99 this type is optional */</a>
+#define L_P2I	uintptr_t
+<a id=84></a>#else  <a  class="comments">/* no 'intptr'? */</a>
+<a id=85></a>#define L_P2I	uintmax_t  <a  class="comments">/* use the largest available integer */</a>
+#endif
+<a id=87></a>#else  <a  class="comments">/* C89 option */</a>
+<a id=88></a>#define <a href="../h_src/57549256.htm" class="macro">L_P2I</a>	size_t
+#endif
+
+<a id=91></a>#define <a href="../h_src/57549120.htm" class="macro">point2uint</a>(p)	((unsigned int)((L_P2I)(p) &amp; UINT_MAX))
+
+
+
+<a id=95></a><a  class="comments">/* types of 'usual argument conversions' for lua_Number and lua_Integer */</a>
+<a id=96></a>typedef <a href="../h_src/57451732.htm" class="macro">LUAI_UACNUMBER</a> <a href="../h_src/57548984.htm" class="type">l_uacNumber</a>;
+<a id=97></a>typedef <a href="../h_src/57450916.htm" class="macro">LUAI_UACINT</a> <a href="../h_src/57548916.htm" class="type">l_uacInt</a>;
+
+
+<a id=100></a><a  class="comments">/*</a>
+<a id=101></a><a  class="comments">** Internal assertions for in-house debugging</a>
+<a id=102></a><a  class="comments">*/</a>
+<a id=103></a>#if defined <a href="../h_src/57415488.htm" class="macro">LUAI_ASSERT</a>
+#undef NDEBUG
+#include &lt;assert.h&gt;
+#define lua_assert(c)           assert(c)
+#endif
+
+<a id=109></a>#if defined(<a href="../h_src/57415624.htm" class="macro">lua_assert</a>)
+<a id=110></a>#define <a href="../h_src/143407512.htm" class="macro">check_exp</a>(c,e)		(lua_assert(c), (e))
+<a id=111></a><a  class="comments">/* to avoid problems with conditions too long */</a>
+<a id=112></a>#define <a href="../h_src/143407376.htm" class="macro">lua_longassert</a>(c)	((c) ? (void)0 : lua_assert(0))
+#else
+<a id=114></a>#define <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(c)		((void)0)
+<a id=115></a>#define <a href="../h_src/57548712.htm" class="macro">check_exp</a>(c,e)		(e)
+<a id=116></a>#define <a href="../h_src/57548576.htm" class="macro">lua_longassert</a>(c)	((void)0)
+#endif
+
+<a id=119></a><a  class="comments">/*</a>
+<a id=120></a><a  class="comments">** assertion for checking API calls</a>
+<a id=121></a><a  class="comments">*/</a>
+<a id=122></a>#if !defined(<a href="../h_src/57548440.htm" class="macro">luai_apicheck</a>)
+<a id=123></a>#define <a href="../h_src/57548304.htm" class="macro">luai_apicheck</a>(l,e)	((void)l, lua_assert(e))
+#endif
+
+<a id=126></a>#define <a href="../h_src/57548168.htm" class="macro">api_check</a>(l,e,msg)	luai_apicheck(l,(e) &amp;&amp; msg)
+
+
+<a id=129></a><a  class="comments">/* macro to avoid warnings about unused variables */</a>
+<a id=130></a>#if !defined(<a href="../h_src/57548032.htm" class="macro">UNUSED</a>)
+<a id=131></a>#define <a href="../h_src/57547896.htm" class="macro">UNUSED</a>(x)	((void)(x))
+#endif
+
+
+<a id=135></a><a  class="comments">/* type casts (a macro highlights casts in the code) */</a>
+<a id=136></a>#define <a href="../h_src/57547760.htm" class="macro">cast</a>(t, exp)	((t)(exp))
+
+<a id=138></a>#define <a href="../h_src/57547624.htm" class="macro">cast_void</a>(i)	cast(void, (i))
+<a id=139></a>#define <a href="../h_src/57547488.htm" class="macro">cast_voidp</a>(i)	cast(void *, (i))
+<a id=140></a>#define <a href="../h_src/57547352.htm" class="macro">cast_num</a>(i)	cast(lua_Number, (i))
+<a id=141></a>#define <a href="../h_src/57547216.htm" class="macro">cast_int</a>(i)	cast(int, (i))
+<a id=142></a>#define <a href="../h_src/57547080.htm" class="macro">cast_uint</a>(i)	cast(unsigned int, (i))
+<a id=143></a>#define <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(i)	cast(lu_byte, (i))
+<a id=144></a>#define <a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(i)	cast(unsigned char, (i))
+<a id=145></a>#define <a href="../h_src/57546672.htm" class="macro">cast_char</a>(i)	cast(char, (i))
+<a id=146></a>#define <a href="../h_src/57546536.htm" class="macro">cast_charp</a>(i)	cast(char *, (i))
+<a id=147></a>#define <a href="../h_src/57546400.htm" class="macro">cast_sizet</a>(i)	cast(size_t, (i))
+
+
+<a id=150></a><a  class="comments">/* cast a signed lua_Integer to lua_Unsigned */</a>
+<a id=151></a>#if !defined(<a href="../h_src/57546264.htm" class="macro">l_castS2U</a>)
+<a id=152></a>#define <a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(i)	((lua_Unsigned)(i))
+#endif
+
+<a id=155></a><a  class="comments">/*</a>
+<a id=156></a><a  class="comments">** cast a lua_Unsigned to a signed lua_Integer; this cast is</a>
+<a id=157></a><a  class="comments">** not strict ISO C, but two-complement architectures should</a>
+<a id=158></a><a  class="comments">** work fine.</a>
+<a id=159></a><a  class="comments">*/</a>
+<a id=160></a>#if !defined(<a href="../h_src/57545992.htm" class="macro">l_castU2S</a>)
+<a id=161></a>#define <a href="../h_src/57545856.htm" class="macro">l_castU2S</a>(i)	((lua_Integer)(i))
+#endif
+
+
+<a id=165></a><a  class="comments">/*</a>
+<a id=166></a><a  class="comments">** non-return type</a>
+<a id=167></a><a  class="comments">*/</a>
+<a id=168></a>#if !defined(<a href="../h_src/57545720.htm" class="macro">l_noret</a>)
+
+#if defined(__GNUC__)
+<a id=171></a>#define <a href="../h_src/57545584.htm" class="macro">l_noret</a>		void __attribute__((noreturn))
+#elif defined(_MSC_VER) &amp;&amp; _MSC_VER &gt;= 1200
+#define l_noret		void __declspec(noreturn)
+#else
+#define l_noret		void
+#endif
+
+#endif
+
+
+<a id=181></a><a  class="comments">/*</a>
+<a id=182></a><a  class="comments">** Inline functions</a>
+<a id=183></a><a  class="comments">*/</a>
+<a id=184></a>#if !defined(<a href="../h_src/57458940.htm" class="macro">LUA_USE_C89</a>)
+#define l_inline	inline
+#elif defined(__GNUC__)
+<a id=187></a>#define <a href="../h_src/57545448.htm" class="macro">l_inline</a>	__inline__
+#else
+<a id=189></a>#define l_inline	<a  class="comments">/* empty */</a>
+#endif
+
+<a id=192></a>#define <a href="../h_src/57545312.htm" class="macro">l_sinline</a>	static l_inline
+
+
+<a id=195></a><a  class="comments">/*</a>
+<a id=196></a><a  class="comments">** type for virtual-machine instructions;</a>
+<a id=197></a><a  class="comments">** must be an unsigned with (at least) 4 bytes (see details in lopcodes.h)</a>
+<a id=198></a><a  class="comments">*/</a>
+<a id=199></a>#if <a href="../h_src/57458396.htm" class="macro">LUAI_IS32INT</a>
+<a id=200></a>typedef unsigned int <a href="../h_src/57545176.htm" class="type">l_uint32</a>;
+#else
+typedef unsigned long l_uint32;
+#endif
+
+<a id=205></a>typedef <a href="../h_src/57545176.htm" class="type">l_uint32</a> <a href="../h_src/57545108.htm" class="type">Instruction</a>;
+
+
+
+<a id=209></a><a  class="comments">/*</a>
+<a id=210></a><a  class="comments">** Maximum length for short strings, that is, strings that are</a>
+<a id=211></a><a  class="comments">** internalized. (Cannot be smaller than reserved words or tags for</a>
+<a id=212></a><a  class="comments">** metamethods, as these strings must be internalized;</a>
+<a id=213></a><a  class="comments">** #(&quot;function&quot;) = 8, #(&quot;__newindex&quot;) = 10.)</a>
+<a id=214></a><a  class="comments">*/</a>
+<a id=215></a>#if !defined(<a href="../h_src/57545040.htm" class="macro">LUAI_MAXSHORTLEN</a>)
+<a id=216></a>#define <a href="../h_src/57544904.htm" class="macro">LUAI_MAXSHORTLEN</a>	40
+#endif
+
+
+<a id=220></a><a  class="comments">/*</a>
+<a id=221></a><a  class="comments">** Initial size for the string table (must be power of 2).</a>
+<a id=222></a><a  class="comments">** The Lua core alone registers ~50 strings (reserved words +</a>
+<a id=223></a><a  class="comments">** metaevent keys + a few others). Libraries would typically add</a>
+<a id=224></a><a  class="comments">** a few dozens more.</a>
+<a id=225></a><a  class="comments">*/</a>
+<a id=226></a>#if !defined(<a href="../h_src/57544768.htm" class="macro">MINSTRTABSIZE</a>)
+<a id=227></a>#define <a href="../h_src/57544632.htm" class="macro">MINSTRTABSIZE</a>	128
+#endif
+
+
+<a id=231></a><a  class="comments">/*</a>
+<a id=232></a><a  class="comments">** Size of cache for strings in the API. 'N' is the number of</a>
+<a id=233></a><a  class="comments">** sets (better be a prime) and &quot;M&quot; is the size of each set (M == 1</a>
+<a id=234></a><a  class="comments">** makes a direct cache.)</a>
+<a id=235></a><a  class="comments">*/</a>
+<a id=236></a>#if !defined(<a href="../h_src/57544496.htm" class="macro">STRCACHE_N</a>)
+<a id=237></a>#define <a href="../h_src/57544360.htm" class="macro">STRCACHE_N</a>		53
+<a id=238></a>#define <a href="../h_src/57544224.htm" class="macro">STRCACHE_M</a>		2
+#endif
+
+
+<a id=242></a><a  class="comments">/* minimum size for string buffer */</a>
+<a id=243></a>#if !defined(<a href="../h_src/57544088.htm" class="macro">LUA_MINBUFFER</a>)
+<a id=244></a>#define <a href="../h_src/57543952.htm" class="macro">LUA_MINBUFFER</a>	32
+#endif
+
+
+<a id=248></a><a  class="comments">/*</a>
+<a id=249></a><a  class="comments">** Maximum depth for nested C calls, syntactical nested non-terminals,</a>
+<a id=250></a><a  class="comments">** and other features implemented through recursion in C. (Value must</a>
+<a id=251></a><a  class="comments">** fit in a 16-bit unsigned integer. It must also be compatible with</a>
+<a id=252></a><a  class="comments">** the size of the C stack.)</a>
+<a id=253></a><a  class="comments">*/</a>
+<a id=254></a>#if !defined(<a href="../h_src/57543816.htm" class="macro">LUAI_MAXCCALLS</a>)
+<a id=255></a>#define <a href="../h_src/57543680.htm" class="macro">LUAI_MAXCCALLS</a>		200
+#endif
+
+
+<a id=259></a><a  class="comments">/*</a>
+<a id=260></a><a  class="comments">** macros that are executed whenever program enters the Lua core</a>
+<a id=261></a><a  class="comments">** ('lua_lock') and leaves the core ('lua_unlock')</a>
+<a id=262></a><a  class="comments">*/</a>
+<a id=263></a>#if !defined(<a href="../h_src/57543544.htm" class="macro">lua_lock</a>)
+<a id=264></a>#define <a href="../h_src/57543408.htm" class="macro">lua_lock</a>(L)	((void) 0)
+<a id=265></a>#define <a href="../h_src/57543272.htm" class="macro">lua_unlock</a>(L)	((void) 0)
+#endif
+
+<a id=268></a><a  class="comments">/*</a>
+<a id=269></a><a  class="comments">** macro executed during Lua functions at points where the</a>
+<a id=270></a><a  class="comments">** function can yield.</a>
+<a id=271></a><a  class="comments">*/</a>
+<a id=272></a>#if !defined(<a href="../h_src/57543136.htm" class="macro">luai_threadyield</a>)
+<a id=273></a>#define <a href="../h_src/57543000.htm" class="macro">luai_threadyield</a>(L)	{lua_unlock(L); lua_lock(L);}
+#endif
+
+
+<a id=277></a><a  class="comments">/*</a>
+<a id=278></a><a  class="comments">** these macros allow user-specific actions when a thread is</a>
+<a id=279></a><a  class="comments">** created/deleted/resumed/yielded.</a>
+<a id=280></a><a  class="comments">*/</a>
+<a id=281></a>#if !defined(<a href="../h_src/57542864.htm" class="macro">luai_userstateopen</a>)
+<a id=282></a>#define <a href="../h_src/57542728.htm" class="macro">luai_userstateopen</a>(L)		((void)L)
+#endif
+
+<a id=285></a>#if !defined(<a href="../h_src/57542592.htm" class="macro">luai_userstateclose</a>)
+<a id=286></a>#define <a href="../h_src/57542456.htm" class="macro">luai_userstateclose</a>(L)		((void)L)
+#endif
+
+<a id=289></a>#if !defined(<a href="../h_src/57542320.htm" class="macro">luai_userstatethread</a>)
+<a id=290></a>#define <a href="../h_src/57542184.htm" class="macro">luai_userstatethread</a>(L,L1)	((void)L)
+#endif
+
+<a id=293></a>#if !defined(<a href="../h_src/57542048.htm" class="macro">luai_userstatefree</a>)
+<a id=294></a>#define <a href="../h_src/57541912.htm" class="macro">luai_userstatefree</a>(L,L1)	((void)L)
+#endif
+
+<a id=297></a>#if !defined(<a href="../h_src/57541776.htm" class="macro">luai_userstateresume</a>)
+<a id=298></a>#define <a href="../h_src/57541640.htm" class="macro">luai_userstateresume</a>(L,n)	((void)L)
+#endif
+
+<a id=301></a>#if !defined(<a href="../h_src/57541504.htm" class="macro">luai_userstateyield</a>)
+<a id=302></a>#define <a href="../h_src/57541368.htm" class="macro">luai_userstateyield</a>(L,n)	((void)L)
+#endif
+
+
+
+<a id=307></a><a  class="comments">/*</a>
+<a id=308></a><a  class="comments">** The luai_num* macros define the primitive operations over numbers.</a>
+<a id=309></a><a  class="comments">*/</a>
+
+<a id=311></a><a  class="comments">/* floor division (defined as 'floor(a/b)') */</a>
+<a id=312></a>#if !defined(<a href="../h_src/57541232.htm" class="macro">luai_numidiv</a>)
+<a id=313></a>#define <a href="../h_src/57541096.htm" class="macro">luai_numidiv</a>(L,a,b)     ((void)L, l_floor(luai_numdiv(L,a,b)))
+#endif
+
+<a id=316></a><a  class="comments">/* float division */</a>
+<a id=317></a>#if !defined(<a href="../h_src/57540960.htm" class="macro">luai_numdiv</a>)
+<a id=318></a>#define <a href="../h_src/57540824.htm" class="macro">luai_numdiv</a>(L,a,b)      ((a)/(b))
+#endif
+
+<a id=321></a><a  class="comments">/*</a>
+<a id=322></a><a  class="comments">** modulo: defined as 'a - floor(a/b)*b'; the direct computation</a>
+<a id=323></a><a  class="comments">** using this definition has several problems with rounding errors,</a>
+<a id=324></a><a  class="comments">** so it is better to use 'fmod'. 'fmod' gives the result of</a>
+<a id=325></a><a  class="comments">** 'a - trunc(a/b)*b', and therefore must be corrected when</a>
+<a id=326></a><a  class="comments">** 'trunc(a/b) ~= floor(a/b)'. That happens when the division has a</a>
+<a id=327></a><a  class="comments">** non-integer negative result: non-integer result is equivalent to</a>
+<a id=328></a><a  class="comments">** a non-zero remainder 'm'; negative result is equivalent to 'a' and</a>
+<a id=329></a><a  class="comments">** 'b' with different signs, or 'm' and 'b' with different signs</a>
+<a id=330></a><a  class="comments">** (as the result 'm' of 'fmod' has the same sign of 'a').</a>
+<a id=331></a><a  class="comments">*/</a>
+<a id=332></a>#if !defined(<a href="../h_src/57540688.htm" class="macro">luai_nummod</a>)
+<a id=333></a>#define <a href="../h_src/57540552.htm" class="macro">luai_nummod</a>(L,a,b,m)  \
+  { (void)L; (m) = l_mathop(fmod)(a,b); \
+    if (((m) &gt; 0) ? (b) &lt; 0 : ((m) &lt; 0 &amp;&amp; (b) &gt; 0)) (m) += (b); }
+#endif
+
+<a id=338></a><a  class="comments">/* exponentiation */</a>
+<a id=339></a>#if !defined(<a href="../h_src/57540416.htm" class="macro">luai_numpow</a>)
+<a id=340></a>#define <a href="../h_src/57540280.htm" class="macro">luai_numpow</a>(L,a,b)  \
+  ((void)L, (b == 2) ? (a)*(a) : l_mathop(pow)(a,b))
+#endif
+
+<a id=344></a><a  class="comments">/* the others are quite standard operations */</a>
+<a id=345></a>#if !defined(<a href="../h_src/57540144.htm" class="macro">luai_numadd</a>)
+<a id=346></a>#define <a href="../h_src/57540008.htm" class="macro">luai_numadd</a>(L,a,b)      ((a)+(b))
+<a id=347></a>#define <a href="../h_src/57539872.htm" class="macro">luai_numsub</a>(L,a,b)      ((a)-(b))
+<a id=348></a>#define <a href="../h_src/57539736.htm" class="macro">luai_nummul</a>(L,a,b)      ((a)*(b))
+<a id=349></a>#define <a href="../h_src/57539600.htm" class="macro">luai_numunm</a>(L,a)        (-(a))
+<a id=350></a>#define <a href="../h_src/57539464.htm" class="macro">luai_numeq</a>(a,b)         ((a)==(b))
+<a id=351></a>#define <a href="../h_src/57539328.htm" class="macro">luai_numlt</a>(a,b)         ((a)&lt;(b))
+<a id=352></a>#define <a href="../h_src/57539192.htm" class="macro">luai_numle</a>(a,b)         ((a)&lt;=(b))
+<a id=353></a>#define <a href="../h_src/57539056.htm" class="macro">luai_numgt</a>(a,b)         ((a)&gt;(b))
+<a id=354></a>#define <a href="../h_src/57538920.htm" class="macro">luai_numge</a>(a,b)         ((a)&gt;=(b))
+<a id=355></a>#define <a href="../h_src/57538784.htm" class="macro">luai_numisnan</a>(a)        (!luai_numeq((a), (a)))
+#endif
+
+
+
+
+
+<a id=362></a><a  class="comments">/*</a>
+<a id=363></a><a  class="comments">** macro to control inclusion of some hard tests on stack reallocation</a>
+<a id=364></a><a  class="comments">*/</a>
+<a id=365></a>#if !defined(<a href="../h_src/57538648.htm" class="macro">HARDSTACKTESTS</a>)
+<a id=366></a>#define <a href="../h_src/57538512.htm" class="macro">condmovestack</a>(L,pre,pos)	((void)0)
+#else
+<a id=368></a><a  class="comments">/* realloc stack keeping its size */</a>
+#define condmovestack(L,pre,pos)  \
+  { int sz_ = stacksize(L); pre; luaD_reallocstack((L), sz_, 0); pos; }
+#endif
+
+<a id=373></a>#if !defined(<a href="../h_src/57538376.htm" class="macro">HARDMEMTESTS</a>)
+<a id=374></a>#define <a href="../h_src/57538240.htm" class="macro">condchangemem</a>(L,pre,pos)	((void)0)
+#else
+#define condchangemem(L,pre,pos)  \
+	{ if (gcrunning(G(L))) { pre; luaC_fullgc(L, 0); pos; } }
+#endif
+
+#endif
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

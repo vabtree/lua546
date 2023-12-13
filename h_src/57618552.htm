@@ -1,0 +1,50 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaS_newlstr</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57618552.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57618552.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57618552.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57618552.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57618552.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57618552.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58132328.htm#221" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/57618552.htm" class="function">luaS_newlstr</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58123964.htm" class="localvar">L</a>, const char *<a href="../h_src/58123828.htm" class="localvar">str</a>, <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58123692.htm" class="localvar">l</a>) {
+  if (<a href="../h_src/58123692.htm" class="localvar">l</a> &lt;= <a href="../h_src/57544904.htm" class="macro">LUAI_MAXSHORTLEN</a>)  <a  class="comments">/* short string? */</a>
+    return <a href="../h_src/58125188.htm" class="function">internshrstr</a>(<a href="../h_src/58123964.htm" class="localvar">L</a>, <a href="../h_src/58123828.htm" class="localvar">str</a>, <a href="../h_src/58123692.htm" class="localvar">l</a>);
+  else {
+    <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/58123556.htm" class="localvar">ts</a>;
+    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/58123692.htm" class="localvar">l</a> &gt;= (<a href="../h_src/57550208.htm" class="macro">MAX_SIZE</a> - sizeof(<a href="../h_src/57522736.htm" class="type">TString</a>))/sizeof(char)))
+      <a href="../h_src/57656836.htm" class="function">luaM_toobig</a>(<a href="../h_src/58123964.htm" class="localvar">L</a>);
+    <a href="../h_src/58123556.htm" class="localvar">ts</a> = <a href="../h_src/57618416.htm" class="function">luaS_createlngstrobj</a>(<a href="../h_src/58123964.htm" class="localvar">L</a>, <a href="../h_src/58123692.htm" class="localvar">l</a>);
+    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58123556.htm" class="localvar">ts</a>), <a href="../h_src/58123828.htm" class="localvar">str</a>, <a href="../h_src/58123692.htm" class="localvar">l</a> * sizeof(char));
+    return <a href="../h_src/58123556.htm" class="localvar">ts</a>;
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

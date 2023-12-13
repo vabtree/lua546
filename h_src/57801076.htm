@@ -1,0 +1,45 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaK_float</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57801076.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57801076.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57801076.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57801076.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57801076.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57801076.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57706720.htm#680" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/57801076.htm" class="function">luaK_float</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57800940.htm" class="localvar">fs</a>, int <a href="../h_src/57800804.htm" class="localvar">reg</a>, <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/57800668.htm" class="localvar">f</a>) {
+  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/57800532.htm" class="localvar">fi</a>;
+  if (<a href="../h_src/57611208.htm" class="function">luaV_flttointeger</a>(<a href="../h_src/57800668.htm" class="localvar">f</a>, &amp;<a href="../h_src/57800532.htm" class="localvar">fi</a>, <a href="../h_src/57613520.htm" class="variable">F2Ieq</a>) &amp;&amp; <a href="../h_src/57801756.htm" class="function">fitsBx</a>(<a href="../h_src/57800532.htm" class="localvar">fi</a>))
+    <a href="../h_src/57671156.htm" class="function">luaK_codeAsBx</a>(<a href="../h_src/57800940.htm" class="localvar">fs</a>, <a href="../h_src/57690400.htm" class="variable">OP_LOADF</a>, <a href="../h_src/57800804.htm" class="localvar">reg</a>, <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/57800532.htm" class="localvar">fi</a>));
+  else
+    <a href="../h_src/57812024.htm" class="function">luaK_codek</a>(<a href="../h_src/57800940.htm" class="localvar">fs</a>, <a href="../h_src/57800804.htm" class="localvar">reg</a>, <a href="../h_src/57805224.htm" class="function">luaK_numberK</a>(<a href="../h_src/57800940.htm" class="localvar">fs</a>, <a href="../h_src/57800668.htm" class="localvar">f</a>));
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

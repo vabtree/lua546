@@ -1,0 +1,56 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>combine</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143403296.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143403296.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143403296.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143403296.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143403296.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143403296.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143407988.htm#143" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static const <a href="../h_src/57513828.htm" class="type">Proto</a>* <a href="../h_src/143403296.htm" class="function">combine</a>(<a href="../h_src/57444252.htm" class="type">lua_State</a>* <a href="../h_src/143403160.htm" class="localvar">L</a>, int <a href="../h_src/143403024.htm" class="localvar">n</a>)
+{
+ if (<a href="../h_src/143403024.htm" class="localvar">n</a>==1)
+  return <a href="../h_src/143403432.htm" class="macro">toproto</a>(<a href="../h_src/143403160.htm" class="localvar">L</a>,-1);
+ else
+ {
+  <a href="../h_src/57513828.htm" class="type">Proto</a>* <a href="../h_src/143402888.htm" class="localvar">f</a>;
+  int <a href="../h_src/143402752.htm" class="localvar">i</a>=<a href="../h_src/143403024.htm" class="localvar">n</a>;
+  if (<a href="../h_src/57432624.htm" class="function">lua_load</a>(<a href="../h_src/143403160.htm" class="localvar">L</a>,<a href="../h_src/143403976.htm" class="function">reader</a>,&amp;<a href="../h_src/143402752.htm" class="localvar">i</a>,&quot;=(&quot; <a href="../h_src/143406560.htm" class="macro">PROGNAME</a> &quot;)&quot;,NULL)!=<a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) <a href="../h_src/143405812.htm" class="function">fatal</a>(<a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143403160.htm" class="localvar">L</a>,-1));
+  <a href="../h_src/143402888.htm" class="localvar">f</a>=<a href="../h_src/143403432.htm" class="macro">toproto</a>(<a href="../h_src/143403160.htm" class="localvar">L</a>,-1);
+  for (<a href="../h_src/143402752.htm" class="localvar">i</a>=0; <a href="../h_src/143402752.htm" class="localvar">i</a>&lt;<a href="../h_src/143403024.htm" class="localvar">n</a>; <a href="../h_src/143402752.htm" class="localvar">i</a>++)
+  {
+   <a href="../h_src/143402888.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a>[<a href="../h_src/143402752.htm" class="localvar">i</a>]=<a href="../h_src/143403432.htm" class="macro">toproto</a>(<a href="../h_src/143403160.htm" class="localvar">L</a>,<a href="../h_src/143402752.htm" class="localvar">i</a>-<a href="../h_src/143403024.htm" class="localvar">n</a>-1);
+   if (<a href="../h_src/143402888.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a>[<a href="../h_src/143402752.htm" class="localvar">i</a>]-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>&gt;0) <a href="../h_src/143402888.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a>[<a href="../h_src/143402752.htm" class="localvar">i</a>]-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[0].<a href="../h_src/57517296.htm" class="variable">instack</a>=0;
+  }
+  return <a href="../h_src/143402888.htm" class="localvar">f</a>;
+ }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,105 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaO_pushvfstring</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57501452.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57501452.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57501452.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57501452.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57501452.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57501452.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57919748.htm#480" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+const char *<a href="../h_src/57501452.htm" class="function">luaO_pushvfstring</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57901932.htm" class="localvar">L</a>, const char *<a href="../h_src/57901796.htm" class="localvar">fmt</a>, <a href="../h_aa/57434868.htm" class="type">va_list</a> <a href="../h_src/57901660.htm" class="localvar">argp</a>) {
+  <a href="../h_src/57905264.htm" class="type">BuffFS</a> <a href="../h_src/57901524.htm" class="localvar">buff</a>;  <a  class="comments">/* holds last part of the result */</a>
+  const char *<a href="../h_src/57901388.htm" class="localvar">e</a>;  <a  class="comments">/* points to next '%' */</a>
+  <a href="../h_src/57901524.htm" class="localvar">buff</a>.<a href="../h_src/57905468.htm" class="variable">pushed</a> = <a href="../h_src/57901524.htm" class="localvar">buff</a>.<a href="../h_src/57905400.htm" class="variable">blen</a> = 0;
+  <a href="../h_src/57901524.htm" class="localvar">buff</a>.<a href="../h_src/57905536.htm" class="variable">L</a> = <a href="../h_src/57901932.htm" class="localvar">L</a>;
+  while ((<a href="../h_src/57901388.htm" class="localvar">e</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57901796.htm" class="localvar">fmt</a>, '%')) != NULL) {
+    <a href="../h_src/57903360.htm" class="function">addstr2buff</a>(&amp;<a href="../h_src/57901524.htm" class="localvar">buff</a>, <a href="../h_src/57901796.htm" class="localvar">fmt</a>, <a href="../h_src/57901388.htm" class="localvar">e</a> - <a href="../h_src/57901796.htm" class="localvar">fmt</a>);  <a  class="comments">/* add 'fmt' up to '%' */</a>
+    switch (*(<a href="../h_src/57901388.htm" class="localvar">e</a> + 1)) {  <a  class="comments">/* conversion specifier */</a>
+      case 's': {  <a  class="comments">/* zero-terminated string */</a>
+        const char *<a href="../h_src/57901252.htm" class="localvar">s</a> = va_arg(<a href="../h_src/57901660.htm" class="localvar">argp</a>, char *);
+        if (<a href="../h_src/57901252.htm" class="localvar">s</a> == NULL) <a href="../h_src/57901252.htm" class="localvar">s</a> = &quot;(null)&quot;;
+        <a href="../h_src/57903360.htm" class="function">addstr2buff</a>(&amp;<a href="../h_src/57901524.htm" class="localvar">buff</a>, <a href="../h_src/57901252.htm" class="localvar">s</a>, <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/57901252.htm" class="localvar">s</a>));
+        break;
+      }
+      case 'c': {  <a  class="comments">/* an 'int' as a character */</a>
+        char <a href="../h_src/57901116.htm" class="localvar">c</a> = <a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(va_arg(<a href="../h_src/57901660.htm" class="localvar">argp</a>, int));
+        <a href="../h_src/57903360.htm" class="function">addstr2buff</a>(&amp;<a href="../h_src/57901524.htm" class="localvar">buff</a>, &amp;<a href="../h_src/57901116.htm" class="localvar">c</a>, sizeof(char));
+        break;
+      }
+      case 'd': {  <a  class="comments">/* an 'int' */</a>
+        <a href="../h_src/57535384.htm" class="type">TValue</a> <a href="../h_src/57900980.htm" class="localvar">num</a>;
+        <a href="../h_src/57525456.htm" class="macro">setivalue</a>(&amp;<a href="../h_src/57900980.htm" class="localvar">num</a>, va_arg(<a href="../h_src/57901660.htm" class="localvar">argp</a>, int));
+        <a href="../h_src/57902612.htm" class="function">addnum2buff</a>(&amp;<a href="../h_src/57901524.htm" class="localvar">buff</a>, &amp;<a href="../h_src/57900980.htm" class="localvar">num</a>);
+        break;
+      }
+      case 'I': {  <a  class="comments">/* a 'lua_Integer' */</a>
+        <a href="../h_src/57535384.htm" class="type">TValue</a> <a href="../h_src/57900708.htm" class="localvar">num</a>;
+        <a href="../h_src/57525456.htm" class="macro">setivalue</a>(&amp;<a href="../h_src/57900708.htm" class="localvar">num</a>, <a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57442076.htm" class="type">lua_Integer</a>, va_arg(<a href="../h_src/57901660.htm" class="localvar">argp</a>, <a href="../h_src/57548916.htm" class="type">l_uacInt</a>)));
+        <a href="../h_src/57902612.htm" class="function">addnum2buff</a>(&amp;<a href="../h_src/57901524.htm" class="localvar">buff</a>, &amp;<a href="../h_src/57900708.htm" class="localvar">num</a>);
+        break;
+      }
+      case 'f': {  <a  class="comments">/* a 'lua_Number' */</a>
+        <a href="../h_src/57535384.htm" class="type">TValue</a> <a href="../h_src/57900436.htm" class="localvar">num</a>;
+        <a href="../h_src/57525728.htm" class="macro">setfltvalue</a>(&amp;<a href="../h_src/57900436.htm" class="localvar">num</a>, <a href="../h_src/57547352.htm" class="macro">cast_num</a>(va_arg(<a href="../h_src/57901660.htm" class="localvar">argp</a>, <a href="../h_src/57548984.htm" class="type">l_uacNumber</a>)));
+        <a href="../h_src/57902612.htm" class="function">addnum2buff</a>(&amp;<a href="../h_src/57901524.htm" class="localvar">buff</a>, &amp;<a href="../h_src/57900436.htm" class="localvar">num</a>);
+        break;
+      }
+      case 'p': {  <a  class="comments">/* a pointer */</a>
+        const int <a href="../h_src/57900164.htm" class="localvar">sz</a> = 3 * sizeof(void*) + 8; <a  class="comments">/* enough space for '%p' */</a>
+        char *<a href="../h_src/57900028.htm" class="localvar">bf</a> = <a href="../h_src/57903904.htm" class="function">getbuff</a>(&amp;<a href="../h_src/57901524.htm" class="localvar">buff</a>, <a href="../h_src/57900164.htm" class="localvar">sz</a>);
+        void *<a href="../h_src/57899892.htm" class="localvar">p</a> = va_arg(<a href="../h_src/57901660.htm" class="localvar">argp</a>, void *);
+        int <a href="../h_src/57899756.htm" class="localvar">len</a> = <a href="../h_src/57449556.htm" class="macro">lua_pointer2str</a>(<a href="../h_src/57900028.htm" class="localvar">bf</a>, <a href="../h_src/57900164.htm" class="localvar">sz</a>, <a href="../h_src/57899892.htm" class="localvar">p</a>);
+        <a href="../h_src/57903496.htm" class="macro">addsize</a>(&amp;<a href="../h_src/57901524.htm" class="localvar">buff</a>, <a href="../h_src/57899756.htm" class="localvar">len</a>);
+        break;
+      }
+      case 'U': {  <a  class="comments">/* a 'long' as a UTF-8 sequence */</a>
+        char <a href="../h_src/57899620.htm" class="localvar">bf</a>[<a href="../h_src/57502064.htm" class="macro">UTF8BUFFSZ</a>];
+        int <a href="../h_src/57899484.htm" class="localvar">len</a> = <a href="../h_src/57501928.htm" class="function">luaO_utf8esc</a>(<a href="../h_src/57899620.htm" class="localvar">bf</a>, va_arg(<a href="../h_src/57901660.htm" class="localvar">argp</a>, long));
+        <a href="../h_src/57903360.htm" class="function">addstr2buff</a>(&amp;<a href="../h_src/57901524.htm" class="localvar">buff</a>, <a href="../h_src/57899620.htm" class="localvar">bf</a> + <a href="../h_src/57502064.htm" class="macro">UTF8BUFFSZ</a> - <a href="../h_src/57899484.htm" class="localvar">len</a>, <a href="../h_src/57899484.htm" class="localvar">len</a>);
+        break;
+      }
+      case '%': {
+        <a href="../h_src/57903360.htm" class="function">addstr2buff</a>(&amp;<a href="../h_src/57901524.htm" class="localvar">buff</a>, &quot;%&quot;, 1);
+        break;
+      }
+      default: {
+        <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/57901932.htm" class="localvar">L</a>, &quot;invalid option '%%%c' to 'lua_pushfstring'&quot;,
+                         *(<a href="../h_src/57901388.htm" class="localvar">e</a> + 1));
+      }
+    }
+    <a href="../h_src/57901796.htm" class="localvar">fmt</a> = <a href="../h_src/57901388.htm" class="localvar">e</a> + 2;  <a  class="comments">/* skip '%' and the specifier */</a>
+  }
+  <a href="../h_src/57903360.htm" class="function">addstr2buff</a>(&amp;<a href="../h_src/57901524.htm" class="localvar">buff</a>, <a href="../h_src/57901796.htm" class="localvar">fmt</a>, <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/57901796.htm" class="localvar">fmt</a>));  <a  class="comments">/* rest of 'fmt' */</a>
+  <a href="../h_src/57904176.htm" class="function">clearbuff</a>(&amp;<a href="../h_src/57901524.htm" class="localvar">buff</a>);  <a  class="comments">/* empty buffer into the stack */</a>
+  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(buff.pushed == 1);
+  return <a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57901932.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1));
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,53 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>main</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143400984.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143400984.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143400984.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143400984.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143400984.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143400984.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143407988.htm#196" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+int <a href="../h_src/143400984.htm" class="function">main</a>(int <a href="../h_src/143400916.htm" class="localvar">argc</a>, char* <a href="../h_src/143400780.htm" class="localvar">argv</a>[])
+{
+ <a href="../h_src/57444252.htm" class="type">lua_State</a>* <a href="../h_src/143400644.htm" class="localvar">L</a>;
+ int <a href="../h_src/143400508.htm" class="localvar">i</a>=<a href="../h_src/143404860.htm" class="function">doargs</a>(<a href="../h_src/143400916.htm" class="localvar">argc</a>,<a href="../h_src/143400780.htm" class="localvar">argv</a>);
+ <a href="../h_src/143400916.htm" class="localvar">argc</a>-=<a href="../h_src/143400508.htm" class="localvar">i</a>; <a href="../h_src/143400780.htm" class="localvar">argv</a>+=<a href="../h_src/143400508.htm" class="localvar">i</a>;
+ if (<a href="../h_src/143400916.htm" class="localvar">argc</a>&lt;=0) <a href="../h_src/143405268.htm" class="function">usage</a>(&quot;no input files given&quot;);
+ <a href="../h_src/143400644.htm" class="localvar">L</a>=<a href="../h_src/57418208.htm" class="function">luaL_newstate</a>();
+ if (<a href="../h_src/143400644.htm" class="localvar">L</a>==NULL) <a href="../h_src/143405812.htm" class="function">fatal</a>(&quot;cannot create state: not enough memory&quot;);
+ <a href="../h_src/57428884.htm" class="macro">lua_pushcfunction</a>(<a href="../h_src/143400644.htm" class="localvar">L</a>,&amp;<a href="../h_src/143401936.htm" class="function">pmain</a>);
+ <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143400644.htm" class="localvar">L</a>,<a href="../h_src/143400916.htm" class="localvar">argc</a>);
+ <a href="../h_src/57434528.htm" class="function">lua_pushlightuserdata</a>(<a href="../h_src/143400644.htm" class="localvar">L</a>,<a href="../h_src/143400780.htm" class="localvar">argv</a>);
+ if (<a href="../h_src/57432760.htm" class="macro">lua_pcall</a>(<a href="../h_src/143400644.htm" class="localvar">L</a>,2,0,0)!=<a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) <a href="../h_src/143405812.htm" class="function">fatal</a>(<a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143400644.htm" class="localvar">L</a>,-1));
+ <a href="../h_src/57439832.htm" class="function">lua_close</a>(<a href="../h_src/143400644.htm" class="localvar">L</a>);
+ return EXIT_SUCCESS;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

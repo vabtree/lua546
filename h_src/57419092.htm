@@ -1,0 +1,54 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaL_fileresult</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57419092.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57419092.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57419092.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57419092.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57419092.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57419092.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58351320.htm#245" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int <a href="../h_src/57419092.htm" class="function">luaL_fileresult</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58343976.htm" class="localvar">L</a>, int <a href="../h_src/58343840.htm" class="localvar">stat</a>, const char *<a href="../h_src/58343704.htm" class="localvar">fname</a>) {
+  int <a href="../h_src/58343568.htm" class="localvar">en</a> = errno;  <a  class="comments">/* calls to Lua API may change this value */</a>
+  if (<a href="../h_src/58343840.htm" class="localvar">stat</a>) {
+    <a href="../h_src/57434596.htm" class="function">lua_pushboolean</a>(<a href="../h_src/58343976.htm" class="localvar">L</a>, 1);
+    return 1;
+  }
+  else {
+    <a href="../h_src/57415760.htm" class="macro">luaL_pushfail</a>(<a href="../h_src/58343976.htm" class="localvar">L</a>);
+    if (<a href="../h_src/58343704.htm" class="localvar">fname</a>)
+      <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58343976.htm" class="localvar">L</a>, &quot;%s: %s&quot;, <a href="../h_src/58343704.htm" class="localvar">fname</a>, <a href="../h_aa/58343432.htm" class="libfunc">strerror</a>(<a href="../h_src/58343568.htm" class="localvar">en</a>));
+    else
+      <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/58343976.htm" class="localvar">L</a>, <a href="../h_aa/58343432.htm" class="libfunc">strerror</a>(<a href="../h_src/58343568.htm" class="localvar">en</a>));
+    <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/58343976.htm" class="localvar">L</a>, <a href="../h_src/58343568.htm" class="localvar">en</a>);
+    return 3;
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

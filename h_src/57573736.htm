@@ -1,0 +1,46 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaL_openlibs</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57573736.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57573736.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57573736.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57573736.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57573736.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57573736.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143408668.htm#57" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void <a href="../h_src/57573736.htm" class="function">luaL_openlibs</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143408260.htm" class="localvar">L</a>) {
+  const <a href="../h_src/57420996.htm" class="type">luaL_Reg</a> *<a href="../h_src/143408124.htm" class="localvar">lib</a>;
+  <a  class="comments">/* &quot;require&quot; functions from 'loadedlibs' and set results to global table */</a>
+  for (<a href="../h_src/143408124.htm" class="localvar">lib</a> = <a href="../h_src/143408328.htm" class="variable">loadedlibs</a>; <a href="../h_src/143408124.htm" class="localvar">lib</a>-&gt;<a href="../h_src/57421064.htm" class="variable">func</a>; <a href="../h_src/143408124.htm" class="localvar">lib</a>++) {
+    <a href="../h_src/57417596.htm" class="function">luaL_requiref</a>(<a href="../h_src/143408260.htm" class="localvar">L</a>, <a href="../h_src/143408124.htm" class="localvar">lib</a>-&gt;<a href="../h_src/57421132.htm" class="variable">name</a>, <a href="../h_src/143408124.htm" class="localvar">lib</a>-&gt;<a href="../h_src/57421064.htm" class="variable">func</a>, 1);
+    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143408260.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove lib */</a>
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

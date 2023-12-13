@@ -1,0 +1,53 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaD_closeprotected</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57633036.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57633036.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57633036.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57633036.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57633036.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57633036.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57884484.htm#924" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+int <a href="../h_src/57633036.htm" class="function">luaD_closeprotected</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57855516.htm" class="localvar">L</a>, <a href="../h_aa/57441872.htm" class="type">ptrdiff_t</a> <a href="../h_src/57855380.htm" class="localvar">level</a>, int <a href="../h_src/57855244.htm" class="localvar">status</a>) {
+  <a href="../h_src/57537764.htm" class="type">CallInfo</a> *<a href="../h_src/57855108.htm" class="localvar">old_ci</a> = <a href="../h_src/57855516.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>;
+  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57854972.htm" class="localvar">old_allowhooks</a> = <a href="../h_src/57855516.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642760.htm" class="variable">allowhook</a>;
+  for (;;) {  <a  class="comments">/* keep closing upvalues until no more errors */</a>
+    struct <a href="../h_src/57856468.htm" class="class">CloseP</a> <a href="../h_src/57854836.htm" class="localvar">pcl</a>;
+    <a href="../h_src/57854836.htm" class="localvar">pcl</a>.<a href="../h_src/57856332.htm" class="variable">level</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57855516.htm" class="localvar">L</a>, <a href="../h_src/57855380.htm" class="localvar">level</a>); <a href="../h_src/57854836.htm" class="localvar">pcl</a>.<a href="../h_src/57856264.htm" class="variable">status</a> = <a href="../h_src/57855244.htm" class="localvar">status</a>;
+    <a href="../h_src/57855244.htm" class="localvar">status</a> = <a href="../h_src/57632492.htm" class="function">luaD_rawrunprotected</a>(<a href="../h_src/57855516.htm" class="localvar">L</a>, &amp;<a href="../h_src/57856196.htm" class="function">closepaux</a>, &amp;<a href="../h_src/57854836.htm" class="localvar">pcl</a>);
+    if (<a href="../h_src/57551704.htm" class="macro">l_likely</a>(<a href="../h_src/57855244.htm" class="localvar">status</a> == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>))  <a  class="comments">/* no more errors? */</a>
+      return <a href="../h_src/57854836.htm" class="localvar">pcl</a>.<a href="../h_src/57856264.htm" class="variable">status</a>;
+    else {  <a  class="comments">/* an error occurred; restore saved state and repeat */</a>
+      <a href="../h_src/57855516.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a> = <a href="../h_src/57855108.htm" class="localvar">old_ci</a>;
+      <a href="../h_src/57855516.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642760.htm" class="variable">allowhook</a> = <a href="../h_src/57854972.htm" class="localvar">old_allowhooks</a>;
+    }
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

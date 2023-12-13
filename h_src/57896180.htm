@@ -1,0 +1,50 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>getupvalname</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57896180.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57896180.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57896180.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57896180.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57896180.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57896180.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57759256.htm#680" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static const char *<a href="../h_src/57896180.htm" class="function">getupvalname</a> (<a href="../h_src/57537764.htm" class="type">CallInfo</a> *<a href="../h_src/57896044.htm" class="localvar">ci</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57895908.htm" class="localvar">o</a>,
+                                 const char **<a href="../h_src/57895772.htm" class="localvar">name</a>) {
+  <a href="../h_src/57507980.htm" class="type">LClosure</a> *<a href="../h_src/57895636.htm" class="localvar">c</a> = <a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57896044.htm" class="localvar">ci</a>);
+  int <a href="../h_src/57895500.htm" class="localvar">i</a>;
+  for (<a href="../h_src/57895500.htm" class="localvar">i</a> = 0; <a href="../h_src/57895500.htm" class="localvar">i</a> &lt; <a href="../h_src/57895636.htm" class="localvar">c</a>-&gt;<a href="../h_src/57508320.htm" class="variable">nupvalues</a>; <a href="../h_src/57895500.htm" class="localvar">i</a>++) {
+    if (<a href="../h_src/57895636.htm" class="localvar">c</a>-&gt;<a href="../h_src/57508048.htm" class="variable">upvals</a>[<a href="../h_src/57895500.htm" class="localvar">i</a>]-&gt;<a href="../h_src/57510564.htm" class="variable">v</a>.<a href="../h_src/57510768.htm" class="variable">p</a> == <a href="../h_src/57895908.htm" class="localvar">o</a>) {
+      *<a href="../h_src/57895772.htm" class="localvar">name</a> = <a href="../h_src/57754904.htm" class="function">upvalname</a>(<a href="../h_src/57895636.htm" class="localvar">c</a>-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>, <a href="../h_src/57895500.htm" class="localvar">i</a>);
+      return &quot;upvalue&quot;;
+    }
+  }
+  return NULL;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

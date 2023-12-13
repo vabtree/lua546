@@ -1,0 +1,63 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>resume</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57859324.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57859324.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57859324.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57859324.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57859324.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57859324.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57884484.htm#785" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/57859324.htm" class="function">resume</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57859188.htm" class="localvar">L</a>, void *<a href="../h_src/57859052.htm" class="localvar">ud</a>) {
+  int <a href="../h_src/57858916.htm" class="localvar">n</a> = *(<a href="../h_src/57547760.htm" class="macro">cast</a>(int*, <a href="../h_src/57859052.htm" class="localvar">ud</a>));  <a  class="comments">/* number of arguments */</a>
+  <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57858780.htm" class="localvar">firstArg</a> = <a href="../h_src/57859188.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - <a href="../h_src/57858916.htm" class="localvar">n</a>;  <a  class="comments">/* first argument */</a>
+  <a href="../h_src/57537764.htm" class="type">CallInfo</a> *<a href="../h_src/57858644.htm" class="localvar">ci</a> = <a href="../h_src/57859188.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>;
+  if (<a href="../h_src/57859188.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642828.htm" class="variable">status</a> == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>)  <a  class="comments">/* starting a coroutine? */</a>
+    <a href="../h_src/57864220.htm" class="function">ccall</a>(<a href="../h_src/57859188.htm" class="localvar">L</a>, <a href="../h_src/57858780.htm" class="localvar">firstArg</a> - 1, <a href="../h_src/57445612.htm" class="macro">LUA_MULTRET</a>, 0);  <a  class="comments">/* just call its body */</a>
+  else {  <a  class="comments">/* resuming from previous yield */</a>
+    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(L-&gt;status == <a href="../h_src/57445068.htm" class="macro">LUA_YIELD</a>);
+    <a href="../h_src/57859188.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642828.htm" class="variable">status</a> = <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>;  <a  class="comments">/* mark that it is running (again) */</a>
+    if (<a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57858644.htm" class="localvar">ci</a>)) {  <a  class="comments">/* yielded inside a hook? */</a>
+      <a href="../h_src/57859188.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57858780.htm" class="localvar">firstArg</a>;  <a  class="comments">/* discard arguments */</a>
+      <a href="../h_src/57610936.htm" class="function">luaV_execute</a>(<a href="../h_src/57859188.htm" class="localvar">L</a>, <a href="../h_src/57858644.htm" class="localvar">ci</a>);  <a  class="comments">/* just continue running Lua code */</a>
+    }
+    else {  <a  class="comments">/* 'common' yield */</a>
+      if (<a href="../h_src/57858644.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650444.htm" class="variable">c</a>.<a href="../h_src/57650716.htm" class="variable">k</a> != NULL) {  <a  class="comments">/* does it have a continuation function? */</a>
+        <a href="../h_src/57543272.htm" class="macro">lua_unlock</a>(L);
+        <a href="../h_src/57858916.htm" class="localvar">n</a> = (*<a href="../h_src/57858644.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650444.htm" class="variable">c</a>.<a href="../h_src/57650716.htm" class="variable">k</a>)(<a href="../h_src/57859188.htm" class="localvar">L</a>, <a href="../h_src/57445068.htm" class="macro">LUA_YIELD</a>, <a href="../h_src/57858644.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650444.htm" class="variable">c</a>.<a href="../h_src/57650580.htm" class="variable">ctx</a>); <a  class="comments">/* call continuation */</a>
+        <a href="../h_src/57543408.htm" class="macro">lua_lock</a>(L);
+        <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57859188.htm" class="localvar">L</a>, n);
+      }
+      <a href="../h_src/57632900.htm" class="function">luaD_poscall</a>(<a href="../h_src/57859188.htm" class="localvar">L</a>, <a href="../h_src/57858644.htm" class="localvar">ci</a>, <a href="../h_src/57858916.htm" class="localvar">n</a>);  <a  class="comments">/* finish 'luaD_call' */</a>
+    }
+    <a href="../h_src/57861092.htm" class="function">unroll</a>(<a href="../h_src/57859188.htm" class="localvar">L</a>, NULL);  <a  class="comments">/* run continuation */</a>
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

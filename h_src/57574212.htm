@@ -1,0 +1,51 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaopen_math</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57574212.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57574212.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57574212.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57574212.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57574212.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57574212.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143241756.htm#751" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57454180.htm" class="macro">LUAMOD_API</a> int <a href="../h_src/57574212.htm" class="function">luaopen_math</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143217412.htm" class="localvar">L</a>) {
+  <a href="../h_src/57417392.htm" class="macro">luaL_newlib</a>(<a href="../h_src/143217412.htm" class="localvar">L</a>, <a href="../h_src/143217480.htm" class="variable">mathlib</a>);
+  <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143217412.htm" class="localvar">L</a>, <a href="../h_src/143241280.htm" class="macro">PI</a>);
+  <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/143217412.htm" class="localvar">L</a>, -2, &quot;pi&quot;);
+  <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143217412.htm" class="localvar">L</a>, (<a href="../h_src/57442144.htm" class="type">lua_Number</a>)HUGE_VAL);
+  <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/143217412.htm" class="localvar">L</a>, -2, &quot;huge&quot;);
+  <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143217412.htm" class="localvar">L</a>, <a href="../h_src/57450100.htm" class="macro">LUA_MAXINTEGER</a>);
+  <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/143217412.htm" class="localvar">L</a>, -2, &quot;maxinteger&quot;);
+  <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143217412.htm" class="localvar">L</a>, <a href="../h_src/57449964.htm" class="macro">LUA_MININTEGER</a>);
+  <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/143217412.htm" class="localvar">L</a>, -2, &quot;mininteger&quot;);
+  <a href="../h_src/143220676.htm" class="function">setrandfunc</a>(<a href="../h_src/143217412.htm" class="localvar">L</a>);
+  return 1;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

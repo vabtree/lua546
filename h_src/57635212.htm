@@ -1,0 +1,48 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaG_addinfo</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57635212.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57635212.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57635212.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57635212.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57635212.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57635212.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57759256.htm#797" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+const char *<a href="../h_src/57635212.htm" class="function">luaG_addinfo</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57889244.htm" class="localvar">L</a>, const char *<a href="../h_src/57889108.htm" class="localvar">msg</a>, <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/57888972.htm" class="localvar">src</a>,
+                                        int <a href="../h_src/57888836.htm" class="localvar">line</a>) {
+  char <a href="../h_src/57888700.htm" class="localvar">buff</a>[<a href="../h_src/57447380.htm" class="macro">LUA_IDSIZE</a>];
+  if (<a href="../h_src/57888972.htm" class="localvar">src</a>)
+    <a href="../h_src/57501316.htm" class="function">luaO_chunkid</a>(<a href="../h_src/57888700.htm" class="localvar">buff</a>, <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/57888972.htm" class="localvar">src</a>), <a href="../h_src/57522396.htm" class="macro">tsslen</a>(<a href="../h_src/57888972.htm" class="localvar">src</a>));
+  else {  <a  class="comments">/* no source available; use &quot;?&quot; instead */</a>
+    <a href="../h_src/57888700.htm" class="localvar">buff</a>[0] = '?'; <a href="../h_src/57888700.htm" class="localvar">buff</a>[1] = '\0';
+  }
+  return <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/57889244.htm" class="localvar">L</a>, &quot;%s:%d: %s&quot;, <a href="../h_src/57888700.htm" class="localvar">buff</a>, <a href="../h_src/57888836.htm" class="localvar">line</a>, <a href="../h_src/57889108.htm" class="localvar">msg</a>);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

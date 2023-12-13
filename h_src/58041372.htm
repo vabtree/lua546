@@ -1,0 +1,57 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>newupvalue</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58041372.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58041372.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58041372.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58041372.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58041372.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58041372.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58057080.htm#364" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/58041372.htm" class="function">newupvalue</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/58041236.htm" class="localvar">fs</a>, <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/58041100.htm" class="localvar">name</a>, <a href="../h_src/57679384.htm" class="type">expdesc</a> *<a href="../h_src/58040964.htm" class="localvar">v</a>) {
+  <a href="../h_src/57517092.htm" class="type">Upvaldesc</a> *<a href="../h_src/58040828.htm" class="localvar">up</a> = <a href="../h_src/58041916.htm" class="function">allocupvalue</a>(<a href="../h_src/58041236.htm" class="localvar">fs</a>);
+  <a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/58040692.htm" class="localvar">prev</a> = <a href="../h_src/58041236.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675984.htm" class="variable">prev</a>;
+  if (<a href="../h_src/58040964.htm" class="localvar">v</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a> == <a href="../h_src/57682104.htm" class="variable">VLOCAL</a>) {
+    <a href="../h_src/58040828.htm" class="localvar">up</a>-&gt;<a href="../h_src/57517296.htm" class="variable">instack</a> = 1;
+    <a href="../h_src/58040828.htm" class="localvar">up</a>-&gt;<a href="../h_src/57517228.htm" class="variable">idx</a> = <a href="../h_src/58040964.htm" class="localvar">v</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57679724.htm" class="variable">var</a>.<a href="../h_src/57679928.htm" class="variable">ridx</a>;
+    <a href="../h_src/58040828.htm" class="localvar">up</a>-&gt;<a href="../h_src/57517160.htm" class="variable">kind</a> = <a href="../h_src/58047628.htm" class="function">getlocalvardesc</a>(<a href="../h_src/58040692.htm" class="localvar">prev</a>, <a href="../h_src/58040964.htm" class="localvar">v</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57679724.htm" class="variable">var</a>.<a href="../h_src/57679860.htm" class="variable">vidx</a>)-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678432.htm" class="variable">kind</a>;
+    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/58056468.htm" class="macro">eqstr</a>(name, getlocalvardesc(prev, v-&gt;u.var.vidx)-&gt;vd.name));
+  }
+  else {
+    <a href="../h_src/58040828.htm" class="localvar">up</a>-&gt;<a href="../h_src/57517296.htm" class="variable">instack</a> = 0;
+    <a href="../h_src/58040828.htm" class="localvar">up</a>-&gt;<a href="../h_src/57517228.htm" class="variable">idx</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/58040964.htm" class="localvar">v</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a>);
+    <a href="../h_src/58040828.htm" class="localvar">up</a>-&gt;<a href="../h_src/57517160.htm" class="variable">kind</a> = <a href="../h_src/58040692.htm" class="localvar">prev</a>-&gt;<a href="../h_src/57676052.htm" class="variable">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/58040964.htm" class="localvar">v</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a>].<a href="../h_src/57517160.htm" class="variable">kind</a>;
+    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/58056468.htm" class="macro">eqstr</a>(name, prev-&gt;f-&gt;upvalues[v-&gt;u.info].name));
+  }
+  <a href="../h_src/58040828.htm" class="localvar">up</a>-&gt;<a href="../h_src/57517364.htm" class="variable">name</a> = <a href="../h_src/58041100.htm" class="localvar">name</a>;
+  <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/58041236.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/58041236.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57676052.htm" class="variable">f</a>, <a href="../h_src/58041100.htm" class="localvar">name</a>);
+  return <a href="../h_src/58041236.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674828.htm" class="variable">nups</a> - 1;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

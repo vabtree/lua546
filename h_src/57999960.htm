@@ -1,0 +1,61 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>forbody</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57999960.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57999960.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57999960.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57999960.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57999960.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57999960.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58057080.htm#1544" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/57999960.htm" class="function">forbody</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57999824.htm" class="localvar">ls</a>, int <a href="../h_src/57999688.htm" class="localvar">base</a>, int <a href="../h_src/57999552.htm" class="localvar">line</a>, int <a href="../h_src/57999416.htm" class="localvar">nvars</a>, int <a href="../h_src/57999280.htm" class="localvar">isgen</a>) {
+  <a  class="comments">/* forbody -&gt; DO block */</a>
+  static const <a href="../h_src/57684756.htm" class="type">OpCode</a> <a href="../h_src/57999076.htm" class="localvar">forprep</a>[2] = {<a href="../h_src/57685504.htm" class="variable">OP_FORPREP</a>, <a href="../h_src/57685436.htm" class="variable">OP_TFORPREP</a>};
+  static const <a href="../h_src/57684756.htm" class="type">OpCode</a> <a href="../h_src/57998940.htm" class="localvar">forloop</a>[2] = {<a href="../h_src/57685572.htm" class="variable">OP_FORLOOP</a>, <a href="../h_src/57685300.htm" class="variable">OP_TFORLOOP</a>};
+  <a href="../h_src/58055856.htm" class="type">BlockCnt</a> <a href="../h_src/57998804.htm" class="localvar">bl</a>;
+  <a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57998668.htm" class="localvar">fs</a> = <a href="../h_src/57999824.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>;
+  int <a href="../h_src/57998532.htm" class="localvar">prep</a>, <a href="../h_src/57998396.htm" class="localvar">endfor</a>;
+  <a href="../h_src/58052524.htm" class="function">checknext</a>(<a href="../h_src/57999824.htm" class="localvar">ls</a>, <a href="../h_src/57705156.htm" class="variable">TK_DO</a>);
+  <a href="../h_src/57998532.htm" class="localvar">prep</a> = <a href="../h_src/57671224.htm" class="function">luaK_codeABx</a>(<a href="../h_src/57998668.htm" class="localvar">fs</a>, <a href="../h_src/57999076.htm" class="localvar">forprep</a>[<a href="../h_src/57999280.htm" class="localvar">isgen</a>], <a href="../h_src/57999688.htm" class="localvar">base</a>, 0);
+  <a href="../h_src/58028792.htm" class="function">enterblock</a>(<a href="../h_src/57998668.htm" class="localvar">fs</a>, &amp;<a href="../h_src/57998804.htm" class="localvar">bl</a>, 0);  <a  class="comments">/* scope for declared variables */</a>
+  <a href="../h_src/58044228.htm" class="function">adjustlocalvars</a>(<a href="../h_src/57999824.htm" class="localvar">ls</a>, <a href="../h_src/57999416.htm" class="localvar">nvars</a>);
+  <a href="../h_src/57670680.htm" class="function">luaK_reserveregs</a>(<a href="../h_src/57998668.htm" class="localvar">fs</a>, <a href="../h_src/57999416.htm" class="localvar">nvars</a>);
+  <a href="../h_src/58009344.htm" class="function">block</a>(<a href="../h_src/57999824.htm" class="localvar">ls</a>);
+  <a href="../h_src/58027704.htm" class="function">leaveblock</a>(<a href="../h_src/57998668.htm" class="localvar">fs</a>);  <a  class="comments">/* end of scope for declared variables */</a>
+  <a href="../h_src/58000912.htm" class="function">fixforjump</a>(<a href="../h_src/57998668.htm" class="localvar">fs</a>, <a href="../h_src/57998532.htm" class="localvar">prep</a>, <a href="../h_src/57669252.htm" class="function">luaK_getlabel</a>(<a href="../h_src/57998668.htm" class="localvar">fs</a>), 0);
+  if (<a href="../h_src/57999280.htm" class="localvar">isgen</a>) {  <a  class="comments">/* generic for? */</a>
+    <a href="../h_src/57672380.htm" class="macro">luaK_codeABC</a>(<a href="../h_src/57998668.htm" class="localvar">fs</a>, <a href="../h_src/57685368.htm" class="variable">OP_TFORCALL</a>, <a href="../h_src/57999688.htm" class="localvar">base</a>, 0, <a href="../h_src/57999416.htm" class="localvar">nvars</a>);
+    <a href="../h_src/57670816.htm" class="function">luaK_fixline</a>(<a href="../h_src/57998668.htm" class="localvar">fs</a>, <a href="../h_src/57999552.htm" class="localvar">line</a>);
+  }
+  <a href="../h_src/57998396.htm" class="localvar">endfor</a> = <a href="../h_src/57671224.htm" class="function">luaK_codeABx</a>(<a href="../h_src/57998668.htm" class="localvar">fs</a>, <a href="../h_src/57998940.htm" class="localvar">forloop</a>[<a href="../h_src/57999280.htm" class="localvar">isgen</a>], <a href="../h_src/57999688.htm" class="localvar">base</a>, 0);
+  <a href="../h_src/58000912.htm" class="function">fixforjump</a>(<a href="../h_src/57998668.htm" class="localvar">fs</a>, <a href="../h_src/57998396.htm" class="localvar">endfor</a>, <a href="../h_src/57998532.htm" class="localvar">prep</a> + 1, 1);
+  <a href="../h_src/57670816.htm" class="function">luaK_fixline</a>(<a href="../h_src/57998668.htm" class="localvar">fs</a>, <a href="../h_src/57999552.htm" class="localvar">line</a>);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,73 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaH_resize</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57616444.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57616444.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57616444.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57616444.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57616444.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57616444.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58121924.htm#553" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+void <a href="../h_src/57616444.htm" class="function">luaH_resize</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58103428.htm" class="localvar">L</a>, <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58103292.htm" class="localvar">t</a>, unsigned int <a href="../h_src/58103156.htm" class="localvar">newasize</a>,
+                                          unsigned int <a href="../h_src/58103020.htm" class="localvar">nhsize</a>) {
+  unsigned int <a href="../h_src/58102884.htm" class="localvar">i</a>;
+  <a href="../h_src/57504308.htm" class="type">Table</a> <a href="../h_src/58102748.htm" class="localvar">newt</a>;  <a  class="comments">/* to keep the new hash part */</a>
+  unsigned int <a href="../h_src/58102612.htm" class="localvar">oldasize</a> = <a href="../h_src/58115260.htm" class="function">setlimittosize</a>(<a href="../h_src/58103292.htm" class="localvar">t</a>);
+  <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58102476.htm" class="localvar">newarray</a>;
+  <a  class="comments">/* create new hash part with appropriate size into 'newt' */</a>
+  <a href="../h_src/58106556.htm" class="function">setnodevector</a>(<a href="../h_src/58103428.htm" class="localvar">L</a>, &amp;<a href="../h_src/58102748.htm" class="localvar">newt</a>, <a href="../h_src/58103020.htm" class="localvar">nhsize</a>);
+  if (<a href="../h_src/58103156.htm" class="localvar">newasize</a> &lt; <a href="../h_src/58102612.htm" class="localvar">oldasize</a>) {  <a  class="comments">/* will array shrink? */</a>
+    <a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a> = <a href="../h_src/58103156.htm" class="localvar">newasize</a>;  <a  class="comments">/* pretend array has new size... */</a>
+    <a href="../h_src/58104244.htm" class="function">exchangehashpart</a>(<a href="../h_src/58103292.htm" class="localvar">t</a>, &amp;<a href="../h_src/58102748.htm" class="localvar">newt</a>);  <a  class="comments">/* and new hash */</a>
+    <a  class="comments">/* re-insert into the new hash the elements from vanishing slice */</a>
+    for (<a href="../h_src/58102884.htm" class="localvar">i</a> = <a href="../h_src/58103156.htm" class="localvar">newasize</a>; <a href="../h_src/58102884.htm" class="localvar">i</a> &lt; <a href="../h_src/58102612.htm" class="localvar">oldasize</a>; <a href="../h_src/58102884.htm" class="localvar">i</a>++) {
+      if (!<a href="../h_src/57530488.htm" class="macro">isempty</a>(&amp;<a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58102884.htm" class="localvar">i</a>]))
+        <a href="../h_src/57616988.htm" class="function">luaH_setint</a>(<a href="../h_src/58103428.htm" class="localvar">L</a>, <a href="../h_src/58103292.htm" class="localvar">t</a>, <a href="../h_src/58102884.htm" class="localvar">i</a> + 1, &amp;<a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58102884.htm" class="localvar">i</a>]);
+    }
+    <a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a> = <a href="../h_src/58102612.htm" class="localvar">oldasize</a>;  <a  class="comments">/* restore current size... */</a>
+    <a href="../h_src/58104244.htm" class="function">exchangehashpart</a>(<a href="../h_src/58103292.htm" class="localvar">t</a>, &amp;<a href="../h_src/58102748.htm" class="localvar">newt</a>);  <a  class="comments">/* and hash (in case of errors) */</a>
+  }
+  <a  class="comments">/* allocate new array */</a>
+  <a href="../h_src/58102476.htm" class="localvar">newarray</a> = <a href="../h_src/57657244.htm" class="macro">luaM_reallocvector</a>(<a href="../h_src/58103428.htm" class="localvar">L</a>, <a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>, <a href="../h_src/58102612.htm" class="localvar">oldasize</a>, <a href="../h_src/58103156.htm" class="localvar">newasize</a>, <a href="../h_src/57535384.htm" class="type">TValue</a>);
+  if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/58102476.htm" class="localvar">newarray</a> == NULL &amp;&amp; <a href="../h_src/58103156.htm" class="localvar">newasize</a> &gt; 0)) {  <a  class="comments">/* allocation failed? */</a>
+    <a href="../h_src/58111044.htm" class="function">freehash</a>(<a href="../h_src/58103428.htm" class="localvar">L</a>, &amp;<a href="../h_src/58102748.htm" class="localvar">newt</a>);  <a  class="comments">/* release new hash part */</a>
+    <a href="../h_src/57496556.htm" class="macro">luaM_error</a>(<a href="../h_src/58103428.htm" class="localvar">L</a>);  <a  class="comments">/* raise error (with array unchanged) */</a>
+  }
+  <a  class="comments">/* allocation ok; initialize new part of the array */</a>
+  <a href="../h_src/58104244.htm" class="function">exchangehashpart</a>(<a href="../h_src/58103292.htm" class="localvar">t</a>, &amp;<a href="../h_src/58102748.htm" class="localvar">newt</a>);  <a  class="comments">/* 't' has the new hash ('newt' has the old) */</a>
+  <a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a> = <a href="../h_src/58102476.htm" class="localvar">newarray</a>;  <a  class="comments">/* set new array part */</a>
+  <a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a> = <a href="../h_src/58103156.htm" class="localvar">newasize</a>;
+  for (<a href="../h_src/58102884.htm" class="localvar">i</a> = <a href="../h_src/58102612.htm" class="localvar">oldasize</a>; <a href="../h_src/58102884.htm" class="localvar">i</a> &lt; <a href="../h_src/58103156.htm" class="localvar">newasize</a>; <a href="../h_src/58102884.htm" class="localvar">i</a>++)  <a  class="comments">/* clear new slice of the array */</a>
+     <a href="../h_src/57530216.htm" class="macro">setempty</a>(&amp;<a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58102884.htm" class="localvar">i</a>]);
+  <a  class="comments">/* re-insert elements from old hash part into new parts */</a>
+  <a href="../h_src/58105604.htm" class="function">reinsert</a>(<a href="../h_src/58103428.htm" class="localvar">L</a>, &amp;<a href="../h_src/58102748.htm" class="localvar">newt</a>, <a href="../h_src/58103292.htm" class="localvar">t</a>);  <a  class="comments">/* 'newt' now has the old hash */</a>
+  <a href="../h_src/58111044.htm" class="function">freehash</a>(<a href="../h_src/58103428.htm" class="localvar">L</a>, &amp;<a href="../h_src/58102748.htm" class="localvar">newt</a>);  <a  class="comments">/* free old hash part */</a>
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

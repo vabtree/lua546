@@ -1,0 +1,72 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>loadConstants</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58068680.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58068680.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58068680.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58068680.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58068680.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58068680.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58075888.htm#155" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/58068680.htm" class="function">loadConstants</a> (<a href="../h_src/58074936.htm" class="type">LoadState</a> *<a href="../h_src/58068544.htm" class="localvar">S</a>, <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/58068408.htm" class="localvar">f</a>) {
+  int <a href="../h_src/58068272.htm" class="localvar">i</a>;
+  int <a href="../h_src/58068136.htm" class="localvar">n</a> = <a href="../h_src/58072216.htm" class="function">loadInt</a>(<a href="../h_src/58068544.htm" class="localvar">S</a>);
+  <a href="../h_src/58068408.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515052.htm" class="variable">k</a> = <a href="../h_src/57495196.htm" class="macro">luaM_newvectorchecked</a>(<a href="../h_src/58068544.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, <a href="../h_src/58068136.htm" class="localvar">n</a>, <a href="../h_src/57535384.htm" class="type">TValue</a>);
+  <a href="../h_src/58068408.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515664.htm" class="variable">sizek</a> = <a href="../h_src/58068136.htm" class="localvar">n</a>;
+  for (<a href="../h_src/58068272.htm" class="localvar">i</a> = 0; <a href="../h_src/58068272.htm" class="localvar">i</a> &lt; <a href="../h_src/58068136.htm" class="localvar">n</a>; <a href="../h_src/58068272.htm" class="localvar">i</a>++)
+    <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(&amp;<a href="../h_src/58068408.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515052.htm" class="variable">k</a>[<a href="../h_src/58068272.htm" class="localvar">i</a>]);
+  for (<a href="../h_src/58068272.htm" class="localvar">i</a> = 0; <a href="../h_src/58068272.htm" class="localvar">i</a> &lt; <a href="../h_src/58068136.htm" class="localvar">n</a>; <a href="../h_src/58068272.htm" class="localvar">i</a>++) {
+    <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58068000.htm" class="localvar">o</a> = &amp;<a href="../h_src/58068408.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515052.htm" class="variable">k</a>[<a href="../h_src/58068272.htm" class="localvar">i</a>];
+    int <a href="../h_src/58067864.htm" class="localvar">t</a> = <a href="../h_src/58073576.htm" class="function">loadByte</a>(<a href="../h_src/58068544.htm" class="localvar">S</a>);
+    switch (<a href="../h_src/58067864.htm" class="localvar">t</a>) {
+      case <a href="../h_src/57531576.htm" class="macro">LUA_VNIL</a>:
+        <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(<a href="../h_src/58068000.htm" class="localvar">o</a>);
+        break;
+      case <a href="../h_src/57530080.htm" class="macro">LUA_VFALSE</a>:
+        <a href="../h_src/57529264.htm" class="macro">setbfvalue</a>(<a href="../h_src/58068000.htm" class="localvar">o</a>);
+        break;
+      case <a href="../h_src/57529944.htm" class="macro">LUA_VTRUE</a>:
+        <a href="../h_src/57529128.htm" class="macro">setbtvalue</a>(<a href="../h_src/58068000.htm" class="localvar">o</a>);
+        break;
+      case <a href="../h_src/57526952.htm" class="macro">LUA_VNUMFLT</a>:
+        <a href="../h_src/57525728.htm" class="macro">setfltvalue</a>(<a href="../h_src/58068000.htm" class="localvar">o</a>, <a href="../h_src/58071944.htm" class="function">loadNumber</a>(<a href="../h_src/58068544.htm" class="localvar">S</a>));
+        break;
+      case <a href="../h_src/57527088.htm" class="macro">LUA_VNUMINT</a>:
+        <a href="../h_src/57525456.htm" class="macro">setivalue</a>(<a href="../h_src/58068000.htm" class="localvar">o</a>, <a href="../h_src/58071536.htm" class="function">loadInteger</a>(<a href="../h_src/58068544.htm" class="localvar">S</a>));
+        break;
+      case <a href="../h_src/57525184.htm" class="macro">LUA_VSHRSTR</a>:
+      case <a href="../h_src/57525048.htm" class="macro">LUA_VLNGSTR</a>:
+        <a href="../h_src/57523960.htm" class="macro">setsvalue2n</a>(<a href="../h_src/58068544.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, o, <a href="../h_src/58069904.htm" class="function">loadString</a>(<a href="../h_src/58068544.htm" class="localvar">S</a>, <a href="../h_src/58068408.htm" class="localvar">f</a>));
+        break;
+      default: <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(0);
+    }
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

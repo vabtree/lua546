@@ -1,0 +1,86 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lua_strx2number</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57914104.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57914104.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57914104.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57914104.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57914104.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57914104.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57919748.htm#165" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/57914104.htm" class="function">lua_strx2number</a> (const char *<a href="../h_src/57913968.htm" class="localvar">s</a>, char **<a href="../h_src/57913832.htm" class="localvar">endptr</a>) {
+  int <a href="../h_src/57913628.htm" class="localvar">dot</a> = <a href="../h_src/57448468.htm" class="macro">lua_getlocaledecpoint</a>();
+  <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/57913492.htm" class="localvar">r</a> = <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(0.0);  <a  class="comments">/* result (accumulator) */</a>
+  int <a href="../h_src/57913356.htm" class="localvar">sigdig</a> = 0;  <a  class="comments">/* number of significant digits */</a>
+  int <a href="../h_src/57913220.htm" class="localvar">nosigdig</a> = 0;  <a  class="comments">/* number of non-significant digits */</a>
+  int <a href="../h_src/57913084.htm" class="localvar">e</a> = 0;  <a  class="comments">/* exponent correction */</a>
+  int <a href="../h_src/57912948.htm" class="localvar">neg</a>;  <a  class="comments">/* 1 if number is negative */</a>
+  int <a href="../h_src/57912812.htm" class="localvar">hasdot</a> = 0;  <a  class="comments">/* true after seen a dot */</a>
+  *<a href="../h_src/57913832.htm" class="localvar">endptr</a> = <a href="../h_src/57546536.htm" class="macro">cast_charp</a>(<a href="../h_src/57913968.htm" class="localvar">s</a>);  <a  class="comments">/* nothing is valid yet */</a>
+  while (<a href="../h_src/57760140.htm" class="macro">lisspace</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57913968.htm" class="localvar">s</a>))) <a href="../h_src/57913968.htm" class="localvar">s</a>++;  <a  class="comments">/* skip initial spaces */</a>
+  <a href="../h_src/57912948.htm" class="localvar">neg</a> = <a href="../h_src/57914648.htm" class="function">isneg</a>(&amp;<a href="../h_src/57913968.htm" class="localvar">s</a>);  <a  class="comments">/* check sign */</a>
+  if (!(*<a href="../h_src/57913968.htm" class="localvar">s</a> == '0' &amp;&amp; (*(<a href="../h_src/57913968.htm" class="localvar">s</a> + 1) == 'x' || *(<a href="../h_src/57913968.htm" class="localvar">s</a> + 1) == 'X')))  <a  class="comments">/* check '0x' */</a>
+    return <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(0.0);  <a  class="comments">/* invalid format (no '0x') */</a>
+  for (<a href="../h_src/57913968.htm" class="localvar">s</a> += 2; ; <a href="../h_src/57913968.htm" class="localvar">s</a>++) {  <a  class="comments">/* skip '0x' and read numeral */</a>
+    if (*<a href="../h_src/57913968.htm" class="localvar">s</a> == <a href="../h_src/57913628.htm" class="localvar">dot</a>) {
+      if (<a href="../h_src/57912812.htm" class="localvar">hasdot</a>) break;  <a  class="comments">/* second dot? stop loop */</a>
+      else <a href="../h_src/57912812.htm" class="localvar">hasdot</a> = 1;
+    }
+    else if (<a href="../h_src/57759868.htm" class="macro">lisxdigit</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57913968.htm" class="localvar">s</a>))) {
+      if (<a href="../h_src/57913356.htm" class="localvar">sigdig</a> == 0 &amp;&amp; *<a href="../h_src/57913968.htm" class="localvar">s</a> == '0')  <a  class="comments">/* non-significant digit (zero)? */</a>
+        <a href="../h_src/57913220.htm" class="localvar">nosigdig</a>++;
+      else if (++<a href="../h_src/57913356.htm" class="localvar">sigdig</a> &lt;= <a href="../h_src/57914240.htm" class="macro">MAXSIGDIG</a>)  <a  class="comments">/* can read it without overflow? */</a>
+          <a href="../h_src/57913492.htm" class="localvar">r</a> = (<a href="../h_src/57913492.htm" class="localvar">r</a> * <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(16.0)) + <a href="../h_src/57501588.htm" class="function">luaO_hexavalue</a>(*<a href="../h_src/57913968.htm" class="localvar">s</a>);
+      else <a href="../h_src/57913084.htm" class="localvar">e</a>++; <a  class="comments">/* too many digits; ignore, but still count for exponent */</a>
+      if (<a href="../h_src/57912812.htm" class="localvar">hasdot</a>) <a href="../h_src/57913084.htm" class="localvar">e</a>--;  <a  class="comments">/* decimal digit? correct exponent */</a>
+    }
+    else break;  <a  class="comments">/* neither a dot nor a digit */</a>
+  }
+  if (<a href="../h_src/57913220.htm" class="localvar">nosigdig</a> + <a href="../h_src/57913356.htm" class="localvar">sigdig</a> == 0)  <a  class="comments">/* no digits? */</a>
+    return <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(0.0);  <a  class="comments">/* invalid format */</a>
+  *<a href="../h_src/57913832.htm" class="localvar">endptr</a> = <a href="../h_src/57546536.htm" class="macro">cast_charp</a>(<a href="../h_src/57913968.htm" class="localvar">s</a>);  <a  class="comments">/* valid up to here */</a>
+  <a href="../h_src/57913084.htm" class="localvar">e</a> *= 4;  <a  class="comments">/* each digit multiplies/divides value by 2^4 */</a>
+  if (*<a href="../h_src/57913968.htm" class="localvar">s</a> == 'p' || *<a href="../h_src/57913968.htm" class="localvar">s</a> == 'P') {  <a  class="comments">/* exponent part? */</a>
+    int <a href="../h_src/57912676.htm" class="localvar">exp1</a> = 0;  <a  class="comments">/* exponent value */</a>
+    int <a href="../h_src/57912540.htm" class="localvar">neg1</a>;  <a  class="comments">/* exponent sign */</a>
+    <a href="../h_src/57913968.htm" class="localvar">s</a>++;  <a  class="comments">/* skip 'p' */</a>
+    <a href="../h_src/57912540.htm" class="localvar">neg1</a> = <a href="../h_src/57914648.htm" class="function">isneg</a>(&amp;<a href="../h_src/57913968.htm" class="localvar">s</a>);  <a  class="comments">/* sign */</a>
+    if (!<a href="../h_src/57760276.htm" class="macro">lisdigit</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57913968.htm" class="localvar">s</a>)))
+      return <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(0.0);  <a  class="comments">/* invalid; must have at least one digit */</a>
+    while (<a href="../h_src/57760276.htm" class="macro">lisdigit</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57913968.htm" class="localvar">s</a>)))  <a  class="comments">/* read exponent */</a>
+      <a href="../h_src/57912676.htm" class="localvar">exp1</a> = <a href="../h_src/57912676.htm" class="localvar">exp1</a> * 10 + *(<a href="../h_src/57913968.htm" class="localvar">s</a>++) - '0';
+    if (<a href="../h_src/57912540.htm" class="localvar">neg1</a>) <a href="../h_src/57912676.htm" class="localvar">exp1</a> = -<a href="../h_src/57912676.htm" class="localvar">exp1</a>;
+    <a href="../h_src/57913084.htm" class="localvar">e</a> += <a href="../h_src/57912676.htm" class="localvar">exp1</a>;
+    *<a href="../h_src/57913832.htm" class="localvar">endptr</a> = <a href="../h_src/57546536.htm" class="macro">cast_charp</a>(<a href="../h_src/57913968.htm" class="localvar">s</a>);  <a  class="comments">/* valid up to here */</a>
+  }
+  if (<a href="../h_src/57912948.htm" class="localvar">neg</a>) <a href="../h_src/57913492.htm" class="localvar">r</a> = -<a href="../h_src/57913492.htm" class="localvar">r</a>;
+  return <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/57804272.htm" class="libfunc">ldexp</a>)(<a href="../h_src/57913492.htm" class="localvar">r</a>, <a href="../h_src/57913084.htm" class="localvar">e</a>);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,65 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>addk</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57808488.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57808488.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57808488.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57808488.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57808488.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57808488.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57706720.htm#543" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/57808488.htm" class="function">addk</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57808352.htm" class="localvar">fs</a>, <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57808216.htm" class="localvar">key</a>, <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57808080.htm" class="localvar">v</a>) {
+  <a href="../h_src/57535384.htm" class="type">TValue</a> <a href="../h_src/57807944.htm" class="localvar">val</a>;
+  <a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57807808.htm" class="localvar">L</a> = <a href="../h_src/57808352.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>;
+  <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57807672.htm" class="localvar">f</a> = <a href="../h_src/57808352.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57676052.htm" class="variable">f</a>;
+  const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57807536.htm" class="localvar">idx</a> = <a href="../h_src/57616784.htm" class="function">luaH_get</a>(<a href="../h_src/57808352.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700668.htm" class="variable">h</a>, <a href="../h_src/57808216.htm" class="localvar">key</a>);  <a  class="comments">/* query scanner table */</a>
+  int <a href="../h_src/57807400.htm" class="localvar">k</a>, <a href="../h_src/57807264.htm" class="localvar">oldsize</a>;
+  if (<a href="../h_src/57526544.htm" class="macro">ttisinteger</a>(<a href="../h_src/57807536.htm" class="localvar">idx</a>)) {  <a  class="comments">/* is there an index there? */</a>
+    <a href="../h_src/57807400.htm" class="localvar">k</a> = <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/57807536.htm" class="localvar">idx</a>));
+    <a  class="comments">/* correct value? (warning: must distinguish floats from integers!) */</a>
+    if (<a href="../h_src/57807400.htm" class="localvar">k</a> &lt; <a href="../h_src/57808352.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675304.htm" class="variable">nk</a> &amp;&amp; <a href="../h_src/57534636.htm" class="macro">ttypetag</a>(&amp;<a href="../h_src/57807672.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515052.htm" class="variable">k</a>[<a href="../h_src/57807400.htm" class="localvar">k</a>]) == <a href="../h_src/57534636.htm" class="macro">ttypetag</a>(<a href="../h_src/57808080.htm" class="localvar">v</a>) &amp;&amp;
+                      <a href="../h_src/57612432.htm" class="macro">luaV_rawequalobj</a>(&amp;<a href="../h_src/57807672.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515052.htm" class="variable">k</a>[<a href="../h_src/57807400.htm" class="localvar">k</a>], <a href="../h_src/57808080.htm" class="localvar">v</a>))
+      return <a href="../h_src/57807400.htm" class="localvar">k</a>;  <a  class="comments">/* reuse index */</a>
+  }
+  <a  class="comments">/* constant not found; create a new entry */</a>
+  <a href="../h_src/57807264.htm" class="localvar">oldsize</a> = <a href="../h_src/57807672.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515664.htm" class="variable">sizek</a>;
+  <a href="../h_src/57807400.htm" class="localvar">k</a> = <a href="../h_src/57808352.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675304.htm" class="variable">nk</a>;
+  <a  class="comments">/* numerical value does not need GC barrier;</a>
+<a  class="comments">     table has no metatable, so it does not need to invalidate cache */</a>
+  <a href="../h_src/57525456.htm" class="macro">setivalue</a>(&amp;<a href="../h_src/57807944.htm" class="localvar">val</a>, <a href="../h_src/57807400.htm" class="localvar">k</a>);
+  <a href="../h_src/57616580.htm" class="function">luaH_finishset</a>(<a href="../h_src/57807808.htm" class="localvar">L</a>, <a href="../h_src/57808352.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700668.htm" class="variable">h</a>, <a href="../h_src/57808216.htm" class="localvar">key</a>, <a href="../h_src/57807536.htm" class="localvar">idx</a>, &amp;<a href="../h_src/57807944.htm" class="localvar">val</a>);
+  <a href="../h_src/57494924.htm" class="macro">luaM_growvector</a>(<a href="../h_src/57807808.htm" class="localvar">L</a>, <a href="../h_src/57807672.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515052.htm" class="variable">k</a>, <a href="../h_src/57807400.htm" class="localvar">k</a>, <a href="../h_src/57807672.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515664.htm" class="variable">sizek</a>, <a href="../h_src/57535384.htm" class="type">TValue</a>, <a href="../h_src/57696248.htm" class="macro">MAXARG_Ax</a>, &quot;constants&quot;);
+  while (<a href="../h_src/57807264.htm" class="localvar">oldsize</a> &lt; <a href="../h_src/57807672.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515664.htm" class="variable">sizek</a>) <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(&amp;<a href="../h_src/57807672.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515052.htm" class="variable">k</a>[<a href="../h_src/57807264.htm" class="localvar">oldsize</a>++]);
+  <a href="../h_src/57533684.htm" class="macro">setobj</a>(<a href="../h_src/57807808.htm" class="localvar">L</a>, &amp;<a href="../h_src/57807672.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515052.htm" class="variable">k</a>[<a href="../h_src/57807400.htm" class="localvar">k</a>], <a href="../h_src/57808080.htm" class="localvar">v</a>);
+  <a href="../h_src/57808352.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675304.htm" class="variable">nk</a>++;
+  <a href="../h_src/57621340.htm" class="macro">luaC_barrier</a>(<a href="../h_src/57807808.htm" class="localvar">L</a>, <a href="../h_src/57807672.htm" class="localvar">f</a>, <a href="../h_src/57808080.htm" class="localvar">v</a>);
+  return <a href="../h_src/57807400.htm" class="localvar">k</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

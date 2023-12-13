@@ -1,0 +1,46 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>poptbclist</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57831852.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57831852.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57831852.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57831852.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57831852.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57831852.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57840488.htm#213" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/57831852.htm" class="function">poptbclist</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57831716.htm" class="localvar">L</a>) {
+  <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57831580.htm" class="localvar">tbc</a> = <a href="../h_src/57831716.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642148.htm" class="variable">tbclist</a>.<a href="../h_src/57531984.htm" class="variable">p</a>;
+  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(tbc-&gt;tbclist.delta &gt; 0);  <a  class="comments">/* first element cannot be dummy */</a>
+  <a href="../h_src/57831580.htm" class="localvar">tbc</a> -= <a href="../h_src/57831580.htm" class="localvar">tbc</a>-&gt;<a href="../h_src/57532324.htm" class="variable">tbclist</a>.<a href="../h_src/57532460.htm" class="variable">delta</a>;
+  while (<a href="../h_src/57831580.htm" class="localvar">tbc</a> &gt; <a href="../h_src/57831716.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642284.htm" class="variable">stack</a>.<a href="../h_src/57531984.htm" class="variable">p</a> &amp;&amp; <a href="../h_src/57831580.htm" class="localvar">tbc</a>-&gt;<a href="../h_src/57532324.htm" class="variable">tbclist</a>.<a href="../h_src/57532460.htm" class="variable">delta</a> == 0)
+    <a href="../h_src/57831580.htm" class="localvar">tbc</a> -= <a href="../h_src/57833348.htm" class="macro">MAXDELTA</a>;  <a  class="comments">/* remove dummy nodes */</a>
+  <a href="../h_src/57831716.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642148.htm" class="variable">tbclist</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57831580.htm" class="localvar">tbc</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

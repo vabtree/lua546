@@ -1,0 +1,71 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>reallymarkobject</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57826752.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57826752.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57826752.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57826752.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57826752.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57826752.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57829404.htm#297" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/57826752.htm" class="function">reallymarkobject</a> (<a href="../h_src/57643100.htm" class="type">global_State</a> *<a href="../h_src/57821584.htm" class="localvar">g</a>, <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57821448.htm" class="localvar">o</a>) {
+  switch (<a href="../h_src/57821448.htm" class="localvar">o</a>-&gt;<a href="../h_src/57528108.htm" class="variable">tt</a>) {
+    case <a href="../h_src/57525184.htm" class="macro">LUA_VSHRSTR</a>:
+    case <a href="../h_src/57525048.htm" class="macro">LUA_VLNGSTR</a>: {
+      <a href="../h_src/57827840.htm" class="macro">set2black</a>(<a href="../h_src/57821448.htm" class="localvar">o</a>);  <a  class="comments">/* nothing to visit */</a>
+      break;
+    }
+    case <a href="../h_src/57513760.htm" class="macro">LUA_VUPVAL</a>: {
+      <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57821312.htm" class="localvar">uv</a> = <a href="../h_src/57639020.htm" class="macro">gco2upv</a>(<a href="../h_src/57821448.htm" class="localvar">o</a>);
+      if (<a href="../h_src/57631540.htm" class="macro">upisopen</a>(<a href="../h_src/57821312.htm" class="localvar">uv</a>))
+        <a href="../h_src/57827976.htm" class="macro">set2gray</a>(<a href="../h_src/57821312.htm" class="localvar">uv</a>);  <a  class="comments">/* open upvalues are kept gray */</a>
+      else
+        <a href="../h_src/57827840.htm" class="macro">set2black</a>(<a href="../h_src/57821312.htm" class="localvar">uv</a>);  <a  class="comments">/* closed upvalues are visited here */</a>
+      <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57821584.htm" class="localvar">g</a>, <a href="../h_src/57821312.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57510564.htm" class="variable">v</a>.<a href="../h_src/57510768.htm" class="variable">p</a>);  <a  class="comments">/* mark its content */</a>
+      break;
+    }
+    case <a href="../h_src/57521988.htm" class="macro">LUA_VUSERDATA</a>: {
+      <a href="../h_src/57519268.htm" class="type">Udata</a> *<a href="../h_src/57821176.htm" class="localvar">u</a> = <a href="../h_src/57639972.htm" class="macro">gco2u</a>(<a href="../h_src/57821448.htm" class="localvar">o</a>);
+      if (<a href="../h_src/57821176.htm" class="localvar">u</a>-&gt;<a href="../h_src/57519948.htm" class="variable">nuvalue</a> == 0) {  <a  class="comments">/* no user values? */</a>
+        <a href="../h_src/57826888.htm" class="macro">markobjectN</a>(<a href="../h_src/57821584.htm" class="localvar">g</a>, <a href="../h_src/57821176.htm" class="localvar">u</a>-&gt;<a href="../h_src/57519540.htm" class="variable">metatable</a>);  <a  class="comments">/* mark its metatable */</a>
+        <a href="../h_src/57827840.htm" class="macro">set2black</a>(<a href="../h_src/57821176.htm" class="localvar">u</a>);  <a  class="comments">/* nothing else to mark */</a>
+        break;
+      }
+      <a  class="comments">/* else... */</a>
+    }  <a  class="comments">/* FALLTHROUGH */</a>
+    case <a href="../h_src/57513624.htm" class="macro">LUA_VLCL</a>: case <a href="../h_src/57513352.htm" class="macro">LUA_VCCL</a>: case <a href="../h_src/57507436.htm" class="macro">LUA_VTABLE</a>:
+    case <a href="../h_src/57528992.htm" class="macro">LUA_VTHREAD</a>: case <a href="../h_src/57517636.htm" class="macro">LUA_VPROTO</a>: {
+      <a href="../h_src/57825120.htm" class="macro">linkobjgclist</a>(<a href="../h_src/57821448.htm" class="localvar">o</a>, <a href="../h_src/57821584.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645072.htm" class="variable">gray</a>);  <a  class="comments">/* to be visited later */</a>
+      break;
+    }
+    default: <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(0); break;
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

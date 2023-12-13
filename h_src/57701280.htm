@@ -1,0 +1,60 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>FuncState</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57701280.htm" class="class" target="_self">Info</a></li>
+<li><a href="../h_im/57701280.htm" class="class" target="_self">Public Interface</a></li>
+<li><a href="../h_rx/57701280.htm" class="class" target="_self">Inheritance</a></li>
+<li><a href="../h_nm/57701280.htm" class="class" target="_self">Internals</a></li>
+<li><a href="../h_ua/57701280.htm" class="class" target="_self">Use of Members</a></li>
+<li><a href="../h_da/57701280.htm" class="class" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57701280.htm" class="class" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57701280.htm" class="class" target="_self">Declaration</a></li>
+<li><a href="../h_src/57683056.htm#144" class="class" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Declaration</h4>
+<pre class=src>
+typedef struct <a href="../h_src/57701280.htm" class="class">FuncState</a> {
+  <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57676052.htm" class="variable">f</a>;  <a  class="comments">/* current function header */</a>
+  struct <a href="../h_src/57701280.htm" class="class">FuncState</a> *<a href="../h_src/57675984.htm" class="variable">prev</a>;  <a  class="comments">/* enclosing function */</a>
+  struct <a href="../h_src/57701756.htm" class="class">LexState</a> *<a href="../h_src/57675780.htm" class="variable">ls</a>;  <a  class="comments">/* lexical state */</a>
+  struct <a href="../h_src/57676188.htm" class="class">BlockCnt</a> *<a href="../h_src/57675576.htm" class="variable">bl</a>;  <a  class="comments">/* chain of current blocks */</a>
+  int <a href="../h_src/57675508.htm" class="variable">pc</a>;  <a  class="comments">/* next position to code (equivalent to 'ncode') */</a>
+  int <a href="../h_src/57675440.htm" class="variable">lasttarget</a>;   <a  class="comments">/* 'label' of last 'jump label' */</a>
+  int <a href="../h_src/57675372.htm" class="variable">previousline</a>;  <a  class="comments">/* last line that was saved in 'lineinfo' */</a>
+  int <a href="../h_src/57675304.htm" class="variable">nk</a>;  <a  class="comments">/* number of elements in 'k' */</a>
+  int <a href="../h_src/57675236.htm" class="variable">np</a>;  <a  class="comments">/* number of elements in 'p' */</a>
+  int <a href="../h_src/57675168.htm" class="variable">nabslineinfo</a>;  <a  class="comments">/* number of elements in 'abslineinfo' */</a>
+  int <a href="../h_src/57675100.htm" class="variable">firstlocal</a>;  <a  class="comments">/* index of first local var (in Dyndata array) */</a>
+  int <a href="../h_src/57675032.htm" class="variable">firstlabel</a>;  <a  class="comments">/* index of first label (in 'dyd-&gt;label-&gt;arr') */</a>
+  short <a href="../h_src/57674964.htm" class="variable">ndebugvars</a>;  <a  class="comments">/* number of elements in 'f-&gt;locvars' */</a>
+  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57674896.htm" class="variable">nactvar</a>;  <a  class="comments">/* number of active local variables */</a>
+  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57674828.htm" class="variable">nups</a>;  <a  class="comments">/* number of upvalues */</a>
+  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57674760.htm" class="variable">freereg</a>;  <a  class="comments">/* first free register */</a>
+  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57674692.htm" class="variable">iwthabs</a>;  <a  class="comments">/* instructions issued since last absolute line info */</a>
+  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57674624.htm" class="variable">needclose</a>;  <a  class="comments">/* function needs to close upvalues when returning */</a>
+} <a href="../h_src/57674556.htm" class="type">FuncState</a>;
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

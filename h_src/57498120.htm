@@ -1,0 +1,47 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaT_gettm</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57498120.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57498120.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57498120.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57498120.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57498120.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57498120.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58090712.htm#60" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57498120.htm" class="function">luaT_gettm</a> (<a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58089896.htm" class="localvar">events</a>, <a href="../h_src/57499004.htm" class="type">TMS</a> <a href="../h_src/58089760.htm" class="localvar">event</a>, <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/58089624.htm" class="localvar">ename</a>) {
+  const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58089488.htm" class="localvar">tm</a> = <a href="../h_src/57616920.htm" class="function">luaH_getshortstr</a>(<a href="../h_src/58089896.htm" class="localvar">events</a>, <a href="../h_src/58089624.htm" class="localvar">ename</a>);
+  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(event &lt;= TM_EQ);
+  if (<a href="../h_src/57498800.htm" class="macro">notm</a>(<a href="../h_src/58089488.htm" class="localvar">tm</a>)) {  <a  class="comments">/* no tag method? */</a>
+    <a href="../h_src/58089896.htm" class="localvar">events</a>-&gt;<a href="../h_src/57504920.htm" class="variable">flags</a> |= <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(1u&lt;&lt;<a href="../h_src/58089760.htm" class="localvar">event</a>);  <a  class="comments">/* cache this fact */</a>
+    return NULL;
+  }
+  else return <a href="../h_src/58089488.htm" class="localvar">tm</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

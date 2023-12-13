@@ -1,0 +1,91 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lapi.h</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57551432.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/57551432.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/57551432.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/57551432.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_ua/57551432.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_da/57551432.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57551432.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57551432.htm" class="file" target="_self">Source Code</a></li>
+<li><a href="../h_sc/57551432.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<pre class=src>
+<a id=1></a><a  class="comments">/*</a>
+<a id=2></a><a  class="comments">** $Id: lapi.h $</a>
+<a id=3></a><a  class="comments">** Auxiliary functions from Lua API</a>
+<a id=4></a><a  class="comments">** See Copyright Notice in lua.h</a>
+<a id=5></a><a  class="comments">*/</a>
+
+<a id=7></a>#ifndef <a href="../h_src/57551364.htm" class="macro">lapi_h</a>
+<a id=8></a>#define <a href="../h_src/57551228.htm" class="macro">lapi_h</a>
+
+
+<a id=11></a>#include &quot;<a href="../h_src/57551092.htm" class="file">llimits.h</a>&quot;
+<a id=12></a>#include &quot;<a href="../h_src/57538104.htm" class="file">lstate.h</a>&quot;
+
+
+<a id=15></a><a  class="comments">/* Increments 'L-&gt;top.p', checking for stack overflows */</a>
+<a id=16></a>#define <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(L)	{L-&gt;top.p++; \
+			 api_check(L, L-&gt;top.p &lt;= L-&gt;ci-&gt;top.p, \
+					&quot;stack overflow&quot;);}
+
+
+<a id=21></a><a  class="comments">/*</a>
+<a id=22></a><a  class="comments">** If a call returns too many multiple returns, the callee may not have</a>
+<a id=23></a><a  class="comments">** stack space to accommodate all results. In this case, this macro</a>
+<a id=24></a><a  class="comments">** increases its stack space ('L-&gt;ci-&gt;top.p').</a>
+<a id=25></a><a  class="comments">*/</a>
+<a id=26></a>#define <a href="../h_src/57637796.htm" class="macro">adjustresults</a>(L,nres) \
+    { if ((nres) &lt;= LUA_MULTRET &amp;&amp; L-&gt;ci-&gt;top.p &lt; L-&gt;top.p) \
+	L-&gt;ci-&gt;top.p = L-&gt;top.p; }
+
+
+<a id=31></a><a  class="comments">/* Ensure the stack has at least 'n' elements */</a>
+<a id=32></a>#define <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(L,n) \
+	api_check(L, (n) &lt; (L-&gt;top.p - L-&gt;ci-&gt;func.p), \
+			  &quot;not enough elements in the stack&quot;)
+
+
+<a id=37></a><a  class="comments">/*</a>
+<a id=38></a><a  class="comments">** To reduce the overhead of returning from C functions, the presence of</a>
+<a id=39></a><a  class="comments">** to-be-closed variables in these functions is coded in the CallInfo's</a>
+<a id=40></a><a  class="comments">** field 'nresults', in a way that functions with no to-be-closed variables</a>
+<a id=41></a><a  class="comments">** with zero, one, or &quot;all&quot; wanted results have no overhead. Functions</a>
+<a id=42></a><a  class="comments">** with other number of wanted results, as well as functions with</a>
+<a id=43></a><a  class="comments">** variables to be closed, have an extra check.</a>
+<a id=44></a><a  class="comments">*/</a>
+
+<a id=46></a>#define <a href="../h_src/57637524.htm" class="macro">hastocloseCfunc</a>(n)	((n) &lt; LUA_MULTRET)
+
+<a id=48></a><a  class="comments">/* Map [-1, inf) (range of 'nresults') into (-inf, -2] */</a>
+<a id=49></a>#define <a href="../h_src/57637388.htm" class="macro">codeNresults</a>(n)		(-(n) - 3)
+<a id=50></a>#define <a href="../h_src/57637252.htm" class="macro">decodeNresults</a>(n)	(-(n) - 3)
+
+#endif
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,52 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>multiline</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57556056.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57556056.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57556056.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57556056.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57556056.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57556056.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57461796.htm#539" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/57556056.htm" class="function">multiline</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57555920.htm" class="localvar">L</a>) {
+  for (;;) {  <a  class="comments">/* repeat until gets a complete statement */</a>
+    <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/57555784.htm" class="localvar">len</a>;
+    const char *<a href="../h_src/57555648.htm" class="localvar">line</a> = <a href="../h_src/57438200.htm" class="function">lua_tolstring</a>(<a href="../h_src/57555920.htm" class="localvar">L</a>, 1, &amp;<a href="../h_src/57555784.htm" class="localvar">len</a>);  <a  class="comments">/* get what it has */</a>
+    int <a href="../h_src/57555512.htm" class="localvar">status</a> = <a href="../h_src/57416032.htm" class="macro">luaL_loadbuffer</a>(<a href="../h_src/57555920.htm" class="localvar">L</a>, <a href="../h_src/57555648.htm" class="localvar">line</a>, <a href="../h_src/57555784.htm" class="localvar">len</a>, &quot;=stdin&quot;);  <a  class="comments">/* try it */</a>
+    if (!<a href="../h_src/57558640.htm" class="function">incomplete</a>(<a href="../h_src/57555920.htm" class="localvar">L</a>, <a href="../h_src/57555512.htm" class="localvar">status</a>) || !<a href="../h_src/57557960.htm" class="function">pushline</a>(<a href="../h_src/57555920.htm" class="localvar">L</a>, 0)) {
+      <a href="../h_src/57559728.htm" class="macro">lua_saveline</a>(<a href="../h_src/57555920.htm" class="localvar">L</a>, <a href="../h_src/57555648.htm" class="localvar">line</a>);  <a  class="comments">/* keep history */</a>
+      return <a href="../h_src/57555512.htm" class="localvar">status</a>;  <a  class="comments">/* cannot or should not try to add continuation line */</a>
+    }
+    <a href="../h_src/57427660.htm" class="macro">lua_pushliteral</a>(<a href="../h_src/57555920.htm" class="localvar">L</a>, &quot;\n&quot;);  <a  class="comments">/* add newline... */</a>
+    <a href="../h_src/57427252.htm" class="macro">lua_insert</a>(<a href="../h_src/57555920.htm" class="localvar">L</a>, -2);  <a  class="comments">/* ...between the two lines */</a>
+    <a href="../h_src/57430244.htm" class="function">lua_concat</a>(<a href="../h_src/57555920.htm" class="localvar">L</a>, 3);  <a  class="comments">/* join them */</a>
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

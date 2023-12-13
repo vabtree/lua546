@@ -1,0 +1,56 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>separatetobefnz</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57959052.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57959052.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57959052.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57959052.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57959052.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57959052.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57829404.htm#972" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/57959052.htm" class="function">separatetobefnz</a> (<a href="../h_src/57643100.htm" class="type">global_State</a> *<a href="../h_src/57958916.htm" class="localvar">g</a>, int <a href="../h_src/57958780.htm" class="localvar">all</a>) {
+  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57958644.htm" class="localvar">curr</a>;
+  <a href="../h_src/57527972.htm" class="type">GCObject</a> **<a href="../h_src/57958508.htm" class="localvar">p</a> = &amp;<a href="../h_src/57958916.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645140.htm" class="variable">finobj</a>;
+  <a href="../h_src/57527972.htm" class="type">GCObject</a> **<a href="../h_src/57958372.htm" class="localvar">lastnext</a> = <a href="../h_src/57959324.htm" class="function">findlast</a>(&amp;<a href="../h_src/57958916.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644732.htm" class="variable">tobefnz</a>);
+  while ((<a href="../h_src/57958644.htm" class="localvar">curr</a> = *<a href="../h_src/57958508.htm" class="localvar">p</a>) != <a href="../h_src/57958916.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644256.htm" class="variable">finobjold1</a>) {  <a  class="comments">/* traverse all finalizable objects */</a>
+    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57625964.htm" class="macro">tofinalize</a>(curr));
+    if (!(<a href="../h_src/57626372.htm" class="macro">iswhite</a>(<a href="../h_src/57958644.htm" class="localvar">curr</a>) || <a href="../h_src/57958780.htm" class="localvar">all</a>))  <a  class="comments">/* not being collected? */</a>
+      <a href="../h_src/57958508.htm" class="localvar">p</a> = &amp;<a href="../h_src/57958644.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>;  <a  class="comments">/* don't bother with it */</a>
+    else {
+      if (<a href="../h_src/57958644.htm" class="localvar">curr</a> == <a href="../h_src/57958916.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644324.htm" class="variable">finobjsur</a>)  <a  class="comments">/* removing 'finobjsur'? */</a>
+        <a href="../h_src/57958916.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644324.htm" class="variable">finobjsur</a> = <a href="../h_src/57958644.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>;  <a  class="comments">/* correct it */</a>
+      *<a href="../h_src/57958508.htm" class="localvar">p</a> = <a href="../h_src/57958644.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>;  <a  class="comments">/* remove 'curr' from 'finobj' list */</a>
+      <a href="../h_src/57958644.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a> = *<a href="../h_src/57958372.htm" class="localvar">lastnext</a>;  <a  class="comments">/* link at the end of 'tobefnz' list */</a>
+      *<a href="../h_src/57958372.htm" class="localvar">lastnext</a> = <a href="../h_src/57958644.htm" class="localvar">curr</a>;
+      <a href="../h_src/57958372.htm" class="localvar">lastnext</a> = &amp;<a href="../h_src/57958644.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>;
+    }
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

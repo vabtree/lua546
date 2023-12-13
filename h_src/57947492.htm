@@ -1,0 +1,64 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>genstep</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57947492.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57947492.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57947492.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57947492.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57947492.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57947492.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57829404.htm#1440" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/57947492.htm" class="function">genstep</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57947356.htm" class="localvar">L</a>, <a href="../h_src/57643100.htm" class="type">global_State</a> *<a href="../h_src/57947220.htm" class="localvar">g</a>) {
+  if (<a href="../h_src/57947220.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646432.htm" class="variable">lastatomic</a> != 0)  <a  class="comments">/* last collection was a bad one? */</a>
+    <a href="../h_src/57948172.htm" class="function">stepgenfull</a>(<a href="../h_src/57947356.htm" class="localvar">L</a>, <a href="../h_src/57947220.htm" class="localvar">g</a>);  <a  class="comments">/* do a full step */</a>
+  else {
+    <a href="../h_src/57550616.htm" class="type">lu_mem</a> <a href="../h_src/57947084.htm" class="localvar">majorbase</a> = <a href="../h_src/57947220.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646500.htm" class="variable">GCestimate</a>;  <a  class="comments">/* memory after last major collection */</a>
+    <a href="../h_src/57550616.htm" class="type">lu_mem</a> <a href="../h_src/57946948.htm" class="localvar">majorinc</a> = (<a href="../h_src/57947084.htm" class="localvar">majorbase</a> / 100) * <a href="../h_src/57622972.htm" class="macro">getgcparam</a>(<a href="../h_src/57947220.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645752.htm" class="variable">genmajormul</a>);
+    if (<a href="../h_src/57947220.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646568.htm" class="variable">GCdebt</a> &gt; 0 &amp;&amp; <a href="../h_src/57638748.htm" class="macro">gettotalbytes</a>(<a href="../h_src/57947220.htm" class="localvar">g</a>) &gt; <a href="../h_src/57947084.htm" class="localvar">majorbase</a> + <a href="../h_src/57946948.htm" class="localvar">majorinc</a>) {
+      <a href="../h_src/57550616.htm" class="type">lu_mem</a> <a href="../h_src/57946812.htm" class="localvar">numobjs</a> = <a href="../h_src/57948580.htm" class="function">fullgen</a>(<a href="../h_src/57947356.htm" class="localvar">L</a>, <a href="../h_src/57947220.htm" class="localvar">g</a>);  <a  class="comments">/* do a major collection */</a>
+      if (<a href="../h_src/57638748.htm" class="macro">gettotalbytes</a>(<a href="../h_src/57947220.htm" class="localvar">g</a>) &lt; <a href="../h_src/57947084.htm" class="localvar">majorbase</a> + (<a href="../h_src/57946948.htm" class="localvar">majorinc</a> / 2)) {
+        <a  class="comments">/* collected at least half of memory growth since last major</a>
+<a  class="comments">           collection; keep doing minor collections. */</a>
+        <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(g-&gt;lastatomic == 0);
+      }
+      else {  <a  class="comments">/* bad collection */</a>
+        <a href="../h_src/57947220.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646432.htm" class="variable">lastatomic</a> = <a href="../h_src/57946812.htm" class="localvar">numobjs</a>;  <a  class="comments">/* signal that last collection was bad */</a>
+        <a href="../h_src/57956740.htm" class="function">setpause</a>(<a href="../h_src/57947220.htm" class="localvar">g</a>);  <a  class="comments">/* do a long wait for next (major) collection */</a>
+      }
+    }
+    else {  <a  class="comments">/* regular case; do a minor collection */</a>
+      <a href="../h_src/57951164.htm" class="function">youngcollection</a>(<a href="../h_src/57947356.htm" class="localvar">L</a>, <a href="../h_src/57947220.htm" class="localvar">g</a>);
+      <a href="../h_src/57950076.htm" class="function">setminordebt</a>(<a href="../h_src/57947220.htm" class="localvar">g</a>);
+      <a href="../h_src/57947220.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646500.htm" class="variable">GCestimate</a> = <a href="../h_src/57947084.htm" class="localvar">majorbase</a>;  <a  class="comments">/* preserve base value */</a>
+    }
+  }
+  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57622428.htm" class="macro">isdecGCmodegen</a>(g));
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

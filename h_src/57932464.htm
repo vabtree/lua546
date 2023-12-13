@@ -1,0 +1,75 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>read_long_string</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57932464.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57932464.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57932464.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57932464.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57932464.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57932464.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57940692.htm#280" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/57932464.htm" class="function">read_long_string</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57932328.htm" class="localvar">ls</a>, <a href="../h_src/57702164.htm" class="type">SemInfo</a> *<a href="../h_src/57932192.htm" class="localvar">seminfo</a>, <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/57932056.htm" class="localvar">sep</a>) {
+  int <a href="../h_src/57931920.htm" class="localvar">line</a> = <a href="../h_src/57932328.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701552.htm" class="variable">linenumber</a>;  <a  class="comments">/* initial line (for error message) */</a>
+  <a href="../h_src/57940012.htm" class="macro">save_and_next</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>);  <a  class="comments">/* skip 2nd '[' */</a>
+  if (<a href="../h_src/57940216.htm" class="macro">currIsNewline</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>))  <a  class="comments">/* string starts with a newline? */</a>
+    <a href="../h_src/57935796.htm" class="function">inclinenumber</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>);  <a  class="comments">/* skip it */</a>
+  for (;;) {
+    switch (<a href="../h_src/57932328.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>) {
+      case <a href="../h_src/57656360.htm" class="macro">EOZ</a>: {  <a  class="comments">/* error */</a>
+        const char *<a href="../h_src/57931784.htm" class="localvar">what</a> = (<a href="../h_src/57932192.htm" class="localvar">seminfo</a> ? &quot;string&quot; : &quot;comment&quot;);
+        const char *<a href="../h_src/57931648.htm" class="localvar">msg</a> = <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>,
+                     &quot;unfinished long %s (starting at line %d)&quot;, <a href="../h_src/57931784.htm" class="localvar">what</a>, <a href="../h_src/57931920.htm" class="localvar">line</a>);
+        <a href="../h_src/57939876.htm" class="function">lexerror</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>, <a href="../h_src/57931648.htm" class="localvar">msg</a>, <a href="../h_src/57703116.htm" class="variable">TK_EOS</a>);
+        break;  <a  class="comments">/* to avoid warnings */</a>
+      }
+      case ']': {
+        if (<a href="../h_src/57933008.htm" class="function">skip_sep</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>) == <a href="../h_src/57932056.htm" class="localvar">sep</a>) {
+          <a href="../h_src/57940012.htm" class="macro">save_and_next</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>);  <a  class="comments">/* skip 2nd ']' */</a>
+          goto endloop;
+        }
+        break;
+      }
+      case '\n': case '\r': {
+        <a href="../h_src/57939740.htm" class="function">save</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>, '\n');
+        <a href="../h_src/57935796.htm" class="function">inclinenumber</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>);
+        if (!<a href="../h_src/57932192.htm" class="localvar">seminfo</a>) <a href="../h_src/57654796.htm" class="macro">luaZ_resetbuffer</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>);  <a  class="comments">/* avoid wasting space */</a>
+        break;
+      }
+      default: {
+        if (<a href="../h_src/57932192.htm" class="localvar">seminfo</a>) <a href="../h_src/57940012.htm" class="macro">save_and_next</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>);
+        else <a href="../h_src/57940352.htm" class="macro">next</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>);
+      }
+    }
+  } endloop:
+  if (<a href="../h_src/57932192.htm" class="localvar">seminfo</a>)
+    <a href="../h_src/57932192.htm" class="localvar">seminfo</a>-&gt;<a href="../h_src/57702300.htm" class="variable">ts</a> = <a href="../h_src/57699852.htm" class="function">luaX_newstring</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>, <a href="../h_src/57655340.htm" class="macro">luaZ_buffer</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>) + <a href="../h_src/57932056.htm" class="localvar">sep</a>,
+                                     <a href="../h_src/57655068.htm" class="macro">luaZ_bufflen</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>) - 2 * <a href="../h_src/57932056.htm" class="localvar">sep</a>);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

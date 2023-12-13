@@ -1,0 +1,59 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaH_realasize</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57616172.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57616172.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57616172.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57616172.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57616172.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57616172.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58121924.htm#250" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> unsigned int <a href="../h_src/57616172.htm" class="function">luaH_realasize</a> (const <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58115804.htm" class="localvar">t</a>) {
+  if (<a href="../h_src/58115940.htm" class="macro">limitequalsasize</a>(<a href="../h_src/58115804.htm" class="localvar">t</a>))
+    return <a href="../h_src/58115804.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a>;  <a  class="comments">/* this is the size */</a>
+  else {
+    unsigned int <a href="../h_src/58115668.htm" class="localvar">size</a> = <a href="../h_src/58115804.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a>;
+    <a  class="comments">/* compute the smallest power of 2 not smaller than 'n' */</a>
+    <a href="../h_src/58115668.htm" class="localvar">size</a> |= (<a href="../h_src/58115668.htm" class="localvar">size</a> &gt;&gt; 1);
+    <a href="../h_src/58115668.htm" class="localvar">size</a> |= (<a href="../h_src/58115668.htm" class="localvar">size</a> &gt;&gt; 2);
+    <a href="../h_src/58115668.htm" class="localvar">size</a> |= (<a href="../h_src/58115668.htm" class="localvar">size</a> &gt;&gt; 4);
+    <a href="../h_src/58115668.htm" class="localvar">size</a> |= (<a href="../h_src/58115668.htm" class="localvar">size</a> &gt;&gt; 8);
+#if (UINT_MAX &gt;&gt; 14) &gt; 3  <a  class="comments">/* unsigned int has more than 16 bits */</a>
+    <a href="../h_src/58115668.htm" class="localvar">size</a> |= (<a href="../h_src/58115668.htm" class="localvar">size</a> &gt;&gt; 16);
+#if (UINT_MAX &gt;&gt; 30) &gt; 3
+    size |= (size &gt;&gt; 32);  <a  class="comments">/* unsigned int has more than 32 bits */</a>
+#endif
+#endif
+    <a href="../h_src/58115668.htm" class="localvar">size</a>++;
+    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57549528.htm" class="macro">ispow2</a>(size) &amp;&amp; size/2 &lt; t-&gt;alimit &amp;&amp; t-&gt;alimit &lt; size);
+    return <a href="../h_src/58115668.htm" class="localvar">size</a>;
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

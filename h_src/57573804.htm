@@ -1,0 +1,61 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaopen_package</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57573804.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57573804.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57573804.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57573804.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57573804.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57573804.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143217276.htm#744" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57454180.htm" class="macro">LUAMOD_API</a> int <a href="../h_src/57573804.htm" class="function">luaopen_package</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143196264.htm" class="localvar">L</a>) {
+  <a href="../h_src/143196536.htm" class="function">createclibstable</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>);
+  <a href="../h_src/57417392.htm" class="macro">luaL_newlib</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>, <a href="../h_src/143197284.htm" class="variable">pk_funcs</a>);  <a  class="comments">/* create 'package' table */</a>
+  <a href="../h_src/143197148.htm" class="function">createsearcherstable</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>);
+  <a  class="comments">/* set paths */</a>
+  <a href="../h_src/143210884.htm" class="function">setpath</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>, &quot;path&quot;, <a href="../h_src/143211700.htm" class="macro">LUA_PATH_VAR</a>, <a href="../h_src/57455540.htm" class="macro">LUA_PATH_DEFAULT</a>);
+  <a href="../h_src/143210884.htm" class="function">setpath</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>, &quot;cpath&quot;, <a href="../h_src/143211428.htm" class="macro">LUA_CPATH_VAR</a>, <a href="../h_src/57455268.htm" class="macro">LUA_CPATH_DEFAULT</a>);
+  <a  class="comments">/* store config information */</a>
+  <a href="../h_src/57427660.htm" class="macro">lua_pushliteral</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>, <a href="../h_src/57454996.htm" class="macro">LUA_DIRSEP</a> &quot;\n&quot; <a href="../h_src/57456628.htm" class="macro">LUA_PATH_SEP</a> &quot;\n&quot; <a href="../h_src/57456492.htm" class="macro">LUA_PATH_MARK</a> &quot;\n&quot;
+                     <a href="../h_src/57456356.htm" class="macro">LUA_EXEC_DIR</a> &quot;\n&quot; <a href="../h_src/143216800.htm" class="macro">LUA_IGMARK</a> &quot;\n&quot;);
+  <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>, -2, &quot;config&quot;);
+  <a  class="comments">/* set field 'loaded' */</a>
+  <a href="../h_src/57417732.htm" class="function">luaL_getsubtable</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/57421540.htm" class="macro">LUA_LOADED_TABLE</a>);
+  <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>, -2, &quot;loaded&quot;);
+  <a  class="comments">/* set field 'preload' */</a>
+  <a href="../h_src/57417732.htm" class="function">luaL_getsubtable</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/57421404.htm" class="macro">LUA_PRELOAD_TABLE</a>);
+  <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>, -2, &quot;preload&quot;);
+  <a href="../h_src/57427524.htm" class="macro">lua_pushglobaltable</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>);
+  <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>, -2);  <a  class="comments">/* set 'package' as upvalue for next lib */</a>
+  <a href="../h_src/57417868.htm" class="function">luaL_setfuncs</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>, <a href="../h_src/143197216.htm" class="variable">ll_funcs</a>, 1);  <a  class="comments">/* open lib into global table */</a>
+  <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>, 1);  <a  class="comments">/* pop global table */</a>
+  return 1;  <a  class="comments">/* return 'package' table */</a>
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

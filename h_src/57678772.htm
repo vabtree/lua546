@@ -1,0 +1,50 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>Vardesc</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57678772.htm" class="class" target="_self">Info</a></li>
+<li><a href="../h_im/57678772.htm" class="class" target="_self">Public Interface</a></li>
+<li><a href="../h_rx/57678772.htm" class="class" target="_self">Inheritance</a></li>
+<li><a href="../h_nm/57678772.htm" class="class" target="_self">Internals</a></li>
+<li><a href="../h_ua/57678772.htm" class="class" target="_self">Use of Members</a></li>
+<li><a href="../h_da/57678772.htm" class="class" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57678772.htm" class="class" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57678772.htm" class="class" target="_self">Declaration</a></li>
+<li><a href="../h_src/57683056.htm#96" class="class" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Declaration</h4>
+<pre class=src>
+typedef union <a href="../h_src/57678772.htm" class="class">Vardesc</a> {
+  struct {
+    <a href="../h_src/57535792.htm" class="macro">TValuefields</a><a href="../h_src/57535860.htm" class="type">Value</a>fields;  <a  class="comments">/* constant value (if it is a compile-time constant) */</a>
+    <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57678432.htm" class="variable">kind</a>;
+    <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57678364.htm" class="variable">ridx</a>;  <a  class="comments">/* register holding the variable */</a>
+    short <a href="../h_src/57678296.htm" class="variable">pidx</a>;  <a  class="comments">/* index of the variable in the Proto's 'locvars' array */</a>
+    <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/57678228.htm" class="variable">name</a>;  <a  class="comments">/* variable name */</a>
+  } <a href="../h_src/57678092.htm" class="variable">vd</a>;
+  <a href="../h_src/57535384.htm" class="type">TValue</a> <a href="../h_src/57678024.htm" class="variable">k</a>;  <a  class="comments">/* constant value (if any) */</a>
+} <a href="../h_src/57677956.htm" class="type">Vardesc</a>;
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

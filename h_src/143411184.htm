@@ -1,0 +1,57 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>iter_aux</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143411184.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143411184.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143411184.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143411184.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143411184.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143411184.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143418664.htm#228" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/143411184.htm" class="function">iter_aux</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143411048.htm" class="localvar">L</a>, int <a href="../h_src/143410912.htm" class="localvar">strict</a>) {
+  <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/143410776.htm" class="localvar">len</a>;
+  const char *<a href="../h_src/143410640.htm" class="localvar">s</a> = <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/143411048.htm" class="localvar">L</a>, 1, &amp;<a href="../h_src/143410776.htm" class="localvar">len</a>);
+  <a href="../h_src/57438132.htm" class="function">lua_Unsigned</a> <a href="../h_src/143410504.htm" class="localvar">n</a> = (<a href="../h_src/57438132.htm" class="function">lua_Unsigned</a>)<a href="../h_src/57429428.htm" class="macro">lua_tointeger</a>(<a href="../h_src/143411048.htm" class="localvar">L</a>, 2);
+  if (<a href="../h_src/143410504.htm" class="localvar">n</a> &lt; <a href="../h_src/143410776.htm" class="localvar">len</a>) {
+    while (<a href="../h_src/143417712.htm" class="macro">iscontp</a>(<a href="../h_src/143410640.htm" class="localvar">s</a> + <a href="../h_src/143410504.htm" class="localvar">n</a>)) <a href="../h_src/143410504.htm" class="localvar">n</a>++;  <a  class="comments">/* go to next character */</a>
+  }
+  if (<a href="../h_src/143410504.htm" class="localvar">n</a> &gt;= <a href="../h_src/143410776.htm" class="localvar">len</a>)  <a  class="comments">/* (also handles original 'n' being negative) */</a>
+    return 0;  <a  class="comments">/* no more codepoints */</a>
+  else {
+    <a href="../h_src/143417916.htm" class="type">utfint</a> <a href="../h_src/143410368.htm" class="localvar">code</a>;
+    const char *<a href="../h_src/143410232.htm" class="localvar">next</a> = <a href="../h_src/143417168.htm" class="function">utf8_decode</a>(<a href="../h_src/143410640.htm" class="localvar">s</a> + <a href="../h_src/143410504.htm" class="localvar">n</a>, &amp;<a href="../h_src/143410368.htm" class="localvar">code</a>, <a href="../h_src/143410912.htm" class="localvar">strict</a>);
+    if (<a href="../h_src/143410232.htm" class="localvar">next</a> == NULL || <a href="../h_src/143417712.htm" class="macro">iscontp</a>(<a href="../h_src/143410232.htm" class="localvar">next</a>))
+      return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143411048.htm" class="localvar">L</a>, <a href="../h_src/143418052.htm" class="macro">MSGInvalid</a>);
+    <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143411048.htm" class="localvar">L</a>, <a href="../h_src/143410504.htm" class="localvar">n</a> + 1);
+    <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143411048.htm" class="localvar">L</a>, <a href="../h_src/143410368.htm" class="localvar">code</a>);
+    return 2;
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,51 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>removelastlineinfo</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57816376.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57816376.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57816376.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57816376.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57816376.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57816376.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57706720.htm#353" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/57816376.htm" class="function">removelastlineinfo</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57816240.htm" class="localvar">fs</a>) {
+  <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57816104.htm" class="localvar">f</a> = <a href="../h_src/57816240.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57676052.htm" class="variable">f</a>;
+  int <a href="../h_src/57815968.htm" class="localvar">pc</a> = <a href="../h_src/57816240.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675508.htm" class="variable">pc</a> - 1;  <a  class="comments">/* last instruction coded */</a>
+  if (<a href="../h_src/57816104.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514304.htm" class="variable">lineinfo</a>[<a href="../h_src/57815968.htm" class="localvar">pc</a>] != <a href="../h_src/57636368.htm" class="macro">ABSLINEINFO</a>) {  <a  class="comments">/* relative line info? */</a>
+    <a href="../h_src/57816240.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675372.htm" class="variable">previousline</a> -= <a href="../h_src/57816104.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514304.htm" class="variable">lineinfo</a>[<a href="../h_src/57815968.htm" class="localvar">pc</a>];  <a  class="comments">/* correct last line saved */</a>
+    <a href="../h_src/57816240.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674692.htm" class="variable">iwthabs</a>--;  <a  class="comments">/* undo previous increment */</a>
+  }
+  else {  <a  class="comments">/* absolute line information */</a>
+    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(f-&gt;abslineinfo[fs-&gt;nabslineinfo - 1].pc == pc);
+    <a href="../h_src/57816240.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675168.htm" class="variable">nabslineinfo</a>--;  <a  class="comments">/* remove it */</a>
+    <a href="../h_src/57816240.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674692.htm" class="variable">iwthabs</a> = <a href="../h_src/57636096.htm" class="macro">MAXIWTHABS</a> + 1;  <a  class="comments">/* force next line info to be absolute */</a>
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

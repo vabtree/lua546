@@ -1,0 +1,59 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>fornum</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57998260.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57998260.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57998260.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57998260.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57998260.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57998260.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58057080.htm#1569" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/57998260.htm" class="function">fornum</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57998124.htm" class="localvar">ls</a>, <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/57997988.htm" class="localvar">varname</a>, int <a href="../h_src/57997852.htm" class="localvar">line</a>) {
+  <a  class="comments">/* fornum -&gt; NAME = exp,exp[,exp] forbody */</a>
+  <a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57997716.htm" class="localvar">fs</a> = <a href="../h_src/57998124.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>;
+  int <a href="../h_src/57997580.htm" class="localvar">base</a> = <a href="../h_src/57997716.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a>;
+  <a href="../h_src/58047764.htm" class="macro">new_localvarliteral</a>(<a href="../h_src/57998124.htm" class="localvar">ls</a>, &quot;(for state)&quot;);
+  <a href="../h_src/58047764.htm" class="macro">new_localvarliteral</a>(<a href="../h_src/57998124.htm" class="localvar">ls</a>, &quot;(for state)&quot;);
+  <a href="../h_src/58047764.htm" class="macro">new_localvarliteral</a>(<a href="../h_src/57998124.htm" class="localvar">ls</a>, &quot;(for state)&quot;);
+  <a href="../h_src/58048716.htm" class="function">new_localvar</a>(<a href="../h_src/57998124.htm" class="localvar">ls</a>, <a href="../h_src/57997988.htm" class="localvar">varname</a>);
+  <a href="../h_src/58052524.htm" class="function">checknext</a>(<a href="../h_src/57998124.htm" class="localvar">ls</a>, '=');
+  <a href="../h_src/58001320.htm" class="function">exp1</a>(<a href="../h_src/57998124.htm" class="localvar">ls</a>);  <a  class="comments">/* initial value */</a>
+  <a href="../h_src/58052524.htm" class="function">checknext</a>(<a href="../h_src/57998124.htm" class="localvar">ls</a>, ',');
+  <a href="../h_src/58001320.htm" class="function">exp1</a>(<a href="../h_src/57998124.htm" class="localvar">ls</a>);  <a  class="comments">/* limit */</a>
+  if (<a href="../h_src/58053340.htm" class="function">testnext</a>(<a href="../h_src/57998124.htm" class="localvar">ls</a>, ','))
+    <a href="../h_src/58001320.htm" class="function">exp1</a>(<a href="../h_src/57998124.htm" class="localvar">ls</a>);  <a  class="comments">/* optional step */</a>
+  else {  <a  class="comments">/* default step = 1 */</a>
+    <a href="../h_src/57670544.htm" class="function">luaK_int</a>(<a href="../h_src/57997716.htm" class="localvar">fs</a>, <a href="../h_src/57997716.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a>, 1);
+    <a href="../h_src/57670680.htm" class="function">luaK_reserveregs</a>(<a href="../h_src/57997716.htm" class="localvar">fs</a>, 1);
+  }
+  <a href="../h_src/58044228.htm" class="function">adjustlocalvars</a>(<a href="../h_src/57998124.htm" class="localvar">ls</a>, 3);  <a  class="comments">/* control variables */</a>
+  <a href="../h_src/57999960.htm" class="function">forbody</a>(<a href="../h_src/57998124.htm" class="localvar">ls</a>, <a href="../h_src/57997580.htm" class="localvar">base</a>, <a href="../h_src/57997852.htm" class="localvar">line</a>, 1, 0);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

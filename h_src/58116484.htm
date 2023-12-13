@@ -1,0 +1,59 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>equalkey</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58116484.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58116484.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58116484.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58116484.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58116484.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58116484.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58121924.htm#216" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/58116484.htm" class="function">equalkey</a> (const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58116348.htm" class="localvar">k1</a>, const <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/58116212.htm" class="localvar">n2</a>, int <a href="../h_src/58116076.htm" class="localvar">deadok</a>) {
+  if ((<a href="../h_src/57535044.htm" class="macro">rawtt</a>(<a href="../h_src/58116348.htm" class="localvar">k1</a>) != <a href="../h_src/57504240.htm" class="macro">keytt</a>(<a href="../h_src/58116212.htm" class="localvar">n2</a>)) &amp;&amp;  <a  class="comments">/* not the same variants? */</a>
+       !(<a href="../h_src/58116076.htm" class="localvar">deadok</a> &amp;&amp; <a href="../h_src/57502608.htm" class="macro">keyisdead</a>(<a href="../h_src/58116212.htm" class="localvar">n2</a>) &amp;&amp; <a href="../h_src/57527768.htm" class="macro">iscollectable</a>(<a href="../h_src/58116348.htm" class="localvar">k1</a>)))
+   return 0;  <a  class="comments">/* cannot be same key */</a>
+  switch (<a href="../h_src/57504240.htm" class="macro">keytt</a>(<a href="../h_src/58116212.htm" class="localvar">n2</a>)) {
+    case <a href="../h_src/57531576.htm" class="macro">LUA_VNIL</a>: case <a href="../h_src/57530080.htm" class="macro">LUA_VFALSE</a>: case <a href="../h_src/57529944.htm" class="macro">LUA_VTRUE</a>:
+      return 1;
+    case <a href="../h_src/57527088.htm" class="macro">LUA_VNUMINT</a>:
+      return (<a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58116348.htm" class="localvar">k1</a>) == <a href="../h_src/57503696.htm" class="macro">keyival</a>(<a href="../h_src/58116212.htm" class="localvar">n2</a>));
+    case <a href="../h_src/57526952.htm" class="macro">LUA_VNUMFLT</a>:
+      return <a href="../h_src/57539464.htm" class="macro">luai_numeq</a>(<a href="../h_src/57526272.htm" class="macro">fltvalue</a>(<a href="../h_src/58116348.htm" class="localvar">k1</a>), <a href="../h_src/57526000.htm" class="macro">fltvalueraw</a>(<a href="../h_src/57504104.htm" class="macro">keyval</a>(<a href="../h_src/58116212.htm" class="localvar">n2</a>)));
+    case <a href="../h_src/57522124.htm" class="macro">LUA_VLIGHTUSERDATA</a>:
+      return <a href="../h_src/57521580.htm" class="macro">pvalue</a>(<a href="../h_src/58116348.htm" class="localvar">k1</a>) == <a href="../h_src/57521308.htm" class="macro">pvalueraw</a>(<a href="../h_src/57504104.htm" class="macro">keyval</a>(<a href="../h_src/58116212.htm" class="localvar">n2</a>));
+    case <a href="../h_src/57513488.htm" class="macro">LUA_VLCF</a>:
+      return <a href="../h_src/57512128.htm" class="macro">fvalue</a>(<a href="../h_src/58116348.htm" class="localvar">k1</a>) == <a href="../h_src/57511856.htm" class="macro">fvalueraw</a>(<a href="../h_src/57504104.htm" class="macro">keyval</a>(<a href="../h_src/58116212.htm" class="localvar">n2</a>));
+    case <a href="../h_src/57527632.htm" class="macro">ctb</a>(<a href="../h_src/57525048.htm" class="macro">LUA_VLNGSTR</a>):
+      return <a href="../h_src/57619028.htm" class="function">luaS_eqlngstr</a>(<a href="../h_src/57524368.htm" class="macro">tsvalue</a>(<a href="../h_src/58116348.htm" class="localvar">k1</a>), <a href="../h_src/57503424.htm" class="macro">keystrval</a>(<a href="../h_src/58116212.htm" class="localvar">n2</a>));
+    default:
+      return <a href="../h_src/57527496.htm" class="macro">gcvalue</a>(<a href="../h_src/58116348.htm" class="localvar">k1</a>) == <a href="../h_src/57527360.htm" class="macro">gcvalueraw</a>(<a href="../h_src/57504104.htm" class="macro">keyval</a>(<a href="../h_src/58116212.htm" class="localvar">n2</a>));
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

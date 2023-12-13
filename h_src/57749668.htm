@@ -1,0 +1,65 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>collectvalidlines</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57749668.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57749668.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57749668.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57749668.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57749668.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57749668.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57759256.htm#290" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/57749668.htm" class="function">collectvalidlines</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57749532.htm" class="localvar">L</a>, <a href="../h_src/57507640.htm" class="type">Closure</a> *<a href="../h_src/57749396.htm" class="localvar">f</a>) {
+  if (<a href="../h_src/57758916.htm" class="macro">noLuaClosure</a>(<a href="../h_src/57749396.htm" class="localvar">f</a>)) {
+    <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57749532.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>));
+    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57749532.htm" class="localvar">L</a>);
+  }
+  else {
+    int <a href="../h_src/57749260.htm" class="localvar">i</a>;
+    <a href="../h_src/57535384.htm" class="type">TValue</a> <a href="../h_src/57749124.htm" class="localvar">v</a>;
+    const <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57748988.htm" class="localvar">p</a> = <a href="../h_src/57749396.htm" class="localvar">f</a>-&gt;<a href="../h_src/57507708.htm" class="variable">l</a>.<a href="../h_src/57508184.htm" class="variable">p</a>;
+    int <a href="../h_src/57748852.htm" class="localvar">currentline</a> = <a href="../h_src/57748988.htm" class="localvar">p</a>-&gt;<a href="../h_src/57515256.htm" class="variable">linedefined</a>;
+    <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/57748716.htm" class="localvar">t</a> = <a href="../h_src/57616512.htm" class="function">luaH_new</a>(<a href="../h_src/57749532.htm" class="localvar">L</a>);  <a  class="comments">/* new table to store active lines */</a>
+    <a href="../h_src/57506892.htm" class="macro">sethvalue2s</a>(<a href="../h_src/57749532.htm" class="localvar">L</a>, <a href="../h_src/57749532.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57748716.htm" class="localvar">t</a>);  <a  class="comments">/* push it on stack */</a>
+    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57749532.htm" class="localvar">L</a>);
+    <a href="../h_src/57529128.htm" class="macro">setbtvalue</a>(&amp;<a href="../h_src/57749124.htm" class="localvar">v</a>);  <a  class="comments">/* boolean 'true' to be the value of all indices */</a>
+    if (!<a href="../h_src/57748988.htm" class="localvar">p</a>-&gt;<a href="../h_src/57515868.htm" class="variable">is_vararg</a>)  <a  class="comments">/* regular function? */</a>
+      <a href="../h_src/57749260.htm" class="localvar">i</a> = 0;  <a  class="comments">/* consider all instructions */</a>
+    else {  <a  class="comments">/* vararg function */</a>
+      <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57694752.htm" class="macro">GET_OPCODE</a>(p-&gt;code[0]) == OP_VARARGPREP);
+      <a href="../h_src/57748852.htm" class="localvar">currentline</a> = <a href="../h_src/57750212.htm" class="function">nextline</a>(<a href="../h_src/57748988.htm" class="localvar">p</a>, <a href="../h_src/57748852.htm" class="localvar">currentline</a>, 0);
+      <a href="../h_src/57749260.htm" class="localvar">i</a> = 1;  <a  class="comments">/* skip first instruction (OP_VARARGPREP) */</a>
+    }
+    for (; <a href="../h_src/57749260.htm" class="localvar">i</a> &lt; <a href="../h_src/57748988.htm" class="localvar">p</a>-&gt;<a href="../h_src/57515528.htm" class="variable">sizelineinfo</a>; <a href="../h_src/57749260.htm" class="localvar">i</a>++) {  <a  class="comments">/* for each instruction */</a>
+      <a href="../h_src/57748852.htm" class="localvar">currentline</a> = <a href="../h_src/57750212.htm" class="function">nextline</a>(<a href="../h_src/57748988.htm" class="localvar">p</a>, <a href="../h_src/57748852.htm" class="localvar">currentline</a>, <a href="../h_src/57749260.htm" class="localvar">i</a>);  <a  class="comments">/* get its line */</a>
+      <a href="../h_src/57616988.htm" class="function">luaH_setint</a>(<a href="../h_src/57749532.htm" class="localvar">L</a>, <a href="../h_src/57748716.htm" class="localvar">t</a>, <a href="../h_src/57748852.htm" class="localvar">currentline</a>, &amp;<a href="../h_src/57749124.htm" class="localvar">v</a>);  <a  class="comments">/* table[line] = true */</a>
+    }
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

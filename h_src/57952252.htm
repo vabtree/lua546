@@ -1,0 +1,49 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>markold</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57952252.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57952252.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57952252.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57952252.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57952252.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57952252.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57829404.htm#1219" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/57952252.htm" class="function">markold</a> (<a href="../h_src/57643100.htm" class="type">global_State</a> *<a href="../h_src/57952116.htm" class="localvar">g</a>, <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57951980.htm" class="localvar">from</a>, <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57951844.htm" class="localvar">to</a>) {
+  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57951708.htm" class="localvar">p</a>;
+  for (<a href="../h_src/57951708.htm" class="localvar">p</a> = <a href="../h_src/57951980.htm" class="localvar">from</a>; <a href="../h_src/57951708.htm" class="localvar">p</a> != <a href="../h_src/57951844.htm" class="localvar">to</a>; <a href="../h_src/57951708.htm" class="localvar">p</a> = <a href="../h_src/57951708.htm" class="localvar">p</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>) {
+    if (<a href="../h_src/57623924.htm" class="macro">getage</a>(<a href="../h_src/57951708.htm" class="localvar">p</a>) == <a href="../h_src/57624604.htm" class="macro">G_OLD1</a>) {
+      <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!<a href="../h_src/57626372.htm" class="macro">iswhite</a>(p));
+      <a href="../h_src/57623516.htm" class="macro">changeage</a>(<a href="../h_src/57951708.htm" class="localvar">p</a>, <a href="../h_src/57624604.htm" class="macro">G_OLD1</a>, <a href="../h_src/57624468.htm" class="macro">G_OLD</a>);  <a  class="comments">/* now they are old */</a>
+      if (<a href="../h_src/57626236.htm" class="macro">isblack</a>(<a href="../h_src/57951708.htm" class="localvar">p</a>))
+        <a href="../h_src/57826752.htm" class="function">reallymarkobject</a>(<a href="../h_src/57952116.htm" class="localvar">g</a>, <a href="../h_src/57951708.htm" class="localvar">p</a>);
+    }
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

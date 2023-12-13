@@ -1,0 +1,62 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaK_exp2const</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57670884.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57670884.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57670884.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57670884.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57670884.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57670884.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57706720.htm#84" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+int <a href="../h_src/57670884.htm" class="function">luaK_exp2const</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57666940.htm" class="localvar">fs</a>, const <a href="../h_src/57679384.htm" class="type">expdesc</a> *<a href="../h_src/57666804.htm" class="localvar">e</a>, <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57666668.htm" class="localvar">v</a>) {
+  if (<a href="../h_src/57668572.htm" class="macro">hasjumps</a>(<a href="../h_src/57666804.htm" class="localvar">e</a>))
+    return 0;  <a  class="comments">/* not a constant */</a>
+  switch (<a href="../h_src/57666804.htm" class="localvar">e</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a>) {
+    case <a href="../h_src/57682512.htm" class="variable">VFALSE</a>:
+      <a href="../h_src/57529264.htm" class="macro">setbfvalue</a>(<a href="../h_src/57666668.htm" class="localvar">v</a>);
+      return 1;
+    case <a href="../h_src/57682580.htm" class="variable">VTRUE</a>:
+      <a href="../h_src/57529128.htm" class="macro">setbtvalue</a>(<a href="../h_src/57666668.htm" class="localvar">v</a>);
+      return 1;
+    case <a href="../h_src/57682648.htm" class="variable">VNIL</a>:
+      <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(<a href="../h_src/57666668.htm" class="localvar">v</a>);
+      return 1;
+    case <a href="../h_src/57682240.htm" class="variable">VKSTR</a>: {
+      <a href="../h_src/57524232.htm" class="macro">setsvalue</a>(<a href="../h_src/57666940.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/57666668.htm" class="localvar">v</a>, <a href="../h_src/57666804.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680472.htm" class="variable">strval</a>);
+      return 1;
+    }
+    case <a href="../h_src/57681968.htm" class="variable">VCONST</a>: {
+      <a href="../h_src/57533684.htm" class="macro">setobj</a>(<a href="../h_src/57666940.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/57666668.htm" class="localvar">v</a>, <a href="../h_src/57667348.htm" class="function">const2val</a>(<a href="../h_src/57666940.htm" class="localvar">fs</a>, <a href="../h_src/57666804.htm" class="localvar">e</a>));
+      return 1;
+    }
+    default: return <a href="../h_src/57668028.htm" class="function">tonumeral</a>(<a href="../h_src/57666804.htm" class="localvar">e</a>, <a href="../h_src/57666668.htm" class="localvar">v</a>);
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

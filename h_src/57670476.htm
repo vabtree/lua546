@@ -1,0 +1,84 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaK_dischargevars</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57670476.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57670476.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57670476.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57670476.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57670476.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57670476.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57706720.htm#772" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+void <a href="../h_src/57670476.htm" class="function">luaK_dischargevars</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57798764.htm" class="localvar">fs</a>, <a href="../h_src/57679384.htm" class="type">expdesc</a> *<a href="../h_src/57798628.htm" class="localvar">e</a>) {
+  switch (<a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a>) {
+    case <a href="../h_src/57681968.htm" class="variable">VCONST</a>: {
+      <a href="../h_src/57800396.htm" class="function">const2exp</a>(<a href="../h_src/57667348.htm" class="function">const2val</a>(<a href="../h_src/57798764.htm" class="localvar">fs</a>, <a href="../h_src/57798628.htm" class="localvar">e</a>), <a href="../h_src/57798628.htm" class="localvar">e</a>);
+      break;
+    }
+    case <a href="../h_src/57682104.htm" class="variable">VLOCAL</a>: {  <a  class="comments">/* already in a register */</a>
+      <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a> = <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57679724.htm" class="variable">var</a>.<a href="../h_src/57679928.htm" class="variable">ridx</a>;
+      <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a> = <a href="../h_src/57682172.htm" class="variable">VNONRELOC</a>;  <a  class="comments">/* becomes a non-relocatable value */</a>
+      break;
+    }
+    case <a href="../h_src/57682036.htm" class="variable">VUPVAL</a>: {  <a  class="comments">/* move value to some (pending) register */</a>
+      <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a> = <a href="../h_src/57672380.htm" class="macro">luaK_codeABC</a>(<a href="../h_src/57798764.htm" class="localvar">fs</a>, <a href="../h_src/57689924.htm" class="variable">OP_GETUPVAL</a>, 0, <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a>, 0);
+      <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a> = <a href="../h_src/57681560.htm" class="variable">VRELOC</a>;
+      break;
+    }
+    case <a href="../h_src/57681832.htm" class="variable">VINDEXUP</a>: {
+      <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a> = <a href="../h_src/57672380.htm" class="macro">luaK_codeABC</a>(<a href="../h_src/57798764.htm" class="localvar">fs</a>, <a href="../h_src/57689788.htm" class="variable">OP_GETTABUP</a>, 0, <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680200.htm" class="variable">t</a>, <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680268.htm" class="variable">idx</a>);
+      <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a> = <a href="../h_src/57681560.htm" class="variable">VRELOC</a>;
+      break;
+    }
+    case <a href="../h_src/57681764.htm" class="variable">VINDEXI</a>: {
+      <a href="../h_src/57810664.htm" class="function">freereg</a>(<a href="../h_src/57798764.htm" class="localvar">fs</a>, <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680200.htm" class="variable">t</a>);
+      <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a> = <a href="../h_src/57672380.htm" class="macro">luaK_codeABC</a>(<a href="../h_src/57798764.htm" class="localvar">fs</a>, <a href="../h_src/57689652.htm" class="variable">OP_GETI</a>, 0, <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680200.htm" class="variable">t</a>, <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680268.htm" class="variable">idx</a>);
+      <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a> = <a href="../h_src/57681560.htm" class="variable">VRELOC</a>;
+      break;
+    }
+    case <a href="../h_src/57681696.htm" class="variable">VINDEXSTR</a>: {
+      <a href="../h_src/57810664.htm" class="function">freereg</a>(<a href="../h_src/57798764.htm" class="localvar">fs</a>, <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680200.htm" class="variable">t</a>);
+      <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a> = <a href="../h_src/57672380.htm" class="macro">luaK_codeABC</a>(<a href="../h_src/57798764.htm" class="localvar">fs</a>, <a href="../h_src/57689584.htm" class="variable">OP_GETFIELD</a>, 0, <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680200.htm" class="variable">t</a>, <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680268.htm" class="variable">idx</a>);
+      <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a> = <a href="../h_src/57681560.htm" class="variable">VRELOC</a>;
+      break;
+    }
+    case <a href="../h_src/57681900.htm" class="variable">VINDEXED</a>: {
+      <a href="../h_src/57810256.htm" class="function">freeregs</a>(<a href="../h_src/57798764.htm" class="localvar">fs</a>, <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680200.htm" class="variable">t</a>, <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680268.htm" class="variable">idx</a>);
+      <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a> = <a href="../h_src/57672380.htm" class="macro">luaK_codeABC</a>(<a href="../h_src/57798764.htm" class="localvar">fs</a>, <a href="../h_src/57689720.htm" class="variable">OP_GETTABLE</a>, 0, <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680200.htm" class="variable">t</a>, <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680268.htm" class="variable">idx</a>);
+      <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a> = <a href="../h_src/57681560.htm" class="variable">VRELOC</a>;
+      break;
+    }
+    case <a href="../h_src/57681424.htm" class="variable">VVARARG</a>: case <a href="../h_src/57681492.htm" class="variable">VCALL</a>: {
+      <a href="../h_src/57669660.htm" class="function">luaK_setoneret</a>(<a href="../h_src/57798764.htm" class="localvar">fs</a>, <a href="../h_src/57798628.htm" class="localvar">e</a>);
+      break;
+    }
+    default: break;  <a  class="comments">/* there is one value available (somewhere) */</a>
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

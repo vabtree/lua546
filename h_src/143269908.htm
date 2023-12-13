@@ -1,0 +1,46 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>makemask</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143269908.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143269908.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143269908.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143269908.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143269908.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143269908.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58287060.htm#342" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/143269908.htm" class="function">makemask</a> (const char *<a href="../h_src/143269772.htm" class="localvar">smask</a>, int <a href="../h_src/143269636.htm" class="localvar">count</a>) {
+  int <a href="../h_src/143269500.htm" class="localvar">mask</a> = 0;
+  if (<a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143269772.htm" class="localvar">smask</a>, 'c')) <a href="../h_src/143269500.htm" class="localvar">mask</a> |= <a href="../h_src/57425212.htm" class="macro">LUA_MASKCALL</a>;
+  if (<a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143269772.htm" class="localvar">smask</a>, 'r')) <a href="../h_src/143269500.htm" class="localvar">mask</a> |= <a href="../h_src/57425076.htm" class="macro">LUA_MASKRET</a>;
+  if (<a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143269772.htm" class="localvar">smask</a>, 'l')) <a href="../h_src/143269500.htm" class="localvar">mask</a> |= <a href="../h_src/57424940.htm" class="macro">LUA_MASKLINE</a>;
+  if (<a href="../h_src/143269636.htm" class="localvar">count</a> &gt; 0) <a href="../h_src/143269500.htm" class="localvar">mask</a> |= <a href="../h_src/57424804.htm" class="macro">LUA_MASKCOUNT</a>;
+  return <a href="../h_src/143269500.htm" class="localvar">mask</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

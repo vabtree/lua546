@@ -1,0 +1,67 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaK_indexed</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57670000.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57670000.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57670000.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57670000.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57670000.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57670000.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57706720.htm#1278" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+void <a href="../h_src/57670000.htm" class="function">luaK_indexed</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57786932.htm" class="localvar">fs</a>, <a href="../h_src/57679384.htm" class="type">expdesc</a> *<a href="../h_src/57786796.htm" class="localvar">t</a>, <a href="../h_src/57679384.htm" class="type">expdesc</a> *<a href="../h_src/57786660.htm" class="localvar">k</a>) {
+  if (<a href="../h_src/57786660.htm" class="localvar">k</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a> == <a href="../h_src/57682240.htm" class="variable">VKSTR</a>)
+    <a href="../h_src/57799444.htm" class="function">str2K</a>(<a href="../h_src/57786932.htm" class="localvar">fs</a>, <a href="../h_src/57786660.htm" class="localvar">k</a>);
+  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!<a href="../h_src/57668572.htm" class="macro">hasjumps</a>(t) &amp;&amp;
+             (t-&gt;k == VLOCAL || t-&gt;k == VNONRELOC || t-&gt;k == VUPVAL));
+  if (<a href="../h_src/57786796.htm" class="localvar">t</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a> == <a href="../h_src/57682036.htm" class="variable">VUPVAL</a> &amp;&amp; !<a href="../h_src/57788700.htm" class="function">isKstr</a>(<a href="../h_src/57786932.htm" class="localvar">fs</a>, <a href="../h_src/57786660.htm" class="localvar">k</a>))  <a  class="comments">/* upvalue indexed by non 'Kstr'? */</a>
+    <a href="../h_src/57670408.htm" class="function">luaK_exp2anyreg</a>(<a href="../h_src/57786932.htm" class="localvar">fs</a>, <a href="../h_src/57786796.htm" class="localvar">t</a>);  <a  class="comments">/* put it in a register */</a>
+  if (<a href="../h_src/57786796.htm" class="localvar">t</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a> == <a href="../h_src/57682036.htm" class="variable">VUPVAL</a>) {
+    <a href="../h_src/57786796.htm" class="localvar">t</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680200.htm" class="variable">t</a> = <a href="../h_src/57786796.htm" class="localvar">t</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a>;  <a  class="comments">/* upvalue index */</a>
+    <a href="../h_src/57786796.htm" class="localvar">t</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680268.htm" class="variable">idx</a> = <a href="../h_src/57786660.htm" class="localvar">k</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a>;  <a  class="comments">/* literal string */</a>
+    <a href="../h_src/57786796.htm" class="localvar">t</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a> = <a href="../h_src/57681832.htm" class="variable">VINDEXUP</a>;
+  }
+  else {
+    <a  class="comments">/* register index of the table */</a>
+    <a href="../h_src/57786796.htm" class="localvar">t</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680200.htm" class="variable">t</a> = (<a href="../h_src/57786796.htm" class="localvar">t</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a> == <a href="../h_src/57682104.htm" class="variable">VLOCAL</a>) ? <a href="../h_src/57786796.htm" class="localvar">t</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57679724.htm" class="variable">var</a>.<a href="../h_src/57679928.htm" class="variable">ridx</a>: <a href="../h_src/57786796.htm" class="localvar">t</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a>;
+    if (<a href="../h_src/57788700.htm" class="function">isKstr</a>(<a href="../h_src/57786932.htm" class="localvar">fs</a>, <a href="../h_src/57786660.htm" class="localvar">k</a>)) {
+      <a href="../h_src/57786796.htm" class="localvar">t</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680268.htm" class="variable">idx</a> = <a href="../h_src/57786660.htm" class="localvar">k</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a>;  <a  class="comments">/* literal string */</a>
+      <a href="../h_src/57786796.htm" class="localvar">t</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a> = <a href="../h_src/57681696.htm" class="variable">VINDEXSTR</a>;
+    }
+    else if (<a href="../h_src/57788156.htm" class="function">isCint</a>(<a href="../h_src/57786660.htm" class="localvar">k</a>)) {
+      <a href="../h_src/57786796.htm" class="localvar">t</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680268.htm" class="variable">idx</a> = <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/57786660.htm" class="localvar">k</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680608.htm" class="variable">ival</a>);  <a  class="comments">/* int. constant in proper range */</a>
+      <a href="../h_src/57786796.htm" class="localvar">t</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a> = <a href="../h_src/57681764.htm" class="variable">VINDEXI</a>;
+    }
+    else {
+      <a href="../h_src/57786796.htm" class="localvar">t</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680268.htm" class="variable">idx</a> = <a href="../h_src/57670408.htm" class="function">luaK_exp2anyreg</a>(<a href="../h_src/57786932.htm" class="localvar">fs</a>, <a href="../h_src/57786660.htm" class="localvar">k</a>);  <a  class="comments">/* register */</a>
+      <a href="../h_src/57786796.htm" class="localvar">t</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a> = <a href="../h_src/57681900.htm" class="variable">VINDEXED</a>;
+    }
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,53 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>numusehash</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58107644.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58107644.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58107644.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58107644.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58107644.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58107644.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58121924.htm#456" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/58107644.htm" class="function">numusehash</a> (const <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58107508.htm" class="localvar">t</a>, unsigned int *<a href="../h_src/58107372.htm" class="localvar">nums</a>, unsigned int *<a href="../h_src/58107236.htm" class="localvar">pna</a>) {
+  int <a href="../h_src/58107100.htm" class="localvar">totaluse</a> = 0;  <a  class="comments">/* total number of elements */</a>
+  int <a href="../h_src/58106964.htm" class="localvar">ause</a> = 0;  <a  class="comments">/* elements added to 'nums' (can go to array part) */</a>
+  int <a href="../h_src/58106828.htm" class="localvar">i</a> = <a href="../h_src/57502200.htm" class="macro">sizenode</a>(<a href="../h_src/58107508.htm" class="localvar">t</a>);
+  while (<a href="../h_src/58106828.htm" class="localvar">i</a>--) {
+    <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/58106692.htm" class="localvar">n</a> = &amp;<a href="../h_src/58107508.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504580.htm" class="variable">node</a>[<a href="../h_src/58106828.htm" class="localvar">i</a>];
+    if (!<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58106692.htm" class="localvar">n</a>))) {
+      if (<a href="../h_src/57503832.htm" class="macro">keyisinteger</a>(<a href="../h_src/58106692.htm" class="localvar">n</a>))
+        <a href="../h_src/58106964.htm" class="localvar">ause</a> += <a href="../h_src/58109548.htm" class="function">countint</a>(<a href="../h_src/57503696.htm" class="macro">keyival</a>(<a href="../h_src/58106692.htm" class="localvar">n</a>), <a href="../h_src/58107372.htm" class="localvar">nums</a>);
+      <a href="../h_src/58107100.htm" class="localvar">totaluse</a>++;
+    }
+  }
+  *<a href="../h_src/58107236.htm" class="localvar">pna</a> += <a href="../h_src/58106964.htm" class="localvar">ause</a>;
+  return <a href="../h_src/58107100.htm" class="localvar">totaluse</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

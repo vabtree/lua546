@@ -1,0 +1,68 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaD_precall</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57633308.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57633308.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57633308.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57633308.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57633308.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57633308.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57884484.htm#588" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57537764.htm" class="type">CallInfo</a> *<a href="../h_src/57633308.htm" class="function">luaD_precall</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57865444.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57865308.htm" class="localvar">func</a>, int <a href="../h_src/57865172.htm" class="localvar">nresults</a>) {
+ retry:
+  switch (<a href="../h_src/57534636.htm" class="macro">ttypetag</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57865308.htm" class="localvar">func</a>))) {
+    case <a href="../h_src/57513352.htm" class="macro">LUA_VCCL</a>:  <a  class="comments">/* C closure */</a>
+      <a href="../h_src/57868300.htm" class="function">precallC</a>(<a href="../h_src/57865444.htm" class="localvar">L</a>, <a href="../h_src/57865308.htm" class="localvar">func</a>, <a href="../h_src/57865172.htm" class="localvar">nresults</a>, <a href="../h_src/57511992.htm" class="macro">clCvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57865308.htm" class="localvar">func</a>))-&gt;<a href="../h_src/57508932.htm" class="variable">f</a>);
+      return NULL;
+    case <a href="../h_src/57513488.htm" class="macro">LUA_VLCF</a>:  <a  class="comments">/* light C function */</a>
+      <a href="../h_src/57868300.htm" class="function">precallC</a>(<a href="../h_src/57865444.htm" class="localvar">L</a>, <a href="../h_src/57865308.htm" class="localvar">func</a>, <a href="../h_src/57865172.htm" class="localvar">nresults</a>, <a href="../h_src/57512128.htm" class="macro">fvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57865308.htm" class="localvar">func</a>)));
+      return NULL;
+    case <a href="../h_src/57513624.htm" class="macro">LUA_VLCL</a>: {  <a  class="comments">/* Lua function */</a>
+      <a href="../h_src/57537764.htm" class="type">CallInfo</a> *<a href="../h_src/57865036.htm" class="localvar">ci</a>;
+      <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57864900.htm" class="localvar">p</a> = <a href="../h_src/57512264.htm" class="macro">clLvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57865308.htm" class="localvar">func</a>))-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>;
+      int <a href="../h_src/57864764.htm" class="localvar">narg</a> = <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/57865444.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - <a href="../h_src/57865308.htm" class="localvar">func</a>) - 1;  <a  class="comments">/* number of real arguments */</a>
+      int <a href="../h_src/57864628.htm" class="localvar">nfixparams</a> = <a href="../h_src/57864900.htm" class="localvar">p</a>-&gt;<a href="../h_src/57515936.htm" class="variable">numparams</a>;
+      int <a href="../h_src/57864492.htm" class="localvar">fsize</a> = <a href="../h_src/57864900.htm" class="localvar">p</a>-&gt;<a href="../h_src/57515800.htm" class="variable">maxstacksize</a>;  <a  class="comments">/* frame size */</a>
+      <a href="../h_src/57633988.htm" class="macro">checkstackGCp</a>(<a href="../h_src/57865444.htm" class="localvar">L</a>, <a href="../h_src/57864492.htm" class="localvar">fsize</a>, <a href="../h_src/57865308.htm" class="localvar">func</a>);
+      <a href="../h_src/57865444.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a> = <a href="../h_src/57865036.htm" class="localvar">ci</a> = <a href="../h_src/57869252.htm" class="function">prepCallInfo</a>(<a href="../h_src/57865444.htm" class="localvar">L</a>, <a href="../h_src/57865308.htm" class="localvar">func</a>, <a href="../h_src/57865172.htm" class="localvar">nresults</a>, 0, <a href="../h_src/57865308.htm" class="localvar">func</a> + 1 + <a href="../h_src/57864492.htm" class="localvar">fsize</a>);
+      <a href="../h_src/57865036.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650852.htm" class="variable">l</a>.<a href="../h_src/57651124.htm" class="variable">savedpc</a> = <a href="../h_src/57864900.htm" class="localvar">p</a>-&gt;<a href="../h_src/57514916.htm" class="variable">code</a>;  <a  class="comments">/* starting point */</a>
+      for (; <a href="../h_src/57864764.htm" class="localvar">narg</a> &lt; <a href="../h_src/57864628.htm" class="localvar">nfixparams</a>; <a href="../h_src/57864764.htm" class="localvar">narg</a>++)
+        <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57865444.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>++));  <a  class="comments">/* complete missing arguments */</a>
+      <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(ci-&gt;top.p &lt;= L-&gt;stack_last.p);
+      return <a href="../h_src/57865036.htm" class="localvar">ci</a>;
+    }
+    default: {  <a  class="comments">/* not a function */</a>
+      <a href="../h_src/57865308.htm" class="localvar">func</a> = <a href="../h_src/57633104.htm" class="function">luaD_tryfuncTM</a>(<a href="../h_src/57865444.htm" class="localvar">L</a>, <a href="../h_src/57865308.htm" class="localvar">func</a>);  <a  class="comments">/* try to get '__call' metamethod */</a>
+      <a  class="comments">/* return luaD_precall(L, func, nresults); */</a>
+      goto retry;  <a  class="comments">/* try again with metamethod */</a>
+    }
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

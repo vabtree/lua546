@@ -1,0 +1,50 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaopen_base</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57410456.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57410456.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57410456.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57410456.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57410456.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57410456.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58312492.htm#537" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57454180.htm" class="macro">LUAMOD_API</a> int <a href="../h_src/57410456.htm" class="function">luaopen_base</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58294064.htm" class="localvar">L</a>) {
+  <a  class="comments">/* open lib into global table */</a>
+  <a href="../h_src/57427524.htm" class="macro">lua_pushglobaltable</a>(<a href="../h_src/58294064.htm" class="localvar">L</a>);
+  <a href="../h_src/57417868.htm" class="function">luaL_setfuncs</a>(<a href="../h_src/58294064.htm" class="localvar">L</a>, <a href="../h_src/58294132.htm" class="variable">base_funcs</a>, 0);
+  <a  class="comments">/* set global _G */</a>
+  <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/58294064.htm" class="localvar">L</a>, -1);
+  <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/58294064.htm" class="localvar">L</a>, -2, <a href="../h_src/57422016.htm" class="macro">LUA_GNAME</a>);
+  <a  class="comments">/* set global _VERSION */</a>
+  <a href="../h_src/57427660.htm" class="macro">lua_pushliteral</a>(<a href="../h_src/58294064.htm" class="localvar">L</a>, <a href="../h_src/57446292.htm" class="macro">LUA_VERSION</a>);
+  <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/58294064.htm" class="localvar">L</a>, -2, &quot;_VERSION&quot;);
+  return 1;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

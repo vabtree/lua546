@@ -1,0 +1,144 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>str_format</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143291804.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143291804.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143291804.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143291804.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143291804.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143291804.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143344164.htm#1273" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/143291804.htm" class="function">str_format</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143291668.htm" class="localvar">L</a>) {
+  int <a href="../h_src/143291532.htm" class="localvar">top</a> = <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>);
+  int <a href="../h_src/143291396.htm" class="localvar">arg</a> = 1;
+  <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/143291260.htm" class="localvar">sfl</a>;
+  const char *<a href="../h_src/143291124.htm" class="localvar">strfrmt</a> = <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143291396.htm" class="localvar">arg</a>, &amp;<a href="../h_src/143291260.htm" class="localvar">sfl</a>);
+  const char *<a href="../h_src/143290988.htm" class="localvar">strfrmt_end</a> = <a href="../h_src/143291124.htm" class="localvar">strfrmt</a>+<a href="../h_src/143291260.htm" class="localvar">sfl</a>;
+  const char *<a href="../h_src/143290852.htm" class="localvar">flags</a>;
+  <a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> <a href="../h_src/143290716.htm" class="localvar">b</a>;
+  <a href="../h_src/57413652.htm" class="function">luaL_buffinit</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, &amp;<a href="../h_src/143290716.htm" class="localvar">b</a>);
+  while (<a href="../h_src/143291124.htm" class="localvar">strfrmt</a> &lt; <a href="../h_src/143290988.htm" class="localvar">strfrmt_end</a>) {
+    if (*<a href="../h_src/143291124.htm" class="localvar">strfrmt</a> != <a href="../h_src/143326756.htm" class="macro">L_ESC</a>)
+      <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143290716.htm" class="localvar">b</a>, *<a href="../h_src/143291124.htm" class="localvar">strfrmt</a>++);
+    else if (*++<a href="../h_src/143291124.htm" class="localvar">strfrmt</a> == <a href="../h_src/143326756.htm" class="macro">L_ESC</a>)
+      <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143290716.htm" class="localvar">b</a>, *<a href="../h_src/143291124.htm" class="localvar">strfrmt</a>++);  <a  class="comments">/* %% */</a>
+    else { <a  class="comments">/* format item */</a>
+      char <a href="../h_src/143290580.htm" class="localvar">form</a>[<a href="../h_src/143297652.htm" class="macro">MAX_FORMAT</a>];  <a  class="comments">/* to store the format ('%...') */</a>
+      int <a href="../h_src/143290444.htm" class="localvar">maxitem</a> = <a href="../h_src/143298604.htm" class="macro">MAX_ITEM</a>;  <a  class="comments">/* maximum length for the result */</a>
+      char *<a href="../h_src/143290308.htm" class="localvar">buff</a> = <a href="../h_src/57413584.htm" class="function">luaL_prepbuffsize</a>(&amp;<a href="../h_src/143290716.htm" class="localvar">b</a>, <a href="../h_src/143290444.htm" class="localvar">maxitem</a>);  <a  class="comments">/* to put result */</a>
+      int <a href="../h_src/143290172.htm" class="localvar">nb</a> = 0;  <a  class="comments">/* number of bytes in result */</a>
+      if (++<a href="../h_src/143291396.htm" class="localvar">arg</a> &gt; <a href="../h_src/143291532.htm" class="localvar">top</a>)
+        return <a href="../h_src/57420384.htm" class="function">luaL_argerror</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143291396.htm" class="localvar">arg</a>, &quot;no value&quot;);
+      <a href="../h_src/143291124.htm" class="localvar">strfrmt</a> = <a href="../h_src/143293300.htm" class="function">getformat</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143291124.htm" class="localvar">strfrmt</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>);
+      switch (*<a href="../h_src/143291124.htm" class="localvar">strfrmt</a>++) {
+        case 'c': {
+          <a href="../h_src/143294116.htm" class="function">checkformat</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>, <a href="../h_src/143297788.htm" class="macro">L_FMTFLAGSC</a>, 0);
+          <a href="../h_src/143290172.htm" class="localvar">nb</a> = <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143290308.htm" class="localvar">buff</a>, <a href="../h_src/143290444.htm" class="localvar">maxitem</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>, (int)<a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143291396.htm" class="localvar">arg</a>));
+          break;
+        }
+        case 'd': case 'i':
+          <a href="../h_src/143290852.htm" class="localvar">flags</a> = <a href="../h_src/143298060.htm" class="macro">L_FMTFLAGSI</a>;
+          goto intcase;
+        case 'u':
+          <a href="../h_src/143290852.htm" class="localvar">flags</a> = <a href="../h_src/143297924.htm" class="macro">L_FMTFLAGSU</a>;
+          goto intcase;
+        case 'o': case 'x': case 'X':
+          <a href="../h_src/143290852.htm" class="localvar">flags</a> = <a href="../h_src/143298196.htm" class="macro">L_FMTFLAGSX</a>;
+         intcase: {
+          <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143290036.htm" class="localvar">n</a> = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143291396.htm" class="localvar">arg</a>);
+          <a href="../h_src/143294116.htm" class="function">checkformat</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>, <a href="../h_src/143290852.htm" class="localvar">flags</a>, 1);
+          <a href="../h_src/143292620.htm" class="function">addlenmod</a>(<a href="../h_src/143290580.htm" class="localvar">form</a>, <a href="../h_src/57450236.htm" class="macro">LUA_INTEGER_FRMLEN</a>);
+          <a href="../h_src/143290172.htm" class="localvar">nb</a> = <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143290308.htm" class="localvar">buff</a>, <a href="../h_src/143290444.htm" class="localvar">maxitem</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>, (<a href="../h_src/57450916.htm" class="macro">LUAI_UACINT</a>)<a href="../h_src/143290036.htm" class="localvar">n</a>);
+          break;
+        }
+        case 'a': case 'A':
+          <a href="../h_src/143294116.htm" class="function">checkformat</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>, <a href="../h_src/143298332.htm" class="macro">L_FMTFLAGSF</a>, 1);
+          <a href="../h_src/143292620.htm" class="function">addlenmod</a>(<a href="../h_src/143290580.htm" class="localvar">form</a>, <a href="../h_src/57451596.htm" class="macro">LUA_NUMBER_FRMLEN</a>);
+          <a href="../h_src/143290172.htm" class="localvar">nb</a> = <a href="../h_src/143299828.htm" class="function">lua_number2strx</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143290308.htm" class="localvar">buff</a>, <a href="../h_src/143290444.htm" class="localvar">maxitem</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>,
+                                  <a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143291396.htm" class="localvar">arg</a>));
+          break;
+        case 'f':
+          <a href="../h_src/143290444.htm" class="localvar">maxitem</a> = <a href="../h_src/143298740.htm" class="macro">MAX_ITEMF</a>;  <a  class="comments">/* extra space for '%f' */</a>
+          <a href="../h_src/143290308.htm" class="localvar">buff</a> = <a href="../h_src/57413584.htm" class="function">luaL_prepbuffsize</a>(&amp;<a href="../h_src/143290716.htm" class="localvar">b</a>, <a href="../h_src/143290444.htm" class="localvar">maxitem</a>);
+          <a  class="comments">/* FALLTHROUGH */</a>
+        case 'e': case 'E': case 'g': case 'G': {
+          <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/143289900.htm" class="localvar">n</a> = <a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143291396.htm" class="localvar">arg</a>);
+          <a href="../h_src/143294116.htm" class="function">checkformat</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>, <a href="../h_src/143298332.htm" class="macro">L_FMTFLAGSF</a>, 1);
+          <a href="../h_src/143292620.htm" class="function">addlenmod</a>(<a href="../h_src/143290580.htm" class="localvar">form</a>, <a href="../h_src/57451596.htm" class="macro">LUA_NUMBER_FRMLEN</a>);
+          <a href="../h_src/143290172.htm" class="localvar">nb</a> = <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143290308.htm" class="localvar">buff</a>, <a href="../h_src/143290444.htm" class="localvar">maxitem</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>, (<a href="../h_src/57451732.htm" class="macro">LUAI_UACNUMBER</a>)<a href="../h_src/143289900.htm" class="localvar">n</a>);
+          break;
+        }
+        case 'p': {
+          const void *<a href="../h_src/143289764.htm" class="localvar">p</a> = <a href="../h_src/57437860.htm" class="function">lua_topointer</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143291396.htm" class="localvar">arg</a>);
+          <a href="../h_src/143294116.htm" class="function">checkformat</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>, <a href="../h_src/143297788.htm" class="macro">L_FMTFLAGSC</a>, 0);
+          if (<a href="../h_src/143289764.htm" class="localvar">p</a> == NULL) {  <a  class="comments">/* avoid calling 'printf' with argument NULL */</a>
+            <a href="../h_src/143289764.htm" class="localvar">p</a> = &quot;(null)&quot;;  <a  class="comments">/* result */</a>
+            <a href="../h_src/143290580.htm" class="localvar">form</a>[<a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/143290580.htm" class="localvar">form</a>) - 1] = 's';  <a  class="comments">/* format it as a string */</a>
+          }
+          <a href="../h_src/143290172.htm" class="localvar">nb</a> = <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143290308.htm" class="localvar">buff</a>, <a href="../h_src/143290444.htm" class="localvar">maxitem</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>, <a href="../h_src/143289764.htm" class="localvar">p</a>);
+          break;
+        }
+        case 'q': {
+          if (<a href="../h_src/143290580.htm" class="localvar">form</a>[2] != '\0')  <a  class="comments">/* modifiers? */</a>
+            return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, &quot;specifier '%%q' cannot have modifiers&quot;);
+          <a href="../h_src/143295748.htm" class="function">addliteral</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, &amp;<a href="../h_src/143290716.htm" class="localvar">b</a>, <a href="../h_src/143291396.htm" class="localvar">arg</a>);
+          break;
+        }
+        case 's': {
+          <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/143289628.htm" class="localvar">l</a>;
+          const char *<a href="../h_src/143289492.htm" class="localvar">s</a> = <a href="../h_src/57420452.htm" class="function">luaL_tolstring</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143291396.htm" class="localvar">arg</a>, &amp;<a href="../h_src/143289628.htm" class="localvar">l</a>);
+          if (<a href="../h_src/143290580.htm" class="localvar">form</a>[2] == '\0')  <a  class="comments">/* no modifiers? */</a>
+            <a href="../h_src/57413380.htm" class="function">luaL_addvalue</a>(&amp;<a href="../h_src/143290716.htm" class="localvar">b</a>);  <a  class="comments">/* keep entire string */</a>
+          else {
+            <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143289628.htm" class="localvar">l</a> == <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/143289492.htm" class="localvar">s</a>), <a href="../h_src/143291396.htm" class="localvar">arg</a>, &quot;string contains zeros&quot;);
+            <a href="../h_src/143294116.htm" class="function">checkformat</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>, <a href="../h_src/143297788.htm" class="macro">L_FMTFLAGSC</a>, 1);
+            if (<a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143290580.htm" class="localvar">form</a>, '.') == NULL &amp;&amp; <a href="../h_src/143289628.htm" class="localvar">l</a> &gt;= 100) {
+              <a  class="comments">/* no precision and string is too long to be formatted */</a>
+              <a href="../h_src/57413380.htm" class="function">luaL_addvalue</a>(&amp;<a href="../h_src/143290716.htm" class="localvar">b</a>);  <a  class="comments">/* keep entire string */</a>
+            }
+            else {  <a  class="comments">/* format the string into 'buff' */</a>
+              <a href="../h_src/143290172.htm" class="localvar">nb</a> = <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143290308.htm" class="localvar">buff</a>, <a href="../h_src/143290444.htm" class="localvar">maxitem</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>, <a href="../h_src/143289492.htm" class="localvar">s</a>);
+              <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove result from 'luaL_tolstring' */</a>
+            }
+          }
+          break;
+        }
+        default: {  <a  class="comments">/* also treat cases 'pnLlh' */</a>
+          return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, &quot;invalid conversion '%s' to 'format'&quot;, <a href="../h_src/143290580.htm" class="localvar">form</a>);
+        }
+      }
+      <a href="../h_src/57415352.htm" class="macro">lua_assert</a>(nb &lt; maxitem);
+      <a href="../h_src/57413924.htm" class="macro">luaL_addsize</a>(&amp;<a href="../h_src/143290716.htm" class="localvar">b</a>, <a href="../h_src/143290172.htm" class="localvar">nb</a>);
+    }
+  }
+  <a href="../h_src/57413312.htm" class="function">luaL_pushresult</a>(&amp;<a href="../h_src/143290716.htm" class="localvar">b</a>);
+  return 1;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,60 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>sweeplist</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57965716.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57965716.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57965716.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57965716.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57965716.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57965716.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57829404.htm#822" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static <a href="../h_src/57527972.htm" class="type">GCObject</a> **<a href="../h_src/57965716.htm" class="function">sweeplist</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57965580.htm" class="localvar">L</a>, <a href="../h_src/57527972.htm" class="type">GCObject</a> **<a href="../h_src/57965444.htm" class="localvar">p</a>, int <a href="../h_src/57965308.htm" class="localvar">countin</a>,
+                             int *<a href="../h_src/57965172.htm" class="localvar">countout</a>) {
+  <a href="../h_src/57643100.htm" class="type">global_State</a> *<a href="../h_src/57965036.htm" class="localvar">g</a> = <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57965580.htm" class="localvar">L</a>);
+  int <a href="../h_src/57964900.htm" class="localvar">ow</a> = <a href="../h_src/57625828.htm" class="macro">otherwhite</a>(<a href="../h_src/57965036.htm" class="localvar">g</a>);
+  int <a href="../h_src/57964764.htm" class="localvar">i</a>;
+  int <a href="../h_src/57964628.htm" class="localvar">white</a> = <a href="../h_src/57625148.htm" class="macro">luaC_white</a>(<a href="../h_src/57965036.htm" class="localvar">g</a>);  <a  class="comments">/* current white */</a>
+  for (<a href="../h_src/57964764.htm" class="localvar">i</a> = 0; *<a href="../h_src/57965444.htm" class="localvar">p</a> != NULL &amp;&amp; <a href="../h_src/57964764.htm" class="localvar">i</a> &lt; <a href="../h_src/57965308.htm" class="localvar">countin</a>; <a href="../h_src/57964764.htm" class="localvar">i</a>++) {
+    <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57964492.htm" class="localvar">curr</a> = *<a href="../h_src/57965444.htm" class="localvar">p</a>;
+    int <a href="../h_src/57964356.htm" class="localvar">marked</a> = <a href="../h_src/57964492.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528040.htm" class="variable">marked</a>;
+    if (<a href="../h_src/57625692.htm" class="macro">isdeadm</a>(<a href="../h_src/57964900.htm" class="localvar">ow</a>, <a href="../h_src/57964356.htm" class="localvar">marked</a>)) {  <a  class="comments">/* is 'curr' dead? */</a>
+      *<a href="../h_src/57965444.htm" class="localvar">p</a> = <a href="../h_src/57964492.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>;  <a  class="comments">/* remove 'curr' from list */</a>
+      <a href="../h_src/57966804.htm" class="function">freeobj</a>(<a href="../h_src/57965580.htm" class="localvar">L</a>, <a href="../h_src/57964492.htm" class="localvar">curr</a>);  <a  class="comments">/* erase 'curr' */</a>
+    }
+    else {  <a  class="comments">/* change mark to 'white' */</a>
+      <a href="../h_src/57964492.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528040.htm" class="variable">marked</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>((<a href="../h_src/57964356.htm" class="localvar">marked</a> &amp; ~<a href="../h_src/57828248.htm" class="macro">maskgcbits</a>) | <a href="../h_src/57964628.htm" class="localvar">white</a>);
+      <a href="../h_src/57965444.htm" class="localvar">p</a> = &amp;<a href="../h_src/57964492.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>;  <a  class="comments">/* go to next element */</a>
+    }
+  }
+  if (<a href="../h_src/57965172.htm" class="localvar">countout</a>)
+    *<a href="../h_src/57965172.htm" class="localvar">countout</a> = <a href="../h_src/57964764.htm" class="localvar">i</a>;  <a  class="comments">/* number of elements traversed */</a>
+  return (*<a href="../h_src/57965444.htm" class="localvar">p</a> == NULL) ? NULL : <a href="../h_src/57965444.htm" class="localvar">p</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

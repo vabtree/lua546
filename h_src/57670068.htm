@@ -1,0 +1,49 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaK_self</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57670068.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57670068.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57670068.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57670068.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57670068.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57670068.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57706720.htm#1085" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+void <a href="../h_src/57670068.htm" class="function">luaK_self</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57791828.htm" class="localvar">fs</a>, <a href="../h_src/57679384.htm" class="type">expdesc</a> *<a href="../h_src/57791692.htm" class="localvar">e</a>, <a href="../h_src/57679384.htm" class="type">expdesc</a> *<a href="../h_src/57791556.htm" class="localvar">key</a>) {
+  int <a href="../h_src/57791420.htm" class="localvar">ereg</a>;
+  <a href="../h_src/57670408.htm" class="function">luaK_exp2anyreg</a>(<a href="../h_src/57791828.htm" class="localvar">fs</a>, <a href="../h_src/57791692.htm" class="localvar">e</a>);
+  <a href="../h_src/57791420.htm" class="localvar">ereg</a> = <a href="../h_src/57791692.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a>;  <a  class="comments">/* register where 'e' was placed */</a>
+  <a href="../h_src/57809712.htm" class="function">freeexp</a>(<a href="../h_src/57791828.htm" class="localvar">fs</a>, <a href="../h_src/57791692.htm" class="localvar">e</a>);
+  <a href="../h_src/57791692.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a> = <a href="../h_src/57791828.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a>;  <a  class="comments">/* base register for op_self */</a>
+  <a href="../h_src/57791692.htm" class="localvar">e</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a> = <a href="../h_src/57682172.htm" class="variable">VNONRELOC</a>;  <a  class="comments">/* self expression has a fixed register */</a>
+  <a href="../h_src/57670680.htm" class="function">luaK_reserveregs</a>(<a href="../h_src/57791828.htm" class="localvar">fs</a>, 2);  <a  class="comments">/* function and 'self' produced by op_self */</a>
+  <a href="../h_src/57793324.htm" class="function">codeABRK</a>(<a href="../h_src/57791828.htm" class="localvar">fs</a>, <a href="../h_src/57689176.htm" class="variable">OP_SELF</a>, <a href="../h_src/57791692.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a>, <a href="../h_src/57791420.htm" class="localvar">ereg</a>, <a href="../h_src/57791556.htm" class="localvar">key</a>);
+  <a href="../h_src/57809712.htm" class="function">freeexp</a>(<a href="../h_src/57791828.htm" class="localvar">fs</a>, <a href="../h_src/57791556.htm" class="localvar">key</a>);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,54 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>forstat</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57996356.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57996356.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57996356.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57996356.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57996356.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57996356.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58057080.htm#1620" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/57996356.htm" class="function">forstat</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57996220.htm" class="localvar">ls</a>, int <a href="../h_src/57996084.htm" class="localvar">line</a>) {
+  <a  class="comments">/* forstat -&gt; FOR (fornum | forlist) END */</a>
+  <a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57995948.htm" class="localvar">fs</a> = <a href="../h_src/57996220.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>;
+  <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/57995812.htm" class="localvar">varname</a>;
+  <a href="../h_src/58055856.htm" class="type">BlockCnt</a> <a href="../h_src/57995676.htm" class="localvar">bl</a>;
+  <a href="../h_src/58028792.htm" class="function">enterblock</a>(<a href="../h_src/57995948.htm" class="localvar">fs</a>, &amp;<a href="../h_src/57995676.htm" class="localvar">bl</a>, 1);  <a  class="comments">/* scope for loop and control variables */</a>
+  <a href="../h_src/57699784.htm" class="function">luaX_next</a>(<a href="../h_src/57996220.htm" class="localvar">ls</a>);  <a  class="comments">/* skip 'for' */</a>
+  <a href="../h_src/57995812.htm" class="localvar">varname</a> = <a href="../h_src/58051300.htm" class="function">str_checkname</a>(<a href="../h_src/57996220.htm" class="localvar">ls</a>);  <a  class="comments">/* first variable name */</a>
+  switch (<a href="../h_src/57996220.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a>) {
+    case '=': <a href="../h_src/57998260.htm" class="function">fornum</a>(<a href="../h_src/57996220.htm" class="localvar">ls</a>, <a href="../h_src/57995812.htm" class="localvar">varname</a>, <a href="../h_src/57996084.htm" class="localvar">line</a>); break;
+    case ',': case <a href="../h_src/57704544.htm" class="variable">TK_IN</a>: <a href="../h_src/57997444.htm" class="function">forlist</a>(<a href="../h_src/57996220.htm" class="localvar">ls</a>, <a href="../h_src/57995812.htm" class="localvar">varname</a>); break;
+    default: <a href="../h_src/57699648.htm" class="function">luaX_syntaxerror</a>(<a href="../h_src/57996220.htm" class="localvar">ls</a>, &quot;'=' or 'in' expected&quot;);
+  }
+  <a href="../h_src/58051980.htm" class="function">check_match</a>(<a href="../h_src/57996220.htm" class="localvar">ls</a>, <a href="../h_src/57704952.htm" class="variable">TK_END</a>, <a href="../h_src/57704816.htm" class="variable">TK_FOR</a>, <a href="../h_src/57996084.htm" class="localvar">line</a>);
+  <a href="../h_src/58027704.htm" class="function">leaveblock</a>(<a href="../h_src/57995948.htm" class="localvar">fs</a>);  <a  class="comments">/* loop scope ('break' jumps to this point) */</a>
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,58 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>computesizes</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58110636.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58110636.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58110636.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58110636.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58110636.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58110636.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58121924.htm#391" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static unsigned int <a href="../h_src/58110636.htm" class="function">computesizes</a> (unsigned int <a href="../h_src/58110500.htm" class="localvar">nums</a>[], unsigned int *<a href="../h_src/58110364.htm" class="localvar">pna</a>) {
+  int <a href="../h_src/58110228.htm" class="localvar">i</a>;
+  unsigned int <a href="../h_src/58110092.htm" class="localvar">twotoi</a>;  <a  class="comments">/* 2^i (candidate for optimal size) */</a>
+  unsigned int <a href="../h_src/58109956.htm" class="localvar">a</a> = 0;  <a  class="comments">/* number of elements smaller than 2^i */</a>
+  unsigned int <a href="../h_src/58109820.htm" class="localvar">na</a> = 0;  <a  class="comments">/* number of elements to go to array part */</a>
+  unsigned int <a href="../h_src/58109684.htm" class="localvar">optimal</a> = 0;  <a  class="comments">/* optimal size for array part */</a>
+  <a  class="comments">/* loop while keys can fill more than half of total size */</a>
+  for (<a href="../h_src/58110228.htm" class="localvar">i</a> = 0, <a href="../h_src/58110092.htm" class="localvar">twotoi</a> = 1;
+       <a href="../h_src/58110092.htm" class="localvar">twotoi</a> &gt; 0 &amp;&amp; *<a href="../h_src/58110364.htm" class="localvar">pna</a> &gt; <a href="../h_src/58110092.htm" class="localvar">twotoi</a> / 2;
+       <a href="../h_src/58110228.htm" class="localvar">i</a>++, <a href="../h_src/58110092.htm" class="localvar">twotoi</a> *= 2) {
+    <a href="../h_src/58109956.htm" class="localvar">a</a> += <a href="../h_src/58110500.htm" class="localvar">nums</a>[<a href="../h_src/58110228.htm" class="localvar">i</a>];
+    if (<a href="../h_src/58109956.htm" class="localvar">a</a> &gt; <a href="../h_src/58110092.htm" class="localvar">twotoi</a>/2) {  <a  class="comments">/* more than half elements present? */</a>
+      <a href="../h_src/58109684.htm" class="localvar">optimal</a> = <a href="../h_src/58110092.htm" class="localvar">twotoi</a>;  <a  class="comments">/* optimal size (till now) */</a>
+      <a href="../h_src/58109820.htm" class="localvar">na</a> = <a href="../h_src/58109956.htm" class="localvar">a</a>;  <a  class="comments">/* all elements up to 'optimal' will go to array part */</a>
+    }
+  }
+  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>((optimal == 0 || optimal / 2 &lt; na) &amp;&amp; na &lt;= optimal);
+  *<a href="../h_src/58110364.htm" class="localvar">pna</a> = <a href="../h_src/58109820.htm" class="localvar">na</a>;
+  return <a href="../h_src/58109684.htm" class="localvar">optimal</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

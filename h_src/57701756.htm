@@ -1,0 +1,55 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>LexState</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57701756.htm" class="class" target="_self">Info</a></li>
+<li><a href="../h_im/57701756.htm" class="class" target="_self">Public Interface</a></li>
+<li><a href="../h_rx/57701756.htm" class="class" target="_self">Inheritance</a></li>
+<li><a href="../h_nm/57701756.htm" class="class" target="_self">Internals</a></li>
+<li><a href="../h_ua/57701756.htm" class="class" target="_self">Use of Members</a></li>
+<li><a href="../h_da/57701756.htm" class="class" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57701756.htm" class="class" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57701756.htm" class="class" target="_self">Declaration</a></li>
+<li><a href="../h_src/57706040.htm#64" class="class" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Declaration</h4>
+<pre class=src>
+typedef struct <a href="../h_src/57701756.htm" class="class">LexState</a> {
+  int <a href="../h_src/57701620.htm" class="variable">current</a>;  <a  class="comments">/* current character (charint) */</a>
+  int <a href="../h_src/57701552.htm" class="variable">linenumber</a>;  <a  class="comments">/* input line counter */</a>
+  int <a href="../h_src/57701484.htm" class="variable">lastline</a>;  <a  class="comments">/* line of last token 'consumed' */</a>
+  <a href="../h_src/57701824.htm" class="type">Token</a> <a href="../h_src/57701416.htm" class="variable">t</a>;  <a  class="comments">/* current token */</a>
+  <a href="../h_src/57701824.htm" class="type">Token</a> <a href="../h_src/57701348.htm" class="variable">lookahead</a>;  <a  class="comments">/* look ahead token */</a>
+  struct <a href="../h_src/57701280.htm" class="class">FuncState</a> *<a href="../h_src/57701008.htm" class="variable">fs</a>;  <a  class="comments">/* current function (parser) */</a>
+  struct <a href="../h_src/57444388.htm" class="class">lua_State</a> *<a href="../h_src/57700940.htm" class="variable">L</a>;
+  <a href="../h_src/57656088.htm" class="type">ZIO</a> *<a href="../h_src/57700872.htm" class="variable">z</a>;  <a  class="comments">/* input stream */</a>
+  <a href="../h_src/57655544.htm" class="type">Mbuffer</a> *<a href="../h_src/57700736.htm" class="variable">buff</a>;  <a  class="comments">/* buffer for tokens */</a>
+  <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/57700668.htm" class="variable">h</a>;  <a  class="comments">/* to avoid collection/reuse strings */</a>
+  struct <a href="../h_src/57700600.htm" class="class">Dyndata</a> *<a href="../h_src/57700328.htm" class="variable">dyd</a>;  <a  class="comments">/* dynamic structures used by the parser */</a>
+  <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/57700260.htm" class="variable">source</a>;  <a  class="comments">/* current source name */</a>
+  <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/57700192.htm" class="variable">envn</a>;  <a  class="comments">/* environment variable name */</a>
+} <a href="../h_src/57700124.htm" class="type">LexState</a>;
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

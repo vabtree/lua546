@@ -1,0 +1,45 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>treatstackoption</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58282300.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58282300.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58282300.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58282300.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58282300.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58282300.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58287060.htm#134" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/58282300.htm" class="function">treatstackoption</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58282164.htm" class="localvar">L</a>, <a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58282028.htm" class="localvar">L1</a>, const char *<a href="../h_src/58281892.htm" class="localvar">fname</a>) {
+  if (<a href="../h_src/58282164.htm" class="localvar">L</a> == <a href="../h_src/58282028.htm" class="localvar">L1</a>)
+    <a href="../h_src/57439152.htm" class="function">lua_rotate</a>(<a href="../h_src/58282164.htm" class="localvar">L</a>, -2, 1);  <a  class="comments">/* exchange object and table */</a>
+  else
+    <a href="../h_src/57438948.htm" class="function">lua_xmove</a>(<a href="../h_src/58282028.htm" class="localvar">L1</a>, <a href="../h_src/58282164.htm" class="localvar">L</a>, 1);  <a  class="comments">/* move object to the &quot;main&quot; stack */</a>
+  <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/58282164.htm" class="localvar">L</a>, -2, <a href="../h_src/58281892.htm" class="localvar">fname</a>);  <a  class="comments">/* put object into table */</a>
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

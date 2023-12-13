@@ -1,0 +1,806 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>loadlib.c</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143217276.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/143217276.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/143217276.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/143217276.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_uf/143217276.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_df/143217276.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/143217276.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143217276.htm" class="file" target="_self">Source Code</a></li>
+<li><a href="../h_sc/143217276.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<pre class=src>
+<a id=1></a><a  class="comments">/*</a>
+<a id=2></a><a  class="comments">** $Id: loadlib.c $</a>
+<a id=3></a><a  class="comments">** Dynamic library loader for Lua</a>
+<a id=4></a><a  class="comments">** See Copyright Notice in lua.h</a>
+<a id=5></a><a  class="comments">**</a>
+<a id=6></a><a  class="comments">** This module contains an implementation of loadlib for Unix systems</a>
+<a id=7></a><a  class="comments">** that have dlfcn, an implementation for Windows, and a stub for other</a>
+<a id=8></a><a  class="comments">** systems.</a>
+<a id=9></a><a  class="comments">*/</a>
+
+<a id=11></a>#define <a href="../h_src/143217208.htm" class="macro">loadlib_c</a>
+<a id=12></a>#define <a href="../h_src/143217072.htm" class="macro">LUA_LIB</a>
+
+<a id=14></a>#include &quot;<a href="../h_src/57461592.htm" class="file">lprefix.h</a>&quot;
+
+
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+<a id=21></a>#include &quot;<a href="../h_src/57460028.htm" class="file">lua.h</a>&quot;
+
+<a id=23></a>#include &quot;<a href="../h_src/57422356.htm" class="file">lauxlib.h</a>&quot;
+<a id=24></a>#include &quot;<a href="../h_src/57410932.htm" class="file">lualib.h</a>&quot;
+
+
+<a id=27></a><a  class="comments">/*</a>
+<a id=28></a><a  class="comments">** LUA_IGMARK is a mark to ignore all before it when building the</a>
+<a id=29></a><a  class="comments">** luaopen_ function name.</a>
+<a id=30></a><a  class="comments">*/</a>
+<a id=31></a>#if !defined (<a href="../h_src/143216936.htm" class="macro">LUA_IGMARK</a>)
+<a id=32></a>#define <a href="../h_src/143216800.htm" class="macro">LUA_IGMARK</a>		&quot;-&quot;
+#endif
+
+
+<a id=36></a><a  class="comments">/*</a>
+<a id=37></a><a  class="comments">** LUA_CSUBSEP is the character that replaces dots in submodule names</a>
+<a id=38></a><a  class="comments">** when searching for a C loader.</a>
+<a id=39></a><a  class="comments">** LUA_LSUBSEP is the character that replaces dots in submodule names</a>
+<a id=40></a><a  class="comments">** when searching for a Lua loader.</a>
+<a id=41></a><a  class="comments">*/</a>
+<a id=42></a>#if !defined(<a href="../h_src/143216664.htm" class="macro">LUA_CSUBSEP</a>)
+<a id=43></a>#define <a href="../h_src/143216528.htm" class="macro">LUA_CSUBSEP</a>		LUA_DIRSEP
+#endif
+
+<a id=46></a>#if !defined(<a href="../h_src/143216392.htm" class="macro">LUA_LSUBSEP</a>)
+<a id=47></a>#define <a href="../h_src/143216256.htm" class="macro">LUA_LSUBSEP</a>		LUA_DIRSEP
+#endif
+
+
+<a id=51></a><a  class="comments">/* prefix for open functions in C libraries */</a>
+<a id=52></a>#define <a href="../h_src/143216120.htm" class="macro">LUA_POF</a>		&quot;luaopen_&quot;
+
+<a id=54></a><a  class="comments">/* separator for open functions in C libraries */</a>
+<a id=55></a>#define <a href="../h_src/143215984.htm" class="macro">LUA_OFSEP</a>	&quot;_&quot;
+
+
+<a id=58></a><a  class="comments">/*</a>
+<a id=59></a><a  class="comments">** key for table in the registry that keeps handles</a>
+<a id=60></a><a  class="comments">** for all loaded C libraries</a>
+<a id=61></a><a  class="comments">*/</a>
+<a id=62></a>static const char *const <a href="../h_src/143215848.htm" class="variable">CLIBS</a> = &quot;_CLIBS&quot;;
+
+<a id=64></a>#define <a href="../h_src/143215780.htm" class="macro">LIB_FAIL</a>	&quot;open&quot;
+
+
+<a id=67></a>#define <a href="../h_src/143215644.htm" class="macro">setprogdir</a>(L)           ((void)0)
+
+
+<a id=70></a><a  class="comments">/*</a>
+<a id=71></a><a  class="comments">** Special type equivalent to '(void*)' for functions in gcc</a>
+<a id=72></a><a  class="comments">** (to suppress warnings when converting function pointers)</a>
+<a id=73></a><a  class="comments">*/</a>
+<a id=74></a>typedef void (*<a href="../h_src/143215508.htm" class="type">voidf</a>)(void);
+
+
+<a id=77></a><a  class="comments">/*</a>
+<a id=78></a><a  class="comments">** system-dependent functions</a>
+<a id=79></a><a  class="comments">*/</a>
+
+<a id=81></a><a  class="comments">/*</a>
+<a id=82></a><a  class="comments">** unload library 'lib'</a>
+<a id=83></a><a  class="comments">*/</a>
+<a id=84></a>static void <a href="../h_src/143215440.htm" class="function">lsys_unloadlib</a> (void *lib);
+
+<a id=86></a><a  class="comments">/*</a>
+<a id=87></a><a  class="comments">** load C library in file 'path'. If 'seeglb', load with all names in</a>
+<a id=88></a><a  class="comments">** the library global.</a>
+<a id=89></a><a  class="comments">** Returns the library; in case of error, returns NULL plus an</a>
+<a id=90></a><a  class="comments">** error string in the stack.</a>
+<a id=91></a><a  class="comments">*/</a>
+<a id=92></a>static void *<a href="../h_src/143215304.htm" class="function">lsys_load</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const char *path, int seeglb);
+
+<a id=94></a><a  class="comments">/*</a>
+<a id=95></a><a  class="comments">** Try to find a function named 'sym' in library 'lib'.</a>
+<a id=96></a><a  class="comments">** Returns the function; in case of error, returns NULL plus an</a>
+<a id=97></a><a  class="comments">** error string in the stack.</a>
+<a id=98></a><a  class="comments">*/</a>
+<a id=99></a>static <a href="../h_src/57441736.htm" class="type">lua_CFunction</a> <a href="../h_src/143215168.htm" class="function">lsys_sym</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, void *lib, const char *sym);
+
+
+
+
+<a id=104></a>#if defined(<a href="../h_src/143215032.htm" class="macro">LUA_USE_DLOPEN</a>)	<a  class="comments">/* { */</a>
+<a id=105></a><a  class="comments">/*</a>
+<a id=106></a><a  class="comments">** {========================================================================</a>
+<a id=107></a><a  class="comments">** This is an implementation of loadlib based on the dlfcn interface.</a>
+<a id=108></a><a  class="comments">** The dlfcn interface is available in Linux, SunOS, Solaris, IRIX, FreeBSD,</a>
+<a id=109></a><a  class="comments">** NetBSD, AIX 4.2, HPUX 11, and  probably most other Unix flavors, at least</a>
+<a id=110></a><a  class="comments">** as an emulation layer on top of native functions.</a>
+<a id=111></a><a  class="comments">** =========================================================================</a>
+<a id=112></a><a  class="comments">*/</a>
+
+#include &lt;dlfcn.h&gt;
+
+<a id=116></a><a  class="comments">/*</a>
+<a id=117></a><a  class="comments">** Macro to convert pointer-to-void* to pointer-to-function. This cast</a>
+<a id=118></a><a  class="comments">** is undefined according to ISO C, but POSIX assumes that it works.</a>
+<a id=119></a><a  class="comments">** (The '__extension__' in gnu compilers is only to avoid warnings.)</a>
+<a id=120></a><a  class="comments">*/</a>
+#if defined(__GNUC__)
+#define cast_func(p) (__extension__ (lua_CFunction)(p))
+#else
+#define cast_func(p) ((lua_CFunction)(p))
+#endif
+
+
+static void lsys_unloadlib (void *lib) {
+  dlclose(lib);
+}
+
+
+static void *lsys_load (lua_State *L, const char *path, int seeglb) {
+  void *lib = dlopen(path, RTLD_NOW | (seeglb ? RTLD_GLOBAL : RTLD_LOCAL));
+  if (l_unlikely(lib == NULL))
+    lua_pushstring(L, dlerror());
+  return lib;
+}
+
+
+static lua_CFunction lsys_sym (lua_State *L, void *lib, const char *sym) {
+  lua_CFunction f = cast_func(dlsym(lib, sym));
+  if (l_unlikely(f == NULL))
+    lua_pushstring(L, dlerror());
+  return f;
+}
+
+<a id=148></a><a  class="comments">/* }====================================================== */</a>
+
+
+
+<a id=152></a>#elif defined(<a href="../h_src/57459076.htm" class="macro">LUA_DL_DLL</a>)	<a  class="comments">/* }{ */</a>
+<a id=153></a><a  class="comments">/*</a>
+<a id=154></a><a  class="comments">** {======================================================================</a>
+<a id=155></a><a  class="comments">** This is an implementation of loadlib for Windows using native functions.</a>
+<a id=156></a><a  class="comments">** =======================================================================</a>
+<a id=157></a><a  class="comments">*/</a>
+
+#include &lt;windows.h&gt;
+
+
+<a id=162></a><a  class="comments">/*</a>
+<a id=163></a><a  class="comments">** optional flags for LoadLibraryEx</a>
+<a id=164></a><a  class="comments">*/</a>
+<a id=165></a>#if !defined(<a href="../h_src/143214896.htm" class="macro">LUA_LLE_FLAGS</a>)
+<a id=166></a>#define <a href="../h_src/143214760.htm" class="macro">LUA_LLE_FLAGS</a>	0
+#endif
+
+
+<a id=170></a>#undef <a href="../h_src/143215644.htm" class="macro">setprogdir</a>
+
+
+<a id=173></a><a  class="comments">/*</a>
+<a id=174></a><a  class="comments">** Replace in the path (on the top of the stack) any occurrence</a>
+<a id=175></a><a  class="comments">** of LUA_EXEC_DIR with the executable's path.</a>
+<a id=176></a><a  class="comments">*/</a>
+<a id=177></a>static void <a href="../h_src/143214624.htm" class="function">setprogdir</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143214488.htm" class="localvar">L</a>) {
+<a id=178></a>  char <a href="../h_src/143214352.htm" class="localvar">buff</a>[MAX_PATH + 1];
+<a id=179></a>  char *<a href="../h_src/143214216.htm" class="localvar">lb</a>;
+<a id=180></a>  DWORD <a href="../h_src/143214080.htm" class="localvar">nsize</a> = sizeof(<a href="../h_src/143214352.htm" class="localvar">buff</a>)/sizeof(char);
+<a id=181></a>  DWORD <a href="../h_src/143213876.htm" class="localvar">n</a> = <a href="../h_aa/143213944.htm" class="libfunc">GetModuleFileNameA</a>(NULL, <a href="../h_src/143214352.htm" class="localvar">buff</a>, <a href="../h_src/143214080.htm" class="localvar">nsize</a>);  <a  class="comments">/* get exec. name */</a>
+<a id=182></a>  if (<a href="../h_src/143213876.htm" class="localvar">n</a> == 0 || <a href="../h_src/143213876.htm" class="localvar">n</a> == <a href="../h_src/143214080.htm" class="localvar">nsize</a> || (<a href="../h_src/143214216.htm" class="localvar">lb</a> = <a href="../h_aa/143213740.htm" class="libfunc">strrchr</a>(<a href="../h_src/143214352.htm" class="localvar">buff</a>, '\\')) == NULL)
+<a id=183></a>    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143214488.htm" class="localvar">L</a>, &quot;unable to get ModuleFileName&quot;);
+  else {
+<a id=185></a>    *<a href="../h_src/143214216.htm" class="localvar">lb</a> = '\0';  <a  class="comments">/* cut name on the last '\\' to get the path */</a>
+<a id=186></a>    <a href="../h_src/57417936.htm" class="function">luaL_gsub</a>(<a href="../h_src/143214488.htm" class="localvar">L</a>, <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143214488.htm" class="localvar">L</a>, -1), <a href="../h_src/57456356.htm" class="macro">LUA_EXEC_DIR</a>, <a href="../h_src/143214352.htm" class="localvar">buff</a>);
+<a id=187></a>    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/143214488.htm" class="localvar">L</a>, -2);  <a  class="comments">/* remove original string */</a>
+  }
+}
+
+
+
+
+<a id=194></a>static void <a href="../h_src/143213672.htm" class="function">pusherror</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143213536.htm" class="localvar">L</a>) {
+<a id=195></a>  int <a href="../h_src/143213332.htm" class="localvar">error</a> = <a href="../h_aa/143213400.htm" class="libfunc">GetLastError</a>();
+<a id=196></a>  char <a href="../h_src/143213196.htm" class="localvar">buffer</a>[128];
+<a id=197></a>  if (<a href="../h_aa/143213060.htm" class="libfunc">FormatMessageA</a>(FORMAT_MESSAGE_IGNORE_INSERTS | FORMAT_MESSAGE_FROM_SYSTEM,
+<a id=198></a>      NULL, <a href="../h_src/143213332.htm" class="localvar">error</a>, 0, <a href="../h_src/143213196.htm" class="localvar">buffer</a>, sizeof(<a href="../h_src/143213196.htm" class="localvar">buffer</a>)/sizeof(char), NULL))
+<a id=199></a>    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/143213536.htm" class="localvar">L</a>, <a href="../h_src/143213196.htm" class="localvar">buffer</a>);
+  else
+<a id=201></a>    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/143213536.htm" class="localvar">L</a>, &quot;system error %d\n&quot;, <a href="../h_src/143213332.htm" class="localvar">error</a>);
+}
+
+<a id=204></a>static void <a href="../h_src/143215440.htm" class="function">lsys_unloadlib</a> (void *<a href="../h_src/143212992.htm" class="localvar">lib</a>) {
+  FreeLibrary((HMODULE)lib);
+}
+
+
+<a id=209></a>static void *<a href="../h_src/143215304.htm" class="function">lsys_load</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143212856.htm" class="localvar">L</a>, const char *<a href="../h_src/143212720.htm" class="localvar">path</a>, int <a href="../h_src/143212584.htm" class="localvar">seeglb</a>) {
+<a id=210></a>  HMODULE <a href="../h_src/143212380.htm" class="localvar">lib</a> = <a href="../h_aa/143212448.htm" class="libfunc">LoadLibraryExA</a>(<a href="../h_src/143212720.htm" class="localvar">path</a>, NULL, <a href="../h_src/143214760.htm" class="macro">LUA_LLE_FLAGS</a>);
+<a id=211></a>  (void)(<a href="../h_src/143212584.htm" class="localvar">seeglb</a>);  <a  class="comments">/* not used: symbols are 'global' by default */</a>
+<a id=212></a>  if (<a href="../h_src/143212380.htm" class="localvar">lib</a> == NULL) <a href="../h_src/143213672.htm" class="function">pusherror</a>(<a href="../h_src/143212856.htm" class="localvar">L</a>);
+<a id=213></a>  return <a href="../h_src/143212380.htm" class="localvar">lib</a>;
+}
+
+
+<a id=217></a>static <a href="../h_src/57441736.htm" class="type">lua_CFunction</a> <a href="../h_src/143215168.htm" class="function">lsys_sym</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143212244.htm" class="localvar">L</a>, void *<a href="../h_src/143212108.htm" class="localvar">lib</a>, const char *<a href="../h_src/143211972.htm" class="localvar">sym</a>) {
+  lua_CFunction f = (lua_CFunction)(voidf)GetProcAddress((HMODULE)lib, sym);
+<a id=219></a>  if (f == NULL) <a href="../h_src/143213672.htm" class="function">pusherror</a>(<a href="../h_src/143212244.htm" class="localvar">L</a>);
+  return f;
+}
+
+<a id=223></a><a  class="comments">/* }====================================================== */</a>
+
+
+<a id=226></a>#else				<a  class="comments">/* }{ */</a>
+<a id=227></a><a  class="comments">/*</a>
+<a id=228></a><a  class="comments">** {======================================================</a>
+<a id=229></a><a  class="comments">** Fallback for other systems</a>
+<a id=230></a><a  class="comments">** =======================================================</a>
+<a id=231></a><a  class="comments">*/</a>
+
+#undef LIB_FAIL
+#define LIB_FAIL	&quot;absent&quot;
+
+
+#define DLMSG	&quot;dynamic libraries not enabled; check your Lua installation&quot;
+
+
+static void lsys_unloadlib (void *lib) {
+<a id=241></a>  (void)(lib);  <a  class="comments">/* not used */</a>
+}
+
+
+static void *lsys_load (lua_State *L, const char *path, int seeglb) {
+<a id=246></a>  (void)(path); (void)(seeglb);  <a  class="comments">/* not used */</a>
+  lua_pushliteral(L, DLMSG);
+  return NULL;
+}
+
+
+static lua_CFunction lsys_sym (lua_State *L, void *lib, const char *sym) {
+<a id=253></a>  (void)(lib); (void)(sym);  <a  class="comments">/* not used */</a>
+  lua_pushliteral(L, DLMSG);
+  return NULL;
+}
+
+<a id=258></a><a  class="comments">/* }====================================================== */</a>
+<a id=259></a>#endif				<a  class="comments">/* } */</a>
+
+
+<a id=262></a><a  class="comments">/*</a>
+<a id=263></a><a  class="comments">** {==================================================================</a>
+<a id=264></a><a  class="comments">** Set Paths</a>
+<a id=265></a><a  class="comments">** ===================================================================</a>
+<a id=266></a><a  class="comments">*/</a>
+
+<a id=268></a><a  class="comments">/*</a>
+<a id=269></a><a  class="comments">** LUA_PATH_VAR and LUA_CPATH_VAR are the names of the environment</a>
+<a id=270></a><a  class="comments">** variables that Lua check to set its paths.</a>
+<a id=271></a><a  class="comments">*/</a>
+<a id=272></a>#if !defined(<a href="../h_src/143211836.htm" class="macro">LUA_PATH_VAR</a>)
+<a id=273></a>#define <a href="../h_src/143211700.htm" class="macro">LUA_PATH_VAR</a>    &quot;LUA_PATH&quot;
+#endif
+
+<a id=276></a>#if !defined(<a href="../h_src/143211564.htm" class="macro">LUA_CPATH_VAR</a>)
+<a id=277></a>#define <a href="../h_src/143211428.htm" class="macro">LUA_CPATH_VAR</a>   &quot;LUA_CPATH&quot;
+#endif
+
+
+
+<a id=282></a><a  class="comments">/*</a>
+<a id=283></a><a  class="comments">** return registry.LUA_NOENV as a boolean</a>
+<a id=284></a><a  class="comments">*/</a>
+<a id=285></a>static int <a href="../h_src/143211292.htm" class="function">noenv</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143211156.htm" class="localvar">L</a>) {
+<a id=286></a>  int <a href="../h_src/143211020.htm" class="localvar">b</a>;
+<a id=287></a>  <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143211156.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, &quot;LUA_NOENV&quot;);
+<a id=288></a>  <a href="../h_src/143211020.htm" class="localvar">b</a> = <a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/143211156.htm" class="localvar">L</a>, -1);
+<a id=289></a>  <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143211156.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove value */</a>
+<a id=290></a>  return <a href="../h_src/143211020.htm" class="localvar">b</a>;
+}
+
+
+<a id=294></a><a  class="comments">/*</a>
+<a id=295></a><a  class="comments">** Set a path</a>
+<a id=296></a><a  class="comments">*/</a>
+<a id=297></a>static void <a href="../h_src/143210884.htm" class="function">setpath</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143210748.htm" class="localvar">L</a>, const char *<a href="../h_src/143210612.htm" class="localvar">fieldname</a>,
+<a id=298></a>                                   const char *<a href="../h_src/143210476.htm" class="localvar">envname</a>,
+<a id=299></a>                                   const char *<a href="../h_src/143210340.htm" class="localvar">dft</a>) {
+<a id=300></a>  const char *<a href="../h_src/143210204.htm" class="localvar">dftmark</a>;
+<a id=301></a>  const char *<a href="../h_src/143210068.htm" class="localvar">nver</a> = <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/143210748.htm" class="localvar">L</a>, &quot;%s%s&quot;, <a href="../h_src/143210476.htm" class="localvar">envname</a>, <a href="../h_src/57410592.htm" class="macro">LUA_VERSUFFIX</a>);
+<a id=302></a>  const char *<a href="../h_src/143209932.htm" class="localvar">path</a> = <a href="../h_aa/57561428.htm" class="libfunc">getenv</a>(<a href="../h_src/143210068.htm" class="localvar">nver</a>);  <a  class="comments">/* try versioned name */</a>
+<a id=303></a>  if (<a href="../h_src/143209932.htm" class="localvar">path</a> == NULL)  <a  class="comments">/* no versioned environment variable? */</a>
+<a id=304></a>    <a href="../h_src/143209932.htm" class="localvar">path</a> = <a href="../h_aa/57561428.htm" class="libfunc">getenv</a>(<a href="../h_src/143210476.htm" class="localvar">envname</a>);  <a  class="comments">/* try unversioned name */</a>
+<a id=305></a>  if (<a href="../h_src/143209932.htm" class="localvar">path</a> == NULL || <a href="../h_src/143211292.htm" class="function">noenv</a>(<a href="../h_src/143210748.htm" class="localvar">L</a>))  <a  class="comments">/* no environment variable? */</a>
+<a id=306></a>    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/143210748.htm" class="localvar">L</a>, <a href="../h_src/143210340.htm" class="localvar">dft</a>);  <a  class="comments">/* use default */</a>
+<a id=307></a>  else if ((<a href="../h_src/143210204.htm" class="localvar">dftmark</a> = <a href="../h_aa/58317456.htm" class="libfunc">strstr</a>(<a href="../h_src/143209932.htm" class="localvar">path</a>, <a href="../h_src/57456628.htm" class="macro">LUA_PATH_SEP</a> <a href="../h_src/57456628.htm" class="macro">LUA_PATH_SEP</a>)) == NULL)
+<a id=308></a>    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/143210748.htm" class="localvar">L</a>, <a href="../h_src/143209932.htm" class="localvar">path</a>);  <a  class="comments">/* nothing to change */</a>
+<a id=309></a>  else {  <a  class="comments">/* path contains a &quot;;;&quot;: insert default path in its place */</a>
+<a id=310></a>    <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/143209796.htm" class="localvar">len</a> = <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/143209932.htm" class="localvar">path</a>);
+<a id=311></a>    <a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> <a href="../h_src/143209660.htm" class="localvar">b</a>;
+<a id=312></a>    <a href="../h_src/57413652.htm" class="function">luaL_buffinit</a>(<a href="../h_src/143210748.htm" class="localvar">L</a>, &amp;<a href="../h_src/143209660.htm" class="localvar">b</a>);
+<a id=313></a>    if (<a href="../h_src/143209932.htm" class="localvar">path</a> &lt; <a href="../h_src/143210204.htm" class="localvar">dftmark</a>) {  <a  class="comments">/* is there a prefix before ';;'? */</a>
+<a id=314></a>      <a href="../h_src/57413516.htm" class="function">luaL_addlstring</a>(&amp;<a href="../h_src/143209660.htm" class="localvar">b</a>, <a href="../h_src/143209932.htm" class="localvar">path</a>, <a href="../h_src/143210204.htm" class="localvar">dftmark</a> - <a href="../h_src/143209932.htm" class="localvar">path</a>);  <a  class="comments">/* add it */</a>
+<a id=315></a>      <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143209660.htm" class="localvar">b</a>, *<a href="../h_src/57456628.htm" class="macro">LUA_PATH_SEP</a>);
+    }
+<a id=317></a>    <a href="../h_src/57413448.htm" class="function">luaL_addstring</a>(&amp;<a href="../h_src/143209660.htm" class="localvar">b</a>, <a href="../h_src/143210340.htm" class="localvar">dft</a>);  <a  class="comments">/* add default */</a>
+<a id=318></a>    if (<a href="../h_src/143210204.htm" class="localvar">dftmark</a> &lt; <a href="../h_src/143209932.htm" class="localvar">path</a> + <a href="../h_src/143209796.htm" class="localvar">len</a> - 2) {  <a  class="comments">/* is there a suffix after ';;'? */</a>
+<a id=319></a>      <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143209660.htm" class="localvar">b</a>, *<a href="../h_src/57456628.htm" class="macro">LUA_PATH_SEP</a>);
+<a id=320></a>      <a href="../h_src/57413516.htm" class="function">luaL_addlstring</a>(&amp;<a href="../h_src/143209660.htm" class="localvar">b</a>, <a href="../h_src/143210204.htm" class="localvar">dftmark</a> + 2, (<a href="../h_src/143209932.htm" class="localvar">path</a> + <a href="../h_src/143209796.htm" class="localvar">len</a> - 2) - <a href="../h_src/143210204.htm" class="localvar">dftmark</a>);
+    }
+<a id=322></a>    <a href="../h_src/57413312.htm" class="function">luaL_pushresult</a>(&amp;<a href="../h_src/143209660.htm" class="localvar">b</a>);
+  }
+<a id=324></a>  <a href="../h_src/143214624.htm" class="function">setprogdir</a>(<a href="../h_src/143210748.htm" class="localvar">L</a>);
+<a id=325></a>  <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/143210748.htm" class="localvar">L</a>, -3, <a href="../h_src/143210612.htm" class="localvar">fieldname</a>);  <a  class="comments">/* package[fieldname] = path value */</a>
+<a id=326></a>  <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143210748.htm" class="localvar">L</a>, 1);  <a  class="comments">/* pop versioned variable name ('nver') */</a>
+}
+
+<a id=329></a><a  class="comments">/* }================================================================== */</a>
+
+
+<a id=332></a><a  class="comments">/*</a>
+<a id=333></a><a  class="comments">** return registry.CLIBS[path]</a>
+<a id=334></a><a  class="comments">*/</a>
+<a id=335></a>static void *<a href="../h_src/143209524.htm" class="function">checkclib</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143209388.htm" class="localvar">L</a>, const char *<a href="../h_src/143209252.htm" class="localvar">path</a>) {
+<a id=336></a>  void *<a href="../h_src/143209116.htm" class="localvar">plib</a>;
+<a id=337></a>  <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143209388.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/143215848.htm" class="variable">CLIBS</a>);
+<a id=338></a>  <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143209388.htm" class="localvar">L</a>, -1, <a href="../h_src/143209252.htm" class="localvar">path</a>);
+<a id=339></a>  <a href="../h_src/143209116.htm" class="localvar">plib</a> = <a href="../h_src/57437996.htm" class="function">lua_touserdata</a>(<a href="../h_src/143209388.htm" class="localvar">L</a>, -1);  <a  class="comments">/* plib = CLIBS[path] */</a>
+<a id=340></a>  <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143209388.htm" class="localvar">L</a>, 2);  <a  class="comments">/* pop CLIBS table and 'plib' */</a>
+<a id=341></a>  return <a href="../h_src/143209116.htm" class="localvar">plib</a>;
+}
+
+
+<a id=345></a><a  class="comments">/*</a>
+<a id=346></a><a  class="comments">** registry.CLIBS[path] = plib        -- for queries</a>
+<a id=347></a><a  class="comments">** registry.CLIBS[#CLIBS + 1] = plib  -- also keep a list of all libraries</a>
+<a id=348></a><a  class="comments">*/</a>
+<a id=349></a>static void <a href="../h_src/143208980.htm" class="function">addtoclib</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143208844.htm" class="localvar">L</a>, const char *<a href="../h_src/143208708.htm" class="localvar">path</a>, void *<a href="../h_src/143208572.htm" class="localvar">plib</a>) {
+<a id=350></a>  <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143208844.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/143215848.htm" class="variable">CLIBS</a>);
+<a id=351></a>  <a href="../h_src/57434528.htm" class="function">lua_pushlightuserdata</a>(<a href="../h_src/143208844.htm" class="localvar">L</a>, <a href="../h_src/143208572.htm" class="localvar">plib</a>);
+<a id=352></a>  <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/143208844.htm" class="localvar">L</a>, -1);
+<a id=353></a>  <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/143208844.htm" class="localvar">L</a>, -3, <a href="../h_src/143208708.htm" class="localvar">path</a>);  <a  class="comments">/* CLIBS[path] = plib */</a>
+<a id=354></a>  <a href="../h_src/57433304.htm" class="function">lua_rawseti</a>(<a href="../h_src/143208844.htm" class="localvar">L</a>, -2, <a href="../h_src/57418140.htm" class="function">luaL_len</a>(<a href="../h_src/143208844.htm" class="localvar">L</a>, -2) + 1);  <a  class="comments">/* CLIBS[#CLIBS + 1] = plib */</a>
+<a id=355></a>  <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143208844.htm" class="localvar">L</a>, 1);  <a  class="comments">/* pop CLIBS table */</a>
+}
+
+
+<a id=359></a><a  class="comments">/*</a>
+<a id=360></a><a  class="comments">** __gc tag method for CLIBS table: calls 'lsys_unloadlib' for all lib</a>
+<a id=361></a><a  class="comments">** handles in list CLIBS</a>
+<a id=362></a><a  class="comments">*/</a>
+<a id=363></a>static int <a href="../h_src/143208436.htm" class="function">gctm</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143208300.htm" class="localvar">L</a>) {
+<a id=364></a>  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143208164.htm" class="localvar">n</a> = <a href="../h_src/57418140.htm" class="function">luaL_len</a>(<a href="../h_src/143208300.htm" class="localvar">L</a>, 1);
+<a id=365></a>  for (; <a href="../h_src/143208164.htm" class="localvar">n</a> &gt;= 1; <a href="../h_src/143208164.htm" class="localvar">n</a>--) {  <a  class="comments">/* for each handle, in reverse order */</a>
+<a id=366></a>    <a href="../h_src/57434052.htm" class="function">lua_rawgeti</a>(<a href="../h_src/143208300.htm" class="localvar">L</a>, 1, <a href="../h_src/143208164.htm" class="localvar">n</a>);  <a  class="comments">/* get handle CLIBS[n] */</a>
+<a id=367></a>    <a href="../h_src/143215440.htm" class="function">lsys_unloadlib</a>(<a href="../h_src/57437996.htm" class="function">lua_touserdata</a>(<a href="../h_src/143208300.htm" class="localvar">L</a>, -1));
+<a id=368></a>    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143208300.htm" class="localvar">L</a>, 1);  <a  class="comments">/* pop handle */</a>
+  }
+  return 0;
+}
+
+
+
+<a id=375></a><a  class="comments">/* error codes for 'lookforfunc' */</a>
+<a id=376></a>#define <a href="../h_src/143208028.htm" class="macro">ERRLIB</a>		1
+<a id=377></a>#define <a href="../h_src/143207892.htm" class="macro">ERRFUNC</a>		2
+
+<a id=379></a><a  class="comments">/*</a>
+<a id=380></a><a  class="comments">** Look for a C function named 'sym' in a dynamically loaded library</a>
+<a id=381></a><a  class="comments">** 'path'.</a>
+<a id=382></a><a  class="comments">** First, check whether the library is already loaded; if not, try</a>
+<a id=383></a><a  class="comments">** to load it.</a>
+<a id=384></a><a  class="comments">** Then, if 'sym' is '*', return true (as library has been loaded).</a>
+<a id=385></a><a  class="comments">** Otherwise, look for symbol 'sym' in the library and push a</a>
+<a id=386></a><a  class="comments">** C function with that symbol.</a>
+<a id=387></a><a  class="comments">** Return 0 and 'true' or a function in the stack; in case of</a>
+<a id=388></a><a  class="comments">** errors, return an error code and an error message in the stack.</a>
+<a id=389></a><a  class="comments">*/</a>
+<a id=390></a>static int <a href="../h_src/143207756.htm" class="function">lookforfunc</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143207620.htm" class="localvar">L</a>, const char *<a href="../h_src/143207484.htm" class="localvar">path</a>, const char *<a href="../h_src/143207348.htm" class="localvar">sym</a>) {
+<a id=391></a>  void *<a href="../h_src/143207212.htm" class="localvar">reg</a> = <a href="../h_src/143209524.htm" class="function">checkclib</a>(<a href="../h_src/143207620.htm" class="localvar">L</a>, <a href="../h_src/143207484.htm" class="localvar">path</a>);  <a  class="comments">/* check loaded C libraries */</a>
+<a id=392></a>  if (<a href="../h_src/143207212.htm" class="localvar">reg</a> == NULL) {  <a  class="comments">/* must load library? */</a>
+<a id=393></a>    <a href="../h_src/143207212.htm" class="localvar">reg</a> = <a href="../h_src/143215304.htm" class="function">lsys_load</a>(<a href="../h_src/143207620.htm" class="localvar">L</a>, <a href="../h_src/143207484.htm" class="localvar">path</a>, *<a href="../h_src/143207348.htm" class="localvar">sym</a> == '*');  <a  class="comments">/* global symbols if 'sym'=='*' */</a>
+<a id=394></a>    if (<a href="../h_src/143207212.htm" class="localvar">reg</a> == NULL) return <a href="../h_src/143208028.htm" class="macro">ERRLIB</a>;  <a  class="comments">/* unable to load library */</a>
+<a id=395></a>    <a href="../h_src/143208980.htm" class="function">addtoclib</a>(<a href="../h_src/143207620.htm" class="localvar">L</a>, <a href="../h_src/143207484.htm" class="localvar">path</a>, <a href="../h_src/143207212.htm" class="localvar">reg</a>);
+  }
+<a id=397></a>  if (*<a href="../h_src/143207348.htm" class="localvar">sym</a> == '*') {  <a  class="comments">/* loading only library (no function)? */</a>
+<a id=398></a>    <a href="../h_src/57434596.htm" class="function">lua_pushboolean</a>(<a href="../h_src/143207620.htm" class="localvar">L</a>, 1);  <a  class="comments">/* return 'true' */</a>
+<a id=399></a>    return 0;  <a  class="comments">/* no errors */</a>
+  }
+  else {
+<a id=402></a>    <a href="../h_src/57441736.htm" class="type">lua_CFunction</a> <a href="../h_src/143207076.htm" class="localvar">f</a> = <a href="../h_src/143215168.htm" class="function">lsys_sym</a>(<a href="../h_src/143207620.htm" class="localvar">L</a>, <a href="../h_src/143207212.htm" class="localvar">reg</a>, <a href="../h_src/143207348.htm" class="localvar">sym</a>);
+<a id=403></a>    if (<a href="../h_src/143207076.htm" class="localvar">f</a> == NULL)
+<a id=404></a>      return <a href="../h_src/143207892.htm" class="macro">ERRFUNC</a>;  <a  class="comments">/* unable to find function */</a>
+<a id=405></a>    <a href="../h_src/57428884.htm" class="macro">lua_pushcfunction</a>(<a href="../h_src/143207620.htm" class="localvar">L</a>, <a href="../h_src/143207076.htm" class="localvar">f</a>);  <a  class="comments">/* else create new function */</a>
+<a id=406></a>    return 0;  <a  class="comments">/* no errors */</a>
+  }
+}
+
+
+<a id=411></a>static int <a href="../h_src/143206940.htm" class="function">ll_loadlib</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143206804.htm" class="localvar">L</a>) {
+<a id=412></a>  const char *<a href="../h_src/143206668.htm" class="localvar">path</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143206804.htm" class="localvar">L</a>, 1);
+<a id=413></a>  const char *<a href="../h_src/143206532.htm" class="localvar">init</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143206804.htm" class="localvar">L</a>, 2);
+<a id=414></a>  int <a href="../h_src/143206396.htm" class="localvar">stat</a> = <a href="../h_src/143207756.htm" class="function">lookforfunc</a>(<a href="../h_src/143206804.htm" class="localvar">L</a>, <a href="../h_src/143206668.htm" class="localvar">path</a>, <a href="../h_src/143206532.htm" class="localvar">init</a>);
+<a id=415></a>  if (<a href="../h_src/57551704.htm" class="macro">l_likely</a>(<a href="../h_src/143206396.htm" class="localvar">stat</a> == 0))  <a  class="comments">/* no errors? */</a>
+<a id=416></a>    return 1;  <a  class="comments">/* return the loaded function */</a>
+<a id=417></a>  else {  <a  class="comments">/* error; error message is on stack top */</a>
+<a id=418></a>    <a href="../h_src/57415760.htm" class="macro">luaL_pushfail</a>(<a href="../h_src/143206804.htm" class="localvar">L</a>);
+<a id=419></a>    <a href="../h_src/57427252.htm" class="macro">lua_insert</a>(<a href="../h_src/143206804.htm" class="localvar">L</a>, -2);
+<a id=420></a>    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/143206804.htm" class="localvar">L</a>, (<a href="../h_src/143206396.htm" class="localvar">stat</a> == <a href="../h_src/143208028.htm" class="macro">ERRLIB</a>) ?  <a href="../h_src/143215780.htm" class="macro">LIB_FAIL</a> : &quot;init&quot;);
+<a id=421></a>    return 3;  <a  class="comments">/* return fail, error message, and where */</a>
+  }
+}
+
+
+
+<a id=427></a><a  class="comments">/*</a>
+<a id=428></a><a  class="comments">** {======================================================</a>
+<a id=429></a><a  class="comments">** 'require' function</a>
+<a id=430></a><a  class="comments">** =======================================================</a>
+<a id=431></a><a  class="comments">*/</a>
+
+
+<a id=434></a>static int <a href="../h_src/143206260.htm" class="function">readable</a> (const char *<a href="../h_src/143206124.htm" class="localvar">filename</a>) {
+<a id=435></a>  FILE *f = <a href="../h_aa/58324460.htm" class="libfunc">fopen</a>(<a href="../h_src/143206124.htm" class="localvar">filename</a>, &quot;r&quot;);  <a  class="comments">/* try to open file */</a>
+<a id=436></a>  if (f == NULL) return 0;  <a  class="comments">/* open failed */</a>
+<a id=437></a>  <a href="../h_aa/58324188.htm" class="libfunc">fclose</a>(f);
+  return 1;
+}
+
+
+<a id=442></a><a  class="comments">/*</a>
+<a id=443></a><a  class="comments">** Get the next name in '*path' = 'name1;name2;name3;...', changing</a>
+<a id=444></a><a  class="comments">** the ending ';' to '\0' to create a zero-terminated string. Return</a>
+<a id=445></a><a  class="comments">** NULL when list ends.</a>
+<a id=446></a><a  class="comments">*/</a>
+<a id=447></a>static const char *<a href="../h_src/143205988.htm" class="function">getnextfilename</a> (char **<a href="../h_src/143205852.htm" class="localvar">path</a>, char *<a href="../h_src/143205716.htm" class="localvar">end</a>) {
+<a id=448></a>  char *<a href="../h_src/143205580.htm" class="localvar">sep</a>;
+<a id=449></a>  char *<a href="../h_src/143205444.htm" class="localvar">name</a> = *<a href="../h_src/143205852.htm" class="localvar">path</a>;
+<a id=450></a>  if (<a href="../h_src/143205444.htm" class="localvar">name</a> == <a href="../h_src/143205716.htm" class="localvar">end</a>)
+<a id=451></a>    return NULL;  <a  class="comments">/* no more names */</a>
+<a id=452></a>  else if (*<a href="../h_src/143205444.htm" class="localvar">name</a> == '\0') {  <a  class="comments">/* from previous iteration? */</a>
+<a id=453></a>    *<a href="../h_src/143205444.htm" class="localvar">name</a> = *<a href="../h_src/57456628.htm" class="macro">LUA_PATH_SEP</a>;  <a  class="comments">/* restore separator */</a>
+<a id=454></a>    <a href="../h_src/143205444.htm" class="localvar">name</a>++;  <a  class="comments">/* skip it */</a>
+  }
+<a id=456></a>  <a href="../h_src/143205580.htm" class="localvar">sep</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143205444.htm" class="localvar">name</a>, *<a href="../h_src/57456628.htm" class="macro">LUA_PATH_SEP</a>);  <a  class="comments">/* find next separator */</a>
+<a id=457></a>  if (<a href="../h_src/143205580.htm" class="localvar">sep</a> == NULL)  <a  class="comments">/* separator not found? */</a>
+<a id=458></a>    <a href="../h_src/143205580.htm" class="localvar">sep</a> = <a href="../h_src/143205716.htm" class="localvar">end</a>;  <a  class="comments">/* name goes until the end */</a>
+<a id=459></a>  *<a href="../h_src/143205580.htm" class="localvar">sep</a> = '\0';  <a  class="comments">/* finish file name */</a>
+<a id=460></a>  *<a href="../h_src/143205852.htm" class="localvar">path</a> = <a href="../h_src/143205580.htm" class="localvar">sep</a>;  <a  class="comments">/* will start next search from here */</a>
+<a id=461></a>  return <a href="../h_src/143205444.htm" class="localvar">name</a>;
+}
+
+
+<a id=465></a><a  class="comments">/*</a>
+<a id=466></a><a  class="comments">** Given a path such as &quot;;blabla.so;blublu.so&quot;, pushes the string</a>
+<a id=467></a><a  class="comments">**</a>
+<a id=468></a><a  class="comments">** no file 'blabla.so'</a>
+<a id=469></a><a  class="comments">**	no file 'blublu.so'</a>
+<a id=470></a><a  class="comments">*/</a>
+<a id=471></a>static void <a href="../h_src/143205308.htm" class="function">pusherrornotfound</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143205172.htm" class="localvar">L</a>, const char *<a href="../h_src/143205036.htm" class="localvar">path</a>) {
+<a id=472></a>  <a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> <a href="../h_src/143204900.htm" class="localvar">b</a>;
+<a id=473></a>  <a href="../h_src/57413652.htm" class="function">luaL_buffinit</a>(<a href="../h_src/143205172.htm" class="localvar">L</a>, &amp;<a href="../h_src/143204900.htm" class="localvar">b</a>);
+<a id=474></a>  <a href="../h_src/57413448.htm" class="function">luaL_addstring</a>(&amp;<a href="../h_src/143204900.htm" class="localvar">b</a>, &quot;no file '&quot;);
+<a id=475></a>  <a href="../h_src/57418072.htm" class="function">luaL_addgsub</a>(&amp;<a href="../h_src/143204900.htm" class="localvar">b</a>, <a href="../h_src/143205036.htm" class="localvar">path</a>, <a href="../h_src/57456628.htm" class="macro">LUA_PATH_SEP</a>, &quot;'\n\tno file '&quot;);
+<a id=476></a>  <a href="../h_src/57413448.htm" class="function">luaL_addstring</a>(&amp;<a href="../h_src/143204900.htm" class="localvar">b</a>, &quot;'&quot;);
+<a id=477></a>  <a href="../h_src/57413312.htm" class="function">luaL_pushresult</a>(&amp;<a href="../h_src/143204900.htm" class="localvar">b</a>);
+}
+
+
+<a id=481></a>static const char *<a href="../h_src/143204764.htm" class="function">searchpath</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143204628.htm" class="localvar">L</a>, const char *<a href="../h_src/143204492.htm" class="localvar">name</a>,
+<a id=482></a>                                             const char *<a href="../h_src/143204356.htm" class="localvar">path</a>,
+<a id=483></a>                                             const char *<a href="../h_src/143204220.htm" class="localvar">sep</a>,
+<a id=484></a>                                             const char *<a href="../h_src/143204084.htm" class="localvar">dirsep</a>) {
+<a id=485></a>  <a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> <a href="../h_src/143203948.htm" class="localvar">buff</a>;
+<a id=486></a>  char *<a href="../h_src/143203812.htm" class="localvar">pathname</a>;  <a  class="comments">/* path with name inserted */</a>
+<a id=487></a>  char *<a href="../h_src/143203676.htm" class="localvar">endpathname</a>;  <a  class="comments">/* its end */</a>
+<a id=488></a>  const char *<a href="../h_src/143203540.htm" class="localvar">filename</a>;
+<a id=489></a>  <a  class="comments">/* separator is non-empty and appears in 'name'? */</a>
+<a id=490></a>  if (*<a href="../h_src/143204220.htm" class="localvar">sep</a> != '\0' &amp;&amp; <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143204492.htm" class="localvar">name</a>, *<a href="../h_src/143204220.htm" class="localvar">sep</a>) != NULL)
+<a id=491></a>    <a href="../h_src/143204492.htm" class="localvar">name</a> = <a href="../h_src/57417936.htm" class="function">luaL_gsub</a>(<a href="../h_src/143204628.htm" class="localvar">L</a>, <a href="../h_src/143204492.htm" class="localvar">name</a>, <a href="../h_src/143204220.htm" class="localvar">sep</a>, <a href="../h_src/143204084.htm" class="localvar">dirsep</a>);  <a  class="comments">/* replace it by 'dirsep' */</a>
+<a id=492></a>  <a href="../h_src/57413652.htm" class="function">luaL_buffinit</a>(<a href="../h_src/143204628.htm" class="localvar">L</a>, &amp;<a href="../h_src/143203948.htm" class="localvar">buff</a>);
+<a id=493></a>  <a  class="comments">/* add path to the buffer, replacing marks ('?') with the file name */</a>
+<a id=494></a>  <a href="../h_src/57418072.htm" class="function">luaL_addgsub</a>(&amp;<a href="../h_src/143203948.htm" class="localvar">buff</a>, <a href="../h_src/143204356.htm" class="localvar">path</a>, <a href="../h_src/57456492.htm" class="macro">LUA_PATH_MARK</a>, <a href="../h_src/143204492.htm" class="localvar">name</a>);
+<a id=495></a>  <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143203948.htm" class="localvar">buff</a>, '\0');
+<a id=496></a>  <a href="../h_src/143203812.htm" class="localvar">pathname</a> = <a href="../h_src/57414196.htm" class="macro">luaL_buffaddr</a>(&amp;<a href="../h_src/143203948.htm" class="localvar">buff</a>);  <a  class="comments">/* writable list of file names */</a>
+<a id=497></a>  <a href="../h_src/143203676.htm" class="localvar">endpathname</a> = <a href="../h_src/143203812.htm" class="localvar">pathname</a> + <a href="../h_src/57414332.htm" class="macro">luaL_bufflen</a>(&amp;<a href="../h_src/143203948.htm" class="localvar">buff</a>) - 1;
+<a id=498></a>  while ((<a href="../h_src/143203540.htm" class="localvar">filename</a> = <a href="../h_src/143205988.htm" class="function">getnextfilename</a>(&amp;<a href="../h_src/143203812.htm" class="localvar">pathname</a>, <a href="../h_src/143203676.htm" class="localvar">endpathname</a>)) != NULL) {
+<a id=499></a>    if (<a href="../h_src/143206260.htm" class="function">readable</a>(<a href="../h_src/143203540.htm" class="localvar">filename</a>))  <a  class="comments">/* does file exist and is readable? */</a>
+<a id=500></a>      return <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/143204628.htm" class="localvar">L</a>, <a href="../h_src/143203540.htm" class="localvar">filename</a>);  <a  class="comments">/* save and return name */</a>
+  }
+<a id=502></a>  <a href="../h_src/57413312.htm" class="function">luaL_pushresult</a>(&amp;<a href="../h_src/143203948.htm" class="localvar">buff</a>);  <a  class="comments">/* push path to create error message */</a>
+<a id=503></a>  <a href="../h_src/143205308.htm" class="function">pusherrornotfound</a>(<a href="../h_src/143204628.htm" class="localvar">L</a>, <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143204628.htm" class="localvar">L</a>, -1));  <a  class="comments">/* create error message */</a>
+<a id=504></a>  return NULL;  <a  class="comments">/* not found */</a>
+}
+
+
+<a id=508></a>static int <a href="../h_src/143203404.htm" class="function">ll_searchpath</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143203268.htm" class="localvar">L</a>) {
+<a id=509></a>  const char *<a href="../h_src/143203132.htm" class="localvar">f</a> = <a href="../h_src/143204764.htm" class="function">searchpath</a>(<a href="../h_src/143203268.htm" class="localvar">L</a>, <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143203268.htm" class="localvar">L</a>, 1),
+<a id=510></a>                                <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143203268.htm" class="localvar">L</a>, 2),
+<a id=511></a>                                <a href="../h_src/57416848.htm" class="macro">luaL_optstring</a>(<a href="../h_src/143203268.htm" class="localvar">L</a>, 3, &quot;.&quot;),
+<a id=512></a>                                <a href="../h_src/57416848.htm" class="macro">luaL_optstring</a>(<a href="../h_src/143203268.htm" class="localvar">L</a>, 4, <a href="../h_src/57454996.htm" class="macro">LUA_DIRSEP</a>));
+<a id=513></a>  if (<a href="../h_src/143203132.htm" class="localvar">f</a> != NULL) return 1;
+<a id=514></a>  else {  <a  class="comments">/* error message is on top of the stack */</a>
+<a id=515></a>    <a href="../h_src/57415760.htm" class="macro">luaL_pushfail</a>(<a href="../h_src/143203268.htm" class="localvar">L</a>);
+<a id=516></a>    <a href="../h_src/57427252.htm" class="macro">lua_insert</a>(<a href="../h_src/143203268.htm" class="localvar">L</a>, -2);
+<a id=517></a>    return 2;  <a  class="comments">/* return fail + error message */</a>
+  }
+}
+
+
+<a id=522></a>static const char *<a href="../h_src/143202996.htm" class="function">findfile</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143202860.htm" class="localvar">L</a>, const char *<a href="../h_src/143202724.htm" class="localvar">name</a>,
+<a id=523></a>                                           const char *<a href="../h_src/143202588.htm" class="localvar">pname</a>,
+<a id=524></a>                                           const char *<a href="../h_src/143202452.htm" class="localvar">dirsep</a>) {
+<a id=525></a>  const char *<a href="../h_src/143202316.htm" class="localvar">path</a>;
+<a id=526></a>  <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143202860.htm" class="localvar">L</a>, <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(1), <a href="../h_src/143202588.htm" class="localvar">pname</a>);
+<a id=527></a>  <a href="../h_src/143202316.htm" class="localvar">path</a> = <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143202860.htm" class="localvar">L</a>, -1);
+<a id=528></a>  if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/143202316.htm" class="localvar">path</a> == NULL))
+<a id=529></a>    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143202860.htm" class="localvar">L</a>, &quot;'package.%s' must be a string&quot;, <a href="../h_src/143202588.htm" class="localvar">pname</a>);
+<a id=530></a>  return <a href="../h_src/143204764.htm" class="function">searchpath</a>(<a href="../h_src/143202860.htm" class="localvar">L</a>, <a href="../h_src/143202724.htm" class="localvar">name</a>, <a href="../h_src/143202316.htm" class="localvar">path</a>, &quot;.&quot;, <a href="../h_src/143202452.htm" class="localvar">dirsep</a>);
+}
+
+
+<a id=534></a>static int <a href="../h_src/143202180.htm" class="function">checkload</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143202044.htm" class="localvar">L</a>, int <a href="../h_src/143201908.htm" class="localvar">stat</a>, const char *<a href="../h_src/143201772.htm" class="localvar">filename</a>) {
+<a id=535></a>  if (<a href="../h_src/57551704.htm" class="macro">l_likely</a>(<a href="../h_src/143201908.htm" class="localvar">stat</a>)) {  <a  class="comments">/* module loaded successfully? */</a>
+<a id=536></a>    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/143202044.htm" class="localvar">L</a>, <a href="../h_src/143201772.htm" class="localvar">filename</a>);  <a  class="comments">/* will be 2nd argument to module */</a>
+<a id=537></a>    return 2;  <a  class="comments">/* return open function and file name */</a>
+  }
+  else
+<a id=540></a>    return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143202044.htm" class="localvar">L</a>, &quot;error loading module '%s' from file '%s':\n\t%s&quot;,
+<a id=541></a>                          <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143202044.htm" class="localvar">L</a>, 1), <a href="../h_src/143201772.htm" class="localvar">filename</a>, <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143202044.htm" class="localvar">L</a>, -1));
+}
+
+
+<a id=545></a>static int <a href="../h_src/143201636.htm" class="function">searcher_Lua</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143201500.htm" class="localvar">L</a>) {
+<a id=546></a>  const char *<a href="../h_src/143201364.htm" class="localvar">filename</a>;
+<a id=547></a>  const char *<a href="../h_src/143201228.htm" class="localvar">name</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143201500.htm" class="localvar">L</a>, 1);
+<a id=548></a>  <a href="../h_src/143201364.htm" class="localvar">filename</a> = <a href="../h_src/143202996.htm" class="function">findfile</a>(<a href="../h_src/143201500.htm" class="localvar">L</a>, <a href="../h_src/143201228.htm" class="localvar">name</a>, &quot;path&quot;, <a href="../h_src/143216256.htm" class="macro">LUA_LSUBSEP</a>);
+<a id=549></a>  if (<a href="../h_src/143201364.htm" class="localvar">filename</a> == NULL) return 1;  <a  class="comments">/* module not found in this path */</a>
+<a id=550></a>  return <a href="../h_src/143202180.htm" class="function">checkload</a>(<a href="../h_src/143201500.htm" class="localvar">L</a>, (<a href="../h_src/57418480.htm" class="macro">luaL_loadfile</a>(<a href="../h_src/143201500.htm" class="localvar">L</a>, <a href="../h_src/143201364.htm" class="localvar">filename</a>) == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>), <a href="../h_src/143201364.htm" class="localvar">filename</a>);
+}
+
+
+<a id=554></a><a  class="comments">/*</a>
+<a id=555></a><a  class="comments">** Try to find a load function for module 'modname' at file 'filename'.</a>
+<a id=556></a><a  class="comments">** First, change '.' to '_' in 'modname'; then, if 'modname' has</a>
+<a id=557></a><a  class="comments">** the form X-Y (that is, it has an &quot;ignore mark&quot;), build a function</a>
+<a id=558></a><a  class="comments">** name &quot;luaopen_X&quot; and look for it. (For compatibility, if that</a>
+<a id=559></a><a  class="comments">** fails, it also tries &quot;luaopen_Y&quot;.) If there is no ignore mark,</a>
+<a id=560></a><a  class="comments">** look for a function named &quot;luaopen_modname&quot;.</a>
+<a id=561></a><a  class="comments">*/</a>
+<a id=562></a>static int <a href="../h_src/143201092.htm" class="function">loadfunc</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143200956.htm" class="localvar">L</a>, const char *<a href="../h_src/143200820.htm" class="localvar">filename</a>, const char *<a href="../h_src/143200684.htm" class="localvar">modname</a>) {
+<a id=563></a>  const char *<a href="../h_src/143200548.htm" class="localvar">openfunc</a>;
+<a id=564></a>  const char *<a href="../h_src/143200412.htm" class="localvar">mark</a>;
+<a id=565></a>  <a href="../h_src/143200684.htm" class="localvar">modname</a> = <a href="../h_src/57417936.htm" class="function">luaL_gsub</a>(<a href="../h_src/143200956.htm" class="localvar">L</a>, <a href="../h_src/143200684.htm" class="localvar">modname</a>, &quot;.&quot;, <a href="../h_src/143215984.htm" class="macro">LUA_OFSEP</a>);
+<a id=566></a>  <a href="../h_src/143200412.htm" class="localvar">mark</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143200684.htm" class="localvar">modname</a>, *<a href="../h_src/143216800.htm" class="macro">LUA_IGMARK</a>);
+<a id=567></a>  if (<a href="../h_src/143200412.htm" class="localvar">mark</a>) {
+<a id=568></a>    int <a href="../h_src/143200276.htm" class="localvar">stat</a>;
+<a id=569></a>    <a href="../h_src/143200548.htm" class="localvar">openfunc</a> = <a href="../h_src/57435072.htm" class="function">lua_pushlstring</a>(<a href="../h_src/143200956.htm" class="localvar">L</a>, <a href="../h_src/143200684.htm" class="localvar">modname</a>, <a href="../h_src/143200412.htm" class="localvar">mark</a> - <a href="../h_src/143200684.htm" class="localvar">modname</a>);
+<a id=570></a>    <a href="../h_src/143200548.htm" class="localvar">openfunc</a> = <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/143200956.htm" class="localvar">L</a>, <a href="../h_src/143216120.htm" class="macro">LUA_POF</a>&quot;%s&quot;, <a href="../h_src/143200548.htm" class="localvar">openfunc</a>);
+<a id=571></a>    <a href="../h_src/143200276.htm" class="localvar">stat</a> = <a href="../h_src/143207756.htm" class="function">lookforfunc</a>(<a href="../h_src/143200956.htm" class="localvar">L</a>, <a href="../h_src/143200820.htm" class="localvar">filename</a>, <a href="../h_src/143200548.htm" class="localvar">openfunc</a>);
+<a id=572></a>    if (<a href="../h_src/143200276.htm" class="localvar">stat</a> != <a href="../h_src/143207892.htm" class="macro">ERRFUNC</a>) return <a href="../h_src/143200276.htm" class="localvar">stat</a>;
+<a id=573></a>    <a href="../h_src/143200684.htm" class="localvar">modname</a> = <a href="../h_src/143200412.htm" class="localvar">mark</a> + 1;  <a  class="comments">/* else go ahead and try old-style name */</a>
+  }
+<a id=575></a>  <a href="../h_src/143200548.htm" class="localvar">openfunc</a> = <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/143200956.htm" class="localvar">L</a>, <a href="../h_src/143216120.htm" class="macro">LUA_POF</a>&quot;%s&quot;, <a href="../h_src/143200684.htm" class="localvar">modname</a>);
+<a id=576></a>  return <a href="../h_src/143207756.htm" class="function">lookforfunc</a>(<a href="../h_src/143200956.htm" class="localvar">L</a>, <a href="../h_src/143200820.htm" class="localvar">filename</a>, <a href="../h_src/143200548.htm" class="localvar">openfunc</a>);
+}
+
+
+<a id=580></a>static int <a href="../h_src/143200140.htm" class="function">searcher_C</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143200004.htm" class="localvar">L</a>) {
+<a id=581></a>  const char *<a href="../h_src/143199868.htm" class="localvar">name</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143200004.htm" class="localvar">L</a>, 1);
+<a id=582></a>  const char *<a href="../h_src/143199732.htm" class="localvar">filename</a> = <a href="../h_src/143202996.htm" class="function">findfile</a>(<a href="../h_src/143200004.htm" class="localvar">L</a>, <a href="../h_src/143199868.htm" class="localvar">name</a>, &quot;cpath&quot;, <a href="../h_src/143216528.htm" class="macro">LUA_CSUBSEP</a>);
+<a id=583></a>  if (<a href="../h_src/143199732.htm" class="localvar">filename</a> == NULL) return 1;  <a  class="comments">/* module not found in this path */</a>
+<a id=584></a>  return <a href="../h_src/143202180.htm" class="function">checkload</a>(<a href="../h_src/143200004.htm" class="localvar">L</a>, (<a href="../h_src/143201092.htm" class="function">loadfunc</a>(<a href="../h_src/143200004.htm" class="localvar">L</a>, <a href="../h_src/143199732.htm" class="localvar">filename</a>, <a href="../h_src/143199868.htm" class="localvar">name</a>) == 0), <a href="../h_src/143199732.htm" class="localvar">filename</a>);
+}
+
+
+<a id=588></a>static int <a href="../h_src/143199596.htm" class="function">searcher_Croot</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143199460.htm" class="localvar">L</a>) {
+<a id=589></a>  const char *<a href="../h_src/143199324.htm" class="localvar">filename</a>;
+<a id=590></a>  const char *<a href="../h_src/143199188.htm" class="localvar">name</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143199460.htm" class="localvar">L</a>, 1);
+<a id=591></a>  const char *<a href="../h_src/143199052.htm" class="localvar">p</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143199188.htm" class="localvar">name</a>, '.');
+<a id=592></a>  int <a href="../h_src/143198916.htm" class="localvar">stat</a>;
+<a id=593></a>  if (<a href="../h_src/143199052.htm" class="localvar">p</a> == NULL) return 0;  <a  class="comments">/* is root */</a>
+<a id=594></a>  <a href="../h_src/57435072.htm" class="function">lua_pushlstring</a>(<a href="../h_src/143199460.htm" class="localvar">L</a>, <a href="../h_src/143199188.htm" class="localvar">name</a>, <a href="../h_src/143199052.htm" class="localvar">p</a> - <a href="../h_src/143199188.htm" class="localvar">name</a>);
+<a id=595></a>  <a href="../h_src/143199324.htm" class="localvar">filename</a> = <a href="../h_src/143202996.htm" class="function">findfile</a>(<a href="../h_src/143199460.htm" class="localvar">L</a>, <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143199460.htm" class="localvar">L</a>, -1), &quot;cpath&quot;, <a href="../h_src/143216528.htm" class="macro">LUA_CSUBSEP</a>);
+<a id=596></a>  if (<a href="../h_src/143199324.htm" class="localvar">filename</a> == NULL) return 1;  <a  class="comments">/* root not found */</a>
+<a id=597></a>  if ((<a href="../h_src/143198916.htm" class="localvar">stat</a> = <a href="../h_src/143201092.htm" class="function">loadfunc</a>(<a href="../h_src/143199460.htm" class="localvar">L</a>, <a href="../h_src/143199324.htm" class="localvar">filename</a>, <a href="../h_src/143199188.htm" class="localvar">name</a>)) != 0) {
+<a id=598></a>    if (<a href="../h_src/143198916.htm" class="localvar">stat</a> != <a href="../h_src/143207892.htm" class="macro">ERRFUNC</a>)
+<a id=599></a>      return <a href="../h_src/143202180.htm" class="function">checkload</a>(<a href="../h_src/143199460.htm" class="localvar">L</a>, 0, <a href="../h_src/143199324.htm" class="localvar">filename</a>);  <a  class="comments">/* real error */</a>
+<a id=600></a>    else {  <a  class="comments">/* open function not found */</a>
+<a id=601></a>      <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/143199460.htm" class="localvar">L</a>, &quot;no module '%s' in file '%s'&quot;, <a href="../h_src/143199188.htm" class="localvar">name</a>, <a href="../h_src/143199324.htm" class="localvar">filename</a>);
+      return 1;
+    }
+  }
+<a id=605></a>  <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/143199460.htm" class="localvar">L</a>, <a href="../h_src/143199324.htm" class="localvar">filename</a>);  <a  class="comments">/* will be 2nd argument to module */</a>
+  return 2;
+}
+
+
+<a id=610></a>static int <a href="../h_src/143198780.htm" class="function">searcher_preload</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143198644.htm" class="localvar">L</a>) {
+<a id=611></a>  const char *<a href="../h_src/143198508.htm" class="localvar">name</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143198644.htm" class="localvar">L</a>, 1);
+<a id=612></a>  <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143198644.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/57421404.htm" class="macro">LUA_PRELOAD_TABLE</a>);
+<a id=613></a>  if (<a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143198644.htm" class="localvar">L</a>, -1, <a href="../h_src/143198508.htm" class="localvar">name</a>) == <a href="../h_src/57444048.htm" class="macro">LUA_TNIL</a>) {  <a  class="comments">/* not found? */</a>
+<a id=614></a>    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/143198644.htm" class="localvar">L</a>, &quot;no field package.preload['%s']&quot;, <a href="../h_src/143198508.htm" class="localvar">name</a>);
+    return 1;
+  }
+  else {
+<a id=618></a>    <a href="../h_src/57427660.htm" class="macro">lua_pushliteral</a>(<a href="../h_src/143198644.htm" class="localvar">L</a>, &quot;:preload:&quot;);
+    return 2;
+  }
+}
+
+
+<a id=624></a>static void <a href="../h_src/143198372.htm" class="function">findloader</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143198236.htm" class="localvar">L</a>, const char *<a href="../h_src/143198100.htm" class="localvar">name</a>) {
+<a id=625></a>  int <a href="../h_src/143197964.htm" class="localvar">i</a>;
+<a id=626></a>  <a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> <a href="../h_src/143197828.htm" class="localvar">msg</a>;  <a  class="comments">/* to build error message */</a>
+<a id=627></a>  <a  class="comments">/* push 'package.searchers' to index 3 in the stack */</a>
+<a id=628></a>  if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(1), &quot;searchers&quot;)
+<a id=629></a>                 != <a href="../h_src/57443368.htm" class="macro">LUA_TTABLE</a>))
+<a id=630></a>    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, &quot;'package.searchers' must be a table&quot;);
+<a id=631></a>  <a href="../h_src/57413652.htm" class="function">luaL_buffinit</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, &amp;<a href="../h_src/143197828.htm" class="localvar">msg</a>);
+<a id=632></a>  <a  class="comments">/*  iterate over available searchers to find a loader */</a>
+<a id=633></a>  for (<a href="../h_src/143197964.htm" class="localvar">i</a> = 1; ; <a href="../h_src/143197964.htm" class="localvar">i</a>++) {
+<a id=634></a>    <a href="../h_src/57413448.htm" class="function">luaL_addstring</a>(&amp;<a href="../h_src/143197828.htm" class="localvar">msg</a>, &quot;\n\t&quot;);  <a  class="comments">/* error-message prefix */</a>
+<a id=635></a>    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57434052.htm" class="function">lua_rawgeti</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, 3, <a href="../h_src/143197964.htm" class="localvar">i</a>) == <a href="../h_src/57444048.htm" class="macro">LUA_TNIL</a>)) {  <a  class="comments">/* no more searchers? */</a>
+<a id=636></a>      <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove nil */</a>
+<a id=637></a>      <a href="../h_src/57413788.htm" class="macro">luaL_buffsub</a>(&amp;<a href="../h_src/143197828.htm" class="localvar">msg</a>, 2);  <a  class="comments">/* remove prefix */</a>
+<a id=638></a>      <a href="../h_src/57413312.htm" class="function">luaL_pushresult</a>(&amp;<a href="../h_src/143197828.htm" class="localvar">msg</a>);  <a  class="comments">/* create error message */</a>
+<a id=639></a>      <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, &quot;module '%s' not found:%s&quot;, <a href="../h_src/143198100.htm" class="localvar">name</a>, <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, -1));
+    }
+<a id=641></a>    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, <a href="../h_src/143198100.htm" class="localvar">name</a>);
+<a id=642></a>    <a href="../h_src/57432964.htm" class="macro">lua_call</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, 1, 2);  <a  class="comments">/* call it */</a>
+<a id=643></a>    if (<a href="../h_src/57428748.htm" class="macro">lua_isfunction</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, -2))  <a  class="comments">/* did it find a loader? */</a>
+<a id=644></a>      return;  <a  class="comments">/* module loader found */</a>
+<a id=645></a>    else if (<a href="../h_src/57438812.htm" class="function">lua_isstring</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, -2)) {  <a  class="comments">/* searcher returned error message? */</a>
+<a id=646></a>      <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove extra return */</a>
+<a id=647></a>      <a href="../h_src/57413380.htm" class="function">luaL_addvalue</a>(&amp;<a href="../h_src/143197828.htm" class="localvar">msg</a>);  <a  class="comments">/* concatenate error message */</a>
+    }
+<a id=649></a>    else {  <a  class="comments">/* no error message */</a>
+<a id=650></a>      <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, 2);  <a  class="comments">/* remove both returns */</a>
+<a id=651></a>      <a href="../h_src/57413788.htm" class="macro">luaL_buffsub</a>(&amp;<a href="../h_src/143197828.htm" class="localvar">msg</a>, 2);  <a  class="comments">/* remove prefix */</a>
+    }
+  }
+}
+
+
+<a id=657></a>static int <a href="../h_src/143197692.htm" class="function">ll_require</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143197556.htm" class="localvar">L</a>) {
+<a id=658></a>  const char *<a href="../h_src/143197420.htm" class="localvar">name</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143197556.htm" class="localvar">L</a>, 1);
+<a id=659></a>  <a href="../h_src/57439288.htm" class="function">lua_settop</a>(<a href="../h_src/143197556.htm" class="localvar">L</a>, 1);  <a  class="comments">/* LOADED table will be at index 2 */</a>
+<a id=660></a>  <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143197556.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/57421540.htm" class="macro">LUA_LOADED_TABLE</a>);
+<a id=661></a>  <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143197556.htm" class="localvar">L</a>, 2, <a href="../h_src/143197420.htm" class="localvar">name</a>);  <a  class="comments">/* LOADED[name] */</a>
+<a id=662></a>  if (<a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/143197556.htm" class="localvar">L</a>, -1))  <a  class="comments">/* is it there? */</a>
+<a id=663></a>    return 1;  <a  class="comments">/* package is already loaded */</a>
+<a id=664></a>  <a  class="comments">/* else must load package */</a>
+<a id=665></a>  <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143197556.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove 'getfield' result */</a>
+<a id=666></a>  <a href="../h_src/143198372.htm" class="function">findloader</a>(<a href="../h_src/143197556.htm" class="localvar">L</a>, <a href="../h_src/143197420.htm" class="localvar">name</a>);
+<a id=667></a>  <a href="../h_src/57439152.htm" class="function">lua_rotate</a>(<a href="../h_src/143197556.htm" class="localvar">L</a>, -2, 1);  <a  class="comments">/* function &lt;-&gt; loader data */</a>
+<a id=668></a>  <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/143197556.htm" class="localvar">L</a>, 1);  <a  class="comments">/* name is 1st argument to module loader */</a>
+<a id=669></a>  <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/143197556.htm" class="localvar">L</a>, -3);  <a  class="comments">/* loader data is 2nd argument */</a>
+<a id=670></a>  <a  class="comments">/* stack: ...; loader data; loader function; mod. name; loader data */</a>
+<a id=671></a>  <a href="../h_src/57432964.htm" class="macro">lua_call</a>(<a href="../h_src/143197556.htm" class="localvar">L</a>, 2, 1);  <a  class="comments">/* run loader to load module */</a>
+<a id=672></a>  <a  class="comments">/* stack: ...; loader data; result from loader */</a>
+<a id=673></a>  if (!<a href="../h_src/57428340.htm" class="macro">lua_isnil</a>(<a href="../h_src/143197556.htm" class="localvar">L</a>, -1))  <a  class="comments">/* non-nil return? */</a>
+<a id=674></a>    <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/143197556.htm" class="localvar">L</a>, 2, <a href="../h_src/143197420.htm" class="localvar">name</a>);  <a  class="comments">/* LOADED[name] = returned value */</a>
+  else
+<a id=676></a>    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143197556.htm" class="localvar">L</a>, 1);  <a  class="comments">/* pop nil */</a>
+<a id=677></a>  if (<a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143197556.htm" class="localvar">L</a>, 2, <a href="../h_src/143197420.htm" class="localvar">name</a>) == <a href="../h_src/57444048.htm" class="macro">LUA_TNIL</a>) {   <a  class="comments">/* module set no value? */</a>
+<a id=678></a>    <a href="../h_src/57434596.htm" class="function">lua_pushboolean</a>(<a href="../h_src/143197556.htm" class="localvar">L</a>, 1);  <a  class="comments">/* use true as result */</a>
+<a id=679></a>    <a href="../h_src/57439084.htm" class="function">lua_copy</a>(<a href="../h_src/143197556.htm" class="localvar">L</a>, -1, -2);  <a  class="comments">/* replace loader result */</a>
+<a id=680></a>    <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/143197556.htm" class="localvar">L</a>, 2, <a href="../h_src/143197420.htm" class="localvar">name</a>);  <a  class="comments">/* LOADED[name] = true */</a>
+  }
+<a id=682></a>  <a href="../h_src/57439152.htm" class="function">lua_rotate</a>(<a href="../h_src/143197556.htm" class="localvar">L</a>, -2, 1);  <a  class="comments">/* loader data &lt;-&gt; module result  */</a>
+<a id=683></a>  return 2;  <a  class="comments">/* return module result and loader data */</a>
+}
+
+<a id=686></a><a  class="comments">/* }====================================================== */</a>
+
+
+
+
+<a id=691></a>static const <a href="../h_src/57420996.htm" class="type">luaL_Reg</a> <a href="../h_src/143197284.htm" class="variable">pk_funcs</a>[] = {
+<a id=692></a>  {&quot;loadlib&quot;, <a href="../h_src/143206940.htm" class="function">ll_loadlib</a>},
+<a id=693></a>  {&quot;searchpath&quot;, <a href="../h_src/143203404.htm" class="function">ll_searchpath</a>},
+<a id=694></a>  <a  class="comments">/* placeholders */</a>
+  {&quot;preload&quot;, NULL},
+  {&quot;cpath&quot;, NULL},
+  {&quot;path&quot;, NULL},
+  {&quot;searchers&quot;, NULL},
+  {&quot;loaded&quot;, NULL},
+  {NULL, NULL}
+};
+
+
+<a id=704></a>static const <a href="../h_src/57420996.htm" class="type">luaL_Reg</a> <a href="../h_src/143197216.htm" class="variable">ll_funcs</a>[] = {
+<a id=705></a>  {&quot;require&quot;, <a href="../h_src/143197692.htm" class="function">ll_require</a>},
+  {NULL, NULL}
+};
+
+
+<a id=710></a>static void <a href="../h_src/143197148.htm" class="function">createsearcherstable</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143197012.htm" class="localvar">L</a>) {
+<a id=711></a>  static const <a href="../h_src/57441736.htm" class="type">lua_CFunction</a> <a href="../h_src/143196808.htm" class="localvar">searchers</a>[] = {
+<a id=712></a>    <a href="../h_src/143198780.htm" class="function">searcher_preload</a>,
+<a id=713></a>    <a href="../h_src/143201636.htm" class="function">searcher_Lua</a>,
+<a id=714></a>    <a href="../h_src/143200140.htm" class="function">searcher_C</a>,
+<a id=715></a>    <a href="../h_src/143199596.htm" class="function">searcher_Croot</a>,
+    NULL
+  };
+<a id=718></a>  int <a href="../h_src/143196672.htm" class="localvar">i</a>;
+<a id=719></a>  <a  class="comments">/* create 'searchers' table */</a>
+<a id=720></a>  <a href="../h_src/57433916.htm" class="function">lua_createtable</a>(<a href="../h_src/143197012.htm" class="localvar">L</a>, sizeof(<a href="../h_src/143196808.htm" class="localvar">searchers</a>)/sizeof(<a href="../h_src/143196808.htm" class="localvar">searchers</a>[0]) - 1, 0);
+<a id=721></a>  <a  class="comments">/* fill it with predefined searchers */</a>
+<a id=722></a>  for (<a href="../h_src/143196672.htm" class="localvar">i</a>=0; <a href="../h_src/143196808.htm" class="localvar">searchers</a>[<a href="../h_src/143196672.htm" class="localvar">i</a>] != NULL; <a href="../h_src/143196672.htm" class="localvar">i</a>++) {
+<a id=723></a>    <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/143197012.htm" class="localvar">L</a>, -2);  <a  class="comments">/* set 'package' as upvalue for all searchers */</a>
+<a id=724></a>    <a href="../h_src/57434664.htm" class="function">lua_pushcclosure</a>(<a href="../h_src/143197012.htm" class="localvar">L</a>, <a href="../h_src/143196808.htm" class="localvar">searchers</a>[<a href="../h_src/143196672.htm" class="localvar">i</a>], 1);
+<a id=725></a>    <a href="../h_src/57433304.htm" class="function">lua_rawseti</a>(<a href="../h_src/143197012.htm" class="localvar">L</a>, -2, <a href="../h_src/143196672.htm" class="localvar">i</a>+1);
+  }
+<a id=727></a>  <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/143197012.htm" class="localvar">L</a>, -2, &quot;searchers&quot;);  <a  class="comments">/* put it in field 'searchers' */</a>
+}
+
+
+<a id=731></a><a  class="comments">/*</a>
+<a id=732></a><a  class="comments">** create table CLIBS to keep track of loaded C libraries,</a>
+<a id=733></a><a  class="comments">** setting a finalizer to close all libraries when closing state.</a>
+<a id=734></a><a  class="comments">*/</a>
+<a id=735></a>static void <a href="../h_src/143196536.htm" class="function">createclibstable</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143196400.htm" class="localvar">L</a>) {
+<a id=736></a>  <a href="../h_src/57417732.htm" class="function">luaL_getsubtable</a>(<a href="../h_src/143196400.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/143215848.htm" class="variable">CLIBS</a>);  <a  class="comments">/* create CLIBS table */</a>
+<a id=737></a>  <a href="../h_src/57433916.htm" class="function">lua_createtable</a>(<a href="../h_src/143196400.htm" class="localvar">L</a>, 0, 1);  <a  class="comments">/* create metatable for CLIBS */</a>
+<a id=738></a>  <a href="../h_src/57428884.htm" class="macro">lua_pushcfunction</a>(<a href="../h_src/143196400.htm" class="localvar">L</a>, <a href="../h_src/143208436.htm" class="function">gctm</a>);
+<a id=739></a>  <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/143196400.htm" class="localvar">L</a>, -2, &quot;__gc&quot;);  <a  class="comments">/* set finalizer for CLIBS table */</a>
+<a id=740></a>  <a href="../h_src/57433168.htm" class="function">lua_setmetatable</a>(<a href="../h_src/143196400.htm" class="localvar">L</a>, -2);
+}
+
+
+<a id=744></a><a href="../h_src/57454180.htm" class="macro">LUAMOD_API</a> int <a href="../h_src/57573804.htm" class="function">luaopen_package</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143196264.htm" class="localvar">L</a>) {
+<a id=745></a>  <a href="../h_src/143196536.htm" class="function">createclibstable</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>);
+<a id=746></a>  <a href="../h_src/57417392.htm" class="macro">luaL_newlib</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>, <a href="../h_src/143197284.htm" class="variable">pk_funcs</a>);  <a  class="comments">/* create 'package' table */</a>
+<a id=747></a>  <a href="../h_src/143197148.htm" class="function">createsearcherstable</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>);
+<a id=748></a>  <a  class="comments">/* set paths */</a>
+<a id=749></a>  <a href="../h_src/143210884.htm" class="function">setpath</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>, &quot;path&quot;, <a href="../h_src/143211700.htm" class="macro">LUA_PATH_VAR</a>, <a href="../h_src/57455540.htm" class="macro">LUA_PATH_DEFAULT</a>);
+<a id=750></a>  <a href="../h_src/143210884.htm" class="function">setpath</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>, &quot;cpath&quot;, <a href="../h_src/143211428.htm" class="macro">LUA_CPATH_VAR</a>, <a href="../h_src/57455268.htm" class="macro">LUA_CPATH_DEFAULT</a>);
+<a id=751></a>  <a  class="comments">/* store config information */</a>
+<a id=752></a>  <a href="../h_src/57427660.htm" class="macro">lua_pushliteral</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>, <a href="../h_src/57454996.htm" class="macro">LUA_DIRSEP</a> &quot;\n&quot; <a href="../h_src/57456628.htm" class="macro">LUA_PATH_SEP</a> &quot;\n&quot; <a href="../h_src/57456492.htm" class="macro">LUA_PATH_MARK</a> &quot;\n&quot;
+<a id=753></a>                     <a href="../h_src/57456356.htm" class="macro">LUA_EXEC_DIR</a> &quot;\n&quot; <a href="../h_src/143216800.htm" class="macro">LUA_IGMARK</a> &quot;\n&quot;);
+<a id=754></a>  <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>, -2, &quot;config&quot;);
+<a id=755></a>  <a  class="comments">/* set field 'loaded' */</a>
+<a id=756></a>  <a href="../h_src/57417732.htm" class="function">luaL_getsubtable</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/57421540.htm" class="macro">LUA_LOADED_TABLE</a>);
+<a id=757></a>  <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>, -2, &quot;loaded&quot;);
+<a id=758></a>  <a  class="comments">/* set field 'preload' */</a>
+<a id=759></a>  <a href="../h_src/57417732.htm" class="function">luaL_getsubtable</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/57421404.htm" class="macro">LUA_PRELOAD_TABLE</a>);
+<a id=760></a>  <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>, -2, &quot;preload&quot;);
+<a id=761></a>  <a href="../h_src/57427524.htm" class="macro">lua_pushglobaltable</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>);
+<a id=762></a>  <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>, -2);  <a  class="comments">/* set 'package' as upvalue for next lib */</a>
+<a id=763></a>  <a href="../h_src/57417868.htm" class="function">luaL_setfuncs</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>, <a href="../h_src/143197216.htm" class="variable">ll_funcs</a>, 1);  <a  class="comments">/* open lib into global table */</a>
+<a id=764></a>  <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>, 1);  <a  class="comments">/* pop global table */</a>
+<a id=765></a>  return 1;  <a  class="comments">/* return 'package' table */</a>
+}
+
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

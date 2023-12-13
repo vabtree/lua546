@@ -1,0 +1,51 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>singlevar</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58037836.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58037836.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58037836.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58037836.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58037836.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58037836.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58057080.htm#463" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/58037836.htm" class="function">singlevar</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/58037700.htm" class="localvar">ls</a>, <a href="../h_src/57679384.htm" class="type">expdesc</a> *<a href="../h_src/58037564.htm" class="localvar">var</a>) {
+  <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/58037428.htm" class="localvar">varname</a> = <a href="../h_src/58051300.htm" class="function">str_checkname</a>(<a href="../h_src/58037700.htm" class="localvar">ls</a>);
+  <a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/58037292.htm" class="localvar">fs</a> = <a href="../h_src/58037700.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>;
+  <a href="../h_src/58038788.htm" class="function">singlevaraux</a>(<a href="../h_src/58037292.htm" class="localvar">fs</a>, <a href="../h_src/58037428.htm" class="localvar">varname</a>, <a href="../h_src/58037564.htm" class="localvar">var</a>, 1);
+  if (<a href="../h_src/58037564.htm" class="localvar">var</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a> == <a href="../h_src/57682716.htm" class="variable">VVOID</a>) {  <a  class="comments">/* global name? */</a>
+    <a href="../h_src/57679384.htm" class="type">expdesc</a> <a href="../h_src/58037156.htm" class="localvar">key</a>;
+    <a href="../h_src/58038788.htm" class="function">singlevaraux</a>(<a href="../h_src/58037292.htm" class="localvar">fs</a>, <a href="../h_src/58037700.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700192.htm" class="variable">envn</a>, <a href="../h_src/58037564.htm" class="localvar">var</a>, 1);  <a  class="comments">/* get environment variable */</a>
+    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(var-&gt;k != VVOID);  <a  class="comments">/* this one must exist */</a>
+    <a href="../h_src/57670340.htm" class="function">luaK_exp2anyregup</a>(<a href="../h_src/58037292.htm" class="localvar">fs</a>, <a href="../h_src/58037564.htm" class="localvar">var</a>);  <a  class="comments">/* but could be a constant */</a>
+    <a href="../h_src/58050348.htm" class="function">codestring</a>(&amp;<a href="../h_src/58037156.htm" class="localvar">key</a>, <a href="../h_src/58037428.htm" class="localvar">varname</a>);  <a  class="comments">/* key is variable name */</a>
+    <a href="../h_src/57670000.htm" class="function">luaK_indexed</a>(<a href="../h_src/58037292.htm" class="localvar">fs</a>, <a href="../h_src/58037564.htm" class="localvar">var</a>, &amp;<a href="../h_src/58037156.htm" class="localvar">key</a>);  <a  class="comments">/* env[varname] */</a>
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,51 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>Table</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57519812.htm" class="class" target="_self">Info</a></li>
+<li><a href="../h_im/57519812.htm" class="class" target="_self">Public Interface</a></li>
+<li><a href="../h_rx/57519812.htm" class="class" target="_self">Inheritance</a></li>
+<li><a href="../h_nm/57519812.htm" class="class" target="_self">Internals</a></li>
+<li><a href="../h_ua/57519812.htm" class="class" target="_self">Use of Members</a></li>
+<li><a href="../h_da/57519812.htm" class="class" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57519812.htm" class="class" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57519812.htm" class="class" target="_self">Declaration</a></li>
+<li><a href="../h_src/57537696.htm#739" class="class" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Declaration</h4>
+<pre class=src>
+typedef struct <a href="../h_src/57519812.htm" class="class">Table</a> {
+  <a href="../h_src/57528312.htm" class="macro">CommonHeader</a>;
+  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57504920.htm" class="variable">flags</a>;  <a  class="comments">/* 1&lt;&lt;p means tagmethod(p) is not present */</a>
+  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57504852.htm" class="variable">lsizenode</a>;  <a  class="comments">/* log2 of size of 'node' array */</a>
+  unsigned int <a href="../h_src/57504784.htm" class="variable">alimit</a>;  <a  class="comments">/* &quot;limit&quot; of 'array' array */</a>
+  <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57504716.htm" class="variable">array</a>;  <a  class="comments">/* array part */</a>
+  <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/57504580.htm" class="variable">node</a>;
+  <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/57504512.htm" class="variable">lastfree</a>;  <a  class="comments">/* any free position is before this position */</a>
+  struct <a href="../h_src/57519812.htm" class="class">Table</a> *<a href="../h_src/57504444.htm" class="variable">metatable</a>;
+  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57504376.htm" class="variable">gclist</a>;
+} <a href="../h_src/57504308.htm" class="type">Table</a>;
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

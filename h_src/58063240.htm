@@ -1,0 +1,54 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>checkHeader</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58063240.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58063240.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58063240.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58063240.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58063240.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58063240.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58075888.htm#292" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/58063240.htm" class="function">checkHeader</a> (<a href="../h_src/58074936.htm" class="type">LoadState</a> *<a href="../h_src/58063104.htm" class="localvar">S</a>) {
+  <a  class="comments">/* skip 1st char (already read and checked) */</a>
+  <a href="../h_src/58064736.htm" class="function">checkliteral</a>(<a href="../h_src/58063104.htm" class="localvar">S</a>, &amp;<a href="../h_src/57445748.htm" class="macro">LUA_SIGNATURE</a>[1], &quot;not a binary chunk&quot;);
+  if (<a href="../h_src/58073576.htm" class="function">loadByte</a>(<a href="../h_src/58063104.htm" class="localvar">S</a>) != <a href="../h_src/57615084.htm" class="macro">LUAC_VERSION</a>)
+    <a href="../h_src/58074868.htm" class="function">error</a>(<a href="../h_src/58063104.htm" class="localvar">S</a>, &quot;version mismatch&quot;);
+  if (<a href="../h_src/58073576.htm" class="function">loadByte</a>(<a href="../h_src/58063104.htm" class="localvar">S</a>) != <a href="../h_src/57614948.htm" class="macro">LUAC_FORMAT</a>)
+    <a href="../h_src/58074868.htm" class="function">error</a>(<a href="../h_src/58063104.htm" class="localvar">S</a>, &quot;format mismatch&quot;);
+  <a href="../h_src/58064736.htm" class="function">checkliteral</a>(<a href="../h_src/58063104.htm" class="localvar">S</a>, <a href="../h_src/57615628.htm" class="macro">LUAC_DATA</a>, &quot;corrupted chunk&quot;);
+  <a href="../h_src/58063376.htm" class="macro">checksize</a>(<a href="../h_src/58063104.htm" class="localvar">S</a>, <a href="../h_src/57545108.htm" class="type">Instruction</a>);
+  <a href="../h_src/58063376.htm" class="macro">checksize</a>(<a href="../h_src/58063104.htm" class="localvar">S</a>, <a href="../h_src/57442076.htm" class="type">lua_Integer</a>);
+  <a href="../h_src/58063376.htm" class="macro">checksize</a>(<a href="../h_src/58063104.htm" class="localvar">S</a>, <a href="../h_src/57442144.htm" class="type">lua_Number</a>);
+  if (<a href="../h_src/58071536.htm" class="function">loadInteger</a>(<a href="../h_src/58063104.htm" class="localvar">S</a>) != <a href="../h_src/57615492.htm" class="macro">LUAC_INT</a>)
+    <a href="../h_src/58074868.htm" class="function">error</a>(<a href="../h_src/58063104.htm" class="localvar">S</a>, &quot;integer format mismatch&quot;);
+  if (<a href="../h_src/58071944.htm" class="function">loadNumber</a>(<a href="../h_src/58063104.htm" class="localvar">S</a>) != <a href="../h_src/57615356.htm" class="macro">LUAC_NUM</a>)
+    <a href="../h_src/58074868.htm" class="function">error</a>(<a href="../h_src/58063104.htm" class="localvar">S</a>, &quot;float format mismatch&quot;);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

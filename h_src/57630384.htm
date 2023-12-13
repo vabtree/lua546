@@ -1,0 +1,49 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaF_close</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57630384.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57630384.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57630384.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57630384.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57630384.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57630384.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57840488.htm#227" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57630384.htm" class="function">luaF_close</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57831444.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57831308.htm" class="localvar">level</a>, int <a href="../h_src/57831172.htm" class="localvar">status</a>, int <a href="../h_src/57831036.htm" class="localvar">yy</a>) {
+  <a href="../h_aa/57441872.htm" class="type">ptrdiff_t</a> <a href="../h_src/57830900.htm" class="localvar">levelrel</a> = <a href="../h_src/57634396.htm" class="macro">savestack</a>(<a href="../h_src/57831444.htm" class="localvar">L</a>, <a href="../h_src/57831308.htm" class="localvar">level</a>);
+  <a href="../h_src/57630452.htm" class="function">luaF_closeupval</a>(<a href="../h_src/57831444.htm" class="localvar">L</a>, <a href="../h_src/57831308.htm" class="localvar">level</a>);  <a  class="comments">/* first, close the upvalues */</a>
+  while (<a href="../h_src/57831444.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642148.htm" class="variable">tbclist</a>.<a href="../h_src/57531984.htm" class="variable">p</a> &gt;= <a href="../h_src/57831308.htm" class="localvar">level</a>) {  <a  class="comments">/* traverse tbc's down to that level */</a>
+    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57830764.htm" class="localvar">tbc</a> = <a href="../h_src/57831444.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642148.htm" class="variable">tbclist</a>.<a href="../h_src/57531984.htm" class="variable">p</a>;  <a  class="comments">/* get variable index */</a>
+    <a href="../h_src/57831852.htm" class="function">poptbclist</a>(<a href="../h_src/57831444.htm" class="localvar">L</a>);  <a  class="comments">/* remove it from list */</a>
+    <a href="../h_src/57834300.htm" class="function">prepcallclosemth</a>(<a href="../h_src/57831444.htm" class="localvar">L</a>, <a href="../h_src/57830764.htm" class="localvar">tbc</a>, <a href="../h_src/57831172.htm" class="localvar">status</a>, <a href="../h_src/57831036.htm" class="localvar">yy</a>);  <a  class="comments">/* close variable */</a>
+    <a href="../h_src/57831308.htm" class="localvar">level</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57831444.htm" class="localvar">L</a>, <a href="../h_src/57830900.htm" class="localvar">levelrel</a>);
+  }
+  return <a href="../h_src/57831308.htm" class="localvar">level</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

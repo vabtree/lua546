@@ -1,0 +1,47 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaK_checkstack</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57670612.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57670612.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57670612.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57670612.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57670612.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57670612.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57706720.htm#466" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+void <a href="../h_src/57670612.htm" class="function">luaK_checkstack</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57811344.htm" class="localvar">fs</a>, int <a href="../h_src/57811208.htm" class="localvar">n</a>) {
+  int <a href="../h_src/57811072.htm" class="localvar">newstack</a> = <a href="../h_src/57811344.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a> + <a href="../h_src/57811208.htm" class="localvar">n</a>;
+  if (<a href="../h_src/57811072.htm" class="localvar">newstack</a> &gt; <a href="../h_src/57811344.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57676052.htm" class="variable">f</a>-&gt;<a href="../h_src/57515800.htm" class="variable">maxstacksize</a>) {
+    if (<a href="../h_src/57811072.htm" class="localvar">newstack</a> &gt;= <a href="../h_src/57668708.htm" class="macro">MAXREGS</a>)
+      <a href="../h_src/57699648.htm" class="function">luaX_syntaxerror</a>(<a href="../h_src/57811344.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>,
+        &quot;function or expression needs too many registers&quot;);
+    <a href="../h_src/57811344.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57676052.htm" class="variable">f</a>-&gt;<a href="../h_src/57515800.htm" class="variable">maxstacksize</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/57811072.htm" class="localvar">newstack</a>);
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

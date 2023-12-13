@@ -1,0 +1,48 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>codebinexpval</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57781084.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57781084.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57781084.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57781084.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57781084.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57781084.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57706720.htm#1421" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/57781084.htm" class="function">codebinexpval</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57780948.htm" class="localvar">fs</a>, <a href="../h_src/57672584.htm" class="type">BinOpr</a> <a href="../h_src/57780812.htm" class="localvar">opr</a>,
+                           <a href="../h_src/57679384.htm" class="type">expdesc</a> *<a href="../h_src/57780676.htm" class="localvar">e1</a>, <a href="../h_src/57679384.htm" class="type">expdesc</a> *<a href="../h_src/57780540.htm" class="localvar">e2</a>, int <a href="../h_src/57780404.htm" class="localvar">line</a>) {
+  <a href="../h_src/57684756.htm" class="type">OpCode</a> <a href="../h_src/57780268.htm" class="localvar">op</a> = <a href="../h_src/57784620.htm" class="function">binopr2op</a>(<a href="../h_src/57780812.htm" class="localvar">opr</a>, <a href="../h_src/57674216.htm" class="variable">OPR_ADD</a>, <a href="../h_src/57688224.htm" class="variable">OP_ADD</a>);
+  int <a href="../h_src/57780132.htm" class="localvar">v2</a> = <a href="../h_src/57670408.htm" class="function">luaK_exp2anyreg</a>(<a href="../h_src/57780948.htm" class="localvar">fs</a>, <a href="../h_src/57780540.htm" class="localvar">e2</a>);  <a  class="comments">/* make sure 'e2' is in a register */</a>
+  <a  class="comments">/* 'e1' must be already in a register or it is a constant */</a>
+  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>((VNIL &lt;= e1-&gt;k &amp;&amp; e1-&gt;k &lt;= VKSTR) ||
+             e1-&gt;k == VNONRELOC || e1-&gt;k == VRELOC);
+  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(OP_ADD &lt;= op &amp;&amp; op &lt;= OP_SHR);
+  <a href="../h_src/57782716.htm" class="function">finishbinexpval</a>(<a href="../h_src/57780948.htm" class="localvar">fs</a>, <a href="../h_src/57780676.htm" class="localvar">e1</a>, <a href="../h_src/57780540.htm" class="localvar">e2</a>, <a href="../h_src/57780268.htm" class="localvar">op</a>, <a href="../h_src/57780132.htm" class="localvar">v2</a>, 0, <a href="../h_src/57780404.htm" class="localvar">line</a>, <a href="../h_src/57687408.htm" class="variable">OP_MMBIN</a>, <a href="../h_src/57783804.htm" class="function">binopr2TM</a>(<a href="../h_src/57780812.htm" class="localvar">opr</a>));
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,103 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lctype.c</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57762452.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/57762452.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/57762452.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/57762452.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_ua/57762452.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_da/57762452.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57762452.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57762452.htm" class="file" target="_self">Source Code</a></li>
+<li><a href="../h_sc/57762452.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<pre class=src>
+<a id=1></a><a  class="comments">/*</a>
+<a id=2></a><a  class="comments">** $Id: lctype.c $</a>
+<a id=3></a><a  class="comments">** 'ctype' functions for Lua</a>
+<a id=4></a><a  class="comments">** See Copyright Notice in lua.h</a>
+<a id=5></a><a  class="comments">*/</a>
+
+<a id=7></a>#define <a href="../h_src/57762384.htm" class="macro">lctype_c</a>
+<a id=8></a>#define <a href="../h_src/57762248.htm" class="macro">LUA_CORE</a>
+
+<a id=10></a>#include &quot;<a href="../h_src/57461592.htm" class="file">lprefix.h</a>&quot;
+
+
+<a id=13></a>#include &quot;<a href="../h_src/57762112.htm" class="file">lctype.h</a>&quot;
+
+<a id=15></a>#if !<a href="../h_src/57761636.htm" class="macro">LUA_USE_CTYPE</a>	<a  class="comments">/* { */</a>
+
+#include &lt;limits.h&gt;
+
+
+<a id=20></a>#if defined (<a href="../h_src/57759528.htm" class="macro">LUA_UCID</a>)		<a  class="comments">/* accept UniCode IDentifiers? */</a>
+<a id=21></a><a  class="comments">/* consider all non-ascii codepoints to be alphabetic */</a>
+#define NONA		0x01
+#else
+<a id=24></a>#define <a href="../h_src/57759392.htm" class="macro">NONA</a>		0x00	<a  class="comments">/* default */</a>
+#endif
+
+
+<a id=28></a><a href="../h_src/57453636.htm" class="macro">LUAI_DDEF</a> const <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57759596.htm" class="variable">luai_ctype_</a>[UCHAR_MAX + 2] = {
+<a id=29></a>  0x00,  <a  class="comments">/* EOZ */</a>
+<a id=30></a>  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,	<a  class="comments">/* 0. */</a>
+  0x00,  0x08,  0x08,  0x08,  0x08,  0x08,  0x00,  0x00,
+<a id=32></a>  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,	<a  class="comments">/* 1. */</a>
+  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,
+<a id=34></a>  0x0c,  0x04,  0x04,  0x04,  0x04,  0x04,  0x04,  0x04,	<a  class="comments">/* 2. */</a>
+  0x04,  0x04,  0x04,  0x04,  0x04,  0x04,  0x04,  0x04,
+<a id=36></a>  0x16,  0x16,  0x16,  0x16,  0x16,  0x16,  0x16,  0x16,	<a  class="comments">/* 3. */</a>
+  0x16,  0x16,  0x04,  0x04,  0x04,  0x04,  0x04,  0x04,
+<a id=38></a>  0x04,  0x15,  0x15,  0x15,  0x15,  0x15,  0x15,  0x05,	<a  class="comments">/* 4. */</a>
+  0x05,  0x05,  0x05,  0x05,  0x05,  0x05,  0x05,  0x05,
+<a id=40></a>  0x05,  0x05,  0x05,  0x05,  0x05,  0x05,  0x05,  0x05,	<a  class="comments">/* 5. */</a>
+  0x05,  0x05,  0x05,  0x04,  0x04,  0x04,  0x04,  0x05,
+<a id=42></a>  0x04,  0x15,  0x15,  0x15,  0x15,  0x15,  0x15,  0x05,	<a  class="comments">/* 6. */</a>
+  0x05,  0x05,  0x05,  0x05,  0x05,  0x05,  0x05,  0x05,
+<a id=44></a>  0x05,  0x05,  0x05,  0x05,  0x05,  0x05,  0x05,  0x05,	<a  class="comments">/* 7. */</a>
+  0x05,  0x05,  0x05,  0x04,  0x04,  0x04,  0x04,  0x00,
+<a id=46></a>  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,	<a  class="comments">/* 8. */</a>
+<a id=47></a>  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,
+<a id=48></a>  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,	<a  class="comments">/* 9. */</a>
+<a id=49></a>  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,
+<a id=50></a>  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,	<a  class="comments">/* a. */</a>
+<a id=51></a>  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,
+<a id=52></a>  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,	<a  class="comments">/* b. */</a>
+<a id=53></a>  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,
+<a id=54></a>  0x00,  0x00,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,	<a  class="comments">/* c. */</a>
+<a id=55></a>  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,
+<a id=56></a>  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,	<a  class="comments">/* d. */</a>
+<a id=57></a>  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,
+<a id=58></a>  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,	<a  class="comments">/* e. */</a>
+<a id=59></a>  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,
+<a id=60></a>  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  <a href="../h_src/57759392.htm" class="macro">NONA</a>,  0x00,  0x00,  0x00,	<a  class="comments">/* f. */</a>
+  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00,  0x00
+};
+
+<a id=64></a>#endif			<a  class="comments">/* } */</a>
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

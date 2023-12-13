@@ -1,0 +1,64 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaL_ref</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57418684.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57418684.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57418684.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57418684.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57418684.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57418684.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58351320.htm#661" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int <a href="../h_src/57418684.htm" class="function">luaL_ref</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58328540.htm" class="localvar">L</a>, int <a href="../h_src/58328404.htm" class="localvar">t</a>) {
+  int <a href="../h_src/58328268.htm" class="localvar">ref</a>;
+  if (<a href="../h_src/57428340.htm" class="macro">lua_isnil</a>(<a href="../h_src/58328540.htm" class="localvar">L</a>, -1)) {
+    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/58328540.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove from stack */</a>
+    return <a href="../h_src/57418820.htm" class="macro">LUA_REFNIL</a>;  <a  class="comments">/* 'nil' has a unique fixed reference */</a>
+  }
+  <a href="../h_src/58328404.htm" class="localvar">t</a> = <a href="../h_src/57439424.htm" class="function">lua_absindex</a>(<a href="../h_src/58328540.htm" class="localvar">L</a>, <a href="../h_src/58328404.htm" class="localvar">t</a>);
+  if (<a href="../h_src/57434052.htm" class="function">lua_rawgeti</a>(<a href="../h_src/58328540.htm" class="localvar">L</a>, <a href="../h_src/58328404.htm" class="localvar">t</a>, <a href="../h_src/58328676.htm" class="macro">freelist</a>) == <a href="../h_src/57444048.htm" class="macro">LUA_TNIL</a>) {  <a  class="comments">/* first access? */</a>
+    <a href="../h_src/58328268.htm" class="localvar">ref</a> = 0;  <a  class="comments">/* list is empty */</a>
+    <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/58328540.htm" class="localvar">L</a>, 0);  <a  class="comments">/* initialize as an empty list */</a>
+    <a href="../h_src/57433304.htm" class="function">lua_rawseti</a>(<a href="../h_src/58328540.htm" class="localvar">L</a>, <a href="../h_src/58328404.htm" class="localvar">t</a>, <a href="../h_src/58328676.htm" class="macro">freelist</a>);  <a  class="comments">/* ref = t[freelist] = 0 */</a>
+  }
+  else {  <a  class="comments">/* already initialized */</a>
+    <a href="../h_src/57415352.htm" class="macro">lua_assert</a>(lua_isinteger(L, -1));
+    <a href="../h_src/58328268.htm" class="localvar">ref</a> = (int)<a href="../h_src/57429428.htm" class="macro">lua_tointeger</a>(<a href="../h_src/58328540.htm" class="localvar">L</a>, -1);  <a  class="comments">/* ref = t[freelist] */</a>
+  }
+  <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/58328540.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove element from stack */</a>
+  if (<a href="../h_src/58328268.htm" class="localvar">ref</a> != 0) {  <a  class="comments">/* any free element? */</a>
+    <a href="../h_src/57434052.htm" class="function">lua_rawgeti</a>(<a href="../h_src/58328540.htm" class="localvar">L</a>, <a href="../h_src/58328404.htm" class="localvar">t</a>, <a href="../h_src/58328268.htm" class="localvar">ref</a>);  <a  class="comments">/* remove it from list */</a>
+    <a href="../h_src/57433304.htm" class="function">lua_rawseti</a>(<a href="../h_src/58328540.htm" class="localvar">L</a>, <a href="../h_src/58328404.htm" class="localvar">t</a>, <a href="../h_src/58328676.htm" class="macro">freelist</a>);  <a  class="comments">/* (t[freelist] = t[ref]) */</a>
+  }
+  else  <a  class="comments">/* no free elements */</a>
+    <a href="../h_src/58328268.htm" class="localvar">ref</a> = (int)<a href="../h_src/57592916.htm" class="function">lua_rawlen</a>(<a href="../h_src/58328540.htm" class="localvar">L</a>, <a href="../h_src/58328404.htm" class="localvar">t</a>) + 1;  <a  class="comments">/* get a new reference */</a>
+  <a href="../h_src/57433304.htm" class="function">lua_rawseti</a>(<a href="../h_src/58328540.htm" class="localvar">L</a>, <a href="../h_src/58328404.htm" class="localvar">t</a>, <a href="../h_src/58328268.htm" class="localvar">ref</a>);
+  return <a href="../h_src/58328268.htm" class="localvar">ref</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

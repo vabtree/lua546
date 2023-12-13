@@ -1,0 +1,63 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>remarkupvals</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57820088.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57820088.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57820088.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57820088.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57820088.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57820088.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57829404.htm#367" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/57820088.htm" class="function">remarkupvals</a> (<a href="../h_src/57643100.htm" class="type">global_State</a> *<a href="../h_src/57819952.htm" class="localvar">g</a>) {
+  <a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57819816.htm" class="localvar">thread</a>;
+  <a href="../h_src/57444252.htm" class="type">lua_State</a> **<a href="../h_src/57819612.htm" class="localvar">p</a> = &amp;<a href="../h_src/57819952.htm" class="localvar">g</a>-&gt;<a href="../h_src/57643984.htm" class="variable">twups</a>;
+  int <a href="../h_src/57819476.htm" class="localvar">work</a> = 0;  <a  class="comments">/* estimate of how much work was done here */</a>
+  while ((<a href="../h_src/57819816.htm" class="localvar">thread</a> = *<a href="../h_src/57819612.htm" class="localvar">p</a>) != NULL) {
+    <a href="../h_src/57819476.htm" class="localvar">work</a>++;
+    if (!<a href="../h_src/57626372.htm" class="macro">iswhite</a>(<a href="../h_src/57819816.htm" class="localvar">thread</a>) &amp;&amp; <a href="../h_src/57819816.htm" class="localvar">thread</a>-&gt;<a href="../h_src/57642216.htm" class="variable">openupval</a> != NULL)
+      <a href="../h_src/57819612.htm" class="localvar">p</a> = &amp;<a href="../h_src/57819816.htm" class="localvar">thread</a>-&gt;<a href="../h_src/57642012.htm" class="variable">twups</a>;  <a  class="comments">/* keep marked thread with upvalues in the list */</a>
+    else {  <a  class="comments">/* thread is not marked or without upvalues */</a>
+      <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57819340.htm" class="localvar">uv</a>;
+      <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!<a href="../h_src/57623652.htm" class="macro">isold</a>(thread) || thread-&gt;openupval == NULL);
+      *<a href="../h_src/57819612.htm" class="localvar">p</a> = <a href="../h_src/57819816.htm" class="localvar">thread</a>-&gt;<a href="../h_src/57642012.htm" class="variable">twups</a>;  <a  class="comments">/* remove thread from the list */</a>
+      <a href="../h_src/57819816.htm" class="localvar">thread</a>-&gt;<a href="../h_src/57642012.htm" class="variable">twups</a> = <a href="../h_src/57819816.htm" class="localvar">thread</a>;  <a  class="comments">/* mark that it is out of list */</a>
+      for (<a href="../h_src/57819340.htm" class="localvar">uv</a> = <a href="../h_src/57819816.htm" class="localvar">thread</a>-&gt;<a href="../h_src/57642216.htm" class="variable">openupval</a>; <a href="../h_src/57819340.htm" class="localvar">uv</a> != NULL; <a href="../h_src/57819340.htm" class="localvar">uv</a> = <a href="../h_src/57819340.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57509680.htm" class="variable">u</a>.<a href="../h_src/57509884.htm" class="variable">open</a>.<a href="../h_src/57510224.htm" class="variable">next</a>) {
+        <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57623924.htm" class="macro">getage</a>(uv) &lt;= <a href="../h_src/57623924.htm" class="macro">getage</a>(thread));
+        <a href="../h_src/57819476.htm" class="localvar">work</a>++;
+        if (!<a href="../h_src/57626372.htm" class="macro">iswhite</a>(<a href="../h_src/57819340.htm" class="localvar">uv</a>)) {  <a  class="comments">/* upvalue already visited? */</a>
+          <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57631540.htm" class="macro">upisopen</a>(uv) &amp;&amp; <a href="../h_src/57626100.htm" class="macro">isgray</a>(uv));
+          <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57819952.htm" class="localvar">g</a>, <a href="../h_src/57819340.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57510564.htm" class="variable">v</a>.<a href="../h_src/57510768.htm" class="variable">p</a>);  <a  class="comments">/* mark its value */</a>
+        }
+      }
+    }
+  }
+  return <a href="../h_src/57819476.htm" class="localvar">work</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,49 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaG_errormsg</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57635144.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57635144.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57635144.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57635144.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57635144.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57635144.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57759256.htm#809" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57545584.htm" class="macro">l_noret</a> <a href="../h_src/57635144.htm" class="function">luaG_errormsg</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57888564.htm" class="localvar">L</a>) {
+  if (<a href="../h_src/57888564.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641604.htm" class="variable">errfunc</a> != 0) {  <a  class="comments">/* is there an error handling function? */</a>
+    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57888428.htm" class="localvar">errfunc</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57888564.htm" class="localvar">L</a>, <a href="../h_src/57888564.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641604.htm" class="variable">errfunc</a>);
+    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57513216.htm" class="macro">ttisfunction</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(errfunc)));
+    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/57888564.htm" class="localvar">L</a>, <a href="../h_src/57888564.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57888564.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1);  <a  class="comments">/* move argument */</a>
+    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/57888564.htm" class="localvar">L</a>, <a href="../h_src/57888564.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1, <a href="../h_src/57888428.htm" class="localvar">errfunc</a>);  <a  class="comments">/* push function */</a>
+    <a href="../h_src/57888564.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>++;  <a  class="comments">/* assume EXTRA_STACK */</a>
+    <a href="../h_src/57633172.htm" class="function">luaD_callnoyield</a>(<a href="../h_src/57888564.htm" class="localvar">L</a>, <a href="../h_src/57888564.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 2, 1);  <a  class="comments">/* call it */</a>
+  }
+  <a href="../h_src/57632560.htm" class="function">luaD_throw</a>(<a href="../h_src/57888564.htm" class="localvar">L</a>, <a href="../h_src/57444932.htm" class="macro">LUA_ERRRUN</a>);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

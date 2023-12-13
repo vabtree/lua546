@@ -1,0 +1,46 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaS_clearcache</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57618892.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57618892.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57618892.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57618892.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57618892.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57618892.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58132328.htm#110" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+void <a href="../h_src/57618892.htm" class="function">luaS_clearcache</a> (<a href="../h_src/57643100.htm" class="type">global_State</a> *<a href="../h_src/58128724.htm" class="localvar">g</a>) {
+  int <a href="../h_src/58128588.htm" class="localvar">i</a>, <a href="../h_src/58128452.htm" class="localvar">j</a>;
+  for (<a href="../h_src/58128588.htm" class="localvar">i</a> = 0; <a href="../h_src/58128588.htm" class="localvar">i</a> &lt; <a href="../h_src/57544360.htm" class="macro">STRCACHE_N</a>; <a href="../h_src/58128588.htm" class="localvar">i</a>++)
+    for (<a href="../h_src/58128452.htm" class="localvar">j</a> = 0; <a href="../h_src/58128452.htm" class="localvar">j</a> &lt; <a href="../h_src/57544224.htm" class="macro">STRCACHE_M</a>; <a href="../h_src/58128452.htm" class="localvar">j</a>++) {
+      if (<a href="../h_src/57626372.htm" class="macro">iswhite</a>(<a href="../h_src/58128724.htm" class="localvar">g</a>-&gt;<a href="../h_src/57643304.htm" class="variable">strcache</a>[<a href="../h_src/58128588.htm" class="localvar">i</a>][<a href="../h_src/58128452.htm" class="localvar">j</a>]))  <a  class="comments">/* will entry be collected? */</a>
+        <a href="../h_src/58128724.htm" class="localvar">g</a>-&gt;<a href="../h_src/57643304.htm" class="variable">strcache</a>[<a href="../h_src/58128588.htm" class="localvar">i</a>][<a href="../h_src/58128452.htm" class="localvar">j</a>] = <a href="../h_src/58128724.htm" class="localvar">g</a>-&gt;<a href="../h_src/57643780.htm" class="variable">memerrmsg</a>;  <a  class="comments">/* replace it with something fixed */</a>
+    }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

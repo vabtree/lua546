@@ -1,0 +1,51 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>jumponcond</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57790740.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57790740.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57790740.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57790740.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57790740.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57790740.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57706720.htm#1115" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/57790740.htm" class="function">jumponcond</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57790604.htm" class="localvar">fs</a>, <a href="../h_src/57679384.htm" class="type">expdesc</a> *<a href="../h_src/57790468.htm" class="localvar">e</a>, int <a href="../h_src/57790332.htm" class="localvar">cond</a>) {
+  if (<a href="../h_src/57790468.htm" class="localvar">e</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a> == <a href="../h_src/57681560.htm" class="variable">VRELOC</a>) {
+    <a href="../h_src/57545108.htm" class="type">Instruction</a> <a href="../h_src/57790196.htm" class="localvar">ie</a> = <a href="../h_src/57671700.htm" class="macro">getinstruction</a>(<a href="../h_src/57790604.htm" class="localvar">fs</a>, <a href="../h_src/57790468.htm" class="localvar">e</a>);
+    if (<a href="../h_src/57694752.htm" class="macro">GET_OPCODE</a>(<a href="../h_src/57790196.htm" class="localvar">ie</a>) == <a href="../h_src/57687068.htm" class="variable">OP_NOT</a>) {
+      <a href="../h_src/57815832.htm" class="function">removelastinstruction</a>(<a href="../h_src/57790604.htm" class="localvar">fs</a>);  <a  class="comments">/* remove previous OP_NOT */</a>
+      return <a href="../h_src/57661908.htm" class="function">condjump</a>(<a href="../h_src/57790604.htm" class="localvar">fs</a>, <a href="../h_src/57686048.htm" class="variable">OP_TEST</a>, <a href="../h_src/57693800.htm" class="macro">GETARG_B</a>(<a href="../h_src/57790196.htm" class="localvar">ie</a>), 0, 0, !<a href="../h_src/57790332.htm" class="localvar">cond</a>);
+    }
+    <a  class="comments">/* else go through */</a>
+  }
+  <a href="../h_src/57797812.htm" class="function">discharge2anyreg</a>(<a href="../h_src/57790604.htm" class="localvar">fs</a>, <a href="../h_src/57790468.htm" class="localvar">e</a>);
+  <a href="../h_src/57809712.htm" class="function">freeexp</a>(<a href="../h_src/57790604.htm" class="localvar">fs</a>, <a href="../h_src/57790468.htm" class="localvar">e</a>);
+  return <a href="../h_src/57661908.htm" class="function">condjump</a>(<a href="../h_src/57790604.htm" class="localvar">fs</a>, <a href="../h_src/57685980.htm" class="variable">OP_TESTSET</a>, <a href="../h_src/57690672.htm" class="macro">NO_REG</a>, <a href="../h_src/57790468.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a>, 0, <a href="../h_src/57790332.htm" class="localvar">cond</a>);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

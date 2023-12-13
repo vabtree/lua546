@@ -1,0 +1,69 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>setpath</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143210884.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143210884.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143210884.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143210884.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143210884.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143210884.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143217276.htm#297" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/143210884.htm" class="function">setpath</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143210748.htm" class="localvar">L</a>, const char *<a href="../h_src/143210612.htm" class="localvar">fieldname</a>,
+                                   const char *<a href="../h_src/143210476.htm" class="localvar">envname</a>,
+                                   const char *<a href="../h_src/143210340.htm" class="localvar">dft</a>) {
+  const char *<a href="../h_src/143210204.htm" class="localvar">dftmark</a>;
+  const char *<a href="../h_src/143210068.htm" class="localvar">nver</a> = <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/143210748.htm" class="localvar">L</a>, &quot;%s%s&quot;, <a href="../h_src/143210476.htm" class="localvar">envname</a>, <a href="../h_src/57410592.htm" class="macro">LUA_VERSUFFIX</a>);
+  const char *<a href="../h_src/143209932.htm" class="localvar">path</a> = <a href="../h_aa/57561428.htm" class="libfunc">getenv</a>(<a href="../h_src/143210068.htm" class="localvar">nver</a>);  <a  class="comments">/* try versioned name */</a>
+  if (<a href="../h_src/143209932.htm" class="localvar">path</a> == NULL)  <a  class="comments">/* no versioned environment variable? */</a>
+    <a href="../h_src/143209932.htm" class="localvar">path</a> = <a href="../h_aa/57561428.htm" class="libfunc">getenv</a>(<a href="../h_src/143210476.htm" class="localvar">envname</a>);  <a  class="comments">/* try unversioned name */</a>
+  if (<a href="../h_src/143209932.htm" class="localvar">path</a> == NULL || <a href="../h_src/143211292.htm" class="function">noenv</a>(<a href="../h_src/143210748.htm" class="localvar">L</a>))  <a  class="comments">/* no environment variable? */</a>
+    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/143210748.htm" class="localvar">L</a>, <a href="../h_src/143210340.htm" class="localvar">dft</a>);  <a  class="comments">/* use default */</a>
+  else if ((<a href="../h_src/143210204.htm" class="localvar">dftmark</a> = <a href="../h_aa/58317456.htm" class="libfunc">strstr</a>(<a href="../h_src/143209932.htm" class="localvar">path</a>, <a href="../h_src/57456628.htm" class="macro">LUA_PATH_SEP</a> <a href="../h_src/57456628.htm" class="macro">LUA_PATH_SEP</a>)) == NULL)
+    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/143210748.htm" class="localvar">L</a>, <a href="../h_src/143209932.htm" class="localvar">path</a>);  <a  class="comments">/* nothing to change */</a>
+  else {  <a  class="comments">/* path contains a &quot;;;&quot;: insert default path in its place */</a>
+    <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/143209796.htm" class="localvar">len</a> = <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/143209932.htm" class="localvar">path</a>);
+    <a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> <a href="../h_src/143209660.htm" class="localvar">b</a>;
+    <a href="../h_src/57413652.htm" class="function">luaL_buffinit</a>(<a href="../h_src/143210748.htm" class="localvar">L</a>, &amp;<a href="../h_src/143209660.htm" class="localvar">b</a>);
+    if (<a href="../h_src/143209932.htm" class="localvar">path</a> &lt; <a href="../h_src/143210204.htm" class="localvar">dftmark</a>) {  <a  class="comments">/* is there a prefix before ';;'? */</a>
+      <a href="../h_src/57413516.htm" class="function">luaL_addlstring</a>(&amp;<a href="../h_src/143209660.htm" class="localvar">b</a>, <a href="../h_src/143209932.htm" class="localvar">path</a>, <a href="../h_src/143210204.htm" class="localvar">dftmark</a> - <a href="../h_src/143209932.htm" class="localvar">path</a>);  <a  class="comments">/* add it */</a>
+      <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143209660.htm" class="localvar">b</a>, *<a href="../h_src/57456628.htm" class="macro">LUA_PATH_SEP</a>);
+    }
+    <a href="../h_src/57413448.htm" class="function">luaL_addstring</a>(&amp;<a href="../h_src/143209660.htm" class="localvar">b</a>, <a href="../h_src/143210340.htm" class="localvar">dft</a>);  <a  class="comments">/* add default */</a>
+    if (<a href="../h_src/143210204.htm" class="localvar">dftmark</a> &lt; <a href="../h_src/143209932.htm" class="localvar">path</a> + <a href="../h_src/143209796.htm" class="localvar">len</a> - 2) {  <a  class="comments">/* is there a suffix after ';;'? */</a>
+      <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143209660.htm" class="localvar">b</a>, *<a href="../h_src/57456628.htm" class="macro">LUA_PATH_SEP</a>);
+      <a href="../h_src/57413516.htm" class="function">luaL_addlstring</a>(&amp;<a href="../h_src/143209660.htm" class="localvar">b</a>, <a href="../h_src/143210204.htm" class="localvar">dftmark</a> + 2, (<a href="../h_src/143209932.htm" class="localvar">path</a> + <a href="../h_src/143209796.htm" class="localvar">len</a> - 2) - <a href="../h_src/143210204.htm" class="localvar">dftmark</a>);
+    }
+    <a href="../h_src/57413312.htm" class="function">luaL_pushresult</a>(&amp;<a href="../h_src/143209660.htm" class="localvar">b</a>);
+  }
+  <a href="../h_src/143214624.htm" class="function">setprogdir</a>(<a href="../h_src/143210748.htm" class="localvar">L</a>);
+  <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/143210748.htm" class="localvar">L</a>, -3, <a href="../h_src/143210612.htm" class="localvar">fieldname</a>);  <a  class="comments">/* package[fieldname] = path value */</a>
+  <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143210748.htm" class="localvar">L</a>, 1);  <a  class="comments">/* pop versioned variable name ('nver') */</a>
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

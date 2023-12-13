@@ -1,0 +1,61 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>repeatstat</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58002544.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58002544.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58002544.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58002544.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58002544.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58002544.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58057080.htm#1487" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/58002544.htm" class="function">repeatstat</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/58002408.htm" class="localvar">ls</a>, int <a href="../h_src/58002272.htm" class="localvar">line</a>) {
+  <a  class="comments">/* repeatstat -&gt; REPEAT block UNTIL cond */</a>
+  int <a href="../h_src/58002136.htm" class="localvar">condexit</a>;
+  <a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/58002000.htm" class="localvar">fs</a> = <a href="../h_src/58002408.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>;
+  int <a href="../h_src/58001864.htm" class="localvar">repeat_init</a> = <a href="../h_src/57669252.htm" class="function">luaK_getlabel</a>(<a href="../h_src/58002000.htm" class="localvar">fs</a>);
+  <a href="../h_src/58055856.htm" class="type">BlockCnt</a> <a href="../h_src/58001728.htm" class="localvar">bl1</a>, <a href="../h_src/58001592.htm" class="localvar">bl2</a>;
+  <a href="../h_src/58028792.htm" class="function">enterblock</a>(<a href="../h_src/58002000.htm" class="localvar">fs</a>, &amp;<a href="../h_src/58001728.htm" class="localvar">bl1</a>, 1);  <a  class="comments">/* loop block */</a>
+  <a href="../h_src/58028792.htm" class="function">enterblock</a>(<a href="../h_src/58002000.htm" class="localvar">fs</a>, &amp;<a href="../h_src/58001592.htm" class="localvar">bl2</a>, 0);  <a  class="comments">/* scope block */</a>
+  <a href="../h_src/57699784.htm" class="function">luaX_next</a>(<a href="../h_src/58002408.htm" class="localvar">ls</a>);  <a  class="comments">/* skip REPEAT */</a>
+  <a href="../h_src/58023624.htm" class="function">statlist</a>(<a href="../h_src/58002408.htm" class="localvar">ls</a>);
+  <a href="../h_src/58051980.htm" class="function">check_match</a>(<a href="../h_src/58002408.htm" class="localvar">ls</a>, <a href="../h_src/57703932.htm" class="variable">TK_UNTIL</a>, <a href="../h_src/57704204.htm" class="variable">TK_REPEAT</a>, <a href="../h_src/58002272.htm" class="localvar">line</a>);
+  <a href="../h_src/58002136.htm" class="localvar">condexit</a> = <a href="../h_src/58006488.htm" class="function">cond</a>(<a href="../h_src/58002408.htm" class="localvar">ls</a>);  <a  class="comments">/* read condition (inside scope block) */</a>
+  <a href="../h_src/58027704.htm" class="function">leaveblock</a>(<a href="../h_src/58002000.htm" class="localvar">fs</a>);  <a  class="comments">/* finish scope */</a>
+  if (<a href="../h_src/58001592.htm" class="localvar">bl2</a>.<a href="../h_src/58056060.htm" class="variable">upval</a>) {  <a  class="comments">/* upvalues? */</a>
+    int <a href="../h_src/58001456.htm" class="localvar">exit</a> = <a href="../h_src/57669592.htm" class="function">luaK_jump</a>(<a href="../h_src/58002000.htm" class="localvar">fs</a>);  <a  class="comments">/* normal exit must jump over fix */</a>
+    <a href="../h_src/57669388.htm" class="function">luaK_patchtohere</a>(<a href="../h_src/58002000.htm" class="localvar">fs</a>, <a href="../h_src/58002136.htm" class="localvar">condexit</a>);  <a  class="comments">/* repetition must close upvalues */</a>
+    <a href="../h_src/57672380.htm" class="macro">luaK_codeABC</a>(<a href="../h_src/58002000.htm" class="localvar">fs</a>, <a href="../h_src/57686864.htm" class="variable">OP_CLOSE</a>, <a href="../h_src/58047220.htm" class="function">reglevel</a>(<a href="../h_src/58002000.htm" class="localvar">fs</a>, <a href="../h_src/58001592.htm" class="localvar">bl2</a>.<a href="../h_src/58056128.htm" class="variable">nactvar</a>), 0, 0);
+    <a href="../h_src/58002136.htm" class="localvar">condexit</a> = <a href="../h_src/57669592.htm" class="function">luaK_jump</a>(<a href="../h_src/58002000.htm" class="localvar">fs</a>);  <a  class="comments">/* repeat after closing upvalues */</a>
+    <a href="../h_src/57669388.htm" class="function">luaK_patchtohere</a>(<a href="../h_src/58002000.htm" class="localvar">fs</a>, <a href="../h_src/58001456.htm" class="localvar">exit</a>);  <a  class="comments">/* normal exit comes to here */</a>
+  }
+  <a href="../h_src/57669456.htm" class="function">luaK_patchlist</a>(<a href="../h_src/58002000.htm" class="localvar">fs</a>, <a href="../h_src/58002136.htm" class="localvar">condexit</a>, <a href="../h_src/58001864.htm" class="localvar">repeat_init</a>);  <a  class="comments">/* close the loop */</a>
+  <a href="../h_src/58027704.htm" class="function">leaveblock</a>(<a href="../h_src/58002000.htm" class="localvar">fs</a>);  <a  class="comments">/* finish loop */</a>
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

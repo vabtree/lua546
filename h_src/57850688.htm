@@ -1,0 +1,269 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>ldump.c</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57850688.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/57850688.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/57850688.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/57850688.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_uf/57850688.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_df/57850688.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57850688.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57850688.htm" class="file" target="_self">Source Code</a></li>
+<li><a href="../h_sc/57850688.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<pre class=src>
+<a id=1></a><a  class="comments">/*</a>
+<a id=2></a><a  class="comments">** $Id: ldump.c $</a>
+<a id=3></a><a  class="comments">** save precompiled Lua chunks</a>
+<a id=4></a><a  class="comments">** See Copyright Notice in lua.h</a>
+<a id=5></a><a  class="comments">*/</a>
+
+<a id=7></a>#define <a href="../h_src/57850620.htm" class="macro">ldump_c</a>
+<a id=8></a>#define <a href="../h_src/57850484.htm" class="macro">LUA_CORE</a>
+
+<a id=10></a>#include &quot;<a href="../h_src/57461592.htm" class="file">lprefix.h</a>&quot;
+
+
+#include &lt;limits.h&gt;
+#include &lt;stddef.h&gt;
+
+<a id=16></a>#include &quot;<a href="../h_src/57460028.htm" class="file">lua.h</a>&quot;
+
+<a id=18></a>#include &quot;<a href="../h_src/57537696.htm" class="file">lobject.h</a>&quot;
+<a id=19></a>#include &quot;<a href="../h_src/57538104.htm" class="file">lstate.h</a>&quot;
+<a id=20></a>#include &quot;<a href="../h_src/57615968.htm" class="file">lundump.h</a>&quot;
+
+
+typedef struct {
+<a id=24></a>  <a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57850280.htm" class="variable">L</a>;
+<a id=25></a>  <a href="../h_src/57440920.htm" class="type">lua_Writer</a> <a href="../h_src/57850212.htm" class="variable">writer</a>;
+<a id=26></a>  void *<a href="../h_src/57850144.htm" class="variable">data</a>;
+<a id=27></a>  int <a href="../h_src/57850076.htm" class="variable">strip</a>;
+<a id=28></a>  int <a href="../h_src/57850008.htm" class="variable">status</a>;
+<a id=29></a>} <a href="../h_src/57849872.htm" class="type">DumpState</a>;
+
+
+<a id=32></a><a  class="comments">/*</a>
+<a id=33></a><a  class="comments">** All high-level dumps go through dumpVector; you can change it to</a>
+<a id=34></a><a  class="comments">** change the endianness of the result</a>
+<a id=35></a><a  class="comments">*/</a>
+<a id=36></a>#define <a href="../h_src/57849804.htm" class="macro">dumpVector</a>(D,v,n)	dumpBlock(D,v,(n)*sizeof((v)[0]))
+
+<a id=38></a>#define <a href="../h_src/57849668.htm" class="macro">dumpLiteral</a>(D, s)	dumpBlock(D,s,sizeof(s) - sizeof(char))
+
+
+<a id=41></a>static void <a href="../h_src/57849532.htm" class="function">dumpBlock</a> (<a href="../h_src/57849872.htm" class="type">DumpState</a> *<a href="../h_src/57849328.htm" class="localvar">D</a>, const void *<a href="../h_src/57849192.htm" class="localvar">b</a>, <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/57849056.htm" class="localvar">size</a>) {
+<a id=42></a>  if (<a href="../h_src/57849328.htm" class="localvar">D</a>-&gt;<a href="../h_src/57850008.htm" class="variable">status</a> == 0 &amp;&amp; <a href="../h_src/57849056.htm" class="localvar">size</a> &gt; 0) {
+<a id=43></a>    <a href="../h_src/57543272.htm" class="macro">lua_unlock</a>(D-&gt;L);
+<a id=44></a>    <a href="../h_src/57849328.htm" class="localvar">D</a>-&gt;<a href="../h_src/57850008.htm" class="variable">status</a> = (*<a href="../h_src/57849328.htm" class="localvar">D</a>-&gt;<a href="../h_src/57850212.htm" class="variable">writer</a>)(<a href="../h_src/57849328.htm" class="localvar">D</a>-&gt;<a href="../h_src/57850280.htm" class="variable">L</a>, <a href="../h_src/57849192.htm" class="localvar">b</a>, <a href="../h_src/57849056.htm" class="localvar">size</a>, <a href="../h_src/57849328.htm" class="localvar">D</a>-&gt;<a href="../h_src/57850144.htm" class="variable">data</a>);
+<a id=45></a>    <a href="../h_src/57543408.htm" class="macro">lua_lock</a>(D-&gt;L);
+  }
+}
+
+
+<a id=50></a>#define <a href="../h_src/57848920.htm" class="macro">dumpVar</a>(D,x)		dumpVector(D,&amp;x,1)
+
+
+<a id=53></a>static void <a href="../h_src/57848784.htm" class="function">dumpByte</a> (<a href="../h_src/57849872.htm" class="type">DumpState</a> *<a href="../h_src/57848648.htm" class="localvar">D</a>, int <a href="../h_src/57848512.htm" class="localvar">y</a>) {
+<a id=54></a>  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57848376.htm" class="localvar">x</a> = (<a href="../h_src/57550480.htm" class="type">lu_byte</a>)<a href="../h_src/57848512.htm" class="localvar">y</a>;
+<a id=55></a>  <a href="../h_src/57848920.htm" class="macro">dumpVar</a>(<a href="../h_src/57848648.htm" class="localvar">D</a>, <a href="../h_src/57848376.htm" class="localvar">x</a>);
+}
+
+
+<a id=59></a><a  class="comments">/*</a>
+<a id=60></a><a  class="comments">** 'dumpSize' buffer size: each byte can store up to 7 bits. (The &quot;+6&quot;</a>
+<a id=61></a><a  class="comments">** rounds up the division.)</a>
+<a id=62></a><a  class="comments">*/</a>
+<a id=63></a>#define <a href="../h_src/57848240.htm" class="macro">DIBS</a>    ((sizeof(size_t) * CHAR_BIT + 6) / 7)
+
+<a id=65></a>static void <a href="../h_src/57848104.htm" class="function">dumpSize</a> (<a href="../h_src/57849872.htm" class="type">DumpState</a> *<a href="../h_src/57847968.htm" class="localvar">D</a>, <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/57847832.htm" class="localvar">x</a>) {
+<a id=66></a>  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57847696.htm" class="localvar">buff</a>[<a href="../h_src/57848240.htm" class="macro">DIBS</a>];
+<a id=67></a>  int <a href="../h_src/57847560.htm" class="localvar">n</a> = 0;
+  do {
+<a id=69></a>    <a href="../h_src/57847696.htm" class="localvar">buff</a>[<a href="../h_src/57848240.htm" class="macro">DIBS</a> - (++<a href="../h_src/57847560.htm" class="localvar">n</a>)] = <a href="../h_src/57847832.htm" class="localvar">x</a> &amp; 0x7f;  <a  class="comments">/* fill buffer in reverse order */</a>
+<a id=70></a>    <a href="../h_src/57847832.htm" class="localvar">x</a> &gt;&gt;= 7;
+<a id=71></a>  } while (<a href="../h_src/57847832.htm" class="localvar">x</a> != 0);
+<a id=72></a>  <a href="../h_src/57847696.htm" class="localvar">buff</a>[<a href="../h_src/57848240.htm" class="macro">DIBS</a> - 1] |= 0x80;  <a  class="comments">/* mark last byte */</a>
+<a id=73></a>  <a href="../h_src/57849804.htm" class="macro">dumpVector</a>(<a href="../h_src/57847968.htm" class="localvar">D</a>, <a href="../h_src/57847696.htm" class="localvar">buff</a> + <a href="../h_src/57848240.htm" class="macro">DIBS</a> - n, <a href="../h_src/57847560.htm" class="localvar">n</a>);
+}
+
+
+<a id=77></a>static void <a href="../h_src/57847424.htm" class="function">dumpInt</a> (<a href="../h_src/57849872.htm" class="type">DumpState</a> *<a href="../h_src/57847288.htm" class="localvar">D</a>, int <a href="../h_src/57847152.htm" class="localvar">x</a>) {
+<a id=78></a>  <a href="../h_src/57848104.htm" class="function">dumpSize</a>(<a href="../h_src/57847288.htm" class="localvar">D</a>, <a href="../h_src/57847152.htm" class="localvar">x</a>);
+}
+
+
+<a id=82></a>static void <a href="../h_src/57847016.htm" class="function">dumpNumber</a> (<a href="../h_src/57849872.htm" class="type">DumpState</a> *<a href="../h_src/57846880.htm" class="localvar">D</a>, <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/57846744.htm" class="localvar">x</a>) {
+<a id=83></a>  <a href="../h_src/57848920.htm" class="macro">dumpVar</a>(<a href="../h_src/57846880.htm" class="localvar">D</a>, <a href="../h_src/57846744.htm" class="localvar">x</a>);
+}
+
+
+<a id=87></a>static void <a href="../h_src/57846608.htm" class="function">dumpInteger</a> (<a href="../h_src/57849872.htm" class="type">DumpState</a> *<a href="../h_src/57846472.htm" class="localvar">D</a>, <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/57846336.htm" class="localvar">x</a>) {
+<a id=88></a>  <a href="../h_src/57848920.htm" class="macro">dumpVar</a>(<a href="../h_src/57846472.htm" class="localvar">D</a>, <a href="../h_src/57846336.htm" class="localvar">x</a>);
+}
+
+
+<a id=92></a>static void <a href="../h_src/57846200.htm" class="function">dumpString</a> (<a href="../h_src/57849872.htm" class="type">DumpState</a> *<a href="../h_src/57846064.htm" class="localvar">D</a>, const <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/57845928.htm" class="localvar">s</a>) {
+<a id=93></a>  if (<a href="../h_src/57845928.htm" class="localvar">s</a> == NULL)
+<a id=94></a>    <a href="../h_src/57848104.htm" class="function">dumpSize</a>(<a href="../h_src/57846064.htm" class="localvar">D</a>, 0);
+  else {
+<a id=96></a>    <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/57845792.htm" class="localvar">size</a> = <a href="../h_src/57522396.htm" class="macro">tsslen</a>(<a href="../h_src/57845928.htm" class="localvar">s</a>);
+<a id=97></a>    const char *<a href="../h_src/57845656.htm" class="localvar">str</a> = <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/57845928.htm" class="localvar">s</a>);
+<a id=98></a>    <a href="../h_src/57848104.htm" class="function">dumpSize</a>(<a href="../h_src/57846064.htm" class="localvar">D</a>, <a href="../h_src/57845792.htm" class="localvar">size</a> + 1);
+<a id=99></a>    <a href="../h_src/57849804.htm" class="macro">dumpVector</a>(<a href="../h_src/57846064.htm" class="localvar">D</a>, <a href="../h_src/57845656.htm" class="localvar">str</a>, <a href="../h_src/57845792.htm" class="localvar">size</a>);
+  }
+}
+
+
+<a id=104></a>static void <a href="../h_src/57845520.htm" class="function">dumpCode</a> (<a href="../h_src/57849872.htm" class="type">DumpState</a> *<a href="../h_src/57845384.htm" class="localvar">D</a>, const <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57845248.htm" class="localvar">f</a>) {
+<a id=105></a>  <a href="../h_src/57847424.htm" class="function">dumpInt</a>(<a href="../h_src/57845384.htm" class="localvar">D</a>, <a href="../h_src/57845248.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515596.htm" class="variable">sizecode</a>);
+<a id=106></a>  <a href="../h_src/57849804.htm" class="macro">dumpVector</a>(<a href="../h_src/57845384.htm" class="localvar">D</a>, <a href="../h_src/57845248.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514916.htm" class="variable">code</a>, <a href="../h_src/57845248.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515596.htm" class="variable">sizecode</a>);
+}
+
+
+<a id=110></a>static void <a href="../h_src/57845112.htm" class="function">dumpFunction</a>(<a href="../h_src/57849872.htm" class="type">DumpState</a> *D, const <a href="../h_src/57513828.htm" class="type">Proto</a> *f, <a href="../h_src/57522736.htm" class="type">TString</a> *psource);
+
+<a id=112></a>static void <a href="../h_src/57844976.htm" class="function">dumpConstants</a> (<a href="../h_src/57849872.htm" class="type">DumpState</a> *<a href="../h_src/57844840.htm" class="localvar">D</a>, const <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57844704.htm" class="localvar">f</a>) {
+<a id=113></a>  int <a href="../h_src/57844568.htm" class="localvar">i</a>;
+<a id=114></a>  int <a href="../h_src/57844432.htm" class="localvar">n</a> = <a href="../h_src/57844704.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515664.htm" class="variable">sizek</a>;
+<a id=115></a>  <a href="../h_src/57847424.htm" class="function">dumpInt</a>(<a href="../h_src/57844840.htm" class="localvar">D</a>, <a href="../h_src/57844432.htm" class="localvar">n</a>);
+<a id=116></a>  for (<a href="../h_src/57844568.htm" class="localvar">i</a> = 0; <a href="../h_src/57844568.htm" class="localvar">i</a> &lt; <a href="../h_src/57844432.htm" class="localvar">n</a>; <a href="../h_src/57844568.htm" class="localvar">i</a>++) {
+<a id=117></a>    const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57844296.htm" class="localvar">o</a> = &amp;<a href="../h_src/57844704.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515052.htm" class="variable">k</a>[<a href="../h_src/57844568.htm" class="localvar">i</a>];
+<a id=118></a>    int <a href="../h_src/57844160.htm" class="localvar">tt</a> = <a href="../h_src/57534636.htm" class="macro">ttypetag</a>(<a href="../h_src/57844296.htm" class="localvar">o</a>);
+<a id=119></a>    <a href="../h_src/57848784.htm" class="function">dumpByte</a>(<a href="../h_src/57844840.htm" class="localvar">D</a>, <a href="../h_src/57844160.htm" class="localvar">tt</a>);
+<a id=120></a>    switch (<a href="../h_src/57844160.htm" class="localvar">tt</a>) {
+<a id=121></a>      case <a href="../h_src/57526952.htm" class="macro">LUA_VNUMFLT</a>:
+<a id=122></a>        <a href="../h_src/57847016.htm" class="function">dumpNumber</a>(<a href="../h_src/57844840.htm" class="localvar">D</a>, <a href="../h_src/57526272.htm" class="macro">fltvalue</a>(<a href="../h_src/57844296.htm" class="localvar">o</a>));
+        break;
+<a id=124></a>      case <a href="../h_src/57527088.htm" class="macro">LUA_VNUMINT</a>:
+<a id=125></a>        <a href="../h_src/57846608.htm" class="function">dumpInteger</a>(<a href="../h_src/57844840.htm" class="localvar">D</a>, <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/57844296.htm" class="localvar">o</a>));
+        break;
+<a id=127></a>      case <a href="../h_src/57525184.htm" class="macro">LUA_VSHRSTR</a>:
+<a id=128></a>      case <a href="../h_src/57525048.htm" class="macro">LUA_VLNGSTR</a>:
+<a id=129></a>        <a href="../h_src/57846200.htm" class="function">dumpString</a>(<a href="../h_src/57844840.htm" class="localvar">D</a>, <a href="../h_src/57524368.htm" class="macro">tsvalue</a>(<a href="../h_src/57844296.htm" class="localvar">o</a>));
+        break;
+      default:
+<a id=132></a>        <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(tt == <a href="../h_src/57531576.htm" class="macro">LUA_VNIL</a> || tt == <a href="../h_src/57530080.htm" class="macro">LUA_VFALSE</a> || tt == <a href="../h_src/57529944.htm" class="macro">LUA_VTRUE</a>);
+    }
+  }
+}
+
+
+<a id=138></a>static void <a href="../h_src/57844024.htm" class="function">dumpProtos</a> (<a href="../h_src/57849872.htm" class="type">DumpState</a> *<a href="../h_src/57843888.htm" class="localvar">D</a>, const <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57843752.htm" class="localvar">f</a>) {
+<a id=139></a>  int <a href="../h_src/57843616.htm" class="localvar">i</a>;
+<a id=140></a>  int <a href="../h_src/57843480.htm" class="localvar">n</a> = <a href="../h_src/57843752.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515460.htm" class="variable">sizep</a>;
+<a id=141></a>  <a href="../h_src/57847424.htm" class="function">dumpInt</a>(<a href="../h_src/57843888.htm" class="localvar">D</a>, <a href="../h_src/57843480.htm" class="localvar">n</a>);
+<a id=142></a>  for (<a href="../h_src/57843616.htm" class="localvar">i</a> = 0; <a href="../h_src/57843616.htm" class="localvar">i</a> &lt; <a href="../h_src/57843480.htm" class="localvar">n</a>; <a href="../h_src/57843616.htm" class="localvar">i</a>++)
+<a id=143></a>    <a href="../h_src/57845112.htm" class="function">dumpFunction</a>(<a href="../h_src/57843888.htm" class="localvar">D</a>, <a href="../h_src/57843752.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a>[<a href="../h_src/57843616.htm" class="localvar">i</a>], <a href="../h_src/57843752.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>);
+}
+
+
+<a id=147></a>static void <a href="../h_src/57843344.htm" class="function">dumpUpvalues</a> (<a href="../h_src/57849872.htm" class="type">DumpState</a> *<a href="../h_src/57843208.htm" class="localvar">D</a>, const <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57843072.htm" class="localvar">f</a>) {
+<a id=148></a>  int <a href="../h_src/57842936.htm" class="localvar">i</a>, <a href="../h_src/57842800.htm" class="localvar">n</a> = <a href="../h_src/57843072.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>;
+<a id=149></a>  <a href="../h_src/57847424.htm" class="function">dumpInt</a>(<a href="../h_src/57843208.htm" class="localvar">D</a>, <a href="../h_src/57842800.htm" class="localvar">n</a>);
+<a id=150></a>  for (<a href="../h_src/57842936.htm" class="localvar">i</a> = 0; <a href="../h_src/57842936.htm" class="localvar">i</a> &lt; <a href="../h_src/57842800.htm" class="localvar">n</a>; <a href="../h_src/57842936.htm" class="localvar">i</a>++) {
+<a id=151></a>    <a href="../h_src/57848784.htm" class="function">dumpByte</a>(<a href="../h_src/57843208.htm" class="localvar">D</a>, <a href="../h_src/57843072.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/57842936.htm" class="localvar">i</a>].<a href="../h_src/57517296.htm" class="variable">instack</a>);
+<a id=152></a>    <a href="../h_src/57848784.htm" class="function">dumpByte</a>(<a href="../h_src/57843208.htm" class="localvar">D</a>, <a href="../h_src/57843072.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/57842936.htm" class="localvar">i</a>].<a href="../h_src/57517228.htm" class="variable">idx</a>);
+<a id=153></a>    <a href="../h_src/57848784.htm" class="function">dumpByte</a>(<a href="../h_src/57843208.htm" class="localvar">D</a>, <a href="../h_src/57843072.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/57842936.htm" class="localvar">i</a>].<a href="../h_src/57517160.htm" class="variable">kind</a>);
+  }
+}
+
+
+<a id=158></a>static void <a href="../h_src/57842664.htm" class="function">dumpDebug</a> (<a href="../h_src/57849872.htm" class="type">DumpState</a> *<a href="../h_src/57842528.htm" class="localvar">D</a>, const <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57842392.htm" class="localvar">f</a>) {
+<a id=159></a>  int <a href="../h_src/57842256.htm" class="localvar">i</a>, <a href="../h_src/57842120.htm" class="localvar">n</a>;
+<a id=160></a>  <a href="../h_src/57842120.htm" class="localvar">n</a> = (<a href="../h_src/57842528.htm" class="localvar">D</a>-&gt;<a href="../h_src/57850076.htm" class="variable">strip</a>) ? 0 : <a href="../h_src/57842392.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515528.htm" class="variable">sizelineinfo</a>;
+<a id=161></a>  <a href="../h_src/57847424.htm" class="function">dumpInt</a>(<a href="../h_src/57842528.htm" class="localvar">D</a>, <a href="../h_src/57842120.htm" class="localvar">n</a>);
+<a id=162></a>  <a href="../h_src/57849804.htm" class="macro">dumpVector</a>(<a href="../h_src/57842528.htm" class="localvar">D</a>, <a href="../h_src/57842392.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514304.htm" class="variable">lineinfo</a>, <a href="../h_src/57842120.htm" class="localvar">n</a>);
+<a id=163></a>  <a href="../h_src/57842120.htm" class="localvar">n</a> = (<a href="../h_src/57842528.htm" class="localvar">D</a>-&gt;<a href="../h_src/57850076.htm" class="variable">strip</a>) ? 0 : <a href="../h_src/57842392.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515324.htm" class="variable">sizeabslineinfo</a>;
+<a id=164></a>  <a href="../h_src/57847424.htm" class="function">dumpInt</a>(<a href="../h_src/57842528.htm" class="localvar">D</a>, <a href="../h_src/57842120.htm" class="localvar">n</a>);
+<a id=165></a>  for (<a href="../h_src/57842256.htm" class="localvar">i</a> = 0; <a href="../h_src/57842256.htm" class="localvar">i</a> &lt; <a href="../h_src/57842120.htm" class="localvar">n</a>; <a href="../h_src/57842256.htm" class="localvar">i</a>++) {
+<a id=166></a>    <a href="../h_src/57847424.htm" class="function">dumpInt</a>(<a href="../h_src/57842528.htm" class="localvar">D</a>, <a href="../h_src/57842392.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514168.htm" class="variable">abslineinfo</a>[<a href="../h_src/57842256.htm" class="localvar">i</a>].<a href="../h_src/57516480.htm" class="variable">pc</a>);
+<a id=167></a>    <a href="../h_src/57847424.htm" class="function">dumpInt</a>(<a href="../h_src/57842528.htm" class="localvar">D</a>, <a href="../h_src/57842392.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514168.htm" class="variable">abslineinfo</a>[<a href="../h_src/57842256.htm" class="localvar">i</a>].<a href="../h_src/57516412.htm" class="variable">line</a>);
+  }
+<a id=169></a>  <a href="../h_src/57842120.htm" class="localvar">n</a> = (<a href="../h_src/57842528.htm" class="localvar">D</a>-&gt;<a href="../h_src/57850076.htm" class="variable">strip</a>) ? 0 : <a href="../h_src/57842392.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515392.htm" class="variable">sizelocvars</a>;
+<a id=170></a>  <a href="../h_src/57847424.htm" class="function">dumpInt</a>(<a href="../h_src/57842528.htm" class="localvar">D</a>, <a href="../h_src/57842120.htm" class="localvar">n</a>);
+<a id=171></a>  for (<a href="../h_src/57842256.htm" class="localvar">i</a> = 0; <a href="../h_src/57842256.htm" class="localvar">i</a> &lt; <a href="../h_src/57842120.htm" class="localvar">n</a>; <a href="../h_src/57842256.htm" class="localvar">i</a>++) {
+<a id=172></a>    <a href="../h_src/57846200.htm" class="function">dumpString</a>(<a href="../h_src/57842528.htm" class="localvar">D</a>, <a href="../h_src/57842392.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514032.htm" class="variable">locvars</a>[<a href="../h_src/57842256.htm" class="localvar">i</a>].<a href="../h_src/57516888.htm" class="variable">varname</a>);
+<a id=173></a>    <a href="../h_src/57847424.htm" class="function">dumpInt</a>(<a href="../h_src/57842528.htm" class="localvar">D</a>, <a href="../h_src/57842392.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514032.htm" class="variable">locvars</a>[<a href="../h_src/57842256.htm" class="localvar">i</a>].<a href="../h_src/57516820.htm" class="variable">startpc</a>);
+<a id=174></a>    <a href="../h_src/57847424.htm" class="function">dumpInt</a>(<a href="../h_src/57842528.htm" class="localvar">D</a>, <a href="../h_src/57842392.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514032.htm" class="variable">locvars</a>[<a href="../h_src/57842256.htm" class="localvar">i</a>].<a href="../h_src/57516752.htm" class="variable">endpc</a>);
+  }
+<a id=176></a>  <a href="../h_src/57842120.htm" class="localvar">n</a> = (<a href="../h_src/57842528.htm" class="localvar">D</a>-&gt;<a href="../h_src/57850076.htm" class="variable">strip</a>) ? 0 : <a href="../h_src/57842392.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>;
+<a id=177></a>  <a href="../h_src/57847424.htm" class="function">dumpInt</a>(<a href="../h_src/57842528.htm" class="localvar">D</a>, <a href="../h_src/57842120.htm" class="localvar">n</a>);
+<a id=178></a>  for (<a href="../h_src/57842256.htm" class="localvar">i</a> = 0; <a href="../h_src/57842256.htm" class="localvar">i</a> &lt; <a href="../h_src/57842120.htm" class="localvar">n</a>; <a href="../h_src/57842256.htm" class="localvar">i</a>++)
+<a id=179></a>    <a href="../h_src/57846200.htm" class="function">dumpString</a>(<a href="../h_src/57842528.htm" class="localvar">D</a>, <a href="../h_src/57842392.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/57842256.htm" class="localvar">i</a>].<a href="../h_src/57517364.htm" class="variable">name</a>);
+}
+
+
+<a id=183></a>static void <a href="../h_src/57845112.htm" class="function">dumpFunction</a> (<a href="../h_src/57849872.htm" class="type">DumpState</a> *<a href="../h_src/57841984.htm" class="localvar">D</a>, const <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57841848.htm" class="localvar">f</a>, <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/57841712.htm" class="localvar">psource</a>) {
+<a id=184></a>  if (<a href="../h_src/57841984.htm" class="localvar">D</a>-&gt;<a href="../h_src/57850076.htm" class="variable">strip</a> || <a href="../h_src/57841848.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a> == <a href="../h_src/57841712.htm" class="localvar">psource</a>)
+<a id=185></a>    <a href="../h_src/57846200.htm" class="function">dumpString</a>(<a href="../h_src/57841984.htm" class="localvar">D</a>, NULL);  <a  class="comments">/* no debug info or same source as its parent */</a>
+  else
+<a id=187></a>    <a href="../h_src/57846200.htm" class="function">dumpString</a>(<a href="../h_src/57841984.htm" class="localvar">D</a>, <a href="../h_src/57841848.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>);
+<a id=188></a>  <a href="../h_src/57847424.htm" class="function">dumpInt</a>(<a href="../h_src/57841984.htm" class="localvar">D</a>, <a href="../h_src/57841848.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515256.htm" class="variable">linedefined</a>);
+<a id=189></a>  <a href="../h_src/57847424.htm" class="function">dumpInt</a>(<a href="../h_src/57841984.htm" class="localvar">D</a>, <a href="../h_src/57841848.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515188.htm" class="variable">lastlinedefined</a>);
+<a id=190></a>  <a href="../h_src/57848784.htm" class="function">dumpByte</a>(<a href="../h_src/57841984.htm" class="localvar">D</a>, <a href="../h_src/57841848.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515936.htm" class="variable">numparams</a>);
+<a id=191></a>  <a href="../h_src/57848784.htm" class="function">dumpByte</a>(<a href="../h_src/57841984.htm" class="localvar">D</a>, <a href="../h_src/57841848.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515868.htm" class="variable">is_vararg</a>);
+<a id=192></a>  <a href="../h_src/57848784.htm" class="function">dumpByte</a>(<a href="../h_src/57841984.htm" class="localvar">D</a>, <a href="../h_src/57841848.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515800.htm" class="variable">maxstacksize</a>);
+<a id=193></a>  <a href="../h_src/57845520.htm" class="function">dumpCode</a>(<a href="../h_src/57841984.htm" class="localvar">D</a>, <a href="../h_src/57841848.htm" class="localvar">f</a>);
+<a id=194></a>  <a href="../h_src/57844976.htm" class="function">dumpConstants</a>(<a href="../h_src/57841984.htm" class="localvar">D</a>, <a href="../h_src/57841848.htm" class="localvar">f</a>);
+<a id=195></a>  <a href="../h_src/57843344.htm" class="function">dumpUpvalues</a>(<a href="../h_src/57841984.htm" class="localvar">D</a>, <a href="../h_src/57841848.htm" class="localvar">f</a>);
+<a id=196></a>  <a href="../h_src/57844024.htm" class="function">dumpProtos</a>(<a href="../h_src/57841984.htm" class="localvar">D</a>, <a href="../h_src/57841848.htm" class="localvar">f</a>);
+<a id=197></a>  <a href="../h_src/57842664.htm" class="function">dumpDebug</a>(<a href="../h_src/57841984.htm" class="localvar">D</a>, <a href="../h_src/57841848.htm" class="localvar">f</a>);
+}
+
+
+<a id=201></a>static void <a href="../h_src/57841576.htm" class="function">dumpHeader</a> (<a href="../h_src/57849872.htm" class="type">DumpState</a> *<a href="../h_src/57841440.htm" class="localvar">D</a>) {
+<a id=202></a>  <a href="../h_src/57849668.htm" class="macro">dumpLiteral</a>(<a href="../h_src/57841440.htm" class="localvar">D</a>, <a href="../h_src/57445748.htm" class="macro">LUA_SIGNATURE</a>);
+<a id=203></a>  <a href="../h_src/57848784.htm" class="function">dumpByte</a>(<a href="../h_src/57841440.htm" class="localvar">D</a>, <a href="../h_src/57615084.htm" class="macro">LUAC_VERSION</a>);
+<a id=204></a>  <a href="../h_src/57848784.htm" class="function">dumpByte</a>(<a href="../h_src/57841440.htm" class="localvar">D</a>, <a href="../h_src/57614948.htm" class="macro">LUAC_FORMAT</a>);
+<a id=205></a>  <a href="../h_src/57849668.htm" class="macro">dumpLiteral</a>(<a href="../h_src/57841440.htm" class="localvar">D</a>, <a href="../h_src/57615628.htm" class="macro">LUAC_DATA</a>);
+<a id=206></a>  <a href="../h_src/57848784.htm" class="function">dumpByte</a>(<a href="../h_src/57841440.htm" class="localvar">D</a>, sizeof(<a href="../h_src/57545108.htm" class="type">Instruction</a>));
+<a id=207></a>  <a href="../h_src/57848784.htm" class="function">dumpByte</a>(<a href="../h_src/57841440.htm" class="localvar">D</a>, sizeof(<a href="../h_src/57442076.htm" class="type">lua_Integer</a>));
+<a id=208></a>  <a href="../h_src/57848784.htm" class="function">dumpByte</a>(<a href="../h_src/57841440.htm" class="localvar">D</a>, sizeof(<a href="../h_src/57442144.htm" class="type">lua_Number</a>));
+<a id=209></a>  <a href="../h_src/57846608.htm" class="function">dumpInteger</a>(<a href="../h_src/57841440.htm" class="localvar">D</a>, <a href="../h_src/57615492.htm" class="macro">LUAC_INT</a>);
+<a id=210></a>  <a href="../h_src/57847016.htm" class="function">dumpNumber</a>(<a href="../h_src/57841440.htm" class="localvar">D</a>, <a href="../h_src/57615356.htm" class="macro">LUAC_NUM</a>);
+}
+
+
+<a id=214></a><a  class="comments">/*</a>
+<a id=215></a><a  class="comments">** dump Lua function as precompiled chunk</a>
+<a id=216></a><a  class="comments">*/</a>
+<a id=217></a>int <a href="../h_src/57614744.htm" class="function">luaU_dump</a>(<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57841304.htm" class="localvar">L</a>, const <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57841168.htm" class="localvar">f</a>, <a href="../h_src/57440920.htm" class="type">lua_Writer</a> <a href="../h_src/57841032.htm" class="localvar">w</a>, void *<a href="../h_src/57840896.htm" class="localvar">data</a>,
+<a id=218></a>              int <a href="../h_src/57840760.htm" class="localvar">strip</a>) {
+<a id=219></a>  <a href="../h_src/57849872.htm" class="type">DumpState</a> <a href="../h_src/57840624.htm" class="localvar">D</a>;
+<a id=220></a>  <a href="../h_src/57840624.htm" class="localvar">D</a>.<a href="../h_src/57850280.htm" class="variable">L</a> = <a href="../h_src/57841304.htm" class="localvar">L</a>;
+<a id=221></a>  <a href="../h_src/57840624.htm" class="localvar">D</a>.<a href="../h_src/57850212.htm" class="variable">writer</a> = <a href="../h_src/57841032.htm" class="localvar">w</a>;
+<a id=222></a>  <a href="../h_src/57840624.htm" class="localvar">D</a>.<a href="../h_src/57850144.htm" class="variable">data</a> = <a href="../h_src/57840896.htm" class="localvar">data</a>;
+<a id=223></a>  <a href="../h_src/57840624.htm" class="localvar">D</a>.<a href="../h_src/57850076.htm" class="variable">strip</a> = <a href="../h_src/57840760.htm" class="localvar">strip</a>;
+<a id=224></a>  <a href="../h_src/57840624.htm" class="localvar">D</a>.<a href="../h_src/57850008.htm" class="variable">status</a> = 0;
+<a id=225></a>  <a href="../h_src/57841576.htm" class="function">dumpHeader</a>(&amp;<a href="../h_src/57840624.htm" class="localvar">D</a>);
+<a id=226></a>  <a href="../h_src/57848784.htm" class="function">dumpByte</a>(&amp;<a href="../h_src/57840624.htm" class="localvar">D</a>, <a href="../h_src/57841168.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>);
+<a id=227></a>  <a href="../h_src/57845112.htm" class="function">dumpFunction</a>(&amp;<a href="../h_src/57840624.htm" class="localvar">D</a>, <a href="../h_src/57841168.htm" class="localvar">f</a>, NULL);
+<a id=228></a>  return <a href="../h_src/57840624.htm" class="localvar">D</a>.<a href="../h_src/57850008.htm" class="variable">status</a>;
+}
+
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,58 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lua_getlocal</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57424532.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57424532.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57424532.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57424532.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57424532.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57424532.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57759256.htm#220" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57551840.htm" class="macro">LUA_API</a> const char *<a href="../h_src/57424532.htm" class="function">lua_getlocal</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57752728.htm" class="localvar">L</a>, const <a href="../h_src/57440308.htm" class="type">lua_Debug</a> *<a href="../h_src/57752592.htm" class="localvar">ar</a>, int <a href="../h_src/57752456.htm" class="localvar">n</a>) {
+  const char *<a href="../h_src/57752320.htm" class="localvar">name</a>;
+  <a href="../h_src/57543408.htm" class="macro">lua_lock</a>(L);
+  if (<a href="../h_src/57752592.htm" class="localvar">ar</a> == NULL) {  <a  class="comments">/* information about non-active function? */</a>
+    if (!<a href="../h_src/57512536.htm" class="macro">isLfunction</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57752728.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1)))  <a  class="comments">/* not a Lua function? */</a>
+      <a href="../h_src/57752320.htm" class="localvar">name</a> = NULL;
+    else  <a  class="comments">/* consider live variables at function start (parameters) */</a>
+      <a href="../h_src/57752320.htm" class="localvar">name</a> = <a href="../h_src/57630180.htm" class="function">luaF_getlocalname</a>(<a href="../h_src/57512264.htm" class="macro">clLvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57752728.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1))-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>, <a href="../h_src/57752456.htm" class="localvar">n</a>, 0);
+  }
+  else {  <a  class="comments">/* active function; get information through 'ar' */</a>
+    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57752184.htm" class="localvar">pos</a> = NULL;  <a  class="comments">/* to avoid warnings */</a>
+    <a href="../h_src/57752320.htm" class="localvar">name</a> = <a href="../h_src/57635892.htm" class="function">luaG_findlocal</a>(<a href="../h_src/57752728.htm" class="localvar">L</a>, <a href="../h_src/57752592.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57422424.htm" class="variable">i_ci</a>, <a href="../h_src/57752456.htm" class="localvar">n</a>, &amp;<a href="../h_src/57752184.htm" class="localvar">pos</a>);
+    if (<a href="../h_src/57752320.htm" class="localvar">name</a>) {
+      <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/57752728.htm" class="localvar">L</a>, <a href="../h_src/57752728.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57752184.htm" class="localvar">pos</a>);
+      <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57752728.htm" class="localvar">L</a>);
+    }
+  }
+  <a href="../h_src/57543272.htm" class="macro">lua_unlock</a>(L);
+  return <a href="../h_src/57752320.htm" class="localvar">name</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

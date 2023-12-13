@@ -1,0 +1,53 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaF_closeupval</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57630452.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57630452.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57630452.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57630452.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57630452.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57630452.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57840488.htm#193" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+void <a href="../h_src/57630452.htm" class="function">luaF_closeupval</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57832804.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57832668.htm" class="localvar">level</a>) {
+  <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57832532.htm" class="localvar">uv</a>;
+  <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57832396.htm" class="localvar">upl</a>;  <a  class="comments">/* stack index pointed by 'uv' */</a>
+  while ((<a href="../h_src/57832532.htm" class="localvar">uv</a> = <a href="../h_src/57832804.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642216.htm" class="variable">openupval</a>) != NULL &amp;&amp; (<a href="../h_src/57832396.htm" class="localvar">upl</a> = <a href="../h_src/57631404.htm" class="macro">uplevel</a>(<a href="../h_src/57832532.htm" class="localvar">uv</a>)) &gt;= <a href="../h_src/57832668.htm" class="localvar">level</a>) {
+    <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57832260.htm" class="localvar">slot</a> = &amp;<a href="../h_src/57832532.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57509680.htm" class="variable">u</a>.<a href="../h_src/57509816.htm" class="variable">value</a>;  <a  class="comments">/* new position for value */</a>
+    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57631404.htm" class="macro">uplevel</a>(uv) &lt; L-&gt;top.p);
+    <a href="../h_src/57630316.htm" class="function">luaF_unlinkupval</a>(<a href="../h_src/57832532.htm" class="localvar">uv</a>);  <a  class="comments">/* remove upvalue from 'openupval' list */</a>
+    <a href="../h_src/57533684.htm" class="macro">setobj</a>(<a href="../h_src/57832804.htm" class="localvar">L</a>, <a href="../h_src/57832260.htm" class="localvar">slot</a>, <a href="../h_src/57832532.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57510564.htm" class="variable">v</a>.<a href="../h_src/57510768.htm" class="variable">p</a>);  <a  class="comments">/* move value to upvalue slot */</a>
+    <a href="../h_src/57832532.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57510564.htm" class="variable">v</a>.<a href="../h_src/57510768.htm" class="variable">p</a> = <a href="../h_src/57832260.htm" class="localvar">slot</a>;  <a  class="comments">/* now current value lives here */</a>
+    if (!<a href="../h_src/57626372.htm" class="macro">iswhite</a>(<a href="../h_src/57832532.htm" class="localvar">uv</a>)) {  <a  class="comments">/* neither white nor dead? */</a>
+      <a href="../h_src/57625284.htm" class="macro">nw2black</a>(<a href="../h_src/57832532.htm" class="localvar">uv</a>);  <a  class="comments">/* closed upvalues cannot be gray */</a>
+      <a href="../h_src/57621340.htm" class="macro">luaC_barrier</a>(<a href="../h_src/57832804.htm" class="localvar">L</a>, <a href="../h_src/57832532.htm" class="localvar">uv</a>, <a href="../h_src/57832260.htm" class="localvar">slot</a>);
+    }
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

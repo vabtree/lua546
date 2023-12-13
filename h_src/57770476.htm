@@ -1,0 +1,64 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>codeeq</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57770476.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57770476.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57770476.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57770476.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57770476.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57770476.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57706720.htm#1581" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/57770476.htm" class="function">codeeq</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57770340.htm" class="localvar">fs</a>, <a href="../h_src/57672584.htm" class="type">BinOpr</a> <a href="../h_src/57770204.htm" class="localvar">opr</a>, <a href="../h_src/57679384.htm" class="type">expdesc</a> *<a href="../h_src/57770068.htm" class="localvar">e1</a>, <a href="../h_src/57679384.htm" class="type">expdesc</a> *<a href="../h_src/57769932.htm" class="localvar">e2</a>) {
+  int <a href="../h_src/57769796.htm" class="localvar">r1</a>, <a href="../h_src/57769660.htm" class="localvar">r2</a>;
+  int <a href="../h_src/57769524.htm" class="localvar">im</a>;
+  int <a href="../h_src/57769388.htm" class="localvar">isfloat</a> = 0;  <a  class="comments">/* not needed here, but kept for symmetry */</a>
+  <a href="../h_src/57684756.htm" class="type">OpCode</a> <a href="../h_src/57769252.htm" class="localvar">op</a>;
+  if (<a href="../h_src/57770068.htm" class="localvar">e1</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a> != <a href="../h_src/57682172.htm" class="variable">VNONRELOC</a>) {
+    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(e1-&gt;k == VK || e1-&gt;k == VKINT || e1-&gt;k == VKFLT);
+    <a href="../h_src/57776188.htm" class="function">swapexps</a>(<a href="../h_src/57770068.htm" class="localvar">e1</a>, <a href="../h_src/57769932.htm" class="localvar">e2</a>);
+  }
+  <a href="../h_src/57769796.htm" class="localvar">r1</a> = <a href="../h_src/57670408.htm" class="function">luaK_exp2anyreg</a>(<a href="../h_src/57770340.htm" class="localvar">fs</a>, <a href="../h_src/57770068.htm" class="localvar">e1</a>);  <a  class="comments">/* 1st expression must be in register */</a>
+  if (<a href="../h_src/57787612.htm" class="function">isSCnumber</a>(<a href="../h_src/57769932.htm" class="localvar">e2</a>, &amp;<a href="../h_src/57769524.htm" class="localvar">im</a>, &amp;<a href="../h_src/57769388.htm" class="localvar">isfloat</a>)) {
+    <a href="../h_src/57769252.htm" class="localvar">op</a> = <a href="../h_src/57686388.htm" class="variable">OP_EQI</a>;
+    <a href="../h_src/57769660.htm" class="localvar">r2</a> = <a href="../h_src/57769524.htm" class="localvar">im</a>;  <a  class="comments">/* immediate operand */</a>
+  }
+  else if (<a href="../h_src/57670136.htm" class="function">luaK_exp2RK</a>(<a href="../h_src/57770340.htm" class="localvar">fs</a>, <a href="../h_src/57769932.htm" class="localvar">e2</a>)) {  <a  class="comments">/* 2nd expression is constant? */</a>
+    <a href="../h_src/57769252.htm" class="localvar">op</a> = <a href="../h_src/57686456.htm" class="variable">OP_EQK</a>;
+    <a href="../h_src/57769660.htm" class="localvar">r2</a> = <a href="../h_src/57769932.htm" class="localvar">e2</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a>;  <a  class="comments">/* constant index */</a>
+  }
+  else {
+    <a href="../h_src/57769252.htm" class="localvar">op</a> = <a href="../h_src/57686660.htm" class="variable">OP_EQ</a>;  <a  class="comments">/* will compare two registers */</a>
+    <a href="../h_src/57769660.htm" class="localvar">r2</a> = <a href="../h_src/57670408.htm" class="function">luaK_exp2anyreg</a>(<a href="../h_src/57770340.htm" class="localvar">fs</a>, <a href="../h_src/57769932.htm" class="localvar">e2</a>);
+  }
+  <a href="../h_src/57809304.htm" class="function">freeexps</a>(<a href="../h_src/57770340.htm" class="localvar">fs</a>, <a href="../h_src/57770068.htm" class="localvar">e1</a>, <a href="../h_src/57769932.htm" class="localvar">e2</a>);
+  <a href="../h_src/57770068.htm" class="localvar">e1</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a> = <a href="../h_src/57661908.htm" class="function">condjump</a>(<a href="../h_src/57770340.htm" class="localvar">fs</a>, <a href="../h_src/57769252.htm" class="localvar">op</a>, <a href="../h_src/57769796.htm" class="localvar">r1</a>, <a href="../h_src/57769660.htm" class="localvar">r2</a>, <a href="../h_src/57769388.htm" class="localvar">isfloat</a>, (<a href="../h_src/57770204.htm" class="localvar">opr</a> == <a href="../h_src/57673332.htm" class="variable">OPR_EQ</a>));
+  <a href="../h_src/57770068.htm" class="localvar">e1</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a> = <a href="../h_src/57681628.htm" class="variable">VJMP</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,60 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaU_undump</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57614812.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57614812.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57614812.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57614812.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57614812.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57614812.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58075888.htm#313" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57507980.htm" class="type">LClosure</a> *<a href="../h_src/57614812.htm" class="function">luaU_undump</a>(<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58062968.htm" class="localvar">L</a>, <a href="../h_src/57656088.htm" class="type">ZIO</a> *<a href="../h_src/58062832.htm" class="localvar">Z</a>, const char *<a href="../h_src/58062696.htm" class="localvar">name</a>) {
+  <a href="../h_src/58074936.htm" class="type">LoadState</a> <a href="../h_src/58062560.htm" class="localvar">S</a>;
+  <a href="../h_src/57507980.htm" class="type">LClosure</a> *<a href="../h_src/58062424.htm" class="localvar">cl</a>;
+  if (*<a href="../h_src/58062696.htm" class="localvar">name</a> == '@' || *<a href="../h_src/58062696.htm" class="localvar">name</a> == '=')
+    <a href="../h_src/58062560.htm" class="localvar">S</a>.<a href="../h_src/58075072.htm" class="variable">name</a> = <a href="../h_src/58062696.htm" class="localvar">name</a> + 1;
+  else if (*<a href="../h_src/58062696.htm" class="localvar">name</a> == <a href="../h_src/57445748.htm" class="macro">LUA_SIGNATURE</a>[0])
+    <a href="../h_src/58062560.htm" class="localvar">S</a>.<a href="../h_src/58075072.htm" class="variable">name</a> = &quot;binary string&quot;;
+  else
+    <a href="../h_src/58062560.htm" class="localvar">S</a>.<a href="../h_src/58075072.htm" class="variable">name</a> = <a href="../h_src/58062696.htm" class="localvar">name</a>;
+  <a href="../h_src/58062560.htm" class="localvar">S</a>.<a href="../h_src/58075208.htm" class="variable">L</a> = <a href="../h_src/58062968.htm" class="localvar">L</a>;
+  <a href="../h_src/58062560.htm" class="localvar">S</a>.<a href="../h_src/58075140.htm" class="variable">Z</a> = <a href="../h_src/58062832.htm" class="localvar">Z</a>;
+  <a href="../h_src/58063240.htm" class="function">checkHeader</a>(&amp;<a href="../h_src/58062560.htm" class="localvar">S</a>);
+  <a href="../h_src/58062424.htm" class="localvar">cl</a> = <a href="../h_src/57630724.htm" class="function">luaF_newLclosure</a>(<a href="../h_src/58062968.htm" class="localvar">L</a>, <a href="../h_src/58073576.htm" class="function">loadByte</a>(&amp;<a href="../h_src/58062560.htm" class="localvar">S</a>));
+  <a href="../h_src/57511584.htm" class="macro">setclLvalue2s</a>(<a href="../h_src/58062968.htm" class="localvar">L</a>, <a href="../h_src/58062968.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/58062424.htm" class="localvar">cl</a>);
+  <a href="../h_src/57632628.htm" class="function">luaD_inctop</a>(<a href="../h_src/58062968.htm" class="localvar">L</a>);
+  <a href="../h_src/58062424.htm" class="localvar">cl</a>-&gt;<a href="../h_src/57508184.htm" class="variable">p</a> = <a href="../h_src/57630996.htm" class="function">luaF_newproto</a>(<a href="../h_src/58062968.htm" class="localvar">L</a>);
+  <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/58062968.htm" class="localvar">L</a>, <a href="../h_src/58062424.htm" class="localvar">cl</a>, <a href="../h_src/58062424.htm" class="localvar">cl</a>-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>);
+  <a href="../h_src/58068816.htm" class="function">loadFunction</a>(&amp;<a href="../h_src/58062560.htm" class="localvar">S</a>, <a href="../h_src/58062424.htm" class="localvar">cl</a>-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>, NULL);
+  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(cl-&gt;nupvalues == cl-&gt;p-&gt;sizeupvalues);
+  <a href="../h_src/58075412.htm" class="macro">luai_verifycode</a>(L, cl-&gt;p);
+  return <a href="../h_src/58062424.htm" class="localvar">cl</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

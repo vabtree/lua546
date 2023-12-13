@@ -1,0 +1,68 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>read_numeral</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57933892.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57933892.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57933892.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57933892.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57933892.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57933892.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57940692.htm#227" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/57933892.htm" class="function">read_numeral</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57933756.htm" class="localvar">ls</a>, <a href="../h_src/57702164.htm" class="type">SemInfo</a> *<a href="../h_src/57933552.htm" class="localvar">seminfo</a>) {
+  <a href="../h_src/57535384.htm" class="type">TValue</a> <a href="../h_src/57933416.htm" class="localvar">obj</a>;
+  const char *<a href="../h_src/57933280.htm" class="localvar">expo</a> = &quot;Ee&quot;;
+  int <a href="../h_src/57933144.htm" class="localvar">first</a> = <a href="../h_src/57933756.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>;
+  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57760276.htm" class="macro">lisdigit</a>(ls-&gt;current));
+  <a href="../h_src/57940012.htm" class="macro">save_and_next</a>(<a href="../h_src/57933756.htm" class="localvar">ls</a>);
+  if (<a href="../h_src/57933144.htm" class="localvar">first</a> == '0' &amp;&amp; <a href="../h_src/57934300.htm" class="function">check_next2</a>(<a href="../h_src/57933756.htm" class="localvar">ls</a>, &quot;xX&quot;))  <a  class="comments">/* hexadecimal? */</a>
+    <a href="../h_src/57933280.htm" class="localvar">expo</a> = &quot;Pp&quot;;
+  for (;;) {
+    if (<a href="../h_src/57934300.htm" class="function">check_next2</a>(<a href="../h_src/57933756.htm" class="localvar">ls</a>, <a href="../h_src/57933280.htm" class="localvar">expo</a>))  <a  class="comments">/* exponent mark? */</a>
+      <a href="../h_src/57934300.htm" class="function">check_next2</a>(<a href="../h_src/57933756.htm" class="localvar">ls</a>, &quot;-+&quot;);  <a  class="comments">/* optional exponent sign */</a>
+    else if (<a href="../h_src/57759868.htm" class="macro">lisxdigit</a>(<a href="../h_src/57933756.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>) || <a href="../h_src/57933756.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a> == '.')  <a  class="comments">/* '%x|%.' */</a>
+      <a href="../h_src/57940012.htm" class="macro">save_and_next</a>(<a href="../h_src/57933756.htm" class="localvar">ls</a>);
+    else break;
+  }
+  if (<a href="../h_src/57760548.htm" class="macro">lislalpha</a>(<a href="../h_src/57933756.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>))  <a  class="comments">/* is numeral touching a letter? */</a>
+    <a href="../h_src/57940012.htm" class="macro">save_and_next</a>(<a href="../h_src/57933756.htm" class="localvar">ls</a>);  <a  class="comments">/* force an error */</a>
+  <a href="../h_src/57939740.htm" class="function">save</a>(<a href="../h_src/57933756.htm" class="localvar">ls</a>, '\0');
+  if (<a href="../h_src/57501656.htm" class="function">luaO_str2num</a>(<a href="../h_src/57655340.htm" class="macro">luaZ_buffer</a>(<a href="../h_src/57933756.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>), &amp;<a href="../h_src/57933416.htm" class="localvar">obj</a>) == 0)  <a  class="comments">/* format error? */</a>
+    <a href="../h_src/57939876.htm" class="function">lexerror</a>(<a href="../h_src/57933756.htm" class="localvar">ls</a>, &quot;malformed number&quot;, <a href="../h_src/57703048.htm" class="variable">TK_FLT</a>);
+  if (<a href="../h_src/57526544.htm" class="macro">ttisinteger</a>(&amp;<a href="../h_src/57933416.htm" class="localvar">obj</a>)) {
+    <a href="../h_src/57933552.htm" class="localvar">seminfo</a>-&gt;<a href="../h_src/57702368.htm" class="variable">i</a> = <a href="../h_src/57526136.htm" class="macro">ivalue</a>(&amp;<a href="../h_src/57933416.htm" class="localvar">obj</a>);
+    return <a href="../h_src/57702980.htm" class="variable">TK_INT</a>;
+  }
+  else {
+    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57526680.htm" class="macro">ttisfloat</a>(&amp;obj));
+    <a href="../h_src/57933552.htm" class="localvar">seminfo</a>-&gt;<a href="../h_src/57702436.htm" class="variable">r</a> = <a href="../h_src/57526272.htm" class="macro">fltvalue</a>(&amp;<a href="../h_src/57933416.htm" class="localvar">obj</a>);
+    return <a href="../h_src/57703048.htm" class="variable">TK_FLT</a>;
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

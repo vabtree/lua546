@@ -1,0 +1,469 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>ltablib.c</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143431652.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/143431652.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/143431652.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/143431652.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_uf/143431652.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_df/143431652.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/143431652.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143431652.htm" class="file" target="_self">Source Code</a></li>
+<li><a href="../h_sc/143431652.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<pre class=src>
+<a id=1></a><a  class="comments">/*</a>
+<a id=2></a><a  class="comments">** $Id: ltablib.c $</a>
+<a id=3></a><a  class="comments">** Library for Table Manipulation</a>
+<a id=4></a><a  class="comments">** See Copyright Notice in lua.h</a>
+<a id=5></a><a  class="comments">*/</a>
+
+<a id=7></a>#define <a href="../h_src/143431584.htm" class="macro">ltablib_c</a>
+<a id=8></a>#define <a href="../h_src/143431448.htm" class="macro">LUA_LIB</a>
+
+<a id=10></a>#include &quot;<a href="../h_src/57461592.htm" class="file">lprefix.h</a>&quot;
+
+
+#include &lt;limits.h&gt;
+#include &lt;stddef.h&gt;
+#include &lt;string.h&gt;
+
+<a id=17></a>#include &quot;<a href="../h_src/57460028.htm" class="file">lua.h</a>&quot;
+
+<a id=19></a>#include &quot;<a href="../h_src/57422356.htm" class="file">lauxlib.h</a>&quot;
+<a id=20></a>#include &quot;<a href="../h_src/57410932.htm" class="file">lualib.h</a>&quot;
+
+
+<a id=23></a><a  class="comments">/*</a>
+<a id=24></a><a  class="comments">** Operations that an object must define to mimic a table</a>
+<a id=25></a><a  class="comments">** (some functions only need some of them)</a>
+<a id=26></a><a  class="comments">*/</a>
+<a id=27></a>#define <a href="../h_src/143431312.htm" class="macro">TAB_R</a>	1			<a  class="comments">/* read */</a>
+<a id=28></a>#define <a href="../h_src/143431176.htm" class="macro">TAB_W</a>	2			<a  class="comments">/* write */</a>
+<a id=29></a>#define <a href="../h_src/143431040.htm" class="macro">TAB_L</a>	4			<a  class="comments">/* length */</a>
+<a id=30></a>#define <a href="../h_src/143430904.htm" class="macro">TAB_RW</a>	(TAB_R | TAB_W)		<a  class="comments">/* read/write */</a>
+
+
+<a id=33></a>#define <a href="../h_src/143430768.htm" class="macro">aux_getn</a>(L,n,w)	(checktab(L, n, (w) | TAB_L), luaL_len(L, n))
+
+
+<a id=36></a>static int <a href="../h_src/143430632.htm" class="function">checkfield</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143430496.htm" class="localvar">L</a>, const char *<a href="../h_src/143430360.htm" class="localvar">key</a>, int <a href="../h_src/143430224.htm" class="localvar">n</a>) {
+<a id=37></a>  <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/143430496.htm" class="localvar">L</a>, <a href="../h_src/143430360.htm" class="localvar">key</a>);
+<a id=38></a>  return (<a href="../h_src/57434120.htm" class="function">lua_rawget</a>(<a href="../h_src/143430496.htm" class="localvar">L</a>, -<a href="../h_src/143430224.htm" class="localvar">n</a>) != <a href="../h_src/57444048.htm" class="macro">LUA_TNIL</a>);
+}
+
+
+<a id=42></a><a  class="comments">/*</a>
+<a id=43></a><a  class="comments">** Check that 'arg' either is a table or can behave like one (that is,</a>
+<a id=44></a><a  class="comments">** has a metatable with the required metamethods)</a>
+<a id=45></a><a  class="comments">*/</a>
+<a id=46></a>static void <a href="../h_src/143430088.htm" class="function">checktab</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143429952.htm" class="localvar">L</a>, int <a href="../h_src/143429816.htm" class="localvar">arg</a>, int <a href="../h_src/143429680.htm" class="localvar">what</a>) {
+<a id=47></a>  if (<a href="../h_src/57438540.htm" class="function">lua_type</a>(<a href="../h_src/143429952.htm" class="localvar">L</a>, <a href="../h_src/143429816.htm" class="localvar">arg</a>) != <a href="../h_src/57443368.htm" class="macro">LUA_TTABLE</a>) {  <a  class="comments">/* is it not a table? */</a>
+<a id=48></a>    int <a href="../h_src/143429544.htm" class="localvar">n</a> = 1;  <a  class="comments">/* number of elements to pop */</a>
+<a id=49></a>    if (<a href="../h_src/57433780.htm" class="function">lua_getmetatable</a>(<a href="../h_src/143429952.htm" class="localvar">L</a>, <a href="../h_src/143429816.htm" class="localvar">arg</a>) &amp;&amp;  <a  class="comments">/* must have metatable */</a>
+<a id=50></a>        (!(<a href="../h_src/143429680.htm" class="localvar">what</a> &amp; <a href="../h_src/143431312.htm" class="macro">TAB_R</a>) || <a href="../h_src/143430632.htm" class="function">checkfield</a>(<a href="../h_src/143429952.htm" class="localvar">L</a>, &quot;__index&quot;, ++<a href="../h_src/143429544.htm" class="localvar">n</a>)) &amp;&amp;
+<a id=51></a>        (!(<a href="../h_src/143429680.htm" class="localvar">what</a> &amp; <a href="../h_src/143431176.htm" class="macro">TAB_W</a>) || <a href="../h_src/143430632.htm" class="function">checkfield</a>(<a href="../h_src/143429952.htm" class="localvar">L</a>, &quot;__newindex&quot;, ++<a href="../h_src/143429544.htm" class="localvar">n</a>)) &amp;&amp;
+<a id=52></a>        (!(<a href="../h_src/143429680.htm" class="localvar">what</a> &amp; <a href="../h_src/143431040.htm" class="macro">TAB_L</a>) || <a href="../h_src/143430632.htm" class="function">checkfield</a>(<a href="../h_src/143429952.htm" class="localvar">L</a>, &quot;__len&quot;, ++<a href="../h_src/143429544.htm" class="localvar">n</a>))) {
+<a id=53></a>      <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143429952.htm" class="localvar">L</a>, <a href="../h_src/143429544.htm" class="localvar">n</a>);  <a  class="comments">/* pop metatable and tested metamethods */</a>
+    }
+    else
+<a id=56></a>      <a href="../h_src/57419772.htm" class="function">luaL_checktype</a>(<a href="../h_src/143429952.htm" class="localvar">L</a>, <a href="../h_src/143429816.htm" class="localvar">arg</a>, <a href="../h_src/57443368.htm" class="macro">LUA_TTABLE</a>);  <a  class="comments">/* force an error */</a>
+  }
+}
+
+
+<a id=61></a>static int <a href="../h_src/143429408.htm" class="function">tinsert</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143429272.htm" class="localvar">L</a>) {
+<a id=62></a>  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143429136.htm" class="localvar">pos</a>;  <a  class="comments">/* where to insert new element */</a>
+<a id=63></a>  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143429000.htm" class="localvar">e</a> = <a href="../h_src/143430768.htm" class="macro">aux_getn</a>(<a href="../h_src/143429272.htm" class="localvar">L</a>, 1, <a href="../h_src/143430904.htm" class="macro">TAB_RW</a>);
+<a id=64></a>  <a href="../h_src/143429000.htm" class="localvar">e</a> = <a href="../h_src/57415896.htm" class="macro">luaL_intop</a>(+, <a href="../h_src/143429000.htm" class="localvar">e</a>, 1);  <a  class="comments">/* first empty element */</a>
+<a id=65></a>  switch (<a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/143429272.htm" class="localvar">L</a>)) {
+<a id=66></a>    case 2: {  <a  class="comments">/* called with only 2 arguments */</a>
+<a id=67></a>      <a href="../h_src/143429136.htm" class="localvar">pos</a> = <a href="../h_src/143429000.htm" class="localvar">e</a>;  <a  class="comments">/* insert new element at the end */</a>
+      break;
+    }
+    case 3: {
+<a id=71></a>      <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143428864.htm" class="localvar">i</a>;
+<a id=72></a>      <a href="../h_src/143429136.htm" class="localvar">pos</a> = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143429272.htm" class="localvar">L</a>, 2);  <a  class="comments">/* 2nd argument is the position */</a>
+<a id=73></a>      <a  class="comments">/* check whether 'pos' is in [1, e] */</a>
+<a id=74></a>      <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(L, (lua_Unsigned)pos - 1u &lt; (lua_Unsigned)e, 2,
+                       &quot;position out of bounds&quot;);
+<a id=76></a>      for (<a href="../h_src/143428864.htm" class="localvar">i</a> = <a href="../h_src/143429000.htm" class="localvar">e</a>; <a href="../h_src/143428864.htm" class="localvar">i</a> &gt; <a href="../h_src/143429136.htm" class="localvar">pos</a>; <a href="../h_src/143428864.htm" class="localvar">i</a>--) {  <a  class="comments">/* move up elements */</a>
+<a id=77></a>        <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143429272.htm" class="localvar">L</a>, 1, <a href="../h_src/143428864.htm" class="localvar">i</a> - 1);
+<a id=78></a>        <a href="../h_src/57433440.htm" class="function">lua_seti</a>(<a href="../h_src/143429272.htm" class="localvar">L</a>, 1, <a href="../h_src/143428864.htm" class="localvar">i</a>);  <a  class="comments">/* t[i] = t[i - 1] */</a>
+      }
+      break;
+    }
+    default: {
+<a id=83></a>      return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143429272.htm" class="localvar">L</a>, &quot;wrong number of arguments to 'insert'&quot;);
+    }
+  }
+<a id=86></a>  <a href="../h_src/57433440.htm" class="function">lua_seti</a>(<a href="../h_src/143429272.htm" class="localvar">L</a>, 1, <a href="../h_src/143429136.htm" class="localvar">pos</a>);  <a  class="comments">/* t[pos] = v */</a>
+  return 0;
+}
+
+
+<a id=91></a>static int <a href="../h_src/143428728.htm" class="function">tremove</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143428592.htm" class="localvar">L</a>) {
+<a id=92></a>  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143428456.htm" class="localvar">size</a> = <a href="../h_src/143430768.htm" class="macro">aux_getn</a>(<a href="../h_src/143428592.htm" class="localvar">L</a>, 1, <a href="../h_src/143430904.htm" class="macro">TAB_RW</a>);
+<a id=93></a>  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143428320.htm" class="localvar">pos</a> = <a href="../h_src/57419908.htm" class="function">luaL_optinteger</a>(<a href="../h_src/143428592.htm" class="localvar">L</a>, 2, <a href="../h_src/143428456.htm" class="localvar">size</a>);
+<a id=94></a>  if (<a href="../h_src/143428320.htm" class="localvar">pos</a> != <a href="../h_src/143428456.htm" class="localvar">size</a>)  <a  class="comments">/* validate 'pos' if given */</a>
+<a id=95></a>    <a  class="comments">/* check whether 'pos' is in [1, size + 1] */</a>
+<a id=96></a>    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(L, (lua_Unsigned)pos - 1u &lt;= (lua_Unsigned)size, 2,
+                     &quot;position out of bounds&quot;);
+<a id=98></a>  <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143428592.htm" class="localvar">L</a>, 1, <a href="../h_src/143428320.htm" class="localvar">pos</a>);  <a  class="comments">/* result = t[pos] */</a>
+<a id=99></a>  for ( ; <a href="../h_src/143428320.htm" class="localvar">pos</a> &lt; <a href="../h_src/143428456.htm" class="localvar">size</a>; <a href="../h_src/143428320.htm" class="localvar">pos</a>++) {
+<a id=100></a>    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143428592.htm" class="localvar">L</a>, 1, <a href="../h_src/143428320.htm" class="localvar">pos</a> + 1);
+<a id=101></a>    <a href="../h_src/57433440.htm" class="function">lua_seti</a>(<a href="../h_src/143428592.htm" class="localvar">L</a>, 1, <a href="../h_src/143428320.htm" class="localvar">pos</a>);  <a  class="comments">/* t[pos] = t[pos + 1] */</a>
+  }
+<a id=103></a>  <a href="../h_src/57435276.htm" class="function">lua_pushnil</a>(<a href="../h_src/143428592.htm" class="localvar">L</a>);
+<a id=104></a>  <a href="../h_src/57433440.htm" class="function">lua_seti</a>(<a href="../h_src/143428592.htm" class="localvar">L</a>, 1, <a href="../h_src/143428320.htm" class="localvar">pos</a>);  <a  class="comments">/* remove entry t[pos] */</a>
+  return 1;
+}
+
+
+<a id=109></a><a  class="comments">/*</a>
+<a id=110></a><a  class="comments">** Copy elements (1[f], ..., 1[e]) into (tt[t], tt[t+1], ...). Whenever</a>
+<a id=111></a><a  class="comments">** possible, copy in increasing order, which is better for rehashing.</a>
+<a id=112></a><a  class="comments">** &quot;possible&quot; means destination after original range, or smaller</a>
+<a id=113></a><a  class="comments">** than origin, or copying to another table.</a>
+<a id=114></a><a  class="comments">*/</a>
+<a id=115></a>static int <a href="../h_src/143428184.htm" class="function">tmove</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143428048.htm" class="localvar">L</a>) {
+<a id=116></a>  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143427912.htm" class="localvar">f</a> = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143428048.htm" class="localvar">L</a>, 2);
+<a id=117></a>  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143427776.htm" class="localvar">e</a> = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143428048.htm" class="localvar">L</a>, 3);
+<a id=118></a>  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143427640.htm" class="localvar">t</a> = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143428048.htm" class="localvar">L</a>, 4);
+<a id=119></a>  int <a href="../h_src/143427504.htm" class="localvar">tt</a> = !<a href="../h_src/57427796.htm" class="macro">lua_isnoneornil</a>(<a href="../h_src/143428048.htm" class="localvar">L</a>, 5) ? 5 : 1;  <a  class="comments">/* destination table */</a>
+<a id=120></a>  <a href="../h_src/143430088.htm" class="function">checktab</a>(<a href="../h_src/143428048.htm" class="localvar">L</a>, 1, <a href="../h_src/143431312.htm" class="macro">TAB_R</a>);
+<a id=121></a>  <a href="../h_src/143430088.htm" class="function">checktab</a>(<a href="../h_src/143428048.htm" class="localvar">L</a>, <a href="../h_src/143427504.htm" class="localvar">tt</a>, <a href="../h_src/143431176.htm" class="macro">TAB_W</a>);
+<a id=122></a>  if (<a href="../h_src/143427776.htm" class="localvar">e</a> &gt;= <a href="../h_src/143427912.htm" class="localvar">f</a>) {  <a  class="comments">/* otherwise, nothing to move */</a>
+<a id=123></a>    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143427368.htm" class="localvar">n</a>, <a href="../h_src/143427232.htm" class="localvar">i</a>;
+<a id=124></a>    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143428048.htm" class="localvar">L</a>, <a href="../h_src/143427912.htm" class="localvar">f</a> &gt; 0 || <a href="../h_src/143427776.htm" class="localvar">e</a> &lt; <a href="../h_src/57450100.htm" class="macro">LUA_MAXINTEGER</a> + f, 3,
+                  &quot;too many elements to move&quot;);
+<a id=126></a>    <a href="../h_src/143427368.htm" class="localvar">n</a> = <a href="../h_src/143427776.htm" class="localvar">e</a> - <a href="../h_src/143427912.htm" class="localvar">f</a> + 1;  <a  class="comments">/* number of elements to move */</a>
+<a id=127></a>    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143428048.htm" class="localvar">L</a>, <a href="../h_src/143427640.htm" class="localvar">t</a> &lt;= <a href="../h_src/57450100.htm" class="macro">LUA_MAXINTEGER</a> - <a href="../h_src/143427368.htm" class="localvar">n</a> + 1, 4,
+                  &quot;destination wrap around&quot;);
+<a id=129></a>    if (<a href="../h_src/143427640.htm" class="localvar">t</a> &gt; <a href="../h_src/143427776.htm" class="localvar">e</a> || <a href="../h_src/143427640.htm" class="localvar">t</a> &lt;= <a href="../h_src/143427912.htm" class="localvar">f</a> || (<a href="../h_src/143427504.htm" class="localvar">tt</a> != 1 &amp;&amp; !<a href="../h_src/57435344.htm" class="function">lua_compare</a>(<a href="../h_src/143428048.htm" class="localvar">L</a>, 1, <a href="../h_src/143427504.htm" class="localvar">tt</a>, <a href="../h_src/57435820.htm" class="macro">LUA_OPEQ</a>))) {
+<a id=130></a>      for (<a href="../h_src/143427232.htm" class="localvar">i</a> = 0; <a href="../h_src/143427232.htm" class="localvar">i</a> &lt; <a href="../h_src/143427368.htm" class="localvar">n</a>; <a href="../h_src/143427232.htm" class="localvar">i</a>++) {
+<a id=131></a>        <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143428048.htm" class="localvar">L</a>, 1, <a href="../h_src/143427912.htm" class="localvar">f</a> + <a href="../h_src/143427232.htm" class="localvar">i</a>);
+<a id=132></a>        <a href="../h_src/57433440.htm" class="function">lua_seti</a>(<a href="../h_src/143428048.htm" class="localvar">L</a>, <a href="../h_src/143427504.htm" class="localvar">tt</a>, <a href="../h_src/143427640.htm" class="localvar">t</a> + <a href="../h_src/143427232.htm" class="localvar">i</a>);
+      }
+    }
+    else {
+<a id=136></a>      for (<a href="../h_src/143427232.htm" class="localvar">i</a> = <a href="../h_src/143427368.htm" class="localvar">n</a> - 1; <a href="../h_src/143427232.htm" class="localvar">i</a> &gt;= 0; <a href="../h_src/143427232.htm" class="localvar">i</a>--) {
+<a id=137></a>        <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143428048.htm" class="localvar">L</a>, 1, <a href="../h_src/143427912.htm" class="localvar">f</a> + <a href="../h_src/143427232.htm" class="localvar">i</a>);
+<a id=138></a>        <a href="../h_src/57433440.htm" class="function">lua_seti</a>(<a href="../h_src/143428048.htm" class="localvar">L</a>, <a href="../h_src/143427504.htm" class="localvar">tt</a>, <a href="../h_src/143427640.htm" class="localvar">t</a> + <a href="../h_src/143427232.htm" class="localvar">i</a>);
+      }
+    }
+  }
+<a id=142></a>  <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/143428048.htm" class="localvar">L</a>, <a href="../h_src/143427504.htm" class="localvar">tt</a>);  <a  class="comments">/* return destination table */</a>
+  return 1;
+}
+
+
+<a id=147></a>static void <a href="../h_src/143427096.htm" class="function">addfield</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143426960.htm" class="localvar">L</a>, <a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> *<a href="../h_src/143426824.htm" class="localvar">b</a>, <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143426688.htm" class="localvar">i</a>) {
+<a id=148></a>  <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143426960.htm" class="localvar">L</a>, 1, <a href="../h_src/143426688.htm" class="localvar">i</a>);
+<a id=149></a>  if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(!<a href="../h_src/57438812.htm" class="function">lua_isstring</a>(<a href="../h_src/143426960.htm" class="localvar">L</a>, -1)))
+<a id=150></a>    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143426960.htm" class="localvar">L</a>, &quot;invalid value (%s) at index %I in table for 'concat'&quot;,
+<a id=151></a>                  <a href="../h_src/57416712.htm" class="macro">luaL_typename</a>(<a href="../h_src/143426960.htm" class="localvar">L</a>, -1), (<a href="../h_src/57450916.htm" class="macro">LUAI_UACINT</a>)<a href="../h_src/143426688.htm" class="localvar">i</a>);
+<a id=152></a>  <a href="../h_src/57413380.htm" class="function">luaL_addvalue</a>(<a href="../h_src/143426824.htm" class="localvar">b</a>);
+}
+
+
+<a id=156></a>static int <a href="../h_src/143426552.htm" class="function">tconcat</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143426416.htm" class="localvar">L</a>) {
+<a id=157></a>  <a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> <a href="../h_src/143426280.htm" class="localvar">b</a>;
+<a id=158></a>  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143426144.htm" class="localvar">last</a> = <a href="../h_src/143430768.htm" class="macro">aux_getn</a>(<a href="../h_src/143426416.htm" class="localvar">L</a>, 1, <a href="../h_src/143431312.htm" class="macro">TAB_R</a>);
+<a id=159></a>  <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/143426008.htm" class="localvar">lsep</a>;
+<a id=160></a>  const char *<a href="../h_src/143425872.htm" class="localvar">sep</a> = <a href="../h_src/57420180.htm" class="function">luaL_optlstring</a>(<a href="../h_src/143426416.htm" class="localvar">L</a>, 2, &quot;&quot;, &amp;<a href="../h_src/143426008.htm" class="localvar">lsep</a>);
+<a id=161></a>  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143425736.htm" class="localvar">i</a> = <a href="../h_src/57419908.htm" class="function">luaL_optinteger</a>(<a href="../h_src/143426416.htm" class="localvar">L</a>, 3, 1);
+<a id=162></a>  <a href="../h_src/143426144.htm" class="localvar">last</a> = <a href="../h_src/57419908.htm" class="function">luaL_optinteger</a>(<a href="../h_src/143426416.htm" class="localvar">L</a>, 4, <a href="../h_src/143426144.htm" class="localvar">last</a>);
+<a id=163></a>  <a href="../h_src/57413652.htm" class="function">luaL_buffinit</a>(<a href="../h_src/143426416.htm" class="localvar">L</a>, &amp;<a href="../h_src/143426280.htm" class="localvar">b</a>);
+<a id=164></a>  for (; <a href="../h_src/143425736.htm" class="localvar">i</a> &lt; <a href="../h_src/143426144.htm" class="localvar">last</a>; <a href="../h_src/143425736.htm" class="localvar">i</a>++) {
+<a id=165></a>    <a href="../h_src/143427096.htm" class="function">addfield</a>(<a href="../h_src/143426416.htm" class="localvar">L</a>, &amp;<a href="../h_src/143426280.htm" class="localvar">b</a>, <a href="../h_src/143425736.htm" class="localvar">i</a>);
+<a id=166></a>    <a href="../h_src/57413516.htm" class="function">luaL_addlstring</a>(&amp;<a href="../h_src/143426280.htm" class="localvar">b</a>, <a href="../h_src/143425872.htm" class="localvar">sep</a>, <a href="../h_src/143426008.htm" class="localvar">lsep</a>);
+  }
+<a id=168></a>  if (<a href="../h_src/143425736.htm" class="localvar">i</a> == <a href="../h_src/143426144.htm" class="localvar">last</a>)  <a  class="comments">/* add last value (if interval was not empty) */</a>
+<a id=169></a>    <a href="../h_src/143427096.htm" class="function">addfield</a>(<a href="../h_src/143426416.htm" class="localvar">L</a>, &amp;<a href="../h_src/143426280.htm" class="localvar">b</a>, <a href="../h_src/143425736.htm" class="localvar">i</a>);
+<a id=170></a>  <a href="../h_src/57413312.htm" class="function">luaL_pushresult</a>(&amp;<a href="../h_src/143426280.htm" class="localvar">b</a>);
+  return 1;
+}
+
+
+<a id=175></a><a  class="comments">/*</a>
+<a id=176></a><a  class="comments">** {======================================================</a>
+<a id=177></a><a  class="comments">** Pack/unpack</a>
+<a id=178></a><a  class="comments">** =======================================================</a>
+<a id=179></a><a  class="comments">*/</a>
+
+<a id=181></a>static int <a href="../h_src/143425600.htm" class="function">tpack</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143425464.htm" class="localvar">L</a>) {
+<a id=182></a>  int <a href="../h_src/143425328.htm" class="localvar">i</a>;
+<a id=183></a>  int <a href="../h_src/143425192.htm" class="localvar">n</a> = <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/143425464.htm" class="localvar">L</a>);  <a  class="comments">/* number of elements to pack */</a>
+<a id=184></a>  <a href="../h_src/57433916.htm" class="function">lua_createtable</a>(<a href="../h_src/143425464.htm" class="localvar">L</a>, <a href="../h_src/143425192.htm" class="localvar">n</a>, 1);  <a  class="comments">/* create result table */</a>
+<a id=185></a>  <a href="../h_src/57427252.htm" class="macro">lua_insert</a>(<a href="../h_src/143425464.htm" class="localvar">L</a>, 1);  <a  class="comments">/* put it at index 1 */</a>
+<a id=186></a>  for (<a href="../h_src/143425328.htm" class="localvar">i</a> = <a href="../h_src/143425192.htm" class="localvar">n</a>; <a href="../h_src/143425328.htm" class="localvar">i</a> &gt;= 1; <a href="../h_src/143425328.htm" class="localvar">i</a>--)  <a  class="comments">/* assign elements */</a>
+<a id=187></a>    <a href="../h_src/57433440.htm" class="function">lua_seti</a>(<a href="../h_src/143425464.htm" class="localvar">L</a>, 1, <a href="../h_src/143425328.htm" class="localvar">i</a>);
+<a id=188></a>  <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143425464.htm" class="localvar">L</a>, <a href="../h_src/143425192.htm" class="localvar">n</a>);
+<a id=189></a>  <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/143425464.htm" class="localvar">L</a>, 1, &quot;n&quot;);  <a  class="comments">/* t.n = number of elements */</a>
+<a id=190></a>  return 1;  <a  class="comments">/* return table */</a>
+}
+
+
+<a id=194></a>static int <a href="../h_src/143425056.htm" class="function">tunpack</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143424920.htm" class="localvar">L</a>) {
+<a id=195></a>  <a href="../h_src/57438132.htm" class="function">lua_Unsigned</a> <a href="../h_src/143424784.htm" class="localvar">n</a>;
+<a id=196></a>  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143424648.htm" class="localvar">i</a> = <a href="../h_src/57419908.htm" class="function">luaL_optinteger</a>(<a href="../h_src/143424920.htm" class="localvar">L</a>, 2, 1);
+<a id=197></a>  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143424512.htm" class="localvar">e</a> = <a href="../h_src/57416168.htm" class="macro">luaL_opt</a>(<a href="../h_src/143424920.htm" class="localvar">L</a>, <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>, 3, <a href="../h_src/57418140.htm" class="function">luaL_len</a>(<a href="../h_src/143424920.htm" class="localvar">L</a>, 1));
+<a id=198></a>  if (<a href="../h_src/143424648.htm" class="localvar">i</a> &gt; <a href="../h_src/143424512.htm" class="localvar">e</a>) return 0;  <a  class="comments">/* empty range */</a>
+<a id=199></a>  <a href="../h_src/143424784.htm" class="localvar">n</a> = (<a href="../h_src/57438132.htm" class="function">lua_Unsigned</a>)<a href="../h_src/143424512.htm" class="localvar">e</a> - <a href="../h_src/143424648.htm" class="localvar">i</a>;  <a  class="comments">/* number of elements minus 1 (avoid overflows) */</a>
+<a id=200></a>  if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/143424784.htm" class="localvar">n</a> &gt;= (unsigned int)INT_MAX  ||
+<a id=201></a>                 !<a href="../h_src/57439016.htm" class="function">lua_checkstack</a>(<a href="../h_src/143424920.htm" class="localvar">L</a>, (int)(++<a href="../h_src/143424784.htm" class="localvar">n</a>))))
+<a id=202></a>    return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143424920.htm" class="localvar">L</a>, &quot;too many results to unpack&quot;);
+<a id=203></a>  for (; <a href="../h_src/143424648.htm" class="localvar">i</a> &lt; <a href="../h_src/143424512.htm" class="localvar">e</a>; <a href="../h_src/143424648.htm" class="localvar">i</a>++) {  <a  class="comments">/* push arg[i..e - 1] (to avoid overflows) */</a>
+<a id=204></a>    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143424920.htm" class="localvar">L</a>, 1, <a href="../h_src/143424648.htm" class="localvar">i</a>);
+  }
+<a id=206></a>  <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143424920.htm" class="localvar">L</a>, 1, <a href="../h_src/143424512.htm" class="localvar">e</a>);  <a  class="comments">/* push last element */</a>
+<a id=207></a>  return (int)<a href="../h_src/143424784.htm" class="localvar">n</a>;
+}
+
+<a id=210></a><a  class="comments">/* }====================================================== */</a>
+
+
+
+<a id=214></a><a  class="comments">/*</a>
+<a id=215></a><a  class="comments">** {======================================================</a>
+<a id=216></a><a  class="comments">** Quicksort</a>
+<a id=217></a><a  class="comments">** (based on 'Algorithms in MODULA-3', Robert Sedgewick;</a>
+<a id=218></a><a  class="comments">**  Addison-Wesley, 1993.)</a>
+<a id=219></a><a  class="comments">** =======================================================</a>
+<a id=220></a><a  class="comments">*/</a>
+
+
+<a id=223></a><a  class="comments">/* type for array indices */</a>
+<a id=224></a>typedef unsigned int <a href="../h_src/143424376.htm" class="type">IdxT</a>;
+
+
+<a id=227></a><a  class="comments">/*</a>
+<a id=228></a><a  class="comments">** Produce a &quot;random&quot; 'unsigned int' to randomize pivot choice. This</a>
+<a id=229></a><a  class="comments">** macro is used only when 'sort' detects a big imbalance in the result</a>
+<a id=230></a><a  class="comments">** of a partition. (If you don't want/need this &quot;randomness&quot;, ~0 is a</a>
+<a id=231></a><a  class="comments">** good choice.)</a>
+<a id=232></a><a  class="comments">*/</a>
+<a id=233></a>#if !defined(<a href="../h_src/143424308.htm" class="macro">l_randomizePivot</a>)		<a  class="comments">/* { */</a>
+
+#include &lt;time.h&gt;
+
+<a id=237></a><a  class="comments">/* size of 'e' measured in number of 'unsigned int's */</a>
+<a id=238></a>#define <a href="../h_src/143424172.htm" class="macro">sof</a>(e)		(sizeof(e) / sizeof(unsigned int))
+
+<a id=240></a><a  class="comments">/*</a>
+<a id=241></a><a  class="comments">** Use 'time' and 'clock' as sources of &quot;randomness&quot;. Because we don't</a>
+<a id=242></a><a  class="comments">** know the types 'clock_t' and 'time_t', we cannot cast them to</a>
+<a id=243></a><a  class="comments">** anything without risking overflows. A safe way to use their values</a>
+<a id=244></a><a  class="comments">** is to copy them to an array of a known type and use the array values.</a>
+<a id=245></a><a  class="comments">*/</a>
+<a id=246></a>static unsigned int <a href="../h_src/143424036.htm" class="function">l_randomizePivot</a> (void) {
+<a id=247></a>  clock_t <a href="../h_src/143423900.htm" class="localvar">c</a> = <a href="../h_aa/143354092.htm" class="libfunc">clock</a>();
+<a id=248></a>  time_t <a href="../h_src/143423764.htm" class="localvar">t</a> = <a href="../h_aa/57983504.htm" class="libfunc">time</a>(NULL);
+<a id=249></a>  unsigned int <a href="../h_src/143423628.htm" class="localvar">buff</a>[<a href="../h_src/143424172.htm" class="macro">sof</a>(<a href="../h_src/143423900.htm" class="localvar">c</a>) + <a href="../h_src/143424172.htm" class="macro">sof</a>(<a href="../h_src/143423764.htm" class="localvar">t</a>)];
+<a id=250></a>  unsigned int <a href="../h_src/143423492.htm" class="localvar">i</a>, <a href="../h_src/143423356.htm" class="localvar">rnd</a> = 0;
+<a id=251></a>  <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/143423628.htm" class="localvar">buff</a>, &amp;<a href="../h_src/143423900.htm" class="localvar">c</a>, <a href="../h_src/143424172.htm" class="macro">sof</a>(<a href="../h_src/143423900.htm" class="localvar">c</a>) * sizeof(unsigned int));
+<a id=252></a>  <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/143423628.htm" class="localvar">buff</a> + <a href="../h_src/143424172.htm" class="macro">sof</a>(<a href="../h_src/143423900.htm" class="localvar">c</a>), &amp;<a href="../h_src/143423764.htm" class="localvar">t</a>, <a href="../h_src/143424172.htm" class="macro">sof</a>(<a href="../h_src/143423764.htm" class="localvar">t</a>) * sizeof(unsigned int));
+<a id=253></a>  for (<a href="../h_src/143423492.htm" class="localvar">i</a> = 0; <a href="../h_src/143423492.htm" class="localvar">i</a> &lt; <a href="../h_src/143424172.htm" class="macro">sof</a>(<a href="../h_src/143423628.htm" class="localvar">buff</a>); <a href="../h_src/143423492.htm" class="localvar">i</a>++)
+<a id=254></a>    <a href="../h_src/143423356.htm" class="localvar">rnd</a> += <a href="../h_src/143423628.htm" class="localvar">buff</a>[<a href="../h_src/143423492.htm" class="localvar">i</a>];
+<a id=255></a>  return <a href="../h_src/143423356.htm" class="localvar">rnd</a>;
+}
+
+<a id=258></a>#endif					<a  class="comments">/* } */</a>
+
+
+<a id=261></a><a  class="comments">/* arrays larger than 'RANLIMIT' may use randomized pivots */</a>
+<a id=262></a>#define <a href="../h_src/143423220.htm" class="macro">RANLIMIT</a>	100u
+
+
+<a id=265></a>static void <a href="../h_src/143423084.htm" class="function">set2</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143422948.htm" class="localvar">L</a>, <a href="../h_src/143424376.htm" class="type">IdxT</a> <a href="../h_src/143422812.htm" class="localvar">i</a>, <a href="../h_src/143424376.htm" class="type">IdxT</a> <a href="../h_src/143422676.htm" class="localvar">j</a>) {
+<a id=266></a>  <a href="../h_src/57433440.htm" class="function">lua_seti</a>(<a href="../h_src/143422948.htm" class="localvar">L</a>, 1, <a href="../h_src/143422812.htm" class="localvar">i</a>);
+<a id=267></a>  <a href="../h_src/57433440.htm" class="function">lua_seti</a>(<a href="../h_src/143422948.htm" class="localvar">L</a>, 1, <a href="../h_src/143422676.htm" class="localvar">j</a>);
+}
+
+
+<a id=271></a><a  class="comments">/*</a>
+<a id=272></a><a  class="comments">** Return true iff value at stack index 'a' is less than the value at</a>
+<a id=273></a><a  class="comments">** index 'b' (according to the order of the sort).</a>
+<a id=274></a><a  class="comments">*/</a>
+<a id=275></a>static int <a href="../h_src/143422540.htm" class="function">sort_comp</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143422404.htm" class="localvar">L</a>, int <a href="../h_src/143422268.htm" class="localvar">a</a>, int <a href="../h_src/143422132.htm" class="localvar">b</a>) {
+<a id=276></a>  if (<a href="../h_src/57428340.htm" class="macro">lua_isnil</a>(<a href="../h_src/143422404.htm" class="localvar">L</a>, 2))  <a  class="comments">/* no function? */</a>
+<a id=277></a>    return <a href="../h_src/57435344.htm" class="function">lua_compare</a>(<a href="../h_src/143422404.htm" class="localvar">L</a>, <a href="../h_src/143422268.htm" class="localvar">a</a>, <a href="../h_src/143422132.htm" class="localvar">b</a>, <a href="../h_src/57435684.htm" class="macro">LUA_OPLT</a>);  <a  class="comments">/* a &lt; b */</a>
+<a id=278></a>  else {  <a  class="comments">/* function */</a>
+<a id=279></a>    int <a href="../h_src/143421996.htm" class="localvar">res</a>;
+<a id=280></a>    <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/143422404.htm" class="localvar">L</a>, 2);    <a  class="comments">/* push function */</a>
+<a id=281></a>    <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/143422404.htm" class="localvar">L</a>, <a href="../h_src/143422268.htm" class="localvar">a</a>-1);  <a  class="comments">/* -1 to compensate function */</a>
+<a id=282></a>    <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/143422404.htm" class="localvar">L</a>, <a href="../h_src/143422132.htm" class="localvar">b</a>-2);  <a  class="comments">/* -2 to compensate function and 'a' */</a>
+<a id=283></a>    <a href="../h_src/57432964.htm" class="macro">lua_call</a>(<a href="../h_src/143422404.htm" class="localvar">L</a>, 2, 1);      <a  class="comments">/* call function */</a>
+<a id=284></a>    <a href="../h_src/143421996.htm" class="localvar">res</a> = <a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/143422404.htm" class="localvar">L</a>, -1);  <a  class="comments">/* get result */</a>
+<a id=285></a>    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143422404.htm" class="localvar">L</a>, 1);          <a  class="comments">/* pop result */</a>
+<a id=286></a>    return <a href="../h_src/143421996.htm" class="localvar">res</a>;
+  }
+}
+
+
+<a id=291></a><a  class="comments">/*</a>
+<a id=292></a><a  class="comments">** Does the partition: Pivot P is at the top of the stack.</a>
+<a id=293></a><a  class="comments">** precondition: a[lo] &lt;= P == a[up-1] &lt;= a[up],</a>
+<a id=294></a><a  class="comments">** so it only needs to do the partition from lo + 1 to up - 2.</a>
+<a id=295></a><a  class="comments">** Pos-condition: a[lo .. i - 1] &lt;= a[i] == P &lt;= a[i + 1 .. up]</a>
+<a id=296></a><a  class="comments">** returns 'i'.</a>
+<a id=297></a><a  class="comments">*/</a>
+<a id=298></a>static <a href="../h_src/143424376.htm" class="type">IdxT</a> <a href="../h_src/143421860.htm" class="function">partition</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143421724.htm" class="localvar">L</a>, <a href="../h_src/143424376.htm" class="type">IdxT</a> <a href="../h_src/143421588.htm" class="localvar">lo</a>, <a href="../h_src/143424376.htm" class="type">IdxT</a> <a href="../h_src/143421452.htm" class="localvar">up</a>) {
+<a id=299></a>  <a href="../h_src/143424376.htm" class="type">IdxT</a> <a href="../h_src/143421316.htm" class="localvar">i</a> = <a href="../h_src/143421588.htm" class="localvar">lo</a>;  <a  class="comments">/* will be incremented before first use */</a>
+<a id=300></a>  <a href="../h_src/143424376.htm" class="type">IdxT</a> <a href="../h_src/143421180.htm" class="localvar">j</a> = <a href="../h_src/143421452.htm" class="localvar">up</a> - 1;  <a  class="comments">/* will be decremented before first use */</a>
+<a id=301></a>  <a  class="comments">/* loop invariant: a[lo .. i] &lt;= P &lt;= a[j .. up] */</a>
+  for (;;) {
+<a id=303></a>    <a  class="comments">/* next loop: repeat ++i while a[i] &lt; P */</a>
+<a id=304></a>    while ((void)<a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143421724.htm" class="localvar">L</a>, 1, ++<a href="../h_src/143421316.htm" class="localvar">i</a>), <a href="../h_src/143422540.htm" class="function">sort_comp</a>(<a href="../h_src/143421724.htm" class="localvar">L</a>, -1, -2)) {
+<a id=305></a>      if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/143421316.htm" class="localvar">i</a> == <a href="../h_src/143421452.htm" class="localvar">up</a> - 1))  <a  class="comments">/* a[i] &lt; P  but a[up - 1] == P  ?? */</a>
+<a id=306></a>        <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143421724.htm" class="localvar">L</a>, &quot;invalid order function for sorting&quot;);
+<a id=307></a>      <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143421724.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove a[i] */</a>
+    }
+<a id=309></a>    <a  class="comments">/* after the loop, a[i] &gt;= P and a[lo .. i - 1] &lt; P */</a>
+<a id=310></a>    <a  class="comments">/* next loop: repeat --j while P &lt; a[j] */</a>
+<a id=311></a>    while ((void)<a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143421724.htm" class="localvar">L</a>, 1, --<a href="../h_src/143421180.htm" class="localvar">j</a>), <a href="../h_src/143422540.htm" class="function">sort_comp</a>(<a href="../h_src/143421724.htm" class="localvar">L</a>, -3, -1)) {
+<a id=312></a>      if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/143421180.htm" class="localvar">j</a> &lt; <a href="../h_src/143421316.htm" class="localvar">i</a>))  <a  class="comments">/* j &lt; i  but  a[j] &gt; P ?? */</a>
+<a id=313></a>        <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143421724.htm" class="localvar">L</a>, &quot;invalid order function for sorting&quot;);
+<a id=314></a>      <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143421724.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove a[j] */</a>
+    }
+<a id=316></a>    <a  class="comments">/* after the loop, a[j] &lt;= P and a[j + 1 .. up] &gt;= P */</a>
+<a id=317></a>    if (<a href="../h_src/143421180.htm" class="localvar">j</a> &lt; <a href="../h_src/143421316.htm" class="localvar">i</a>) {  <a  class="comments">/* no elements out of place? */</a>
+<a id=318></a>      <a  class="comments">/* a[lo .. i - 1] &lt;= P &lt;= a[j + 1 .. i .. up] */</a>
+<a id=319></a>      <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143421724.htm" class="localvar">L</a>, 1);  <a  class="comments">/* pop a[j] */</a>
+<a id=320></a>      <a  class="comments">/* swap pivot (a[up - 1]) with a[i] to satisfy pos-condition */</a>
+<a id=321></a>      <a href="../h_src/143423084.htm" class="function">set2</a>(<a href="../h_src/143421724.htm" class="localvar">L</a>, <a href="../h_src/143421452.htm" class="localvar">up</a> - 1, <a href="../h_src/143421316.htm" class="localvar">i</a>);
+<a id=322></a>      return <a href="../h_src/143421316.htm" class="localvar">i</a>;
+    }
+<a id=324></a>    <a  class="comments">/* otherwise, swap a[i] - a[j] to restore invariant and repeat */</a>
+<a id=325></a>    <a href="../h_src/143423084.htm" class="function">set2</a>(<a href="../h_src/143421724.htm" class="localvar">L</a>, <a href="../h_src/143421316.htm" class="localvar">i</a>, <a href="../h_src/143421180.htm" class="localvar">j</a>);
+  }
+}
+
+
+<a id=330></a><a  class="comments">/*</a>
+<a id=331></a><a  class="comments">** Choose an element in the middle (2nd-3th quarters) of [lo,up]</a>
+<a id=332></a><a  class="comments">** &quot;randomized&quot; by 'rnd'</a>
+<a id=333></a><a  class="comments">*/</a>
+<a id=334></a>static <a href="../h_src/143424376.htm" class="type">IdxT</a> <a href="../h_src/143421044.htm" class="function">choosePivot</a> (<a href="../h_src/143424376.htm" class="type">IdxT</a> <a href="../h_src/143420908.htm" class="localvar">lo</a>, <a href="../h_src/143424376.htm" class="type">IdxT</a> <a href="../h_src/143420772.htm" class="localvar">up</a>, unsigned int <a href="../h_src/143420636.htm" class="localvar">rnd</a>) {
+<a id=335></a>  <a href="../h_src/143424376.htm" class="type">IdxT</a> <a href="../h_src/143420500.htm" class="localvar">r4</a> = (<a href="../h_src/143420772.htm" class="localvar">up</a> - <a href="../h_src/143420908.htm" class="localvar">lo</a>) / 4;  <a  class="comments">/* range/4 */</a>
+<a id=336></a>  <a href="../h_src/143424376.htm" class="type">IdxT</a> <a href="../h_src/143420364.htm" class="localvar">p</a> = <a href="../h_src/143420636.htm" class="localvar">rnd</a> % (<a href="../h_src/143420500.htm" class="localvar">r4</a> * 2) + (<a href="../h_src/143420908.htm" class="localvar">lo</a> + <a href="../h_src/143420500.htm" class="localvar">r4</a>);
+<a id=337></a>  <a href="../h_src/57415352.htm" class="macro">lua_assert</a>(lo + r4 &lt;= p &amp;&amp; p &lt;= up - r4);
+<a id=338></a>  return <a href="../h_src/143420364.htm" class="localvar">p</a>;
+}
+
+
+<a id=342></a><a  class="comments">/*</a>
+<a id=343></a><a  class="comments">** Quicksort algorithm (recursive function)</a>
+<a id=344></a><a  class="comments">*/</a>
+<a id=345></a>static void <a href="../h_src/143420228.htm" class="function">auxsort</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143420092.htm" class="localvar">L</a>, <a href="../h_src/143424376.htm" class="type">IdxT</a> <a href="../h_src/143419956.htm" class="localvar">lo</a>, <a href="../h_src/143424376.htm" class="type">IdxT</a> <a href="../h_src/143419820.htm" class="localvar">up</a>,
+<a id=346></a>                                   unsigned int <a href="../h_src/143419684.htm" class="localvar">rnd</a>) {
+<a id=347></a>  while (<a href="../h_src/143419956.htm" class="localvar">lo</a> &lt; <a href="../h_src/143419820.htm" class="localvar">up</a>) {  <a  class="comments">/* loop for tail recursion */</a>
+<a id=348></a>    <a href="../h_src/143424376.htm" class="type">IdxT</a> <a href="../h_src/143419548.htm" class="localvar">p</a>;  <a  class="comments">/* Pivot index */</a>
+<a id=349></a>    <a href="../h_src/143424376.htm" class="type">IdxT</a> <a href="../h_src/143419412.htm" class="localvar">n</a>;  <a  class="comments">/* to be used later */</a>
+<a id=350></a>    <a  class="comments">/* sort elements 'lo', 'p', and 'up' */</a>
+<a id=351></a>    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419956.htm" class="localvar">lo</a>);
+<a id=352></a>    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419820.htm" class="localvar">up</a>);
+<a id=353></a>    if (<a href="../h_src/143422540.htm" class="function">sort_comp</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, -1, -2))  <a  class="comments">/* a[up] &lt; a[lo]? */</a>
+<a id=354></a>      <a href="../h_src/143423084.htm" class="function">set2</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, <a href="../h_src/143419956.htm" class="localvar">lo</a>, <a href="../h_src/143419820.htm" class="localvar">up</a>);  <a  class="comments">/* swap a[lo] - a[up] */</a>
+    else
+<a id=356></a>      <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 2);  <a  class="comments">/* remove both values */</a>
+<a id=357></a>    if (<a href="../h_src/143419820.htm" class="localvar">up</a> - <a href="../h_src/143419956.htm" class="localvar">lo</a> == 1)  <a  class="comments">/* only 2 elements? */</a>
+<a id=358></a>      return;  <a  class="comments">/* already sorted */</a>
+<a id=359></a>    if (<a href="../h_src/143419820.htm" class="localvar">up</a> - <a href="../h_src/143419956.htm" class="localvar">lo</a> &lt; <a href="../h_src/143423220.htm" class="macro">RANLIMIT</a> || <a href="../h_src/143419684.htm" class="localvar">rnd</a> == 0)  <a  class="comments">/* small interval or no randomize? */</a>
+<a id=360></a>      <a href="../h_src/143419548.htm" class="localvar">p</a> = (<a href="../h_src/143419956.htm" class="localvar">lo</a> + <a href="../h_src/143419820.htm" class="localvar">up</a>)/2;  <a  class="comments">/* middle element is a good pivot */</a>
+<a id=361></a>    else  <a  class="comments">/* for larger intervals, it is worth a random pivot */</a>
+<a id=362></a>      <a href="../h_src/143419548.htm" class="localvar">p</a> = <a href="../h_src/143421044.htm" class="function">choosePivot</a>(<a href="../h_src/143419956.htm" class="localvar">lo</a>, <a href="../h_src/143419820.htm" class="localvar">up</a>, <a href="../h_src/143419684.htm" class="localvar">rnd</a>);
+<a id=363></a>    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419548.htm" class="localvar">p</a>);
+<a id=364></a>    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419956.htm" class="localvar">lo</a>);
+<a id=365></a>    if (<a href="../h_src/143422540.htm" class="function">sort_comp</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, -2, -1))  <a  class="comments">/* a[p] &lt; a[lo]? */</a>
+<a id=366></a>      <a href="../h_src/143423084.htm" class="function">set2</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, <a href="../h_src/143419548.htm" class="localvar">p</a>, <a href="../h_src/143419956.htm" class="localvar">lo</a>);  <a  class="comments">/* swap a[p] - a[lo] */</a>
+    else {
+<a id=368></a>      <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove a[lo] */</a>
+<a id=369></a>      <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419820.htm" class="localvar">up</a>);
+<a id=370></a>      if (<a href="../h_src/143422540.htm" class="function">sort_comp</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, -1, -2))  <a  class="comments">/* a[up] &lt; a[p]? */</a>
+<a id=371></a>        <a href="../h_src/143423084.htm" class="function">set2</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, <a href="../h_src/143419548.htm" class="localvar">p</a>, <a href="../h_src/143419820.htm" class="localvar">up</a>);  <a  class="comments">/* swap a[up] - a[p] */</a>
+      else
+<a id=373></a>        <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 2);
+    }
+<a id=375></a>    if (<a href="../h_src/143419820.htm" class="localvar">up</a> - <a href="../h_src/143419956.htm" class="localvar">lo</a> == 2)  <a  class="comments">/* only 3 elements? */</a>
+<a id=376></a>      return;  <a  class="comments">/* already sorted */</a>
+<a id=377></a>    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419548.htm" class="localvar">p</a>);  <a  class="comments">/* get middle element (Pivot) */</a>
+<a id=378></a>    <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, -1);  <a  class="comments">/* push Pivot */</a>
+<a id=379></a>    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419820.htm" class="localvar">up</a> - 1);  <a  class="comments">/* push a[up - 1] */</a>
+<a id=380></a>    <a href="../h_src/143423084.htm" class="function">set2</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, <a href="../h_src/143419548.htm" class="localvar">p</a>, <a href="../h_src/143419820.htm" class="localvar">up</a> - 1);  <a  class="comments">/* swap Pivot (a[p]) with a[up - 1] */</a>
+<a id=381></a>    <a href="../h_src/143419548.htm" class="localvar">p</a> = <a href="../h_src/143421860.htm" class="function">partition</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, <a href="../h_src/143419956.htm" class="localvar">lo</a>, <a href="../h_src/143419820.htm" class="localvar">up</a>);
+<a id=382></a>    <a  class="comments">/* a[lo .. p - 1] &lt;= a[p] == P &lt;= a[p + 1 .. up] */</a>
+<a id=383></a>    if (<a href="../h_src/143419548.htm" class="localvar">p</a> - <a href="../h_src/143419956.htm" class="localvar">lo</a> &lt; <a href="../h_src/143419820.htm" class="localvar">up</a> - <a href="../h_src/143419548.htm" class="localvar">p</a>) {  <a  class="comments">/* lower interval is smaller? */</a>
+<a id=384></a>      <a href="../h_src/143420228.htm" class="function">auxsort</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, <a href="../h_src/143419956.htm" class="localvar">lo</a>, <a href="../h_src/143419548.htm" class="localvar">p</a> - 1, <a href="../h_src/143419684.htm" class="localvar">rnd</a>);  <a  class="comments">/* call recursively for lower interval */</a>
+<a id=385></a>      <a href="../h_src/143419412.htm" class="localvar">n</a> = <a href="../h_src/143419548.htm" class="localvar">p</a> - <a href="../h_src/143419956.htm" class="localvar">lo</a>;  <a  class="comments">/* size of smaller interval */</a>
+<a id=386></a>      <a href="../h_src/143419956.htm" class="localvar">lo</a> = <a href="../h_src/143419548.htm" class="localvar">p</a> + 1;  <a  class="comments">/* tail call for [p + 1 .. up] (upper interval) */</a>
+    }
+    else {
+<a id=389></a>      <a href="../h_src/143420228.htm" class="function">auxsort</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, <a href="../h_src/143419548.htm" class="localvar">p</a> + 1, <a href="../h_src/143419820.htm" class="localvar">up</a>, <a href="../h_src/143419684.htm" class="localvar">rnd</a>);  <a  class="comments">/* call recursively for upper interval */</a>
+<a id=390></a>      <a href="../h_src/143419412.htm" class="localvar">n</a> = <a href="../h_src/143419820.htm" class="localvar">up</a> - <a href="../h_src/143419548.htm" class="localvar">p</a>;  <a  class="comments">/* size of smaller interval */</a>
+<a id=391></a>      <a href="../h_src/143419820.htm" class="localvar">up</a> = <a href="../h_src/143419548.htm" class="localvar">p</a> - 1;  <a  class="comments">/* tail call for [lo .. p - 1]  (lower interval) */</a>
+    }
+<a id=393></a>    if ((<a href="../h_src/143419820.htm" class="localvar">up</a> - <a href="../h_src/143419956.htm" class="localvar">lo</a>) / 128 &gt; <a href="../h_src/143419412.htm" class="localvar">n</a>) <a  class="comments">/* partition too imbalanced? */</a>
+<a id=394></a>      <a href="../h_src/143419684.htm" class="localvar">rnd</a> = <a href="../h_src/143424036.htm" class="function">l_randomizePivot</a>();  <a  class="comments">/* try a new randomization */</a>
+<a id=395></a>  }  <a  class="comments">/* tail call auxsort(L, lo, up, rnd) */</a>
+}
+
+
+<a id=399></a>static int <a href="../h_src/143419276.htm" class="function">sort</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143419140.htm" class="localvar">L</a>) {
+<a id=400></a>  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143419004.htm" class="localvar">n</a> = <a href="../h_src/143430768.htm" class="macro">aux_getn</a>(<a href="../h_src/143419140.htm" class="localvar">L</a>, 1, <a href="../h_src/143430904.htm" class="macro">TAB_RW</a>);
+<a id=401></a>  if (<a href="../h_src/143419004.htm" class="localvar">n</a> &gt; 1) {  <a  class="comments">/* non-trivial interval? */</a>
+<a id=402></a>    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143419140.htm" class="localvar">L</a>, <a href="../h_src/143419004.htm" class="localvar">n</a> &lt; INT_MAX, 1, &quot;array too big&quot;);
+<a id=403></a>    if (!<a href="../h_src/57427796.htm" class="macro">lua_isnoneornil</a>(<a href="../h_src/143419140.htm" class="localvar">L</a>, 2))  <a  class="comments">/* is there a 2nd argument? */</a>
+<a id=404></a>      <a href="../h_src/57419772.htm" class="function">luaL_checktype</a>(<a href="../h_src/143419140.htm" class="localvar">L</a>, 2, <a href="../h_src/57443232.htm" class="macro">LUA_TFUNCTION</a>);  <a  class="comments">/* must be a function */</a>
+<a id=405></a>    <a href="../h_src/57439288.htm" class="function">lua_settop</a>(<a href="../h_src/143419140.htm" class="localvar">L</a>, 2);  <a  class="comments">/* make sure there are two arguments */</a>
+<a id=406></a>    <a href="../h_src/143420228.htm" class="function">auxsort</a>(<a href="../h_src/143419140.htm" class="localvar">L</a>, 1, (<a href="../h_src/143424376.htm" class="type">IdxT</a>)<a href="../h_src/143419004.htm" class="localvar">n</a>, 0);
+  }
+  return 0;
+}
+
+<a id=411></a><a  class="comments">/* }====================================================== */</a>
+
+
+<a id=414></a>static const <a href="../h_src/57420996.htm" class="type">luaL_Reg</a> <a href="../h_src/143418868.htm" class="variable">tab_funcs</a>[] = {
+<a id=415></a>  {&quot;concat&quot;, <a href="../h_src/143426552.htm" class="function">tconcat</a>},
+<a id=416></a>  {&quot;insert&quot;, <a href="../h_src/143429408.htm" class="function">tinsert</a>},
+<a id=417></a>  {&quot;pack&quot;, <a href="../h_src/143425600.htm" class="function">tpack</a>},
+<a id=418></a>  {&quot;unpack&quot;, <a href="../h_src/143425056.htm" class="function">tunpack</a>},
+<a id=419></a>  {&quot;remove&quot;, <a href="../h_src/143428728.htm" class="function">tremove</a>},
+<a id=420></a>  {&quot;move&quot;, <a href="../h_src/143428184.htm" class="function">tmove</a>},
+<a id=421></a>  {&quot;sort&quot;, <a href="../h_src/143419276.htm" class="function">sort</a>},
+  {NULL, NULL}
+};
+
+
+<a id=426></a><a href="../h_src/57454180.htm" class="macro">LUAMOD_API</a> int <a href="../h_src/57410048.htm" class="function">luaopen_table</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143418800.htm" class="localvar">L</a>) {
+<a id=427></a>  <a href="../h_src/57417392.htm" class="macro">luaL_newlib</a>(<a href="../h_src/143418800.htm" class="localvar">L</a>, <a href="../h_src/143418868.htm" class="variable">tab_funcs</a>);
+  return 1;
+}
+
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

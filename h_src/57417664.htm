@@ -1,0 +1,72 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaL_traceback</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57417664.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57417664.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57417664.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57417664.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57417664.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57417664.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58351320.htm#131" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void <a href="../h_src/57417664.htm" class="function">luaL_traceback</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58347920.htm" class="localvar">L</a>, <a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58347784.htm" class="localvar">L1</a>,
+                                const char *<a href="../h_src/58347648.htm" class="localvar">msg</a>, int <a href="../h_src/58347512.htm" class="localvar">level</a>) {
+  <a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> <a href="../h_src/58347376.htm" class="localvar">b</a>;
+  <a href="../h_src/57440308.htm" class="type">lua_Debug</a> <a href="../h_src/58347240.htm" class="localvar">ar</a>;
+  int <a href="../h_src/58347104.htm" class="localvar">last</a> = <a href="../h_src/58348736.htm" class="function">lastlevel</a>(<a href="../h_src/58347784.htm" class="localvar">L1</a>);
+  int <a href="../h_src/58346968.htm" class="localvar">limit2show</a> = (<a href="../h_src/58347104.htm" class="localvar">last</a> - <a href="../h_src/58347512.htm" class="localvar">level</a> &gt; <a href="../h_src/58350708.htm" class="macro">LEVELS1</a> + <a href="../h_src/58350572.htm" class="macro">LEVELS2</a>) ? <a href="../h_src/58350708.htm" class="macro">LEVELS1</a> : -1;
+  <a href="../h_src/57413652.htm" class="function">luaL_buffinit</a>(<a href="../h_src/58347920.htm" class="localvar">L</a>, &amp;<a href="../h_src/58347376.htm" class="localvar">b</a>);
+  if (<a href="../h_src/58347648.htm" class="localvar">msg</a>) {
+    <a href="../h_src/57413448.htm" class="function">luaL_addstring</a>(&amp;<a href="../h_src/58347376.htm" class="localvar">b</a>, <a href="../h_src/58347648.htm" class="localvar">msg</a>);
+    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/58347376.htm" class="localvar">b</a>, '\<a href="../h_src/57415080.htm" class="variable">n</a>');
+  }
+  <a href="../h_src/57413448.htm" class="function">luaL_addstring</a>(&amp;<a href="../h_src/58347376.htm" class="localvar">b</a>, &quot;stack traceback:&quot;);
+  while (<a href="../h_src/57424668.htm" class="function">lua_getstack</a>(<a href="../h_src/58347784.htm" class="localvar">L1</a>, <a href="../h_src/58347512.htm" class="localvar">level</a>++, &amp;<a href="../h_src/58347240.htm" class="localvar">ar</a>)) {
+    if (<a href="../h_src/58346968.htm" class="localvar">limit2show</a>-- == 0) {  <a  class="comments">/* too many levels? */</a>
+      int <a href="../h_src/58346832.htm" class="localvar">n</a> = <a href="../h_src/58347104.htm" class="localvar">last</a> - <a href="../h_src/58347512.htm" class="localvar">level</a> - <a href="../h_src/58350572.htm" class="macro">LEVELS2</a> + 1;  <a  class="comments">/* number of levels to skip */</a>
+      <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58347920.htm" class="localvar">L</a>, &quot;\n\t...\t(skipping %d levels)&quot;, <a href="../h_src/58346832.htm" class="localvar">n</a>);
+      <a href="../h_src/57413380.htm" class="function">luaL_addvalue</a>(&amp;<a href="../h_src/58347376.htm" class="localvar">b</a>);  <a  class="comments">/* add warning about skip */</a>
+      <a href="../h_src/58347512.htm" class="localvar">level</a> += <a href="../h_src/58346832.htm" class="localvar">n</a>;  <a  class="comments">/* and skip to last levels */</a>
+    }
+    else {
+      <a href="../h_src/57424600.htm" class="function">lua_getinfo</a>(<a href="../h_src/58347784.htm" class="localvar">L1</a>, &quot;Slnt&quot;, &amp;<a href="../h_src/58347240.htm" class="localvar">ar</a>);
+      if (<a href="../h_src/58347240.htm" class="localvar">ar</a>.<a href="../h_src/57423376.htm" class="variable">currentline</a> &lt;= 0)
+        <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58347920.htm" class="localvar">L</a>, &quot;\n\t%s: in &quot;, <a href="../h_src/58347240.htm" class="localvar">ar</a>.<a href="../h_src/57422764.htm" class="variable">short_src</a>);
+      else
+        <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58347920.htm" class="localvar">L</a>, &quot;\n\t%s:%d: in &quot;, <a href="../h_src/58347240.htm" class="localvar">ar</a>.<a href="../h_src/57422764.htm" class="variable">short_src</a>, <a href="../h_src/58347240.htm" class="localvar">ar</a>.<a href="../h_src/57423376.htm" class="variable">currentline</a>);
+      <a href="../h_src/57413380.htm" class="function">luaL_addvalue</a>(&amp;<a href="../h_src/58347376.htm" class="localvar">b</a>);
+      <a href="../h_src/58349144.htm" class="function">pushfuncname</a>(<a href="../h_src/58347920.htm" class="localvar">L</a>, &amp;<a href="../h_src/58347240.htm" class="localvar">ar</a>);
+      <a href="../h_src/57413380.htm" class="function">luaL_addvalue</a>(&amp;<a href="../h_src/58347376.htm" class="localvar">b</a>);
+      if (<a href="../h_src/58347240.htm" class="localvar">ar</a>.<a href="../h_src/57422968.htm" class="variable">istailcall</a>)
+        <a href="../h_src/57413448.htm" class="function">luaL_addstring</a>(&amp;<a href="../h_src/58347376.htm" class="localvar">b</a>, &quot;\n\t(...tail calls...)&quot;);
+    }
+  }
+  <a href="../h_src/57413312.htm" class="function">luaL_pushresult</a>(&amp;<a href="../h_src/58347376.htm" class="localvar">b</a>);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

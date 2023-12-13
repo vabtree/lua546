@@ -1,0 +1,50 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaL_typeerror</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57420316.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57420316.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57420316.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57420316.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57420316.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57420316.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58351320.htm#193" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int <a href="../h_src/57420316.htm" class="function">luaL_typeerror</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58346152.htm" class="localvar">L</a>, int <a href="../h_src/58346016.htm" class="localvar">arg</a>, const char *<a href="../h_src/58345880.htm" class="localvar">tname</a>) {
+  const char *<a href="../h_src/58345744.htm" class="localvar">msg</a>;
+  const char *<a href="../h_src/58345608.htm" class="localvar">typearg</a>;  <a  class="comments">/* name for the type of the actual argument */</a>
+  if (<a href="../h_src/57420588.htm" class="function">luaL_getmetafield</a>(<a href="../h_src/58346152.htm" class="localvar">L</a>, <a href="../h_src/58346016.htm" class="localvar">arg</a>, &quot;__name&quot;) == <a href="../h_src/57443504.htm" class="macro">LUA_TSTRING</a>)
+    <a href="../h_src/58345608.htm" class="localvar">typearg</a> = <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/58346152.htm" class="localvar">L</a>, -1);  <a  class="comments">/* use the given type name */</a>
+  else if (<a href="../h_src/57438540.htm" class="function">lua_type</a>(<a href="../h_src/58346152.htm" class="localvar">L</a>, <a href="../h_src/58346016.htm" class="localvar">arg</a>) == <a href="../h_src/57443776.htm" class="macro">LUA_TLIGHTUSERDATA</a>)
+    <a href="../h_src/58345608.htm" class="localvar">typearg</a> = &quot;light userdata&quot;;  <a  class="comments">/* special name for messages */</a>
+  else
+    <a href="../h_src/58345608.htm" class="localvar">typearg</a> = <a href="../h_src/57416712.htm" class="macro">luaL_typename</a>(<a href="../h_src/58346152.htm" class="localvar">L</a>, <a href="../h_src/58346016.htm" class="localvar">arg</a>);  <a  class="comments">/* standard name */</a>
+  <a href="../h_src/58345744.htm" class="localvar">msg</a> = <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58346152.htm" class="localvar">L</a>, &quot;%s expected, got %s&quot;, <a href="../h_src/58345880.htm" class="localvar">tname</a>, <a href="../h_src/58345608.htm" class="localvar">typearg</a>);
+  return <a href="../h_src/57420384.htm" class="function">luaL_argerror</a>(<a href="../h_src/58346152.htm" class="localvar">L</a>, <a href="../h_src/58346016.htm" class="localvar">arg</a>, <a href="../h_src/58345744.htm" class="localvar">msg</a>);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

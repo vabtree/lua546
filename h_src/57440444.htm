@@ -1,0 +1,60 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lua_Debug</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57440444.htm" class="class" target="_self">Info</a></li>
+<li><a href="../h_im/57440444.htm" class="class" target="_self">Public Interface</a></li>
+<li><a href="../h_rx/57440444.htm" class="class" target="_self">Inheritance</a></li>
+<li><a href="../h_nm/57440444.htm" class="class" target="_self">Internals</a></li>
+<li><a href="../h_ua/57440444.htm" class="class" target="_self">Use of Members</a></li>
+<li><a href="../h_da/57440444.htm" class="class" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57440444.htm" class="class" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57440444.htm" class="class" target="_self">Declaration</a></li>
+<li><a href="../h_src/57460028.htm#475" class="class" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Declaration</h4>
+<pre class=src>
+struct <a href="../h_src/57440444.htm" class="class">lua_Debug</a> {
+  int <a href="../h_src/57423784.htm" class="variable">event</a>;
+  const char *<a href="../h_src/57423716.htm" class="variable">name</a>;	<a  class="comments">/* (n) */</a>
+  const char *<a href="../h_src/57423648.htm" class="variable">namewhat</a>;	<a  class="comments">/* (n) 'global', 'local', 'field', 'method' */</a>
+  const char *<a href="../h_src/57423580.htm" class="variable">what</a>;	<a  class="comments">/* (S) 'Lua', 'C', 'main', 'tail' */</a>
+  const char *<a href="../h_src/57423512.htm" class="variable">source</a>;	<a  class="comments">/* (S) */</a>
+  <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/57423444.htm" class="variable">srclen</a>;	<a  class="comments">/* (S) */</a>
+  int <a href="../h_src/57423376.htm" class="variable">currentline</a>;	<a  class="comments">/* (l) */</a>
+  int <a href="../h_src/57423308.htm" class="variable">linedefined</a>;	<a  class="comments">/* (S) */</a>
+  int <a href="../h_src/57423240.htm" class="variable">lastlinedefined</a>;	<a  class="comments">/* (S) */</a>
+  unsigned char <a href="../h_src/57423172.htm" class="variable">nups</a>;	<a  class="comments">/* (u) number of upvalues */</a>
+  unsigned char <a href="../h_src/57423104.htm" class="variable">nparams</a>;<a  class="comments">/* (u) number of parameters */</a>
+  char <a href="../h_src/57423036.htm" class="variable">isvararg</a>;        <a  class="comments">/* (u) */</a>
+  char <a href="../h_src/57422968.htm" class="variable">istailcall</a>;	<a  class="comments">/* (t) */</a>
+  unsigned short <a href="../h_src/57422900.htm" class="variable">ftransfer</a>;   <a  class="comments">/* (r) index of first value transferred */</a>
+  unsigned short <a href="../h_src/57422832.htm" class="variable">ntransfer</a>;   <a  class="comments">/* (r) number of transferred values */</a>
+  char <a href="../h_src/57422764.htm" class="variable">short_src</a>[<a href="../h_src/57447380.htm" class="macro">LUA_IDSIZE</a>]; <a  class="comments">/* (S) */</a>
+  <a  class="comments">/* private part */</a>
+  struct <a href="../h_src/57422696.htm" class="class">CallInfo</a> *<a href="../h_src/57422424.htm" class="variable">i_ci</a>;  <a  class="comments">/* active function */</a>
+};
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

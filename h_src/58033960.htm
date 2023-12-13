@@ -1,0 +1,49 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>findlabel</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58033960.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58033960.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58033960.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58033960.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58033960.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58033960.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58057080.htm#544" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static <a href="../h_src/57677412.htm" class="type">Labeldesc</a> *<a href="../h_src/58033960.htm" class="function">findlabel</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/58033824.htm" class="localvar">ls</a>, <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/58033688.htm" class="localvar">name</a>) {
+  int <a href="../h_src/58033552.htm" class="localvar">i</a>;
+  <a href="../h_src/57676256.htm" class="type">Dyndata</a> *<a href="../h_src/58033416.htm" class="localvar">dyd</a> = <a href="../h_src/58033824.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700328.htm" class="variable">dyd</a>;
+  <a  class="comments">/* check labels in current function for a match */</a>
+  for (<a href="../h_src/58033552.htm" class="localvar">i</a> = <a href="../h_src/58033824.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>-&gt;<a href="../h_src/57675032.htm" class="variable">firstlabel</a>; <a href="../h_src/58033552.htm" class="localvar">i</a> &lt; <a href="../h_src/58033416.htm" class="localvar">dyd</a>-&gt;<a href="../h_src/57676324.htm" class="variable">label</a>.<a href="../h_src/57677072.htm" class="variable">n</a>; <a href="../h_src/58033552.htm" class="localvar">i</a>++) {
+    <a href="../h_src/57677412.htm" class="type">Labeldesc</a> *<a href="../h_src/58033280.htm" class="localvar">lb</a> = &amp;<a href="../h_src/58033416.htm" class="localvar">dyd</a>-&gt;<a href="../h_src/57676324.htm" class="variable">label</a>.<a href="../h_src/57677140.htm" class="variable">arr</a>[<a href="../h_src/58033552.htm" class="localvar">i</a>];
+    if (<a href="../h_src/58056468.htm" class="macro">eqstr</a>(<a href="../h_src/58033280.htm" class="localvar">lb</a>-&gt;<a href="../h_src/57677752.htm" class="variable">name</a>, <a href="../h_src/58033688.htm" class="localvar">name</a>))  <a  class="comments">/* correct label? */</a>
+      return <a href="../h_src/58033280.htm" class="localvar">lb</a>;
+  }
+  return NULL;  <a  class="comments">/* label not found */</a>
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

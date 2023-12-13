@@ -1,0 +1,72 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>PrintConstant</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143398536.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143398536.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143398536.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143398536.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143398536.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143398536.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143407988.htm#294" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/143398536.htm" class="function">PrintConstant</a>(const <a href="../h_src/57513828.htm" class="type">Proto</a>* <a href="../h_src/143398400.htm" class="localvar">f</a>, int <a href="../h_src/143398264.htm" class="localvar">i</a>)
+{
+ const <a href="../h_src/57535384.htm" class="type">TValue</a>* <a href="../h_src/143398128.htm" class="localvar">o</a>=&amp;<a href="../h_src/143398400.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515052.htm" class="variable">k</a>[<a href="../h_src/143398264.htm" class="localvar">i</a>];
+ switch (<a href="../h_src/57534636.htm" class="macro">ttypetag</a>(<a href="../h_src/143398128.htm" class="localvar">o</a>))
+ {
+  case <a href="../h_src/57531576.htm" class="macro">LUA_VNIL</a>:
+	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;nil&quot;);
+	break;
+  case <a href="../h_src/57530080.htm" class="macro">LUA_VFALSE</a>:
+	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;false&quot;);
+	break;
+  case <a href="../h_src/57529944.htm" class="macro">LUA_VTRUE</a>:
+	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;true&quot;);
+	break;
+  case <a href="../h_src/57526952.htm" class="macro">LUA_VNUMFLT</a>:
+	{
+	char <a href="../h_src/143397992.htm" class="localvar">buff</a>[100];
+	<a href="../h_aa/57906760.htm" class="libfunc">sprintf</a>(<a href="../h_src/143397992.htm" class="localvar">buff</a>,<a href="../h_src/57451460.htm" class="macro">LUA_NUMBER_FMT</a>,<a href="../h_src/57526272.htm" class="macro">fltvalue</a>(<a href="../h_src/143398128.htm" class="localvar">o</a>));
+	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%s&quot;,<a href="../h_src/143397992.htm" class="localvar">buff</a>);
+	if (<a href="../h_src/143397992.htm" class="localvar">buff</a>[<a href="../h_aa/57906692.htm" class="libfunc">strspn</a>(<a href="../h_src/143397992.htm" class="localvar">buff</a>,&quot;-0123456789&quot;)]=='\0') <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;.0&quot;);
+	break;
+	}
+  case <a href="../h_src/57527088.htm" class="macro">LUA_VNUMINT</a>:
+	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/57451052.htm" class="macro">LUA_INTEGER_FMT</a>,<a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/143398128.htm" class="localvar">o</a>));
+	break;
+  case <a href="../h_src/57525184.htm" class="macro">LUA_VSHRSTR</a>:
+  case <a href="../h_src/57525048.htm" class="macro">LUA_VLNGSTR</a>:
+	<a href="../h_src/143399964.htm" class="function">PrintString</a>(<a href="../h_src/57524368.htm" class="macro">tsvalue</a>(<a href="../h_src/143398128.htm" class="localvar">o</a>));
+	break;
+  default:				<a  class="comments">/* cannot happen */</a>
+	<a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;?%d&quot;,<a href="../h_src/57534636.htm" class="macro">ttypetag</a>(<a href="../h_src/143398128.htm" class="localvar">o</a>));
+	break;
+ }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

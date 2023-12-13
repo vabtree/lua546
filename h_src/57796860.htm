@@ -1,0 +1,45 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>need_value</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57796860.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57796860.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57796860.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57796860.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57796860.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57796860.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57706720.htm#898" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/57796860.htm" class="function">need_value</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57796724.htm" class="localvar">fs</a>, int <a href="../h_src/57796588.htm" class="localvar">list</a>) {
+  for (; <a href="../h_src/57796588.htm" class="localvar">list</a> != <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>; <a href="../h_src/57796588.htm" class="localvar">list</a> = <a href="../h_src/57664628.htm" class="function">getjump</a>(<a href="../h_src/57796724.htm" class="localvar">fs</a>, <a href="../h_src/57796588.htm" class="localvar">list</a>)) {
+    <a href="../h_src/57545108.htm" class="type">Instruction</a> <a href="../h_src/57796452.htm" class="localvar">i</a> = *<a href="../h_src/57660820.htm" class="function">getjumpcontrol</a>(<a href="../h_src/57796724.htm" class="localvar">fs</a>, <a href="../h_src/57796588.htm" class="localvar">list</a>);
+    if (<a href="../h_src/57694752.htm" class="macro">GET_OPCODE</a>(<a href="../h_src/57796452.htm" class="localvar">i</a>) != <a href="../h_src/57685980.htm" class="variable">OP_TESTSET</a>) return 1;
+  }
+  return 0;  <a  class="comments">/* not found */</a>
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

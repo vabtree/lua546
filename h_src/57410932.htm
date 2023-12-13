@@ -1,0 +1,91 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lualib.h</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57410932.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/57410932.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/57410932.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/57410932.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_ua/57410932.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_da/57410932.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57410932.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57410932.htm" class="file" target="_self">Source Code</a></li>
+<li><a href="../h_sc/57410932.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<pre class=src>
+<a id=1></a><a  class="comments">/*</a>
+<a id=2></a><a  class="comments">** $Id: lualib.h $</a>
+<a id=3></a><a  class="comments">** Lua standard libraries</a>
+<a id=4></a><a  class="comments">** See Copyright Notice in lua.h</a>
+<a id=5></a><a  class="comments">*/</a>
+
+
+<a id=8></a>#ifndef <a href="../h_src/57410864.htm" class="macro">lualib_h</a>
+<a id=9></a>#define <a href="../h_src/57410728.htm" class="macro">lualib_h</a>
+
+<a id=11></a>#include &quot;<a href="../h_src/57460028.htm" class="file">lua.h</a>&quot;
+
+
+<a id=14></a><a  class="comments">/* version suffix for environment variable names */</a>
+<a id=15></a>#define <a href="../h_src/57410592.htm" class="macro">LUA_VERSUFFIX</a>          &quot;_&quot; LUA_VERSION_MAJOR &quot;_&quot; LUA_VERSION_MINOR
+
+
+<a id=18></a><a href="../h_src/57454180.htm" class="macro">LUAMOD_API</a> int (<a href="../h_src/57410456.htm" class="function">luaopen_base</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L);
+
+<a id=20></a>#define <a href="../h_src/57410388.htm" class="macro">LUA_COLIBNAME</a>	&quot;coroutine&quot;
+<a id=21></a><a href="../h_src/57454180.htm" class="macro">LUAMOD_API</a> int (<a href="../h_src/57410252.htm" class="function">luaopen_coroutine</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L);
+
+<a id=23></a>#define <a href="../h_src/57410184.htm" class="macro">LUA_TABLIBNAME</a>	&quot;table&quot;
+<a id=24></a><a href="../h_src/57454180.htm" class="macro">LUAMOD_API</a> int (<a href="../h_src/57410048.htm" class="function">luaopen_table</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L);
+
+<a id=26></a>#define <a href="../h_src/57409980.htm" class="macro">LUA_IOLIBNAME</a>	&quot;io&quot;
+<a id=27></a><a href="../h_src/57454180.htm" class="macro">LUAMOD_API</a> int (<a href="../h_src/57409844.htm" class="function">luaopen_io</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L);
+
+<a id=29></a>#define <a href="../h_src/57409776.htm" class="macro">LUA_OSLIBNAME</a>	&quot;os&quot;
+<a id=30></a><a href="../h_src/57454180.htm" class="macro">LUAMOD_API</a> int (<a href="../h_src/57409640.htm" class="function">luaopen_os</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L);
+
+<a id=32></a>#define <a href="../h_src/57574756.htm" class="macro">LUA_STRLIBNAME</a>	&quot;string&quot;
+<a id=33></a><a href="../h_src/57454180.htm" class="macro">LUAMOD_API</a> int (<a href="../h_src/57574620.htm" class="function">luaopen_string</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L);
+
+<a id=35></a>#define <a href="../h_src/57574552.htm" class="macro">LUA_UTF8LIBNAME</a>	&quot;utf8&quot;
+<a id=36></a><a href="../h_src/57454180.htm" class="macro">LUAMOD_API</a> int (<a href="../h_src/57574416.htm" class="function">luaopen_utf8</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L);
+
+<a id=38></a>#define <a href="../h_src/57574348.htm" class="macro">LUA_MATHLIBNAME</a>	&quot;math&quot;
+<a id=39></a><a href="../h_src/57454180.htm" class="macro">LUAMOD_API</a> int (<a href="../h_src/57574212.htm" class="function">luaopen_math</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L);
+
+<a id=41></a>#define <a href="../h_src/57574144.htm" class="macro">LUA_DBLIBNAME</a>	&quot;debug&quot;
+<a id=42></a><a href="../h_src/57454180.htm" class="macro">LUAMOD_API</a> int (<a href="../h_src/57574008.htm" class="function">luaopen_debug</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L);
+
+<a id=44></a>#define <a href="../h_src/57573940.htm" class="macro">LUA_LOADLIBNAME</a>	&quot;package&quot;
+<a id=45></a><a href="../h_src/57454180.htm" class="macro">LUAMOD_API</a> int (<a href="../h_src/57573804.htm" class="function">luaopen_package</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L);
+
+
+<a id=48></a><a  class="comments">/* open all previous libraries */</a>
+<a id=49></a><a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void (<a href="../h_src/57573736.htm" class="function">luaL_openlibs</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L);
+
+
+#endif
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,59 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lua_load</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57432624.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57432624.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57432624.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57432624.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57432624.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57432624.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57552180.htm#1087" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57551840.htm" class="macro">LUA_API</a> int <a href="../h_src/57432624.htm" class="function">lua_load</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57722564.htm" class="localvar">L</a>, <a href="../h_src/57441396.htm" class="type">lua_Reader</a> <a href="../h_src/57722428.htm" class="localvar">reader</a>, void *<a href="../h_src/57722292.htm" class="localvar">data</a>,
+                      const char *<a href="../h_src/57722156.htm" class="localvar">chunkname</a>, const char *<a href="../h_src/57722020.htm" class="localvar">mode</a>) {
+  <a href="../h_src/57656088.htm" class="type">ZIO</a> <a href="../h_src/57721884.htm" class="localvar">z</a>;
+  int <a href="../h_src/57721748.htm" class="localvar">status</a>;
+  <a href="../h_src/57543408.htm" class="macro">lua_lock</a>(L);
+  if (!<a href="../h_src/57722156.htm" class="localvar">chunkname</a>) <a href="../h_src/57722156.htm" class="localvar">chunkname</a> = &quot;?&quot;;
+  <a href="../h_src/57654388.htm" class="function">luaZ_init</a>(<a href="../h_src/57722564.htm" class="localvar">L</a>, &amp;<a href="../h_src/57721884.htm" class="localvar">z</a>, <a href="../h_src/57722428.htm" class="localvar">reader</a>, <a href="../h_src/57722292.htm" class="localvar">data</a>);
+  <a href="../h_src/57721748.htm" class="localvar">status</a> = <a href="../h_src/57633580.htm" class="function">luaD_protectedparser</a>(<a href="../h_src/57722564.htm" class="localvar">L</a>, &amp;<a href="../h_src/57721884.htm" class="localvar">z</a>, <a href="../h_src/57722156.htm" class="localvar">chunkname</a>, <a href="../h_src/57722020.htm" class="localvar">mode</a>);
+  if (<a href="../h_src/57721748.htm" class="localvar">status</a> == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) {  <a  class="comments">/* no errors? */</a>
+    <a href="../h_src/57507980.htm" class="type">LClosure</a> *<a href="../h_src/57721612.htm" class="localvar">f</a> = <a href="../h_src/57512264.htm" class="macro">clLvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57722564.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1));  <a  class="comments">/* get new function */</a>
+    if (<a href="../h_src/57721612.htm" class="localvar">f</a>-&gt;<a href="../h_src/57508320.htm" class="variable">nupvalues</a> &gt;= 1) {  <a  class="comments">/* does it have an upvalue? */</a>
+      <a  class="comments">/* get global table from registry */</a>
+      const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57721476.htm" class="localvar">gt</a> = <a href="../h_src/57582852.htm" class="macro">getGtable</a>(<a href="../h_src/57722564.htm" class="localvar">L</a>);
+      <a  class="comments">/* set global table as 1st upvalue of 'f' (may be LUA_ENV) */</a>
+      <a href="../h_src/57533684.htm" class="macro">setobj</a>(<a href="../h_src/57722564.htm" class="localvar">L</a>, <a href="../h_src/57721612.htm" class="localvar">f</a>-&gt;<a href="../h_src/57508048.htm" class="variable">upvals</a>[0]-&gt;<a href="../h_src/57510564.htm" class="variable">v</a>.<a href="../h_src/57510768.htm" class="variable">p</a>, <a href="../h_src/57721476.htm" class="localvar">gt</a>);
+      <a href="../h_src/57621340.htm" class="macro">luaC_barrier</a>(<a href="../h_src/57722564.htm" class="localvar">L</a>, <a href="../h_src/57721612.htm" class="localvar">f</a>-&gt;<a href="../h_src/57508048.htm" class="variable">upvals</a>[0], <a href="../h_src/57721476.htm" class="localvar">gt</a>);
+    }
+  }
+  <a href="../h_src/57543272.htm" class="macro">lua_unlock</a>(L);
+  return <a href="../h_src/57721748.htm" class="localvar">status</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

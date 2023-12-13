@@ -1,0 +1,62 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>funcinfo</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57750824.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57750824.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57750824.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57750824.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57750824.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57750824.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57759256.htm#256" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/57750824.htm" class="function">funcinfo</a> (<a href="../h_src/57440308.htm" class="type">lua_Debug</a> *<a href="../h_src/57750688.htm" class="localvar">ar</a>, <a href="../h_src/57507640.htm" class="type">Closure</a> *<a href="../h_src/57750484.htm" class="localvar">cl</a>) {
+  if (<a href="../h_src/57758916.htm" class="macro">noLuaClosure</a>(<a href="../h_src/57750484.htm" class="localvar">cl</a>)) {
+    <a href="../h_src/57750688.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423512.htm" class="variable">source</a> = &quot;=[C]&quot;;
+    <a href="../h_src/57750688.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423444.htm" class="variable">srclen</a> = <a href="../h_src/57549392.htm" class="macro">LL</a>(&quot;=[C]&quot;);
+    <a href="../h_src/57750688.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423308.htm" class="variable">linedefined</a> = -1;
+    <a href="../h_src/57750688.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423240.htm" class="variable">lastlinedefined</a> = -1;
+    <a href="../h_src/57750688.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423580.htm" class="variable">what</a> = &quot;C&quot;;
+  }
+  else {
+    const <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57750348.htm" class="localvar">p</a> = <a href="../h_src/57750484.htm" class="localvar">cl</a>-&gt;<a href="../h_src/57507708.htm" class="variable">l</a>.<a href="../h_src/57508184.htm" class="variable">p</a>;
+    if (<a href="../h_src/57750348.htm" class="localvar">p</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>) {
+      <a href="../h_src/57750688.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423512.htm" class="variable">source</a> = <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/57750348.htm" class="localvar">p</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>);
+      <a href="../h_src/57750688.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423444.htm" class="variable">srclen</a> = <a href="../h_src/57522396.htm" class="macro">tsslen</a>(<a href="../h_src/57750348.htm" class="localvar">p</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>);
+    }
+    else {
+      <a href="../h_src/57750688.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423512.htm" class="variable">source</a> = &quot;=?&quot;;
+      <a href="../h_src/57750688.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423444.htm" class="variable">srclen</a> = <a href="../h_src/57549392.htm" class="macro">LL</a>(&quot;=?&quot;);
+    }
+    <a href="../h_src/57750688.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423308.htm" class="variable">linedefined</a> = <a href="../h_src/57750348.htm" class="localvar">p</a>-&gt;<a href="../h_src/57515256.htm" class="variable">linedefined</a>;
+    <a href="../h_src/57750688.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423240.htm" class="variable">lastlinedefined</a> = <a href="../h_src/57750348.htm" class="localvar">p</a>-&gt;<a href="../h_src/57515188.htm" class="variable">lastlinedefined</a>;
+    <a href="../h_src/57750688.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423580.htm" class="variable">what</a> = (<a href="../h_src/57750688.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423308.htm" class="variable">linedefined</a> == 0) ? &quot;main&quot; : &quot;Lua&quot;;
+  }
+  <a href="../h_src/57501316.htm" class="function">luaO_chunkid</a>(<a href="../h_src/57750688.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57422764.htm" class="variable">short_src</a>, <a href="../h_src/57750688.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423512.htm" class="variable">source</a>, <a href="../h_src/57750688.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423444.htm" class="variable">srclen</a>);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

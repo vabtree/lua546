@@ -1,0 +1,49 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaL_addgsub</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57418072.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57418072.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57418072.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57418072.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57418072.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57418072.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58351320.htm#994" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void <a href="../h_src/57418072.htm" class="function">luaL_addgsub</a> (<a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> *<a href="../h_src/58318272.htm" class="localvar">b</a>, const char *<a href="../h_src/58318136.htm" class="localvar">s</a>,
+                                     const char *<a href="../h_src/58318000.htm" class="localvar">p</a>, const char *<a href="../h_src/58317864.htm" class="localvar">r</a>) {
+  const char *<a href="../h_src/58317728.htm" class="localvar">wild</a>;
+  <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58317592.htm" class="localvar">l</a> = <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/58318000.htm" class="localvar">p</a>);
+  while ((<a href="../h_src/58317728.htm" class="localvar">wild</a> = <a href="../h_aa/58317456.htm" class="libfunc">strstr</a>(<a href="../h_src/58318136.htm" class="localvar">s</a>, <a href="../h_src/58318000.htm" class="localvar">p</a>)) != NULL) {
+    <a href="../h_src/57413516.htm" class="function">luaL_addlstring</a>(<a href="../h_src/58318272.htm" class="localvar">b</a>, <a href="../h_src/58318136.htm" class="localvar">s</a>, <a href="../h_src/58317728.htm" class="localvar">wild</a> - <a href="../h_src/58318136.htm" class="localvar">s</a>);  <a  class="comments">/* push prefix */</a>
+    <a href="../h_src/57413448.htm" class="function">luaL_addstring</a>(<a href="../h_src/58318272.htm" class="localvar">b</a>, <a href="../h_src/58317864.htm" class="localvar">r</a>);  <a  class="comments">/* push replacement in place of pattern */</a>
+    <a href="../h_src/58318136.htm" class="localvar">s</a> = <a href="../h_src/58317728.htm" class="localvar">wild</a> + <a href="../h_src/58317592.htm" class="localvar">l</a>;  <a  class="comments">/* continue after 'p' */</a>
+  }
+  <a href="../h_src/57413448.htm" class="function">luaL_addstring</a>(<a href="../h_src/58318272.htm" class="localvar">b</a>, <a href="../h_src/58318136.htm" class="localvar">s</a>);  <a  class="comments">/* push last suffix */</a>
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,51 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>traverseproto</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57973604.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57973604.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57973604.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57973604.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57973604.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57973604.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57829404.htm#578" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/57973604.htm" class="function">traverseproto</a> (<a href="../h_src/57643100.htm" class="type">global_State</a> *<a href="../h_src/57973468.htm" class="localvar">g</a>, <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57973332.htm" class="localvar">f</a>) {
+  int <a href="../h_src/57973196.htm" class="localvar">i</a>;
+  <a href="../h_src/57826888.htm" class="macro">markobjectN</a>(<a href="../h_src/57973468.htm" class="localvar">g</a>, <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>);
+  for (<a href="../h_src/57973196.htm" class="localvar">i</a> = 0; <a href="../h_src/57973196.htm" class="localvar">i</a> &lt; <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515664.htm" class="variable">sizek</a>; <a href="../h_src/57973196.htm" class="localvar">i</a>++)  <a  class="comments">/* mark literals */</a>
+    <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57973468.htm" class="localvar">g</a>, &amp;<a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515052.htm" class="variable">k</a>[<a href="../h_src/57973196.htm" class="localvar">i</a>]);
+  for (<a href="../h_src/57973196.htm" class="localvar">i</a> = 0; <a href="../h_src/57973196.htm" class="localvar">i</a> &lt; <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>; <a href="../h_src/57973196.htm" class="localvar">i</a>++)  <a  class="comments">/* mark upvalue names */</a>
+    <a href="../h_src/57826888.htm" class="macro">markobjectN</a>(<a href="../h_src/57973468.htm" class="localvar">g</a>, <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/57973196.htm" class="localvar">i</a>].<a href="../h_src/57517364.htm" class="variable">name</a>);
+  for (<a href="../h_src/57973196.htm" class="localvar">i</a> = 0; <a href="../h_src/57973196.htm" class="localvar">i</a> &lt; <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515460.htm" class="variable">sizep</a>; <a href="../h_src/57973196.htm" class="localvar">i</a>++)  <a  class="comments">/* mark nested protos */</a>
+    <a href="../h_src/57826888.htm" class="macro">markobjectN</a>(<a href="../h_src/57973468.htm" class="localvar">g</a>, <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a>[<a href="../h_src/57973196.htm" class="localvar">i</a>]);
+  for (<a href="../h_src/57973196.htm" class="localvar">i</a> = 0; <a href="../h_src/57973196.htm" class="localvar">i</a> &lt; <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515392.htm" class="variable">sizelocvars</a>; <a href="../h_src/57973196.htm" class="localvar">i</a>++)  <a  class="comments">/* mark local-variable names */</a>
+    <a href="../h_src/57826888.htm" class="macro">markobjectN</a>(<a href="../h_src/57973468.htm" class="localvar">g</a>, <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514032.htm" class="variable">locvars</a>[<a href="../h_src/57973196.htm" class="localvar">i</a>].<a href="../h_src/57516888.htm" class="variable">varname</a>);
+  return 1 + <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515664.htm" class="variable">sizek</a> + <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a> + <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515460.htm" class="variable">sizep</a> + <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515392.htm" class="variable">sizelocvars</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

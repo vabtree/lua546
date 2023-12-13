@@ -1,0 +1,49 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaF_initupvals</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57630656.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57630656.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57630656.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57630656.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57630656.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57630656.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57840488.htm#48" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+void <a href="../h_src/57630656.htm" class="function">luaF_initupvals</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57839060.htm" class="localvar">L</a>, <a href="../h_src/57507980.htm" class="type">LClosure</a> *<a href="../h_src/57838924.htm" class="localvar">cl</a>) {
+  int <a href="../h_src/57838788.htm" class="localvar">i</a>;
+  for (<a href="../h_src/57838788.htm" class="localvar">i</a> = 0; <a href="../h_src/57838788.htm" class="localvar">i</a> &lt; <a href="../h_src/57838924.htm" class="localvar">cl</a>-&gt;<a href="../h_src/57508320.htm" class="variable">nupvalues</a>; <a href="../h_src/57838788.htm" class="localvar">i</a>++) {
+    <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57838652.htm" class="localvar">o</a> = <a href="../h_src/57620592.htm" class="function">luaC_newobj</a>(<a href="../h_src/57839060.htm" class="localvar">L</a>, <a href="../h_src/57513760.htm" class="macro">LUA_VUPVAL</a>, sizeof(<a href="../h_src/57509612.htm" class="type">UpVal</a>));
+    <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57838516.htm" class="localvar">uv</a> = <a href="../h_src/57639020.htm" class="macro">gco2upv</a>(<a href="../h_src/57838652.htm" class="localvar">o</a>);
+    <a href="../h_src/57838516.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57510564.htm" class="variable">v</a>.<a href="../h_src/57510768.htm" class="variable">p</a> = &amp;<a href="../h_src/57838516.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57509680.htm" class="variable">u</a>.<a href="../h_src/57509816.htm" class="variable">value</a>;  <a  class="comments">/* make it closed */</a>
+    <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(<a href="../h_src/57838516.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57510564.htm" class="variable">v</a>.<a href="../h_src/57510768.htm" class="variable">p</a>);
+    <a href="../h_src/57838924.htm" class="localvar">cl</a>-&gt;<a href="../h_src/57508048.htm" class="variable">upvals</a>[<a href="../h_src/57838788.htm" class="localvar">i</a>] = <a href="../h_src/57838516.htm" class="localvar">uv</a>;
+    <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/57839060.htm" class="localvar">L</a>, <a href="../h_src/57838924.htm" class="localvar">cl</a>, <a href="../h_src/57838516.htm" class="localvar">uv</a>);
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

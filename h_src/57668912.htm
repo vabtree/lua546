@@ -1,0 +1,52 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaK_setlist</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57668912.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57668912.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57668912.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57668912.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57668912.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57668912.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57706720.htm#1807" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+void <a href="../h_src/57668912.htm" class="function">luaK_setlist</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57764492.htm" class="localvar">fs</a>, int <a href="../h_src/57764356.htm" class="localvar">base</a>, int <a href="../h_src/57764220.htm" class="localvar">nelems</a>, int <a href="../h_src/57764084.htm" class="localvar">tostore</a>) {
+  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(tostore != 0 &amp;&amp; tostore &lt;= <a href="../h_src/57683192.htm" class="macro">LFIELDS_PER_FLUSH</a>);
+  if (<a href="../h_src/57764084.htm" class="localvar">tostore</a> == <a href="../h_src/57445612.htm" class="macro">LUA_MULTRET</a>)
+    <a href="../h_src/57764084.htm" class="localvar">tostore</a> = 0;
+  if (<a href="../h_src/57764220.htm" class="localvar">nelems</a> &lt;= <a href="../h_src/57695568.htm" class="macro">MAXARG_C</a>)
+    <a href="../h_src/57672380.htm" class="macro">luaK_codeABC</a>(<a href="../h_src/57764492.htm" class="localvar">fs</a>, <a href="../h_src/57685232.htm" class="variable">OP_SETLIST</a>, <a href="../h_src/57764356.htm" class="localvar">base</a>, <a href="../h_src/57764084.htm" class="localvar">tostore</a>, <a href="../h_src/57764220.htm" class="localvar">nelems</a>);
+  else {
+    int <a href="../h_src/57763948.htm" class="localvar">extra</a> = <a href="../h_src/57764220.htm" class="localvar">nelems</a> / (<a href="../h_src/57695568.htm" class="macro">MAXARG_C</a> + 1);
+    <a href="../h_src/57764220.htm" class="localvar">nelems</a> %= (<a href="../h_src/57695568.htm" class="macro">MAXARG_C</a> + 1);
+    <a href="../h_src/57671088.htm" class="function">luaK_codeABCk</a>(<a href="../h_src/57764492.htm" class="localvar">fs</a>, <a href="../h_src/57685232.htm" class="variable">OP_SETLIST</a>, <a href="../h_src/57764356.htm" class="localvar">base</a>, <a href="../h_src/57764084.htm" class="localvar">tostore</a>, <a href="../h_src/57764220.htm" class="localvar">nelems</a>, 1);
+    <a href="../h_src/57812432.htm" class="function">codeextraarg</a>(<a href="../h_src/57764492.htm" class="localvar">fs</a>, <a href="../h_src/57763948.htm" class="localvar">extra</a>);
+  }
+  <a href="../h_src/57764492.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a> = <a href="../h_src/57764356.htm" class="localvar">base</a> + 1;  <a  class="comments">/* free registers with list values */</a>
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

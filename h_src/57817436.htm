@@ -1,0 +1,79 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>traverseephemeron</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57817436.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57817436.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57817436.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57817436.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57817436.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57817436.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57829404.htm#480" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/57817436.htm" class="function">traverseephemeron</a> (<a href="../h_src/57643100.htm" class="type">global_State</a> *<a href="../h_src/57977276.htm" class="localvar">g</a>, <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/57977140.htm" class="localvar">h</a>, int <a href="../h_src/57977004.htm" class="localvar">inv</a>) {
+  int <a href="../h_src/57976868.htm" class="localvar">marked</a> = 0;  <a  class="comments">/* true if an object is marked in this traversal */</a>
+  int <a href="../h_src/57976732.htm" class="localvar">hasclears</a> = 0;  <a  class="comments">/* true if table has white keys */</a>
+  int <a href="../h_src/57976596.htm" class="localvar">hasww</a> = 0;  <a  class="comments">/* true if table has entry &quot;white-key -&gt; white-value&quot; */</a>
+  unsigned int <a href="../h_src/57976460.htm" class="localvar">i</a>;
+  unsigned int <a href="../h_src/57976324.htm" class="localvar">asize</a> = <a href="../h_src/57616172.htm" class="function">luaH_realasize</a>(<a href="../h_src/57977140.htm" class="localvar">h</a>);
+  unsigned int <a href="../h_src/57976188.htm" class="localvar">nsize</a> = <a href="../h_src/57502200.htm" class="macro">sizenode</a>(<a href="../h_src/57977140.htm" class="localvar">h</a>);
+  <a  class="comments">/* traverse array part */</a>
+  for (<a href="../h_src/57976460.htm" class="localvar">i</a> = 0; <a href="../h_src/57976460.htm" class="localvar">i</a> &lt; <a href="../h_src/57976324.htm" class="localvar">asize</a>; <a href="../h_src/57976460.htm" class="localvar">i</a>++) {
+    if (<a href="../h_src/57827704.htm" class="macro">valiswhite</a>(&amp;<a href="../h_src/57977140.htm" class="localvar">h</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/57976460.htm" class="localvar">i</a>])) {
+      <a href="../h_src/57976868.htm" class="localvar">marked</a> = 1;
+      <a href="../h_src/57826752.htm" class="function">reallymarkobject</a>(<a href="../h_src/57977276.htm" class="localvar">g</a>, <a href="../h_src/57527496.htm" class="macro">gcvalue</a>(&amp;<a href="../h_src/57977140.htm" class="localvar">h</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/57976460.htm" class="localvar">i</a>]));
+    }
+  }
+  <a  class="comments">/* traverse hash part; if 'inv', traverse descending</a>
+<a  class="comments">     (see 'convergeephemerons') */</a>
+  for (<a href="../h_src/57976460.htm" class="localvar">i</a> = 0; <a href="../h_src/57976460.htm" class="localvar">i</a> &lt; <a href="../h_src/57976188.htm" class="localvar">nsize</a>; <a href="../h_src/57976460.htm" class="localvar">i</a>++) {
+    <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/57976052.htm" class="localvar">n</a> = <a href="../h_src/57977004.htm" class="localvar">inv</a> ? <a href="../h_src/57618008.htm" class="macro">gnode</a>(<a href="../h_src/57977140.htm" class="localvar">h</a>, <a href="../h_src/57976188.htm" class="localvar">nsize</a> - 1 - <a href="../h_src/57976460.htm" class="localvar">i</a>) : <a href="../h_src/57618008.htm" class="macro">gnode</a>(<a href="../h_src/57977140.htm" class="localvar">h</a>, <a href="../h_src/57976460.htm" class="localvar">i</a>);
+    if (<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/57976052.htm" class="localvar">n</a>)))  <a  class="comments">/* entry is empty? */</a>
+      <a href="../h_src/57824984.htm" class="function">clearkey</a>(<a href="../h_src/57976052.htm" class="localvar">n</a>);  <a  class="comments">/* clear its key */</a>
+    else if (<a href="../h_src/57824712.htm" class="function">iscleared</a>(<a href="../h_src/57977276.htm" class="localvar">g</a>, <a href="../h_src/57502880.htm" class="macro">gckeyN</a>(<a href="../h_src/57976052.htm" class="localvar">n</a>))) {  <a  class="comments">/* key is not marked (yet)? */</a>
+      <a href="../h_src/57976732.htm" class="localvar">hasclears</a> = 1;  <a  class="comments">/* table must be cleared */</a>
+      if (<a href="../h_src/57827704.htm" class="macro">valiswhite</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/57976052.htm" class="localvar">n</a>)))  <a  class="comments">/* value not marked yet? */</a><a href="../h_src/57528040.htm" class="variable">marked</a> yet? */
+        <a href="../h_src/57976596.htm" class="localvar">hasww</a> = 1;  <a  class="comments">/* white-white entry */</a>
+    }
+    else if (<a href="../h_src/57827704.htm" class="macro">valiswhite</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/57976052.htm" class="localvar">n</a>))) {  <a  class="comments">/* value not marked yet? */</a><a href="../h_src/57528040.htm" class="variable">marked</a> yet? */
+      <a href="../h_src/57976868.htm" class="localvar">marked</a> = 1;
+      <a href="../h_src/57826752.htm" class="function">reallymarkobject</a>(<a href="../h_src/57977276.htm" class="localvar">g</a>, <a href="../h_src/57527496.htm" class="macro">gcvalue</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/57976052.htm" class="localvar">n</a>)));  <a  class="comments">/* mark it now */</a>
+    }
+  }
+  <a  class="comments">/* link table into proper list */</a>
+  if (<a href="../h_src/57977276.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646024.htm" class="variable">gcstate</a> == <a href="../h_src/57629772.htm" class="macro">GCSpropagate</a>)
+    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57977140.htm" class="localvar">h</a>, <a href="../h_src/57977276.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a>);  <a  class="comments">/* must retraverse it in atomic phase */</a>
+  else if (<a href="../h_src/57976596.htm" class="localvar">hasww</a>)  <a  class="comments">/* table has white-&gt;white entries? */</a>
+    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57977140.htm" class="localvar">h</a>, <a href="../h_src/57977276.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644868.htm" class="variable">ephemeron</a>);  <a  class="comments">/* have to propagate again */</a>
+  else if (<a href="../h_src/57976732.htm" class="localvar">hasclears</a>)  <a  class="comments">/* table has white keys? */</a>
+    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57977140.htm" class="localvar">h</a>, <a href="../h_src/57977276.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644800.htm" class="variable">allweak</a>);  <a  class="comments">/* may have to clean white keys */</a>
+  else
+    <a href="../h_src/57818660.htm" class="function">genlink</a>(<a href="../h_src/57977276.htm" class="localvar">g</a>, <a href="../h_src/57638884.htm" class="macro">obj2gco</a>(<a href="../h_src/57977140.htm" class="localvar">h</a>));  <a  class="comments">/* check whether collector still needs to see it */</a>
+  return <a href="../h_src/57976868.htm" class="localvar">marked</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,49 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>checkupval</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143272356.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143272356.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143272356.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143272356.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143272356.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143272356.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58287060.htm#285" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void *<a href="../h_src/143272356.htm" class="function">checkupval</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143272220.htm" class="localvar">L</a>, int <a href="../h_src/143272084.htm" class="localvar">argf</a>, int <a href="../h_src/143271948.htm" class="localvar">argnup</a>, int *<a href="../h_src/143271812.htm" class="localvar">pnup</a>) {
+  void *<a href="../h_src/143271676.htm" class="localvar">id</a>;
+  int <a href="../h_src/143271540.htm" class="localvar">nup</a> = (int)<a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143272220.htm" class="localvar">L</a>, <a href="../h_src/143271948.htm" class="localvar">argnup</a>);  <a  class="comments">/* upvalue index */</a>
+  <a href="../h_src/57419772.htm" class="function">luaL_checktype</a>(<a href="../h_src/143272220.htm" class="localvar">L</a>, <a href="../h_src/143272084.htm" class="localvar">argf</a>, <a href="../h_src/57443232.htm" class="macro">LUA_TFUNCTION</a>);  <a  class="comments">/* closure */</a>
+  <a href="../h_src/143271676.htm" class="localvar">id</a> = <a href="../h_src/57424260.htm" class="function">lua_upvalueid</a>(<a href="../h_src/143272220.htm" class="localvar">L</a>, <a href="../h_src/143272084.htm" class="localvar">argf</a>, <a href="../h_src/143271540.htm" class="localvar">nup</a>);
+  if (<a href="../h_src/143271812.htm" class="localvar">pnup</a>) {
+    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143272220.htm" class="localvar">L</a>, <a href="../h_src/143271676.htm" class="localvar">id</a> != NULL, <a href="../h_src/143271948.htm" class="localvar">argnup</a>, &quot;invalid upvalue index&quot;);
+    *<a href="../h_src/143271812.htm" class="localvar">pnup</a> = <a href="../h_src/143271540.htm" class="localvar">nup</a>;
+  }
+  return <a href="../h_src/143271676.htm" class="localvar">id</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

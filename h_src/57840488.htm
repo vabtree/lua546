@@ -1,0 +1,333 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lfunc.c</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57840488.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/57840488.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/57840488.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/57840488.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_uf/57840488.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_df/57840488.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57840488.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57840488.htm" class="file" target="_self">Source Code</a></li>
+<li><a href="../h_sc/57840488.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<pre class=src>
+<a id=1></a><a  class="comments">/*</a>
+<a id=2></a><a  class="comments">** $Id: lfunc.c $</a>
+<a id=3></a><a  class="comments">** Auxiliary functions to manipulate prototypes and closures</a>
+<a id=4></a><a  class="comments">** See Copyright Notice in lua.h</a>
+<a id=5></a><a  class="comments">*/</a>
+
+<a id=7></a>#define <a href="../h_src/57840420.htm" class="macro">lfunc_c</a>
+<a id=8></a>#define <a href="../h_src/57840284.htm" class="macro">LUA_CORE</a>
+
+<a id=10></a>#include &quot;<a href="../h_src/57461592.htm" class="file">lprefix.h</a>&quot;
+
+
+#include &lt;stddef.h&gt;
+
+<a id=15></a>#include &quot;<a href="../h_src/57460028.htm" class="file">lua.h</a>&quot;
+
+<a id=17></a>#include &quot;<a href="../h_src/57637116.htm" class="file">ldebug.h</a>&quot;
+<a id=18></a>#include &quot;<a href="../h_src/57635008.htm" class="file">ldo.h</a>&quot;
+<a id=19></a>#include &quot;<a href="../h_src/57632424.htm" class="file">lfunc.h</a>&quot;
+<a id=20></a>#include &quot;<a href="../h_src/57630112.htm" class="file">lgc.h</a>&quot;
+<a id=21></a>#include &quot;<a href="../h_src/57496896.htm" class="file">lmem.h</a>&quot;
+<a id=22></a>#include &quot;<a href="../h_src/57537696.htm" class="file">lobject.h</a>&quot;
+<a id=23></a>#include &quot;<a href="../h_src/57538104.htm" class="file">lstate.h</a>&quot;
+
+
+
+<a id=27></a><a href="../h_src/57508728.htm" class="type">CClosure</a> *<a href="../h_src/57630860.htm" class="function">luaF_newCclosure</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57840148.htm" class="localvar">L</a>, int <a href="../h_src/57840012.htm" class="localvar">nupvals</a>) {
+<a id=28></a>  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57839876.htm" class="localvar">o</a> = <a href="../h_src/57620592.htm" class="function">luaC_newobj</a>(<a href="../h_src/57840148.htm" class="localvar">L</a>, <a href="../h_src/57513352.htm" class="macro">LUA_VCCL</a>, <a href="../h_src/57632084.htm" class="macro">sizeCclosure</a>(<a href="../h_src/57840012.htm" class="localvar">nupvals</a>));
+<a id=29></a>  <a href="../h_src/57508728.htm" class="type">CClosure</a> *<a href="../h_src/57839740.htm" class="localvar">c</a> = <a href="../h_src/57639700.htm" class="macro">gco2ccl</a>(<a href="../h_src/57839876.htm" class="localvar">o</a>);
+<a id=30></a>  <a href="../h_src/57839740.htm" class="localvar">c</a>-&gt;<a href="../h_src/57509068.htm" class="variable">nupvalues</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/57840012.htm" class="localvar">nupvals</a>);
+<a id=31></a>  return <a href="../h_src/57839740.htm" class="localvar">c</a>;
+}
+
+
+<a id=35></a><a href="../h_src/57507980.htm" class="type">LClosure</a> *<a href="../h_src/57630724.htm" class="function">luaF_newLclosure</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57839604.htm" class="localvar">L</a>, int <a href="../h_src/57839468.htm" class="localvar">nupvals</a>) {
+<a id=36></a>  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57839332.htm" class="localvar">o</a> = <a href="../h_src/57620592.htm" class="function">luaC_newobj</a>(<a href="../h_src/57839604.htm" class="localvar">L</a>, <a href="../h_src/57513624.htm" class="macro">LUA_VLCL</a>, <a href="../h_src/57631948.htm" class="macro">sizeLclosure</a>(<a href="../h_src/57839468.htm" class="localvar">nupvals</a>));
+<a id=37></a>  <a href="../h_src/57507980.htm" class="type">LClosure</a> *<a href="../h_src/57839196.htm" class="localvar">c</a> = <a href="../h_src/57639836.htm" class="macro">gco2lcl</a>(<a href="../h_src/57839332.htm" class="localvar">o</a>);
+<a id=38></a>  <a href="../h_src/57839196.htm" class="localvar">c</a>-&gt;<a href="../h_src/57508184.htm" class="variable">p</a> = NULL;
+<a id=39></a>  <a href="../h_src/57839196.htm" class="localvar">c</a>-&gt;<a href="../h_src/57508320.htm" class="variable">nupvalues</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/57839468.htm" class="localvar">nupvals</a>);
+<a id=40></a>  while (<a href="../h_src/57839468.htm" class="localvar">nupvals</a>--) <a href="../h_src/57839196.htm" class="localvar">c</a>-&gt;<a href="../h_src/57508048.htm" class="variable">upvals</a>[<a href="../h_src/57839468.htm" class="localvar">nupvals</a>] = NULL;
+<a id=41></a>  return <a href="../h_src/57839196.htm" class="localvar">c</a>;
+}
+
+
+<a id=45></a><a  class="comments">/*</a>
+<a id=46></a><a  class="comments">** fill a closure with new closed upvalues</a>
+<a id=47></a><a  class="comments">*/</a>
+<a id=48></a>void <a href="../h_src/57630656.htm" class="function">luaF_initupvals</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57839060.htm" class="localvar">L</a>, <a href="../h_src/57507980.htm" class="type">LClosure</a> *<a href="../h_src/57838924.htm" class="localvar">cl</a>) {
+<a id=49></a>  int <a href="../h_src/57838788.htm" class="localvar">i</a>;
+<a id=50></a>  for (<a href="../h_src/57838788.htm" class="localvar">i</a> = 0; <a href="../h_src/57838788.htm" class="localvar">i</a> &lt; <a href="../h_src/57838924.htm" class="localvar">cl</a>-&gt;<a href="../h_src/57508320.htm" class="variable">nupvalues</a>; <a href="../h_src/57838788.htm" class="localvar">i</a>++) {
+<a id=51></a>    <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57838652.htm" class="localvar">o</a> = <a href="../h_src/57620592.htm" class="function">luaC_newobj</a>(<a href="../h_src/57839060.htm" class="localvar">L</a>, <a href="../h_src/57513760.htm" class="macro">LUA_VUPVAL</a>, sizeof(<a href="../h_src/57509612.htm" class="type">UpVal</a>));
+<a id=52></a>    <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57838516.htm" class="localvar">uv</a> = <a href="../h_src/57639020.htm" class="macro">gco2upv</a>(<a href="../h_src/57838652.htm" class="localvar">o</a>);
+<a id=53></a>    <a href="../h_src/57838516.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57510564.htm" class="variable">v</a>.<a href="../h_src/57510768.htm" class="variable">p</a> = &amp;<a href="../h_src/57838516.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57509680.htm" class="variable">u</a>.<a href="../h_src/57509816.htm" class="variable">value</a>;  <a  class="comments">/* make it closed */</a>
+<a id=54></a>    <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(<a href="../h_src/57838516.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57510564.htm" class="variable">v</a>.<a href="../h_src/57510768.htm" class="variable">p</a>);
+<a id=55></a>    <a href="../h_src/57838924.htm" class="localvar">cl</a>-&gt;<a href="../h_src/57508048.htm" class="variable">upvals</a>[<a href="../h_src/57838788.htm" class="localvar">i</a>] = <a href="../h_src/57838516.htm" class="localvar">uv</a>;
+<a id=56></a>    <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/57839060.htm" class="localvar">L</a>, <a href="../h_src/57838924.htm" class="localvar">cl</a>, <a href="../h_src/57838516.htm" class="localvar">uv</a>);
+  }
+}
+
+
+<a id=61></a><a  class="comments">/*</a>
+<a id=62></a><a  class="comments">** Create a new upvalue at the given level, and link it to the list of</a>
+<a id=63></a><a  class="comments">** open upvalues of 'L' after entry 'prev'.</a>
+<a id=64></a><a  class="comments">**/</a>
+<a id=65></a>static <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57838380.htm" class="function">newupval</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57838244.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57838108.htm" class="localvar">level</a>, <a href="../h_src/57509612.htm" class="type">UpVal</a> **<a href="../h_src/57837972.htm" class="localvar">prev</a>) {
+<a id=66></a>  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57837836.htm" class="localvar">o</a> = <a href="../h_src/57620592.htm" class="function">luaC_newobj</a>(<a href="../h_src/57838244.htm" class="localvar">L</a>, <a href="../h_src/57513760.htm" class="macro">LUA_VUPVAL</a>, sizeof(<a href="../h_src/57509612.htm" class="type">UpVal</a>));
+<a id=67></a>  <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57837700.htm" class="localvar">uv</a> = <a href="../h_src/57639020.htm" class="macro">gco2upv</a>(<a href="../h_src/57837836.htm" class="localvar">o</a>);
+<a id=68></a>  <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57837564.htm" class="localvar">next</a> = *<a href="../h_src/57837972.htm" class="localvar">prev</a>;
+<a id=69></a>  <a href="../h_src/57837700.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57510564.htm" class="variable">v</a>.<a href="../h_src/57510768.htm" class="variable">p</a> = <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57838108.htm" class="localvar">level</a>);  <a  class="comments">/* current value lives in the stack */</a>
+<a id=70></a>  <a href="../h_src/57837700.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57509680.htm" class="variable">u</a>.<a href="../h_src/57509884.htm" class="variable">open</a>.<a href="../h_src/57510224.htm" class="variable">next</a> = <a href="../h_src/57837564.htm" class="localvar">next</a>;  <a  class="comments">/* link it to list of open upvalues */</a>
+<a id=71></a>  <a href="../h_src/57837700.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57509680.htm" class="variable">u</a>.<a href="../h_src/57509884.htm" class="variable">open</a>.<a href="../h_src/57510020.htm" class="variable">previous</a> = <a href="../h_src/57837972.htm" class="localvar">prev</a>;
+<a id=72></a>  if (<a href="../h_src/57837564.htm" class="localvar">next</a>)
+<a id=73></a>    <a href="../h_src/57837564.htm" class="localvar">next</a>-&gt;<a href="../h_src/57509680.htm" class="variable">u</a>.<a href="../h_src/57509884.htm" class="variable">open</a>.<a href="../h_src/57510020.htm" class="variable">previous</a> = &amp;<a href="../h_src/57837700.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57509680.htm" class="variable">u</a>.<a href="../h_src/57509884.htm" class="variable">open</a>.<a href="../h_src/57510224.htm" class="variable">next</a>;
+<a id=74></a>  *<a href="../h_src/57837972.htm" class="localvar">prev</a> = <a href="../h_src/57837700.htm" class="localvar">uv</a>;
+<a id=75></a>  if (!<a href="../h_src/57631812.htm" class="macro">isintwups</a>(<a href="../h_src/57838244.htm" class="localvar">L</a>)) {  <a  class="comments">/* thread not in list of threads with upvalues? */</a>
+<a id=76></a>    <a href="../h_src/57838244.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642012.htm" class="variable">twups</a> = <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57838244.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57643984.htm" class="variable">twups</a>;  <a  class="comments">/* link it to the list */</a>
+<a id=77></a>    <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57838244.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57643984.htm" class="variable">twups</a> = <a href="../h_src/57838244.htm" class="localvar">L</a>;
+  }
+<a id=79></a>  return <a href="../h_src/57837700.htm" class="localvar">uv</a>;
+}
+
+
+<a id=83></a><a  class="comments">/*</a>
+<a id=84></a><a  class="comments">** Find and reuse, or create if it does not exist, an upvalue</a>
+<a id=85></a><a  class="comments">** at the given level.</a>
+<a id=86></a><a  class="comments">*/</a>
+<a id=87></a><a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57630588.htm" class="function">luaF_findupval</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57837428.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57837292.htm" class="localvar">level</a>) {
+<a id=88></a>  <a href="../h_src/57509612.htm" class="type">UpVal</a> **<a href="../h_src/57837156.htm" class="localvar">pp</a> = &amp;<a href="../h_src/57837428.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642216.htm" class="variable">openupval</a>;
+<a id=89></a>  <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57837020.htm" class="localvar">p</a>;
+<a id=90></a>  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57631812.htm" class="macro">isintwups</a>(L) || L-&gt;openupval == NULL);
+<a id=91></a>  while ((<a href="../h_src/57837020.htm" class="localvar">p</a> = *<a href="../h_src/57837156.htm" class="localvar">pp</a>) != NULL &amp;&amp; <a href="../h_src/57631404.htm" class="macro">uplevel</a>(<a href="../h_src/57837020.htm" class="localvar">p</a>) &gt;= <a href="../h_src/57837292.htm" class="localvar">level</a>) {  <a  class="comments">/* search for it */</a>
+<a id=92></a>    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!<a href="../h_src/57625556.htm" class="macro">isdead</a>(<a href="../h_src/57641196.htm" class="macro">G</a>(L), p));
+<a id=93></a>    if (<a href="../h_src/57631404.htm" class="macro">uplevel</a>(<a href="../h_src/57837020.htm" class="localvar">p</a>) == <a href="../h_src/57837292.htm" class="localvar">level</a>)  <a  class="comments">/* corresponding upvalue? */</a>
+<a id=94></a>      return <a href="../h_src/57837020.htm" class="localvar">p</a>;  <a  class="comments">/* return it */</a>
+<a id=95></a>    <a href="../h_src/57837156.htm" class="localvar">pp</a> = &amp;<a href="../h_src/57837020.htm" class="localvar">p</a>-&gt;<a href="../h_src/57509680.htm" class="variable">u</a>.<a href="../h_src/57509884.htm" class="variable">open</a>.<a href="../h_src/57510224.htm" class="variable">next</a>;
+  }
+<a id=97></a>  <a  class="comments">/* not found: create a new upvalue after 'pp' */</a>
+<a id=98></a>  return <a href="../h_src/57838380.htm" class="function">newupval</a>(<a href="../h_src/57837428.htm" class="localvar">L</a>, <a href="../h_src/57837292.htm" class="localvar">level</a>, <a href="../h_src/57837156.htm" class="localvar">pp</a>);
+}
+
+
+<a id=102></a><a  class="comments">/*</a>
+<a id=103></a><a  class="comments">** Call closing method for object 'obj' with error message 'err'. The</a>
+<a id=104></a><a  class="comments">** boolean 'yy' controls whether the call is yieldable.</a>
+<a id=105></a><a  class="comments">** (This function assumes EXTRA_STACK.)</a>
+<a id=106></a><a  class="comments">*/</a>
+<a id=107></a>static void <a href="../h_src/57836884.htm" class="function">callclosemethod</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57836748.htm" class="localvar">L</a>, <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57836612.htm" class="localvar">obj</a>, <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57836476.htm" class="localvar">err</a>, int <a href="../h_src/57836340.htm" class="localvar">yy</a>) {
+<a id=108></a>  <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57836204.htm" class="localvar">top</a> = <a href="../h_src/57836748.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>;
+<a id=109></a>  const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57836068.htm" class="localvar">tm</a> = <a href="../h_src/57498052.htm" class="function">luaT_gettmbyobj</a>(<a href="../h_src/57836748.htm" class="localvar">L</a>, <a href="../h_src/57836612.htm" class="localvar">obj</a>, <a href="../h_src/57499276.htm" class="variable">TM_CLOSE</a>);
+<a id=110></a>  <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/57836748.htm" class="localvar">L</a>, <a href="../h_src/57836204.htm" class="localvar">top</a>, <a href="../h_src/57836068.htm" class="localvar">tm</a>);  <a  class="comments">/* will call metamethod... */</a>
+<a id=111></a>  <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/57836748.htm" class="localvar">L</a>, <a href="../h_src/57836204.htm" class="localvar">top</a> + 1, <a href="../h_src/57836612.htm" class="localvar">obj</a>);  <a  class="comments">/* with 'self' as the 1st argument */</a>
+<a id=112></a>  <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/57836748.htm" class="localvar">L</a>, <a href="../h_src/57836204.htm" class="localvar">top</a> + 2, <a href="../h_src/57836476.htm" class="localvar">err</a>);  <a  class="comments">/* and error msg. as 2nd argument */</a>
+<a id=113></a>  <a href="../h_src/57836748.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57836204.htm" class="localvar">top</a> + 3;  <a  class="comments">/* add function and arguments */</a>
+<a id=114></a>  if (<a href="../h_src/57836340.htm" class="localvar">yy</a>)
+<a id=115></a>    <a href="../h_src/57633240.htm" class="function">luaD_call</a>(<a href="../h_src/57836748.htm" class="localvar">L</a>, <a href="../h_src/57836204.htm" class="localvar">top</a>, 0);
+  else
+<a id=117></a>    <a href="../h_src/57633172.htm" class="function">luaD_callnoyield</a>(<a href="../h_src/57836748.htm" class="localvar">L</a>, <a href="../h_src/57836204.htm" class="localvar">top</a>, 0);
+}
+
+
+<a id=121></a><a  class="comments">/*</a>
+<a id=122></a><a  class="comments">** Check whether object at given level has a close metamethod and raise</a>
+<a id=123></a><a  class="comments">** an error if not.</a>
+<a id=124></a><a  class="comments">*/</a>
+<a id=125></a>static void <a href="../h_src/57835116.htm" class="function">checkclosemth</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57834980.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57834844.htm" class="localvar">level</a>) {
+<a id=126></a>  const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57834708.htm" class="localvar">tm</a> = <a href="../h_src/57498052.htm" class="function">luaT_gettmbyobj</a>(<a href="../h_src/57834980.htm" class="localvar">L</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57834844.htm" class="localvar">level</a>), <a href="../h_src/57499276.htm" class="variable">TM_CLOSE</a>);
+<a id=127></a>  if (<a href="../h_src/57531168.htm" class="macro">ttisnil</a>(<a href="../h_src/57834708.htm" class="localvar">tm</a>)) {  <a  class="comments">/* no metamethod? */</a>
+<a id=128></a>    int <a href="../h_src/57834572.htm" class="localvar">idx</a> = <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/57834844.htm" class="localvar">level</a> - <a href="../h_src/57834980.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a>);  <a  class="comments">/* variable index */</a>
+<a id=129></a>    const char *<a href="../h_src/57834436.htm" class="localvar">vname</a> = <a href="../h_src/57635892.htm" class="function">luaG_findlocal</a>(<a href="../h_src/57834980.htm" class="localvar">L</a>, <a href="../h_src/57834980.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>, <a href="../h_src/57834572.htm" class="localvar">idx</a>, NULL);
+<a id=130></a>    if (<a href="../h_src/57834436.htm" class="localvar">vname</a> == NULL) <a href="../h_src/57834436.htm" class="localvar">vname</a> = &quot;?&quot;;
+<a id=131></a>    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/57834980.htm" class="localvar">L</a>, &quot;variable '%s' got a non-closable value&quot;, <a href="../h_src/57834436.htm" class="localvar">vname</a>);
+  }
+}
+
+
+<a id=136></a><a  class="comments">/*</a>
+<a id=137></a><a  class="comments">** Prepare and call a closing method.</a>
+<a id=138></a><a  class="comments">** If status is CLOSEKTOP, the call to the closing method will be pushed</a>
+<a id=139></a><a  class="comments">** at the top of the stack. Otherwise, values can be pushed right after</a>
+<a id=140></a><a  class="comments">** the 'level' of the upvalue being closed, as everything after that</a>
+<a id=141></a><a  class="comments">** won't be used again.</a>
+<a id=142></a><a  class="comments">*/</a>
+<a id=143></a>static void <a href="../h_src/57834300.htm" class="function">prepcallclosemth</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57834164.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57834028.htm" class="localvar">level</a>, int <a href="../h_src/57833892.htm" class="localvar">status</a>, int <a href="../h_src/57833756.htm" class="localvar">yy</a>) {
+<a id=144></a>  <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57833620.htm" class="localvar">uv</a> = <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57834028.htm" class="localvar">level</a>);  <a  class="comments">/* value being closed */</a>
+<a id=145></a>  <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57833484.htm" class="localvar">errobj</a>;
+<a id=146></a>  if (<a href="../h_src/57833892.htm" class="localvar">status</a> == <a href="../h_src/57631132.htm" class="macro">CLOSEKTOP</a>)
+<a id=147></a>    <a href="../h_src/57833484.htm" class="localvar">errobj</a> = &amp;<a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57834164.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57646228.htm" class="variable">nilvalue</a>;  <a  class="comments">/* error object is nil */</a>
+<a id=148></a>  else {  <a  class="comments">/* 'luaD_seterrorobj' will set top to level + 2 */</a>
+<a id=149></a>    <a href="../h_src/57833484.htm" class="localvar">errobj</a> = <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57834028.htm" class="localvar">level</a> + 1);  <a  class="comments">/* error object goes after 'uv' */</a>
+<a id=150></a>    <a href="../h_src/57633648.htm" class="function">luaD_seterrorobj</a>(<a href="../h_src/57834164.htm" class="localvar">L</a>, <a href="../h_src/57833892.htm" class="localvar">status</a>, <a href="../h_src/57834028.htm" class="localvar">level</a> + 1);  <a  class="comments">/* set error object */</a>
+  }
+<a id=152></a>  <a href="../h_src/57836884.htm" class="function">callclosemethod</a>(<a href="../h_src/57834164.htm" class="localvar">L</a>, <a href="../h_src/57833620.htm" class="localvar">uv</a>, <a href="../h_src/57833484.htm" class="localvar">errobj</a>, <a href="../h_src/57833756.htm" class="localvar">yy</a>);
+}
+
+
+<a id=156></a><a  class="comments">/*</a>
+<a id=157></a><a  class="comments">** Maximum value for deltas in 'tbclist', dependent on the type</a>
+<a id=158></a><a  class="comments">** of delta. (This macro assumes that an 'L' is in scope where it</a>
+<a id=159></a><a  class="comments">** is used.)</a>
+<a id=160></a><a  class="comments">*/</a>
+<a id=161></a>#define <a href="../h_src/57833348.htm" class="macro">MAXDELTA</a>  \
+	((256ul &lt;&lt; ((sizeof(L-&gt;stack.p-&gt;tbclist.delta) - 1) * 8)) - 1)
+
+
+<a id=165></a><a  class="comments">/*</a>
+<a id=166></a><a  class="comments">** Insert a variable in the list of to-be-closed variables.</a>
+<a id=167></a><a  class="comments">*/</a>
+<a id=168></a>void <a href="../h_src/57630520.htm" class="function">luaF_newtbcupval</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57833212.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57833076.htm" class="localvar">level</a>) {
+<a id=169></a>  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(level &gt; L-&gt;tbclist.p);
+<a id=170></a>  if (<a href="../h_src/57529400.htm" class="macro">l_isfalse</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57833076.htm" class="localvar">level</a>)))
+<a id=171></a>    return;  <a  class="comments">/* false doesn't need to be closed */</a>
+<a id=172></a>  <a href="../h_src/57835116.htm" class="function">checkclosemth</a>(<a href="../h_src/57833212.htm" class="localvar">L</a>, <a href="../h_src/57833076.htm" class="localvar">level</a>);  <a  class="comments">/* value must have a close method */</a>
+<a id=173></a>  while (<a href="../h_src/57547080.htm" class="macro">cast_uint</a>(<a href="../h_src/57833076.htm" class="localvar">level</a> - <a href="../h_src/57833212.htm" class="localvar">L</a>-&gt;<a href="../h_src/57532324.htm" class="variable">tbclist</a>.<a href="../h_src/57531984.htm" class="variable">p</a>) &gt; <a href="../h_src/57833348.htm" class="macro">MAXDELTA</a>) {
+<a id=174></a>    <a href="../h_src/57833212.htm" class="localvar">L</a>-&gt;<a href="../h_src/57532324.htm" class="variable">tbclist</a>.<a href="../h_src/57531984.htm" class="variable">p</a> += <a href="../h_src/57833348.htm" class="macro">MAXDELTA</a>;  <a  class="comments">/* create a dummy node at maximum delta */</a><a href="../h_src/57532460.htm" class="variable">delta</a> */
+<a id=175></a>    <a href="../h_src/57833212.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642148.htm" class="variable">tbclist</a>.<a href="../h_src/57531984.htm" class="variable">p</a>-&gt;<a href="../h_src/57532324.htm" class="variable">tbclist</a>.<a href="../h_src/57532460.htm" class="variable">delta</a> = 0;
+  }
+<a id=177></a>  <a href="../h_src/57833076.htm" class="localvar">level</a>-&gt;<a href="../h_src/57532324.htm" class="variable">tbclist</a>.<a href="../h_src/57532460.htm" class="variable">delta</a> = <a href="../h_src/57547760.htm" class="macro">cast</a>(unsigned short, <a href="../h_src/57833076.htm" class="localvar">level</a> - <a href="../h_src/57833212.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642148.htm" class="variable">tbclist</a>.<a href="../h_src/57531984.htm" class="variable">p</a>);
+<a id=178></a>  <a href="../h_src/57833212.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642148.htm" class="variable">tbclist</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57833076.htm" class="localvar">level</a>;
+}
+
+
+<a id=182></a>void <a href="../h_src/57630316.htm" class="function">luaF_unlinkupval</a> (<a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57832940.htm" class="localvar">uv</a>) {
+<a id=183></a>  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57631540.htm" class="macro">upisopen</a>(uv));
+<a id=184></a>  *<a href="../h_src/57832940.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57509680.htm" class="variable">u</a>.<a href="../h_src/57509884.htm" class="variable">open</a>.<a href="../h_src/57510020.htm" class="variable">previous</a> = <a href="../h_src/57832940.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57509680.htm" class="variable">u</a>.<a href="../h_src/57509884.htm" class="variable">open</a>.<a href="../h_src/57510224.htm" class="variable">next</a>;
+<a id=185></a>  if (<a href="../h_src/57832940.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57509680.htm" class="variable">u</a>.<a href="../h_src/57509884.htm" class="variable">open</a>.<a href="../h_src/57510224.htm" class="variable">next</a>)
+<a id=186></a>    <a href="../h_src/57832940.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57509680.htm" class="variable">u</a>.<a href="../h_src/57509884.htm" class="variable">open</a>.<a href="../h_src/57510224.htm" class="variable">next</a>-&gt;<a href="../h_src/57509680.htm" class="variable">u</a>.<a href="../h_src/57509884.htm" class="variable">open</a>.<a href="../h_src/57510020.htm" class="variable">previous</a> = <a href="../h_src/57832940.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57509680.htm" class="variable">u</a>.<a href="../h_src/57509884.htm" class="variable">open</a>.<a href="../h_src/57510020.htm" class="variable">previous</a>;
+}
+
+
+<a id=190></a><a  class="comments">/*</a>
+<a id=191></a><a  class="comments">** Close all upvalues up to the given stack level.</a>
+<a id=192></a><a  class="comments">*/</a>
+<a id=193></a>void <a href="../h_src/57630452.htm" class="function">luaF_closeupval</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57832804.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57832668.htm" class="localvar">level</a>) {
+<a id=194></a>  <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57832532.htm" class="localvar">uv</a>;
+<a id=195></a>  <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57832396.htm" class="localvar">upl</a>;  <a  class="comments">/* stack index pointed by 'uv' */</a>
+<a id=196></a>  while ((<a href="../h_src/57832532.htm" class="localvar">uv</a> = <a href="../h_src/57832804.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642216.htm" class="variable">openupval</a>) != NULL &amp;&amp; (<a href="../h_src/57832396.htm" class="localvar">upl</a> = <a href="../h_src/57631404.htm" class="macro">uplevel</a>(<a href="../h_src/57832532.htm" class="localvar">uv</a>)) &gt;= <a href="../h_src/57832668.htm" class="localvar">level</a>) {
+<a id=197></a>    <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57832260.htm" class="localvar">slot</a> = &amp;<a href="../h_src/57832532.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57509680.htm" class="variable">u</a>.<a href="../h_src/57509816.htm" class="variable">value</a>;  <a  class="comments">/* new position for value */</a>
+<a id=198></a>    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57631404.htm" class="macro">uplevel</a>(uv) &lt; L-&gt;top.p);
+<a id=199></a>    <a href="../h_src/57630316.htm" class="function">luaF_unlinkupval</a>(<a href="../h_src/57832532.htm" class="localvar">uv</a>);  <a  class="comments">/* remove upvalue from 'openupval' list */</a>
+<a id=200></a>    <a href="../h_src/57533684.htm" class="macro">setobj</a>(<a href="../h_src/57832804.htm" class="localvar">L</a>, <a href="../h_src/57832260.htm" class="localvar">slot</a>, <a href="../h_src/57832532.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57510564.htm" class="variable">v</a>.<a href="../h_src/57510768.htm" class="variable">p</a>);  <a  class="comments">/* move value to upvalue slot */</a>
+<a id=201></a>    <a href="../h_src/57832532.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57510564.htm" class="variable">v</a>.<a href="../h_src/57510768.htm" class="variable">p</a> = <a href="../h_src/57832260.htm" class="localvar">slot</a>;  <a  class="comments">/* now current value lives here */</a>
+<a id=202></a>    if (!<a href="../h_src/57626372.htm" class="macro">iswhite</a>(<a href="../h_src/57832532.htm" class="localvar">uv</a>)) {  <a  class="comments">/* neither white nor dead? */</a>
+<a id=203></a>      <a href="../h_src/57625284.htm" class="macro">nw2black</a>(<a href="../h_src/57832532.htm" class="localvar">uv</a>);  <a  class="comments">/* closed upvalues cannot be gray */</a>
+<a id=204></a>      <a href="../h_src/57621340.htm" class="macro">luaC_barrier</a>(<a href="../h_src/57832804.htm" class="localvar">L</a>, <a href="../h_src/57832532.htm" class="localvar">uv</a>, <a href="../h_src/57832260.htm" class="localvar">slot</a>);
+    }
+  }
+}
+
+
+<a id=210></a><a  class="comments">/*</a>
+<a id=211></a><a  class="comments">** Remove first element from the tbclist plus its dummy nodes.</a>
+<a id=212></a><a  class="comments">*/</a>
+<a id=213></a>static void <a href="../h_src/57831852.htm" class="function">poptbclist</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57831716.htm" class="localvar">L</a>) {
+<a id=214></a>  <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57831580.htm" class="localvar">tbc</a> = <a href="../h_src/57831716.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642148.htm" class="variable">tbclist</a>.<a href="../h_src/57531984.htm" class="variable">p</a>;
+<a id=215></a>  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(tbc-&gt;tbclist.delta &gt; 0);  <a  class="comments">/* first element cannot be dummy */</a>
+<a id=216></a>  <a href="../h_src/57831580.htm" class="localvar">tbc</a> -= <a href="../h_src/57831580.htm" class="localvar">tbc</a>-&gt;<a href="../h_src/57532324.htm" class="variable">tbclist</a>.<a href="../h_src/57532460.htm" class="variable">delta</a>;
+<a id=217></a>  while (<a href="../h_src/57831580.htm" class="localvar">tbc</a> &gt; <a href="../h_src/57831716.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642284.htm" class="variable">stack</a>.<a href="../h_src/57531984.htm" class="variable">p</a> &amp;&amp; <a href="../h_src/57831580.htm" class="localvar">tbc</a>-&gt;<a href="../h_src/57532324.htm" class="variable">tbclist</a>.<a href="../h_src/57532460.htm" class="variable">delta</a> == 0)
+<a id=218></a>    <a href="../h_src/57831580.htm" class="localvar">tbc</a> -= <a href="../h_src/57833348.htm" class="macro">MAXDELTA</a>;  <a  class="comments">/* remove dummy nodes */</a>
+<a id=219></a>  <a href="../h_src/57831716.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642148.htm" class="variable">tbclist</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57831580.htm" class="localvar">tbc</a>;
+}
+
+
+<a id=223></a><a  class="comments">/*</a>
+<a id=224></a><a  class="comments">** Close all upvalues and to-be-closed variables up to the given stack</a>
+<a id=225></a><a  class="comments">** level. Return restored 'level'.</a>
+<a id=226></a><a  class="comments">*/</a>
+<a id=227></a><a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57630384.htm" class="function">luaF_close</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57831444.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57831308.htm" class="localvar">level</a>, int <a href="../h_src/57831172.htm" class="localvar">status</a>, int <a href="../h_src/57831036.htm" class="localvar">yy</a>) {
+<a id=228></a>  <a href="../h_aa/57441872.htm" class="type">ptrdiff_t</a> <a href="../h_src/57830900.htm" class="localvar">levelrel</a> = <a href="../h_src/57634396.htm" class="macro">savestack</a>(<a href="../h_src/57831444.htm" class="localvar">L</a>, <a href="../h_src/57831308.htm" class="localvar">level</a>);
+<a id=229></a>  <a href="../h_src/57630452.htm" class="function">luaF_closeupval</a>(<a href="../h_src/57831444.htm" class="localvar">L</a>, <a href="../h_src/57831308.htm" class="localvar">level</a>);  <a  class="comments">/* first, close the upvalues */</a>
+<a id=230></a>  while (<a href="../h_src/57831444.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642148.htm" class="variable">tbclist</a>.<a href="../h_src/57531984.htm" class="variable">p</a> &gt;= <a href="../h_src/57831308.htm" class="localvar">level</a>) {  <a  class="comments">/* traverse tbc's down to that level */</a>
+<a id=231></a>    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57830764.htm" class="localvar">tbc</a> = <a href="../h_src/57831444.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642148.htm" class="variable">tbclist</a>.<a href="../h_src/57531984.htm" class="variable">p</a>;  <a  class="comments">/* get variable index */</a>
+<a id=232></a>    <a href="../h_src/57831852.htm" class="function">poptbclist</a>(<a href="../h_src/57831444.htm" class="localvar">L</a>);  <a  class="comments">/* remove it from list */</a>
+<a id=233></a>    <a href="../h_src/57834300.htm" class="function">prepcallclosemth</a>(<a href="../h_src/57831444.htm" class="localvar">L</a>, <a href="../h_src/57830764.htm" class="localvar">tbc</a>, <a href="../h_src/57831172.htm" class="localvar">status</a>, <a href="../h_src/57831036.htm" class="localvar">yy</a>);  <a  class="comments">/* close variable */</a>
+<a id=234></a>    <a href="../h_src/57831308.htm" class="localvar">level</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57831444.htm" class="localvar">L</a>, <a href="../h_src/57830900.htm" class="localvar">levelrel</a>);
+  }
+<a id=236></a>  return <a href="../h_src/57831308.htm" class="localvar">level</a>;
+}
+
+
+<a id=240></a><a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57630996.htm" class="function">luaF_newproto</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57830628.htm" class="localvar">L</a>) {
+<a id=241></a>  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57830492.htm" class="localvar">o</a> = <a href="../h_src/57620592.htm" class="function">luaC_newobj</a>(<a href="../h_src/57830628.htm" class="localvar">L</a>, <a href="../h_src/57517636.htm" class="macro">LUA_VPROTO</a>, sizeof(<a href="../h_src/57513828.htm" class="type">Proto</a>));
+<a id=242></a>  <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57830356.htm" class="localvar">f</a> = <a href="../h_src/57639292.htm" class="macro">gco2p</a>(<a href="../h_src/57830492.htm" class="localvar">o</a>);
+<a id=243></a>  <a href="../h_src/57830356.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515052.htm" class="variable">k</a> = NULL;
+<a id=244></a>  <a href="../h_src/57830356.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515664.htm" class="variable">sizek</a> = 0;
+<a id=245></a>  <a href="../h_src/57830356.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a> = NULL;
+<a id=246></a>  <a href="../h_src/57830356.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515460.htm" class="variable">sizep</a> = 0;
+<a id=247></a>  <a href="../h_src/57830356.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514916.htm" class="variable">code</a> = NULL;
+<a id=248></a>  <a href="../h_src/57830356.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515596.htm" class="variable">sizecode</a> = 0;
+<a id=249></a>  <a href="../h_src/57830356.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514304.htm" class="variable">lineinfo</a> = NULL;
+<a id=250></a>  <a href="../h_src/57830356.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515528.htm" class="variable">sizelineinfo</a> = 0;
+<a id=251></a>  <a href="../h_src/57830356.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514168.htm" class="variable">abslineinfo</a> = NULL;
+<a id=252></a>  <a href="../h_src/57830356.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515324.htm" class="variable">sizeabslineinfo</a> = 0;
+<a id=253></a>  <a href="../h_src/57830356.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a> = NULL;
+<a id=254></a>  <a href="../h_src/57830356.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a> = 0;
+<a id=255></a>  <a href="../h_src/57830356.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515936.htm" class="variable">numparams</a> = 0;
+<a id=256></a>  <a href="../h_src/57830356.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515868.htm" class="variable">is_vararg</a> = 0;
+<a id=257></a>  <a href="../h_src/57830356.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515800.htm" class="variable">maxstacksize</a> = 0;
+<a id=258></a>  <a href="../h_src/57830356.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514032.htm" class="variable">locvars</a> = NULL;
+<a id=259></a>  <a href="../h_src/57830356.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515392.htm" class="variable">sizelocvars</a> = 0;
+<a id=260></a>  <a href="../h_src/57830356.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515256.htm" class="variable">linedefined</a> = 0;
+<a id=261></a>  <a href="../h_src/57830356.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515188.htm" class="variable">lastlinedefined</a> = 0;
+<a id=262></a>  <a href="../h_src/57830356.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a> = NULL;
+<a id=263></a>  return <a href="../h_src/57830356.htm" class="localvar">f</a>;
+}
+
+
+<a id=267></a>void <a href="../h_src/57630248.htm" class="function">luaF_freeproto</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57830220.htm" class="localvar">L</a>, <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57830084.htm" class="localvar">f</a>) {
+<a id=268></a>  <a href="../h_src/57495604.htm" class="macro">luaM_freearray</a>(<a href="../h_src/57830220.htm" class="localvar">L</a>, <a href="../h_src/57830084.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514916.htm" class="variable">code</a>, <a href="../h_src/57830084.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515596.htm" class="variable">sizecode</a>);
+<a id=269></a>  <a href="../h_src/57495604.htm" class="macro">luaM_freearray</a>(<a href="../h_src/57830220.htm" class="localvar">L</a>, <a href="../h_src/57830084.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a>, <a href="../h_src/57830084.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515460.htm" class="variable">sizep</a>);
+<a id=270></a>  <a href="../h_src/57495604.htm" class="macro">luaM_freearray</a>(<a href="../h_src/57830220.htm" class="localvar">L</a>, <a href="../h_src/57830084.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515052.htm" class="variable">k</a>, <a href="../h_src/57830084.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515664.htm" class="variable">sizek</a>);
+<a id=271></a>  <a href="../h_src/57495604.htm" class="macro">luaM_freearray</a>(<a href="../h_src/57830220.htm" class="localvar">L</a>, <a href="../h_src/57830084.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514304.htm" class="variable">lineinfo</a>, <a href="../h_src/57830084.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515528.htm" class="variable">sizelineinfo</a>);
+<a id=272></a>  <a href="../h_src/57495604.htm" class="macro">luaM_freearray</a>(<a href="../h_src/57830220.htm" class="localvar">L</a>, <a href="../h_src/57830084.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514168.htm" class="variable">abslineinfo</a>, <a href="../h_src/57830084.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515324.htm" class="variable">sizeabslineinfo</a>);
+<a id=273></a>  <a href="../h_src/57495604.htm" class="macro">luaM_freearray</a>(<a href="../h_src/57830220.htm" class="localvar">L</a>, <a href="../h_src/57830084.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514032.htm" class="variable">locvars</a>, <a href="../h_src/57830084.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515392.htm" class="variable">sizelocvars</a>);
+<a id=274></a>  <a href="../h_src/57495604.htm" class="macro">luaM_freearray</a>(<a href="../h_src/57830220.htm" class="localvar">L</a>, <a href="../h_src/57830084.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>, <a href="../h_src/57830084.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>);
+<a id=275></a>  <a href="../h_src/57495740.htm" class="macro">luaM_free</a>(<a href="../h_src/57830220.htm" class="localvar">L</a>, <a href="../h_src/57830084.htm" class="localvar">f</a>);
+}
+
+
+<a id=279></a><a  class="comments">/*</a>
+<a id=280></a><a  class="comments">** Look for n-th local variable at line 'line' in function 'func'.</a>
+<a id=281></a><a  class="comments">** Returns NULL if not found.</a>
+<a id=282></a><a  class="comments">*/</a>
+<a id=283></a>const char *<a href="../h_src/57630180.htm" class="function">luaF_getlocalname</a> (const <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57829948.htm" class="localvar">f</a>, int <a href="../h_src/57829812.htm" class="localvar">local_number</a>, int <a href="../h_src/57829676.htm" class="localvar">pc</a>) {
+<a id=284></a>  int <a href="../h_src/57829540.htm" class="localvar">i</a>;
+<a id=285></a>  for (<a href="../h_src/57829540.htm" class="localvar">i</a> = 0; <a href="../h_src/57829540.htm" class="localvar">i</a>&lt;<a href="../h_src/57829948.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515392.htm" class="variable">sizelocvars</a> &amp;&amp; <a href="../h_src/57829948.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514032.htm" class="variable">locvars</a>[<a href="../h_src/57829540.htm" class="localvar">i</a>].<a href="../h_src/57516820.htm" class="variable">startpc</a> &lt;= <a href="../h_src/57829676.htm" class="localvar">pc</a>; <a href="../h_src/57829540.htm" class="localvar">i</a>++) {
+<a id=286></a>    if (<a href="../h_src/57829676.htm" class="localvar">pc</a> &lt; <a href="../h_src/57829948.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514032.htm" class="variable">locvars</a>[<a href="../h_src/57829540.htm" class="localvar">i</a>].<a href="../h_src/57516752.htm" class="variable">endpc</a>) {  <a  class="comments">/* is variable active? */</a>
+<a id=287></a>      <a href="../h_src/57829812.htm" class="localvar">local_number</a>--;
+<a id=288></a>      if (<a href="../h_src/57829812.htm" class="localvar">local_number</a> == 0)
+<a id=289></a>        return <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/57829948.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514032.htm" class="variable">locvars</a>[<a href="../h_src/57829540.htm" class="localvar">i</a>].<a href="../h_src/57516888.htm" class="variable">varname</a>);
+    }
+  }
+<a id=292></a>  return NULL;  <a  class="comments">/* not found */</a>
+}
+
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

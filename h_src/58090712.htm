@@ -1,0 +1,310 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>ltm.c</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58090712.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/58090712.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/58090712.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/58090712.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_uf/58090712.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_df/58090712.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/58090712.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58090712.htm" class="file" target="_self">Source Code</a></li>
+<li><a href="../h_sc/58090712.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<pre class=src>
+<a id=1></a><a  class="comments">/*</a>
+<a id=2></a><a  class="comments">** $Id: ltm.c $</a>
+<a id=3></a><a  class="comments">** Tag methods</a>
+<a id=4></a><a  class="comments">** See Copyright Notice in lua.h</a>
+<a id=5></a><a  class="comments">*/</a>
+
+<a id=7></a>#define <a href="../h_src/58090644.htm" class="macro">ltm_c</a>
+<a id=8></a>#define <a href="../h_src/58090508.htm" class="macro">LUA_CORE</a>
+
+<a id=10></a>#include &quot;<a href="../h_src/57461592.htm" class="file">lprefix.h</a>&quot;
+
+
+#include &lt;string.h&gt;
+
+<a id=15></a>#include &quot;<a href="../h_src/57460028.htm" class="file">lua.h</a>&quot;
+
+<a id=17></a>#include &quot;<a href="../h_src/57637116.htm" class="file">ldebug.h</a>&quot;
+<a id=18></a>#include &quot;<a href="../h_src/57635008.htm" class="file">ldo.h</a>&quot;
+<a id=19></a>#include &quot;<a href="../h_src/57630112.htm" class="file">lgc.h</a>&quot;
+<a id=20></a>#include &quot;<a href="../h_src/57537696.htm" class="file">lobject.h</a>&quot;
+<a id=21></a>#include &quot;<a href="../h_src/57538104.htm" class="file">lstate.h</a>&quot;
+<a id=22></a>#include &quot;<a href="../h_src/57620184.htm" class="file">lstring.h</a>&quot;
+<a id=23></a>#include &quot;<a href="../h_src/57618348.htm" class="file">ltable.h</a>&quot;
+<a id=24></a>#include &quot;<a href="../h_src/57501248.htm" class="file">ltm.h</a>&quot;
+<a id=25></a>#include &quot;<a href="../h_src/57614676.htm" class="file">lvm.h</a>&quot;
+
+
+<a id=28></a>static const char <a href="../h_src/58090372.htm" class="variable">udatatypename</a>[] = &quot;userdata&quot;;
+
+<a id=30></a><a href="../h_src/57453636.htm" class="macro">LUAI_DDEF</a> const char *const <a href="../h_src/57498256.htm" class="variable">luaT_typenames_</a>[<a href="../h_src/57536948.htm" class="macro">LUA_TOTALTYPES</a>] = {
+  &quot;no value&quot;,
+<a id=32></a>  &quot;nil&quot;, &quot;boolean&quot;, <a href="../h_src/58090372.htm" class="variable">udatatypename</a>, &quot;number&quot;,
+<a id=33></a>  &quot;string&quot;, &quot;table&quot;, &quot;function&quot;, <a href="../h_src/58090372.htm" class="variable">udatatypename</a>, &quot;thread&quot;,
+<a id=34></a>  &quot;upvalue&quot;, &quot;proto&quot; <a  class="comments">/* these last cases are used for tests only */</a>
+};
+
+
+<a id=38></a>void <a href="../h_src/57497984.htm" class="function">luaT_init</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58090304.htm" class="localvar">L</a>) {
+<a id=39></a>  static const char *const <a href="../h_src/58090168.htm" class="localvar">luaT_eventname</a>[] = {  <a  class="comments">/* ORDER TM */</a>
+    &quot;__index&quot;, &quot;__newindex&quot;,
+    &quot;__gc&quot;, &quot;__mode&quot;, &quot;__len&quot;, &quot;__eq&quot;,
+    &quot;__add&quot;, &quot;__sub&quot;, &quot;__mul&quot;, &quot;__mod&quot;, &quot;__pow&quot;,
+    &quot;__div&quot;, &quot;__idiv&quot;,
+    &quot;__band&quot;, &quot;__bor&quot;, &quot;__bxor&quot;, &quot;__shl&quot;, &quot;__shr&quot;,
+    &quot;__unm&quot;, &quot;__bnot&quot;, &quot;__lt&quot;, &quot;__le&quot;,
+    &quot;__concat&quot;, &quot;__call&quot;, &quot;__close&quot;
+  };
+<a id=48></a>  int <a href="../h_src/58090032.htm" class="localvar">i</a>;
+<a id=49></a>  for (<a href="../h_src/58090032.htm" class="localvar">i</a>=0; <a href="../h_src/58090032.htm" class="localvar">i</a>&lt;<a href="../h_src/57499208.htm" class="variable">TM_N</a>; <a href="../h_src/58090032.htm" class="localvar">i</a>++) {
+<a id=50></a>    <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/58090304.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57643644.htm" class="variable">tmname</a>[<a href="../h_src/58090032.htm" class="localvar">i</a>] = <a href="../h_src/57618484.htm" class="function">luaS_new</a>(<a href="../h_src/58090304.htm" class="localvar">L</a>, <a href="../h_src/58090168.htm" class="localvar">luaT_eventname</a>[<a href="../h_src/58090032.htm" class="localvar">i</a>]);
+<a id=51></a>    <a href="../h_src/57620932.htm" class="function">luaC_fix</a>(<a href="../h_src/58090304.htm" class="localvar">L</a>, <a href="../h_src/57638884.htm" class="macro">obj2gco</a>(<a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/58090304.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57643644.htm" class="variable">tmname</a>[<a href="../h_src/58090032.htm" class="localvar">i</a>]));  <a  class="comments">/* never collect these names */</a>
+  }
+}
+
+
+<a id=56></a><a  class="comments">/*</a>
+<a id=57></a><a  class="comments">** function to be used with macro &quot;fasttm&quot;: optimized for absence of</a>
+<a id=58></a><a  class="comments">** tag methods</a>
+<a id=59></a><a  class="comments">*/</a>
+<a id=60></a>const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57498120.htm" class="function">luaT_gettm</a> (<a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58089896.htm" class="localvar">events</a>, <a href="../h_src/57499004.htm" class="type">TMS</a> <a href="../h_src/58089760.htm" class="localvar">event</a>, <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/58089624.htm" class="localvar">ename</a>) {
+<a id=61></a>  const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58089488.htm" class="localvar">tm</a> = <a href="../h_src/57616920.htm" class="function">luaH_getshortstr</a>(<a href="../h_src/58089896.htm" class="localvar">events</a>, <a href="../h_src/58089624.htm" class="localvar">ename</a>);
+<a id=62></a>  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(event &lt;= TM_EQ);
+<a id=63></a>  if (<a href="../h_src/57498800.htm" class="macro">notm</a>(<a href="../h_src/58089488.htm" class="localvar">tm</a>)) {  <a  class="comments">/* no tag method? */</a>
+<a id=64></a>    <a href="../h_src/58089896.htm" class="localvar">events</a>-&gt;<a href="../h_src/57504920.htm" class="variable">flags</a> |= <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(1u&lt;&lt;<a href="../h_src/58089760.htm" class="localvar">event</a>);  <a  class="comments">/* cache this fact */</a>
+    return NULL;
+  }
+<a id=67></a>  else return <a href="../h_src/58089488.htm" class="localvar">tm</a>;
+}
+
+
+<a id=71></a>const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57498052.htm" class="function">luaT_gettmbyobj</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58089352.htm" class="localvar">L</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58089216.htm" class="localvar">o</a>, <a href="../h_src/57499004.htm" class="type">TMS</a> <a href="../h_src/58089080.htm" class="localvar">event</a>) {
+<a id=72></a>  <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58088944.htm" class="localvar">mt</a>;
+<a id=73></a>  switch (<a href="../h_src/57534500.htm" class="macro">ttype</a>(<a href="../h_src/58089216.htm" class="localvar">o</a>)) {
+<a id=74></a>    case <a href="../h_src/57443368.htm" class="macro">LUA_TTABLE</a>:
+<a id=75></a>      <a href="../h_src/58088944.htm" class="localvar">mt</a> = <a href="../h_src/57507164.htm" class="macro">hvalue</a>(<a href="../h_src/58089216.htm" class="localvar">o</a>)-&gt;<a href="../h_src/57504444.htm" class="variable">metatable</a>;
+      break;
+<a id=77></a>    case <a href="../h_src/57443096.htm" class="macro">LUA_TUSERDATA</a>:
+<a id=78></a>      <a href="../h_src/58088944.htm" class="localvar">mt</a> = <a href="../h_src/57521444.htm" class="macro">uvalue</a>(<a href="../h_src/58089216.htm" class="localvar">o</a>)-&gt;<a href="../h_src/57519540.htm" class="variable">metatable</a>;
+      break;
+    default:
+<a id=81></a>      <a href="../h_src/58088944.htm" class="localvar">mt</a> = <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/58089352.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57643440.htm" class="variable">mt</a>[<a href="../h_src/57534500.htm" class="macro">ttype</a>(<a href="../h_src/58089216.htm" class="localvar">o</a>)];
+  }
+<a id=83></a>  return (<a href="../h_src/58088944.htm" class="localvar">mt</a> ? <a href="../h_src/57616920.htm" class="function">luaH_getshortstr</a>(<a href="../h_src/58088944.htm" class="localvar">mt</a>, <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/58089352.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57643644.htm" class="variable">tmname</a>[<a href="../h_src/58089080.htm" class="localvar">event</a>]) : &amp;<a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/58089352.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57646228.htm" class="variable">nilvalue</a>);
+}
+
+
+<a id=87></a><a  class="comments">/*</a>
+<a id=88></a><a  class="comments">** Return the name of the type of an object. For tables and userdata</a>
+<a id=89></a><a  class="comments">** with metatable, use their '__name' metafield, if present.</a>
+<a id=90></a><a  class="comments">*/</a>
+<a id=91></a>const char *<a href="../h_src/57498188.htm" class="function">luaT_objtypename</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58088808.htm" class="localvar">L</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58088672.htm" class="localvar">o</a>) {
+<a id=92></a>  <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58088536.htm" class="localvar">mt</a>;
+<a id=93></a>  if ((<a href="../h_src/57507300.htm" class="macro">ttistable</a>(<a href="../h_src/58088672.htm" class="localvar">o</a>) &amp;&amp; (<a href="../h_src/58088536.htm" class="localvar">mt</a> = <a href="../h_src/57507164.htm" class="macro">hvalue</a>(<a href="../h_src/58088672.htm" class="localvar">o</a>)-&gt;<a href="../h_src/57504444.htm" class="variable">metatable</a>) != NULL) ||
+<a id=94></a>      (<a href="../h_src/57521716.htm" class="macro">ttisfulluserdata</a>(<a href="../h_src/58088672.htm" class="localvar">o</a>) &amp;&amp; (<a href="../h_src/58088536.htm" class="localvar">mt</a> = <a href="../h_src/57521444.htm" class="macro">uvalue</a>(<a href="../h_src/58088672.htm" class="localvar">o</a>)-&gt;<a href="../h_src/57519540.htm" class="variable">metatable</a>) != NULL)) {
+<a id=95></a>    const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58088400.htm" class="localvar">name</a> = <a href="../h_src/57616920.htm" class="function">luaH_getshortstr</a>(<a href="../h_src/58088536.htm" class="localvar">mt</a>, <a href="../h_src/57618484.htm" class="function">luaS_new</a>(<a href="../h_src/58088808.htm" class="localvar">L</a>, &quot;__name&quot;));
+<a id=96></a>    if (<a href="../h_src/57524912.htm" class="macro">ttisstring</a>(<a href="../h_src/58088400.htm" class="localvar">name</a>))  <a  class="comments">/* is '__name' a string? */</a>
+<a id=97></a>      return <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/57524368.htm" class="macro">tsvalue</a>(<a href="../h_src/58088400.htm" class="localvar">name</a>));  <a  class="comments">/* use it as type name */</a>
+  }
+<a id=99></a>  return <a href="../h_src/57498392.htm" class="macro">ttypename</a>(<a href="../h_src/57534500.htm" class="macro">ttype</a>(<a href="../h_src/58088672.htm" class="localvar">o</a>));  <a  class="comments">/* else use standard type name */</a>
+}
+
+
+<a id=103></a>void <a href="../h_src/57497916.htm" class="function">luaT_callTM</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58088264.htm" class="localvar">L</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58088128.htm" class="localvar">f</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58087992.htm" class="localvar">p1</a>,
+<a id=104></a>                  const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58087856.htm" class="localvar">p2</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58087720.htm" class="localvar">p3</a>) {
+<a id=105></a>  <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58087584.htm" class="localvar">func</a> = <a href="../h_src/58088264.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>;
+<a id=106></a>  <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58088264.htm" class="localvar">L</a>, <a href="../h_src/58087584.htm" class="localvar">func</a>, <a href="../h_src/58088128.htm" class="localvar">f</a>);  <a  class="comments">/* push function (assume EXTRA_STACK) */</a>
+<a id=107></a>  <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58088264.htm" class="localvar">L</a>, <a href="../h_src/58087584.htm" class="localvar">func</a> + 1, <a href="../h_src/58087992.htm" class="localvar">p1</a>);  <a  class="comments">/* 1st argument */</a>
+<a id=108></a>  <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58088264.htm" class="localvar">L</a>, <a href="../h_src/58087584.htm" class="localvar">func</a> + 2, <a href="../h_src/58087856.htm" class="localvar">p2</a>);  <a  class="comments">/* 2nd argument */</a>
+<a id=109></a>  <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58088264.htm" class="localvar">L</a>, <a href="../h_src/58087584.htm" class="localvar">func</a> + 3, <a href="../h_src/58087720.htm" class="localvar">p3</a>);  <a  class="comments">/* 3rd argument */</a>
+<a id=110></a>  <a href="../h_src/58088264.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/58087584.htm" class="localvar">func</a> + 4;
+<a id=111></a>  <a  class="comments">/* metamethod may yield only when called from Lua code */</a>
+<a id=112></a>  if (<a href="../h_src/57647316.htm" class="macro">isLuacode</a>(<a href="../h_src/58088264.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>))
+<a id=113></a>    <a href="../h_src/57633240.htm" class="function">luaD_call</a>(<a href="../h_src/58088264.htm" class="localvar">L</a>, <a href="../h_src/58087584.htm" class="localvar">func</a>, 0);
+  else
+<a id=115></a>    <a href="../h_src/57633172.htm" class="function">luaD_callnoyield</a>(<a href="../h_src/58088264.htm" class="localvar">L</a>, <a href="../h_src/58087584.htm" class="localvar">func</a>, 0);
+}
+
+
+<a id=119></a>void <a href="../h_src/57497848.htm" class="function">luaT_callTMres</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58086360.htm" class="localvar">L</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58086224.htm" class="localvar">f</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58086088.htm" class="localvar">p1</a>,
+<a id=120></a>                     const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58085952.htm" class="localvar">p2</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58085816.htm" class="localvar">res</a>) {
+<a id=121></a>  <a href="../h_aa/57441872.htm" class="type">ptrdiff_t</a> <a href="../h_src/58085680.htm" class="localvar">result</a> = <a href="../h_src/57634396.htm" class="macro">savestack</a>(<a href="../h_src/58086360.htm" class="localvar">L</a>, <a href="../h_src/58085816.htm" class="localvar">res</a>);
+<a id=122></a>  <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58085544.htm" class="localvar">func</a> = <a href="../h_src/58086360.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>;
+<a id=123></a>  <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58086360.htm" class="localvar">L</a>, <a href="../h_src/58085544.htm" class="localvar">func</a>, <a href="../h_src/58086224.htm" class="localvar">f</a>);  <a  class="comments">/* push function (assume EXTRA_STACK) */</a>
+<a id=124></a>  <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58086360.htm" class="localvar">L</a>, <a href="../h_src/58085544.htm" class="localvar">func</a> + 1, <a href="../h_src/58086088.htm" class="localvar">p1</a>);  <a  class="comments">/* 1st argument */</a>
+<a id=125></a>  <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58086360.htm" class="localvar">L</a>, <a href="../h_src/58085544.htm" class="localvar">func</a> + 2, <a href="../h_src/58085952.htm" class="localvar">p2</a>);  <a  class="comments">/* 2nd argument */</a>
+<a id=126></a>  <a href="../h_src/58086360.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> += 3;
+<a id=127></a>  <a  class="comments">/* metamethod may yield only when called from Lua code */</a>
+<a id=128></a>  if (<a href="../h_src/57647316.htm" class="macro">isLuacode</a>(<a href="../h_src/58086360.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>))
+<a id=129></a>    <a href="../h_src/57633240.htm" class="function">luaD_call</a>(<a href="../h_src/58086360.htm" class="localvar">L</a>, <a href="../h_src/58085544.htm" class="localvar">func</a>, 1);
+  else
+<a id=131></a>    <a href="../h_src/57633172.htm" class="function">luaD_callnoyield</a>(<a href="../h_src/58086360.htm" class="localvar">L</a>, <a href="../h_src/58085544.htm" class="localvar">func</a>, 1);
+<a id=132></a>  <a href="../h_src/58085816.htm" class="localvar">res</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/58086360.htm" class="localvar">L</a>, <a href="../h_src/58085680.htm" class="localvar">result</a>);
+<a id=133></a>  <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/58086360.htm" class="localvar">L</a>, <a href="../h_src/58085816.htm" class="localvar">res</a>, --<a href="../h_src/58086360.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>);  <a  class="comments">/* move result to its place */</a>
+}
+
+
+<a id=137></a>static int <a href="../h_src/58084320.htm" class="function">callbinTM</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58084184.htm" class="localvar">L</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58084048.htm" class="localvar">p1</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58083912.htm" class="localvar">p2</a>,
+<a id=138></a>                      <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58083776.htm" class="localvar">res</a>, <a href="../h_src/57499004.htm" class="type">TMS</a> <a href="../h_src/58083640.htm" class="localvar">event</a>) {
+<a id=139></a>  const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58083504.htm" class="localvar">tm</a> = <a href="../h_src/57498052.htm" class="function">luaT_gettmbyobj</a>(<a href="../h_src/58084184.htm" class="localvar">L</a>, <a href="../h_src/58084048.htm" class="localvar">p1</a>, <a href="../h_src/58083640.htm" class="localvar">event</a>);  <a  class="comments">/* try first operand */</a>
+<a id=140></a>  if (<a href="../h_src/57498800.htm" class="macro">notm</a>(<a href="../h_src/58083504.htm" class="localvar">tm</a>))
+<a id=141></a>    <a href="../h_src/58083504.htm" class="localvar">tm</a> = <a href="../h_src/57498052.htm" class="function">luaT_gettmbyobj</a>(<a href="../h_src/58084184.htm" class="localvar">L</a>, <a href="../h_src/58083912.htm" class="localvar">p2</a>, <a href="../h_src/58083640.htm" class="localvar">event</a>);  <a  class="comments">/* try second operand */</a>
+<a id=142></a>  if (<a href="../h_src/57498800.htm" class="macro">notm</a>(<a href="../h_src/58083504.htm" class="localvar">tm</a>)) return 0;
+<a id=143></a>  <a href="../h_src/57497848.htm" class="function">luaT_callTMres</a>(<a href="../h_src/58084184.htm" class="localvar">L</a>, <a href="../h_src/58083504.htm" class="localvar">tm</a>, <a href="../h_src/58084048.htm" class="localvar">p1</a>, <a href="../h_src/58083912.htm" class="localvar">p2</a>, <a href="../h_src/58083776.htm" class="localvar">res</a>);
+  return 1;
+}
+
+
+<a id=148></a>void <a href="../h_src/57497780.htm" class="function">luaT_trybinTM</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58083368.htm" class="localvar">L</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58083232.htm" class="localvar">p1</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58083096.htm" class="localvar">p2</a>,
+<a id=149></a>                    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58082960.htm" class="localvar">res</a>, <a href="../h_src/57499004.htm" class="type">TMS</a> <a href="../h_src/58082824.htm" class="localvar">event</a>) {
+<a id=150></a>  if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(!<a href="../h_src/58084320.htm" class="function">callbinTM</a>(<a href="../h_src/58083368.htm" class="localvar">L</a>, <a href="../h_src/58083232.htm" class="localvar">p1</a>, <a href="../h_src/58083096.htm" class="localvar">p2</a>, <a href="../h_src/58082960.htm" class="localvar">res</a>, <a href="../h_src/58082824.htm" class="localvar">event</a>))) {
+<a id=151></a>    switch (<a href="../h_src/58082824.htm" class="localvar">event</a>) {
+<a id=152></a>      case <a href="../h_src/57500024.htm" class="variable">TM_BAND</a>: case <a href="../h_src/57499956.htm" class="variable">TM_BOR</a>: case <a href="../h_src/57499888.htm" class="variable">TM_BXOR</a>:
+<a id=153></a>      case <a href="../h_src/57499820.htm" class="variable">TM_SHL</a>: case <a href="../h_src/57499752.htm" class="variable">TM_SHR</a>: case <a href="../h_src/57499616.htm" class="variable">TM_BNOT</a>: {
+<a id=154></a>        if (<a href="../h_src/57526816.htm" class="macro">ttisnumber</a>(<a href="../h_src/58083232.htm" class="localvar">p1</a>) &amp;&amp; <a href="../h_src/57526816.htm" class="macro">ttisnumber</a>(<a href="../h_src/58083096.htm" class="localvar">p2</a>))
+<a id=155></a>          <a href="../h_src/57635416.htm" class="function">luaG_tointerror</a>(<a href="../h_src/58083368.htm" class="localvar">L</a>, <a href="../h_src/58083232.htm" class="localvar">p1</a>, <a href="../h_src/58083096.htm" class="localvar">p2</a>);
+        else
+<a id=157></a>          <a href="../h_src/57635484.htm" class="function">luaG_opinterror</a>(<a href="../h_src/58083368.htm" class="localvar">L</a>, <a href="../h_src/58083232.htm" class="localvar">p1</a>, <a href="../h_src/58083096.htm" class="localvar">p2</a>, &quot;perform bitwise operation on&quot;);
+      }
+<a id=159></a>      <a  class="comments">/* calls never return, but to avoid warnings: */</a><a  class="comments">/* FALLTHROUGH */</a>
+      default:
+<a id=161></a>        <a href="../h_src/57635484.htm" class="function">luaG_opinterror</a>(<a href="../h_src/58083368.htm" class="localvar">L</a>, <a href="../h_src/58083232.htm" class="localvar">p1</a>, <a href="../h_src/58083096.htm" class="localvar">p2</a>, &quot;perform arithmetic on&quot;);
+    }
+  }
+}
+
+
+<a id=167></a>void <a href="../h_src/57497712.htm" class="function">luaT_tryconcatTM</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58082688.htm" class="localvar">L</a>) {
+<a id=168></a>  <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58082552.htm" class="localvar">top</a> = <a href="../h_src/58082688.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>;
+<a id=169></a>  if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(!<a href="../h_src/58084320.htm" class="function">callbinTM</a>(<a href="../h_src/58082688.htm" class="localvar">L</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58082552.htm" class="localvar">top</a> - 2), <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58082552.htm" class="localvar">top</a> - 1), <a href="../h_src/58082552.htm" class="localvar">top</a> - 2,
+<a id=170></a>                               <a href="../h_src/57499412.htm" class="variable">TM_CONCAT</a>)))
+<a id=171></a>    <a href="../h_src/57635552.htm" class="function">luaG_concaterror</a>(<a href="../h_src/58082688.htm" class="localvar">L</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58082552.htm" class="localvar">top</a> - 2), <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58082552.htm" class="localvar">top</a> - 1));
+}
+
+
+<a id=175></a>void <a href="../h_src/57497644.htm" class="function">luaT_trybinassocTM</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58082416.htm" class="localvar">L</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58082280.htm" class="localvar">p1</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58082144.htm" class="localvar">p2</a>,
+<a id=176></a>                                       int <a href="../h_src/58082008.htm" class="localvar">flip</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58081872.htm" class="localvar">res</a>, <a href="../h_src/57499004.htm" class="type">TMS</a> <a href="../h_src/58081736.htm" class="localvar">event</a>) {
+<a id=177></a>  if (<a href="../h_src/58082008.htm" class="localvar">flip</a>)
+<a id=178></a>    <a href="../h_src/57497780.htm" class="function">luaT_trybinTM</a>(<a href="../h_src/58082416.htm" class="localvar">L</a>, <a href="../h_src/58082144.htm" class="localvar">p2</a>, <a href="../h_src/58082280.htm" class="localvar">p1</a>, <a href="../h_src/58081872.htm" class="localvar">res</a>, <a href="../h_src/58081736.htm" class="localvar">event</a>);
+  else
+<a id=180></a>    <a href="../h_src/57497780.htm" class="function">luaT_trybinTM</a>(<a href="../h_src/58082416.htm" class="localvar">L</a>, <a href="../h_src/58082280.htm" class="localvar">p1</a>, <a href="../h_src/58082144.htm" class="localvar">p2</a>, <a href="../h_src/58081872.htm" class="localvar">res</a>, <a href="../h_src/58081736.htm" class="localvar">event</a>);
+}
+
+
+<a id=184></a>void <a href="../h_src/57497576.htm" class="function">luaT_trybiniTM</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58081600.htm" class="localvar">L</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58081464.htm" class="localvar">p1</a>, <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/58081328.htm" class="localvar">i2</a>,
+<a id=185></a>                                   int <a href="../h_src/58081192.htm" class="localvar">flip</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58081056.htm" class="localvar">res</a>, <a href="../h_src/57499004.htm" class="type">TMS</a> <a href="../h_src/58080920.htm" class="localvar">event</a>) {
+<a id=186></a>  <a href="../h_src/57535384.htm" class="type">TValue</a> <a href="../h_src/58080784.htm" class="localvar">aux</a>;
+<a id=187></a>  <a href="../h_src/57525456.htm" class="macro">setivalue</a>(&amp;<a href="../h_src/58080784.htm" class="localvar">aux</a>, <a href="../h_src/58081328.htm" class="localvar">i2</a>);
+<a id=188></a>  <a href="../h_src/57497644.htm" class="function">luaT_trybinassocTM</a>(<a href="../h_src/58081600.htm" class="localvar">L</a>, <a href="../h_src/58081464.htm" class="localvar">p1</a>, &amp;<a href="../h_src/58080784.htm" class="localvar">aux</a>, <a href="../h_src/58081192.htm" class="localvar">flip</a>, <a href="../h_src/58081056.htm" class="localvar">res</a>, <a href="../h_src/58080920.htm" class="localvar">event</a>);
+}
+
+
+<a id=192></a><a  class="comments">/*</a>
+<a id=193></a><a  class="comments">** Calls an order tag method.</a>
+<a id=194></a><a  class="comments">** For lessequal, LUA_COMPAT_LT_LE keeps compatibility with old</a>
+<a id=195></a><a  class="comments">** behavior: if there is no '__le', try '__lt', based on l &lt;= r iff</a>
+<a id=196></a><a  class="comments">** !(r &lt; l) (assuming a total order). If the metamethod yields during</a>
+<a id=197></a><a  class="comments">** this substitution, the continuation has to know about it (to negate</a>
+<a id=198></a><a  class="comments">** the result of r&lt;l); bit CIST_LEQ in the call status keeps that</a>
+<a id=199></a><a  class="comments">** information.</a>
+<a id=200></a><a  class="comments">*/</a>
+<a id=201></a>int <a href="../h_src/57497508.htm" class="function">luaT_callorderTM</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58080512.htm" class="localvar">L</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58080376.htm" class="localvar">p1</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58080240.htm" class="localvar">p2</a>,
+<a id=202></a>                      <a href="../h_src/57499004.htm" class="type">TMS</a> <a href="../h_src/58080104.htm" class="localvar">event</a>) {
+<a id=203></a>  if (<a href="../h_src/58084320.htm" class="function">callbinTM</a>(<a href="../h_src/58080512.htm" class="localvar">L</a>, <a href="../h_src/58080376.htm" class="localvar">p1</a>, <a href="../h_src/58080240.htm" class="localvar">p2</a>, <a href="../h_src/58080512.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/58080104.htm" class="localvar">event</a>))  <a  class="comments">/* try original event */</a>
+<a id=204></a>    return !<a href="../h_src/57529400.htm" class="macro">l_isfalse</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58080512.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>));
+<a id=205></a>#if defined(<a href="../h_src/57453092.htm" class="macro">LUA_COMPAT_LT_LE</a>)
+<a id=206></a>  else if (<a href="../h_src/58080104.htm" class="localvar">event</a> == <a href="../h_src/57499480.htm" class="variable">TM_LE</a>) {
+<a id=207></a>      <a  class="comments">/* try '!(p2 &lt; p1)' for '(p1 &lt;= p2)' */</a>
+<a id=208></a>      <a href="../h_src/58080512.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> |= <a href="../h_src/57647860.htm" class="macro">CIST_LEQ</a>;  <a  class="comments">/* mark it is doing 'lt' for 'le' */</a>
+<a id=209></a>      if (<a href="../h_src/58084320.htm" class="function">callbinTM</a>(<a href="../h_src/58080512.htm" class="localvar">L</a>, <a href="../h_src/58080240.htm" class="localvar">p2</a>, <a href="../h_src/58080376.htm" class="localvar">p1</a>, <a href="../h_src/58080512.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57499548.htm" class="variable">TM_LT</a>)) {
+<a id=210></a>        <a href="../h_src/58080512.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> ^= <a href="../h_src/57647860.htm" class="macro">CIST_LEQ</a>;  <a  class="comments">/* clear mark */</a>
+<a id=211></a>        return <a href="../h_src/57529400.htm" class="macro">l_isfalse</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58080512.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>));
+      }
+<a id=213></a>      <a  class="comments">/* else error will remove this 'ci'; no need to clear mark */</a>
+  }
+#endif
+<a id=216></a>  <a href="../h_src/57635348.htm" class="function">luaG_ordererror</a>(<a href="../h_src/58080512.htm" class="localvar">L</a>, <a href="../h_src/58080376.htm" class="localvar">p1</a>, <a href="../h_src/58080240.htm" class="localvar">p2</a>);  <a  class="comments">/* no metamethod found */</a>
+<a id=217></a>  return 0;  <a  class="comments">/* to avoid warnings */</a>
+}
+
+
+<a id=221></a>int <a href="../h_src/57497440.htm" class="function">luaT_callorderiTM</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58079968.htm" class="localvar">L</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58079832.htm" class="localvar">p1</a>, int <a href="../h_src/58079696.htm" class="localvar">v2</a>,
+<a id=222></a>                       int <a href="../h_src/58079560.htm" class="localvar">flip</a>, int <a href="../h_src/58079424.htm" class="localvar">isfloat</a>, <a href="../h_src/57499004.htm" class="type">TMS</a> <a href="../h_src/58079288.htm" class="localvar">event</a>) {
+<a id=223></a>  <a href="../h_src/57535384.htm" class="type">TValue</a> <a href="../h_src/58079152.htm" class="localvar">aux</a>; const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58079016.htm" class="localvar">p2</a>;
+<a id=224></a>  if (<a href="../h_src/58079424.htm" class="localvar">isfloat</a>) {
+<a id=225></a>    <a href="../h_src/57525728.htm" class="macro">setfltvalue</a>(&amp;<a href="../h_src/58079152.htm" class="localvar">aux</a>, <a href="../h_src/57547352.htm" class="macro">cast_num</a>(<a href="../h_src/58079696.htm" class="localvar">v2</a>));
+  }
+  else
+<a id=228></a>    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(&amp;<a href="../h_src/58079152.htm" class="localvar">aux</a>, <a href="../h_src/58079696.htm" class="localvar">v2</a>);
+<a id=229></a>  if (<a href="../h_src/58079560.htm" class="localvar">flip</a>) {  <a  class="comments">/* arguments were exchanged? */</a>
+<a id=230></a>    <a href="../h_src/58079016.htm" class="localvar">p2</a> = <a href="../h_src/58079832.htm" class="localvar">p1</a>; <a href="../h_src/58079832.htm" class="localvar">p1</a> = &amp;<a href="../h_src/58079152.htm" class="localvar">aux</a>;  <a  class="comments">/* correct them */</a>
+  }
+  else
+<a id=233></a>    <a href="../h_src/58079016.htm" class="localvar">p2</a> = &amp;<a href="../h_src/58079152.htm" class="localvar">aux</a>;
+<a id=234></a>  return <a href="../h_src/57497508.htm" class="function">luaT_callorderTM</a>(<a href="../h_src/58079968.htm" class="localvar">L</a>, <a href="../h_src/58079832.htm" class="localvar">p1</a>, <a href="../h_src/58079016.htm" class="localvar">p2</a>, <a href="../h_src/58079288.htm" class="localvar">event</a>);
+}
+
+
+<a id=238></a>void <a href="../h_src/57497372.htm" class="function">luaT_adjustvarargs</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58078608.htm" class="localvar">L</a>, int <a href="../h_src/58078472.htm" class="localvar">nfixparams</a>, <a href="../h_src/57537764.htm" class="type">CallInfo</a> *<a href="../h_src/58078336.htm" class="localvar">ci</a>,
+<a id=239></a>                         const <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/58078200.htm" class="localvar">p</a>) {
+<a id=240></a>  int <a href="../h_src/58078064.htm" class="localvar">i</a>;
+<a id=241></a>  int <a href="../h_src/58077928.htm" class="localvar">actual</a> = <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/58078608.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - <a href="../h_src/58078336.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a>) - 1;  <a  class="comments">/* number of arguments */</a>
+<a id=242></a>  int <a href="../h_src/58077792.htm" class="localvar">nextra</a> = <a href="../h_src/58077928.htm" class="localvar">actual</a> - <a href="../h_src/58078472.htm" class="localvar">nfixparams</a>;  <a  class="comments">/* number of extra arguments */</a>
+<a id=243></a>  <a href="../h_src/58078336.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650852.htm" class="variable">l</a>.<a href="../h_src/57650988.htm" class="variable">nextraargs</a> = <a href="../h_src/58077792.htm" class="localvar">nextra</a>;
+<a id=244></a>  <a href="../h_src/57634532.htm" class="macro">luaD_checkstack</a>(<a href="../h_src/58078608.htm" class="localvar">L</a>, <a href="../h_src/57531984.htm" class="variable">p</a>-&gt;<a href="../h_src/57515800.htm" class="variable">maxstacksize</a> + 1);
+<a id=245></a>  <a  class="comments">/* copy function to the top of the stack */</a>
+<a id=246></a>  <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/58078608.htm" class="localvar">L</a>, <a href="../h_src/58078608.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>++, <a href="../h_src/58078336.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a>);
+<a id=247></a>  <a  class="comments">/* move fixed parameters to the top of the stack */</a>
+<a id=248></a>  for (<a href="../h_src/58078064.htm" class="localvar">i</a> = 1; <a href="../h_src/58078064.htm" class="localvar">i</a> &lt;= <a href="../h_src/58078472.htm" class="localvar">nfixparams</a>; <a href="../h_src/58078064.htm" class="localvar">i</a>++) {
+<a id=249></a>    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/58078608.htm" class="localvar">L</a>, <a href="../h_src/58078608.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>++, <a href="../h_src/58078336.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a> + <a href="../h_src/58078064.htm" class="localvar">i</a>);
+<a id=250></a>    <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58078336.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a> + <a href="../h_src/58078064.htm" class="localvar">i</a>));  <a  class="comments">/* erase original parameter (for GC) */</a>
+  }
+<a id=252></a>  <a href="../h_src/58078336.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a> += <a href="../h_src/58077928.htm" class="localvar">actual</a> + 1;
+<a id=253></a>  <a href="../h_src/58078336.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651464.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> += <a href="../h_src/58077928.htm" class="localvar">actual</a> + 1;
+<a id=254></a>  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(L-&gt;top.p &lt;= ci-&gt;top.p &amp;&amp; ci-&gt;top.p &lt;= L-&gt;stack_last.p);
+}
+
+
+<a id=258></a>void <a href="../h_src/57497304.htm" class="function">luaT_getvarargs</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58077112.htm" class="localvar">L</a>, <a href="../h_src/57537764.htm" class="type">CallInfo</a> *<a href="../h_src/58076976.htm" class="localvar">ci</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58076840.htm" class="localvar">where</a>, int <a href="../h_src/58076704.htm" class="localvar">wanted</a>) {
+<a id=259></a>  int <a href="../h_src/58076568.htm" class="localvar">i</a>;
+<a id=260></a>  int <a href="../h_src/58076432.htm" class="localvar">nextra</a> = <a href="../h_src/58076976.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650852.htm" class="variable">l</a>.<a href="../h_src/57650988.htm" class="variable">nextraargs</a>;
+<a id=261></a>  if (<a href="../h_src/58076704.htm" class="localvar">wanted</a> &lt; 0) {
+<a id=262></a>    <a href="../h_src/58076704.htm" class="localvar">wanted</a> = <a href="../h_src/58076432.htm" class="localvar">nextra</a>;  <a  class="comments">/* get all extra arguments available */</a>
+<a id=263></a>    <a href="../h_src/57633988.htm" class="macro">checkstackGCp</a>(<a href="../h_src/58077112.htm" class="localvar">L</a>, <a href="../h_src/58076432.htm" class="localvar">nextra</a>, <a href="../h_src/58076840.htm" class="localvar">where</a>);  <a  class="comments">/* ensure stack space */</a><a href="../h_src/57642284.htm" class="variable">stack</a> space */
+<a id=264></a>    <a href="../h_src/58077112.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/58076840.htm" class="localvar">where</a> + <a href="../h_src/58076432.htm" class="localvar">nextra</a>;  <a  class="comments">/* next instruction will need top */</a>
+  }
+<a id=266></a>  for (<a href="../h_src/58076568.htm" class="localvar">i</a> = 0; <a href="../h_src/58076568.htm" class="localvar">i</a> &lt; <a href="../h_src/58076704.htm" class="localvar">wanted</a> &amp;&amp; <a href="../h_src/58076568.htm" class="localvar">i</a> &lt; <a href="../h_src/58076432.htm" class="localvar">nextra</a>; <a href="../h_src/58076568.htm" class="localvar">i</a>++)
+<a id=267></a>    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/58077112.htm" class="localvar">L</a>, <a href="../h_src/58076840.htm" class="localvar">where</a> + <a href="../h_src/58076568.htm" class="localvar">i</a>, <a href="../h_src/58076976.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - <a href="../h_src/58076432.htm" class="localvar">nextra</a> + <a href="../h_src/58076568.htm" class="localvar">i</a>);
+<a id=268></a>  for (; <a href="../h_src/58076568.htm" class="localvar">i</a> &lt; <a href="../h_src/58076704.htm" class="localvar">wanted</a>; <a href="../h_src/58076568.htm" class="localvar">i</a>++)   <a  class="comments">/* complete required results with nil */</a>
+<a id=269></a>    <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58076840.htm" class="localvar">where</a> + <a href="../h_src/58076568.htm" class="localvar">i</a>));
+}
+
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,109 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>statement</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58055788.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58055788.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58055788.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58055788.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58055788.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58055788.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58057080.htm#1845" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/58055788.htm" class="function">statement</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57988060.htm" class="localvar">ls</a>) {
+  int <a href="../h_src/57987924.htm" class="localvar">line</a> = <a href="../h_src/57988060.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701552.htm" class="variable">linenumber</a>;  <a  class="comments">/* may be needed for error messages */</a>
+  <a href="../h_src/58035932.htm" class="macro">enterlevel</a>(<a href="../h_src/57988060.htm" class="localvar">ls</a>);
+  switch (<a href="../h_src/57988060.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a>) {
+    case ';': {  <a  class="comments">/* stat -&gt; ';' (empty statement) */</a>
+      <a href="../h_src/57699784.htm" class="function">luaX_next</a>(<a href="../h_src/57988060.htm" class="localvar">ls</a>);  <a  class="comments">/* skip ';' */</a>
+      break;
+    }
+    case <a href="../h_src/57704612.htm" class="variable">TK_IF</a>: {  <a  class="comments">/* stat -&gt; ifstat */</a>
+      <a href="../h_src/57994452.htm" class="function">ifstat</a>(<a href="../h_src/57988060.htm" class="localvar">ls</a>, <a href="../h_src/57987924.htm" class="localvar">line</a>);
+      break;
+    }
+    case <a href="../h_src/57703864.htm" class="variable">TK_WHILE</a>: {  <a  class="comments">/* stat -&gt; whilestat */</a>
+      <a href="../h_src/58003496.htm" class="function">whilestat</a>(<a href="../h_src/57988060.htm" class="localvar">ls</a>, <a href="../h_src/57987924.htm" class="localvar">line</a>);
+      break;
+    }
+    case <a href="../h_src/57705156.htm" class="variable">TK_DO</a>: {  <a  class="comments">/* stat -&gt; DO block END */</a>
+      <a href="../h_src/57699784.htm" class="function">luaX_next</a>(<a href="../h_src/57988060.htm" class="localvar">ls</a>);  <a  class="comments">/* skip DO */</a>
+      <a href="../h_src/58009344.htm" class="function">block</a>(<a href="../h_src/57988060.htm" class="localvar">ls</a>);
+      <a href="../h_src/58051980.htm" class="function">check_match</a>(<a href="../h_src/57988060.htm" class="localvar">ls</a>, <a href="../h_src/57704952.htm" class="variable">TK_END</a>, <a href="../h_src/57705156.htm" class="variable">TK_DO</a>, <a href="../h_src/57987924.htm" class="localvar">line</a>);
+      break;
+    }
+    case <a href="../h_src/57704816.htm" class="variable">TK_FOR</a>: {  <a  class="comments">/* stat -&gt; forstat */</a>
+      <a href="../h_src/57996356.htm" class="function">forstat</a>(<a href="../h_src/57988060.htm" class="localvar">ls</a>, <a href="../h_src/57987924.htm" class="localvar">line</a>);
+      break;
+    }
+    case <a href="../h_src/57704204.htm" class="variable">TK_REPEAT</a>: {  <a  class="comments">/* stat -&gt; repeatstat */</a>
+      <a href="../h_src/58002544.htm" class="function">repeatstat</a>(<a href="../h_src/57988060.htm" class="localvar">ls</a>, <a href="../h_src/57987924.htm" class="localvar">line</a>);
+      break;
+    }
+    case <a href="../h_src/57704748.htm" class="variable">TK_FUNCTION</a>: {  <a  class="comments">/* stat -&gt; funcstat */</a>
+      <a href="../h_src/57990372.htm" class="function">funcstat</a>(<a href="../h_src/57988060.htm" class="localvar">ls</a>, <a href="../h_src/57987924.htm" class="localvar">line</a>);
+      break;
+    }
+    case <a href="../h_src/57704476.htm" class="variable">TK_LOCAL</a>: {  <a  class="comments">/* stat -&gt; localstat */</a>
+      <a href="../h_src/57699784.htm" class="function">luaX_next</a>(<a href="../h_src/57988060.htm" class="localvar">ls</a>);  <a  class="comments">/* skip LOCAL */</a>
+      if (<a href="../h_src/58053340.htm" class="function">testnext</a>(<a href="../h_src/57988060.htm" class="localvar">ls</a>, <a href="../h_src/57704748.htm" class="variable">TK_FUNCTION</a>))  <a  class="comments">/* local function? */</a>
+        <a href="../h_src/57993772.htm" class="function">localfunc</a>(<a href="../h_src/57988060.htm" class="localvar">ls</a>);
+      else
+        <a href="../h_src/57992276.htm" class="function">localstat</a>(<a href="../h_src/57988060.htm" class="localvar">ls</a>);
+      break;
+    }
+    case <a href="../h_src/57703184.htm" class="variable">TK_DBCOLON</a>: {  <a  class="comments">/* stat -&gt; label */</a>
+      <a href="../h_src/57699784.htm" class="function">luaX_next</a>(<a href="../h_src/57988060.htm" class="localvar">ls</a>);  <a  class="comments">/* skip double colon */</a>
+      <a href="../h_src/58004040.htm" class="function">labelstat</a>(<a href="../h_src/57988060.htm" class="localvar">ls</a>, <a href="../h_src/58051300.htm" class="function">str_checkname</a>(<a href="../h_src/57988060.htm" class="localvar">ls</a>), <a href="../h_src/57987924.htm" class="localvar">line</a>);
+      break;
+    }
+    case <a href="../h_src/57704136.htm" class="variable">TK_RETURN</a>: {  <a  class="comments">/* stat -&gt; retstat */</a>
+      <a href="../h_src/57699784.htm" class="function">luaX_next</a>(<a href="../h_src/57988060.htm" class="localvar">ls</a>);  <a  class="comments">/* skip RETURN */</a>
+      <a href="../h_src/57988876.htm" class="function">retstat</a>(<a href="../h_src/57988060.htm" class="localvar">ls</a>);
+      break;
+    }
+    case <a href="../h_src/57705224.htm" class="variable">TK_BREAK</a>: {  <a  class="comments">/* stat -&gt; breakstat */</a>
+      <a href="../h_src/58005128.htm" class="function">breakstat</a>(<a href="../h_src/57988060.htm" class="localvar">ls</a>);
+      break;
+    }
+    case <a href="../h_src/57704680.htm" class="variable">TK_GOTO</a>: {  <a  class="comments">/* stat -&gt; 'goto' NAME */</a>
+      <a href="../h_src/57699784.htm" class="function">luaX_next</a>(<a href="../h_src/57988060.htm" class="localvar">ls</a>);  <a  class="comments">/* skip 'goto' */</a>
+      <a href="../h_src/58006080.htm" class="function">gotostat</a>(<a href="../h_src/57988060.htm" class="localvar">ls</a>);
+      break;
+    }
+    default: {  <a  class="comments">/* stat -&gt; func | assignment */</a>
+      <a href="../h_src/57989556.htm" class="function">exprstat</a>(<a href="../h_src/57988060.htm" class="localvar">ls</a>);
+      break;
+    }
+  }
+  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(ls-&gt;fs-&gt;f-&gt;maxstacksize &gt;= ls-&gt;fs-&gt;freereg &amp;&amp;
+             ls-&gt;fs-&gt;freereg &gt;= luaY_nvarstack(ls-&gt;fs));
+  <a href="../h_src/57988060.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a> = <a href="../h_src/57674488.htm" class="function">luaY_nvarstack</a>(<a href="../h_src/57988060.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>);  <a  class="comments">/* free registers */</a>
+  <a href="../h_src/58035796.htm" class="macro">leavelevel</a>(<a href="../h_src/57988060.htm" class="localvar">ls</a>);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

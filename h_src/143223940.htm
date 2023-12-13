@@ -1,0 +1,71 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>math_random</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143223940.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143223940.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143223940.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143223940.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143223940.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143223940.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143241756.htm#557" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/143223940.htm" class="function">math_random</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143223804.htm" class="localvar">L</a>) {
+  <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143223668.htm" class="localvar">low</a>, <a href="../h_src/143223532.htm" class="localvar">up</a>;
+  <a href="../h_src/143225300.htm" class="function">lua_Unsigned</a> <a href="../h_src/143223396.htm" class="localvar">p</a>;
+  <a href="../h_src/143224552.htm" class="type">RanState</a> *<a href="../h_src/143223260.htm" class="localvar">state</a> = (<a href="../h_src/143224552.htm" class="type">RanState</a> *)<a href="../h_src/57437996.htm" class="function">lua_touserdata</a>(<a href="../h_src/143223804.htm" class="localvar">L</a>, <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(1));
+  <a href="../h_src/143230468.htm" class="type">Rand64</a> <a href="../h_src/143223124.htm" class="localvar">rv</a> = <a href="../h_src/143226932.htm" class="function">nextrand</a>(<a href="../h_src/143223260.htm" class="localvar">state</a>-&gt;<a href="../h_src/143224688.htm" class="variable">s</a>);  <a  class="comments">/* next pseudo-random value */</a>
+  switch (<a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/143223804.htm" class="localvar">L</a>)) {  <a  class="comments">/* check number of arguments */</a>
+    case 0: {  <a  class="comments">/* no arguments */</a>
+      <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143223804.htm" class="localvar">L</a>, <a href="../h_src/143225844.htm" class="function">I2d</a>(<a href="../h_src/143223124.htm" class="localvar">rv</a>));  <a  class="comments">/* float between 0 and 1 */</a>
+      return 1;
+    }
+    case 1: {  <a  class="comments">/* only upper limit */</a>
+      <a href="../h_src/143223668.htm" class="localvar">low</a> = 1;
+      <a href="../h_src/143223532.htm" class="localvar">up</a> = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143223804.htm" class="localvar">L</a>, 1);
+      if (<a href="../h_src/143223532.htm" class="localvar">up</a> == 0) {  <a  class="comments">/* single 0 as argument? */</a>
+        <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143223804.htm" class="localvar">L</a>, <a href="../h_aa/143224008.htm" class="libfunc">I2UInt</a>(<a href="../h_src/143223124.htm" class="localvar">rv</a>));  <a  class="comments">/* full random integer */</a>
+        return 1;
+      }
+      break;
+    }
+    case 2: {  <a  class="comments">/* lower and upper limits */</a>
+      <a href="../h_src/143223668.htm" class="localvar">low</a> = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143223804.htm" class="localvar">L</a>, 1);
+      <a href="../h_src/143223532.htm" class="localvar">up</a> = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143223804.htm" class="localvar">L</a>, 2);
+      break;
+    }
+    default: return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143223804.htm" class="localvar">L</a>, &quot;wrong number of arguments&quot;);
+  }
+  <a  class="comments">/* random integer in the interval [low, up] */</a>
+  <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143223804.htm" class="localvar">L</a>, <a href="../h_src/143223668.htm" class="localvar">low</a> &lt;= <a href="../h_src/143223532.htm" class="localvar">up</a>, 1, &quot;interval is empty&quot;);
+  <a  class="comments">/* project random integer into the interval [0, up - low] */</a>
+  <a href="../h_src/143223396.htm" class="localvar">p</a> = <a href="../h_aa/143222988.htm" class="libfunc">project</a>(<a href="../h_aa/143224008.htm" class="libfunc">I2UInt</a>(<a href="../h_src/143223124.htm" class="localvar">rv</a>), (<a href="../h_src/143225300.htm" class="function">lua_Unsigned</a>)<a href="../h_src/143223532.htm" class="localvar">up</a> - (<a href="../h_src/143225300.htm" class="function">lua_Unsigned</a>)<a href="../h_src/143223668.htm" class="localvar">low</a>, <a href="../h_src/143223260.htm" class="localvar">state</a>);
+  <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143223804.htm" class="localvar">L</a>, <a href="../h_src/143223396.htm" class="localvar">p</a> + (<a href="../h_src/143225300.htm" class="function">lua_Unsigned</a>)<a href="../h_src/143223668.htm" class="localvar">low</a>);
+  return 1;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

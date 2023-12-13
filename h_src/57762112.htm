@@ -1,0 +1,140 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lctype.h</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57762112.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/57762112.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/57762112.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/57762112.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_ua/57762112.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_da/57762112.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57762112.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57762112.htm" class="file" target="_self">Source Code</a></li>
+<li><a href="../h_sc/57762112.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<pre class=src>
+<a id=1></a><a  class="comments">/*</a>
+<a id=2></a><a  class="comments">** $Id: lctype.h $</a>
+<a id=3></a><a  class="comments">** 'ctype' functions for Lua</a>
+<a id=4></a><a  class="comments">** See Copyright Notice in lua.h</a>
+<a id=5></a><a  class="comments">*/</a>
+
+<a id=7></a>#ifndef <a href="../h_src/57762044.htm" class="macro">lctype_h</a>
+<a id=8></a>#define <a href="../h_src/57761908.htm" class="macro">lctype_h</a>
+
+<a id=10></a>#include &quot;<a href="../h_src/57460028.htm" class="file">lua.h</a>&quot;
+
+
+<a id=13></a><a  class="comments">/*</a>
+<a id=14></a><a  class="comments">** WARNING: the functions defined here do not necessarily correspond</a>
+<a id=15></a><a  class="comments">** to the similar functions in the standard C ctype.h. They are</a>
+<a id=16></a><a  class="comments">** optimized for the specific needs of Lua.</a>
+<a id=17></a><a  class="comments">*/</a>
+
+<a id=19></a>#if !defined(<a href="../h_src/57761772.htm" class="macro">LUA_USE_CTYPE</a>)
+
+#if 'A' == 65 &amp;&amp; '0' == 48
+<a id=22></a><a  class="comments">/* ASCII case: can use its own tables; faster and fixed */</a>
+<a id=23></a>#define <a href="../h_src/57761636.htm" class="macro">LUA_USE_CTYPE</a>	0
+#else
+<a id=25></a><a  class="comments">/* must use standard C ctype */</a>
+#define LUA_USE_CTYPE	1
+#endif
+
+#endif
+
+
+<a id=32></a>#if !<a href="../h_src/57761636.htm" class="macro">LUA_USE_CTYPE</a>	<a  class="comments">/* { */</a>
+
+#include &lt;limits.h&gt;
+
+<a id=36></a>#include &quot;<a href="../h_src/57551092.htm" class="file">llimits.h</a>&quot;
+
+
+<a id=39></a>#define <a href="../h_src/57761500.htm" class="macro">ALPHABIT</a>	0
+<a id=40></a>#define <a href="../h_src/57761364.htm" class="macro">DIGITBIT</a>	1
+<a id=41></a>#define <a href="../h_src/57761228.htm" class="macro">PRINTBIT</a>	2
+<a id=42></a>#define <a href="../h_src/57761092.htm" class="macro">SPACEBIT</a>	3
+<a id=43></a>#define <a href="../h_src/57760956.htm" class="macro">XDIGITBIT</a>	4
+
+
+<a id=46></a>#define <a href="../h_src/57760820.htm" class="macro">MASK</a>(B)		(1 &lt;&lt; (B))
+
+
+<a id=49></a><a  class="comments">/*</a>
+<a id=50></a><a  class="comments">** add 1 to char to allow index -1 (EOZ)</a>
+<a id=51></a><a  class="comments">*/</a>
+<a id=52></a>#define <a href="../h_src/57760684.htm" class="macro">testprop</a>(c,p)	(luai_ctype_[(c)+1] &amp; (p))
+
+<a id=54></a><a  class="comments">/*</a>
+<a id=55></a><a  class="comments">** 'lalpha' (Lua alphabetic) and 'lalnum' (Lua alphanumeric) both include '_'</a>
+<a id=56></a><a  class="comments">*/</a>
+<a id=57></a>#define <a href="../h_src/57760548.htm" class="macro">lislalpha</a>(c)	testprop(c, MASK(ALPHABIT))
+<a id=58></a>#define <a href="../h_src/57760412.htm" class="macro">lislalnum</a>(c)	testprop(c, (MASK(ALPHABIT) | MASK(DIGITBIT)))
+<a id=59></a>#define <a href="../h_src/57760276.htm" class="macro">lisdigit</a>(c)	testprop(c, MASK(DIGITBIT))
+<a id=60></a>#define <a href="../h_src/57760140.htm" class="macro">lisspace</a>(c)	testprop(c, MASK(SPACEBIT))
+<a id=61></a>#define <a href="../h_src/57760004.htm" class="macro">lisprint</a>(c)	testprop(c, MASK(PRINTBIT))
+<a id=62></a>#define <a href="../h_src/57759868.htm" class="macro">lisxdigit</a>(c)	testprop(c, MASK(XDIGITBIT))
+
+
+<a id=65></a><a  class="comments">/*</a>
+<a id=66></a><a  class="comments">** In ASCII, this 'ltolower' is correct for alphabetic characters and</a>
+<a id=67></a><a  class="comments">** for '.'. That is enough for Lua needs. ('check_exp' ensures that</a>
+<a id=68></a><a  class="comments">** the character either is an upper-case letter or is unchanged by</a>
+<a id=69></a><a  class="comments">** the transformation, which holds for lower-case letters and '.'.)</a>
+<a id=70></a><a  class="comments">*/</a>
+<a id=71></a>#define <a href="../h_src/57759732.htm" class="macro">ltolower</a>(c)  \
+  check_exp(('A' &lt;= (c) &amp;&amp; (c) &lt;= 'Z') || (c) == ((c) | ('A' ^ 'a')),  \
+            (c) | ('A' ^ 'a'))
+
+
+<a id=76></a><a  class="comments">/* one entry for each character and for -1 (EOZ) */</a>
+<a id=77></a><a href="../h_src/57453772.htm" class="macro">LUAI_DDEC</a>(const <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57759596.htm" class="variable">luai_ctype_</a>[UCHAR_MAX + 2];)
+
+
+<a id=80></a>#else			<a  class="comments">/* }{ */</a>
+
+<a id=82></a><a  class="comments">/*</a>
+<a id=83></a><a  class="comments">** use standard C ctypes</a>
+<a id=84></a><a  class="comments">*/</a>
+
+#include &lt;ctype.h&gt;
+
+
+#define lislalpha(c)	(isalpha(c) || (c) == '_')
+#define lislalnum(c)	(isalnum(c) || (c) == '_')
+#define lisdigit(c)	(isdigit(c))
+#define lisspace(c)	(isspace(c))
+#define lisprint(c)	(isprint(c))
+#define lisxdigit(c)	(isxdigit(c))
+
+#define ltolower(c)	(tolower(c))
+
+<a id=98></a>#endif			<a  class="comments">/* } */</a>
+
+#endif
+
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

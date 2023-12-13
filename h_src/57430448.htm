@@ -1,0 +1,135 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lua_gc</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57430448.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57430448.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57430448.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57430448.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57430448.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57430448.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57552180.htm#1133" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57551840.htm" class="macro">LUA_API</a> int <a href="../h_src/57430448.htm" class="function">lua_gc</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57720116.htm" class="localvar">L</a>, int <a href="../h_src/57719980.htm" class="localvar">what</a>, <a href="../h_src/57719844.htm" class="localvar">...</a>) {
+  <a href="../h_aa/57434868.htm" class="type">va_list</a> <a href="../h_src/57719708.htm" class="localvar">argp</a>;
+  int <a href="../h_src/57719572.htm" class="localvar">res</a> = 0;
+  <a href="../h_src/57643100.htm" class="type">global_State</a> *<a href="../h_src/57719436.htm" class="localvar">g</a> = <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57720116.htm" class="localvar">L</a>);
+  if (<a href="../h_src/57719436.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645684.htm" class="variable">gcstp</a> &amp; <a href="../h_src/57622156.htm" class="macro">GCSTPGC</a>)  <a  class="comments">/* internal stop? */</a>
+    return -1;  <a  class="comments">/* all options are invalid when stopped */</a>
+  <a href="../h_src/57543408.htm" class="macro">lua_lock</a>(L);
+  va_start(<a href="../h_src/57719708.htm" class="localvar">argp</a>, <a href="../h_src/57719980.htm" class="localvar">what</a>);
+  switch (<a href="../h_src/57719980.htm" class="localvar">what</a>) {
+    case <a href="../h_src/57431944.htm" class="macro">LUA_GCSTOP</a>: {
+      <a href="../h_src/57719436.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645684.htm" class="variable">gcstp</a> = <a href="../h_src/57622292.htm" class="macro">GCSTPUSR</a>;  <a  class="comments">/* stopped by the user */</a>
+      break;
+    }
+    case <a href="../h_src/57431808.htm" class="macro">LUA_GCRESTART</a>: {
+      <a href="../h_src/57638612.htm" class="function">luaE_setdebt</a>(<a href="../h_src/57719436.htm" class="localvar">g</a>, 0);
+      <a href="../h_src/57719436.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645684.htm" class="variable">gcstp</a> = 0;  <a  class="comments">/* (GCSTPGC must be already zero here) */</a>
+      break;
+    }
+    case <a href="../h_src/57431672.htm" class="macro">LUA_GCCOLLECT</a>: {
+      <a href="../h_src/57620660.htm" class="function">luaC_fullgc</a>(<a href="../h_src/57720116.htm" class="localvar">L</a>, 0);
+      break;
+    }
+    case <a href="../h_src/57431536.htm" class="macro">LUA_GCCOUNT</a>: {
+      <a  class="comments">/* GC values are expressed in Kbytes: #bytes/2^10 */</a>
+      <a href="../h_src/57719572.htm" class="localvar">res</a> = <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/57638748.htm" class="macro">gettotalbytes</a>(<a href="../h_src/57719436.htm" class="localvar">g</a>) &gt;&gt; 10);
+      break;
+    }
+    case <a href="../h_src/57431400.htm" class="macro">LUA_GCCOUNTB</a>: {
+      <a href="../h_src/57719572.htm" class="localvar">res</a> = <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/57638748.htm" class="macro">gettotalbytes</a>(<a href="../h_src/57719436.htm" class="localvar">g</a>) &amp; 0x3ff);
+      break;
+    }
+    case <a href="../h_src/57431264.htm" class="macro">LUA_GCSTEP</a>: {
+      int <a href="../h_src/57719300.htm" class="localvar">data</a> = va_arg(<a href="../h_src/57719708.htm" class="localvar">argp</a>, int);
+      <a href="../h_src/57550548.htm" class="type">l_mem</a> <a href="../h_src/57719164.htm" class="localvar">debt</a> = 1;  <a  class="comments">/* =1 to signal that it did an actual step */</a>
+      <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57719028.htm" class="localvar">oldstp</a> = <a href="../h_src/57719436.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645684.htm" class="variable">gcstp</a>;
+      <a href="../h_src/57719436.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645684.htm" class="variable">gcstp</a> = 0;  <a  class="comments">/* allow GC to run (GCSTPGC must be zero here) */</a>
+      if (<a href="../h_src/57719300.htm" class="localvar">data</a> == 0) {
+        <a href="../h_src/57638612.htm" class="function">luaE_setdebt</a>(<a href="../h_src/57719436.htm" class="localvar">g</a>, 0);  <a  class="comments">/* do a basic step */</a>
+        <a href="../h_src/57620796.htm" class="function">luaC_step</a>(<a href="../h_src/57720116.htm" class="localvar">L</a>);
+      }
+      else {  <a  class="comments">/* add 'data' to total debt */</a>
+        <a href="../h_src/57719164.htm" class="localvar">debt</a> = <a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57550548.htm" class="type">l_mem</a>, <a href="../h_src/57719300.htm" class="localvar">data</a>) * 1024 + <a href="../h_src/57719436.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646568.htm" class="variable">GCdebt</a>;
+        <a href="../h_src/57638612.htm" class="function">luaE_setdebt</a>(<a href="../h_src/57719436.htm" class="localvar">g</a>, <a href="../h_src/57719164.htm" class="localvar">debt</a>);
+        <a href="../h_src/57621612.htm" class="macro">luaC_checkGC</a>(<a href="../h_src/57720116.htm" class="localvar">L</a>);
+      }
+      <a href="../h_src/57719436.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645684.htm" class="variable">gcstp</a> = <a href="../h_src/57719028.htm" class="localvar">oldstp</a>;  <a  class="comments">/* restore previous state */</a>
+      if (<a href="../h_src/57719164.htm" class="localvar">debt</a> &gt; 0 &amp;&amp; <a href="../h_src/57719436.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646024.htm" class="variable">gcstate</a> == <a href="../h_src/57628684.htm" class="macro">GCSpause</a>)  <a  class="comments">/* end of cycle? */</a>
+        <a href="../h_src/57719572.htm" class="localvar">res</a> = 1;  <a  class="comments">/* signal it */</a>
+      break;
+    }
+    case <a href="../h_src/57431128.htm" class="macro">LUA_GCSETPAUSE</a>: {
+      int <a href="../h_src/57718892.htm" class="localvar">data</a> = va_arg(<a href="../h_src/57719708.htm" class="localvar">argp</a>, int);
+      <a href="../h_src/57719572.htm" class="localvar">res</a> = <a href="../h_src/57622972.htm" class="macro">getgcparam</a>(<a href="../h_src/57719436.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645548.htm" class="variable">gcpause</a>);
+      <a href="../h_src/57622836.htm" class="macro">setgcparam</a>(<a href="../h_src/57719436.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645548.htm" class="variable">gcpause</a>, <a href="../h_src/57718892.htm" class="localvar">data</a>);
+      break;
+    }
+    case <a href="../h_src/57430992.htm" class="macro">LUA_GCSETSTEPMUL</a>: {
+      int <a href="../h_src/57718756.htm" class="localvar">data</a> = va_arg(<a href="../h_src/57719708.htm" class="localvar">argp</a>, int);
+      <a href="../h_src/57719572.htm" class="localvar">res</a> = <a href="../h_src/57622972.htm" class="macro">getgcparam</a>(<a href="../h_src/57719436.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645480.htm" class="variable">gcstepmul</a>);
+      <a href="../h_src/57622836.htm" class="macro">setgcparam</a>(<a href="../h_src/57719436.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645480.htm" class="variable">gcstepmul</a>, <a href="../h_src/57718756.htm" class="localvar">data</a>);
+      break;
+    }
+    case <a href="../h_src/57430856.htm" class="macro">LUA_GCISRUNNING</a>: {
+      <a href="../h_src/57719572.htm" class="localvar">res</a> = <a href="../h_src/57621884.htm" class="macro">gcrunning</a>(<a href="../h_src/57719436.htm" class="localvar">g</a>);
+      break;
+    }
+    case <a href="../h_src/57430720.htm" class="macro">LUA_GCGEN</a>: {
+      int <a href="../h_src/57718620.htm" class="localvar">minormul</a> = va_arg(<a href="../h_src/57719708.htm" class="localvar">argp</a>, int);
+      int <a href="../h_src/57718484.htm" class="localvar">majormul</a> = va_arg(<a href="../h_src/57719708.htm" class="localvar">argp</a>, int);
+      <a href="../h_src/57719572.htm" class="localvar">res</a> = <a href="../h_src/57622428.htm" class="macro">isdecGCmodegen</a>(<a href="../h_src/57719436.htm" class="localvar">g</a>) ? <a href="../h_src/57430720.htm" class="macro">LUA_GCGEN</a> : <a href="../h_src/57430584.htm" class="macro">LUA_GCINC</a>;
+      if (<a href="../h_src/57718620.htm" class="localvar">minormul</a> != 0)
+        <a href="../h_src/57719436.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645820.htm" class="variable">genminormul</a> = <a href="../h_src/57718620.htm" class="localvar">minormul</a>;
+      if (<a href="../h_src/57718484.htm" class="localvar">majormul</a> != 0)
+        <a href="../h_src/57622836.htm" class="macro">setgcparam</a>(<a href="../h_src/57719436.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645752.htm" class="variable">genmajormul</a>, <a href="../h_src/57718484.htm" class="localvar">majormul</a>);
+      <a href="../h_src/57620252.htm" class="function">luaC_changemode</a>(<a href="../h_src/57720116.htm" class="localvar">L</a>, <a href="../h_src/57652144.htm" class="macro">KGC_GEN</a>);
+      break;
+    }
+    case <a href="../h_src/57430584.htm" class="macro">LUA_GCINC</a>: {
+      int <a href="../h_src/57718348.htm" class="localvar">pause</a> = va_arg(<a href="../h_src/57719708.htm" class="localvar">argp</a>, int);
+      int <a href="../h_src/57718212.htm" class="localvar">stepmul</a> = va_arg(<a href="../h_src/57719708.htm" class="localvar">argp</a>, int);
+      int <a href="../h_src/57718076.htm" class="localvar">stepsize</a> = va_arg(<a href="../h_src/57719708.htm" class="localvar">argp</a>, int);
+      <a href="../h_src/57719572.htm" class="localvar">res</a> = <a href="../h_src/57622428.htm" class="macro">isdecGCmodegen</a>(<a href="../h_src/57719436.htm" class="localvar">g</a>) ? <a href="../h_src/57430720.htm" class="macro">LUA_GCGEN</a> : <a href="../h_src/57430584.htm" class="macro">LUA_GCINC</a>;
+      if (<a href="../h_src/57718348.htm" class="localvar">pause</a> != 0)
+        <a href="../h_src/57622836.htm" class="macro">setgcparam</a>(<a href="../h_src/57719436.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645548.htm" class="variable">gcpause</a>, <a href="../h_src/57718348.htm" class="localvar">pause</a>);
+      if (<a href="../h_src/57718212.htm" class="localvar">stepmul</a> != 0)
+        <a href="../h_src/57622836.htm" class="macro">setgcparam</a>(<a href="../h_src/57719436.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645480.htm" class="variable">gcstepmul</a>, <a href="../h_src/57718212.htm" class="localvar">stepmul</a>);
+      if (<a href="../h_src/57718076.htm" class="localvar">stepsize</a> != 0)
+        <a href="../h_src/57719436.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645412.htm" class="variable">gcstepsize</a> = <a href="../h_src/57718076.htm" class="localvar">stepsize</a>;
+      <a href="../h_src/57620252.htm" class="function">luaC_changemode</a>(<a href="../h_src/57720116.htm" class="localvar">L</a>, <a href="../h_src/57652280.htm" class="macro">KGC_INC</a>);
+      break;
+    }
+    default: <a href="../h_src/57719572.htm" class="localvar">res</a> = -1;  <a  class="comments">/* invalid option */</a>
+  }
+  va_end(<a href="../h_src/57719708.htm" class="localvar">argp</a>);
+  <a href="../h_src/57543272.htm" class="macro">lua_unlock</a>(L);
+  return <a href="../h_src/57719572.htm" class="localvar">res</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

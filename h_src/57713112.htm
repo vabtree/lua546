@@ -1,0 +1,63 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>aux_upvalue</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57713112.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57713112.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57713112.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57713112.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57713112.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57713112.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57552180.htm#1357" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static const char *<a href="../h_src/57713112.htm" class="function">aux_upvalue</a> (<a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57712976.htm" class="localvar">fi</a>, int <a href="../h_src/57712840.htm" class="localvar">n</a>, <a href="../h_src/57535384.htm" class="type">TValue</a> **<a href="../h_src/57712636.htm" class="localvar">val</a>,
+                                <a href="../h_src/57527972.htm" class="type">GCObject</a> **<a href="../h_src/57712500.htm" class="localvar">owner</a>) {
+  switch (<a href="../h_src/57534636.htm" class="macro">ttypetag</a>(<a href="../h_src/57712976.htm" class="localvar">fi</a>)) {
+    case <a href="../h_src/57513352.htm" class="macro">LUA_VCCL</a>: {  <a  class="comments">/* C closure */</a>
+      <a href="../h_src/57508728.htm" class="type">CClosure</a> *<a href="../h_src/57712364.htm" class="localvar">f</a> = <a href="../h_src/57511992.htm" class="macro">clCvalue</a>(<a href="../h_src/57712976.htm" class="localvar">fi</a>);
+      if (!(<a href="../h_src/57547080.htm" class="macro">cast_uint</a>(<a href="../h_src/57712840.htm" class="localvar">n</a>) - 1u &lt; <a href="../h_src/57547080.htm" class="macro">cast_uint</a>(<a href="../h_src/57712364.htm" class="localvar">f</a>-&gt;<a href="../h_src/57509068.htm" class="variable">nupvalues</a>)))
+        return NULL;  <a  class="comments">/* 'n' not in [1, f-&gt;nupvalues] */</a>
+      *<a href="../h_src/57712636.htm" class="localvar">val</a> = &amp;<a href="../h_src/57712364.htm" class="localvar">f</a>-&gt;<a href="../h_src/57508796.htm" class="variable">upvalue</a>[<a href="../h_src/57712840.htm" class="localvar">n</a>-1];
+      if (<a href="../h_src/57712500.htm" class="localvar">owner</a>) *<a href="../h_src/57712500.htm" class="localvar">owner</a> = <a href="../h_src/57638884.htm" class="macro">obj2gco</a>(<a href="../h_src/57712364.htm" class="localvar">f</a>);
+      return &quot;&quot;;
+    }
+    case <a href="../h_src/57513624.htm" class="macro">LUA_VLCL</a>: {  <a  class="comments">/* Lua closure */</a>
+      <a href="../h_src/57507980.htm" class="type">LClosure</a> *<a href="../h_src/57712228.htm" class="localvar">f</a> = <a href="../h_src/57512264.htm" class="macro">clLvalue</a>(<a href="../h_src/57712976.htm" class="localvar">fi</a>);
+      <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/57712092.htm" class="localvar">name</a>;
+      <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57711956.htm" class="localvar">p</a> = <a href="../h_src/57712228.htm" class="localvar">f</a>-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>;
+      if (!(<a href="../h_src/57547080.htm" class="macro">cast_uint</a>(<a href="../h_src/57712840.htm" class="localvar">n</a>) - 1u  &lt; <a href="../h_src/57547080.htm" class="macro">cast_uint</a>(<a href="../h_src/57711956.htm" class="localvar">p</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>)))
+        return NULL;  <a  class="comments">/* 'n' not in [1, p-&gt;sizeupvalues] */</a>
+      *<a href="../h_src/57712636.htm" class="localvar">val</a> = <a href="../h_src/57712228.htm" class="localvar">f</a>-&gt;<a href="../h_src/57508048.htm" class="variable">upvals</a>[<a href="../h_src/57712840.htm" class="localvar">n</a>-1]-&gt;<a href="../h_src/57510564.htm" class="variable">v</a>.<a href="../h_src/57510768.htm" class="variable">p</a>;
+      if (<a href="../h_src/57712500.htm" class="localvar">owner</a>) *<a href="../h_src/57712500.htm" class="localvar">owner</a> = <a href="../h_src/57638884.htm" class="macro">obj2gco</a>(<a href="../h_src/57712228.htm" class="localvar">f</a>-&gt;<a href="../h_src/57508048.htm" class="variable">upvals</a>[<a href="../h_src/57712840.htm" class="localvar">n</a> - 1]);
+      <a href="../h_src/57712092.htm" class="localvar">name</a> = <a href="../h_src/57711956.htm" class="localvar">p</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/57712840.htm" class="localvar">n</a>-1].<a href="../h_src/57517364.htm" class="variable">name</a>;
+      return (<a href="../h_src/57712092.htm" class="localvar">name</a> == NULL) ? &quot;(no name)&quot; : <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/57712092.htm" class="localvar">name</a>);
+    }
+    default: return NULL;  <a  class="comments">/* not a closure */</a>
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

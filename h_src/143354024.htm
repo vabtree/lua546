@@ -1,0 +1,46 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>setfield</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143354024.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143354024.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143354024.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143354024.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143354024.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143354024.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143359192.htm#209" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/143354024.htm" class="function">setfield</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143353888.htm" class="localvar">L</a>, const char *<a href="../h_src/143353752.htm" class="localvar">key</a>, int <a href="../h_src/143353616.htm" class="localvar">value</a>, int <a href="../h_src/143353480.htm" class="localvar">delta</a>) {
+  #if (defined(<a href="../h_src/143358580.htm" class="macro">LUA_NUMTIME</a>) &amp;&amp; <a href="../h_src/57450100.htm" class="macro">LUA_MAXINTEGER</a> &lt;= INT_MAX)
+    if (l_unlikely(value &gt; LUA_MAXINTEGER - delta))
+      luaL_error(L, &quot;field '%s' is out-of-bound&quot;, key);
+  #endif
+  <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143353888.htm" class="localvar">L</a>, (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)<a href="../h_src/143353616.htm" class="localvar">value</a> + <a href="../h_src/143353480.htm" class="localvar">delta</a>);
+  <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/143353888.htm" class="localvar">L</a>, -2, <a href="../h_src/143353752.htm" class="localvar">key</a>);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,50 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaL_Buffer</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57421880.htm" class="class" target="_self">Info</a></li>
+<li><a href="../h_im/57421880.htm" class="class" target="_self">Public Interface</a></li>
+<li><a href="../h_rx/57421880.htm" class="class" target="_self">Inheritance</a></li>
+<li><a href="../h_nm/57421880.htm" class="class" target="_self">Internals</a></li>
+<li><a href="../h_ua/57421880.htm" class="class" target="_self">Use of Members</a></li>
+<li><a href="../h_da/57421880.htm" class="class" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57421880.htm" class="class" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57421880.htm" class="class" target="_self">Declaration</a></li>
+<li><a href="../h_src/57422356.htm#191" class="class" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Declaration</h4>
+<pre class=src>
+struct <a href="../h_src/57421880.htm" class="class">luaL_Buffer</a> {
+  char *<a href="../h_src/57415216.htm" class="variable">b</a>;  <a  class="comments">/* buffer address */</a>
+  <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/57415148.htm" class="variable">size</a>;  <a  class="comments">/* buffer size */</a>
+  <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/57415080.htm" class="variable">n</a>;  <a  class="comments">/* number of characters in buffer */</a>
+  <a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57415012.htm" class="variable">L</a>;
+  union {
+    <a href="../h_src/57447108.htm" class="macro">LUAI_MAXALIGN</a>;  <a  class="comments">/* ensure maximum alignment for buffer */</a><a href="../h_src/57414808.htm" class="variable">u</a>re maximum alignment for buffer */
+    char <a href="../h_src/57414536.htm" class="variable">b</a>[<a href="../h_src/57447244.htm" class="macro">LUAL_BUFFERSIZE</a>];  <a  class="comments">/* initial buffer */</a>
+  } <a href="../h_src/57414400.htm" class="variable">init</a>;
+};
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

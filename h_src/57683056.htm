@@ -1,0 +1,210 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lparser.h</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57683056.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/57683056.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/57683056.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/57683056.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_ua/57683056.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_da/57683056.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57683056.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57683056.htm" class="file" target="_self">Source Code</a></li>
+<li><a href="../h_sc/57683056.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<pre class=src>
+<a id=1></a><a  class="comments">/*</a>
+<a id=2></a><a  class="comments">** $Id: lparser.h $</a>
+<a id=3></a><a  class="comments">** Lua Parser</a>
+<a id=4></a><a  class="comments">** See Copyright Notice in lua.h</a>
+<a id=5></a><a  class="comments">*/</a>
+
+<a id=7></a>#ifndef <a href="../h_src/57682988.htm" class="macro">lparser_h</a>
+<a id=8></a>#define <a href="../h_src/57682852.htm" class="macro">lparser_h</a>
+
+<a id=10></a>#include &quot;<a href="../h_src/57551092.htm" class="file">llimits.h</a>&quot;
+<a id=11></a>#include &quot;<a href="../h_src/57537696.htm" class="file">lobject.h</a>&quot;
+<a id=12></a>#include &quot;<a href="../h_src/57497236.htm" class="file">lzio.h</a>&quot;
+
+
+<a id=15></a><a  class="comments">/*</a>
+<a id=16></a><a  class="comments">** Expression and variable descriptor.</a>
+<a id=17></a><a  class="comments">** Code generation for variables and expressions can be delayed to allow</a>
+<a id=18></a><a  class="comments">** optimizations; An 'expdesc' structure describes a potentially-delayed</a>
+<a id=19></a><a  class="comments">** variable/expression. It has a description of its &quot;main&quot; value plus a</a>
+<a id=20></a><a  class="comments">** list of conditional jumps that can also produce its value (generated</a>
+<a id=21></a><a  class="comments">** by short-circuit operators 'and'/'or').</a>
+<a id=22></a><a  class="comments">*/</a>
+
+<a id=24></a><a  class="comments">/* kinds of variables/expressions */</a>
+typedef enum {
+<a id=26></a>  <a href="../h_src/57682716.htm" class="variable">VVOID</a>,  <a  class="comments">/* when 'expdesc' describes the last expression of a list,</a>
+<a id=27></a><a  class="comments">             this kind means an empty list (so, no expression) */</a>
+<a id=28></a>  <a href="../h_src/57682648.htm" class="variable">VNIL</a>,  <a  class="comments">/* constant nil */</a>
+<a id=29></a>  <a href="../h_src/57682580.htm" class="variable">VTRUE</a>,  <a  class="comments">/* constant true */</a>
+<a id=30></a>  <a href="../h_src/57682512.htm" class="variable">VFALSE</a>,  <a  class="comments">/* constant false */</a>
+<a id=31></a>  <a href="../h_src/57682444.htm" class="variable">VK</a>,  <a  class="comments">/* constant in 'k'; info = index of constant in 'k' */</a>
+<a id=32></a>  <a href="../h_src/57682376.htm" class="variable">VKFLT</a>,  <a  class="comments">/* floating constant; nval = numerical float value */</a>
+<a id=33></a>  <a href="../h_src/57682308.htm" class="variable">VKINT</a>,  <a  class="comments">/* integer constant; ival = numerical integer value */</a>
+<a id=34></a>  <a href="../h_src/57682240.htm" class="variable">VKSTR</a>,  <a  class="comments">/* string constant; strval = TString address;</a>
+<a id=35></a><a  class="comments">             (string is fixed by the lexer) */</a>
+<a id=36></a>  <a href="../h_src/57682172.htm" class="variable">VNONRELOC</a>,  <a  class="comments">/* expression has its value in a fixed register;</a>
+<a id=37></a><a  class="comments">                 info = result register */</a>
+<a id=38></a>  <a href="../h_src/57682104.htm" class="variable">VLOCAL</a>,  <a  class="comments">/* local variable; var.ridx = register index;</a>
+<a id=39></a><a  class="comments">              var.vidx = relative index in 'actvar.arr'  */</a>
+<a id=40></a>  <a href="../h_src/57682036.htm" class="variable">VUPVAL</a>,  <a  class="comments">/* upvalue variable; info = index of upvalue in 'upvalues' */</a>
+<a id=41></a>  <a href="../h_src/57681968.htm" class="variable">VCONST</a>,  <a  class="comments">/* compile-time &lt;const&gt; variable;</a>
+<a id=42></a><a  class="comments">              info = absolute index in 'actvar.arr'  */</a>
+<a id=43></a>  <a href="../h_src/57681900.htm" class="variable">VINDEXED</a>,  <a  class="comments">/* indexed variable;</a>
+<a id=44></a><a  class="comments">                ind.t = table register;</a>
+<a id=45></a><a  class="comments">                ind.idx = key's R index */</a>
+<a id=46></a>  <a href="../h_src/57681832.htm" class="variable">VINDEXUP</a>,  <a  class="comments">/* indexed upvalue;</a>
+<a id=47></a><a  class="comments">                ind.t = table upvalue;</a>
+<a id=48></a><a  class="comments">                ind.idx = key's K index */</a>
+<a id=49></a>  <a href="../h_src/57681764.htm" class="variable">VINDEXI</a>, <a  class="comments">/* indexed variable with constant integer;</a>
+<a id=50></a><a  class="comments">                ind.t = table register;</a>
+<a id=51></a><a  class="comments">                ind.idx = key's value */</a>
+<a id=52></a>  <a href="../h_src/57681696.htm" class="variable">VINDEXSTR</a>, <a  class="comments">/* indexed variable with literal string;</a>
+<a id=53></a><a  class="comments">                ind.t = table register;</a>
+<a id=54></a><a  class="comments">                ind.idx = key's K index */</a>
+<a id=55></a>  <a href="../h_src/57681628.htm" class="variable">VJMP</a>,  <a  class="comments">/* expression is a test/comparison;</a>
+<a id=56></a><a  class="comments">            info = pc of corresponding jump instruction */</a>
+<a id=57></a>  <a href="../h_src/57681560.htm" class="variable">VRELOC</a>,  <a  class="comments">/* expression can put result in any register;</a>
+<a id=58></a><a  class="comments">              info = instruction pc */</a>
+<a id=59></a>  <a href="../h_src/57681492.htm" class="variable">VCALL</a>,  <a  class="comments">/* expression is a function call; info = instruction pc */</a>
+<a id=60></a>  <a href="../h_src/57681424.htm" class="variable">VVARARG</a>  <a  class="comments">/* vararg expression; info = instruction pc */</a>
+<a id=61></a>} <a href="../h_src/57681220.htm" class="type">expkind</a>;
+
+
+<a id=64></a>#define <a href="../h_src/57681152.htm" class="macro">vkisvar</a>(k)	(VLOCAL &lt;= (k) &amp;&amp; (k) &lt;= VINDEXSTR)
+<a id=65></a>#define <a href="../h_src/57681016.htm" class="macro">vkisindexed</a>(k)	(VINDEXED &lt;= (k) &amp;&amp; (k) &lt;= VINDEXSTR)
+
+
+<a id=68></a>typedef struct <a href="../h_src/57680880.htm" class="class">expdesc</a> {
+<a id=69></a>  <a href="../h_src/57681220.htm" class="type">expkind</a> <a href="../h_src/57680744.htm" class="variable">k</a>;
+<a id=70></a>  <a href="../h_src/57680676.htm" class="class">u</a>nion {
+<a id=71></a>    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/57680608.htm" class="variable">ival</a>;    <a  class="comments">/* for VKINT */</a>
+<a id=72></a>    <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/57680540.htm" class="variable">nval</a>;  <a  class="comments">/* for VKFLT */</a>
+<a id=73></a>    <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/57680472.htm" class="variable">strval</a>;  <a  class="comments">/* for VKSTR */</a>
+<a id=74></a>    int <a href="../h_src/57680404.htm" class="variable">info</a>;  <a  class="comments">/* for generic use */</a>
+<a id=75></a>    struct {  <a  class="comments">/* for indexed variables */</a>
+<a id=76></a>      short <a href="../h_src/57680268.htm" class="variable">idx</a>;  <a  class="comments">/* index (R or &quot;long&quot; K) */</a>
+<a id=77></a>      <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57680200.htm" class="variable">t</a>;  <a  class="comments">/* table (register or upvalue) */</a>
+<a id=78></a>    } <a href="../h_src/57680064.htm" class="variable">ind</a>;
+<a id=79></a>    struct {  <a  class="comments">/* for local variables */</a>
+<a id=80></a>      <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57679928.htm" class="variable">ridx</a>;  <a  class="comments">/* register holding the variable */</a>
+<a id=81></a>      unsigned short <a href="../h_src/57679860.htm" class="variable">vidx</a>;  <a  class="comments">/* compiler index (in 'actvar.arr')  */</a>
+<a id=82></a>    } <a href="../h_src/57679724.htm" class="variable">var</a>;
+<a id=83></a>  } <a href="../h_src/57679588.htm" class="variable">u</a>;
+<a id=84></a>  int <a href="../h_src/57679520.htm" class="variable">t</a>;  <a  class="comments">/* patch list of 'exit when true' */</a>
+<a id=85></a>  int <a href="../h_src/57679452.htm" class="variable">f</a>;  <a  class="comments">/* patch list of 'exit when false' */</a>
+<a id=86></a>} <a href="../h_src/57679384.htm" class="type">expdesc</a>;
+
+
+<a id=89></a><a  class="comments">/* kinds of variables */</a>
+<a id=90></a>#define <a href="../h_src/57679316.htm" class="macro">VDKREG</a>		0   <a  class="comments">/* regular */</a>
+<a id=91></a>#define <a href="../h_src/57679180.htm" class="macro">RDKCONST</a>	1   <a  class="comments">/* constant */</a>
+<a id=92></a>#define <a href="../h_src/57679044.htm" class="macro">RDKTOCLOSE</a>	2   <a  class="comments">/* to-be-closed */</a>
+<a id=93></a>#define <a href="../h_src/57678908.htm" class="macro">RDKCTC</a>		3   <a  class="comments">/* compile-time constant */</a>
+
+<a id=95></a><a  class="comments">/* description of an active local variable */</a>
+<a id=96></a>typedef union <a href="../h_src/57678772.htm" class="class">Vardesc</a> {
+  struct {
+<a id=98></a>    <a href="../h_src/57535792.htm" class="macro">TValuefields</a><a href="../h_src/57535860.htm" class="type">Value</a>fields;  <a  class="comments">/* constant value (if it is a compile-time constant) */</a>
+<a id=99></a>    <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57678432.htm" class="variable">kind</a>;
+<a id=100></a>    <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57678364.htm" class="variable">ridx</a>;  <a  class="comments">/* register holding the variable */</a>
+<a id=101></a>    short <a href="../h_src/57678296.htm" class="variable">pidx</a>;  <a  class="comments">/* index of the variable in the Proto's 'locvars' array */</a>
+<a id=102></a>    <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/57678228.htm" class="variable">name</a>;  <a  class="comments">/* variable name */</a>
+<a id=103></a>  } <a href="../h_src/57678092.htm" class="variable">vd</a>;
+<a id=104></a>  <a href="../h_src/57535384.htm" class="type">TValue</a> <a href="../h_src/57678024.htm" class="variable">k</a>;  <a  class="comments">/* constant value (if any) */</a>
+<a id=105></a>} <a href="../h_src/57677956.htm" class="type">Vardesc</a>;
+
+
+
+<a id=109></a><a  class="comments">/* description of pending goto statements and label statements */</a>
+<a id=110></a>typedef struct <a href="../h_src/57677888.htm" class="class">Labeldesc</a> {
+<a id=111></a>  <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/57677752.htm" class="variable">name</a>;  <a  class="comments">/* label identifier */</a>
+<a id=112></a>  int <a href="../h_src/57677684.htm" class="variable">pc</a>;  <a  class="comments">/* position in code */</a>
+<a id=113></a>  int <a href="../h_src/57677616.htm" class="variable">line</a>;  <a  class="comments">/* line where it appeared */</a>
+<a id=114></a>  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57677548.htm" class="variable">nactvar</a>;  <a  class="comments">/* number of active variables in that position */</a>
+<a id=115></a>  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57677480.htm" class="variable">close</a>;  <a  class="comments">/* goto that escapes upvalues */</a>
+<a id=116></a>} <a href="../h_src/57677412.htm" class="type">Labeldesc</a>;
+
+
+<a id=119></a><a  class="comments">/* list of labels or gotos */</a>
+<a id=120></a>typedef struct <a href="../h_src/57677344.htm" class="class">Labellist</a> {
+<a id=121></a>  <a href="../h_src/57677412.htm" class="type">Labeldesc</a> *<a href="../h_src/57677140.htm" class="variable">arr</a>;  <a  class="comments">/* array */</a>
+<a id=122></a>  int <a href="../h_src/57677072.htm" class="variable">n</a>;  <a  class="comments">/* number of entries in use */</a>
+<a id=123></a>  int <a href="../h_src/57677004.htm" class="variable">size</a>;  <a  class="comments">/* array size */</a>
+<a id=124></a>} <a href="../h_src/57676936.htm" class="type">Labellist</a>;
+
+
+<a id=127></a><a  class="comments">/* dynamic structures used by the parser */</a>
+<a id=128></a>typedef struct <a href="../h_src/57700600.htm" class="class">Dyndata</a> {
+<a id=129></a>  struct {  <a  class="comments">/* list of all active local variables */</a>
+<a id=130></a>    <a href="../h_src/57677956.htm" class="type">Vardesc</a> *<a href="../h_src/57676732.htm" class="variable">arr</a>;
+<a id=131></a>    int <a href="../h_src/57676664.htm" class="variable">n</a>;
+<a id=132></a>    int <a href="../h_src/57676596.htm" class="variable">size</a>;
+<a id=133></a>  } <a href="../h_src/57676460.htm" class="variable">actvar</a>;
+<a id=134></a>  <a href="../h_src/57676936.htm" class="type">Labellist</a> <a href="../h_src/57676392.htm" class="variable">gt</a>;  <a  class="comments">/* list of pending gotos */</a>
+<a id=135></a>  <a href="../h_src/57676936.htm" class="type">Labellist</a> <a href="../h_src/57676324.htm" class="variable">label</a>;   <a  class="comments">/* list of active labels */</a>
+<a id=136></a>} <a href="../h_src/57676256.htm" class="type">Dyndata</a>;
+
+
+<a id=139></a><a  class="comments">/* control of blocks */</a>
+<a id=140></a>struct <a href="../h_src/57676188.htm" class="class">BlockCnt</a>;  <a  class="comments">/* defined in lparser.c */</a>
+
+
+<a id=143></a><a  class="comments">/* state needed to generate code for a given function */</a>
+<a id=144></a>typedef struct <a href="../h_src/57701280.htm" class="class">FuncState</a> {
+<a id=145></a>  <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57676052.htm" class="variable">f</a>;  <a  class="comments">/* current function header */</a>
+<a id=146></a>  struct <a href="../h_src/57701280.htm" class="class">FuncState</a> *<a href="../h_src/57675984.htm" class="variable">prev</a>;  <a  class="comments">/* enclosing function */</a>
+<a id=147></a>  struct <a href="../h_src/57701756.htm" class="class">LexState</a> *<a href="../h_src/57675780.htm" class="variable">ls</a>;  <a  class="comments">/* lexical state */</a>
+<a id=148></a>  struct <a href="../h_src/57676188.htm" class="class">BlockCnt</a> *<a href="../h_src/57675576.htm" class="variable">bl</a>;  <a  class="comments">/* chain of current blocks */</a>
+<a id=149></a>  int <a href="../h_src/57675508.htm" class="variable">pc</a>;  <a  class="comments">/* next position to code (equivalent to 'ncode') */</a>
+<a id=150></a>  int <a href="../h_src/57675440.htm" class="variable">lasttarget</a>;   <a  class="comments">/* 'label' of last 'jump label' */</a>
+<a id=151></a>  int <a href="../h_src/57675372.htm" class="variable">previousline</a>;  <a  class="comments">/* last line that was saved in 'lineinfo' */</a>
+<a id=152></a>  int <a href="../h_src/57675304.htm" class="variable">nk</a>;  <a  class="comments">/* number of elements in 'k' */</a>
+<a id=153></a>  int <a href="../h_src/57675236.htm" class="variable">np</a>;  <a  class="comments">/* number of elements in 'p' */</a>
+<a id=154></a>  int <a href="../h_src/57675168.htm" class="variable">nabslineinfo</a>;  <a  class="comments">/* number of elements in 'abslineinfo' */</a>
+<a id=155></a>  int <a href="../h_src/57675100.htm" class="variable">firstlocal</a>;  <a  class="comments">/* index of first local var (in Dyndata array) */</a>
+<a id=156></a>  int <a href="../h_src/57675032.htm" class="variable">firstlabel</a>;  <a  class="comments">/* index of first label (in 'dyd-&gt;label-&gt;arr') */</a>
+<a id=157></a>  short <a href="../h_src/57674964.htm" class="variable">ndebugvars</a>;  <a  class="comments">/* number of elements in 'f-&gt;locvars' */</a>
+<a id=158></a>  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57674896.htm" class="variable">nactvar</a>;  <a  class="comments">/* number of active local variables */</a>
+<a id=159></a>  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57674828.htm" class="variable">nups</a>;  <a  class="comments">/* number of upvalues */</a>
+<a id=160></a>  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57674760.htm" class="variable">freereg</a>;  <a  class="comments">/* first free register */</a>
+<a id=161></a>  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57674692.htm" class="variable">iwthabs</a>;  <a  class="comments">/* instructions issued since last absolute line info */</a>
+<a id=162></a>  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57674624.htm" class="variable">needclose</a>;  <a  class="comments">/* function needs to close upvalues when returning */</a>
+<a id=163></a>} <a href="../h_src/57674556.htm" class="type">FuncState</a>;
+
+
+<a id=166></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> int <a href="../h_src/57674488.htm" class="function">luaY_nvarstack</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *fs);
+<a id=167></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> <a href="../h_src/57507980.htm" class="type">LClosure</a> *<a href="../h_src/57674420.htm" class="function">luaY_parser</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57656088.htm" class="type">ZIO</a> *z, <a href="../h_src/57655544.htm" class="type">Mbuffer</a> *buff,
+<a id=168></a>                                 <a href="../h_src/57676256.htm" class="type">Dyndata</a> *dyd, const char *name, int firstchar);
+
+
+#endif
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

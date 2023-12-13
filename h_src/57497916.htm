@@ -1,0 +1,52 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaT_callTM</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57497916.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57497916.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57497916.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57497916.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57497916.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57497916.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58090712.htm#103" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+void <a href="../h_src/57497916.htm" class="function">luaT_callTM</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58088264.htm" class="localvar">L</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58088128.htm" class="localvar">f</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58087992.htm" class="localvar">p1</a>,
+                  const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58087856.htm" class="localvar">p2</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58087720.htm" class="localvar">p3</a>) {
+  <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58087584.htm" class="localvar">func</a> = <a href="../h_src/58088264.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>;
+  <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58088264.htm" class="localvar">L</a>, <a href="../h_src/58087584.htm" class="localvar">func</a>, <a href="../h_src/58088128.htm" class="localvar">f</a>);  <a  class="comments">/* push function (assume EXTRA_STACK) */</a>
+  <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58088264.htm" class="localvar">L</a>, <a href="../h_src/58087584.htm" class="localvar">func</a> + 1, <a href="../h_src/58087992.htm" class="localvar">p1</a>);  <a  class="comments">/* 1st argument */</a>
+  <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58088264.htm" class="localvar">L</a>, <a href="../h_src/58087584.htm" class="localvar">func</a> + 2, <a href="../h_src/58087856.htm" class="localvar">p2</a>);  <a  class="comments">/* 2nd argument */</a>
+  <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58088264.htm" class="localvar">L</a>, <a href="../h_src/58087584.htm" class="localvar">func</a> + 3, <a href="../h_src/58087720.htm" class="localvar">p3</a>);  <a  class="comments">/* 3rd argument */</a>
+  <a href="../h_src/58088264.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/58087584.htm" class="localvar">func</a> + 4;
+  <a  class="comments">/* metamethod may yield only when called from Lua code */</a>
+  if (<a href="../h_src/57647316.htm" class="macro">isLuacode</a>(<a href="../h_src/58088264.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>))
+    <a href="../h_src/57633240.htm" class="function">luaD_call</a>(<a href="../h_src/58088264.htm" class="localvar">L</a>, <a href="../h_src/58087584.htm" class="localvar">func</a>, 0);
+  else
+    <a href="../h_src/57633172.htm" class="function">luaD_callnoyield</a>(<a href="../h_src/58088264.htm" class="localvar">L</a>, <a href="../h_src/58087584.htm" class="localvar">func</a>, 0);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

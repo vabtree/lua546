@@ -1,0 +1,64 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>Proto</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57516276.htm" class="class" target="_self">Info</a></li>
+<li><a href="../h_im/57516276.htm" class="class" target="_self">Public Interface</a></li>
+<li><a href="../h_rx/57516276.htm" class="class" target="_self">Inheritance</a></li>
+<li><a href="../h_nm/57516276.htm" class="class" target="_self">Internals</a></li>
+<li><a href="../h_ua/57516276.htm" class="class" target="_self">Use of Members</a></li>
+<li><a href="../h_da/57516276.htm" class="class" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57516276.htm" class="class" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57516276.htm" class="class" target="_self">Declaration</a></li>
+<li><a href="../h_src/57537696.htm#552" class="class" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Declaration</h4>
+<pre class=src>
+typedef struct <a href="../h_src/57516276.htm" class="class">Proto</a> {
+  <a href="../h_src/57528312.htm" class="macro">CommonHeader</a>;
+  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57515936.htm" class="variable">numparams</a>;  <a  class="comments">/* number of fixed (named) parameters */</a>
+  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57515868.htm" class="variable">is_vararg</a>;
+  <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57515800.htm" class="variable">maxstacksize</a>;  <a  class="comments">/* number of registers needed by this function */</a>
+  int <a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>;  <a  class="comments">/* size of 'upvalues' */</a>
+  int <a href="../h_src/57515664.htm" class="variable">sizek</a>;  <a  class="comments">/* size of 'k' */</a>
+  int <a href="../h_src/57515596.htm" class="variable">sizecode</a>;
+  int <a href="../h_src/57515528.htm" class="variable">sizelineinfo</a>;
+  int <a href="../h_src/57515460.htm" class="variable">sizep</a>;  <a  class="comments">/* size of 'p' */</a>
+  int <a href="../h_src/57515392.htm" class="variable">sizelocvars</a>;
+  int <a href="../h_src/57515324.htm" class="variable">sizeabslineinfo</a>;  <a  class="comments">/* size of 'abslineinfo' */</a>
+  int <a href="../h_src/57515256.htm" class="variable">linedefined</a>;  <a  class="comments">/* debug information  */</a>
+  int <a href="../h_src/57515188.htm" class="variable">lastlinedefined</a>;  <a  class="comments">/* debug information  */</a>
+  <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57515052.htm" class="variable">k</a>;  <a  class="comments">/* constants used by the function */</a>
+  <a href="../h_src/57545108.htm" class="type">Instruction</a> *<a href="../h_src/57514916.htm" class="variable">code</a>;  <a  class="comments">/* opcodes */</a>
+  struct <a href="../h_src/57516276.htm" class="class">Proto</a> **<a href="../h_src/57514576.htm" class="variable">p</a>;  <a  class="comments">/* functions defined inside the function */</a>
+  <a href="../h_src/57517092.htm" class="type">Upvaldesc</a> *<a href="../h_src/57514440.htm" class="variable">upvalues</a>;  <a  class="comments">/* upvalue information */</a>
+  <a href="../h_src/57550412.htm" class="type">ls_byte</a> *<a href="../h_src/57514304.htm" class="variable">lineinfo</a>;  <a  class="comments">/* information about source lines (debug information) */</a>
+  <a href="../h_src/57516344.htm" class="type">AbsLineInfo</a> *<a href="../h_src/57514168.htm" class="variable">abslineinfo</a>;  <a  class="comments">/* idem */</a>
+  <a href="../h_src/57516684.htm" class="type">LocVar</a> *<a href="../h_src/57514032.htm" class="variable">locvars</a>;  <a  class="comments">/* information about local variables (debug information) */</a>
+  <a href="../h_src/57522736.htm" class="type">TString</a>  *<a href="../h_src/57513964.htm" class="variable">source</a>;  <a  class="comments">/* used for debug information */</a>
+  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57513896.htm" class="variable">gclist</a>;
+} <a href="../h_src/57513828.htm" class="type">Proto</a>;
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

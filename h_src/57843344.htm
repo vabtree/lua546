@@ -1,0 +1,47 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>dumpUpvalues</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57843344.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57843344.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57843344.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57843344.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57843344.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57843344.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57850688.htm#147" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/57843344.htm" class="function">dumpUpvalues</a> (<a href="../h_src/57849872.htm" class="type">DumpState</a> *<a href="../h_src/57843208.htm" class="localvar">D</a>, const <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57843072.htm" class="localvar">f</a>) {
+  int <a href="../h_src/57842936.htm" class="localvar">i</a>, <a href="../h_src/57842800.htm" class="localvar">n</a> = <a href="../h_src/57843072.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>;
+  <a href="../h_src/57847424.htm" class="function">dumpInt</a>(<a href="../h_src/57843208.htm" class="localvar">D</a>, <a href="../h_src/57842800.htm" class="localvar">n</a>);
+  for (<a href="../h_src/57842936.htm" class="localvar">i</a> = 0; <a href="../h_src/57842936.htm" class="localvar">i</a> &lt; <a href="../h_src/57842800.htm" class="localvar">n</a>; <a href="../h_src/57842936.htm" class="localvar">i</a>++) {
+    <a href="../h_src/57848784.htm" class="function">dumpByte</a>(<a href="../h_src/57843208.htm" class="localvar">D</a>, <a href="../h_src/57843072.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/57842936.htm" class="localvar">i</a>].<a href="../h_src/57517296.htm" class="variable">instack</a>);
+    <a href="../h_src/57848784.htm" class="function">dumpByte</a>(<a href="../h_src/57843208.htm" class="localvar">D</a>, <a href="../h_src/57843072.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/57842936.htm" class="localvar">i</a>].<a href="../h_src/57517228.htm" class="variable">idx</a>);
+    <a href="../h_src/57848784.htm" class="function">dumpByte</a>(<a href="../h_src/57843208.htm" class="localvar">D</a>, <a href="../h_src/57843072.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/57842936.htm" class="localvar">i</a>].<a href="../h_src/57517160.htm" class="variable">kind</a>);
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

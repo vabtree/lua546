@@ -1,0 +1,54 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaO_utf8esc</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57501928.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57501928.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57501928.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57501928.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57501928.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57501928.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57919748.htm#323" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+int <a href="../h_src/57501928.htm" class="function">luaO_utf8esc</a> (char *<a href="../h_src/57907984.htm" class="localvar">buff</a>, unsigned long <a href="../h_src/57907848.htm" class="localvar">x</a>) {
+  int <a href="../h_src/57907712.htm" class="localvar">n</a> = 1;  <a  class="comments">/* number of bytes put in buffer (backwards) */</a>
+  <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(x &lt;= 0x7FFFFFFFu);
+  if (<a href="../h_src/57907848.htm" class="localvar">x</a> &lt; 0x80)  <a  class="comments">/* ascii? */</a>
+    <a href="../h_src/57907984.htm" class="localvar">buff</a>[<a href="../h_src/57502064.htm" class="macro">UTF8BUFFSZ</a> - 1] = <a href="../h_src/57546672.htm" class="macro">cast_char</a>(<a href="../h_src/57907848.htm" class="localvar">x</a>);
+  else {  <a  class="comments">/* need continuation bytes */</a>
+    unsigned int <a href="../h_src/57907576.htm" class="localvar">mfb</a> = 0x3f;  <a  class="comments">/* maximum that fits in first byte */</a>
+    do {  <a  class="comments">/* add continuation bytes */</a>
+      <a href="../h_src/57907984.htm" class="localvar">buff</a>[<a href="../h_src/57502064.htm" class="macro">UTF8BUFFSZ</a> - (<a href="../h_src/57907712.htm" class="localvar">n</a>++)] = <a href="../h_src/57546672.htm" class="macro">cast_char</a>(0x80 | (<a href="../h_src/57907848.htm" class="localvar">x</a> &amp; 0x3f));
+      <a href="../h_src/57907848.htm" class="localvar">x</a> &gt;&gt;= 6;  <a  class="comments">/* remove added bits */</a>
+      <a href="../h_src/57907576.htm" class="localvar">mfb</a> &gt;&gt;= 1;  <a  class="comments">/* now there is one less bit available in first byte */</a>
+    } while (<a href="../h_src/57907848.htm" class="localvar">x</a> &gt; <a href="../h_src/57907576.htm" class="localvar">mfb</a>);  <a  class="comments">/* still needs continuation byte? */</a>
+    <a href="../h_src/57907984.htm" class="localvar">buff</a>[<a href="../h_src/57502064.htm" class="macro">UTF8BUFFSZ</a> - <a href="../h_src/57907712.htm" class="localvar">n</a>] = <a href="../h_src/57546672.htm" class="macro">cast_char</a>((~<a href="../h_src/57907576.htm" class="localvar">mfb</a> &lt;&lt; 1) | <a href="../h_src/57907848.htm" class="localvar">x</a>);  <a  class="comments">/* add first byte */</a>
+  }
+  return <a href="../h_src/57907712.htm" class="localvar">n</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

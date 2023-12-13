@@ -1,0 +1,143 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lopcodes.c</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57897444.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/57897444.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/57897444.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/57897444.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_ua/57897444.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_da/57897444.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57897444.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57897444.htm" class="file" target="_self">Source Code</a></li>
+<li><a href="../h_sc/57897444.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<pre class=src>
+<a id=1></a><a  class="comments">/*</a>
+<a id=2></a><a  class="comments">** $Id: lopcodes.c $</a>
+<a id=3></a><a  class="comments">** Opcodes for Lua virtual machine</a>
+<a id=4></a><a  class="comments">** See Copyright Notice in lua.h</a>
+<a id=5></a><a  class="comments">*/</a>
+
+<a id=7></a>#define <a href="../h_src/57897376.htm" class="macro">lopcodes_c</a>
+<a id=8></a>#define <a href="../h_src/58057216.htm" class="macro">LUA_CORE</a>
+
+<a id=10></a>#include &quot;<a href="../h_src/57461592.htm" class="file">lprefix.h</a>&quot;
+
+
+<a id=13></a>#include &quot;<a href="../h_src/57699512.htm" class="file">lopcodes.h</a>&quot;
+
+
+<a id=16></a><a  class="comments">/* ORDER OP */</a>
+
+<a id=18></a><a href="../h_src/57453636.htm" class="macro">LUAI_DDEF</a> const <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57684484.htm" class="variable">luaP_opmodes</a>[<a href="../h_src/57684688.htm" class="macro">NUM_OPCODES</a>] = {
+<a id=19></a><a  class="comments">/*       MM OT IT T  A  mode		   opcode  */</a>
+<a id=20></a>  <a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_MOVE */</a>
+<a id=21></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699036.htm" class="variable">iAsBx</a>)		<a  class="comments">/* OP_LOADI */</a>
+<a id=22></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699036.htm" class="variable">iAsBx</a>)		<a  class="comments">/* OP_LOADF */</a>
+<a id=23></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699104.htm" class="variable">iABx</a>)		<a  class="comments">/* OP_LOADK */</a>
+<a id=24></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699104.htm" class="variable">iABx</a>)		<a  class="comments">/* OP_LOADKX */</a>
+<a id=25></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_LOADFALSE */</a>
+<a id=26></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_LFALSESKIP */</a>
+<a id=27></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_LOADTRUE */</a>
+<a id=28></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_LOADNIL */</a>
+<a id=29></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_GETUPVAL */</a>
+<a id=30></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 0, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_SETUPVAL */</a>
+<a id=31></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_GETTABUP */</a>
+<a id=32></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_GETTABLE */</a>
+<a id=33></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_GETI */</a>
+<a id=34></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_GETFIELD */</a>
+<a id=35></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 0, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_SETTABUP */</a>
+<a id=36></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 0, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_SETTABLE */</a>
+<a id=37></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 0, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_SETI */</a>
+<a id=38></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 0, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_SETFIELD */</a>
+<a id=39></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_NEWTABLE */</a>
+<a id=40></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_SELF */</a>
+<a id=41></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_ADDI */</a>
+<a id=42></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_ADDK */</a>
+<a id=43></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_SUBK */</a>
+<a id=44></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_MULK */</a>
+<a id=45></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_MODK */</a>
+<a id=46></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_POWK */</a>
+<a id=47></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_DIVK */</a>
+<a id=48></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_IDIVK */</a>
+<a id=49></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_BANDK */</a>
+<a id=50></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_BORK */</a>
+<a id=51></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_BXORK */</a>
+<a id=52></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_SHRI */</a>
+<a id=53></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_SHLI */</a>
+<a id=54></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_ADD */</a>
+<a id=55></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_SUB */</a>
+<a id=56></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_MUL */</a>
+<a id=57></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_MOD */</a>
+<a id=58></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_POW */</a>
+<a id=59></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_DIV */</a>
+<a id=60></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_IDIV */</a>
+<a id=61></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_BAND */</a>
+<a id=62></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_BOR */</a>
+<a id=63></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_BXOR */</a>
+<a id=64></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_SHL */</a>
+<a id=65></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_SHR */</a>
+<a id=66></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(1, 0, 0, 0, 0, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_MMBIN */</a>
+<a id=67></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(1, 0, 0, 0, 0, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_MMBINI*/</a>
+<a id=68></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(1, 0, 0, 0, 0, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_MMBINK*/</a>
+<a id=69></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_UNM */</a>
+<a id=70></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_BNOT */</a>
+<a id=71></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_NOT */</a>
+<a id=72></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_LEN */</a>
+<a id=73></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_CONCAT */</a>
+<a id=74></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 0, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_CLOSE */</a>
+<a id=75></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 0, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_TBC */</a>
+<a id=76></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 0, <a href="../h_src/57698900.htm" class="variable">isJ</a>)		<a  class="comments">/* OP_JMP */</a>
+<a id=77></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 1, 0, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_EQ */</a>
+<a id=78></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 1, 0, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_LT */</a>
+<a id=79></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 1, 0, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_LE */</a>
+<a id=80></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 1, 0, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_EQK */</a>
+<a id=81></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 1, 0, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_EQI */</a>
+<a id=82></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 1, 0, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_LTI */</a>
+<a id=83></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 1, 0, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_LEI */</a>
+<a id=84></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 1, 0, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_GTI */</a>
+<a id=85></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 1, 0, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_GEI */</a>
+<a id=86></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 1, 0, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_TEST */</a>
+<a id=87></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 1, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_TESTSET */</a>
+<a id=88></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 1, 1, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_CALL */</a>
+<a id=89></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 1, 1, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_TAILCALL */</a>
+<a id=90></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 1, 0, 0, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_RETURN */</a>
+<a id=91></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 0, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_RETURN0 */</a>
+<a id=92></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 0, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_RETURN1 */</a>
+<a id=93></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699104.htm" class="variable">iABx</a>)		<a  class="comments">/* OP_FORLOOP */</a>
+<a id=94></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699104.htm" class="variable">iABx</a>)		<a  class="comments">/* OP_FORPREP */</a>
+<a id=95></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 0, <a href="../h_src/57699104.htm" class="variable">iABx</a>)		<a  class="comments">/* OP_TFORPREP */</a>
+<a id=96></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 0, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_TFORCALL */</a>
+<a id=97></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699104.htm" class="variable">iABx</a>)		<a  class="comments">/* OP_TFORLOOP */</a>
+<a id=98></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 1, 0, 0, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_SETLIST */</a>
+<a id=99></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 1, <a href="../h_src/57699104.htm" class="variable">iABx</a>)		<a  class="comments">/* OP_CLOSURE */</a>
+<a id=100></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 1, 0, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_VARARG */</a>
+<a id=101></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 1, 0, 1, <a href="../h_src/57699172.htm" class="variable">iABC</a>)		<a  class="comments">/* OP_VARARGPREP */</a>
+<a id=102></a> ,<a href="../h_src/57683328.htm" class="macro">opmode</a>(0, 0, 0, 0, 0, <a href="../h_src/57698968.htm" class="variable">iAx</a>)		<a  class="comments">/* OP_EXTRAARG */</a>
+};
+
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,52 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>numarith</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57918320.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57918320.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57918320.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57918320.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57918320.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57918320.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57919748.htm#73" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/57918320.htm" class="function">numarith</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57918184.htm" class="localvar">L</a>, int <a href="../h_src/57918048.htm" class="localvar">op</a>, <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/57917912.htm" class="localvar">v1</a>,
+                                                  <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/57917776.htm" class="localvar">v2</a>) {
+  switch (<a href="../h_src/57918048.htm" class="localvar">op</a>) {
+    case <a href="../h_src/57437792.htm" class="macro">LUA_OPADD</a>: return <a href="../h_src/57540008.htm" class="macro">luai_numadd</a>(L, <a href="../h_src/57917912.htm" class="localvar">v1</a>, <a href="../h_src/57917776.htm" class="localvar">v2</a>);
+    case <a href="../h_src/57437656.htm" class="macro">LUA_OPSUB</a>: return <a href="../h_src/57539872.htm" class="macro">luai_numsub</a>(L, <a href="../h_src/57917912.htm" class="localvar">v1</a>, <a href="../h_src/57917776.htm" class="localvar">v2</a>);
+    case <a href="../h_src/57437520.htm" class="macro">LUA_OPMUL</a>: return <a href="../h_src/57539736.htm" class="macro">luai_nummul</a>(L, <a href="../h_src/57917912.htm" class="localvar">v1</a>, <a href="../h_src/57917776.htm" class="localvar">v2</a>);
+    case <a href="../h_src/57437112.htm" class="macro">LUA_OPDIV</a>: return <a href="../h_src/57540824.htm" class="macro">luai_numdiv</a>(L, <a href="../h_src/57917912.htm" class="localvar">v1</a>, <a href="../h_src/57917776.htm" class="localvar">v2</a>);
+    case <a href="../h_src/57437248.htm" class="macro">LUA_OPPOW</a>: return <a href="../h_src/57540280.htm" class="macro">luai_numpow</a>(<a href="../h_src/57918184.htm" class="localvar">L</a>, <a href="../h_src/57917912.htm" class="localvar">v1</a>, <a href="../h_src/57917776.htm" class="localvar">v2</a>);
+    case <a href="../h_src/57436976.htm" class="macro">LUA_OPIDIV</a>: return <a href="../h_src/57541096.htm" class="macro">luai_numidiv</a>(<a href="../h_src/57918184.htm" class="localvar">L</a>, <a href="../h_src/57917912.htm" class="localvar">v1</a>, <a href="../h_src/57917776.htm" class="localvar">v2</a>);
+    case <a href="../h_src/57436160.htm" class="macro">LUA_OPUNM</a>: return <a href="../h_src/57539600.htm" class="macro">luai_numunm</a>(L, <a href="../h_src/57917912.htm" class="localvar">v1</a>);
+    case <a href="../h_src/57437384.htm" class="macro">LUA_OPMOD</a>: return <a href="../h_src/57610664.htm" class="function">luaV_modf</a>(<a href="../h_src/57918184.htm" class="localvar">L</a>, <a href="../h_src/57917912.htm" class="localvar">v1</a>, <a href="../h_src/57917776.htm" class="localvar">v2</a>);
+    default: <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(0); return 0;
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

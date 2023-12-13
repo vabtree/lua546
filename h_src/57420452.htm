@@ -1,0 +1,75 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaL_tolstring</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57420452.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57420452.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57420452.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57420452.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57420452.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57420452.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58351320.htm#889" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> const char *<a href="../h_src/57420452.htm" class="function">luaL_tolstring</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58320448.htm" class="localvar">L</a>, int <a href="../h_src/58320312.htm" class="localvar">idx</a>, <a href="../h_aa/57441192.htm" class="type">size_t</a> *<a href="../h_src/58320176.htm" class="localvar">len</a>) {
+  <a href="../h_src/58320312.htm" class="localvar">idx</a> = <a href="../h_src/57439424.htm" class="function">lua_absindex</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>,<a href="../h_src/58320312.htm" class="localvar">idx</a>);
+  if (<a href="../h_src/57420520.htm" class="function">luaL_callmeta</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, <a href="../h_src/58320312.htm" class="localvar">idx</a>, &quot;__tostring&quot;)) {  <a  class="comments">/* metafield? */</a>
+    if (!<a href="../h_src/57438812.htm" class="function">lua_isstring</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, -1))
+      <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, &quot;'__tostring' must return a string&quot;);
+  }
+  else {
+    switch (<a href="../h_src/57438540.htm" class="function">lua_type</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, <a href="../h_src/58320312.htm" class="localvar">idx</a>)) {
+      case <a href="../h_src/57443640.htm" class="macro">LUA_TNUMBER</a>: {
+        if (<a href="../h_src/57438676.htm" class="function">lua_isinteger</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, <a href="../h_src/58320312.htm" class="localvar">idx</a>))
+          <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, &quot;%I&quot;, (<a href="../h_src/57450916.htm" class="macro">LUAI_UACINT</a>)<a href="../h_src/57429428.htm" class="macro">lua_tointeger</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, <a href="../h_src/58320312.htm" class="localvar">idx</a>));
+        else
+          <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, &quot;%f&quot;, (<a href="../h_src/57451732.htm" class="macro">LUAI_UACNUMBER</a>)<a href="../h_src/57429564.htm" class="macro">lua_tonumber</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, <a href="../h_src/58320312.htm" class="localvar">idx</a>));
+        break;
+      }
+      case <a href="../h_src/57443504.htm" class="macro">LUA_TSTRING</a>:
+        <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, <a href="../h_src/58320312.htm" class="localvar">idx</a>);
+        break;
+      case <a href="../h_src/57443912.htm" class="macro">LUA_TBOOLEAN</a>:
+        <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, (<a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, <a href="../h_src/58320312.htm" class="localvar">idx</a>) ? &quot;true&quot; : &quot;false&quot;));
+        break;
+      case <a href="../h_src/57444048.htm" class="macro">LUA_TNIL</a>:
+        <a href="../h_src/57427660.htm" class="macro">lua_pushliteral</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, &quot;nil&quot;);
+        break;
+      default: {
+        int <a href="../h_src/58320040.htm" class="localvar">tt</a> = <a href="../h_src/57420588.htm" class="function">luaL_getmetafield</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, <a href="../h_src/58320312.htm" class="localvar">idx</a>, &quot;__name&quot;);  <a  class="comments">/* try name */</a>
+        const char *<a href="../h_src/58319904.htm" class="localvar">kind</a> = (<a href="../h_src/58320040.htm" class="localvar">tt</a> == <a href="../h_src/57443504.htm" class="macro">LUA_TSTRING</a>) ? <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, -1) :
+                                                 <a href="../h_src/57416712.htm" class="macro">luaL_typename</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, <a href="../h_src/58320312.htm" class="localvar">idx</a>);
+        <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, &quot;%s: %p&quot;, <a href="../h_src/58319904.htm" class="localvar">kind</a>, <a href="../h_src/57437860.htm" class="function">lua_topointer</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, <a href="../h_src/58320312.htm" class="localvar">idx</a>));
+        if (<a href="../h_src/58320040.htm" class="localvar">tt</a> != <a href="../h_src/57444048.htm" class="macro">LUA_TNIL</a>)
+          <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, -2);  <a  class="comments">/* remove '__name' */</a>
+        break;
+      }
+    }
+  }
+  return <a href="../h_src/57438200.htm" class="function">lua_tolstring</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, -1, <a href="../h_src/58320176.htm" class="localvar">len</a>);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

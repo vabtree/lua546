@@ -1,0 +1,69 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>findloader</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143198372.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143198372.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143198372.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143198372.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143198372.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143198372.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143217276.htm#624" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/143198372.htm" class="function">findloader</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143198236.htm" class="localvar">L</a>, const char *<a href="../h_src/143198100.htm" class="localvar">name</a>) {
+  int <a href="../h_src/143197964.htm" class="localvar">i</a>;
+  <a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> <a href="../h_src/143197828.htm" class="localvar">msg</a>;  <a  class="comments">/* to build error message */</a>
+  <a  class="comments">/* push 'package.searchers' to index 3 in the stack */</a>
+  if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(1), &quot;searchers&quot;)
+                 != <a href="../h_src/57443368.htm" class="macro">LUA_TTABLE</a>))
+    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, &quot;'package.searchers' must be a table&quot;);
+  <a href="../h_src/57413652.htm" class="function">luaL_buffinit</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, &amp;<a href="../h_src/143197828.htm" class="localvar">msg</a>);
+  <a  class="comments">/*  iterate over available searchers to find a loader */</a>
+  for (<a href="../h_src/143197964.htm" class="localvar">i</a> = 1; ; <a href="../h_src/143197964.htm" class="localvar">i</a>++) {
+    <a href="../h_src/57413448.htm" class="function">luaL_addstring</a>(&amp;<a href="../h_src/143197828.htm" class="localvar">msg</a>, &quot;\n\t&quot;);  <a  class="comments">/* error-message prefix */</a>
+    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57434052.htm" class="function">lua_rawgeti</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, 3, <a href="../h_src/143197964.htm" class="localvar">i</a>) == <a href="../h_src/57444048.htm" class="macro">LUA_TNIL</a>)) {  <a  class="comments">/* no more searchers? */</a>
+      <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove nil */</a>
+      <a href="../h_src/57413788.htm" class="macro">luaL_buffsub</a>(&amp;<a href="../h_src/143197828.htm" class="localvar">msg</a>, 2);  <a  class="comments">/* remove prefix */</a>
+      <a href="../h_src/57413312.htm" class="function">luaL_pushresult</a>(&amp;<a href="../h_src/143197828.htm" class="localvar">msg</a>);  <a  class="comments">/* create error message */</a>
+      <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, &quot;module '%s' not found:%s&quot;, <a href="../h_src/143198100.htm" class="localvar">name</a>, <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, -1));
+    }
+    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, <a href="../h_src/143198100.htm" class="localvar">name</a>);
+    <a href="../h_src/57432964.htm" class="macro">lua_call</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, 1, 2);  <a  class="comments">/* call it */</a>
+    if (<a href="../h_src/57428748.htm" class="macro">lua_isfunction</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, -2))  <a  class="comments">/* did it find a loader? */</a>
+      return;  <a  class="comments">/* module loader found */</a>
+    else if (<a href="../h_src/57438812.htm" class="function">lua_isstring</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, -2)) {  <a  class="comments">/* searcher returned error message? */</a>
+      <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove extra return */</a>
+      <a href="../h_src/57413380.htm" class="function">luaL_addvalue</a>(&amp;<a href="../h_src/143197828.htm" class="localvar">msg</a>);  <a  class="comments">/* concatenate error message */</a>
+    }
+    else {  <a  class="comments">/* no error message */</a>
+      <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, 2);  <a  class="comments">/* remove both returns */</a>
+      <a href="../h_src/57413788.htm" class="macro">luaL_buffsub</a>(&amp;<a href="../h_src/143197828.htm" class="localvar">msg</a>, 2);  <a  class="comments">/* remove prefix */</a>
+    }
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

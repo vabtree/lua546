@@ -1,0 +1,48 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaH_new</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57616512.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57616512.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57616512.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57616512.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57616512.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57616512.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58121924.htm#626" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/57616512.htm" class="function">luaH_new</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58100572.htm" class="localvar">L</a>) {
+  <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/58100436.htm" class="localvar">o</a> = <a href="../h_src/57620592.htm" class="function">luaC_newobj</a>(<a href="../h_src/58100572.htm" class="localvar">L</a>, <a href="../h_src/57507436.htm" class="macro">LUA_VTABLE</a>, sizeof(<a href="../h_src/57504308.htm" class="type">Table</a>));
+  <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58100300.htm" class="localvar">t</a> = <a href="../h_src/57639428.htm" class="macro">gco2t</a>(<a href="../h_src/58100436.htm" class="localvar">o</a>);
+  <a href="../h_src/58100300.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504444.htm" class="variable">metatable</a> = NULL;
+  <a href="../h_src/58100300.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504920.htm" class="variable">flags</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/57498936.htm" class="macro">maskflags</a>);  <a  class="comments">/* table has no metamethod fields */</a>
+  <a href="../h_src/58100300.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a> = NULL;
+  <a href="../h_src/58100300.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a> = 0;
+  <a href="../h_src/58106556.htm" class="function">setnodevector</a>(<a href="../h_src/58100572.htm" class="localvar">L</a>, <a href="../h_src/58100300.htm" class="localvar">t</a>, 0);
+  return <a href="../h_src/58100300.htm" class="localvar">t</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

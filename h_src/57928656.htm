@@ -1,0 +1,99 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>read_string</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57928656.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57928656.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57928656.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57928656.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57928656.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57928656.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57940692.htm#382" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/57928656.htm" class="function">read_string</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57928520.htm" class="localvar">ls</a>, int <a href="../h_src/57928384.htm" class="localvar">del</a>, <a href="../h_src/57702164.htm" class="type">SemInfo</a> *<a href="../h_src/57928248.htm" class="localvar">seminfo</a>) {
+  <a href="../h_src/57940012.htm" class="macro">save_and_next</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>);  <a  class="comments">/* keep delimiter (for error messages) */</a>
+  while (<a href="../h_src/57928520.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a> != <a href="../h_src/57928384.htm" class="localvar">del</a>) {
+    switch (<a href="../h_src/57928520.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>) {
+      case <a href="../h_src/57656360.htm" class="macro">EOZ</a>:
+        <a href="../h_src/57939876.htm" class="function">lexerror</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>, &quot;unfinished string&quot;, <a href="../h_src/57703116.htm" class="variable">TK_EOS</a>);
+        break;  <a  class="comments">/* to avoid warnings */</a>
+      case '\n':
+      case '\r':
+        <a href="../h_src/57939876.htm" class="function">lexerror</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>, &quot;unfinished string&quot;, <a href="../h_src/57702844.htm" class="variable">TK_STRING</a>);
+        break;  <a  class="comments">/* to avoid warnings */</a>
+      case '\\': {  <a  class="comments">/* escape sequences */</a>
+        int <a href="../h_src/57928112.htm" class="localvar">c</a>;  <a  class="comments">/* final character to be saved */</a>
+        <a href="../h_src/57940012.htm" class="macro">save_and_next</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>);  <a  class="comments">/* keep '\\' for error messages */</a>
+        switch (<a href="../h_src/57928520.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>) {
+          case 'a': <a href="../h_src/57928112.htm" class="localvar">c</a> = '\a'; goto read_save;
+          case 'b': <a href="../h_src/57928112.htm" class="localvar">c</a> = '\b'; goto read_save;
+          case 'f': <a href="../h_src/57928112.htm" class="localvar">c</a> = '\f'; goto read_save;
+          case 'n': <a href="../h_src/57928112.htm" class="localvar">c</a> = '\n'; goto read_save;
+          case 'r': <a href="../h_src/57928112.htm" class="localvar">c</a> = '\r'; goto read_save;
+          case 't': <a href="../h_src/57928112.htm" class="localvar">c</a> = '\t'; goto read_save;
+          case 'v': <a href="../h_src/57928112.htm" class="localvar">c</a> = '\v'; goto read_save;
+          case 'x': <a href="../h_src/57928112.htm" class="localvar">c</a> = <a href="../h_src/57930696.htm" class="function">readhexaesc</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>); goto read_save;
+          case 'u': <a href="../h_src/57929744.htm" class="function">utf8esc</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>);  goto no_save;
+          case '\n': case '\r':
+            <a href="../h_src/57935796.htm" class="function">inclinenumber</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>); <a href="../h_src/57928112.htm" class="localvar">c</a> = '\n'; goto only_save;
+          case '\\': case '\&quot;': case '\'':
+            <a href="../h_src/57928112.htm" class="localvar">c</a> = <a href="../h_src/57928520.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>; goto read_save;
+          case <a href="../h_src/57656360.htm" class="macro">EOZ</a>: goto no_save;  <a  class="comments">/* will raise an error next loop */</a>
+          case 'z': {  <a  class="comments">/* zap following span of spaces */</a>
+            <a href="../h_src/57654932.htm" class="macro">luaZ_buffremove</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>, 1);  <a  class="comments">/* remove '\\' */</a>
+            <a href="../h_src/57940352.htm" class="macro">next</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>);  <a  class="comments">/* skip the 'z' */</a><a href="../h_src/57700872.htm" class="variable">z</a>' */
+            while (<a href="../h_src/57760140.htm" class="macro">lisspace</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>)) {
+              if (<a href="../h_src/57940216.htm" class="macro">currIsNewline</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>)) <a href="../h_src/57935796.htm" class="function">inclinenumber</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>);
+              else <a href="../h_src/57940352.htm" class="macro">next</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>);
+            }
+            goto no_save;
+          }
+          default: {
+            <a href="../h_src/57931512.htm" class="function">esccheck</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>, <a href="../h_src/57760276.htm" class="macro">lisdigit</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>), &quot;invalid escape sequence&quot;);
+            <a href="../h_src/57928112.htm" class="localvar">c</a> = <a href="../h_src/57929200.htm" class="function">readdecesc</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>);  <a  class="comments">/* digital escape '\ddd' */</a>
+            goto only_save;
+          }
+        }
+       read_save:
+         <a href="../h_src/57940352.htm" class="macro">next</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>);
+         <a  class="comments">/* go through */</a>
+       only_save:
+         <a href="../h_src/57654932.htm" class="macro">luaZ_buffremove</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>, 1);  <a  class="comments">/* remove '\\' */</a>
+         <a href="../h_src/57939740.htm" class="function">save</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>, <a href="../h_src/57928112.htm" class="localvar">c</a>);
+         <a  class="comments">/* go through */</a>
+       no_save: break;
+      }
+      default:
+        <a href="../h_src/57940012.htm" class="macro">save_and_next</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>);
+    }
+  }
+  <a href="../h_src/57940012.htm" class="macro">save_and_next</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>);  <a  class="comments">/* skip delimiter */</a>
+  <a href="../h_src/57928248.htm" class="localvar">seminfo</a>-&gt;<a href="../h_src/57702300.htm" class="variable">ts</a> = <a href="../h_src/57699852.htm" class="function">luaX_newstring</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>, <a href="../h_src/57655340.htm" class="macro">luaZ_buffer</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>) + 1,
+                                   <a href="../h_src/57655068.htm" class="macro">luaZ_bufflen</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>) - 2);
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

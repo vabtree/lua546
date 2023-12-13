@@ -1,0 +1,49 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>readdecesc</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57929200.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57929200.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57929200.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57929200.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57929200.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57929200.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57940692.htm#369" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/57929200.htm" class="function">readdecesc</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/57929064.htm" class="localvar">ls</a>) {
+  int <a href="../h_src/57928928.htm" class="localvar">i</a>;
+  int <a href="../h_src/57928792.htm" class="localvar">r</a> = 0;  <a  class="comments">/* result accumulator */</a>
+  for (<a href="../h_src/57928928.htm" class="localvar">i</a> = 0; <a href="../h_src/57928928.htm" class="localvar">i</a> &lt; 3 &amp;&amp; <a href="../h_src/57760276.htm" class="macro">lisdigit</a>(<a href="../h_src/57929064.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>); <a href="../h_src/57928928.htm" class="localvar">i</a>++) {  <a  class="comments">/* read up to 3 digits */</a>
+    <a href="../h_src/57928792.htm" class="localvar">r</a> = 10*<a href="../h_src/57928792.htm" class="localvar">r</a> + <a href="../h_src/57929064.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a> - '0';
+    <a href="../h_src/57940012.htm" class="macro">save_and_next</a>(<a href="../h_src/57929064.htm" class="localvar">ls</a>);
+  }
+  <a href="../h_src/57931512.htm" class="function">esccheck</a>(<a href="../h_src/57929064.htm" class="localvar">ls</a>, <a href="../h_src/57928792.htm" class="localvar">r</a> &lt;= UCHAR_MAX, &quot;decimal escape too large&quot;);
+  <a href="../h_src/57654932.htm" class="macro">luaZ_buffremove</a>(<a href="../h_src/57929064.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>, <a href="../h_src/57928928.htm" class="localvar">i</a>);  <a  class="comments">/* remove read digits from buffer */</a>
+  return <a href="../h_src/57928792.htm" class="localvar">r</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

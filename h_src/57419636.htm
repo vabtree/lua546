@@ -1,0 +1,49 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaL_newmetatable</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57419636.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57419636.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57419636.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57419636.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57419636.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57419636.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58351320.htm#311" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int <a href="../h_src/57419636.htm" class="function">luaL_newmetatable</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58342684.htm" class="localvar">L</a>, const char *<a href="../h_src/58342548.htm" class="localvar">tname</a>) {
+  if (<a href="../h_src/57416304.htm" class="macro">luaL_getmetatable</a>(<a href="../h_src/58342684.htm" class="localvar">L</a>, <a href="../h_src/58342548.htm" class="localvar">tname</a>) != <a href="../h_src/57444048.htm" class="macro">LUA_TNIL</a>)  <a  class="comments">/* name already in use? */</a>
+    return 0;  <a  class="comments">/* leave previous value on top, but return 0 */</a>
+  <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/58342684.htm" class="localvar">L</a>, 1);
+  <a href="../h_src/57433916.htm" class="function">lua_createtable</a>(<a href="../h_src/58342684.htm" class="localvar">L</a>, 0, 2);  <a  class="comments">/* create metatable */</a>
+  <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/58342684.htm" class="localvar">L</a>, <a href="../h_src/58342548.htm" class="localvar">tname</a>);
+  <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/58342684.htm" class="localvar">L</a>, -2, &quot;__name&quot;);  <a  class="comments">/* metatable.__name = tname */</a>
+  <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/58342684.htm" class="localvar">L</a>, -1);
+  <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/58342684.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/58342548.htm" class="localvar">tname</a>);  <a  class="comments">/* registry.name = metatable */</a>
+  return 1;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

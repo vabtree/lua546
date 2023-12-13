@@ -1,0 +1,44 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>jumpscopeerror</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58035660.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58035660.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58035660.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58035660.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58035660.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58035660.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58057080.htm#514" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static <a href="../h_src/57545584.htm" class="macro">l_noret</a> <a href="../h_src/58035660.htm" class="function">jumpscopeerror</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/58035524.htm" class="localvar">ls</a>, <a href="../h_src/57677412.htm" class="type">Labeldesc</a> *<a href="../h_src/58035388.htm" class="localvar">gt</a>) {
+  const char *<a href="../h_src/58035252.htm" class="localvar">varname</a> = <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58047628.htm" class="function">getlocalvardesc</a>(<a href="../h_src/58035524.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>, <a href="../h_src/58035388.htm" class="localvar">gt</a>-&gt;<a href="../h_src/57677548.htm" class="variable">nactvar</a>)-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678228.htm" class="variable">name</a>);
+  const char *<a href="../h_src/58035116.htm" class="localvar">msg</a> = &quot;&lt;goto %s&gt; at line %d jumps into the scope of local '%s'&quot;;
+  <a href="../h_src/58035116.htm" class="localvar">msg</a> = <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/58035524.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/58035116.htm" class="localvar">msg</a>, <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58035388.htm" class="localvar">gt</a>-&gt;<a href="../h_src/57677752.htm" class="variable">name</a>), <a href="../h_src/58035388.htm" class="localvar">gt</a>-&gt;<a href="../h_src/57677616.htm" class="variable">line</a>, <a href="../h_src/58035252.htm" class="localvar">varname</a>);
+  <a href="../h_src/57668776.htm" class="function">luaK_semerror</a>(<a href="../h_src/58035524.htm" class="localvar">ls</a>, <a href="../h_src/58035116.htm" class="localvar">msg</a>);  <a  class="comments">/* raise the error */</a>
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

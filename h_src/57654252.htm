@@ -1,0 +1,58 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaZ_read</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57654252.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57654252.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57654252.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57654252.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57654252.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57654252.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58353292.htm#48" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+<a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/57654252.htm" class="function">luaZ_read</a> (<a href="../h_src/57656088.htm" class="type">ZIO</a> *<a href="../h_src/58351864.htm" class="localvar">z</a>, void *<a href="../h_src/58351728.htm" class="localvar">b</a>, <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58351592.htm" class="localvar">n</a>) {
+  while (<a href="../h_src/58351592.htm" class="localvar">n</a>) {
+    <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58351456.htm" class="localvar">m</a>;
+    if (<a href="../h_src/58351864.htm" class="localvar">z</a>-&gt;<a href="../h_src/57654184.htm" class="variable">n</a> == 0) {  <a  class="comments">/* no bytes in buffer? */</a>
+      if (<a href="../h_src/57653844.htm" class="function">luaZ_fill</a>(<a href="../h_src/58351864.htm" class="localvar">z</a>) == <a href="../h_src/57656360.htm" class="macro">EOZ</a>)  <a  class="comments">/* try to read more */</a>
+        return <a href="../h_src/58351592.htm" class="localvar">n</a>;  <a  class="comments">/* no more input; return number of missing bytes */</a>
+      else {
+        <a href="../h_src/58351864.htm" class="localvar">z</a>-&gt;<a href="../h_src/57654184.htm" class="variable">n</a>++;  <a  class="comments">/* luaZ_fill consumed first byte; put it back */</a>
+        <a href="../h_src/58351864.htm" class="localvar">z</a>-&gt;<a href="../h_src/57654116.htm" class="variable">p</a>--;
+      }
+    }
+    <a href="../h_src/58351456.htm" class="localvar">m</a> = (<a href="../h_src/58351592.htm" class="localvar">n</a> &lt;= <a href="../h_src/58351864.htm" class="localvar">z</a>-&gt;<a href="../h_src/57654184.htm" class="variable">n</a>) ? <a href="../h_src/58351592.htm" class="localvar">n</a> : <a href="../h_src/58351864.htm" class="localvar">z</a>-&gt;<a href="../h_src/57654184.htm" class="variable">n</a>;  <a  class="comments">/* min. between n and z-&gt;n */</a>
+    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/58351728.htm" class="localvar">b</a>, <a href="../h_src/58351864.htm" class="localvar">z</a>-&gt;<a href="../h_src/57654116.htm" class="variable">p</a>, <a href="../h_src/58351456.htm" class="localvar">m</a>);
+    <a href="../h_src/58351864.htm" class="localvar">z</a>-&gt;<a href="../h_src/57654184.htm" class="variable">n</a> -= <a href="../h_src/58351456.htm" class="localvar">m</a>;
+    <a href="../h_src/58351864.htm" class="localvar">z</a>-&gt;<a href="../h_src/57654116.htm" class="variable">p</a> += <a href="../h_src/58351456.htm" class="localvar">m</a>;
+    <a href="../h_src/58351728.htm" class="localvar">b</a> = (char *)<a href="../h_src/58351728.htm" class="localvar">b</a> + <a href="../h_src/58351456.htm" class="localvar">m</a>;
+    <a href="../h_src/58351592.htm" class="localvar">n</a> -= <a href="../h_src/58351456.htm" class="localvar">m</a>;
+  }
+  return 0;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

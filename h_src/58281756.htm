@@ -1,0 +1,90 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>db_getinfo</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58281756.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58281756.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58281756.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58281756.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58281756.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58281756.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58287060.htm#149" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/58281756.htm" class="function">db_getinfo</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58281620.htm" class="localvar">L</a>) {
+  <a href="../h_src/57440308.htm" class="type">lua_Debug</a> <a href="../h_src/58281484.htm" class="localvar">ar</a>;
+  int <a href="../h_src/143276164.htm" class="localvar">arg</a>;
+  <a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143276028.htm" class="localvar">L1</a> = <a href="../h_src/58284340.htm" class="function">getthread</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, &amp;<a href="../h_src/143276164.htm" class="localvar">arg</a>);
+  const char *<a href="../h_src/143275892.htm" class="localvar">options</a> = <a href="../h_src/57416848.htm" class="macro">luaL_optstring</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, <a href="../h_src/143276164.htm" class="localvar">arg</a>+2, &quot;flnSrtu&quot;);
+  <a href="../h_src/58286652.htm" class="function">checkstack</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, <a href="../h_src/143276028.htm" class="localvar">L1</a>, 3);
+  <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, <a href="../h_src/143275892.htm" class="localvar">options</a>[0] != '&gt;', <a href="../h_src/143276164.htm" class="localvar">arg</a> + 2, &quot;invalid option '&gt;'&quot;);
+  if (<a href="../h_src/57428748.htm" class="macro">lua_isfunction</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, <a href="../h_src/143276164.htm" class="localvar">arg</a> + 1)) {  <a  class="comments">/* info about a function? */</a>
+    <a href="../h_src/143275892.htm" class="localvar">options</a> = <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, &quot;&gt;%s&quot;, <a href="../h_src/143275892.htm" class="localvar">options</a>);  <a  class="comments">/* add '&gt;' to 'options' */</a>
+    <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, <a href="../h_src/143276164.htm" class="localvar">arg</a> + 1);  <a  class="comments">/* move function to 'L1' stack */</a>
+    <a href="../h_src/57438948.htm" class="function">lua_xmove</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, <a href="../h_src/143276028.htm" class="localvar">L1</a>, 1);
+  }
+  else {  <a  class="comments">/* stack level */</a>
+    if (!<a href="../h_src/57424668.htm" class="function">lua_getstack</a>(<a href="../h_src/143276028.htm" class="localvar">L1</a>, (int)<a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, <a href="../h_src/143276164.htm" class="localvar">arg</a> + 1), &amp;<a href="../h_src/58281484.htm" class="localvar">ar</a>)) {
+      <a href="../h_src/57415760.htm" class="macro">luaL_pushfail</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>);  <a  class="comments">/* level out of range */</a>
+      return 1;
+    }
+  }
+  if (!<a href="../h_src/57424600.htm" class="function">lua_getinfo</a>(<a href="../h_src/143276028.htm" class="localvar">L1</a>, <a href="../h_src/143275892.htm" class="localvar">options</a>, &amp;<a href="../h_src/58281484.htm" class="localvar">ar</a>))
+    return <a href="../h_src/57420384.htm" class="function">luaL_argerror</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, <a href="../h_src/143276164.htm" class="localvar">arg</a>+2, &quot;invalid option&quot;);
+  <a href="../h_src/57429156.htm" class="macro">lua_newtable</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>);  <a  class="comments">/* table to collect results */</a>
+  if (<a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143275892.htm" class="localvar">options</a>, 'S')) {
+    <a href="../h_src/57435072.htm" class="function">lua_pushlstring</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, <a href="../h_src/58281484.htm" class="localvar">ar</a>.<a href="../h_src/57423512.htm" class="variable">source</a>, <a href="../h_src/58281484.htm" class="localvar">ar</a>.<a href="../h_src/57423444.htm" class="variable">srclen</a>);
+    <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, -2, &quot;source&quot;);
+    <a href="../h_src/58283932.htm" class="function">settabss</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, &quot;short_src&quot;, <a href="../h_src/58281484.htm" class="localvar">ar</a>.<a href="../h_src/57422764.htm" class="variable">short_src</a>);
+    <a href="../h_src/58283388.htm" class="function">settabsi</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, &quot;linedefined&quot;, <a href="../h_src/58281484.htm" class="localvar">ar</a>.<a href="../h_src/57423308.htm" class="variable">linedefined</a>);
+    <a href="../h_src/58283388.htm" class="function">settabsi</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, &quot;lastlinedefined&quot;, <a href="../h_src/58281484.htm" class="localvar">ar</a>.<a href="../h_src/57423240.htm" class="variable">lastlinedefined</a>);
+    <a href="../h_src/58283932.htm" class="function">settabss</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, &quot;what&quot;, <a href="../h_src/58281484.htm" class="localvar">ar</a>.<a href="../h_src/57423580.htm" class="variable">what</a>);
+  }
+  if (<a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143275892.htm" class="localvar">options</a>, 'l'))
+    <a href="../h_src/58283388.htm" class="function">settabsi</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, &quot;currentline&quot;, <a href="../h_src/58281484.htm" class="localvar">ar</a>.<a href="../h_src/57423376.htm" class="variable">currentline</a>);
+  if (<a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143275892.htm" class="localvar">options</a>, 'u')) {
+    <a href="../h_src/58283388.htm" class="function">settabsi</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, &quot;nups&quot;, <a href="../h_src/58281484.htm" class="localvar">ar</a>.<a href="../h_src/57423172.htm" class="variable">nups</a>);
+    <a href="../h_src/58283388.htm" class="function">settabsi</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, &quot;nparams&quot;, <a href="../h_src/58281484.htm" class="localvar">ar</a>.<a href="../h_src/57423104.htm" class="variable">nparams</a>);
+    <a href="../h_src/58282844.htm" class="function">settabsb</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, &quot;isvararg&quot;, <a href="../h_src/58281484.htm" class="localvar">ar</a>.<a href="../h_src/57423036.htm" class="variable">isvararg</a>);
+  }
+  if (<a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143275892.htm" class="localvar">options</a>, 'n')) {
+    <a href="../h_src/58283932.htm" class="function">settabss</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, &quot;name&quot;, <a href="../h_src/58281484.htm" class="localvar">ar</a>.<a href="../h_src/57423716.htm" class="variable">name</a>);
+    <a href="../h_src/58283932.htm" class="function">settabss</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, &quot;namewhat&quot;, <a href="../h_src/58281484.htm" class="localvar">ar</a>.<a href="../h_src/57423648.htm" class="variable">namewhat</a>);
+  }
+  if (<a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143275892.htm" class="localvar">options</a>, 'r')) {
+    <a href="../h_src/58283388.htm" class="function">settabsi</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, &quot;ftransfer&quot;, <a href="../h_src/58281484.htm" class="localvar">ar</a>.<a href="../h_src/57422900.htm" class="variable">ftransfer</a>);
+    <a href="../h_src/58283388.htm" class="function">settabsi</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, &quot;ntransfer&quot;, <a href="../h_src/58281484.htm" class="localvar">ar</a>.<a href="../h_src/57422832.htm" class="variable">ntransfer</a>);
+  }
+  if (<a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143275892.htm" class="localvar">options</a>, 't'))
+    <a href="../h_src/58282844.htm" class="function">settabsb</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, &quot;istailcall&quot;, <a href="../h_src/58281484.htm" class="localvar">ar</a>.<a href="../h_src/57422968.htm" class="variable">istailcall</a>);
+  if (<a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143275892.htm" class="localvar">options</a>, 'L'))
+    <a href="../h_src/58282300.htm" class="function">treatstackoption</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, <a href="../h_src/143276028.htm" class="localvar">L1</a>, &quot;activelines&quot;);
+  if (<a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143275892.htm" class="localvar">options</a>, 'f'))
+    <a href="../h_src/58282300.htm" class="function">treatstackoption</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, <a href="../h_src/143276028.htm" class="localvar">L1</a>, &quot;func&quot;);
+  return 1;  <a  class="comments">/* return table */</a>
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

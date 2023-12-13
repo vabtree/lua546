@@ -1,0 +1,54 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>getF</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58327384.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58327384.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58327384.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58327384.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58327384.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58327384.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58351320.htm#716" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static const char *<a href="../h_src/58327384.htm" class="function">getF</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58327248.htm" class="localvar">L</a>, void *<a href="../h_src/58327112.htm" class="localvar">ud</a>, <a href="../h_aa/57441192.htm" class="type">size_t</a> *<a href="../h_src/58326976.htm" class="localvar">size</a>) {
+  <a href="../h_src/58327452.htm" class="type">LoadF</a> *<a href="../h_src/58326772.htm" class="localvar">lf</a> = (<a href="../h_src/58327452.htm" class="type">LoadF</a> *)<a href="../h_src/58327112.htm" class="localvar">ud</a>;
+  (void)<a href="../h_src/58327248.htm" class="localvar">L</a>;  <a  class="comments">/* not used */</a>
+  if (<a href="../h_src/58326772.htm" class="localvar">lf</a>-&gt;n &gt; 0) {  <a  class="comments">/* are there pre-read characters to be read? */</a>
+    *<a href="../h_src/58326976.htm" class="localvar">size</a> = <a href="../h_src/58326772.htm" class="localvar">lf</a>-&gt;n;  <a  class="comments">/* return them (chars already in buffer) */</a>
+    <a href="../h_src/58326772.htm" class="localvar">lf</a>-&gt;n = 0;  <a  class="comments">/* no more pre-read characters */</a>
+  }
+  else {  <a  class="comments">/* read a block from file */</a>
+    <a  class="comments">/* 'fread' can return &gt; 0 *and* set the EOF flag. If next call to</a>
+<a  class="comments">       'getF' called 'fread', it might still wait for user input.</a>
+<a  class="comments">       The next check avoids this problem. */</a>
+    if (<a href="../h_aa/58326636.htm" class="libfunc">feof</a>(<a href="../h_src/58326772.htm" class="localvar">lf</a>-&gt;f)) return NULL;
+    *<a href="../h_src/58326976.htm" class="localvar">size</a> = <a href="../h_aa/58326568.htm" class="libfunc">fread</a>(<a href="../h_src/58326772.htm" class="localvar">lf</a>-&gt;<a href="../h_src/58327520.htm" class="variable">buff</a>, 1, sizeof(<a href="../h_src/58326772.htm" class="localvar">lf</a>-&gt;<a href="../h_src/58327520.htm" class="variable">buff</a>), <a href="../h_src/58326772.htm" class="localvar">lf</a>-&gt;f);  <a  class="comments">/* read block */</a>
+  }
+  return <a href="../h_src/58326772.htm" class="localvar">lf</a>-&gt;<a href="../h_src/58327520.htm" class="variable">buff</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,132 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lmem.h</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57496896.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/57496896.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/57496896.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/57496896.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_ua/57496896.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_da/57496896.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57496896.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57496896.htm" class="file" target="_self">Source Code</a></li>
+<li><a href="../h_sc/57496896.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<pre class=src>
+<a id=1></a><a  class="comments">/*</a>
+<a id=2></a><a  class="comments">** $Id: lmem.h $</a>
+<a id=3></a><a  class="comments">** Interface to Memory Manager</a>
+<a id=4></a><a  class="comments">** See Copyright Notice in lua.h</a>
+<a id=5></a><a  class="comments">*/</a>
+
+<a id=7></a>#ifndef <a href="../h_src/57496828.htm" class="macro">lmem_h</a>
+<a id=8></a>#define <a href="../h_src/57496692.htm" class="macro">lmem_h</a>
+
+
+#include &lt;stddef.h&gt;
+
+<a id=13></a>#include &quot;<a href="../h_src/57551092.htm" class="file">llimits.h</a>&quot;
+<a id=14></a>#include &quot;<a href="../h_src/57460028.htm" class="file">lua.h</a>&quot;
+
+
+<a id=17></a>#define <a href="../h_src/57496556.htm" class="macro">luaM_error</a>(L)	luaD_throw(L, LUA_ERRMEM)
+
+
+<a id=20></a><a  class="comments">/*</a>
+<a id=21></a><a  class="comments">** This macro tests whether it is safe to multiply 'n' by the size of</a>
+<a id=22></a><a  class="comments">** type 't' without overflows. Because 'e' is always constant, it avoids</a>
+<a id=23></a><a  class="comments">** the runtime division MAX_SIZET/(e).</a>
+<a id=24></a><a  class="comments">** (The macro is somewhat complex to avoid warnings:  The 'sizeof'</a>
+<a id=25></a><a  class="comments">** comparison avoids a runtime comparison when overflow cannot occur.</a>
+<a id=26></a><a  class="comments">** The compiler should be able to optimize the real test by itself, but</a>
+<a id=27></a><a  class="comments">** when it does it, it may give a warning about &quot;comparison is always</a>
+<a id=28></a><a  class="comments">** false due to limited range of data type&quot;; the +1 tricks the compiler,</a>
+<a id=29></a><a  class="comments">** avoiding this warning but also this optimization.)</a>
+<a id=30></a><a  class="comments">*/</a>
+<a id=31></a>#define <a href="../h_src/57496420.htm" class="macro">luaM_testsize</a>(n,e)  \
+	(sizeof(n) &gt;= sizeof(size_t) &amp;&amp; cast_sizet((n)) + 1 &gt; MAX_SIZET/(e))
+
+<a id=34></a>#define <a href="../h_src/57496284.htm" class="macro">luaM_checksize</a>(L,n,e)  \
+	(luaM_testsize(n,e) ? luaM_toobig(L) : cast_void(0))
+
+
+<a id=38></a><a  class="comments">/*</a>
+<a id=39></a><a  class="comments">** Computes the minimum between 'n' and 'MAX_SIZET/sizeof(t)', so that</a>
+<a id=40></a><a  class="comments">** the result is not larger than 'n' and cannot overflow a 'size_t'</a>
+<a id=41></a><a  class="comments">** when multiplied by the size of type 't'. (Assumes that 'n' is an</a>
+<a id=42></a><a  class="comments">** 'int' or 'unsigned int' and that 'int' is not larger than 'size_t'.)</a>
+<a id=43></a><a  class="comments">*/</a>
+<a id=44></a>#define <a href="../h_src/57496148.htm" class="macro">luaM_limitN</a>(n,t)  \
+  ((cast_sizet(n) &lt;= MAX_SIZET/sizeof(t)) ? (n) :  \
+     cast_uint((MAX_SIZET/sizeof(t))))
+
+
+<a id=49></a><a  class="comments">/*</a>
+<a id=50></a><a  class="comments">** Arrays of chars do not need any test</a>
+<a id=51></a><a  class="comments">*/</a>
+<a id=52></a>#define <a href="../h_src/57496012.htm" class="macro">luaM_reallocvchar</a>(L,b,on,n)  \
+  cast_charp(luaM_saferealloc_(L, (b), (on)*sizeof(char), (n)*sizeof(char)))
+
+<a id=55></a>#define <a href="../h_src/57495876.htm" class="macro">luaM_freemem</a>(L, b, s)	luaM_free_(L, (b), (s))
+<a id=56></a>#define <a href="../h_src/57495740.htm" class="macro">luaM_free</a>(L, b)		luaM_free_(L, (b), sizeof(*(b)))
+<a id=57></a>#define <a href="../h_src/57495604.htm" class="macro">luaM_freearray</a>(L, b, n)   luaM_free_(L, (b), (n)*sizeof(*(b)))
+
+<a id=59></a>#define <a href="../h_src/57495468.htm" class="macro">luaM_new</a>(L,t)		cast(t*, luaM_malloc_(L, sizeof(t), 0))
+<a id=60></a>#define <a href="../h_src/57495332.htm" class="macro">luaM_newvector</a>(L,n,t)	cast(t*, luaM_malloc_(L, (n)*sizeof(t), 0))
+<a id=61></a>#define <a href="../h_src/57495196.htm" class="macro">luaM_newvectorchecked</a>(L,n,t) \
+  (luaM_checksize(L,n,sizeof(t)), luaM_newvector(L,n,t))
+
+<a id=64></a>#define <a href="../h_src/57495060.htm" class="macro">luaM_newobject</a>(L,tag,s)	luaM_malloc_(L, (s), tag)
+
+<a id=66></a>#define <a href="../h_src/57494924.htm" class="macro">luaM_growvector</a>(L,v,nelems,size,t,limit,e) \
+	((v)=cast(t *, luaM_growaux_(L,v,nelems,&amp;(size),sizeof(t), \
+                         luaM_limitN(limit,t),e)))
+
+<a id=70></a>#define <a href="../h_src/57657244.htm" class="macro">luaM_reallocvector</a>(L, v,oldn,n,t) \
+   (cast(t *, luaM_realloc_(L, v, cast_sizet(oldn) * sizeof(t), \
+                                  cast_sizet(n) * sizeof(t))))
+
+<a id=74></a>#define <a href="../h_src/57657108.htm" class="macro">luaM_shrinkvector</a>(L,v,size,fs,t) \
+   ((v)=cast(t *, luaM_shrinkvector_(L, v, &amp;(size), fs, sizeof(t))))
+
+<a id=77></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> <a href="../h_src/57545584.htm" class="macro">l_noret</a> <a href="../h_src/57656836.htm" class="function">luaM_toobig</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L);
+
+<a id=79></a><a  class="comments">/* not to be called directly */</a>
+<a id=80></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void *<a href="../h_src/57656768.htm" class="function">luaM_realloc_</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, void *block, <a href="../h_aa/57441192.htm" class="type">size_t</a> oldsize,
+<a id=81></a>                                                          <a href="../h_aa/57441192.htm" class="type">size_t</a> size);
+<a id=82></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void *<a href="../h_src/57656700.htm" class="function">luaM_saferealloc_</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, void *block, <a href="../h_aa/57441192.htm" class="type">size_t</a> oldsize,
+<a id=83></a>                                                              <a href="../h_aa/57441192.htm" class="type">size_t</a> size);
+<a id=84></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void <a href="../h_src/57656632.htm" class="function">luaM_free_</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, void *block, <a href="../h_aa/57441192.htm" class="type">size_t</a> osize);
+<a id=85></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void *<a href="../h_src/57656564.htm" class="function">luaM_growaux_</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, void *block, int nelems,
+                               int *size, int size_elem, int limit,
+                               const char *what);
+<a id=88></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void *<a href="../h_src/57656496.htm" class="function">luaM_shrinkvector_</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, void *block, int *nelem,
+                                    int final_n, int size_elem);
+<a id=90></a><a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> void *<a href="../h_src/57656428.htm" class="function">luaM_malloc_</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_aa/57441192.htm" class="type">size_t</a> size, int tag);
+
+#endif
+
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

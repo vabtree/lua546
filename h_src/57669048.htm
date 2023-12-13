@@ -1,0 +1,113 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaK_posfix</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57669048.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57669048.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57669048.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57669048.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57669048.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57669048.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57706720.htm#1702" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+void <a href="../h_src/57669048.htm" class="function">luaK_posfix</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57672584.htm" class="type">BinOpr</a> <a href="../h_src/57766668.htm" class="localvar">opr</a>,
+                  <a href="../h_src/57679384.htm" class="type">expdesc</a> *<a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57679384.htm" class="type">expdesc</a> *<a href="../h_src/57766396.htm" class="localvar">e2</a>, int <a href="../h_src/57766260.htm" class="localvar">line</a>) {
+  <a href="../h_src/57670476.htm" class="function">luaK_dischargevars</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>);
+  if (<a href="../h_src/57672516.htm" class="macro">foldbinop</a>(<a href="../h_src/57766668.htm" class="localvar">opr</a>) &amp;&amp; <a href="../h_src/57785844.htm" class="function">constfolding</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57766668.htm" class="localvar">opr</a> + <a href="../h_src/57437792.htm" class="macro">LUA_OPADD</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>))
+    return;  <a  class="comments">/* done by folding */</a>
+  switch (<a href="../h_src/57766668.htm" class="localvar">opr</a>) {
+    case <a href="../h_src/57672924.htm" class="variable">OPR_AND</a>: {
+      <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(e1-&gt;t == <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>);  <a  class="comments">/* list closed by 'luaK_infix' */</a>
+      <a href="../h_src/57669320.htm" class="function">luaK_concat</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, &amp;<a href="../h_src/57766396.htm" class="localvar">e2</a>-&gt;<a href="../h_src/57679452.htm" class="variable">f</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>-&gt;<a href="../h_src/57679452.htm" class="variable">f</a>);
+      *<a href="../h_src/57766532.htm" class="localvar">e1</a> = *<a href="../h_src/57766396.htm" class="localvar">e2</a>;
+      break;
+    }
+    case <a href="../h_src/57672856.htm" class="variable">OPR_OR</a>: {
+      <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(e1-&gt;f == <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>);  <a  class="comments">/* list closed by 'luaK_infix' */</a>
+      <a href="../h_src/57669320.htm" class="function">luaK_concat</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, &amp;<a href="../h_src/57766396.htm" class="localvar">e2</a>-&gt;<a href="../h_src/57679520.htm" class="variable">t</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>-&gt;<a href="../h_src/57679520.htm" class="variable">t</a>);
+      *<a href="../h_src/57766532.htm" class="localvar">e1</a> = *<a href="../h_src/57766396.htm" class="localvar">e2</a>;
+      break;
+    }
+    case <a href="../h_src/57673400.htm" class="variable">OPR_CONCAT</a>: {  <a  class="comments">/* e1 .. e2 */</a>
+      <a href="../h_src/57670272.htm" class="function">luaK_exp2nextreg</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>);
+      <a href="../h_src/57767756.htm" class="function">codeconcat</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>, <a href="../h_src/57766260.htm" class="localvar">line</a>);
+      break;
+    }
+    case <a href="../h_src/57674216.htm" class="variable">OPR_ADD</a>: case <a href="../h_src/57674080.htm" class="variable">OPR_MUL</a>: {
+      <a href="../h_src/57773740.htm" class="function">codecommutative</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57766668.htm" class="localvar">opr</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>, <a href="../h_src/57766260.htm" class="localvar">line</a>);
+      break;
+    }
+    case <a href="../h_src/57674148.htm" class="variable">OPR_SUB</a>: {
+      if (<a href="../h_src/57777412.htm" class="function">finishbinexpneg</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>, <a href="../h_src/57689108.htm" class="variable">OP_ADDI</a>, <a href="../h_src/57766260.htm" class="localvar">line</a>, <a href="../h_src/57500432.htm" class="variable">TM_SUB</a>))
+        break; <a  class="comments">/* coded as (r1 + -I) */</a>
+      <a  class="comments">/* ELSE */</a>
+    }  <a  class="comments">/* FALLTHROUGH */</a>
+    case <a href="../h_src/57673876.htm" class="variable">OPR_DIV</a>: case <a href="../h_src/57673808.htm" class="variable">OPR_IDIV</a>: case <a href="../h_src/57674012.htm" class="variable">OPR_MOD</a>: case <a href="../h_src/57673944.htm" class="variable">OPR_POW</a>: {
+      <a href="../h_src/57774692.htm" class="function">codearith</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57766668.htm" class="localvar">opr</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>, 0, <a href="../h_src/57766260.htm" class="localvar">line</a>);
+      break;
+    }
+    case <a href="../h_src/57673740.htm" class="variable">OPR_BAND</a>: case <a href="../h_src/57673672.htm" class="variable">OPR_BOR</a>: case <a href="../h_src/57673604.htm" class="variable">OPR_BXOR</a>: {
+      <a href="../h_src/57772788.htm" class="function">codebitwise</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57766668.htm" class="localvar">opr</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>, <a href="../h_src/57766260.htm" class="localvar">line</a>);
+      break;
+    }
+    case <a href="../h_src/57673536.htm" class="variable">OPR_SHL</a>: {
+      if (<a href="../h_src/57787884.htm" class="function">isSCint</a>(<a href="../h_src/57766532.htm" class="localvar">e1</a>)) {
+        <a href="../h_src/57776188.htm" class="function">swapexps</a>(<a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>);
+        <a href="../h_src/57779996.htm" class="function">codebini</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57688292.htm" class="variable">OP_SHLI</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>, 1, <a href="../h_src/57766260.htm" class="localvar">line</a>, <a href="../h_src/57499820.htm" class="variable">TM_SHL</a>);  <a  class="comments">/* I &lt;&lt; r2 */</a>
+      }
+      else if (<a href="../h_src/57777412.htm" class="function">finishbinexpneg</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>, <a href="../h_src/57688360.htm" class="variable">OP_SHRI</a>, <a href="../h_src/57766260.htm" class="localvar">line</a>, <a href="../h_src/57499820.htm" class="variable">TM_SHL</a>)) {
+        <a  class="comments">/* coded as (r1 &gt;&gt; -I) */</a>;
+      }
+      else  <a  class="comments">/* regular case (two registers) */</a>
+       <a href="../h_src/57781084.htm" class="function">codebinexpval</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57766668.htm" class="localvar">opr</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>, <a href="../h_src/57766260.htm" class="localvar">line</a>);
+      break;
+    }
+    case <a href="../h_src/57673468.htm" class="variable">OPR_SHR</a>: {
+      if (<a href="../h_src/57787884.htm" class="function">isSCint</a>(<a href="../h_src/57766396.htm" class="localvar">e2</a>))
+        <a href="../h_src/57779996.htm" class="function">codebini</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57688360.htm" class="variable">OP_SHRI</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>, 0, <a href="../h_src/57766260.htm" class="localvar">line</a>, <a href="../h_src/57499752.htm" class="variable">TM_SHR</a>);  <a  class="comments">/* r1 &gt;&gt; I */</a>
+      else  <a  class="comments">/* regular case (two registers) */</a>
+        <a href="../h_src/57781084.htm" class="function">codebinexpval</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57766668.htm" class="localvar">opr</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>, <a href="../h_src/57766260.htm" class="localvar">line</a>);
+      break;
+    }
+    case <a href="../h_src/57673332.htm" class="variable">OPR_EQ</a>: case <a href="../h_src/57673128.htm" class="variable">OPR_NE</a>: {
+      <a href="../h_src/57770476.htm" class="function">codeeq</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57766668.htm" class="localvar">opr</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>);
+      break;
+    }
+    case <a href="../h_src/57673060.htm" class="variable">OPR_GT</a>: case <a href="../h_src/57672992.htm" class="variable">OPR_GE</a>: {
+      <a  class="comments">/* '(a &gt; b)' &lt;=&gt; '(b &lt; a)';  '(a &gt;= b)' &lt;=&gt; '(b &lt;= a)' */</a>
+      <a href="../h_src/57776188.htm" class="function">swapexps</a>(<a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>);
+      <a href="../h_src/57766668.htm" class="localvar">opr</a> = <a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57672584.htm" class="type">BinOpr</a>, (<a href="../h_src/57766668.htm" class="localvar">opr</a> - <a href="../h_src/57673060.htm" class="variable">OPR_GT</a>) + <a href="../h_src/57673264.htm" class="variable">OPR_LT</a>);
+    }  <a  class="comments">/* FALLTHROUGH */</a>
+    case <a href="../h_src/57673264.htm" class="variable">OPR_LT</a>: case <a href="../h_src/57673196.htm" class="variable">OPR_LE</a>: {
+      <a href="../h_src/57771836.htm" class="function">codeorder</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57766668.htm" class="localvar">opr</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>);
+      break;
+    }
+    default: <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(0);
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

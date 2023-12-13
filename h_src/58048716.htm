@@ -1,0 +1,52 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>new_localvar</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58048716.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58048716.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58048716.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58048716.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58048716.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58048716.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58057080.htm#193" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/58048716.htm" class="function">new_localvar</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/58048580.htm" class="localvar">ls</a>, <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/58048444.htm" class="localvar">name</a>) {
+  <a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58048308.htm" class="localvar">L</a> = <a href="../h_src/58048580.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>;
+  <a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/58048172.htm" class="localvar">fs</a> = <a href="../h_src/58048580.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>;
+  <a href="../h_src/57676256.htm" class="type">Dyndata</a> *<a href="../h_src/58048036.htm" class="localvar">dyd</a> = <a href="../h_src/58048580.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700328.htm" class="variable">dyd</a>;
+  <a href="../h_src/57677956.htm" class="type">Vardesc</a> *<a href="../h_src/58047900.htm" class="localvar">var</a>;
+  <a href="../h_src/58054020.htm" class="function">checklimit</a>(<a href="../h_src/58048172.htm" class="localvar">fs</a>, <a href="../h_src/58048036.htm" class="localvar">dyd</a>-&gt;<a href="../h_src/57676460.htm" class="variable">actvar</a>.<a href="../h_src/57676664.htm" class="variable">n</a> + 1 - <a href="../h_src/58048172.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675100.htm" class="variable">firstlocal</a>,
+                 <a href="../h_src/58056740.htm" class="macro">MAXVARS</a>, &quot;local variables&quot;);
+  <a href="../h_src/57494924.htm" class="macro">luaM_growvector</a>(<a href="../h_src/58048308.htm" class="localvar">L</a>, <a href="../h_src/58048036.htm" class="localvar">dyd</a>-&gt;<a href="../h_src/57676460.htm" class="variable">actvar</a>.<a href="../h_src/57676732.htm" class="variable">arr</a>, <a href="../h_src/58048036.htm" class="localvar">dyd</a>-&gt;<a href="../h_src/57676460.htm" class="variable">actvar</a>.<a href="../h_src/57676664.htm" class="variable">n</a> + 1,
+                  <a href="../h_src/58048036.htm" class="localvar">dyd</a>-&gt;<a href="../h_src/57676460.htm" class="variable">actvar</a>.<a href="../h_src/57676596.htm" class="variable">size</a>, <a href="../h_src/57677956.htm" class="type">Vardesc</a>, USHRT_MAX, &quot;local variables&quot;);
+  <a href="../h_src/58047900.htm" class="localvar">var</a> = &amp;<a href="../h_src/58048036.htm" class="localvar">dyd</a>-&gt;<a href="../h_src/57676460.htm" class="variable">actvar</a>.<a href="../h_src/57676732.htm" class="variable">arr</a>[<a href="../h_src/58048036.htm" class="localvar">dyd</a>-&gt;<a href="../h_src/57676460.htm" class="variable">actvar</a>.<a href="../h_src/57676664.htm" class="variable">n</a>++];
+  <a href="../h_src/58047900.htm" class="localvar">var</a>-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678432.htm" class="variable">kind</a> = <a href="../h_src/57679316.htm" class="macro">VDKREG</a>;  <a  class="comments">/* default */</a>
+  <a href="../h_src/58047900.htm" class="localvar">var</a>-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678228.htm" class="variable">name</a> = <a href="../h_src/58048444.htm" class="localvar">name</a>;
+  return <a href="../h_src/58048036.htm" class="localvar">dyd</a>-&gt;<a href="../h_src/57676460.htm" class="variable">actvar</a>.<a href="../h_src/57676664.htm" class="variable">n</a> - 1 - <a href="../h_src/58048172.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675100.htm" class="variable">firstlocal</a>;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

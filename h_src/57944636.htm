@@ -1,0 +1,53 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>sweepstep</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57944636.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57944636.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57944636.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57944636.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/57944636.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/57944636.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57829404.htm#1566" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/57944636.htm" class="function">sweepstep</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57944500.htm" class="localvar">L</a>, <a href="../h_src/57643100.htm" class="type">global_State</a> *<a href="../h_src/57944364.htm" class="localvar">g</a>,
+                      int <a href="../h_src/57944228.htm" class="localvar">nextstate</a>, <a href="../h_src/57527972.htm" class="type">GCObject</a> **<a href="../h_src/57944092.htm" class="localvar">nextlist</a>) {
+  if (<a href="../h_src/57944364.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645208.htm" class="variable">sweepgc</a>) {
+    <a href="../h_src/57550548.htm" class="type">l_mem</a> <a href="../h_src/57943956.htm" class="localvar">olddebt</a> = <a href="../h_src/57944364.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646568.htm" class="variable">GCdebt</a>;
+    int <a href="../h_src/57943820.htm" class="localvar">count</a>;
+    <a href="../h_src/57944364.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645208.htm" class="variable">sweepgc</a> = <a href="../h_src/57965716.htm" class="function">sweeplist</a>(<a href="../h_src/57944500.htm" class="localvar">L</a>, <a href="../h_src/57944364.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645208.htm" class="variable">sweepgc</a>, <a href="../h_src/57829064.htm" class="macro">GCSWEEPMAX</a>, &amp;<a href="../h_src/57943820.htm" class="localvar">count</a>);
+    <a href="../h_src/57944364.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646500.htm" class="variable">GCestimate</a> += <a href="../h_src/57944364.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646568.htm" class="variable">GCdebt</a> - <a href="../h_src/57943956.htm" class="localvar">olddebt</a>;  <a  class="comments">/* update estimate */</a>
+    return <a href="../h_src/57943820.htm" class="localvar">count</a>;
+  }
+  else {  <a  class="comments">/* enter next state */</a>
+    <a href="../h_src/57944364.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646024.htm" class="variable">gcstate</a> = <a href="../h_src/57944228.htm" class="localvar">nextstate</a>;
+    <a href="../h_src/57944364.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645208.htm" class="variable">sweepgc</a> = <a href="../h_src/57944092.htm" class="localvar">nextlist</a>;
+    return 0;  <a  class="comments">/* no work done */</a>
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

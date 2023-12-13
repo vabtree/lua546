@@ -1,0 +1,74 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>suffixedexp</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58013628.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58013628.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58013628.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58013628.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58013628.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58013628.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58057080.htm#1102" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/58013628.htm" class="function">suffixedexp</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/58013492.htm" class="localvar">ls</a>, <a href="../h_src/57679384.htm" class="type">expdesc</a> *<a href="../h_src/58013356.htm" class="localvar">v</a>) {
+  <a  class="comments">/* suffixedexp -&gt;</a>
+<a  class="comments">       primaryexp { '.' NAME | '[' exp ']' | ':' NAME funcargs | funcargs } */</a>
+  <a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/58013220.htm" class="localvar">fs</a> = <a href="../h_src/58013492.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>;
+  int <a href="../h_src/58013084.htm" class="localvar">line</a> = <a href="../h_src/58013492.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701552.htm" class="variable">linenumber</a>;
+  <a href="../h_src/58014172.htm" class="function">primaryexp</a>(<a href="../h_src/58013492.htm" class="localvar">ls</a>, <a href="../h_src/58013356.htm" class="localvar">v</a>);
+  for (;;) {
+    switch (<a href="../h_src/58013492.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a>) {
+      case '.': {  <a  class="comments">/* fieldsel */</a>
+        <a href="../h_src/58023352.htm" class="function">fieldsel</a>(<a href="../h_src/58013492.htm" class="localvar">ls</a>, <a href="../h_src/58013356.htm" class="localvar">v</a>);
+        break;
+      }
+      case '[': {  <a  class="comments">/* '[' exp ']' */</a>
+        <a href="../h_src/57679384.htm" class="type">expdesc</a> <a href="../h_src/58012948.htm" class="localvar">key</a>;
+        <a href="../h_src/57670340.htm" class="function">luaK_exp2anyregup</a>(<a href="../h_src/58013220.htm" class="localvar">fs</a>, <a href="../h_src/58013356.htm" class="localvar">v</a>);
+        <a href="../h_src/58022672.htm" class="function">yindex</a>(<a href="../h_src/58013492.htm" class="localvar">ls</a>, &amp;<a href="../h_src/58012948.htm" class="localvar">key</a>);
+        <a href="../h_src/57670000.htm" class="function">luaK_indexed</a>(<a href="../h_src/58013220.htm" class="localvar">fs</a>, <a href="../h_src/58013356.htm" class="localvar">v</a>, &amp;<a href="../h_src/58012948.htm" class="localvar">key</a>);
+        break;
+      }
+      case ':': {  <a  class="comments">/* ':' NAME funcargs */</a>
+        <a href="../h_src/57679384.htm" class="type">expdesc</a> <a href="../h_src/58012812.htm" class="localvar">key</a>;
+        <a href="../h_src/57699784.htm" class="function">luaX_next</a>(<a href="../h_src/58013492.htm" class="localvar">ls</a>);
+        <a href="../h_src/58049940.htm" class="function">codename</a>(<a href="../h_src/58013492.htm" class="localvar">ls</a>, &amp;<a href="../h_src/58012812.htm" class="localvar">key</a>);
+        <a href="../h_src/57670068.htm" class="function">luaK_self</a>(<a href="../h_src/58013220.htm" class="localvar">fs</a>, <a href="../h_src/58013356.htm" class="localvar">v</a>, &amp;<a href="../h_src/58012812.htm" class="localvar">key</a>);
+        <a href="../h_src/58015260.htm" class="function">funcargs</a>(<a href="../h_src/58013492.htm" class="localvar">ls</a>, <a href="../h_src/58013356.htm" class="localvar">v</a>, <a href="../h_src/58013084.htm" class="localvar">line</a>);
+        break;
+      }
+      case '(': case <a href="../h_src/57702844.htm" class="variable">TK_STRING</a>: case '{': {  <a  class="comments">/* funcargs */</a>
+        <a href="../h_src/57670272.htm" class="function">luaK_exp2nextreg</a>(<a href="../h_src/58013220.htm" class="localvar">fs</a>, <a href="../h_src/58013356.htm" class="localvar">v</a>);
+        <a href="../h_src/58015260.htm" class="function">funcargs</a>(<a href="../h_src/58013492.htm" class="localvar">ls</a>, <a href="../h_src/58013356.htm" class="localvar">v</a>, <a href="../h_src/58013084.htm" class="localvar">line</a>);
+        break;
+      }
+      default: return;
+    }
+  }
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

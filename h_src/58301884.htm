@@ -1,0 +1,51 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaB_pairs</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58301884.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58301884.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58301884.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58301884.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/58301884.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/58301884.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58312492.htm#284" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static int <a href="../h_src/58301884.htm" class="function">luaB_pairs</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58301748.htm" class="localvar">L</a>) {
+  <a href="../h_src/57419704.htm" class="function">luaL_checkany</a>(<a href="../h_src/58301748.htm" class="localvar">L</a>, 1);
+  if (<a href="../h_src/57420588.htm" class="function">luaL_getmetafield</a>(<a href="../h_src/58301748.htm" class="localvar">L</a>, 1, &quot;__pairs&quot;) == <a href="../h_src/57444048.htm" class="macro">LUA_TNIL</a>) {  <a  class="comments">/* no metamethod? */</a>
+    <a href="../h_src/57428884.htm" class="macro">lua_pushcfunction</a>(<a href="../h_src/58301748.htm" class="localvar">L</a>, <a href="../h_src/58302700.htm" class="function">luaB_next</a>);  <a  class="comments">/* will return generator, */</a>
+    <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/58301748.htm" class="localvar">L</a>, 1);  <a  class="comments">/* state, */</a>
+    <a href="../h_src/57435276.htm" class="function">lua_pushnil</a>(<a href="../h_src/58301748.htm" class="localvar">L</a>);  <a  class="comments">/* and initial value */</a>
+  }
+  else {
+    <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/58301748.htm" class="localvar">L</a>, 1);  <a  class="comments">/* argument 'self' to metamethod */</a>
+    <a href="../h_src/57433032.htm" class="function">lua_callk</a>(<a href="../h_src/58301748.htm" class="localvar">L</a>, 1, 3, 0, <a href="../h_src/58302428.htm" class="function">pairscont</a>);  <a  class="comments">/* get 3 values from metamethod */</a>
+  }
+  return 3;
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,90 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>auxsort</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143420228.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143420228.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143420228.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143420228.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_src/143420228.htm" class="function" target="_self">Definition</a></li>
+<li><a href="../h_sc/143420228.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143431652.htm#345" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Code</h4>
+<pre class=src>
+static void <a href="../h_src/143420228.htm" class="function">auxsort</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143420092.htm" class="localvar">L</a>, <a href="../h_src/143424376.htm" class="type">IdxT</a> <a href="../h_src/143419956.htm" class="localvar">lo</a>, <a href="../h_src/143424376.htm" class="type">IdxT</a> <a href="../h_src/143419820.htm" class="localvar">up</a>,
+                                   unsigned int <a href="../h_src/143419684.htm" class="localvar">rnd</a>) {
+  while (<a href="../h_src/143419956.htm" class="localvar">lo</a> &lt; <a href="../h_src/143419820.htm" class="localvar">up</a>) {  <a  class="comments">/* loop for tail recursion */</a>
+    <a href="../h_src/143424376.htm" class="type">IdxT</a> <a href="../h_src/143419548.htm" class="localvar">p</a>;  <a  class="comments">/* Pivot index */</a>
+    <a href="../h_src/143424376.htm" class="type">IdxT</a> <a href="../h_src/143419412.htm" class="localvar">n</a>;  <a  class="comments">/* to be used later */</a>
+    <a  class="comments">/* sort elements 'lo', 'p', and 'up' */</a>
+    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419956.htm" class="localvar">lo</a>);
+    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419820.htm" class="localvar">up</a>);
+    if (<a href="../h_src/143422540.htm" class="function">sort_comp</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, -1, -2))  <a  class="comments">/* a[up] &lt; a[lo]? */</a>
+      <a href="../h_src/143423084.htm" class="function">set2</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, <a href="../h_src/143419956.htm" class="localvar">lo</a>, <a href="../h_src/143419820.htm" class="localvar">up</a>);  <a  class="comments">/* swap a[lo] - a[up] */</a>
+    else
+      <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 2);  <a  class="comments">/* remove both values */</a>
+    if (<a href="../h_src/143419820.htm" class="localvar">up</a> - <a href="../h_src/143419956.htm" class="localvar">lo</a> == 1)  <a  class="comments">/* only 2 elements? */</a>
+      return;  <a  class="comments">/* already sorted */</a>
+    if (<a href="../h_src/143419820.htm" class="localvar">up</a> - <a href="../h_src/143419956.htm" class="localvar">lo</a> &lt; <a href="../h_src/143423220.htm" class="macro">RANLIMIT</a> || <a href="../h_src/143419684.htm" class="localvar">rnd</a> == 0)  <a  class="comments">/* small interval or no randomize? */</a>
+      <a href="../h_src/143419548.htm" class="localvar">p</a> = (<a href="../h_src/143419956.htm" class="localvar">lo</a> + <a href="../h_src/143419820.htm" class="localvar">up</a>)/2;  <a  class="comments">/* middle element is a good pivot */</a>
+    else  <a  class="comments">/* for larger intervals, it is worth a random pivot */</a>
+      <a href="../h_src/143419548.htm" class="localvar">p</a> = <a href="../h_src/143421044.htm" class="function">choosePivot</a>(<a href="../h_src/143419956.htm" class="localvar">lo</a>, <a href="../h_src/143419820.htm" class="localvar">up</a>, <a href="../h_src/143419684.htm" class="localvar">rnd</a>);
+    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419548.htm" class="localvar">p</a>);
+    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419956.htm" class="localvar">lo</a>);
+    if (<a href="../h_src/143422540.htm" class="function">sort_comp</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, -2, -1))  <a  class="comments">/* a[p] &lt; a[lo]? */</a>
+      <a href="../h_src/143423084.htm" class="function">set2</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, <a href="../h_src/143419548.htm" class="localvar">p</a>, <a href="../h_src/143419956.htm" class="localvar">lo</a>);  <a  class="comments">/* swap a[p] - a[lo] */</a>
+    else {
+      <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove a[lo] */</a>
+      <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419820.htm" class="localvar">up</a>);
+      if (<a href="../h_src/143422540.htm" class="function">sort_comp</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, -1, -2))  <a  class="comments">/* a[up] &lt; a[p]? */</a>
+        <a href="../h_src/143423084.htm" class="function">set2</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, <a href="../h_src/143419548.htm" class="localvar">p</a>, <a href="../h_src/143419820.htm" class="localvar">up</a>);  <a  class="comments">/* swap a[up] - a[p] */</a>
+      else
+        <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 2);
+    }
+    if (<a href="../h_src/143419820.htm" class="localvar">up</a> - <a href="../h_src/143419956.htm" class="localvar">lo</a> == 2)  <a  class="comments">/* only 3 elements? */</a>
+      return;  <a  class="comments">/* already sorted */</a>
+    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419548.htm" class="localvar">p</a>);  <a  class="comments">/* get middle element (Pivot) */</a>
+    <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, -1);  <a  class="comments">/* push Pivot */</a>
+    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419820.htm" class="localvar">up</a> - 1);  <a  class="comments">/* push a[up - 1] */</a>
+    <a href="../h_src/143423084.htm" class="function">set2</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, <a href="../h_src/143419548.htm" class="localvar">p</a>, <a href="../h_src/143419820.htm" class="localvar">up</a> - 1);  <a  class="comments">/* swap Pivot (a[p]) with a[up - 1] */</a>
+    <a href="../h_src/143419548.htm" class="localvar">p</a> = <a href="../h_src/143421860.htm" class="function">partition</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, <a href="../h_src/143419956.htm" class="localvar">lo</a>, <a href="../h_src/143419820.htm" class="localvar">up</a>);
+    <a  class="comments">/* a[lo .. p - 1] &lt;= a[p] == P &lt;= a[p + 1 .. up] */</a>
+    if (<a href="../h_src/143419548.htm" class="localvar">p</a> - <a href="../h_src/143419956.htm" class="localvar">lo</a> &lt; <a href="../h_src/143419820.htm" class="localvar">up</a> - <a href="../h_src/143419548.htm" class="localvar">p</a>) {  <a  class="comments">/* lower interval is smaller? */</a>
+      <a href="../h_src/143420228.htm" class="function">auxsort</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, <a href="../h_src/143419956.htm" class="localvar">lo</a>, <a href="../h_src/143419548.htm" class="localvar">p</a> - 1, <a href="../h_src/143419684.htm" class="localvar">rnd</a>);  <a  class="comments">/* call recursively for lower interval */</a>
+      <a href="../h_src/143419412.htm" class="localvar">n</a> = <a href="../h_src/143419548.htm" class="localvar">p</a> - <a href="../h_src/143419956.htm" class="localvar">lo</a>;  <a  class="comments">/* size of smaller interval */</a>
+      <a href="../h_src/143419956.htm" class="localvar">lo</a> = <a href="../h_src/143419548.htm" class="localvar">p</a> + 1;  <a  class="comments">/* tail call for [p + 1 .. up] (upper interval) */</a>
+    }
+    else {
+      <a href="../h_src/143420228.htm" class="function">auxsort</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, <a href="../h_src/143419548.htm" class="localvar">p</a> + 1, <a href="../h_src/143419820.htm" class="localvar">up</a>, <a href="../h_src/143419684.htm" class="localvar">rnd</a>);  <a  class="comments">/* call recursively for upper interval */</a>
+      <a href="../h_src/143419412.htm" class="localvar">n</a> = <a href="../h_src/143419820.htm" class="localvar">up</a> - <a href="../h_src/143419548.htm" class="localvar">p</a>;  <a  class="comments">/* size of smaller interval */</a>
+      <a href="../h_src/143419820.htm" class="localvar">up</a> = <a href="../h_src/143419548.htm" class="localvar">p</a> - 1;  <a  class="comments">/* tail call for [lo .. p - 1]  (lower interval) */</a>
+    }
+    if ((<a href="../h_src/143419820.htm" class="localvar">up</a> - <a href="../h_src/143419956.htm" class="localvar">lo</a>) / 128 &gt; <a href="../h_src/143419412.htm" class="localvar">n</a>) <a  class="comments">/* partition too imbalanced? */</a>
+      <a href="../h_src/143419684.htm" class="localvar">rnd</a> = <a href="../h_src/143424036.htm" class="function">l_randomizePivot</a>();  <a  class="comments">/* try a new randomization */</a>
+  }  <a  class="comments">/* tail call auxsort(L, lo, up, rnd) */</a>
+}
+</pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+
