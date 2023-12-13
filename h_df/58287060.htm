@@ -1,0 +1,135 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>ldblib.c</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58287060.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/58287060.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/58287060.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/58287060.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_uf/58287060.htm" class="file" target="_self">Use of Elements</a></li>
+<li id="current"><a href="../h_df/58287060.htm" class="file" target="_self">Dependencies</a></li>
+<li><a href="../h_src/58287060.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_da/58287060.htm" class="file" target="_self">File Calls</a></li>
+<li id="current"><a href="../h_df/58287060.htm" class="file" target="_self">External Functions</a></li>
+<li><a href="../h_dv/58287060.htm" class="file" target="_self">External Variables</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>External Functions Called  <a class="legend">(see key)</a></h4>
+<map name=map58287060_9>
+<area shape=rect coords="187,536,196,545" href=../h_rx/143272900.htm>
+<area shape=rect coords="187,608,196,617" href=../h_rx/57574008.htm>
+<area shape=rect coords="187,680,196,689" href=../h_rx/143270996.htm>
+<area shape=rect coords="187,752,196,761" href=../h_rx/143269908.htm>
+<area shape=rect coords="187,824,196,833" href=../h_rx/58286108.htm>
+<area shape=rect coords="187,896,196,905" href=../h_rx/58281756.htm>
+<area shape=rect coords="187,968,196,977" href=../h_rx/143272356.htm>
+<area shape=rect coords="187,1040,196,1049" href=../h_rx/143266372.htm>
+<area shape=rect coords="187,1112,196,1121" href=../h_rx/143275756.htm>
+<area shape=rect coords="187,1184,196,1193" href=../h_rx/143274668.htm>
+<area shape=rect coords="187,1256,196,1265" href=../h_rx/58284340.htm>
+<area shape=rect coords="187,1328,196,1337" href=../h_rx/58285564.htm>
+<area shape=rect coords="187,1400,196,1409" href=../h_rx/143268820.htm>
+<area shape=rect coords="187,1472,196,1481" href=../h_rx/58282300.htm>
+<area shape=rect coords="187,1544,196,1553" href=../h_rx/58283932.htm>
+<area shape=rect coords="187,1616,196,1625" href=../h_rx/143273580.htm>
+<area shape=rect coords="187,1688,196,1697" href=../h_rx/58282844.htm>
+<area shape=rect coords="187,1760,196,1769" href=../h_rx/58285156.htm>
+<area shape=rect coords="187,1832,196,1841" href=../h_rx/58284748.htm>
+<area shape=rect coords="187,1904,196,1913" href=../h_rx/143272628.htm>
+<area shape=rect coords="187,1976,196,1985" href=../h_rx/58283388.htm>
+<area shape=rect coords="187,2048,196,2057" href=../h_rx/58285836.htm>
+<area shape=rect coords="187,2120,196,2129" href=../h_rx/143267732.htm>
+<area shape=rect coords="187,2192,196,2201" href=../h_rx/143265556.htm>
+<area shape=rect coords="187,2264,196,2273" href=../h_rx/143270452.htm>
+<area shape=rect coords="187,2336,196,2345" href=../h_rx/143266780.htm>
+<area shape=rect coords="187,2408,196,2417" href=../h_rx/143271404.htm>
+<area shape=rect coords="187,2480,196,2489" href=../h_rx/58286652.htm>
+<area shape=rect coords="187,2552,196,2561" href=../h_rx/143269364.htm>
+<area shape=rect coords="475,56,484,65" href=../h_rx/57420792.htm>
+<area shape=rect coords="475,104,484,113" href=../h_rx/57417868.htm>
+<area shape=rect coords="475,152,484,161" href=../h_rx/57424192.htm>
+<area shape=rect coords="475,200,484,209" href=../h_rx/57433916.htm>
+<area shape=rect coords="475,248,484,257" href=../h_rx/57438744.htm>
+<area shape=rect coords="475,296,484,305" href=../h_rx/57565916.htm>
+<area shape=rect coords="475,344,484,353" href=../h_rx/57420180.htm>
+<area shape=rect coords="475,392,484,401" href=../h_rx/57435072.htm>
+<area shape=rect coords="475,440,484,449" href=../h_rx/57424600.htm>
+<area shape=rect coords="475,488,484,497" href=../h_rx/57434732.htm>
+<area shape=rect coords="475,536,484,545" href=../h_rx/57424260.htm>
+<area shape=rect coords="475,584,484,593" href=../h_rx/57420384.htm>
+<area shape=rect coords="475,632,484,641" href=../h_rx/57438200.htm>
+<area shape=rect coords="475,680,484,689" href=../h_rx/57439220.htm>
+<area shape=rect coords="475,728,484,737" href=../h_rx/57417664.htm>
+<area shape=rect coords="475,776,484,785" href=../h_rx/57424668.htm>
+<area shape=rect coords="475,824,484,833" href=../h_rx/57594072.htm>
+<area shape=rect coords="475,872,484,881" href=../h_rx/57424532.htm>
+<area shape=rect coords="475,920,484,929" href=../h_rx/57419976.htm>
+<area shape=rect coords="475,968,484,977" href=../h_rx/57424464.htm>
+<area shape=rect coords="475,1016,484,1025" href=../h_rx/57438540.htm>
+<area shape=rect coords="475,1064,484,1073" href=../h_rx/57438948.htm>
+<area shape=rect coords="475,1112,484,1121" href=../h_rx/57437928.htm>
+<area shape=rect coords="475,1160,484,1169" href=../h_rx/57420316.htm>
+<area shape=rect coords="475,1208,484,1217" href=../h_rx/57433168.htm>
+<area shape=rect coords="475,1256,484,1265" href=../h_rx/57420248.htm>
+<area shape=rect coords="475,1304,484,1313" href=../h_rx/57424124.htm>
+<area shape=rect coords="475,1352,484,1361" href=../h_rx/57433372.htm>
+<area shape=rect coords="475,1400,484,1409" href=../h_rx/57417732.htm>
+<area shape=rect coords="475,1448,484,1457" href=../h_rx/57419772.htm>
+<area shape=rect coords="475,1496,484,1505" href=../h_rx/57433508.htm>
+<area shape=rect coords="475,1544,484,1553" href=../h_rx/57419908.htm>
+<area shape=rect coords="475,1592,484,1601" href=../h_rx/57439152.htm>
+<area shape=rect coords="475,1640,484,1649" href=../h_rx/57435004.htm>
+<area shape=rect coords="475,1688,484,1697" href=../h_rx/57439288.htm>
+<area shape=rect coords="475,1736,484,1745" href=../h_rx/57424396.htm>
+<area shape=rect coords="475,1784,484,1793" href=../h_rx/57424328.htm>
+<area shape=rect coords="475,1832,484,1841" href=../h_rx/57434596.htm>
+<area shape=rect coords="475,1880,484,1889" href=../h_rx/57433712.htm>
+<area shape=rect coords="475,1928,484,1937" href=../h_rx/57433100.htm>
+<area shape=rect coords="475,1976,484,1985" href=../h_rx/57419704.htm>
+<area shape=rect coords="475,2024,484,2033" href=../h_rx/57435276.htm>
+<area shape=rect coords="475,2072,484,2081" href=../h_rx/57433780.htm>
+<area shape=rect coords="475,2120,484,2129" href=../h_rx/57423920.htm>
+<area shape=rect coords="475,2168,484,2177" href=../h_rx/57424056.htm>
+<area shape=rect coords="475,2216,484,2225" href=../h_rx/57423988.htm>
+<area shape=rect coords="475,2264,484,2273" href=../h_rx/57434460.htm>
+<area shape=rect coords="475,2312,484,2321" href=../h_rx/57435140.htm>
+<area shape=rect coords="475,2360,484,2369" href=../h_rx/57423852.htm>
+<area shape=rect coords="475,2408,484,2417" href=../h_rx/57434256.htm>
+<area shape=rect coords="475,2456,484,2465" href=../h_rx/57434120.htm>
+<area shape=rect coords="475,2504,484,2513" href=../h_rx/57433032.htm>
+<area shape=rect coords="475,2552,484,2561" href=../h_rx/57571356.htm>
+<area shape=rect coords="475,2600,484,2609" href=../h_rx/57571424.htm>
+<area shape=rect coords="475,2648,484,2657" href=../h_rx/57420452.htm>
+<area shape=rect coords="475,2696,484,2705" href=../h_rx/57432828.htm>
+<area shape=rect coords="475,2744,484,2753" href=../h_rx/57418344.htm>
+<area shape=rect coords="475,2792,484,2801" href=../h_rx/57568976.htm>
+<area shape=rect coords="475,2840,484,2849" href=../h_rx/57564488.htm>
+<area shape=rect coords="475,2888,484,2897" href=../h_rx/57556940.htm>
+<area shape=rect coords="475,2936,484,2945" href=../h_rx/57434528.htm>
+<area shape=rect coords="475,2984,484,2993" href=../h_rx/57439016.htm>
+<area shape=rect coords="475,3032,484,3041" href=../h_rx/57419296.htm>
+</map>
+<img align=center width=720 height=3069 border=1 src="../g_df/58287060df.png" usemap=#map58287060_9>
+<h4><a class="legend">Graph shows (on left) members of file ldblib.c calling (on right) functions outside of the file</a></h4>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,606 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lstrlib.c</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143344164.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/143344164.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/143344164.htm" class="file" target="_self">File Inclusion</a></li>
+<li id="current"><a href="../h_nm/143344164.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_uf/143344164.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_df/143344164.htm" class="file" target="_self">Dependencies</a></li>
+<li><a href="../h_src/143344164.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_nm/143344164.htm" class="file" target="_self">File Elements</a></li>
+<li><a href="../h_nf/143344164.htm" class="file" target="_self">Internal Function Hierarchy</a></li>
+<li><a href="../h_nv/143344164.htm" class="file" target="_self">Functions and Variables</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Member Symbols</h4>
+<pre><a class="descr">Symbol                           Scope                     Location</a>
+
+</pre>
+<h5>Classes</h5>
+<pre><a href="../h_aa/143327776.htm" class=class>capture</a>                                                    line  365
+<a href="../h_aa/143284324.htm" class=class>cD</a>                                                         line 1490
+<a href="../h_aa/143308940.htm" class=class>GMatchState</a>                                                line  830
+<a href="../h_aa/143288200.htm" class=class>Header</a>                                                     line 1418
+<a href="../h_aa/143328320.htm" class=class>MatchState</a>                                                 line  358
+<a href="../h_aa/143288540.htm" class=class>nativeendian</a>                                               line 1409
+<a href="../h_aa/143334236.htm" class=class>str_Writer</a>                                                 line  216
+<a href="../h_aa/143284120.htm" class=class>u</a>                                                          line 1490
+
+</pre>
+<h5>Functions</h5>
+<pre><a href="../h_aa/143306628.htm" class=function>add_s</a>                            static                    line  871
+<a href="../h_aa/143305132.htm" class=function>add_value</a>                        static                    line  906
+<a href="../h_aa/143301596.htm" class=function>adddigit</a>                         static                    line 1016
+<a href="../h_aa/143292620.htm" class=function>addlenmod</a>                        static                    line 1263
+<a href="../h_aa/143295748.htm" class=function>addliteral</a>                       static                    line 1175
+<a href="../h_aa/143297516.htm" class=function>addquoted</a>                        static                    line 1122
+<a href="../h_aa/143331380.htm" class=function>arith</a>                            static                    line  288
+<a href="../h_aa/143330836.htm" class=function>arith_add</a>                        static                    line  297
+<a href="../h_aa/143329476.htm" class=function>arith_div</a>                        static                    line  317
+<a href="../h_aa/143329204.htm" class=function>arith_idiv</a>                       static                    line  321
+<a href="../h_aa/143330020.htm" class=function>arith_mod</a>                        static                    line  309
+<a href="../h_aa/143330292.htm" class=function>arith_mul</a>                        static                    line  305
+<a href="../h_aa/143329748.htm" class=function>arith_pow</a>                        static                    line  313
+<a href="../h_aa/143330564.htm" class=function>arith_sub</a>                        static                    line  301
+<a href="../h_aa/143328932.htm" class=function>arith_unm</a>                        static                    line  325
+<a href="../h_aa/143326076.htm" class=function>capture_to_close</a>                 static                    line  395
+<a href="../h_aa/143326484.htm" class=function>check_capture</a>                    static                    line  386
+<a href="../h_aa/143294116.htm" class=function>checkformat</a>                      static                    line 1225
+<a href="../h_aa/143325668.htm" class=function>classend</a>                         static                    line  403
+<a href="../h_aa/143281128.htm" class=function>copywithendian</a>                   static                    line 1589
+<a href="../h_aa/143432060.htm" class=function>createmetatable</a>                  static                    line 1852
+<a href="../h_aa/143286840.htm" class=function>digit</a>                            static                    line 1447
+<a href="../h_aa/143319072.htm" class=function>end_capture</a>                      static                    line  548
+<a href="../h_aa/143294388.htm" class=function>get2digits</a>                       static                    line 1210
+<a href="../h_aa/143315740.htm" class=function>get_onecapture</a>                   static                    line  702
+<a href="../h_aa/143283304.htm" class=function>getdetails</a>                       static                    line 1541
+<a href="../h_aa/143342328.htm" class=function>getendpos</a>                        static                    line   87
+<a href="../h_aa/143293300.htm" class=function>getformat</a>                        static                    line 1245
+<a href="../h_aa/143286568.htm" class=function>getnum</a>                           static                    line 1449
+<a href="../h_aa/143286024.htm" class=function>getnumlimit</a>                      static                    line 1466
+<a href="../h_aa/143284868.htm" class=function>getoption</a>                        static                    line 1488
+<a href="../h_aa/143307716.htm" class=function>gmatch</a>                           static                    line  854
+<a href="../h_aa/143308464.htm" class=function>gmatch_aux</a>                       static                    line  838
+<a href="../h_aa/143285276.htm" class=function>initheader</a>                       static                    line 1478
+<a href="../h_aa/143316624.htm" class=function>lmemfind</a>                         static                    line  673
+<a href="../h_aa/143299828.htm" class=function>lua_number2strx</a>                  static                    line 1056
+<a href="../h_aa/57574620.htm" class=function>luaopen_string</a>                   global                    line 1869
+<a href="../h_aa/143327232.htm" class=function>match</a>                            static                    line  570
+<a href="../h_aa/143318256.htm" class=function>match_capture</a>                    static                    line  559
+<a href="../h_aa/143325260.htm" class=function>match_class</a>                      static                    line  427
+<a href="../h_aa/143322744.htm" class=function>matchbalance</a>                     static                    line  486
+<a href="../h_aa/143324240.htm" class=function>matchbracketclass</a>                static                    line  447
+<a href="../h_aa/143321792.htm" class=function>max_expand</a>                       static                    line  506
+<a href="../h_aa/143320840.htm" class=function>min_expand</a>                       static                    line  521
+<a href="../h_aa/143313020.htm" class=function>nospecials</a>                       static                    line  746
+<a href="../h_aa/143300780.htm" class=function>num2straux</a>                       static                    line 1024
+<a href="../h_aa/143282216.htm" class=function>packint</a>                          static                    line 1568
+<a href="../h_aa/143342736.htm" class=function>posrelatI</a>                        static                    line   71
+<a href="../h_aa/143312476.htm" class=function>prepstate</a>                        static                    line  757
+<a href="../h_aa/143313836.htm" class=function>push_captures</a>                    static                    line  735
+<a href="../h_aa/143314788.htm" class=function>push_onecapture</a>                  static                    line  725
+<a href="../h_aa/143296836.htm" class=function>quotefloat</a>                       static                    line 1151
+<a href="../h_aa/143311524.htm" class=function>reprepstate</a>                      static                    line  767
+<a href="../h_aa/143323560.htm" class=function>singlematch</a>                      static                    line  470
+<a href="../h_aa/143320024.htm" class=function>start_capture</a>                    static                    line  534
+<a href="../h_aa/143336412.htm" class=function>str_byte</a>                         static                    line  177
+<a href="../h_aa/143335188.htm" class=function>str_char</a>                         static                    line  195
+<a href="../h_aa/143333012.htm" class=function>str_dump</a>                         static                    line  233
+<a href="../h_aa/143309484.htm" class=function>str_find</a>                         static                    line  819
+<a href="../h_aa/143311252.htm" class=function>str_find_aux</a>                     static                    line  773
+<a href="../h_aa/143291804.htm" class=function>str_format</a>                       static                    line 1273
+<a href="../h_aa/143304044.htm" class=function>str_gsub</a>                         static                    line  942
+<a href="../h_aa/143343144.htm" class=function>str_len</a>                          static                    line   55
+<a href="../h_aa/143339744.htm" class=function>str_lower</a>                        static                    line  124
+<a href="../h_aa/143309212.htm" class=function>str_match</a>                        static                    line  824
+<a href="../h_aa/143280448.htm" class=function>str_pack</a>                         static                    line 1601
+<a href="../h_aa/143437024.htm" class=function>str_packsize</a>                     static                    line 1700
+<a href="../h_aa/143337772.htm" class=function>str_rep</a>                          static                    line  150
+<a href="../h_aa/143340696.htm" class=function>str_reverse</a>                      static                    line  112
+<a href="../h_aa/143341512.htm" class=function>str_sub</a>                          static                    line  100
+<a href="../h_aa/143434440.htm" class=function>str_unpack</a>                       static                    line 1754
+<a href="../h_aa/143338724.htm" class=function>str_upper</a>                        static                    line  137
+<a href="../h_aa/143332468.htm" class=function>tonum</a>                            static                    line  264
+<a href="../h_aa/143331788.htm" class=function>trymt</a>                            static                    line  277
+<a href="../h_aa/143435936.htm" class=function>unpackint</a>                        static                    line 1728
+<a href="../h_aa/143333964.htm" class=function>writer</a>                           static                    line  222
+
+</pre>
+<h5>Macros</h5>
+<pre><a href="../h_aa/143328456.htm" class=macro>CAP_POSITION</a>                                               line  355
+<a href="../h_aa/143328592.htm" class=macro>CAP_UNFINISHED</a>                                             line  354
+<a href="../h_aa/143326756.htm" class=macro>L_ESC</a>                                                      line  382
+<a href="../h_aa/143297788.htm" class=macro>L_FMTFLAGSC</a>                                                line 1108
+<a href="../h_aa/143298332.htm" class=macro>L_FMTFLAGSF</a>                                                line 1096
+<a href="../h_aa/143298060.htm" class=macro>L_FMTFLAGSI</a>                                                line 1102
+<a href="../h_aa/143297924.htm" class=macro>L_FMTFLAGSU</a>                                                line 1105
+<a href="../h_aa/143298196.htm" class=macro>L_FMTFLAGSX</a>                                                line 1099
+<a href="../h_aa/143301732.htm" class=macro>L_NBFD</a>                                                     line 1010
+<a href="../h_aa/143344096.htm" class=macro>lstrlib_c</a>                                                  line    7
+<a href="../h_aa/143343960.htm" class=macro>LUA_LIB</a>                                                    line    8
+<a href="../h_aa/143343688.htm" class=macro>LUA_MAXCAPTURES</a>                                            line   35
+<a href="../h_aa/143289220.htm" class=macro>LUAL_PACKPADBYTE</a>                                           line 1392
+<a href="../h_aa/143297652.htm" class=macro>MAX_FORMAT</a>                                                 line 1119
+<a href="../h_aa/143298604.htm" class=macro>MAX_ITEM</a>                                                   line 1089
+<a href="../h_aa/143298740.htm" class=macro>MAX_ITEMF</a>                                                  line 1078
+<a href="../h_aa/143343416.htm" class=macro>MAX_SIZET</a>                                                  line   47
+<a href="../h_aa/143326892.htm" class=macro>MAXCCALLS</a>                                                  line  378
+<a href="../h_aa/143289084.htm" class=macro>MAXINTSIZE</a>                                                 line 1396
+<a href="../h_aa/143343280.htm" class=macro>MAXSIZE</a>                                                    line   49
+<a href="../h_aa/143288812.htm" class=macro>MC</a>                                                         line 1402
+<a href="../h_aa/143288948.htm" class=macro>NB</a>                                                         line 1399
+<a href="../h_aa/143301868.htm" class=macro>SIZELENMOD</a>                                                 line 1001
+<a href="../h_aa/143326620.htm" class=macro>SPECIALS</a>                                                   line  383
+<a href="../h_aa/143288676.htm" class=macro>SZINT</a>                                                      line 1405
+<a href="../h_aa/143343552.htm" class=macro>uchar</a>                                                      line   40
+
+</pre>
+<h5>Variables</h5>
+<pre><a href="../h_aa/143286160.htm" class=variable>a</a>                                local                     line 1453
+<a href="../h_aa/143282352.htm" class=variable>align</a>                            local                     line 1544
+<a href="../h_aa/143302820.htm" class=variable>anchor</a>                           local                     line  949
+<a href="../h_aa/143309756.htm" class=variable>anchor</a>                           local                     line  795
+<a href="../h_aa/143279768.htm" class=variable>arg</a>                              local                     line 1605
+<a href="../h_aa/143291396.htm" class=variable>arg</a>                              local                     line 1275
+<a href="../h_aa/143295340.htm" class=variable>arg</a>                              parameter                 line 1175
+<a href="../h_aa/143332196.htm" class=variable>arg</a>                              parameter                 line  264
+<a href="../h_aa/143342056.htm" class=variable>arg</a>                              parameter                 line   87
+<a href="../h_aa/143280176.htm" class=variable>b</a>                                local                     line 1602
+<a href="../h_aa/143282080.htm" class=variable>b</a>                                parameter                 line 1568
+<a href="../h_aa/143290716.htm" class=variable>b</a>                                local                     line 1280
+<a href="../h_aa/143295476.htm" class=variable>b</a>                                parameter                 line 1175
+<a href="../h_aa/143297380.htm" class=variable>b</a>                                parameter                 line 1122
+<a href="../h_aa/143302276.htm" class=variable>b</a>                                local                     line  953
+<a href="../h_aa/143304860.htm" class=variable>b</a>                                parameter                 line  906
+<a href="../h_aa/143306356.htm" class=variable>b</a>                                parameter                 line  871
+<a href="../h_aa/143322200.htm" class=variable>b</a>                                local                     line  492
+<a href="../h_aa/143333692.htm" class=variable>b</a>                                parameter                 line  222
+<a href="../h_aa/143334032.htm" class=variable>B</a>                                str_Writer (public)       line  218
+<a href="../h_aa/143334644.htm" class=variable>b</a>                                local                     line  198
+<a href="../h_aa/143336684.htm" class=variable>b</a>                                local                     line  161
+<a href="../h_aa/143338180.htm" class=variable>b</a>                                local                     line  140
+<a href="../h_aa/143339200.htm" class=variable>b</a>                                local                     line  127
+<a href="../h_aa/143340152.htm" class=variable>b</a>                                local                     line  114
+<a href="../h_aa/143281400.htm" class=variable>buff</a>                             local                     line 1570
+<a href="../h_aa/143290308.htm" class=variable>buff</a>                             local                     line 1290
+<a href="../h_aa/143294932.htm" class=variable>buff</a>                             local                     line 1184
+<a href="../h_aa/143296564.htm" class=variable>buff</a>                             parameter                 line 1151
+<a href="../h_aa/143296972.htm" class=variable>buff</a>                             local                     line 1130
+<a href="../h_aa/143299556.htm" class=variable>buff</a>                             parameter                 line 1056
+<a href="../h_aa/143300644.htm" class=variable>buff</a>                             parameter                 line 1024
+<a href="../h_aa/143301460.htm" class=variable>buff</a>                             parameter                 line 1016
+<a href="../h_aa/143437976.htm" class=variable>buff</a>                             local                     line 1653
+<a href="../h_aa/143438248.htm" class=variable>buff</a>                             local                     line 1645
+<a href="../h_aa/143438520.htm" class=variable>buff</a>                             local                     line 1637
+<a href="../h_aa/143284188.htm" class=variable>c</a>                                cD (public)               line 1490
+<a href="../h_aa/143286704.htm" class=variable>c</a>                                parameter                 line 1447
+<a href="../h_aa/143322880.htm" class=variable>c</a>                                local                     line  475
+<a href="../h_aa/143324104.htm" class=variable>c</a>                                parameter                 line  447
+<a href="../h_aa/143325124.htm" class=variable>c</a>                                parameter                 line  427
+<a href="../h_aa/143334372.htm" class=variable>c</a>                                local                     line  201
+<a href="../h_aa/143305404.htm" class=variable>cap</a>                              local                     line  885
+<a href="../h_aa/143314108.htm" class=variable>cap</a>                              local                     line  727
+<a href="../h_aa/143315060.htm" class=variable>cap</a>                              parameter                 line  703
+<a href="../h_aa/143314924.htm" class=variable>capl</a>                             local                     line  711
+<a href="../h_aa/143327368.htm" class=variable>capture</a>                          MatchState (public)       line  368
+<a href="../h_aa/143302548.htm" class=variable>changed</a>                          local                     line  951
+<a href="../h_aa/143324988.htm" class=variable>cl</a>                               parameter                 line  427
+<a href="../h_aa/143321928.htm" class=variable>cont</a>                             local                     line  494
+<a href="../h_aa/143300916.htm" class=variable>d</a>                                local                     line 1018
+<a href="../h_aa/143433760.htm" class=variable>data</a>                             local                     line 1758
+<a href="../h_aa/143301052.htm" class=variable>dd</a>                               local                     line 1017
+<a href="../h_aa/143341920.htm" class=variable>def</a>                              parameter                 line   87
+<a href="../h_aa/143280992.htm" class=variable>dest</a>                             parameter                 line 1589
+<a href="../h_aa/143285548.htm" class=variable>df</a>                               parameter                 line 1466
+<a href="../h_aa/143286296.htm" class=variable>df</a>                               parameter                 line 1449
+<a href="../h_aa/143288472.htm" class=variable>dummy</a>                            nativeendian (public)     line 1410
+<a href="../h_aa/143300236.htm" class=variable>e</a>                                local                     line 1033
+<a href="../h_aa/143302140.htm" class=variable>e</a>                                local                     line  963
+<a href="../h_aa/143304588.htm" class=variable>e</a>                                parameter                 line  907
+<a href="../h_aa/143306084.htm" class=variable>e</a>                                parameter                 line  872
+<a href="../h_aa/143307852.htm" class=variable>e</a>                                local                     line  843
+<a href="../h_aa/143313428.htm" class=variable>e</a>                                parameter                 line  735
+<a href="../h_aa/143314244.htm" class=variable>e</a>                                parameter                 line  726
+<a href="../h_aa/143315196.htm" class=variable>e</a>                                parameter                 line  703
+<a href="../h_aa/143322064.htm" class=variable>e</a>                                local                     line  493
+<a href="../h_aa/143323832.htm" class=variable>ec</a>                               parameter                 line  447
+<a href="../h_aa/143340832.htm" class=variable>end</a>                              local                     line  104
+<a href="../h_aa/143316896.htm" class=variable>ep</a>                               local                     line  630
+<a href="../h_aa/143317168.htm" class=variable>ep</a>                               local                     line  603
+<a href="../h_aa/143320296.htm" class=variable>ep</a>                               parameter                 line  522
+<a href="../h_aa/143321248.htm" class=variable>ep</a>                               parameter                 line  507
+<a href="../h_aa/143323016.htm" class=variable>ep</a>                               parameter                 line  471
+<a href="../h_aa/143432536.htm" class=variable>f</a>                                local                     line 1793
+<a href="../h_aa/143432672.htm" class=variable>f</a>                                local                     line 1787
+<a href="../h_aa/143432808.htm" class=variable>f</a>                                local                     line 1781
+<a href="../h_aa/143438112.htm" class=variable>f</a>                                local                     line 1652
+<a href="../h_aa/143438384.htm" class=variable>f</a>                                local                     line 1644
+<a href="../h_aa/143438656.htm" class=variable>f</a>                                local                     line 1636
+<a href="../h_aa/143310980.htm" class=variable>find</a>                             parameter                 line  773
+<a href="../h_aa/143290852.htm" class=variable>flags</a>                            local                     line 1279
+<a href="../h_aa/143293708.htm" class=variable>flags</a>                            parameter                 line 1225
+<a href="../h_aa/143279904.htm" class=variable>fmt</a>                              local                     line 1604
+<a href="../h_aa/143282896.htm" class=variable>fmt</a>                              parameter                 line 1542
+<a href="../h_aa/143284596.htm" class=variable>fmt</a>                              parameter                 line 1488
+<a href="../h_aa/143285684.htm" class=variable>fmt</a>                              parameter                 line 1466
+<a href="../h_aa/143286432.htm" class=variable>fmt</a>                              parameter                 line 1449
+<a href="../h_aa/143299284.htm" class=variable>fmt</a>                              parameter                 line 1057
+<a href="../h_aa/143434032.htm" class=variable>fmt</a>                              local                     line 1756
+<a href="../h_aa/143436616.htm" class=variable>fmt</a>                              local                     line 1702
+<a href="../h_aa/143290580.htm" class=variable>form</a>                             local                     line 1288
+<a href="../h_aa/143292484.htm" class=variable>form</a>                             parameter                 line 1263
+<a href="../h_aa/143292892.htm" class=variable>form</a>                             parameter                 line 1246
+<a href="../h_aa/143293844.htm" class=variable>form</a>                             parameter                 line 1225
+<a href="../h_aa/143294524.htm" class=variable>format</a>                           local                     line 1190
+<a href="../h_aa/143306764.htm" class=variable>gm</a>                               local                     line  859
+<a href="../h_aa/143308124.htm" class=variable>gm</a>                               local                     line  839
+<a href="../h_aa/143280040.htm" class=variable>h</a>                                local                     line 1603
+<a href="../h_aa/143283168.htm" class=variable>h</a>                                parameter                 line 1541
+<a href="../h_aa/143284732.htm" class=variable>h</a>                                parameter                 line 1488
+<a href="../h_aa/143285004.htm" class=variable>h</a>                                parameter                 line 1478
+<a href="../h_aa/143285820.htm" class=variable>h</a>                                parameter                 line 1466
+<a href="../h_aa/143434168.htm" class=variable>h</a>                                local                     line 1755
+<a href="../h_aa/143436752.htm" class=variable>h</a>                                local                     line 1701
+<a href="../h_aa/143281264.htm" class=variable>i</a>                                local                     line 1571
+<a href="../h_aa/143283848.htm" class=variable>i</a>                                u (public)                line 1490
+<a href="../h_aa/143298876.htm" class=variable>i</a>                                local                     line 1060
+<a href="../h_aa/143313292.htm" class=variable>i</a>                                local                     line  736
+<a href="../h_aa/143314516.htm" class=variable>i</a>                                parameter                 line  725
+<a href="../h_aa/143315468.htm" class=variable>i</a>                                parameter                 line  702
+<a href="../h_aa/143321112.htm" class=variable>i</a>                                local                     line  508
+<a href="../h_aa/143334780.htm" class=variable>i</a>                                local                     line  197
+<a href="../h_aa/143335324.htm" class=variable>i</a>                                local                     line  183
+<a href="../h_aa/143338316.htm" class=variable>i</a>                                local                     line  139
+<a href="../h_aa/143339336.htm" class=variable>i</a>                                local                     line  126
+<a href="../h_aa/143340288.htm" class=variable>i</a>                                local                     line  113
+<a href="../h_aa/143434984.htm" class=variable>i</a>                                local                     line 1731
+<a href="../h_aa/143306900.htm" class=variable>init</a>                             local                     line  858
+<a href="../h_aa/143310300.htm" class=variable>init</a>                             local                     line  777
+<a href="../h_aa/143315944.htm" class=variable>init</a>                             local                     line  678
+<a href="../h_aa/143327708.htm" class=variable>init</a>                             capture (public)          line  366
+<a href="../h_aa/143334100.htm" class=variable>init</a>                             str_Writer (public)       line  217
+<a href="../h_aa/143280584.htm" class=variable>islittle</a>                         parameter                 line 1590
+<a href="../h_aa/143281808.htm" class=variable>islittle</a>                         parameter                 line 1569
+<a href="../h_aa/143287996.htm" class=variable>islittle</a>                         Header (public)           line 1420
+<a href="../h_aa/143435528.htm" class=variable>islittle</a>                         parameter                 line 1729
+<a href="../h_aa/143435256.htm" class=variable>issigned</a>                         parameter                 line 1729
+<a href="../h_aa/143287452.htm" class=variable>Kchar</a>                            global                    line 1434
+<a href="../h_aa/143287520.htm" class=variable>Kdouble</a>                          global                    line 1433
+<a href="../h_aa/143287656.htm" class=variable>Kfloat</a>                           global                    line 1431
+<a href="../h_aa/143287792.htm" class=variable>Kint</a>                             global                    line 1429
+<a href="../h_aa/143287112.htm" class=variable>Knop</a>                             global                    line 1439
+<a href="../h_aa/143287588.htm" class=variable>Knumber</a>                          global                    line 1432
+<a href="../h_aa/143287180.htm" class=variable>Kpaddalign</a>                       global                    line 1438
+<a href="../h_aa/143287248.htm" class=variable>Kpadding</a>                         global                    line 1437
+<a href="../h_aa/143287384.htm" class=variable>Kstring</a>                          global                    line 1435
+<a href="../h_aa/143287724.htm" class=variable>Kuint</a>                            global                    line 1430
+<a href="../h_aa/143287316.htm" class=variable>Kzstr</a>                            global                    line 1436
+<a href="../h_aa/143280312.htm" class=variable>L</a>                                parameter                 line 1601
+<a href="../h_aa/143283780.htm" class=variable>l</a>                                u (public)                line 1490
+<a href="../h_aa/143285140.htm" class=variable>L</a>                                parameter                 line 1478
+<a href="../h_aa/143288064.htm" class=variable>L</a>                                Header (public)           line 1419
+<a href="../h_aa/143289628.htm" class=variable>l</a>                                local                     line 1350
+<a href="../h_aa/143291668.htm" class=variable>L</a>                                parameter                 line 1273
+<a href="../h_aa/143292212.htm" class=variable>l</a>                                local                     line 1264
+<a href="../h_aa/143293164.htm" class=variable>L</a>                                parameter                 line 1245
+<a href="../h_aa/143293980.htm" class=variable>L</a>                                parameter                 line 1225
+<a href="../h_aa/143295612.htm" class=variable>L</a>                                parameter                 line 1175
+<a href="../h_aa/143296700.htm" class=variable>L</a>                                parameter                 line 1151
+<a href="../h_aa/143299692.htm" class=variable>L</a>                                parameter                 line 1056
+<a href="../h_aa/143303908.htm" class=variable>L</a>                                parameter                 line  942
+<a href="../h_aa/143304316.htm" class=variable>L</a>                                local                     line  908
+<a href="../h_aa/143305812.htm" class=variable>L</a>                                local                     line  874
+<a href="../h_aa/143305948.htm" class=variable>l</a>                                local                     line  873
+<a href="../h_aa/143307580.htm" class=variable>L</a>                                parameter                 line  854
+<a href="../h_aa/143308328.htm" class=variable>L</a>                                parameter                 line  838
+<a href="../h_aa/143309076.htm" class=variable>L</a>                                parameter                 line  824
+<a href="../h_aa/143309348.htm" class=variable>L</a>                                parameter                 line  819
+<a href="../h_aa/143311116.htm" class=variable>L</a>                                parameter                 line  773
+<a href="../h_aa/143312204.htm" class=variable>L</a>                                parameter                 line  757
+<a href="../h_aa/143312748.htm" class=variable>l</a>                                parameter                 line  746
+<a href="../h_aa/143313972.htm" class=variable>l</a>                                local                     line  728
+<a href="../h_aa/143317848.htm" class=variable>l</a>                                parameter                 line  559
+<a href="../h_aa/143318528.htm" class=variable>l</a>                                local                     line  550
+<a href="../h_aa/143326212.htm" class=variable>l</a>                                parameter                 line  386
+<a href="../h_aa/143327980.htm" class=variable>L</a>                                MatchState (public)       line  362
+<a href="../h_aa/143328796.htm" class=variable>L</a>                                parameter                 line  325
+<a href="../h_aa/143329068.htm" class=variable>L</a>                                parameter                 line  321
+<a href="../h_aa/143329340.htm" class=variable>L</a>                                parameter                 line  317
+<a href="../h_aa/143329612.htm" class=variable>L</a>                                parameter                 line  313
+<a href="../h_aa/143329884.htm" class=variable>L</a>                                parameter                 line  309
+<a href="../h_aa/143330156.htm" class=variable>L</a>                                parameter                 line  305
+<a href="../h_aa/143330428.htm" class=variable>L</a>                                parameter                 line  301
+<a href="../h_aa/143330700.htm" class=variable>L</a>                                parameter                 line  297
+<a href="../h_aa/143331244.htm" class=variable>L</a>                                parameter                 line  288
+<a href="../h_aa/143331652.htm" class=variable>L</a>                                parameter                 line  277
+<a href="../h_aa/143332332.htm" class=variable>L</a>                                parameter                 line  264
+<a href="../h_aa/143332876.htm" class=variable>L</a>                                parameter                 line  233
+<a href="../h_aa/143333828.htm" class=variable>L</a>                                parameter                 line  222
+<a href="../h_aa/143335052.htm" class=variable>L</a>                                parameter                 line  195
+<a href="../h_aa/143336140.htm" class=variable>l</a>                                local                     line  178
+<a href="../h_aa/143336276.htm" class=variable>L</a>                                parameter                 line  177
+<a href="../h_aa/143337500.htm" class=variable>l</a>                                local                     line  151
+<a href="../h_aa/143337636.htm" class=variable>L</a>                                parameter                 line  150
+<a href="../h_aa/143338452.htm" class=variable>l</a>                                local                     line  138
+<a href="../h_aa/143338588.htm" class=variable>L</a>                                parameter                 line  137
+<a href="../h_aa/143339472.htm" class=variable>l</a>                                local                     line  125
+<a href="../h_aa/143339608.htm" class=variable>L</a>                                parameter                 line  124
+<a href="../h_aa/143340424.htm" class=variable>l</a>                                local                     line  113
+<a href="../h_aa/143340560.htm" class=variable>L</a>                                parameter                 line  112
+<a href="../h_aa/143341240.htm" class=variable>l</a>                                local                     line  101
+<a href="../h_aa/143341376.htm" class=variable>L</a>                                parameter                 line  100
+<a href="../h_aa/143342192.htm" class=variable>L</a>                                parameter                 line   87
+<a href="../h_aa/143342872.htm" class=variable>l</a>                                local                     line   56
+<a href="../h_aa/143343008.htm" class=variable>L</a>                                parameter                 line   55
+<a href="../h_aa/143431788.htm" class=variable>L</a>                                parameter                 line 1869
+<a href="../h_aa/143431924.htm" class=variable>L</a>                                parameter                 line 1852
+<a href="../h_aa/143434304.htm" class=variable>L</a>                                parameter                 line 1754
+<a href="../h_aa/143435800.htm" class=variable>L</a>                                parameter                 line 1728
+<a href="../h_aa/143436888.htm" class=variable>L</a>                                parameter                 line 1700
+<a href="../h_aa/143316352.htm" class=variable>l1</a>                               parameter                 line  673
+<a href="../h_aa/143316080.htm" class=variable>l2</a>                               parameter                 line  674
+<a href="../h_aa/143303228.htm" class=variable>lastmatch</a>                        local                     line  946
+<a href="../h_aa/143308668.htm" class=variable>lastmatch</a>                        GMatchState (public)      line  833
+<a href="../h_aa/143433896.htm" class=variable>ld</a>                               local                     line 1757
+<a href="../h_aa/143292756.htm" class=variable>len</a>                              local                     line 1248
+<a href="../h_aa/143295204.htm" class=variable>len</a>                              local                     line 1178
+<a href="../h_aa/143297108.htm" class=variable>len</a>                              parameter                 line 1122
+<a href="../h_aa/143317712.htm" class=variable>len</a>                              local                     line  560
+<a href="../h_aa/143327640.htm" class=variable>len</a>                              capture (public)          line  367
+<a href="../h_aa/143332060.htm" class=variable>len</a>                              local                     line  270
+<a href="../h_aa/143341784.htm" class=variable>len</a>                              parameter                 line   88
+<a href="../h_aa/143342464.htm" class=variable>len</a>                              parameter                 line   71
+<a href="../h_aa/143432264.htm" class=variable>len</a>                              local                     line 1810
+<a href="../h_aa/143432400.htm" class=variable>len</a>                              local                     line 1803
+<a href="../h_aa/143437296.htm" class=variable>len</a>                              local                     line 1681
+<a href="../h_aa/143437568.htm" class=variable>len</a>                              local                     line 1670
+<a href="../h_aa/143437840.htm" class=variable>len</a>                              local                     line 1660
+<a href="../h_aa/143292348.htm" class=variable>lenmod</a>                           parameter                 line 1263
+<a href="../h_aa/143319208.htm" class=variable>level</a>                            local                     line  537
+<a href="../h_aa/143325804.htm" class=variable>level</a>                            local                     line  396
+<a href="../h_aa/143327844.htm" class=variable>level</a>                            MatchState (public)       line  364
+<a href="../h_aa/143438928.htm" class=variable>lim</a>                              local                     line 1621
+<a href="../h_aa/143434848.htm" class=variable>limit</a>                            local                     line 1732
+<a href="../h_aa/143288404.htm" class=variable>little</a>                           nativeendian (public)     line 1411
+<a href="../h_aa/143292076.htm" class=variable>lm</a>                               local                     line 1265
+<a href="../h_aa/143303636.htm" class=variable>lp</a>                               local                     line  943
+<a href="../h_aa/143307308.htm" class=variable>lp</a>                               local                     line  855
+<a href="../h_aa/143310708.htm" class=variable>lp</a>                               local                     line  774
+<a href="../h_aa/143311660.htm" class=variable>lp</a>                               parameter                 line  758
+<a href="../h_aa/143307444.htm" class=variable>ls</a>                               local                     line  855
+<a href="../h_aa/143310844.htm" class=variable>ls</a>                               local                     line  774
+<a href="../h_aa/143311932.htm" class=variable>ls</a>                               parameter                 line  758
+<a href="../h_aa/143337364.htm" class=variable>lsep</a>                             local                     line  151
+<a href="../h_aa/143300100.htm" class=variable>m</a>                                local                     line 1034
+<a href="../h_aa/143434576.htm" class=variable>mask</a>                             local                     line 1744
+<a href="../h_aa/143434712.htm" class=variable>mask</a>                             local                     line 1739
+<a href="../h_aa/143327912.htm" class=variable>matchdepth</a>                       MatchState (public)       line  363
+<a href="../h_aa/143302956.htm" class=variable>max_s</a>                            local                     line  948
+<a href="../h_aa/143283440.htm" class=variable>maxalign</a>                         local                     line 1522
+<a href="../h_aa/143287928.htm" class=variable>maxalign</a>                         Header (public)           line 1421
+<a href="../h_aa/143290444.htm" class=variable>maxitem</a>                          local                     line 1289
+<a href="../h_aa/143302412.htm" class=variable>ms</a>                               local                     line  952
+<a href="../h_aa/143304996.htm" class=variable>ms</a>                               parameter                 line  906
+<a href="../h_aa/143306492.htm" class=variable>ms</a>                               parameter                 line  871
+<a href="../h_aa/143308600.htm" class=variable>ms</a>                               GMatchState (public)      line  834
+<a href="../h_aa/143310028.htm" class=variable>ms</a>                               local                     line  793
+<a href="../h_aa/143311388.htm" class=variable>ms</a>                               parameter                 line  767
+<a href="../h_aa/143312340.htm" class=variable>ms</a>                               parameter                 line  757
+<a href="../h_aa/143313700.htm" class=variable>ms</a>                               parameter                 line  735
+<a href="../h_aa/143314652.htm" class=variable>ms</a>                               parameter                 line  725
+<a href="../h_aa/143315604.htm" class=variable>ms</a>                               parameter                 line  702
+<a href="../h_aa/143317576.htm" class=variable>ms</a>                               parameter                 line  570
+<a href="../h_aa/143318120.htm" class=variable>ms</a>                               parameter                 line  559
+<a href="../h_aa/143318936.htm" class=variable>ms</a>                               parameter                 line  548
+<a href="../h_aa/143319888.htm" class=variable>ms</a>                               parameter                 line  534
+<a href="../h_aa/143320704.htm" class=variable>ms</a>                               parameter                 line  521
+<a href="../h_aa/143321656.htm" class=variable>ms</a>                               parameter                 line  506
+<a href="../h_aa/143322608.htm" class=variable>ms</a>                               parameter                 line  486
+<a href="../h_aa/143323424.htm" class=variable>ms</a>                               parameter                 line  470
+<a href="../h_aa/143325532.htm" class=variable>ms</a>                               parameter                 line  403
+<a href="../h_aa/143325940.htm" class=variable>ms</a>                               parameter                 line  395
+<a href="../h_aa/143326348.htm" class=variable>ms</a>                               parameter                 line  386
+<a href="../h_aa/143330972.htm" class=variable>mtname</a>                           parameter                 line  288
+<a href="../h_aa/143331516.htm" class=variable>mtname</a>                           parameter                 line  277
+<a href="../h_aa/143281944.htm" class=variable>n</a>                                parameter                 line 1568
+<a href="../h_aa/143284052.htm" class=variable>n</a>                                u (public)                line 1490
+<a href="../h_aa/143289900.htm" class=variable>n</a>                                local                     line 1327
+<a href="../h_aa/143290036.htm" class=variable>n</a>                                local                     line 1310
+<a href="../h_aa/143294660.htm" class=variable>n</a>                                local                     line 1189
+<a href="../h_aa/143296428.htm" class=variable>n</a>                                parameter                 line 1151
+<a href="../h_aa/143299012.htm" class=variable>n</a>                                local                     line 1058
+<a href="../h_aa/143299964.htm" class=variable>n</a>                                local                     line 1035
+<a href="../h_aa/143301324.htm" class=variable>n</a>                                parameter                 line 1016
+<a href="../h_aa/143302684.htm" class=variable>n</a>                                local                     line  950
+<a href="../h_aa/143304180.htm" class=variable>n</a>                                local                     line  911
+<a href="../h_aa/143334916.htm" class=variable>n</a>                                local                     line  196
+<a href="../h_aa/143335460.htm" class=variable>n</a>                                local                     line  183
+<a href="../h_aa/143337092.htm" class=variable>n</a>                                local                     line  153
+<a href="../h_aa/143433488.htm" class=variable>n</a>                                local                     line 1760
+<a href="../h_aa/143438792.htm" class=variable>n</a>                                local                     line 1628
+<a href="../h_aa/143439064.htm" class=variable>n</a>                                local                     line 1619
+<a href="../h_aa/143288268.htm" class=variable>nativeendian</a>                     static                    line 1412
+<a href="../h_aa/143290172.htm" class=variable>nb</a>                               local                     line 1291
+<a href="../h_aa/143294796.htm" class=variable>nb</a>                               local                     line 1185
+<a href="../h_aa/143296156.htm" class=variable>nb</a>                               local                     line 1160
+<a href="../h_aa/143281536.htm" class=variable>neg</a>                              parameter                 line 1569
+<a href="../h_aa/143305676.htm" class=variable>news</a>                             local                     line  875
+<a href="../h_aa/143313156.htm" class=variable>nlevels</a>                          local                     line  737
+<a href="../h_aa/143279360.htm" class=variable>ntoalign</a>                         local                     line 1611
+<a href="../h_aa/143282624.htm" class=variable>ntoalign</a>                         parameter                 line 1542
+<a href="../h_aa/143433216.htm" class=variable>ntoalign</a>                         local                     line 1764
+<a href="../h_aa/143436208.htm" class=variable>ntoalign</a>                         local                     line 1706
+<a href="../h_aa/143331108.htm" class=variable>op</a>                               parameter                 line  288
+<a href="../h_aa/143282488.htm" class=variable>opt</a>                              local                     line 1543
+<a href="../h_aa/143283576.htm" class=variable>opt</a>                              local                     line 1491
+<a href="../h_aa/143433080.htm" class=variable>opt</a>                              local                     line 1765
+<a href="../h_aa/143436072.htm" class=variable>opt</a>                              local                     line 1707
+<a href="../h_aa/143439200.htm" class=variable>opt</a>                              local                     line 1612
+<a href="../h_aa/143289764.htm" class=variable>p</a>                                local                     line 1334
+<a href="../h_aa/143303364.htm" class=variable>p</a>                                local                     line  945
+<a href="../h_aa/143305540.htm" class=variable>p</a>                                local                     line  876
+<a href="../h_aa/143307036.htm" class=variable>p</a>                                local                     line  857
+<a href="../h_aa/143308736.htm" class=variable>p</a>                                GMatchState (public)      line  832
+<a href="../h_aa/143310436.htm" class=variable>p</a>                                local                     line  776
+<a href="../h_aa/143311796.htm" class=variable>p</a>                                parameter                 line  758
+<a href="../h_aa/143312884.htm" class=variable>p</a>                                parameter                 line  746
+<a href="../h_aa/143317304.htm" class=variable>p</a>                                parameter                 line  570
+<a href="../h_aa/143318664.htm" class=variable>p</a>                                parameter                 line  549
+<a href="../h_aa/143319616.htm" class=variable>p</a>                                parameter                 line  535
+<a href="../h_aa/143320432.htm" class=variable>p</a>                                parameter                 line  522
+<a href="../h_aa/143321384.htm" class=variable>p</a>                                parameter                 line  507
+<a href="../h_aa/143322336.htm" class=variable>p</a>                                parameter                 line  487
+<a href="../h_aa/143323152.htm" class=variable>p</a>                                parameter                 line  470
+<a href="../h_aa/143323968.htm" class=variable>p</a>                                parameter                 line  447
+<a href="../h_aa/143325396.htm" class=variable>p</a>                                parameter                 line  403
+<a href="../h_aa/143334508.htm" class=variable>p</a>                                local                     line  199
+<a href="../h_aa/143336548.htm" class=variable>p</a>                                local                     line  162
+<a href="../h_aa/143337908.htm" class=variable>p</a>                                local                     line  142
+<a href="../h_aa/143338928.htm" class=variable>p</a>                                local                     line  129
+<a href="../h_aa/143339880.htm" class=variable>p</a>                                local                     line  116
+<a href="../h_aa/143328048.htm" class=variable>p_end</a>                            MatchState (public)       line  361
+<a href="../h_aa/143335868.htm" class=variable>pi</a>                               local                     line  180
+<a href="../h_aa/143296020.htm" class=variable>point</a>                            local                     line 1164
+<a href="../h_aa/143341648.htm" class=variable>pos</a>                              local                     line   89
+<a href="../h_aa/143342600.htm" class=variable>pos</a>                              parameter                 line   71
+<a href="../h_aa/143433624.htm" class=variable>pos</a>                              local                     line 1759
+<a href="../h_aa/143335596.htm" class=variable>pose</a>                             local                     line  182
+<a href="../h_aa/143335732.htm" class=variable>posi</a>                             local                     line  181
+<a href="../h_aa/143295884.htm" class=variable>ppoint</a>                           local                     line 1165
+<a href="../h_aa/143293572.htm" class=variable>precision</a>                        parameter                 line 1226
+<a href="../h_aa/143317032.htm" class=variable>previous</a>                         local                     line  603
+<a href="../h_aa/143282760.htm" class=variable>psize</a>                            parameter                 line 1542
+<a href="../h_aa/143309620.htm" class=variable>res</a>                              local                     line  801
+<a href="../h_aa/143316760.htm" class=variable>res</a>                              local                     line  642
+<a href="../h_aa/143318392.htm" class=variable>res</a>                              local                     line  551
+<a href="../h_aa/143319344.htm" class=variable>res</a>                              local                     line  536
+<a href="../h_aa/143320160.htm" class=variable>res</a>                              local                     line  524
+<a href="../h_aa/143320976.htm" class=variable>res</a>                              local                     line  513
+<a href="../h_aa/143324852.htm" class=variable>res</a>                              local                     line  428
+<a href="../h_aa/143432944.htm" class=variable>res</a>                              local                     line 1775
+<a href="../h_aa/143435120.htm" class=variable>res</a>                              local                     line 1730
+<a href="../h_aa/143305268.htm" class=variable>resl</a>                             local                     line  886
+<a href="../h_aa/143283916.htm" class=variable>s</a>                                u (public)                line 1490
+<a href="../h_aa/143289492.htm" class=variable>s</a>                                local                     line 1351
+<a href="../h_aa/143294252.htm" class=variable>s</a>                                parameter                 line 1210
+<a href="../h_aa/143295068.htm" class=variable>s</a>                                local                     line 1179
+<a href="../h_aa/143296292.htm" class=variable>s</a>                                local                     line 1152
+<a href="../h_aa/143297244.htm" class=variable>s</a>                                parameter                 line 1122
+<a href="../h_aa/143304724.htm" class=variable>s</a>                                parameter                 line  906
+<a href="../h_aa/143306220.htm" class=variable>s</a>                                parameter                 line  871
+<a href="../h_aa/143307172.htm" class=variable>s</a>                                local                     line  856
+<a href="../h_aa/143310572.htm" class=variable>s</a>                                local                     line  775
+<a href="../h_aa/143312068.htm" class=variable>s</a>                                parameter                 line  758
+<a href="../h_aa/143313564.htm" class=variable>s</a>                                parameter                 line  735
+<a href="../h_aa/143314380.htm" class=variable>s</a>                                parameter                 line  725
+<a href="../h_aa/143315332.htm" class=variable>s</a>                                parameter                 line  702
+<a href="../h_aa/143317440.htm" class=variable>s</a>                                parameter                 line  570
+<a href="../h_aa/143317984.htm" class=variable>s</a>                                parameter                 line  559
+<a href="../h_aa/143318800.htm" class=variable>s</a>                                parameter                 line  548
+<a href="../h_aa/143319752.htm" class=variable>s</a>                                parameter                 line  534
+<a href="../h_aa/143320568.htm" class=variable>s</a>                                parameter                 line  521
+<a href="../h_aa/143321520.htm" class=variable>s</a>                                parameter                 line  506
+<a href="../h_aa/143322472.htm" class=variable>s</a>                                parameter                 line  486
+<a href="../h_aa/143323288.htm" class=variable>s</a>                                parameter                 line  470
+<a href="../h_aa/143331924.htm" class=variable>s</a>                                local                     line  271
+<a href="../h_aa/143336004.htm" class=variable>s</a>                                local                     line  179
+<a href="../h_aa/143337228.htm" class=variable>s</a>                                local                     line  152
+<a href="../h_aa/143338044.htm" class=variable>s</a>                                local                     line  141
+<a href="../h_aa/143339064.htm" class=variable>s</a>                                local                     line  128
+<a href="../h_aa/143340016.htm" class=variable>s</a>                                local                     line  115
+<a href="../h_aa/143341104.htm" class=variable>s</a>                                local                     line  102
+<a href="../h_aa/143437160.htm" class=variable>s</a>                                local                     line 1682
+<a href="../h_aa/143437432.htm" class=variable>s</a>                                local                     line 1671
+<a href="../h_aa/143437704.htm" class=variable>s</a>                                local                     line 1661
+<a href="../h_aa/143309892.htm" class=variable>s1</a>                               local                     line  794
+<a href="../h_aa/143316488.htm" class=variable>s1</a>                               parameter                 line  673
+<a href="../h_aa/143310164.htm" class=variable>s2</a>                               local                     line  785
+<a href="../h_aa/143316216.htm" class=variable>s2</a>                               parameter                 line  674
+<a href="../h_aa/143336956.htm" class=variable>sep</a>                              local                     line  154
+<a href="../h_aa/143291260.htm" class=variable>sfl</a>                              local                     line 1276
+<a href="../h_aa/143323696.htm" class=variable>sig</a>                              local                     line  448
+<a href="../h_aa/143279496.htm" class=variable>size</a>                             local                     line 1611
+<a href="../h_aa/143280720.htm" class=variable>size</a>                             parameter                 line 1590
+<a href="../h_aa/143281672.htm" class=variable>size</a>                             parameter                 line 1569
+<a href="../h_aa/143284460.htm" class=variable>size</a>                             parameter                 line 1488
+<a href="../h_aa/143333556.htm" class=variable>size</a>                             parameter                 line  222
+<a href="../h_aa/143433352.htm" class=variable>size</a>                             local                     line 1764
+<a href="../h_aa/143435392.htm" class=variable>size</a>                             parameter                 line 1729
+<a href="../h_aa/143436344.htm" class=variable>size</a>                             local                     line 1706
+<a href="../h_aa/143291940.htm" class=variable>spec</a>                             local                     line 1266
+<a href="../h_aa/143293436.htm" class=variable>spec</a>                             local                     line 1227
+<a href="../h_aa/143280856.htm" class=variable>src</a>                              parameter                 line 1589
+<a href="../h_aa/143303500.htm" class=variable>src</a>                              local                     line  944
+<a href="../h_aa/143307988.htm" class=variable>src</a>                              local                     line  840
+<a href="../h_aa/143308804.htm" class=variable>src</a>                              GMatchState (public)      line  831
+<a href="../h_aa/143328116.htm" class=variable>src_end</a>                          MatchState (public)       line  360
+<a href="../h_aa/143328184.htm" class=variable>src_init</a>                         MatchState (public)       line  359
+<a href="../h_aa/143303772.htm" class=variable>srcl</a>                             local                     line  943
+<a href="../h_aa/143340968.htm" class=variable>start</a>                            local                     line  103
+<a href="../h_aa/143332740.htm" class=variable>state</a>                            local                     line  234
+<a href="../h_aa/143333148.htm" class=variable>state</a>                            local                     line  223
+<a href="../h_aa/143435664.htm" class=variable>str</a>                              parameter                 line 1728
+<a href="../h_aa/143291124.htm" class=variable>strfrmt</a>                          local                     line 1277
+<a href="../h_aa/143293028.htm" class=variable>strfrmt</a>                          parameter                 line 1245
+<a href="../h_aa/143290988.htm" class=variable>strfrmt_end</a>                      local                     line 1278
+<a href="../h_aa/143328660.htm" class=variable>stringmetamethods</a>                static                    line  330
+<a href="../h_aa/143332604.htm" class=variable>strip</a>                            local                     line  235
+<a href="../h_aa/143432128.htm" class=variable>strlib</a>                           static                    line 1830
+<a href="../h_aa/143285412.htm" class=variable>sz</a>                               local                     line 1467
+<a href="../h_aa/143299420.htm" class=variable>sz</a>                               parameter                 line 1056
+<a href="../h_aa/143300508.htm" class=variable>sz</a>                               parameter                 line 1024
+<a href="../h_aa/143291532.htm" class=variable>top</a>                              local                     line 1274
+<a href="../h_aa/143336820.htm" class=variable>totallen</a>                         local                     line  160
+<a href="../h_aa/143279632.htm" class=variable>totalsize</a>                        local                     line 1606
+<a href="../h_aa/143283032.htm" class=variable>totalsize</a>                        parameter                 line 1541
+<a href="../h_aa/143436480.htm" class=variable>totalsize</a>                        local                     line 1703
+<a href="../h_aa/143303092.htm" class=variable>tr</a>                               local                     line  947
+<a href="../h_aa/143304452.htm" class=variable>tr</a>                               parameter                 line  907
+<a href="../h_aa/143283644.htm" class=variable>u</a>                                cD (public)               line 1490
+<a href="../h_aa/143283984.htm" class=variable>u</a>                                u (public)                line 1490
+<a href="../h_aa/143333420.htm" class=variable>ud</a>                               parameter                 line  222
+<a href="../h_aa/143312612.htm" class=variable>upto</a>                             local                     line  747
+<a href="../h_aa/143319480.htm" class=variable>what</a>                             parameter                 line  535
+<a href="../h_aa/143299148.htm" class=variable>x</a>                                parameter                 line 1057
+<a href="../h_aa/143300372.htm" class=variable>x</a>                                parameter                 line 1024
+<a href="../h_aa/143301188.htm" class=variable>x</a>                                parameter                 line 1016
+
+</pre>
+<h5>Types</h5>
+<pre>capture\[\]                                                line    0
+<a href="../h_aa/143308532.htm" class=type>GMatchState</a>                                                line  835
+GMatchState*                                               line    0
+<a href="../h_aa/143287860.htm" class=type>Header</a>                                                     line 1422
+Header*                                                    line    0
+<a href="../h_aa/143286908.htm" class=type>KOption</a>                                                    line 1440
+<a href="../h_aa/143287044.htm" class=type>KOption</a>                                                    line 1428
+<a href="../h_aa/143327300.htm" class=type>MatchState</a>                                                 line  369
+MatchState*                                                line    0
+</pre>
+<h4><a class="legend">Table lists all of the symbols defined or declared in file lstrlib.c</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,204 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>loadlib.c</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143217276.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/143217276.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/143217276.htm" class="file" target="_self">File Inclusion</a></li>
+<li id="current"><a href="../h_nm/143217276.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_uf/143217276.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_df/143217276.htm" class="file" target="_self">Dependencies</a></li>
+<li><a href="../h_src/143217276.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_nm/143217276.htm" class="file" target="_self">File Elements</a></li>
+<li><a href="../h_nf/143217276.htm" class="file" target="_self">Internal Function Hierarchy</a></li>
+<li><a href="../h_nv/143217276.htm" class="file" target="_self">Functions and Variables</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Member Symbols</h4>
+<pre><a class="descr">Symbol                           Scope                     Location</a>
+
+</pre>
+<h5>Functions</h5>
+<pre><a href="../h_aa/143208980.htm" class=function>addtoclib</a>                        static                    line 349
+<a href="../h_aa/143209524.htm" class=function>checkclib</a>                        static                    line 335
+<a href="../h_aa/143202180.htm" class=function>checkload</a>                        static                    line 534
+<a href="../h_aa/143196536.htm" class=function>createclibstable</a>                 static                    line 735
+<a href="../h_aa/143197148.htm" class=function>createsearcherstable</a>             static                    line 710
+<a href="../h_aa/143202996.htm" class=function>findfile</a>                         static                    line 522
+<a href="../h_aa/143198372.htm" class=function>findloader</a>                       static                    line 624
+<a href="../h_aa/143208436.htm" class=function>gctm</a>                             static                    line 363
+<a href="../h_aa/143205988.htm" class=function>getnextfilename</a>                  static                    line 447
+<a href="../h_aa/143206940.htm" class=function>ll_loadlib</a>                       static                    line 411
+<a href="../h_aa/143197692.htm" class=function>ll_require</a>                       static                    line 657
+<a href="../h_aa/143203404.htm" class=function>ll_searchpath</a>                    static                    line 508
+<a href="../h_aa/143201092.htm" class=function>loadfunc</a>                         static                    line 562
+<a href="../h_aa/143207756.htm" class=function>lookforfunc</a>                      static                    line 390
+<a href="../h_aa/143215304.htm" class=function>lsys_load</a>                        static                    line 209
+<a href="../h_aa/143215168.htm" class=function>lsys_sym</a>                         static                    line 217
+<a href="../h_aa/143215440.htm" class=function>lsys_unloadlib</a>                   static                    line 204
+<a href="../h_aa/57573804.htm" class=function>luaopen_package</a>                  global                    line 744
+<a href="../h_aa/143211292.htm" class=function>noenv</a>                            static                    line 285
+<a href="../h_aa/143213672.htm" class=function>pusherror</a>                        static                    line 194
+<a href="../h_aa/143205308.htm" class=function>pusherrornotfound</a>                static                    line 471
+<a href="../h_aa/143206260.htm" class=function>readable</a>                         static                    line 434
+<a href="../h_aa/143200140.htm" class=function>searcher_C</a>                       static                    line 580
+<a href="../h_aa/143199596.htm" class=function>searcher_Croot</a>                   static                    line 588
+<a href="../h_aa/143201636.htm" class=function>searcher_Lua</a>                     static                    line 545
+<a href="../h_aa/143198780.htm" class=function>searcher_preload</a>                 static                    line 610
+<a href="../h_aa/143204764.htm" class=function>searchpath</a>                       static                    line 481
+<a href="../h_aa/143210884.htm" class=function>setpath</a>                          static                    line 297
+<a href="../h_aa/143214624.htm" class=function>setprogdir</a>                       static                    line 177
+
+</pre>
+<h5>Macros</h5>
+<pre><a href="../h_aa/143207892.htm" class=macro>ERRFUNC</a>                                                    line 377
+<a href="../h_aa/143208028.htm" class=macro>ERRLIB</a>                                                     line 376
+<a href="../h_aa/143215780.htm" class=macro>LIB_FAIL</a>                                                   line  64
+<a href="../h_aa/143217208.htm" class=macro>loadlib_c</a>                                                  line  11
+<a href="../h_aa/143211428.htm" class=macro>LUA_CPATH_VAR</a>                                              line 277
+<a href="../h_aa/143216528.htm" class=macro>LUA_CSUBSEP</a>                                                line  43
+<a href="../h_aa/143216800.htm" class=macro>LUA_IGMARK</a>                                                 line  32
+<a href="../h_aa/143217072.htm" class=macro>LUA_LIB</a>                                                    line  12
+<a href="../h_aa/143214760.htm" class=macro>LUA_LLE_FLAGS</a>                                              line 166
+<a href="../h_aa/143216256.htm" class=macro>LUA_LSUBSEP</a>                                                line  47
+<a href="../h_aa/143215984.htm" class=macro>LUA_OFSEP</a>                                                  line  55
+<a href="../h_aa/143211700.htm" class=macro>LUA_PATH_VAR</a>                                               line 273
+<a href="../h_aa/143216120.htm" class=macro>LUA_POF</a>                                                    line  52
+<a href="../h_aa/143215644.htm" class=macro>setprogdir</a>                                                 line  67
+
+</pre>
+<h5>Variables</h5>
+<pre><a href="../h_aa/143204900.htm" class=variable>b</a>                                local                     line 472
+<a href="../h_aa/143209660.htm" class=variable>b</a>                                local                     line 311
+<a href="../h_aa/143211020.htm" class=variable>b</a>                                local                     line 286
+<a href="../h_aa/143203948.htm" class=variable>buff</a>                             local                     line 485
+<a href="../h_aa/143214352.htm" class=variable>buff</a>                             local                     line 178
+<a href="../h_aa/143213196.htm" class=variable>buffer</a>                           local                     line 196
+<a href="../h_aa/143215848.htm" class=variable>CLIBS</a>                            static                    line  62
+<a href="../h_aa/143210340.htm" class=variable>dft</a>                              parameter                 line 299
+<a href="../h_aa/143210204.htm" class=variable>dftmark</a>                          local                     line 300
+<a href="../h_aa/143202452.htm" class=variable>dirsep</a>                           parameter                 line 524
+<a href="../h_aa/143204084.htm" class=variable>dirsep</a>                           parameter                 line 484
+<a href="../h_aa/143205716.htm" class=variable>end</a>                              parameter                 line 447
+<a href="../h_aa/143203676.htm" class=variable>endpathname</a>                      local                     line 487
+<a href="../h_aa/143210476.htm" class=variable>envname</a>                          parameter                 line 298
+<a href="../h_aa/143213332.htm" class=variable>error</a>                            local                     line 195
+<a href="../h_aa/143203132.htm" class=variable>f</a>                                local                     line 509
+<a href="../h_aa/143207076.htm" class=variable>f</a>                                local                     line 402
+<a href="../h_aa/143210612.htm" class=variable>fieldname</a>                        parameter                 line 297
+<a href="../h_aa/143199324.htm" class=variable>filename</a>                         local                     line 589
+<a href="../h_aa/143199732.htm" class=variable>filename</a>                         local                     line 582
+<a href="../h_aa/143200820.htm" class=variable>filename</a>                         parameter                 line 562
+<a href="../h_aa/143201364.htm" class=variable>filename</a>                         local                     line 546
+<a href="../h_aa/143201772.htm" class=variable>filename</a>                         parameter                 line 534
+<a href="../h_aa/143203540.htm" class=variable>filename</a>                         local                     line 488
+<a href="../h_aa/143206124.htm" class=variable>filename</a>                         parameter                 line 434
+<a href="../h_aa/143196672.htm" class=variable>i</a>                                local                     line 718
+<a href="../h_aa/143197964.htm" class=variable>i</a>                                local                     line 625
+<a href="../h_aa/143206532.htm" class=variable>init</a>                             local                     line 413
+<a href="../h_aa/143196264.htm" class=variable>L</a>                                parameter                 line 744
+<a href="../h_aa/143196400.htm" class=variable>L</a>                                parameter                 line 735
+<a href="../h_aa/143197012.htm" class=variable>L</a>                                parameter                 line 710
+<a href="../h_aa/143197556.htm" class=variable>L</a>                                parameter                 line 657
+<a href="../h_aa/143198236.htm" class=variable>L</a>                                parameter                 line 624
+<a href="../h_aa/143198644.htm" class=variable>L</a>                                parameter                 line 610
+<a href="../h_aa/143199460.htm" class=variable>L</a>                                parameter                 line 588
+<a href="../h_aa/143200004.htm" class=variable>L</a>                                parameter                 line 580
+<a href="../h_aa/143200956.htm" class=variable>L</a>                                parameter                 line 562
+<a href="../h_aa/143201500.htm" class=variable>L</a>                                parameter                 line 545
+<a href="../h_aa/143202044.htm" class=variable>L</a>                                parameter                 line 534
+<a href="../h_aa/143202860.htm" class=variable>L</a>                                parameter                 line 522
+<a href="../h_aa/143203268.htm" class=variable>L</a>                                parameter                 line 508
+<a href="../h_aa/143204628.htm" class=variable>L</a>                                parameter                 line 481
+<a href="../h_aa/143205172.htm" class=variable>L</a>                                parameter                 line 471
+<a href="../h_aa/143206804.htm" class=variable>L</a>                                parameter                 line 411
+<a href="../h_aa/143207620.htm" class=variable>L</a>                                parameter                 line 390
+<a href="../h_aa/143208300.htm" class=variable>L</a>                                parameter                 line 363
+<a href="../h_aa/143208844.htm" class=variable>L</a>                                parameter                 line 349
+<a href="../h_aa/143209388.htm" class=variable>L</a>                                parameter                 line 335
+<a href="../h_aa/143210748.htm" class=variable>L</a>                                parameter                 line 297
+<a href="../h_aa/143211156.htm" class=variable>L</a>                                parameter                 line 285
+<a href="../h_aa/143212244.htm" class=variable>L</a>                                parameter                 line 217
+<a href="../h_aa/143212856.htm" class=variable>L</a>                                parameter                 line 209
+<a href="../h_aa/143213536.htm" class=variable>L</a>                                parameter                 line 194
+<a href="../h_aa/143214488.htm" class=variable>L</a>                                parameter                 line 177
+<a href="../h_aa/143214216.htm" class=variable>lb</a>                               local                     line 179
+<a href="../h_aa/143209796.htm" class=variable>len</a>                              local                     line 310
+<a href="../h_aa/143212108.htm" class=variable>lib</a>                              parameter                 line 217
+<a href="../h_aa/143212380.htm" class=variable>lib</a>                              local                     line 210
+<a href="../h_aa/143212992.htm" class=variable>lib</a>                              parameter                 line 204
+<a href="../h_aa/143197216.htm" class=variable>ll_funcs</a>                         static                    line 704
+<a href="../h_aa/143200412.htm" class=variable>mark</a>                             local                     line 564
+<a href="../h_aa/143200684.htm" class=variable>modname</a>                          parameter                 line 562
+<a href="../h_aa/143197828.htm" class=variable>msg</a>                              local                     line 626
+<a href="../h_aa/143208164.htm" class=variable>n</a>                                local                     line 364
+<a href="../h_aa/143213876.htm" class=variable>n</a>                                local                     line 181
+<a href="../h_aa/143197420.htm" class=variable>name</a>                             local                     line 658
+<a href="../h_aa/143198100.htm" class=variable>name</a>                             parameter                 line 624
+<a href="../h_aa/143198508.htm" class=variable>name</a>                             local                     line 611
+<a href="../h_aa/143199188.htm" class=variable>name</a>                             local                     line 590
+<a href="../h_aa/143199868.htm" class=variable>name</a>                             local                     line 581
+<a href="../h_aa/143201228.htm" class=variable>name</a>                             local                     line 547
+<a href="../h_aa/143202724.htm" class=variable>name</a>                             parameter                 line 522
+<a href="../h_aa/143204492.htm" class=variable>name</a>                             parameter                 line 481
+<a href="../h_aa/143205444.htm" class=variable>name</a>                             local                     line 449
+<a href="../h_aa/143214080.htm" class=variable>nsize</a>                            local                     line 180
+<a href="../h_aa/143210068.htm" class=variable>nver</a>                             local                     line 301
+<a href="../h_aa/143200548.htm" class=variable>openfunc</a>                         local                     line 563
+<a href="../h_aa/143199052.htm" class=variable>p</a>                                local                     line 591
+<a href="../h_aa/143202316.htm" class=variable>path</a>                             local                     line 525
+<a href="../h_aa/143204356.htm" class=variable>path</a>                             parameter                 line 482
+<a href="../h_aa/143205036.htm" class=variable>path</a>                             parameter                 line 471
+<a href="../h_aa/143205852.htm" class=variable>path</a>                             parameter                 line 447
+<a href="../h_aa/143206668.htm" class=variable>path</a>                             local                     line 412
+<a href="../h_aa/143207484.htm" class=variable>path</a>                             parameter                 line 390
+<a href="../h_aa/143208708.htm" class=variable>path</a>                             parameter                 line 349
+<a href="../h_aa/143209252.htm" class=variable>path</a>                             parameter                 line 335
+<a href="../h_aa/143209932.htm" class=variable>path</a>                             local                     line 302
+<a href="../h_aa/143212720.htm" class=variable>path</a>                             parameter                 line 209
+<a href="../h_aa/143203812.htm" class=variable>pathname</a>                         local                     line 486
+<a href="../h_aa/143197284.htm" class=variable>pk_funcs</a>                         static                    line 691
+<a href="../h_aa/143208572.htm" class=variable>plib</a>                             parameter                 line 349
+<a href="../h_aa/143209116.htm" class=variable>plib</a>                             local                     line 336
+<a href="../h_aa/143202588.htm" class=variable>pname</a>                            parameter                 line 523
+<a href="../h_aa/143207212.htm" class=variable>reg</a>                              local                     line 391
+<a href="../h_aa/143196808.htm" class=variable>searchers</a>                        local-static              line 711
+<a href="../h_aa/143212584.htm" class=variable>seeglb</a>                           parameter                 line 209
+<a href="../h_aa/143204220.htm" class=variable>sep</a>                              parameter                 line 483
+<a href="../h_aa/143205580.htm" class=variable>sep</a>                              local                     line 448
+<a href="../h_aa/143198916.htm" class=variable>stat</a>                             local                     line 592
+<a href="../h_aa/143200276.htm" class=variable>stat</a>                             local                     line 568
+<a href="../h_aa/143201908.htm" class=variable>stat</a>                             parameter                 line 534
+<a href="../h_aa/143206396.htm" class=variable>stat</a>                             local                     line 414
+<a href="../h_aa/143207348.htm" class=variable>sym</a>                              parameter                 line 390
+<a href="../h_aa/143211972.htm" class=variable>sym</a>                              parameter                 line 217
+
+</pre>
+<h5>Types</h5>
+<pre><a href="../h_aa/143215508.htm" class=type>voidf</a>                                                      line  74
+</pre>
+<h4><a class="legend">Table lists all of the symbols defined or declared in file loadlib.c</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

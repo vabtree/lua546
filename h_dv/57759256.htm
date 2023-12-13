@@ -1,0 +1,218 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>ldebug.c</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57759256.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/57759256.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/57759256.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/57759256.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_uf/57759256.htm" class="file" target="_self">Use of Elements</a></li>
+<li id="current"><a href="../h_df/57759256.htm" class="file" target="_self">Dependencies</a></li>
+<li><a href="../h_src/57759256.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_da/57759256.htm" class="file" target="_self">File Calls</a></li>
+<li><a href="../h_df/57759256.htm" class="file" target="_self">External Functions</a></li>
+<li id="current"><a href="../h_dv/57759256.htm" class="file" target="_self">External Variables</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>External Variables Used  <a class="legend">(see key)</a></h4>
+<map name=map57759256_10>
+<area shape=rect coords="175,896,184,905" href=../h_rx/57743140.htm>
+<area shape=rect coords="175,992,184,1001" href=../h_rx/57895364.htm>
+<area shape=rect coords="175,1088,184,1097" href=../h_rx/57740828.htm>
+<area shape=rect coords="175,1184,184,1193" href=../h_rx/57635620.htm>
+<area shape=rect coords="175,1280,184,1289" href=../h_rx/57635416.htm>
+<area shape=rect coords="175,1376,184,1385" href=../h_rx/57635960.htm>
+<area shape=rect coords="175,1472,184,1481" href=../h_rx/57750212.htm>
+<area shape=rect coords="175,1568,184,1577" href=../h_rx/57886660.htm>
+<area shape=rect coords="175,1664,184,1673" href=../h_rx/57756876.htm>
+<area shape=rect coords="175,1760,184,1769" href=../h_rx/57748308.htm>
+<area shape=rect coords="175,1856,184,1865" href=../h_rx/57896860.htm>
+<area shape=rect coords="175,1952,184,1961" href=../h_rx/57754360.htm>
+<area shape=rect coords="175,2048,184,2057" href=../h_rx/57758644.htm>
+<area shape=rect coords="175,2144,184,2153" href=../h_rx/57635076.htm>
+<area shape=rect coords="175,2240,184,2249" href=../h_rx/57758780.htm>
+<area shape=rect coords="175,2336,184,2345" href=../h_rx/57757148.htm>
+<area shape=rect coords="175,2432,184,2441" href=../h_rx/57894820.htm>
+<area shape=rect coords="175,2528,184,2537" href=../h_rx/57635892.htm>
+<area shape=rect coords="175,2624,184,2633" href=../h_rx/57896180.htm>
+<area shape=rect coords="175,2720,184,2729" href=../h_rx/57424600.htm>
+<area shape=rect coords="175,2816,184,2825" href=../h_rx/57424532.htm>
+<area shape=rect coords="175,2912,184,2921" href=../h_rx/57635280.htm>
+<area shape=rect coords="175,3008,184,3017" href=../h_rx/57424464.htm>
+<area shape=rect coords="175,3104,184,3113" href=../h_rx/57424668.htm>
+<area shape=rect coords="175,3200,184,3209" href=../h_rx/57635144.htm>
+<area shape=rect coords="175,3296,184,3305" href=../h_rx/57749668.htm>
+<area shape=rect coords="175,3392,184,3401" href=../h_rx/57635688.htm>
+<area shape=rect coords="175,3488,184,3497" href=../h_rx/57635552.htm>
+<area shape=rect coords="175,3584,184,3593" href=../h_rx/57635484.htm>
+<area shape=rect coords="175,3680,184,3689" href=../h_rx/57424124.htm>
+<area shape=rect coords="175,3776,184,3785" href=../h_rx/57423988.htm>
+<area shape=rect coords="175,3872,184,3881" href=../h_rx/57423920.htm>
+<area shape=rect coords="175,3968,184,3977" href=../h_rx/57424056.htm>
+<area shape=rect coords="175,4064,184,4073" href=../h_rx/57750824.htm>
+<area shape=rect coords="175,4160,184,4169" href=../h_rx/57747764.htm>
+<area shape=rect coords="175,4256,184,4265" href=../h_rx/57745452.htm>
+<area shape=rect coords="175,4352,184,4361" href=../h_rx/57635212.htm>
+<area shape=rect coords="175,4448,184,4457" href=../h_rx/57745588.htm>
+<area shape=rect coords="175,4544,184,4553" href=../h_rx/57738244.htm>
+<area shape=rect coords="175,4640,184,4649" href=../h_rx/57742732.htm>
+<area shape=rect coords="175,4736,184,4745" href=../h_rx/57754904.htm>
+<area shape=rect coords="175,4832,184,4841" href=../h_rx/57758372.htm>
+<area shape=rect coords="175,4928,184,4937" href=../h_rx/57635348.htm>
+<area shape=rect coords="175,5024,184,5033" href=../h_rx/57635756.htm>
+<area shape=rect coords="175,5120,184,5129" href=../h_rx/57743956.htm>
+<area shape=rect coords="175,5216,184,5225" href=../h_rx/57744772.htm>
+<area shape=rect coords="175,5312,184,5321" href=../h_rx/57893868.htm>
+<area shape=rect coords="463,56,472,65" href=../h_rx/57613520.htm>
+<area shape=poly coords="462,115,474,115,468,103" href=../h_rx/57514304.htm>
+<area shape=poly coords="462,163,474,163,468,151" href=../h_rx/57651056.htm>
+<area shape=poly coords="462,211,474,211,468,199" href=../h_rx/57651396.htm>
+<area shape=poly coords="462,259,474,259,468,247" href=../h_rx/57650988.htm>
+<area shape=poly coords="462,307,474,307,468,295" href=../h_rx/57650852.htm>
+<area shape=poly coords="462,355,474,355,468,343" href=../h_rx/57650308.htm>
+<area shape=poly coords="462,403,474,403,468,391" href=../h_rx/57651464.htm>
+<area shape=poly coords="462,451,474,451,468,439" href=../h_rx/57651124.htm>
+<area shape=poly coords="462,499,474,499,468,487" href=../h_rx/57641468.htm>
+<area shape=poly coords="462,547,474,547,468,535" href=../h_rx/57515596.htm>
+<area shape=poly coords="462,595,474,595,468,583" href=../h_rx/57642828.htm>
+<area shape=poly coords="462,643,474,643,468,631" href=../h_rx/57649424.htm>
+<area shape=poly coords="462,691,474,691,468,679" href=../h_rx/57651532.htm>
+<area shape=poly coords="462,739,474,739,468,727" href=../h_rx/57640584.htm>
+<area shape=poly coords="462,787,474,787,468,775" href=../h_rx/57532732.htm>
+<area shape=poly coords="462,835,474,835,468,823" href=../h_rx/57531984.htm>
+<area shape=poly coords="462,883,474,883,468,871" href=../h_rx/57508184.htm>
+<area shape=poly coords="462,931,474,931,468,919" href=../h_rx/57507708.htm>
+<area shape=poly coords="462,979,474,979,468,967" href=../h_rx/57651328.htm>
+<area shape=poly coords="462,1027,474,1027,468,1015" href=../h_rx/57536268.htm>
+<area shape=poly coords="462,1075,474,1075,468,1063" href=../h_rx/57510564.htm>
+<area shape=poly coords="462,1123,474,1123,468,1111" href=../h_rx/57508048.htm>
+<area shape=poly coords="462,1171,474,1171,468,1159" href=../h_rx/57508320.htm>
+<area shape=poly coords="462,1219,474,1219,468,1207" href=../h_rx/57510768.htm>
+<area shape=poly coords="462,1267,474,1267,468,1255" href=../h_rx/57535520.htm>
+<area shape=poly coords="462,1315,474,1315,468,1303" href=../h_rx/57642624.htm>
+<area shape=poly coords="462,1363,474,1363,468,1351" href=../h_rx/57646568.htm>
+<area shape=poly coords="462,1411,474,1411,468,1399" href=../h_rx/57642420.htm>
+<area shape=poly coords="462,1459,474,1459,468,1447" href=../h_rx/57422424.htm>
+<area shape=poly coords="462,1507,474,1507,468,1495" href=../h_rx/57641740.htm>
+<area shape=poly coords="462,1555,474,1555,468,1543" href=../h_rx/57641604.htm>
+<area shape=poly coords="462,1603,474,1603,468,1591" href=../h_rx/57641332.htm>
+<area shape=poly coords="462,1651,474,1651,468,1639" href=../h_rx/57642284.htm>
+<area shape=poly coords="462,1699,474,1699,468,1687" href=../h_rx/57515868.htm>
+<area shape=poly coords="462,1747,474,1747,468,1735" href=../h_rx/57535452.htm>
+<area shape=poly coords="462,1795,474,1795,468,1783" href=../h_rx/57515528.htm>
+<area shape=poly coords="462,1843,474,1843,468,1831" href=../h_rx/57640788.htm>
+<area shape=poly coords="462,1891,474,1891,468,1879" href=../h_rx/57641264.htm>
+<area shape=poly coords="462,1939,474,1939,468,1927" href=../h_rx/57641400.htm>
+<area shape=poly coords="468,1973,475,1981,468,1988,460,1981" href=../h_rx/57641672.htm>
+<area shape=poly coords="462,2035,474,2035,468,2023" href=../h_rx/57513964.htm>
+<area shape=poly coords="462,2083,474,2083,468,2071" href=../h_rx/57423240.htm>
+<area shape=poly coords="462,2131,474,2131,468,2119" href=../h_rx/57423580.htm>
+<area shape=poly coords="462,2179,474,2179,468,2167" href=../h_rx/57515188.htm>
+<area shape=poly coords="462,2227,474,2227,468,2215" href=../h_rx/57423308.htm>
+<area shape=poly coords="462,2275,474,2275,468,2263" href=../h_rx/57422764.htm>
+<area shape=poly coords="462,2323,474,2323,468,2311" href=../h_rx/57684484.htm>
+<area shape=poly coords="462,2371,474,2371,468,2359" href=../h_rx/57423512.htm>
+<area shape=poly coords="462,2419,474,2419,468,2407" href=../h_rx/57423444.htm>
+<area shape=poly coords="462,2467,474,2467,468,2455" href=../h_rx/57642488.htm>
+<area shape=poly coords="462,2515,474,2515,468,2503" href=../h_rx/57509204.htm>
+<area shape=poly coords="462,2563,474,2563,468,2551" href=../h_rx/57507776.htm>
+<area shape=poly coords="462,2611,474,2611,468,2599" href=../h_rx/57515256.htm>
+<area shape=poly coords="462,2659,474,2659,468,2647" href=../h_rx/57423036.htm>
+<area shape=poly coords="462,2707,474,2707,468,2695" href=../h_rx/57423104.htm>
+<area shape=poly coords="462,2755,474,2755,468,2743" href=../h_rx/57422968.htm>
+<area shape=poly coords="462,2803,474,2803,468,2791" href=../h_rx/57422900.htm>
+<area shape=poly coords="462,2851,474,2851,468,2839" href=../h_rx/57422832.htm>
+<area shape=poly coords="462,2899,474,2899,468,2887" href=../h_rx/57523416.htm>
+<area shape=poly coords="462,2947,474,2947,468,2935" href=../h_rx/57523212.htm>
+<area shape=poly coords="462,2995,474,2995,468,2983" href=../h_rx/57522872.htm>
+<area shape=poly coords="462,3043,474,3043,468,3031" href=../h_rx/57523620.htm>
+<area shape=poly coords="462,3091,474,3091,468,3079" href=../h_rx/57509068.htm>
+<area shape=poly coords="462,3139,474,3139,468,3127" href=../h_rx/57515936.htm>
+<area shape=poly coords="462,3187,474,3187,468,3175" href=../h_rx/57423716.htm>
+<area shape=poly coords="462,3235,474,3235,468,3223" href=../h_rx/57423648.htm>
+<area shape=poly coords="462,3283,474,3283,468,3271" href=../h_rx/57649900.htm>
+<area shape=poly coords="462,3331,474,3331,468,3319" href=../h_rx/57649696.htm>
+<area shape=poly coords="462,3379,474,3379,468,3367" href=../h_rx/57649560.htm>
+<area shape=poly coords="462,3427,474,3427,468,3415" href=../h_rx/57649832.htm>
+<area shape=poly coords="462,3475,474,3475,468,3463" href=../h_rx/57423376.htm>
+<area shape=poly coords="462,3523,474,3523,468,3511" href=../h_rx/57423172.htm>
+<area shape=poly coords="462,3571,474,3571,468,3559" href=../h_rx/57640720.htm>
+<area shape=poly coords="462,3619,474,3619,468,3607" href=../h_rx/57515052.htm>
+<area shape=poly coords="462,3667,474,3667,468,3655" href=../h_rx/57514916.htm>
+<area shape=poly coords="462,3715,474,3715,468,3703" href=../h_rx/57522804.htm>
+<area shape=rect coords="463,3752,472,3761" href=../h_rx/57690536.htm>
+<area shape=rect coords="463,3800,472,3809" href=../h_rx/57689924.htm>
+<area shape=rect coords="463,3848,472,3857" href=../h_rx/57690332.htm>
+<area shape=rect coords="463,3896,472,3905" href=../h_rx/57690264.htm>
+<area shape=rect coords="463,3944,472,3953" href=../h_rx/57689788.htm>
+<area shape=rect coords="463,3992,472,4001" href=../h_rx/57689720.htm>
+<area shape=rect coords="463,4040,472,4049" href=../h_rx/57689652.htm>
+<area shape=rect coords="463,4088,472,4097" href=../h_rx/57689584.htm>
+<area shape=rect coords="463,4136,472,4145" href=../h_rx/57689176.htm>
+<area shape=rect coords="463,4184,472,4193" href=../h_rx/57499276.htm>
+<area shape=poly coords="462,4243,474,4243,468,4231" href=../h_rx/57643644.htm>
+<area shape=rect coords="463,4280,472,4289" href=../h_rx/57500908.htm>
+<area shape=rect coords="463,4328,472,4337" href=../h_rx/57689516.htm>
+<area shape=rect coords="463,4376,472,4385" href=../h_rx/57689448.htm>
+<area shape=rect coords="463,4424,472,4433" href=../h_rx/57689380.htm>
+<area shape=rect coords="463,4472,472,4481" href=../h_rx/57689312.htm>
+<area shape=rect coords="463,4520,472,4529" href=../h_rx/57500840.htm>
+<area shape=rect coords="463,4568,472,4577" href=../h_rx/57687408.htm>
+<area shape=rect coords="463,4616,472,4625" href=../h_rx/57687340.htm>
+<area shape=rect coords="463,4664,472,4673" href=../h_rx/57687272.htm>
+<area shape=rect coords="463,4712,472,4721" href=../h_rx/57687204.htm>
+<area shape=rect coords="463,4760,472,4769" href=../h_rx/57499684.htm>
+<area shape=rect coords="463,4808,472,4817" href=../h_rx/57687136.htm>
+<area shape=rect coords="463,4856,472,4865" href=../h_rx/57499616.htm>
+<area shape=rect coords="463,4904,472,4913" href=../h_rx/57687000.htm>
+<area shape=rect coords="463,4952,472,4961" href=../h_rx/57500636.htm>
+<area shape=rect coords="463,5000,472,5009" href=../h_rx/57686932.htm>
+<area shape=rect coords="463,5048,472,5057" href=../h_rx/57499412.htm>
+<area shape=rect coords="463,5096,472,5105" href=../h_rx/57686660.htm>
+<area shape=rect coords="463,5144,472,5153" href=../h_rx/57500568.htm>
+<area shape=rect coords="463,5192,472,5201" href=../h_rx/57686592.htm>
+<area shape=rect coords="463,5240,472,5249" href=../h_rx/57686320.htm>
+<area shape=rect coords="463,5288,472,5297" href=../h_rx/57686184.htm>
+<area shape=rect coords="463,5336,472,5345" href=../h_rx/57499548.htm>
+<area shape=rect coords="463,5384,472,5393" href=../h_rx/57686524.htm>
+<area shape=rect coords="463,5432,472,5441" href=../h_rx/57686252.htm>
+<area shape=rect coords="463,5480,472,5489" href=../h_rx/57686116.htm>
+<area shape=rect coords="463,5528,472,5537" href=../h_rx/57499480.htm>
+<area shape=rect coords="463,5576,472,5585" href=../h_rx/57686864.htm>
+<area shape=rect coords="463,5624,472,5633" href=../h_rx/57685776.htm>
+<area shape=rect coords="463,5672,472,5681" href=../h_rx/57685368.htm>
+<area shape=rect coords="463,5720,472,5729" href=../h_rx/57685912.htm>
+<area shape=rect coords="463,5768,472,5777" href=../h_rx/57685844.htm>
+<area shape=rect coords="463,5816,472,5825" href=../h_rx/57689992.htm>
+<area shape=rect coords="463,5864,472,5873" href=../h_rx/57686728.htm>
+<area shape=poly coords="462,5923,474,5923,468,5911" href=../h_rx/57517364.htm>
+<area shape=poly coords="462,5971,474,5971,468,5959" href=../h_rx/57514440.htm>
+<area shape=poly coords="462,6019,474,6019,468,6007" href=../h_rx/57514168.htm>
+<area shape=poly coords="462,6067,474,6067,468,6055" href=../h_rx/57516412.htm>
+<area shape=poly coords="462,6115,474,6115,468,6103" href=../h_rx/57515324.htm>
+<area shape=poly coords="462,6163,474,6163,468,6151" href=../h_rx/57516480.htm>
+</map>
+<img align=center width=720 height=6189 border=1 src="../g_dv/57759256dv.png" usemap=#map57759256_10>
+<h4><a class="legend">Graph shows (on left) function members of file ldebug.c setting or reading (on right) variables outside of the file</a></h4>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</body>
+</html>
+
