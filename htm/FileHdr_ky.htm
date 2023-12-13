@@ -1,0 +1,150 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/list.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook_gr.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+
+<h2>Header Files</h2>
+<div class="notebook">
+<ul>
+<li ><a href="../FileHdr_idx.htm" class="file" target="_top">metrics</a></li>
+<li><a href="FileHdr_l.htm" class="file" target="list">l</a></li>
+<li id="current"><a href="FileHdr_ky.htm" class="file" target="list">key</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<pre>
+</pre>
+<h4><a name=xref>Graph Symbols</a></h4>
+<img align=middle width=300 height=406 border=0 src="../htm/Fi_ky.png" alt="symbol key for graphs">
+<pre>
+</pre>
+<h4><a name="def"></a>Graph Descriptions</h4>
+<p>
+<em>Function Interface</em> -- Graph shows (on left) global member functions of file calling (on right) other member functions of the file
+<p>
+<em>Function and Variable Interface</em> -- Graph shows (on left) global members of file calling, setting or reading (on right) other members of the file
+<p>
+<em>Include Dependencies</em> -- Cross reference graph shows immediate include hierachy of file
+<p>
+<em>Internal Function Calls</em> -- Graph shows calling hierarchy among members of file
+<p>
+<em>Internal Function and Variable Usage</em> -- Graph shows function calls and variable use hierarchy among members of file
+<p>
+<em>Member Functions Called from Other Files</em> -- Graph shows function calls made into members of the file, abstracted to the files containing the functions
+<p>
+<em>External Calls of Member Functions</em> -- Graph shows (on left) external functions calling (on right) function members of file
+<p>
+<em>External Use of Member Variables</em> -- Graph shows (on left) external functions setting or reading (on right) variable members of file
+<p>
+<em>Member Function Calls into Other Files</em> -- Graph shows function calls made from members of the file, abstracted to the files containing the functions
+<p>
+<em>External Functions Called</em> -- Graph shows (on left) members of file calling (on right) functions outside of the file
+<p>
+<em>External Variables Used</em> -- Graph shows (on left) function members of file setting or reading (on right) variables outside of the file
+<pre>
+</pre>
+<h4><a name="def"></a>Metrics Descriptions</h4>
+<p>
+<em>File Size, Bytes</em> -- Size of the file, in bytes
+<p>
+<em>Lines in File</em> -- Number of lines in the file
+<p>
+<em>Lines of Source Code</em> -- Number of lines of code in the file
+<p>
+<em>Number of Statements</em> -- Number of statements in the file
+<p>
+<em>Lines of Comments</em> -- Number of lines of comments in the file
+<p>
+<em>Comment Ratio</em> -- Ratio of the lines of comments to the lines of source code in the file
+<p>
+<em>Declarations in File</em> -- Number of top-level declarations in the file, including types, variables, functions and macro defines
+<p>
+<em>Functions in File</em> -- Number of functions defined in the file
+<p>
+<em>Variables in File</em> -- Number of variables and parameters in the file.  For local variables and parameters to be counted, data must be collected with the -locals option enabled
+<p>
+<em>Directly Included Files</em> -- Number of header files in the project database that are directly included by the file
+<p>
+<em>Trans Included Files</em> -- Number of header files in the project database that are transitively included by the file
+<p>
+<em>Trans Included Lines</em> -- Number of lines in header files in the project database that are transitively included by the file
+<p>
+<em>Files Where Dir Incl</em> -- Number of files in the project database that directly include the file
+<p>
+<em>Files Where Trans Incl</em> -- Number of files in the project database that transitively include the file
+<p>
+<em>Total Cyclo Complex</em> -- Total cyclomatic complexity for the functions (methods) defined in the file
+<p>
+<em>Ave Cyclo Complex</em> -- Average cyclomatic complexity for the functions (methods) defined in the file
+<p>
+<em>Max Cyclo Complex</em> -- Maximum cyclomatic complexity for the functions (methods) defined in the file
+<p>
+<em>Program Difficulty</em> -- Measure of how compactly the file implements its algorithms (Halstead D).  This is the inverse of the Halstead Program Level (of abstraction)
+<p>
+<em>Program Volume</em> -- Measure of the information content of the file (Halstead V)
+<p>
+<em>Intelligent Content</em> -- Language-independent measure of the amount of content (complexity) of the file (Halstead I)
+<p>
+<em>Mental Effort</em> -- Measure of the number of elemental mental discriminations necessary to create, or understand, the file (Halstead E)
+<p>
+<em>Maintainability Index</em> -- Measure of the maintainability of the file (Welker MI)
+<pre>
+</pre>
+<h4><a name="def"></a>Source Checks</h4>
+<p>
+<em>Built-In Operators</em> -- Indicates that the number of built-in operators in an expression exceeds a user-specified threshold
+<p>
+<em>Functions in Expression</em> -- Indicates that the number of function calls in an expression exceeds a user-specified threshold
+<p>
+<em>Unclear Subexpression</em> -- Flags a subexpression that is potentially not written as intended.  Includes comparisons that can be statically evaluated like unsigned variables and negative numbers.  Catches typical suspicious relational operator uses and potential lack of parenthesis. (EX: x && y | z)
+<p>
+<em>Conversion Issue</em> -- Flags a conversion that could lose precision or rely on non-portable interpretations of arithmetic or pointers.  This includes mixing of signed and unsigned operands when it can lead to portability problems.  Also includes right-shifts of signed operands. (EX: int x; unsigned y; x = y;)
+<p>
+<em>Old Style Allocator</em> -- Flags the use of an old style memory allocator, such as malloc, realloc, calloc or free, in a C++ program.
+<p>
+<em>Suspicious Assignment</em> -- Flags a suspicious assignment in a conditional expression or argument list, where the assignment might actually be intended as a comparison
+<p>
+<em>Array Partially Zeroed</em> -- Flags an array variable initialized by a single "0".  Zeros should probably be specified for all array elements.
+<p>
+<em>Array Partially Initialized</em> -- Flags an array variable initialized with fewer values than the dimension of the array
+<p>
+<em>Needs Compound Statement</em> -- Flags a potentially missing compound statement (braces).  This includes possible errors caused by a dangling else or by a statement mistakenly disassociated from a while or for
+<p>
+<em>Missing Default Case</em> -- Flags a switch statement that does not have a default case
+<p>
+<em>Unterminated Case</em> -- Flags a case in a switch statement that is not terminated by an explicit transfer of control, such as a break statement
+<p>
+<em>Jump Statement</em> -- Flags a goto, break or continue statement that makes control flow more difficult to understand
+<p>
+<em>Return Ignored</em> -- Flags a statement that ignores the result of either a function call or any other expression where the computation is not stored.  This typically indicates that error results are being ignored
+<p>
+<em>Portability Problem</em> -- Flags certain language extensions that are incompatible with ISO C or ISO C++, such as Diab extension for sizeof and GNU extension for aggregate literals
+<p>
+<em>K&R Declarator</em> -- Flags a function declarator that uses old style K&R syntax, which is no longer valid in C++
+<p>
+<em>Potential Static Function</em> -- Indicates that a function is only called from within the file where it is defined, but is not declared static
+<p>
+<em>Missing/Mismatched Func Decl</em> -- Indicates an inconsistency between the declaration of a function and the parameters used in a function call.  This is mostly effective for C, where prototypes are missing or inconsistent
+<p>
+<em>Missing Return Type</em> -- Flags a function declaration that does not specify the return type
+<p>
+<em>Variable Num of Args</em> -- Flags a function that has a variable number of arguments
+<p>
+<em>Unused Global</em> -- Indicates that a global variable is never used in the source files loaded into the project
+<p>
+<em>Unused Static</em> -- Indicates that a static variable is never used
+<p>
+<em>Unused Local</em> -- Indicates that a local variable is never used
+<p>
+<em>Problematic Constructor</em> -- Flags a problematic definition in a class constructor. This includes virtual function calls from the constructor and initialization order problems
+<p>
+<em>No Constructor</em> -- Indicates that a class does not have a constructor.  Best practices recommend that explicit constructors always be defined in order to avoid problems in initializing the class objects
+</body>
+</html>
