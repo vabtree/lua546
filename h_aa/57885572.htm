@@ -1,0 +1,68 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>pc</h2>
+
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_aa/57885572.htm" class="variable" target="_self">Info</a></li>
+<li><a href="../h_ri/57885572.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57885572.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_aa/57885572.htm" class="variable" target="_self">General Info</a></li>
+<li><a href="../h_am/57885572.htm" class="variable" target="_self">Metrics</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>General Info</h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>category:</td><td>variable</td></tr>
+<tr><td>type:</td><td>Instruction*</td></tr>
+<tr><td>scope:</td><td>parameter</td></tr>
+<tr><th width=180></th></tr>
+</table>
+<pre>
+</pre>
+<h4>Location</h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>file:</td><td>g:/lua-5.4.6/src/<a href="../h_aa/57759256.htm" class=file>ldebug.c</a></td></tr>
+<tr><td>line:</td><td>880</td></tr>
+<tr><td>owner:</td><td></td></tr>
+<tr><td>mod date:</td><td>03 May 2023 (02:32)</td></tr>
+<tr><th width=180></th></tr>
+</table>
+<pre>
+</pre>
+<h4>Comments</h4>
+<pre>
+/*
+** Traces the execution of a Lua function. Called before the execution
+** of each opcode, when debug is on. 'L->oldpc' stores the last
+** instruction traced, to detect line changes. When entering a new
+** function, 'npci' will be zero and will test as a new line whatever
+** the value of 'oldpc'.  Some exceptional conditions may return to
+** a function without setting 'oldpc'. In that case, 'oldpc' may be
+** invalid; if so, use zero as a valid value. (A wrong but valid 'oldpc'
+** at most causes an extra call to a line hook.)
+** This function is not "Protected" when called, so it should correct
+** 'L->top.p' before calling anything that can run the GC.
+*/
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

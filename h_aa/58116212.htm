@@ -1,0 +1,76 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>n2</h2>
+
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_aa/58116212.htm" class="variable" target="_self">Info</a></li>
+<li><a href="../h_ri/58116212.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/58116212.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_aa/58116212.htm" class="variable" target="_self">General Info</a></li>
+<li><a href="../h_am/58116212.htm" class="variable" target="_self">Metrics</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>General Info</h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>category:</td><td>variable</td></tr>
+<tr><td>type:</td><td>Node*</td></tr>
+<tr><td>scope:</td><td>parameter</td></tr>
+<tr><th width=180></th></tr>
+</table>
+<pre>
+</pre>
+<h4>Location</h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>file:</td><td>g:/lua-5.4.6/src/<a href="../h_aa/58121924.htm" class=file>ltable.c</a></td></tr>
+<tr><td>line:</td><td>216</td></tr>
+<tr><td>owner:</td><td></td></tr>
+<tr><td>mod date:</td><td>03 May 2023 (02:32)</td></tr>
+<tr><th width=180></th></tr>
+</table>
+<pre>
+</pre>
+<h4>Comments</h4>
+<pre>
+/*
+** Check whether key 'k1' is equal to the key in node 'n2'. This
+** equality is raw, so there are no metamethods. Floats with integer
+** values have been normalized, so integers cannot be equal to
+** floats. It is assumed that 'eqshrstr' is simply pointer equality, so
+** that short strings are handled in the default case.
+** A true 'deadok' means to accept dead keys as equal to their original
+** values. All dead keys are compared in the default case, by pointer
+** identity. (Only collectable objects can produce dead keys.) Note that
+** dead long strings are also compared by identity.
+** Once a key is dead, its corresponding value may be collected, and
+** then another value can be created with the same address. If this
+** other value is given to 'next', 'equalkey' will signal a false
+** positive. In a regular traversal, this situation should never happen,
+** as all keys given to 'next' came from the table itself, and therefore
+** could not have been collected. Outside a regular traversal, we
+** have garbage in, garbage out. What is relevant is that this false
+** positive does not break anything.  (In particular, 'next' will return
+** some other valid item on the table or nil.)
+*/
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

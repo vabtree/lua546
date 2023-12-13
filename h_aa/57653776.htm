@@ -1,0 +1,135 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>yieldable</h2>
+
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_aa/57653776.htm" class="macro" target="_self">Info</a></li>
+<li><a href="../h_ri/57653776.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57653776.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_aa/57653776.htm" class="macro" target="_self">General Info</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>General Info</h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>category:</td><td>macro</td></tr>
+<tr><th width=180></th></tr>
+</table>
+<pre>
+</pre>
+<h4>Location</h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>file:</td><td>g:/lua-5.4.6/src/<a href="../h_aa/57538104.htm" class=file>lstate.h</a></td></tr>
+<tr><td>line:</td><td>104</td></tr>
+<tr><td>owner:</td><td></td></tr>
+<tr><td>mod date:</td><td>03 May 2023 (02:32)</td></tr>
+<tr><th width=180></th></tr>
+</table>
+<pre>
+</pre>
+<h4>Comments</h4>
+<pre>
+/*
+** Some notes about garbage-collected objects: All objects in Lua must
+** be kept somehow accessible until being freed, so all objects always
+** belong to one (and only one) of these lists, using field 'next' of
+** the 'CommonHeader' for the link:
+**
+** 'allgc': all objects not marked for finalization;
+** 'finobj': all objects marked for finalization;
+** 'tobefnz': all objects ready to be finalized;
+** 'fixedgc': all objects that are not to be collected (currently
+** only small strings, such as reserved words).
+**
+** For the generational collector, some of these lists have marks for
+** generations. Each mark points to the first element in the list for
+** that particular generation; that generation goes until the next mark.
+**
+** 'allgc' -> 'survival': new objects;
+** 'survival' -> 'old': objects that survived one collection;
+** 'old1' -> 'reallyold': objects that became old in last collection;
+** 'reallyold' -> NULL: objects old for more than one cycle.
+**
+** 'finobj' -> 'finobjsur': new objects marked for finalization;
+** 'finobjsur' -> 'finobjold1': survived   """";
+** 'finobjold1' -> 'finobjrold': just old  """";
+** 'finobjrold' -> NULL: really old       """".
+**
+** All lists can contain elements older than their main ages, due
+** to 'luaC_checkfinalizer' and 'udata2finalize', which move
+** objects between the normal lists and the "marked for finalization"
+** lists. Moreover, barriers can age young objects in young lists as
+** OLD0, which then become OLD1. However, a list never contains
+** elements younger than their main ages.
+**
+** The generational collector also uses a pointer 'firstold1', which
+** points to the first OLD1 object in the list. It is used to optimize
+** 'markold'. (Potentially OLD1 objects can be anywhere between 'allgc'
+** and 'reallyold', but often the list has no OLD1 objects or they are
+** after 'old1'.) Note the difference between it and 'old1':
+** 'firstold1': no OLD1 objects before this point; there can be all
+**   ages after it.
+** 'old1': no objects younger than OLD1 after this point.
+*/
+
+/*
+** Moreover, there is another set of lists that control gray objects.
+** These lists are linked by fields 'gclist'. (All objects that
+** can become gray have such a field. The field is not the same
+** in all objects, but it always has this name.)  Any gray object
+** must belong to one of these lists, and all objects in these lists
+** must be gray (with two exceptions explained below):
+**
+** 'gray': regular gray objects, still waiting to be visited.
+** 'grayagain': objects that must be revisited at the atomic phase.
+**   That includes
+**   - black objects got in a write barrier;
+**   - all kinds of weak tables during propagation phase;
+**   - all threads.
+** 'weak': tables with weak values to be cleared;
+** 'ephemeron': ephemeron tables with white->white entries;
+** 'allweak': tables with weak keys and/or weak values to be cleared.
+**
+** The exceptions to that "gray rule" are:
+** - TOUCHED2 objects in generational mode stay in a gray list (because
+** they must be visited again at the end of the cycle), but they are
+** marked black because assignments to them must activate barriers (to
+** move them back to TOUCHED1).
+** - Open upvales are kept gray to avoid barriers, but they stay out
+** of gray lists. (They don't even have a 'gclist' field.)
+*/
+
+
+
+/*
+** About 'nCcalls':  This count has two parts: the lower 16 bits counts
+** the number of recursive invocations in the C stack; the higher
+** 16 bits counts the number of non-yieldable calls in the stack.
+** (They are together so that we can change and save both with one
+** instruction.)
+*/
+
+
+/* true if this thread does not have non-yieldable calls in the stack */
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

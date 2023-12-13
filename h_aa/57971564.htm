@@ -1,0 +1,68 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>th</h2>
+
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_aa/57971564.htm" class="variable" target="_self">Info</a></li>
+<li><a href="../h_ri/57971564.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57971564.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_aa/57971564.htm" class="variable" target="_self">General Info</a></li>
+<li><a href="../h_am/57971564.htm" class="variable" target="_self">Metrics</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>General Info</h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>category:</td><td>variable</td></tr>
+<tr><td>type:</td><td>lua_State*</td></tr>
+<tr><td>scope:</td><td>parameter</td></tr>
+<tr><th width=180></th></tr>
+</table>
+<pre>
+</pre>
+<h4>Location</h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>file:</td><td>g:/lua-5.4.6/src/<a href="../h_aa/57829404.htm" class=file>lgc.c</a></td></tr>
+<tr><td>line:</td><td>627</td></tr>
+<tr><td>owner:</td><td></td></tr>
+<tr><td>mod date:</td><td>03 May 2023 (02:32)</td></tr>
+<tr><th width=180></th></tr>
+</table>
+<pre>
+</pre>
+<h4>Comments</h4>
+<pre>
+/*
+** Traverse a thread, marking the elements in the stack up to its top
+** and cleaning the rest of the stack in the final traversal. That
+** ensures that the entire stack have valid (non-dead) objects.
+** Threads have no barriers. In gen. mode, old threads must be visited
+** at every cycle, because they might point to young objects.  In inc.
+** mode, the thread can still be modified before the end of the cycle,
+** and therefore it must be visited again in the atomic phase. To ensure
+** these visits, threads must return to a gray list if they are not new
+** (which can only happen in generational mode) or if the traverse is in
+** the propagate phase (which can only happen in incremental mode).
+*/
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+
