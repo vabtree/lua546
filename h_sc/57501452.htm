@@ -1,0 +1,91 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaO_pushvfstring</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57501452.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57501452.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57501452.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57501452.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/57501452.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/57501452.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57919748.htm#480" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>21</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>5</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>13</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Unclear Subexpression</h5>
+<pre>
+   545 :    return <a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57901932.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1));
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+   485 :    while ((<a href="../h_src/57901388.htm" class="localvar">e</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57901796.htm" class="localvar">fmt</a>, '%')) != NULL) {
+   495 :    char <a href="../h_src/57901116.htm" class="localvar">c</a> = <a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(va_arg(<a href="../h_src/57901660.htm" class="localvar">argp</a>, int));
+   495 :    char <a href="../h_src/57901116.htm" class="localvar">c</a> = <a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(va_arg(<a href="../h_src/57901660.htm" class="localvar">argp</a>, int));
+   501 :    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(&amp;<a href="../h_src/57900980.htm" class="localvar">num</a>, va_arg(<a href="../h_src/57901660.htm" class="localvar">argp</a>, int));
+   501 :    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(&amp;<a href="../h_src/57900980.htm" class="localvar">num</a>, va_arg(<a href="../h_src/57901660.htm" class="localvar">argp</a>, int));
+   507 :    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(&amp;<a href="../h_src/57900708.htm" class="localvar">num</a>, <a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57442076.htm" class="type">lua_Integer</a>, va_arg(<a href="../h_src/57901660.htm" class="localvar">argp</a>, <a href="../h_src/57548916.htm" class="type">l_uacInt</a>)));
+   507 :    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(&amp;<a href="../h_src/57900708.htm" class="localvar">num</a>, <a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57442076.htm" class="type">lua_Integer</a>, va_arg(<a href="../h_src/57901660.htm" class="localvar">argp</a>, <a href="../h_src/57548916.htm" class="type">l_uacInt</a>)));
+   507 :    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(&amp;<a href="../h_src/57900708.htm" class="localvar">num</a>, <a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57442076.htm" class="type">lua_Integer</a>, va_arg(<a href="../h_src/57901660.htm" class="localvar">argp</a>, <a href="../h_src/57548916.htm" class="type">l_uacInt</a>)));
+   513 :    <a href="../h_src/57525728.htm" class="macro">setfltvalue</a>(&amp;<a href="../h_src/57900436.htm" class="localvar">num</a>, <a href="../h_src/57547352.htm" class="macro">cast_num</a>(va_arg(<a href="../h_src/57901660.htm" class="localvar">argp</a>, <a href="../h_src/57548984.htm" class="type">l_uacNumber</a>)));
+   513 :    <a href="../h_src/57525728.htm" class="macro">setfltvalue</a>(&amp;<a href="../h_src/57900436.htm" class="localvar">num</a>, <a href="../h_src/57547352.htm" class="macro">cast_num</a>(va_arg(<a href="../h_src/57901660.htm" class="localvar">argp</a>, <a href="../h_src/57548984.htm" class="type">l_uacNumber</a>)));
+   527 :    int <a href="../h_src/57899484.htm" class="localvar">len</a> = <a href="../h_src/57501928.htm" class="function">luaO_utf8esc</a>(<a href="../h_src/57899620.htm" class="localvar">bf</a>, va_arg(<a href="../h_src/57901660.htm" class="localvar">argp</a>, long));
+   528 :    <a href="../h_src/57903360.htm" class="function">addstr2buff</a>(&amp;<a href="../h_src/57901524.htm" class="localvar">buff</a>, <a href="../h_src/57899620.htm" class="localvar">bf</a> + <a href="../h_src/57502064.htm" class="macro">UTF8BUFFSZ</a> - <a href="../h_src/57899484.htm" class="localvar">len</a>, <a href="../h_src/57899484.htm" class="localvar">len</a>);
+   528 :    <a href="../h_src/57903360.htm" class="function">addstr2buff</a>(&amp;<a href="../h_src/57901524.htm" class="localvar">buff</a>, <a href="../h_src/57899620.htm" class="localvar">bf</a> + <a href="../h_src/57502064.htm" class="macro">UTF8BUFFSZ</a> - <a href="../h_src/57899484.htm" class="localvar">len</a>, <a href="../h_src/57899484.htm" class="localvar">len</a>);
+   545 :    return <a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57901932.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1));
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   490 :    if (<a href="../h_src/57901252.htm" class="localvar">s</a> == NULL) <a href="../h_src/57901252.htm" class="localvar">s</a> = &quot;(null)&quot;;
+</pre>
+<pre>
+</pre>
+<h5>Unterminated Case</h5>
+<pre>
+   537 :    *(<a href="../h_src/57901388.htm" class="localvar">e</a> + 1));
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+   485 :    while ((<a href="../h_src/57901388.htm" class="localvar">e</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57901796.htm" class="localvar">fmt</a>, '%')) != NULL) {
+   491 :    <a href="../h_src/57903360.htm" class="function">addstr2buff</a>(&amp;<a href="../h_src/57901524.htm" class="localvar">buff</a>, <a href="../h_src/57901252.htm" class="localvar">s</a>, <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/57901252.htm" class="localvar">s</a>));
+   521 :    int <a href="../h_src/57899756.htm" class="localvar">len</a> = <a href="../h_src/57449556.htm" class="macro">lua_pointer2str</a>(<a href="../h_src/57900028.htm" class="localvar">bf</a>, <a href="../h_src/57900164.htm" class="localvar">sz</a>, <a href="../h_src/57899892.htm" class="localvar">p</a>);
+   542 :    <a href="../h_src/57903360.htm" class="function">addstr2buff</a>(&amp;<a href="../h_src/57901524.htm" class="localvar">buff</a>, <a href="../h_src/57901796.htm" class="localvar">fmt</a>, <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/57901796.htm" class="localvar">fmt</a>));  <a  class="comments">/* rest of 'fmt' */</a>
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

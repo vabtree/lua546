@@ -1,0 +1,99 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>traversetable</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57974964.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57974964.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57974964.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57974964.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/57974964.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/57974964.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57829404.htm#542" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>17</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>6</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>14</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Number of Built-In Operators</h5>
+<pre>
+   546 :    if (<a href="../h_src/57974284.htm" class="localvar">mode</a> &amp;&amp; <a href="../h_src/57524912.htm" class="macro">ttisstring</a>(<a href="../h_src/57974284.htm" class="localvar">mode</a>) &amp;&amp;  <a  class="comments">/* is there a weak mode? */</a>
+   547 :    (<a href="../h_src/57547624.htm" class="macro">cast_void</a>(<a href="../h_src/57974556.htm" class="localvar">weakkey</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/57974284.htm" class="localvar">mode</a>), 'k')),
+   548 :    <a href="../h_src/57547624.htm" class="macro">cast_void</a>(<a href="../h_src/57974420.htm" class="localvar">weakvalue</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/57974284.htm" class="localvar">mode</a>), 'v')),
+   549 :    (<a href="../h_src/57974556.htm" class="localvar">weakkey</a> || <a href="../h_src/57974420.htm" class="localvar">weakvalue</a>))) {  <a  class="comments">/* is really weak? */</a>
+</pre>
+<pre>
+</pre>
+<h5>Unclear Subexpression</h5>
+<pre>
+   544 :    const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57974284.htm" class="localvar">mode</a> = <a href="../h_src/57498664.htm" class="macro">gfasttm</a>(<a href="../h_src/57974828.htm" class="localvar">g</a>, <a href="../h_src/57974692.htm" class="localvar">h</a>-&gt;<a href="../h_src/57504444.htm" class="variable">metatable</a>, <a href="../h_src/57500704.htm" class="variable">TM_MODE</a>);
+   555 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57974692.htm" class="localvar">h</a>, <a href="../h_src/57974828.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644800.htm" class="variable">allweak</a>);  <a  class="comments">/* nothing to traverse now */</a>
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+   545 :    <a href="../h_src/57826888.htm" class="macro">markobjectN</a>(<a href="../h_src/57974828.htm" class="localvar">g</a>, <a href="../h_src/57974692.htm" class="localvar">h</a>-&gt;<a href="../h_src/57504444.htm" class="variable">metatable</a>);
+   547 :    (<a href="../h_src/57547624.htm" class="macro">cast_void</a>(<a href="../h_src/57974556.htm" class="localvar">weakkey</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/57974284.htm" class="localvar">mode</a>), 'k')),
+   547 :    (<a href="../h_src/57547624.htm" class="macro">cast_void</a>(<a href="../h_src/57974556.htm" class="localvar">weakkey</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/57974284.htm" class="localvar">mode</a>), 'k')),
+   548 :    <a href="../h_src/57547624.htm" class="macro">cast_void</a>(<a href="../h_src/57974420.htm" class="localvar">weakvalue</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/57974284.htm" class="localvar">mode</a>), 'v')),
+   548 :    <a href="../h_src/57547624.htm" class="macro">cast_void</a>(<a href="../h_src/57974420.htm" class="localvar">weakvalue</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/57974284.htm" class="localvar">mode</a>), 'v')),
+   555 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57974692.htm" class="localvar">h</a>, <a href="../h_src/57974828.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644800.htm" class="variable">allweak</a>);  <a  class="comments">/* nothing to traverse now */</a>
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   545 :    <a href="../h_src/57826888.htm" class="macro">markobjectN</a>(<a href="../h_src/57974828.htm" class="localvar">g</a>, <a href="../h_src/57974692.htm" class="localvar">h</a>-&gt;<a href="../h_src/57504444.htm" class="variable">metatable</a>);
+   550 :    if (!<a href="../h_src/57974556.htm" class="localvar">weakkey</a>)  <a  class="comments">/* strong keys? */</a>
+   551 :    <a href="../h_src/57818252.htm" class="function">traverseweakvalue</a>(<a href="../h_src/57974828.htm" class="localvar">g</a>, <a href="../h_src/57974692.htm" class="localvar">h</a>);
+   552 :    else if (!<a href="../h_src/57974420.htm" class="localvar">weakvalue</a>)  <a  class="comments">/* strong values? */</a>
+   553 :    <a href="../h_src/57817436.htm" class="function">traverseephemeron</a>(<a href="../h_src/57974828.htm" class="localvar">g</a>, <a href="../h_src/57974692.htm" class="localvar">h</a>, 0);
+   554 :    else  <a  class="comments">/* all weak */</a>
+   555 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57974692.htm" class="localvar">h</a>, <a href="../h_src/57974828.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644800.htm" class="variable">allweak</a>);  <a  class="comments">/* nothing to traverse now */</a>
+   557 :    else  <a  class="comments">/* not weak */</a>
+   558 :    <a href="../h_src/57975916.htm" class="function">traversestrongtable</a>(<a href="../h_src/57974828.htm" class="localvar">g</a>, <a href="../h_src/57974692.htm" class="localvar">h</a>);
+</pre>
+<pre>
+</pre>
+<h5>Return Ignored</h5>
+<pre>
+   553 :    <a href="../h_src/57817436.htm" class="function">traverseephemeron</a>(<a href="../h_src/57974828.htm" class="localvar">g</a>, <a href="../h_src/57974692.htm" class="localvar">h</a>, 0);
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+   547 :    (<a href="../h_src/57547624.htm" class="macro">cast_void</a>(<a href="../h_src/57974556.htm" class="localvar">weakkey</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/57974284.htm" class="localvar">mode</a>), 'k')),
+   548 :    <a href="../h_src/57547624.htm" class="macro">cast_void</a>(<a href="../h_src/57974420.htm" class="localvar">weakvalue</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/57974284.htm" class="localvar">mode</a>), 'v')),
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

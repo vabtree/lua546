@@ -1,0 +1,76 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>funcargs</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58015260.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58015260.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58015260.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58015260.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/58015260.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/58015260.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58057080.htm#1025" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>7</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>4</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>11</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+  1066 :    <a href="../h_src/58014716.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a> = <a href="../h_src/58014444.htm" class="localvar">base</a>+1;  <a  class="comments">/* call remove function and arguments and leaves</a>
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+  1032 :    if (<a href="../h_src/58015124.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a> == ')')  <a  class="comments">/* arg list is empty? */</a>
+  1033 :    <a href="../h_src/58014580.htm" class="localvar">args</a>.<a href="../h_src/57680744.htm" class="variable">k</a> = <a href="../h_src/57682716.htm" class="variable">VVOID</a>;
+  1036 :    if (<a href="../h_src/58056604.htm" class="macro">hasmultret</a>(<a href="../h_src/58014580.htm" class="localvar">args</a>.<a href="../h_src/57680744.htm" class="variable">k</a>))
+  1037 :    <a href="../h_src/57671564.htm" class="macro">luaK_setmultret</a>(<a href="../h_src/58014716.htm" class="localvar">fs</a>, &amp;<a href="../h_src/58014580.htm" class="localvar">args</a>);
+  1057 :    if (<a href="../h_src/58056604.htm" class="macro">hasmultret</a>(<a href="../h_src/58014580.htm" class="localvar">args</a>.<a href="../h_src/57680744.htm" class="variable">k</a>))
+  1058 :    <a href="../h_src/58014308.htm" class="localvar">nparams</a> = <a href="../h_src/57445612.htm" class="macro">LUA_MULTRET</a>;  <a  class="comments">/* open call */</a>
+  1060 :    if (<a href="../h_src/58014580.htm" class="localvar">args</a>.<a href="../h_src/57680744.htm" class="variable">k</a> != <a href="../h_src/57682716.htm" class="variable">VVOID</a>)
+  1061 :    <a href="../h_src/57670272.htm" class="function">luaK_exp2nextreg</a>(<a href="../h_src/58014716.htm" class="localvar">fs</a>, &amp;<a href="../h_src/58014580.htm" class="localvar">args</a>);  <a  class="comments">/* close last argument */</a>
+</pre>
+<pre>
+</pre>
+<h5>Unterminated Case</h5>
+<pre>
+  1052 :    <a href="../h_src/57699648.htm" class="function">luaX_syntaxerror</a>(<a href="../h_src/58015124.htm" class="localvar">ls</a>, &quot;function arguments expected&quot;);
+</pre>
+<pre>
+</pre>
+<h5>Return Ignored</h5>
+<pre>
+  1035 :    <a href="../h_src/58015804.htm" class="function">explist</a>(<a href="../h_src/58015124.htm" class="localvar">ls</a>, &amp;<a href="../h_src/58014580.htm" class="localvar">args</a>);
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

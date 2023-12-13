@@ -1,0 +1,75 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>getobjname</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57745588.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57745588.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57745588.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57745588.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/57745588.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/57745588.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57759256.htm#526" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>12</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>3</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>12</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Number of Built-In Operators</h5>
+<pre>
+   569 :    int <a href="../h_src/57738380.htm" class="localvar">b</a> = (<a href="../h_src/57739060.htm" class="localvar">op</a> == <a href="../h_src/57690332.htm" class="variable">OP_LOADK</a>) ? <a href="../h_src/57692576.htm" class="macro">GETARG_Bx</a>(<a href="../h_src/57739196.htm" class="localvar">i</a>)
+   570 :    : <a href="../h_src/57692304.htm" class="macro">GETARG_Ax</a>(<a href="../h_src/57739876.htm" class="localvar">p</a>-&gt;<a href="../h_src/57514916.htm" class="variable">code</a>[<a href="../h_src/57739332.htm" class="localvar">pc</a> + 1]);
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+   539 :    int <a href="../h_src/57738924.htm" class="localvar">b</a> = <a href="../h_src/57693800.htm" class="macro">GETARG_B</a>(<a href="../h_src/57739196.htm" class="localvar">i</a>);  <a  class="comments">/* move from 'b' to 'a' */</a>
+   540 :    if (<a href="../h_src/57738924.htm" class="localvar">b</a> &lt; <a href="../h_src/57694072.htm" class="macro">GETARG_A</a>(<a href="../h_src/57739196.htm" class="localvar">i</a>))
+   545 :    int <a href="../h_src/57738788.htm" class="localvar">k</a> = <a href="../h_src/57693392.htm" class="macro">GETARG_C</a>(<a href="../h_src/57739196.htm" class="localvar">i</a>);  <a  class="comments">/* key index */</a>
+   550 :    int <a href="../h_src/57738652.htm" class="localvar">k</a> = <a href="../h_src/57693392.htm" class="macro">GETARG_C</a>(<a href="../h_src/57739196.htm" class="localvar">i</a>);  <a  class="comments">/* key index */</a>
+   559 :    int <a href="../h_src/57738516.htm" class="localvar">k</a> = <a href="../h_src/57693392.htm" class="macro">GETARG_C</a>(<a href="../h_src/57739196.htm" class="localvar">i</a>);  <a  class="comments">/* key index */</a>
+   564 :    *<a href="../h_src/57739468.htm" class="localvar">name</a> = <a href="../h_src/57754904.htm" class="function">upvalname</a>(<a href="../h_src/57739876.htm" class="localvar">p</a>, <a href="../h_src/57693800.htm" class="macro">GETARG_B</a>(<a href="../h_src/57739196.htm" class="localvar">i</a>));
+   569 :    int <a href="../h_src/57738380.htm" class="localvar">b</a> = (<a href="../h_src/57739060.htm" class="localvar">op</a> == <a href="../h_src/57690332.htm" class="variable">OP_LOADK</a>) ? <a href="../h_src/57692576.htm" class="macro">GETARG_Bx</a>(<a href="../h_src/57739196.htm" class="localvar">i</a>)
+   570 :    : <a href="../h_src/57692304.htm" class="macro">GETARG_Ax</a>(<a href="../h_src/57739876.htm" class="localvar">p</a>-&gt;<a href="../h_src/57514916.htm" class="variable">code</a>[<a href="../h_src/57739332.htm" class="localvar">pc</a> + 1]);
+   572 :    *<a href="../h_src/57739468.htm" class="localvar">name</a> = <a href="../h_src/57522532.htm" class="macro">svalue</a>(&amp;<a href="../h_src/57739876.htm" class="localvar">p</a>-&gt;<a href="../h_src/57515052.htm" class="variable">k</a>[<a href="../h_src/57738380.htm" class="localvar">b</a>]);
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   530 :    if (*<a href="../h_src/57739468.htm" class="localvar">name</a>)  <a  class="comments">/* is a local? */</a>
+   531 :    return &quot;local&quot;;
+   540 :    if (<a href="../h_src/57738924.htm" class="localvar">b</a> &lt; <a href="../h_src/57694072.htm" class="macro">GETARG_A</a>(<a href="../h_src/57739196.htm" class="localvar">i</a>))
+   541 :    return <a href="../h_src/57745588.htm" class="function">getobjname</a>(<a href="../h_src/57739876.htm" class="localvar">p</a>, <a href="../h_src/57739332.htm" class="localvar">pc</a>, <a href="../h_src/57738924.htm" class="localvar">b</a>, <a href="../h_src/57739468.htm" class="localvar">name</a>);  <a  class="comments">/* get name for 'b' */</a>
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,133 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lutf8lib.c</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143418664.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/143418664.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/143418664.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/143418664.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_uf/143418664.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_df/143418664.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/143418664.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/143418664.htm" class="file" target="_self">Source Code</a></li>
+<li id="current"><a href="../h_sc/143418664.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>47</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>5</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>55</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Unclear Subexpression</h5>
+<pre>
+    50 :    else return (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)<a href="../h_src/143417304.htm" class="localvar">len</a> + <a href="../h_src/143417440.htm" class="localvar">pos</a> + 1;
+    76 :    <a href="../h_src/143416216.htm" class="localvar">res</a> |= ((<a href="../h_src/143417916.htm" class="type">utfint</a>)(<a href="../h_src/143416352.htm" class="localvar">c</a> &amp; 0x7F) &lt;&lt; (<a href="../h_src/143416080.htm" class="localvar">count</a> * 5));  <a  class="comments">/* add first byte */</a>
+   139 :    <a href="../h_src/143413632.htm" class="localvar">n</a> = (int)(<a href="../h_src/143413904.htm" class="localvar">pose</a> -  <a href="../h_src/143414040.htm" class="localvar">posi</a>) + 1;  <a  class="comments">/* upper bound for number of returns */</a>
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+    49 :    else if (0u - (<a href="../h_aa/57441192.htm" class="type">size_t</a>)<a href="../h_src/143417440.htm" class="localvar">pos</a> &gt; <a href="../h_src/143417304.htm" class="localvar">len</a>) return 0;
+    50 :    else return (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)<a href="../h_src/143417304.htm" class="localvar">len</a> + <a href="../h_src/143417440.htm" class="localvar">pos</a> + 1;
+    64 :    unsigned int <a href="../h_src/143416352.htm" class="localvar">c</a> = (unsigned char)<a href="../h_src/143417032.htm" class="localvar">s</a>[0];
+    71 :    unsigned int <a href="../h_src/143415944.htm" class="localvar">cc</a> = (unsigned char)<a href="../h_src/143417032.htm" class="localvar">s</a>[++<a href="../h_src/143416080.htm" class="localvar">count</a>];  <a  class="comments">/* read next byte */</a>
+   103 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143415672.htm" class="localvar">L</a>, 1 &lt;= <a href="../h_src/143415128.htm" class="localvar">posi</a> &amp;&amp; --<a href="../h_src/143415128.htm" class="localvar">posi</a> &lt;= (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)<a href="../h_src/143415400.htm" class="localvar">len</a>, 2,
+   105 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143415672.htm" class="localvar">L</a>, --<a href="../h_src/143414992.htm" class="localvar">posj</a> &lt; (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)<a href="../h_src/143415400.htm" class="localvar">len</a>, 3,
+   135 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143414448.htm" class="localvar">L</a>, <a href="../h_src/143413904.htm" class="localvar">pose</a> &lt;= (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)<a href="../h_src/143414312.htm" class="localvar">len</a>, 3, &quot;out of bounds&quot;);
+   156 :    <a href="../h_src/57438132.htm" class="function">lua_Unsigned</a> <a href="../h_src/143412816.htm" class="localvar">code</a> = (<a href="../h_src/57438132.htm" class="function">lua_Unsigned</a>)<a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143413088.htm" class="localvar">L</a>, <a href="../h_src/143412952.htm" class="localvar">arg</a>);
+   158 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/143413088.htm" class="localvar">L</a>, &quot;%U&quot;, (long)<a href="../h_src/143412816.htm" class="localvar">code</a>);
+   193 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143411864.htm" class="localvar">L</a>, 1 &lt;= <a href="../h_src/143411320.htm" class="localvar">posi</a> &amp;&amp; --<a href="../h_src/143411320.htm" class="localvar">posi</a> &lt;= (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)<a href="../h_src/143411728.htm" class="localvar">len</a>, 3,
+   212 :    while (<a href="../h_src/143411456.htm" class="localvar">n</a> &gt; 0 &amp;&amp; <a href="../h_src/143411320.htm" class="localvar">posi</a> &lt; (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)<a href="../h_src/143411728.htm" class="localvar">len</a>) {
+   231 :    <a href="../h_src/57438132.htm" class="function">lua_Unsigned</a> <a href="../h_src/143410504.htm" class="localvar">n</a> = (<a href="../h_src/57438132.htm" class="function">lua_Unsigned</a>)<a href="../h_src/57429428.htm" class="macro">lua_tointeger</a>(<a href="../h_src/143411048.htm" class="localvar">L</a>, 2);
+   233 :    while (<a href="../h_src/143417712.htm" class="macro">iscontp</a>(<a href="../h_src/143410640.htm" class="localvar">s</a> + <a href="../h_src/143410504.htm" class="localvar">n</a>)) <a href="../h_src/143410504.htm" class="localvar">n</a>++;  <a  class="comments">/* go to next character */</a>
+   239 :    const char *<a href="../h_src/143410232.htm" class="localvar">next</a> = <a href="../h_src/143417168.htm" class="function">utf8_decode</a>(<a href="../h_src/143410640.htm" class="localvar">s</a> + <a href="../h_src/143410504.htm" class="localvar">n</a>, &amp;<a href="../h_src/143410368.htm" class="localvar">code</a>, <a href="../h_src/143410912.htm" class="localvar">strict</a>);
+   242 :    <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143411048.htm" class="localvar">L</a>, <a href="../h_src/143410504.htm" class="localvar">n</a> + 1);
+   273 :    static const <a href="../h_src/57420996.htm" class="type">luaL_Reg</a> <a href="../h_src/143408872.htm" class="variable">funcs</a>[] = {
+   274 :    {&quot;offset&quot;, <a href="../h_src/143412000.htm" class="function">byteoffset</a>},
+   275 :    {&quot;codepoint&quot;, <a href="../h_src/143414584.htm" class="function">codepoint</a>},
+   276 :    {&quot;char&quot;, <a href="../h_src/143412680.htm" class="function">utfchar</a>},
+   277 :    {&quot;len&quot;, <a href="../h_src/143415808.htm" class="function">utflen</a>},
+   278 :    {&quot;codes&quot;, <a href="../h_src/143409552.htm" class="function">iter_codes</a>},
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+    48 :    if (<a href="../h_src/143417440.htm" class="localvar">pos</a> &gt;= 0) return <a href="../h_src/143417440.htm" class="localvar">pos</a>;
+    49 :    else if (0u - (<a href="../h_aa/57441192.htm" class="type">size_t</a>)<a href="../h_src/143417440.htm" class="localvar">pos</a> &gt; <a href="../h_src/143417304.htm" class="localvar">len</a>) return 0;
+    50 :    else return (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)<a href="../h_src/143417304.htm" class="localvar">len</a> + <a href="../h_src/143417440.htm" class="localvar">pos</a> + 1;
+    66 :    if (<a href="../h_src/143416352.htm" class="localvar">c</a> &lt; 0x80)  <a  class="comments">/* ascii? */</a>
+    67 :    <a href="../h_src/143416216.htm" class="localvar">res</a> = <a href="../h_src/143416352.htm" class="localvar">c</a>;
+    72 :    if (!<a href="../h_src/143417848.htm" class="macro">iscont</a>(<a href="../h_src/143415944.htm" class="localvar">cc</a>))  <a  class="comments">/* not a continuation byte? */</a>
+    73 :    return NULL;  <a  class="comments">/* invalid byte sequence */</a>
+    77 :    if (<a href="../h_src/143416080.htm" class="localvar">count</a> &gt; 5 || <a href="../h_src/143416216.htm" class="localvar">res</a> &gt; <a href="../h_src/143418188.htm" class="macro">MAXUTF</a> || <a href="../h_src/143416216.htm" class="localvar">res</a> &lt; <a href="../h_src/143416488.htm" class="localvar">limits</a>[<a href="../h_src/143416080.htm" class="localvar">count</a>])
+    78 :    return NULL;  <a  class="comments">/* invalid byte sequence */</a>
+    83 :    if (<a href="../h_src/143416216.htm" class="localvar">res</a> &gt; <a href="../h_src/143418324.htm" class="macro">MAXUNICODE</a> || (0xD800u &lt;= <a href="../h_src/143416216.htm" class="localvar">res</a> &amp;&amp; <a href="../h_src/143416216.htm" class="localvar">res</a> &lt;= 0xDFFFu))
+    84 :    return NULL;
+    86 :    if (<a href="../h_src/143416828.htm" class="localvar">val</a>) *<a href="../h_src/143416828.htm" class="localvar">val</a> = <a href="../h_src/143416216.htm" class="localvar">res</a>;
+   136 :    if (<a href="../h_src/143414040.htm" class="localvar">posi</a> &gt; <a href="../h_src/143413904.htm" class="localvar">pose</a>) return 0;  <a  class="comments">/* empty interval; return no values */</a>
+   137 :    if (<a href="../h_src/143413904.htm" class="localvar">pose</a> - <a href="../h_src/143414040.htm" class="localvar">posi</a> &gt;= INT_MAX)  <a  class="comments">/* (lua_Integer -&gt; int) overflow? */</a>
+   138 :    return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143414448.htm" class="localvar">L</a>, &quot;string slice too long&quot;);
+   146 :    if (<a href="../h_src/143414176.htm" class="localvar">s</a> == NULL)
+   147 :    return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143414448.htm" class="localvar">L</a>, <a href="../h_src/143418052.htm" class="macro">MSGInvalid</a>);
+   167 :    if (<a href="../h_src/143412408.htm" class="localvar">n</a> == 1)  <a  class="comments">/* optimize common case of single char */</a>
+   168 :    <a href="../h_src/143413224.htm" class="function">pushutfchar</a>(<a href="../h_src/143412544.htm" class="localvar">L</a>, 1);
+   197 :    while (<a href="../h_src/143411320.htm" class="localvar">posi</a> &gt; 0 &amp;&amp; <a href="../h_src/143417712.htm" class="macro">iscontp</a>(<a href="../h_src/143411592.htm" class="localvar">s</a> + <a href="../h_src/143411320.htm" class="localvar">posi</a>)) <a href="../h_src/143411320.htm" class="localvar">posi</a>--;
+   200 :    if (<a href="../h_src/143417712.htm" class="macro">iscontp</a>(<a href="../h_src/143411592.htm" class="localvar">s</a> + <a href="../h_src/143411320.htm" class="localvar">posi</a>))
+   201 :    return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143411864.htm" class="localvar">L</a>, &quot;initial position is a continuation byte&quot;);
+   220 :    if (<a href="../h_src/143411456.htm" class="localvar">n</a> == 0)  <a  class="comments">/* did it find given character? */</a>
+   221 :    <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143411864.htm" class="localvar">L</a>, <a href="../h_src/143411320.htm" class="localvar">posi</a> + 1);
+   222 :    else  <a  class="comments">/* no such character */</a>
+   223 :    <a href="../h_src/57415760.htm" class="macro">luaL_pushfail</a>(<a href="../h_src/143411864.htm" class="localvar">L</a>);
+   233 :    while (<a href="../h_src/143417712.htm" class="macro">iscontp</a>(<a href="../h_src/143410640.htm" class="localvar">s</a> + <a href="../h_src/143410504.htm" class="localvar">n</a>)) <a href="../h_src/143410504.htm" class="localvar">n</a>++;  <a  class="comments">/* go to next character */</a>
+   235 :    if (<a href="../h_src/143410504.htm" class="localvar">n</a> &gt;= <a href="../h_src/143410776.htm" class="localvar">len</a>)  <a  class="comments">/* (also handles original 'n' being negative) */</a>
+   236 :    return 0;  <a  class="comments">/* no more codepoints */</a>
+   240 :    if (<a href="../h_src/143410232.htm" class="localvar">next</a> == NULL || <a href="../h_src/143417712.htm" class="macro">iscontp</a>(<a href="../h_src/143410232.htm" class="localvar">next</a>))
+   241 :    return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143411048.htm" class="localvar">L</a>, <a href="../h_src/143418052.htm" class="macro">MSGInvalid</a>);
+</pre>
+<pre>
+</pre>
+<h5>Return Ignored</h5>
+<pre>
+   158 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/143413088.htm" class="localvar">L</a>, &quot;%U&quot;, (long)<a href="../h_src/143412816.htm" class="localvar">code</a>);
+   287 :    <a href="../h_src/57435072.htm" class="function">lua_pushlstring</a>(<a href="../h_src/143408804.htm" class="localvar">L</a>, <a href="../h_src/143409008.htm" class="macro">UTF8PATT</a>, sizeof(<a href="../h_src/143409008.htm" class="macro">UTF8PATT</a>)/sizeof(char) - 1);
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+   103 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143415672.htm" class="localvar">L</a>, 1 &lt;= <a href="../h_src/143415128.htm" class="localvar">posi</a> &amp;&amp; --<a href="../h_src/143415128.htm" class="localvar">posi</a> &lt;= (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)<a href="../h_src/143415400.htm" class="localvar">len</a>, 2,
+   105 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143415672.htm" class="localvar">L</a>, --<a href="../h_src/143414992.htm" class="localvar">posj</a> &lt; (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)<a href="../h_src/143415400.htm" class="localvar">len</a>, 3,
+   134 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143414448.htm" class="localvar">L</a>, <a href="../h_src/143414040.htm" class="localvar">posi</a> &gt;= 1, 2, &quot;out of bounds&quot;);
+   135 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143414448.htm" class="localvar">L</a>, <a href="../h_src/143413904.htm" class="localvar">pose</a> &lt;= (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)<a href="../h_src/143414312.htm" class="localvar">len</a>, 3, &quot;out of bounds&quot;);
+   157 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143413088.htm" class="localvar">L</a>, <a href="../h_src/143412816.htm" class="localvar">code</a> &lt;= <a href="../h_src/143418188.htm" class="macro">MAXUTF</a>, <a href="../h_src/143412952.htm" class="localvar">arg</a>, &quot;value out of range&quot;);
+   193 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143411864.htm" class="localvar">L</a>, 1 &lt;= <a href="../h_src/143411320.htm" class="localvar">posi</a> &amp;&amp; --<a href="../h_src/143411320.htm" class="localvar">posi</a> &lt;= (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)<a href="../h_src/143411728.htm" class="localvar">len</a>, 3,
+   261 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143409416.htm" class="localvar">L</a>, !<a href="../h_src/143417712.htm" class="macro">iscontp</a>(<a href="../h_src/143409144.htm" class="localvar">s</a>), 1, <a href="../h_src/143418052.htm" class="macro">MSGInvalid</a>);
+</pre>
+<pre>
+
+</pre>
+</body>
+</html>
+

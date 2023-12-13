@@ -1,0 +1,298 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>ldebug.c</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57759256.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/57759256.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/57759256.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/57759256.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_uf/57759256.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_df/57759256.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57759256.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/57759256.htm" class="file" target="_self">Source Code</a></li>
+<li id="current"><a href="../h_sc/57759256.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>154</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>10</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>159</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Number of Built-In Operators</h5>
+<pre>
+   268 :    <a href="../h_src/57750688.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423444.htm" class="variable">srclen</a> = <a href="../h_src/57522396.htm" class="macro">tsslen</a>(<a href="../h_src/57750348.htm" class="localvar">p</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>);
+   401 :    <a href="../h_src/57746268.htm" class="localvar">cl</a> = <a href="../h_src/57512672.htm" class="macro">ttisclosure</a>(<a href="../h_src/57745996.htm" class="localvar">func</a>) ? <a href="../h_src/57512400.htm" class="macro">clvalue</a>(<a href="../h_src/57745996.htm" class="localvar">func</a>) : NULL;
+   492 :    int <a href="../h_src/57741100.htm" class="localvar">b</a> = <a href="../h_src/57691760.htm" class="macro">GETARG_sJ</a>(<a href="../h_src/57741780.htm" class="localvar">i</a>);
+   569 :    int <a href="../h_src/57738380.htm" class="localvar">b</a> = (<a href="../h_src/57739060.htm" class="localvar">op</a> == <a href="../h_src/57690332.htm" class="variable">OP_LOADK</a>) ? <a href="../h_src/57692576.htm" class="macro">GETARG_Bx</a>(<a href="../h_src/57739196.htm" class="localvar">i</a>)
+   570 :    : <a href="../h_src/57692304.htm" class="macro">GETARG_Ax</a>(<a href="../h_src/57739876.htm" class="localvar">p</a>-&gt;<a href="../h_src/57514916.htm" class="variable">code</a>[<a href="../h_src/57739332.htm" class="localvar">pc</a> + 1]);
+   900 :    if (!<a href="../h_src/57683464.htm" class="macro">isIT</a>(*(<a href="../h_src/57885436.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650852.htm" class="variable">l</a>.<a href="../h_src/57651124.htm" class="variable">savedpc</a> - 1)))  <a  class="comments">/* top not being used? */</a>
+</pre>
+<pre>
+</pre>
+<h5>Unclear Subexpression</h5>
+<pre>
+    43 :    return <a href="../h_src/57636776.htm" class="macro">pcRel</a>(<a href="../h_src/57758508.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57507708.htm" class="variable">l</a>.<a href="../h_src/57651124.htm" class="variable">savedpc</a>, <a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57758508.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57531984.htm" class="variable">p</a>);
+    99 :    return <a href="../h_src/57635960.htm" class="function">luaG_getfuncline</a>(<a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57757012.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>, <a href="../h_src/57758644.htm" class="function">currentpc</a>(<a href="../h_src/57757012.htm" class="localvar">ci</a>));
+   165 :    for (<a href="../h_src/57755040.htm" class="localvar">ci</a> = <a href="../h_src/57755584.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>; <a href="../h_src/57755448.htm" class="localvar">level</a> &gt; 0 &amp;&amp; <a href="../h_src/57755040.htm" class="localvar">ci</a> != &amp;<a href="../h_src/57755584.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641740.htm" class="variable">base_ci</a>; <a href="../h_src/57755040.htm" class="localvar">ci</a> = <a href="../h_src/57755040.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651396.htm" class="variable">previous</a>)
+   167 :    if (<a href="../h_src/57755448.htm" class="localvar">level</a> == 0 &amp;&amp; <a href="../h_src/57755040.htm" class="localvar">ci</a> != &amp;<a href="../h_src/57755584.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641740.htm" class="variable">base_ci</a>) {  <a  class="comments">/* level found? */</a>
+   185 :    if (<a href="../h_src/57512264.htm" class="macro">clLvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57754224.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a>))-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>-&gt;<a href="../h_src/57515868.htm" class="variable">is_vararg</a>) {
+   203 :    <a href="../h_src/57753000.htm" class="localvar">name</a> = <a href="../h_src/57630180.htm" class="function">luaF_getlocalname</a>(<a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57753544.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>, <a href="../h_src/57753408.htm" class="localvar">n</a>, <a href="../h_src/57758644.htm" class="function">currentpc</a>(<a href="../h_src/57753544.htm" class="localvar">ci</a>));
+   224 :    if (!<a href="../h_src/57512536.htm" class="macro">isLfunction</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57752728.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1)))  <a  class="comments">/* not a Lua function? */</a>
+   227 :    <a href="../h_src/57752320.htm" class="localvar">name</a> = <a href="../h_src/57630180.htm" class="function">luaF_getlocalname</a>(<a href="../h_src/57512264.htm" class="macro">clLvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57752728.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1))-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>, <a href="../h_src/57752456.htm" class="localvar">n</a>, 0);
+   233 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/57752728.htm" class="localvar">L</a>, <a href="../h_src/57752728.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57752184.htm" class="localvar">pos</a>);
+   233 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/57752728.htm" class="localvar">L</a>, <a href="../h_src/57752728.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57752184.htm" class="localvar">pos</a>);
+   248 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/57751776.htm" class="localvar">L</a>, <a href="../h_src/57751368.htm" class="localvar">pos</a>, <a href="../h_src/57751776.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1);
+   248 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/57751776.htm" class="localvar">L</a>, <a href="../h_src/57751368.htm" class="localvar">pos</a>, <a href="../h_src/57751776.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1);
+   292 :    <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57749532.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>));
+   301 :    <a href="../h_src/57506892.htm" class="macro">sethvalue2s</a>(<a href="../h_src/57749532.htm" class="localvar">L</a>, <a href="../h_src/57749532.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57748716.htm" class="localvar">t</a>);  <a  class="comments">/* push it on stack */</a>
+   357 :    <a href="../h_src/57747356.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423648.htm" class="variable">namewhat</a> = <a href="../h_src/57748308.htm" class="function">getfuncname</a>(<a href="../h_src/57747628.htm" class="localvar">L</a>, <a href="../h_src/57747084.htm" class="localvar">ci</a>, &amp;<a href="../h_src/57747356.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423716.htm" class="variable">name</a>);
+   391 :    <a href="../h_src/57745996.htm" class="localvar">func</a> = <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57746812.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1);
+   398 :    <a href="../h_src/57745996.htm" class="localvar">func</a> = <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57746132.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a>);
+   404 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/57746812.htm" class="localvar">L</a>, <a href="../h_src/57746812.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57745996.htm" class="localvar">func</a>);
+   649 :    return <a href="../h_src/57738244.htm" class="function">funcnamefromcode</a>(<a href="../h_src/57897268.htm" class="localvar">L</a>, <a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57897132.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>, <a href="../h_src/57758644.htm" class="function">currentpc</a>(<a href="../h_src/57897132.htm" class="localvar">ci</a>), <a href="../h_src/57896996.htm" class="localvar">name</a>);
+   668 :    if (<a href="../h_src/57896588.htm" class="localvar">o</a> == <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57896316.htm" class="localvar">base</a> + <a href="../h_src/57896452.htm" class="localvar">pos</a>))
+   682 :    <a href="../h_src/57507980.htm" class="type">LClosure</a> *<a href="../h_src/57895636.htm" class="localvar">c</a> = <a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57896044.htm" class="localvar">ci</a>);
+   715 :    <a href="../h_src/57894140.htm" class="localvar">kind</a> = <a href="../h_src/57745588.htm" class="function">getobjname</a>(<a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57894412.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>, <a href="../h_src/57758644.htm" class="function">currentpc</a>(<a href="../h_src/57894412.htm" class="localvar">ci</a>), <a href="../h_src/57894004.htm" class="localvar">reg</a>, &amp;<a href="../h_src/57894276.htm" class="localvar">name</a>);
+   813 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/57888564.htm" class="localvar">L</a>, <a href="../h_src/57888564.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57888564.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1);  <a  class="comments">/* move argument */</a>
+   813 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/57888564.htm" class="localvar">L</a>, <a href="../h_src/57888564.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57888564.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1);  <a  class="comments">/* move argument */</a>
+   814 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/57888564.htm" class="localvar">L</a>, <a href="../h_src/57888564.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1, <a href="../h_src/57888428.htm" class="localvar">errfunc</a>);  <a  class="comments">/* push function */</a>
+   814 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/57888564.htm" class="localvar">L</a>, <a href="../h_src/57888564.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1, <a href="../h_src/57888428.htm" class="localvar">errfunc</a>);  <a  class="comments">/* push function */</a>
+   831 :    <a href="../h_src/57635212.htm" class="function">luaG_addinfo</a>(<a href="../h_src/57887748.htm" class="localvar">L</a>, <a href="../h_src/57887204.htm" class="localvar">msg</a>, <a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57887340.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57531984.htm" class="variable">p</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>, <a href="../h_src/57757148.htm" class="function">getcurrentline</a>(<a href="../h_src/57887340.htm" class="localvar">ci</a>));
+   832 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/57887748.htm" class="localvar">L</a>, <a href="../h_src/57887748.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 2, <a href="../h_src/57887748.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1);  <a  class="comments">/* remove 'msg' */</a>
+   832 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/57887748.htm" class="localvar">L</a>, <a href="../h_src/57887748.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 2, <a href="../h_src/57887748.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1);  <a  class="comments">/* remove 'msg' */</a>
+   883 :    const <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57885164.htm" class="localvar">p</a> = <a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57885436.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>;
+   891 :    <a href="../h_src/57885028.htm" class="localvar">counthook</a> = (--<a href="../h_src/57885708.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641332.htm" class="variable">hookcount</a> == 0 &amp;&amp; (<a href="../h_src/57885300.htm" class="localvar">mask</a> &amp; <a href="../h_src/57424804.htm" class="macro">LUA_MASKCOUNT</a>));
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+    43 :    return <a href="../h_src/57636776.htm" class="macro">pcRel</a>(<a href="../h_src/57758508.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57507708.htm" class="variable">l</a>.<a href="../h_src/57651124.htm" class="variable">savedpc</a>, <a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57758508.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57531984.htm" class="variable">p</a>);
+    66 :    int <a href="../h_src/57757828.htm" class="localvar">i</a> = <a href="../h_src/57547080.htm" class="macro">cast_uint</a>(<a href="../h_src/57758100.htm" class="localvar">pc</a>) / <a href="../h_src/57636096.htm" class="macro">MAXIWTHABS</a> - 1;  <a  class="comments">/* get an estimate */</a>
+    99 :    return <a href="../h_src/57635960.htm" class="function">luaG_getfuncline</a>(<a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57757012.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>, <a href="../h_src/57758644.htm" class="function">currentpc</a>(<a href="../h_src/57757012.htm" class="localvar">ci</a>));
+   117 :    <a href="../h_src/57756740.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650852.htm" class="variable">l</a>.<a href="../h_src/57651056.htm" class="variable">trap</a> = 1;
+   139 :    <a href="../h_src/57756604.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641264.htm" class="variable">hookmask</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/57756332.htm" class="localvar">mask</a>);
+   139 :    <a href="../h_src/57756604.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641264.htm" class="variable">hookmask</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/57756332.htm" class="localvar">mask</a>);
+   185 :    if (<a href="../h_src/57512264.htm" class="macro">clLvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57754224.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a>))-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>-&gt;<a href="../h_src/57515868.htm" class="variable">is_vararg</a>) {
+   203 :    <a href="../h_src/57753000.htm" class="localvar">name</a> = <a href="../h_src/57630180.htm" class="function">luaF_getlocalname</a>(<a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57753544.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>, <a href="../h_src/57753408.htm" class="localvar">n</a>, <a href="../h_src/57758644.htm" class="function">currentpc</a>(<a href="../h_src/57753544.htm" class="localvar">ci</a>));
+   227 :    <a href="../h_src/57752320.htm" class="localvar">name</a> = <a href="../h_src/57630180.htm" class="function">luaF_getlocalname</a>(<a href="../h_src/57512264.htm" class="macro">clLvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57752728.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1))-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>, <a href="../h_src/57752456.htm" class="localvar">n</a>, 0);
+   259 :    <a href="../h_src/57750688.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423444.htm" class="variable">srclen</a> = <a href="../h_src/57549392.htm" class="macro">LL</a>(&quot;=[C]&quot;);
+   272 :    <a href="../h_src/57750688.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423444.htm" class="variable">srclen</a> = <a href="../h_src/57549392.htm" class="macro">LL</a>(&quot;=?&quot;);
+   292 :    <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57749532.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>));
+   301 :    <a href="../h_src/57506892.htm" class="macro">sethvalue2s</a>(<a href="../h_src/57749532.htm" class="localvar">L</a>, <a href="../h_src/57749532.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57748716.htm" class="localvar">t</a>);  <a  class="comments">/* push it on stack */</a>
+   301 :    <a href="../h_src/57506892.htm" class="macro">sethvalue2s</a>(<a href="../h_src/57749532.htm" class="localvar">L</a>, <a href="../h_src/57749532.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57748716.htm" class="localvar">t</a>);  <a  class="comments">/* push it on stack */</a>
+   303 :    <a href="../h_src/57529128.htm" class="macro">setbtvalue</a>(&amp;<a href="../h_src/57749124.htm" class="localvar">v</a>);  <a  class="comments">/* boolean 'true' to be the value of all indices */</a>
+   341 :    <a href="../h_src/57747356.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423172.htm" class="variable">nups</a> = (<a href="../h_src/57747220.htm" class="localvar">f</a> == NULL) ? 0 : <a href="../h_src/57747220.htm" class="localvar">f</a>-&gt;<a href="../h_src/57507776.htm" class="variable">c</a>.<a href="../h_src/57509068.htm" class="variable">nupvalues</a>;
+   347 :    <a href="../h_src/57747356.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423036.htm" class="variable">isvararg</a> = <a href="../h_src/57747220.htm" class="localvar">f</a>-&gt;<a href="../h_src/57507708.htm" class="variable">l</a>.<a href="../h_src/57508184.htm" class="variable">p</a>-&gt;<a href="../h_src/57515868.htm" class="variable">is_vararg</a>;
+   353 :    <a href="../h_src/57747356.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57422968.htm" class="variable">istailcall</a> = (<a href="../h_src/57747084.htm" class="localvar">ci</a>) ? <a href="../h_src/57747084.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp; <a href="../h_src/57648676.htm" class="macro">CIST_TAIL</a> : 0;
+   401 :    <a href="../h_src/57746268.htm" class="localvar">cl</a> = <a href="../h_src/57512672.htm" class="macro">ttisclosure</a>(<a href="../h_src/57745996.htm" class="localvar">func</a>) ? <a href="../h_src/57512400.htm" class="macro">clvalue</a>(<a href="../h_src/57745996.htm" class="localvar">func</a>) : NULL;
+   429 :    *<a href="../h_src/57745044.htm" class="localvar">name</a> = (<a href="../h_src/57524912.htm" class="macro">ttisstring</a>(<a href="../h_src/57744908.htm" class="localvar">kvalue</a>)) ? <a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/57744908.htm" class="localvar">kvalue</a>) : &quot;?&quot;;
+   447 :    int <a href="../h_src/57743276.htm" class="localvar">c</a> = <a href="../h_src/57693392.htm" class="macro">GETARG_C</a>(<a href="../h_src/57743548.htm" class="localvar">i</a>);  <a  class="comments">/* key index */</a>
+   448 :    if (<a href="../h_src/57692848.htm" class="macro">GETARG_k</a>(<a href="../h_src/57743548.htm" class="localvar">i</a>))  <a  class="comments">/* is 'c' a constant? */</a>
+   474 :    int <a href="../h_src/57741508.htm" class="localvar">a</a> = <a href="../h_src/57694072.htm" class="macro">GETARG_A</a>(<a href="../h_src/57741780.htm" class="localvar">i</a>);
+   478 :    int <a href="../h_src/57741236.htm" class="localvar">b</a> = <a href="../h_src/57693800.htm" class="macro">GETARG_B</a>(<a href="../h_src/57741780.htm" class="localvar">i</a>);
+   492 :    int <a href="../h_src/57741100.htm" class="localvar">b</a> = <a href="../h_src/57691760.htm" class="macro">GETARG_sJ</a>(<a href="../h_src/57741780.htm" class="localvar">i</a>);
+   492 :    int <a href="../h_src/57741100.htm" class="localvar">b</a> = <a href="../h_src/57691760.htm" class="macro">GETARG_sJ</a>(<a href="../h_src/57741780.htm" class="localvar">i</a>);
+   501 :    <a href="../h_src/57741372.htm" class="localvar">change</a> = (<a href="../h_src/57684280.htm" class="macro">testAMode</a>(<a href="../h_src/57741644.htm" class="localvar">op</a>) &amp;&amp; <a href="../h_src/57742324.htm" class="localvar">reg</a> == <a href="../h_src/57741508.htm" class="localvar">a</a>);
+   516 :    int <a href="../h_src/57740148.htm" class="localvar">t</a> = <a href="../h_src/57693800.htm" class="macro">GETARG_B</a>(<a href="../h_src/57740420.htm" class="localvar">i</a>);  <a  class="comments">/* table index */</a>
+   539 :    int <a href="../h_src/57738924.htm" class="localvar">b</a> = <a href="../h_src/57693800.htm" class="macro">GETARG_B</a>(<a href="../h_src/57739196.htm" class="localvar">i</a>);  <a  class="comments">/* move from 'b' to 'a' */</a>
+   540 :    if (<a href="../h_src/57738924.htm" class="localvar">b</a> &lt; <a href="../h_src/57694072.htm" class="macro">GETARG_A</a>(<a href="../h_src/57739196.htm" class="localvar">i</a>))
+   545 :    int <a href="../h_src/57738788.htm" class="localvar">k</a> = <a href="../h_src/57693392.htm" class="macro">GETARG_C</a>(<a href="../h_src/57739196.htm" class="localvar">i</a>);  <a  class="comments">/* key index */</a>
+   550 :    int <a href="../h_src/57738652.htm" class="localvar">k</a> = <a href="../h_src/57693392.htm" class="macro">GETARG_C</a>(<a href="../h_src/57739196.htm" class="localvar">i</a>);  <a  class="comments">/* key index */</a>
+   559 :    int <a href="../h_src/57738516.htm" class="localvar">k</a> = <a href="../h_src/57693392.htm" class="macro">GETARG_C</a>(<a href="../h_src/57739196.htm" class="localvar">i</a>);  <a  class="comments">/* key index */</a>
+   564 :    *<a href="../h_src/57739468.htm" class="localvar">name</a> = <a href="../h_src/57754904.htm" class="function">upvalname</a>(<a href="../h_src/57739876.htm" class="localvar">p</a>, <a href="../h_src/57693800.htm" class="macro">GETARG_B</a>(<a href="../h_src/57739196.htm" class="localvar">i</a>));
+   569 :    int <a href="../h_src/57738380.htm" class="localvar">b</a> = (<a href="../h_src/57739060.htm" class="localvar">op</a> == <a href="../h_src/57690332.htm" class="variable">OP_LOADK</a>) ? <a href="../h_src/57692576.htm" class="macro">GETARG_Bx</a>(<a href="../h_src/57739196.htm" class="localvar">i</a>)
+   570 :    : <a href="../h_src/57692304.htm" class="macro">GETARG_Ax</a>(<a href="../h_src/57739876.htm" class="localvar">p</a>-&gt;<a href="../h_src/57514916.htm" class="variable">code</a>[<a href="../h_src/57739332.htm" class="localvar">pc</a> + 1]);
+   572 :    *<a href="../h_src/57739468.htm" class="localvar">name</a> = <a href="../h_src/57522532.htm" class="macro">svalue</a>(&amp;<a href="../h_src/57739876.htm" class="localvar">p</a>-&gt;<a href="../h_src/57515052.htm" class="variable">k</a>[<a href="../h_src/57738380.htm" class="localvar">b</a>]);
+   601 :    return <a href="../h_src/57745588.htm" class="function">getobjname</a>(<a href="../h_src/57737972.htm" class="localvar">p</a>, <a href="../h_src/57737836.htm" class="localvar">pc</a>, <a href="../h_src/57694072.htm" class="macro">GETARG_A</a>(<a href="../h_src/57737428.htm" class="localvar">i</a>), <a href="../h_src/57737700.htm" class="localvar">name</a>);  <a  class="comments">/* get function name */</a>
+   615 :    <a href="../h_src/57737564.htm" class="localvar">tm</a> = <a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57499004.htm" class="type">TMS</a>, <a href="../h_src/57693392.htm" class="macro">GETARG_C</a>(<a href="../h_src/57737428.htm" class="localvar">i</a>));
+   630 :    *<a href="../h_src/57737700.htm" class="localvar">name</a> = <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57738108.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57643644.htm" class="variable">tmname</a>[<a href="../h_src/57737564.htm" class="localvar">tm</a>]) + 2;
+   649 :    return <a href="../h_src/57738244.htm" class="function">funcnamefromcode</a>(<a href="../h_src/57897268.htm" class="localvar">L</a>, <a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57897132.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>, <a href="../h_src/57758644.htm" class="function">currentpc</a>(<a href="../h_src/57897132.htm" class="localvar">ci</a>), <a href="../h_src/57896996.htm" class="localvar">name</a>);
+   682 :    <a href="../h_src/57507980.htm" class="type">LClosure</a> *<a href="../h_src/57895636.htm" class="localvar">c</a> = <a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57896044.htm" class="localvar">ci</a>);
+   715 :    <a href="../h_src/57894140.htm" class="localvar">kind</a> = <a href="../h_src/57745588.htm" class="function">getobjname</a>(<a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57894412.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>, <a href="../h_src/57758644.htm" class="function">currentpc</a>(<a href="../h_src/57894412.htm" class="localvar">ci</a>), <a href="../h_src/57894004.htm" class="localvar">reg</a>, &amp;<a href="../h_src/57894276.htm" class="localvar">name</a>);
+   811 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57888428.htm" class="localvar">errfunc</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57888564.htm" class="localvar">L</a>, <a href="../h_src/57888564.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641604.htm" class="variable">errfunc</a>);
+   811 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57888428.htm" class="localvar">errfunc</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57888564.htm" class="localvar">L</a>, <a href="../h_src/57888564.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641604.htm" class="variable">errfunc</a>);
+   831 :    <a href="../h_src/57635212.htm" class="function">luaG_addinfo</a>(<a href="../h_src/57887748.htm" class="localvar">L</a>, <a href="../h_src/57887204.htm" class="localvar">msg</a>, <a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57887340.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57531984.htm" class="variable">p</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>, <a href="../h_src/57757148.htm" class="function">getcurrentline</a>(<a href="../h_src/57887340.htm" class="localvar">ci</a>));
+   883 :    const <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57885164.htm" class="localvar">p</a> = <a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57885436.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>;
+   886 :    <a href="../h_src/57885436.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650852.htm" class="variable">l</a>.<a href="../h_src/57651056.htm" class="variable">trap</a> = 0;  <a  class="comments">/* don't need to stop again */</a>
+   897 :    <a href="../h_src/57885436.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp;= ~<a href="../h_src/57648540.htm" class="macro">CIST_HOOKYIELD</a>;  <a  class="comments">/* erase mark */</a>
+   900 :    if (!<a href="../h_src/57683464.htm" class="macro">isIT</a>(*(<a href="../h_src/57885436.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650852.htm" class="variable">l</a>.<a href="../h_src/57651124.htm" class="variable">savedpc</a> - 1)))  <a  class="comments">/* top not being used? */</a>
+   919 :    <a href="../h_src/57885436.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> |= <a href="../h_src/57648540.htm" class="macro">CIST_HOOKYIELD</a>;  <a  class="comments">/* mark that it yielded */</a>
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+    70 :    while (<a href="../h_src/57757828.htm" class="localvar">i</a> + 1 &lt; <a href="../h_src/57758236.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515324.htm" class="variable">sizeabslineinfo</a> &amp;&amp; <a href="../h_src/57758100.htm" class="localvar">pc</a> &gt;= <a href="../h_src/57758236.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514168.htm" class="variable">abslineinfo</a>[<a href="../h_src/57757828.htm" class="localvar">i</a> + 1].<a href="../h_src/57516480.htm" class="variable">pc</a>)
+    71 :    <a href="../h_src/57757828.htm" class="localvar">i</a>++;  <a  class="comments">/* low estimate; adjust it */</a>
+    84 :    if (<a href="../h_src/57757692.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514304.htm" class="variable">lineinfo</a> == NULL)  <a  class="comments">/* no debug information? */</a>
+    85 :    return -1;
+   116 :    if (<a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57756740.htm" class="localvar">ci</a>))
+   117 :    <a href="../h_src/57756740.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650852.htm" class="variable">l</a>.<a href="../h_src/57651056.htm" class="variable">trap</a> = 1;
+   115 :    for (; <a href="../h_src/57756740.htm" class="localvar">ci</a> != NULL; <a href="../h_src/57756740.htm" class="localvar">ci</a> = <a href="../h_src/57756740.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651396.htm" class="variable">previous</a>)
+   116 :    if (<a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57756740.htm" class="localvar">ci</a>))
+   117 :    <a href="../h_src/57756740.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650852.htm" class="variable">l</a>.<a href="../h_src/57651056.htm" class="variable">trap</a> = 1;
+   140 :    if (<a href="../h_src/57756332.htm" class="localvar">mask</a>)
+   141 :    <a href="../h_src/57756876.htm" class="function">settraps</a>(<a href="../h_src/57756604.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>);  <a  class="comments">/* to trace inside 'luaV_execute' */</a>
+   163 :    if (<a href="../h_src/57755448.htm" class="localvar">level</a> &lt; 0) return 0;  <a  class="comments">/* invalid (negative) level */</a>
+   165 :    for (<a href="../h_src/57755040.htm" class="localvar">ci</a> = <a href="../h_src/57755584.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>; <a href="../h_src/57755448.htm" class="localvar">level</a> &gt; 0 &amp;&amp; <a href="../h_src/57755040.htm" class="localvar">ci</a> != &amp;<a href="../h_src/57755584.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641740.htm" class="variable">base_ci</a>; <a href="../h_src/57755040.htm" class="localvar">ci</a> = <a href="../h_src/57755040.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651396.htm" class="variable">previous</a>)
+   166 :    <a href="../h_src/57755448.htm" class="localvar">level</a>--;
+   171 :    else <a href="../h_src/57755176.htm" class="localvar">status</a> = 0;  <a  class="comments">/* no such level */</a>
+   179 :    if (<a href="../h_src/57754496.htm" class="localvar">s</a> == NULL) return &quot;?&quot;;
+   180 :    else return <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/57754496.htm" class="localvar">s</a>);
+   200 :    if (<a href="../h_src/57753408.htm" class="localvar">n</a> &lt; 0)  <a  class="comments">/* access to vararg values? */</a>
+   201 :    return <a href="../h_src/57754360.htm" class="function">findvararg</a>(<a href="../h_src/57753544.htm" class="localvar">ci</a>, <a href="../h_src/57753408.htm" class="localvar">n</a>, <a href="../h_src/57753272.htm" class="localvar">pos</a>);
+   202 :    else
+   203 :    <a href="../h_src/57753000.htm" class="localvar">name</a> = <a href="../h_src/57630180.htm" class="function">luaF_getlocalname</a>(<a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57753544.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>, <a href="../h_src/57753408.htm" class="localvar">n</a>, <a href="../h_src/57758644.htm" class="function">currentpc</a>(<a href="../h_src/57753544.htm" class="localvar">ci</a>));
+   211 :    else
+   212 :    return NULL;  <a  class="comments">/* no name */</a>
+   214 :    if (<a href="../h_src/57753272.htm" class="localvar">pos</a>)
+   215 :    *<a href="../h_src/57753272.htm" class="localvar">pos</a> = <a href="../h_src/57753136.htm" class="localvar">base</a> + (<a href="../h_src/57753408.htm" class="localvar">n</a> - 1);
+   224 :    if (!<a href="../h_src/57512536.htm" class="macro">isLfunction</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57752728.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1)))  <a  class="comments">/* not a Lua function? */</a>
+   225 :    <a href="../h_src/57752320.htm" class="localvar">name</a> = NULL;
+   226 :    else  <a  class="comments">/* consider live variables at function start (parameters) */</a>
+   227 :    <a href="../h_src/57752320.htm" class="localvar">name</a> = <a href="../h_src/57630180.htm" class="function">luaF_getlocalname</a>(<a href="../h_src/57512264.htm" class="macro">clLvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57752728.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1))-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>, <a href="../h_src/57752456.htm" class="localvar">n</a>, 0);
+   283 :    if (<a href="../h_src/57750076.htm" class="localvar">p</a>-&gt;<a href="../h_src/57514304.htm" class="variable">lineinfo</a>[<a href="../h_src/57749804.htm" class="localvar">pc</a>] != <a href="../h_src/57636368.htm" class="macro">ABSLINEINFO</a>)
+   284 :    return <a href="../h_src/57749940.htm" class="localvar">currentline</a> + <a href="../h_src/57750076.htm" class="localvar">p</a>-&gt;<a href="../h_src/57514304.htm" class="variable">lineinfo</a>[<a href="../h_src/57749804.htm" class="localvar">pc</a>];
+   285 :    else
+   286 :    return <a href="../h_src/57635960.htm" class="function">luaG_getfuncline</a>(<a href="../h_src/57750076.htm" class="localvar">p</a>, <a href="../h_src/57749804.htm" class="localvar">pc</a>);
+   304 :    if (!<a href="../h_src/57748988.htm" class="localvar">p</a>-&gt;<a href="../h_src/57515868.htm" class="variable">is_vararg</a>)  <a  class="comments">/* regular function? */</a>
+   305 :    <a href="../h_src/57749260.htm" class="localvar">i</a> = 0;  <a  class="comments">/* consider all instructions */</a>
+   321 :    if (<a href="../h_src/57748036.htm" class="localvar">ci</a> != NULL &amp;&amp; !(<a href="../h_src/57748036.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp; <a href="../h_src/57648676.htm" class="macro">CIST_TAIL</a>))
+   322 :    return <a href="../h_src/57758780.htm" class="function">funcnamefromcall</a>(<a href="../h_src/57748172.htm" class="localvar">L</a>, <a href="../h_src/57748036.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651396.htm" class="variable">previous</a>, <a href="../h_src/57747900.htm" class="localvar">name</a>);
+   323 :    else return NULL;  <a  class="comments">/* no way to find a name */</a>
+   365 :    if (<a href="../h_src/57747084.htm" class="localvar">ci</a> == NULL || !(<a href="../h_src/57747084.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp; <a href="../h_src/57648268.htm" class="macro">CIST_TRAN</a>))
+   366 :    <a href="../h_src/57747356.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57422900.htm" class="variable">ftransfer</a> = <a href="../h_src/57747356.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57422832.htm" class="variable">ntransfer</a> = 0;
+   407 :    if (<a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57746676.htm" class="localvar">what</a>, 'L'))
+   408 :    <a href="../h_src/57749668.htm" class="function">collectvalidlines</a>(<a href="../h_src/57746812.htm" class="localvar">L</a>, <a href="../h_src/57746268.htm" class="localvar">cl</a>);
+   438 :    if (!(<a href="../h_src/57744092.htm" class="localvar">what</a> &amp;&amp; *<a href="../h_src/57744092.htm" class="localvar">what</a> == 'c'))  <a  class="comments">/* did not find a constant name? */</a>
+   439 :    *<a href="../h_src/57744228.htm" class="localvar">name</a> = &quot;?&quot;;
+   448 :    if (<a href="../h_src/57692848.htm" class="macro">GETARG_k</a>(<a href="../h_src/57743548.htm" class="localvar">i</a>))  <a  class="comments">/* is 'c' a constant? */</a>
+   449 :    <a href="../h_src/57745452.htm" class="function">kname</a>(<a href="../h_src/57743820.htm" class="localvar">p</a>, <a href="../h_src/57743276.htm" class="localvar">c</a>, <a href="../h_src/57743412.htm" class="localvar">name</a>);
+   450 :    else  <a  class="comments">/* 'c' is a register */</a>
+   451 :    <a href="../h_src/57744772.htm" class="function">rname</a>(<a href="../h_src/57743820.htm" class="localvar">p</a>, <a href="../h_src/57743684.htm" class="localvar">pc</a>, <a href="../h_src/57743276.htm" class="localvar">c</a>, <a href="../h_src/57743412.htm" class="localvar">name</a>);
+   456 :    if (<a href="../h_src/57743004.htm" class="localvar">pc</a> &lt; <a href="../h_src/57742868.htm" class="localvar">jmptarget</a>)  <a  class="comments">/* is code conditional (inside a jump)? */</a>
+   457 :    return -1;  <a  class="comments">/* cannot know who sets that register */</a>
+   458 :    else return <a href="../h_src/57743004.htm" class="localvar">pc</a>;  <a  class="comments">/* current position sets that register */</a>
+   469 :    if (<a href="../h_src/57683736.htm" class="macro">testMMMode</a>(<a href="../h_src/57694752.htm" class="macro">GET_OPCODE</a>(<a href="../h_src/57742596.htm" class="localvar">p</a>-&gt;<a href="../h_src/57514916.htm" class="variable">code</a>[<a href="../h_src/57742460.htm" class="localvar">lastpc</a>])))
+   470 :    <a href="../h_src/57742460.htm" class="localvar">lastpc</a>--;  <a  class="comments">/* previous instruction was not actually executed */</a>
+   495 :    if (<a href="../h_src/57740964.htm" class="localvar">dest</a> &lt;= <a href="../h_src/57742460.htm" class="localvar">lastpc</a> &amp;&amp; <a href="../h_src/57740964.htm" class="localvar">dest</a> &gt; <a href="../h_src/57741916.htm" class="localvar">jmptarget</a>)
+   496 :    <a href="../h_src/57741916.htm" class="localvar">jmptarget</a> = <a href="../h_src/57740964.htm" class="localvar">dest</a>;  <a  class="comments">/* update 'jmptarget' */</a>
+   504 :    if (<a href="../h_src/57741372.htm" class="localvar">change</a>)
+   505 :    <a href="../h_src/57742052.htm" class="localvar">setreg</a> = <a href="../h_src/57743140.htm" class="function">filterpc</a>(<a href="../h_src/57742188.htm" class="localvar">pc</a>, <a href="../h_src/57741916.htm" class="localvar">jmptarget</a>);
+   518 :    if (<a href="../h_src/57740284.htm" class="localvar">isup</a>)  <a  class="comments">/* is an upvalue? */</a>
+   519 :    <a href="../h_src/57740012.htm" class="localvar">name</a> = <a href="../h_src/57754904.htm" class="function">upvalname</a>(<a href="../h_src/57740692.htm" class="localvar">p</a>, <a href="../h_src/57740148.htm" class="localvar">t</a>);
+   520 :    else
+   521 :    <a href="../h_src/57745588.htm" class="function">getobjname</a>(<a href="../h_src/57740692.htm" class="localvar">p</a>, <a href="../h_src/57740556.htm" class="localvar">pc</a>, <a href="../h_src/57740148.htm" class="localvar">t</a>, &amp;<a href="../h_src/57740012.htm" class="localvar">name</a>);
+   530 :    if (*<a href="../h_src/57739468.htm" class="localvar">name</a>)  <a  class="comments">/* is a local? */</a>
+   531 :    return &quot;local&quot;;
+   540 :    if (<a href="../h_src/57738924.htm" class="localvar">b</a> &lt; <a href="../h_src/57694072.htm" class="macro">GETARG_A</a>(<a href="../h_src/57739196.htm" class="localvar">i</a>))
+   541 :    return <a href="../h_src/57745588.htm" class="function">getobjname</a>(<a href="../h_src/57739876.htm" class="localvar">p</a>, <a href="../h_src/57739332.htm" class="localvar">pc</a>, <a href="../h_src/57738924.htm" class="localvar">b</a>, <a href="../h_src/57739468.htm" class="localvar">name</a>);  <a  class="comments">/* get name for 'b' */</a>
+   648 :    else if (<a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57897132.htm" class="localvar">ci</a>))
+   649 :    return <a href="../h_src/57738244.htm" class="function">funcnamefromcode</a>(<a href="../h_src/57897268.htm" class="localvar">L</a>, <a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57897132.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>, <a href="../h_src/57758644.htm" class="function">currentpc</a>(<a href="../h_src/57897132.htm" class="localvar">ci</a>), <a href="../h_src/57896996.htm" class="localvar">name</a>);
+   650 :    else
+   651 :    return NULL;
+   668 :    if (<a href="../h_src/57896588.htm" class="localvar">o</a> == <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57896316.htm" class="localvar">base</a> + <a href="../h_src/57896452.htm" class="localvar">pos</a>))
+   669 :    return <a href="../h_src/57896452.htm" class="localvar">pos</a>;
+   696 :    if (<a href="../h_src/57895092.htm" class="localvar">kind</a> == NULL)
+   697 :    return &quot;&quot;;  <a  class="comments">/* no information */</a>
+   698 :    else
+   699 :    return <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/57895228.htm" class="localvar">L</a>, &quot; (%s '%s')&quot;, <a href="../h_src/57895092.htm" class="localvar">kind</a>, <a href="../h_src/57894956.htm" class="localvar">name</a>);
+   714 :    if (<a href="../h_src/57894004.htm" class="localvar">reg</a> &gt;= 0)  <a  class="comments">/* is 'o' a register? */</a>
+   715 :    <a href="../h_src/57894140.htm" class="localvar">kind</a> = <a href="../h_src/57745588.htm" class="function">getobjname</a>(<a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57894412.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>, <a href="../h_src/57758644.htm" class="function">currentpc</a>(<a href="../h_src/57894412.htm" class="localvar">ci</a>), <a href="../h_src/57894004.htm" class="localvar">reg</a>, &amp;<a href="../h_src/57894276.htm" class="localvar">name</a>);
+   762 :    if (<a href="../h_src/57524912.htm" class="macro">ttisstring</a>(<a href="../h_src/57891284.htm" class="localvar">p1</a>) || <a href="../h_src/57614200.htm" class="macro">cvt2str</a>(<a href="../h_src/57891284.htm" class="localvar">p1</a>)) <a href="../h_src/57891284.htm" class="localvar">p1</a> = <a href="../h_src/57891148.htm" class="localvar">p2</a>;
+   769 :    if (!<a href="../h_src/57526816.htm" class="macro">ttisnumber</a>(<a href="../h_src/57890876.htm" class="localvar">p1</a>))  <a  class="comments">/* first operand is wrong? */</a>
+   770 :    <a href="../h_src/57890740.htm" class="localvar">p2</a> = <a href="../h_src/57890876.htm" class="localvar">p1</a>;  <a  class="comments">/* now second is wrong */</a>
+   780 :    if (!<a href="../h_src/57611276.htm" class="function">luaV_tointegerns</a>(<a href="../h_src/57890332.htm" class="localvar">p1</a>, &amp;<a href="../h_src/57890060.htm" class="localvar">temp</a>, <a href="../h_src/57613656.htm" class="macro">LUA_FLOORN2I</a>))
+   781 :    <a href="../h_src/57890196.htm" class="localvar">p2</a> = <a href="../h_src/57890332.htm" class="localvar">p1</a>;
+   789 :    if (<a href="../h_aa/57564488.htm" class="libfunc">strcmp</a>(<a href="../h_src/57889516.htm" class="localvar">t1</a>, <a href="../h_src/57889380.htm" class="localvar">t2</a>) == 0)
+   790 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/57889924.htm" class="localvar">L</a>, &quot;attempt to compare two %s values&quot;, <a href="../h_src/57889516.htm" class="localvar">t1</a>);
+   791 :    else
+   792 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/57889924.htm" class="localvar">L</a>, &quot;attempt to compare %s with %s&quot;, <a href="../h_src/57889516.htm" class="localvar">t1</a>, <a href="../h_src/57889380.htm" class="localvar">t2</a>);
+   800 :    if (<a href="../h_src/57888972.htm" class="localvar">src</a>)
+   801 :    <a href="../h_src/57501316.htm" class="function">luaO_chunkid</a>(<a href="../h_src/57888700.htm" class="localvar">buff</a>, <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/57888972.htm" class="localvar">src</a>), <a href="../h_src/57522396.htm" class="macro">tsslen</a>(<a href="../h_src/57888972.htm" class="localvar">src</a>));
+   848 :    if (<a href="../h_src/57886524.htm" class="localvar">p</a>-&gt;<a href="../h_src/57514304.htm" class="variable">lineinfo</a> == NULL)  <a  class="comments">/* no debug information? */</a>
+   849 :    return 0;
+   855 :    if (<a href="../h_src/57885844.htm" class="localvar">lineinfo</a> == <a href="../h_src/57636368.htm" class="macro">ABSLINEINFO</a>)
+   856 :    break;  <a  class="comments">/* cannot compute delta; fall through */</a>
+   858 :    if (<a href="../h_src/57885980.htm" class="localvar">pc</a> == <a href="../h_src/57886252.htm" class="localvar">newpc</a>)
+   859 :    return (<a href="../h_src/57886116.htm" class="localvar">delta</a> != 0);  <a  class="comments">/* delta computed successfully */</a>
+   892 :    if (<a href="../h_src/57885028.htm" class="localvar">counthook</a>)
+   893 :    <a href="../h_src/57636504.htm" class="macro">resethookcount</a>(<a href="../h_src/57885708.htm" class="localvar">L</a>);  <a  class="comments">/* reset count */</a>
+   894 :    else if (!(<a href="../h_src/57885300.htm" class="localvar">mask</a> &amp; <a href="../h_src/57424940.htm" class="macro">LUA_MASKLINE</a>))
+   895 :    return 1;  <a  class="comments">/* no line hook and count != 0; nothing to be done now */</a>
+   900 :    if (!<a href="../h_src/57683464.htm" class="macro">isIT</a>(*(<a href="../h_src/57885436.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650852.htm" class="variable">l</a>.<a href="../h_src/57651124.htm" class="variable">savedpc</a> - 1)))  <a  class="comments">/* top not being used? */</a>
+   901 :    <a href="../h_src/57885708.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57885436.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651464.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>;  <a  class="comments">/* correct top */</a>
+   902 :    if (<a href="../h_src/57885028.htm" class="localvar">counthook</a>)
+   903 :    <a href="../h_src/57633512.htm" class="function">luaD_hook</a>(<a href="../h_src/57885708.htm" class="localvar">L</a>, <a href="../h_src/57425484.htm" class="macro">LUA_HOOKCOUNT</a>, -1, 0, 0);  <a  class="comments">/* call count hook */</a>
+   916 :    if (<a href="../h_src/57885028.htm" class="localvar">counthook</a>)
+   917 :    <a href="../h_src/57885708.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641332.htm" class="variable">hookcount</a> = 1;  <a  class="comments">/* undo decrement to zero */</a>
+</pre>
+<pre>
+</pre>
+<h5>Unterminated Case</h5>
+<pre>
+   376 :    default: <a href="../h_src/57746948.htm" class="localvar">status</a> = 0;  <a  class="comments">/* invalid option */</a>
+</pre>
+<pre>
+</pre>
+<h5>Jump Statement</h5>
+<pre>
+   856 :    break;  <a  class="comments">/* cannot compute delta; fall through */</a>
+</pre>
+<pre>
+</pre>
+<h5>Return Ignored</h5>
+<pre>
+   521 :    <a href="../h_src/57745588.htm" class="function">getobjname</a>(<a href="../h_src/57740692.htm" class="localvar">p</a>, <a href="../h_src/57740556.htm" class="localvar">pc</a>, <a href="../h_src/57740148.htm" class="localvar">t</a>, &amp;<a href="../h_src/57740012.htm" class="localvar">name</a>);
+   831 :    <a href="../h_src/57635212.htm" class="function">luaG_addinfo</a>(<a href="../h_src/57887748.htm" class="localvar">L</a>, <a href="../h_src/57887204.htm" class="localvar">msg</a>, <a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57887340.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57531984.htm" class="variable">p</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>, <a href="../h_src/57757148.htm" class="function">getcurrentline</a>(<a href="../h_src/57887340.htm" class="localvar">ci</a>));
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+   403 :    if (<a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57746676.htm" class="localvar">what</a>, 'f')) {
+   407 :    if (<a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57746676.htm" class="localvar">what</a>, 'L'))
+   522 :    return (<a href="../h_src/57740012.htm" class="localvar">name</a> &amp;&amp; <a href="../h_aa/57564488.htm" class="libfunc">strcmp</a>(<a href="../h_src/57740012.htm" class="localvar">name</a>, <a href="../h_src/57705428.htm" class="macro">LUA_ENV</a>) == 0) ? &quot;global&quot; : &quot;field&quot;;
+   789 :    if (<a href="../h_aa/57564488.htm" class="libfunc">strcmp</a>(<a href="../h_src/57889516.htm" class="localvar">t1</a>, <a href="../h_src/57889380.htm" class="localvar">t2</a>) == 0)
+   827 :    va_start(<a href="../h_src/57887068.htm" class="localvar">argp</a>, <a href="../h_src/57887612.htm" class="localvar">fmt</a>);
+   829 :    va_end(<a href="../h_src/57887068.htm" class="localvar">argp</a>);
+</pre>
+<pre>
+</pre>
+<h5>Variable Number of Arguments</h5>
+<pre>
+   822 :    <a href="../h_src/57545584.htm" class="macro">l_noret</a> <a href="../h_src/57635280.htm" class="function">luaG_runerror</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57887748.htm" class="localvar">L</a>, const char *<a href="../h_src/57887612.htm" class="localvar">fmt</a>, <a href="../h_src/57887476.htm" class="localvar">...</a>) {
+</pre>
+<pre>
+</pre>
+<h5>Unused Local</h5>
+<pre>
+   822 :    <a href="../h_src/57545584.htm" class="macro">l_noret</a> <a href="../h_src/57635280.htm" class="function">luaG_runerror</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57887748.htm" class="localvar">L</a>, const char *<a href="../h_src/57887612.htm" class="localvar">fmt</a>, <a href="../h_src/57887476.htm" class="localvar">...</a>) {
+</pre>
+<pre>
+
+</pre>
+</body>
+</html>
+

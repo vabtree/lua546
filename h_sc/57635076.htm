@@ -1,0 +1,83 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaG_traceexec</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57635076.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57635076.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57635076.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57635076.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/57635076.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/57635076.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57759256.htm#880" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>13</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>4</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>15</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Number of Built-In Operators</h5>
+<pre>
+   900 :    if (!<a href="../h_src/57683464.htm" class="macro">isIT</a>(*(<a href="../h_src/57885436.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650852.htm" class="variable">l</a>.<a href="../h_src/57651124.htm" class="variable">savedpc</a> - 1)))  <a  class="comments">/* top not being used? */</a>
+</pre>
+<pre>
+</pre>
+<h5>Unclear Subexpression</h5>
+<pre>
+   883 :    const <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57885164.htm" class="localvar">p</a> = <a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57885436.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>;
+   891 :    <a href="../h_src/57885028.htm" class="localvar">counthook</a> = (--<a href="../h_src/57885708.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641332.htm" class="variable">hookcount</a> == 0 &amp;&amp; (<a href="../h_src/57885300.htm" class="localvar">mask</a> &amp; <a href="../h_src/57424804.htm" class="macro">LUA_MASKCOUNT</a>));
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+   883 :    const <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57885164.htm" class="localvar">p</a> = <a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57885436.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>;
+   886 :    <a href="../h_src/57885436.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650852.htm" class="variable">l</a>.<a href="../h_src/57651056.htm" class="variable">trap</a> = 0;  <a  class="comments">/* don't need to stop again */</a>
+   897 :    <a href="../h_src/57885436.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp;= ~<a href="../h_src/57648540.htm" class="macro">CIST_HOOKYIELD</a>;  <a  class="comments">/* erase mark */</a>
+   900 :    if (!<a href="../h_src/57683464.htm" class="macro">isIT</a>(*(<a href="../h_src/57885436.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650852.htm" class="variable">l</a>.<a href="../h_src/57651124.htm" class="variable">savedpc</a> - 1)))  <a  class="comments">/* top not being used? */</a>
+   919 :    <a href="../h_src/57885436.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> |= <a href="../h_src/57648540.htm" class="macro">CIST_HOOKYIELD</a>;  <a  class="comments">/* mark that it yielded */</a>
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   892 :    if (<a href="../h_src/57885028.htm" class="localvar">counthook</a>)
+   893 :    <a href="../h_src/57636504.htm" class="macro">resethookcount</a>(<a href="../h_src/57885708.htm" class="localvar">L</a>);  <a  class="comments">/* reset count */</a>
+   894 :    else if (!(<a href="../h_src/57885300.htm" class="localvar">mask</a> &amp; <a href="../h_src/57424940.htm" class="macro">LUA_MASKLINE</a>))
+   895 :    return 1;  <a  class="comments">/* no line hook and count != 0; nothing to be done now */</a>
+   900 :    if (!<a href="../h_src/57683464.htm" class="macro">isIT</a>(*(<a href="../h_src/57885436.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650852.htm" class="variable">l</a>.<a href="../h_src/57651124.htm" class="variable">savedpc</a> - 1)))  <a  class="comments">/* top not being used? */</a>
+   901 :    <a href="../h_src/57885708.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57885436.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651464.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>;  <a  class="comments">/* correct top */</a>
+   902 :    if (<a href="../h_src/57885028.htm" class="localvar">counthook</a>)
+   903 :    <a href="../h_src/57633512.htm" class="function">luaD_hook</a>(<a href="../h_src/57885708.htm" class="localvar">L</a>, <a href="../h_src/57425484.htm" class="macro">LUA_HOOKCOUNT</a>, -1, 0, 0);  <a  class="comments">/* call count hook */</a>
+   916 :    if (<a href="../h_src/57885028.htm" class="localvar">counthook</a>)
+   917 :    <a href="../h_src/57885708.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641332.htm" class="variable">hookcount</a> = 1;  <a  class="comments">/* undo decrement to zero */</a>
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

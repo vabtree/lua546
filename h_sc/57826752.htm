@@ -1,0 +1,85 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>reallymarkobject</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57826752.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57826752.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57826752.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57826752.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/57826752.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/57826752.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57829404.htm#297" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>13</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>5</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>10</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Number of Built-In Operators</h5>
+<pre>
+   310 :    <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57821584.htm" class="localvar">g</a>, <a href="../h_src/57821312.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57510564.htm" class="variable">v</a>.<a href="../h_src/57510768.htm" class="variable">p</a>);  <a  class="comments">/* mark its content */</a>
+</pre>
+<pre>
+</pre>
+<h5>Unclear Subexpression</h5>
+<pre>
+   306 :    if (<a href="../h_src/57631540.htm" class="macro">upisopen</a>(<a href="../h_src/57821312.htm" class="localvar">uv</a>))
+   310 :    <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57821584.htm" class="localvar">g</a>, <a href="../h_src/57821312.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57510564.htm" class="variable">v</a>.<a href="../h_src/57510768.htm" class="variable">p</a>);  <a  class="comments">/* mark its content */</a>
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+   305 :    <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57821312.htm" class="localvar">uv</a> = <a href="../h_src/57639020.htm" class="macro">gco2upv</a>(<a href="../h_src/57821448.htm" class="localvar">o</a>);
+   307 :    <a href="../h_src/57827976.htm" class="macro">set2gray</a>(<a href="../h_src/57821312.htm" class="localvar">uv</a>);  <a  class="comments">/* open upvalues are kept gray */</a>
+   314 :    <a href="../h_src/57519268.htm" class="type">Udata</a> *<a href="../h_src/57821176.htm" class="localvar">u</a> = <a href="../h_src/57639972.htm" class="macro">gco2u</a>(<a href="../h_src/57821448.htm" class="localvar">o</a>);
+   316 :    <a href="../h_src/57826888.htm" class="macro">markobjectN</a>(<a href="../h_src/57821584.htm" class="localvar">g</a>, <a href="../h_src/57821176.htm" class="localvar">u</a>-&gt;<a href="../h_src/57519540.htm" class="variable">metatable</a>);  <a  class="comments">/* mark its metatable */</a>
+   324 :    <a href="../h_src/57825120.htm" class="macro">linkobjgclist</a>(<a href="../h_src/57821448.htm" class="localvar">o</a>, <a href="../h_src/57821584.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645072.htm" class="variable">gray</a>);  <a  class="comments">/* to be visited later */</a>
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   306 :    if (<a href="../h_src/57631540.htm" class="macro">upisopen</a>(<a href="../h_src/57821312.htm" class="localvar">uv</a>))
+   307 :    <a href="../h_src/57827976.htm" class="macro">set2gray</a>(<a href="../h_src/57821312.htm" class="localvar">uv</a>);  <a  class="comments">/* open upvalues are kept gray */</a>
+   308 :    else
+   309 :    <a href="../h_src/57827840.htm" class="macro">set2black</a>(<a href="../h_src/57821312.htm" class="localvar">uv</a>);  <a  class="comments">/* closed upvalues are visited here */</a>
+   310 :    <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57821584.htm" class="localvar">g</a>, <a href="../h_src/57821312.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57510564.htm" class="variable">v</a>.<a href="../h_src/57510768.htm" class="variable">p</a>);  <a  class="comments">/* mark its content */</a>
+   316 :    <a href="../h_src/57826888.htm" class="macro">markobjectN</a>(<a href="../h_src/57821584.htm" class="localvar">g</a>, <a href="../h_src/57821176.htm" class="localvar">u</a>-&gt;<a href="../h_src/57519540.htm" class="variable">metatable</a>);  <a  class="comments">/* mark its metatable */</a>
+</pre>
+<pre>
+</pre>
+<h5>Unterminated Case</h5>
+<pre>
+   315 :    if (<a href="../h_src/57821176.htm" class="localvar">u</a>-&gt;<a href="../h_src/57519948.htm" class="variable">nuvalue</a> == 0) {  <a  class="comments">/* no user values? */</a>
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

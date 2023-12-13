@@ -1,0 +1,92 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>os_date</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143348856.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143348856.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143348856.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143348856.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/143348856.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/143348856.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143359192.htm#302" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>18</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>5</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>12</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Number of Built-In Operators</h5>
+<pre>
+   328 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143347428.htm" class="localvar">b</a>, *<a href="../h_src/143348448.htm" class="localvar">s</a>++);
+</pre>
+<pre>
+</pre>
+<h5>Unclear Subexpression</h5>
+<pre>
+   309 :    <a href="../h_src/143347836.htm" class="localvar">stm</a> = <a href="../h_src/143357900.htm" class="macro">l_gmtime</a>(&amp;<a href="../h_src/143348244.htm" class="localvar">t</a>, &amp;<a href="../h_src/143347972.htm" class="localvar">tmr</a>);
+   313 :    <a href="../h_src/143347836.htm" class="localvar">stm</a> = <a href="../h_src/143357764.htm" class="macro">l_localtime</a>(&amp;<a href="../h_src/143348244.htm" class="localvar">t</a>, &amp;<a href="../h_src/143347972.htm" class="localvar">tmr</a>);
+   328 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143347428.htm" class="localvar">b</a>, *<a href="../h_src/143348448.htm" class="localvar">s</a>++);
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+   305 :    <a href="../h_src/143349536.htm" class="function">time_t</a> <a href="../h_src/143348244.htm" class="localvar">t</a> = <a href="../h_src/57416168.htm" class="macro">luaL_opt</a>(<a href="../h_src/143348720.htm" class="localvar">L</a>, <a href="../h_aa/143348312.htm" class="libfunc">l_checktime</a>, 2, <a href="../h_aa/57983504.htm" class="libfunc">time</a>(NULL));
+   309 :    <a href="../h_src/143347836.htm" class="localvar">stm</a> = <a href="../h_src/143357900.htm" class="macro">l_gmtime</a>(&amp;<a href="../h_src/143348244.htm" class="localvar">t</a>, &amp;<a href="../h_src/143347972.htm" class="localvar">tmr</a>);
+   313 :    <a href="../h_src/143347836.htm" class="localvar">stm</a> = <a href="../h_src/143357764.htm" class="macro">l_localtime</a>(&amp;<a href="../h_src/143348244.htm" class="localvar">t</a>, &amp;<a href="../h_src/143347972.htm" class="localvar">tmr</a>);
+   333 :    <a href="../h_src/143348448.htm" class="localvar">s</a> = <a href="../h_src/143350488.htm" class="function">checkoption</a>(<a href="../h_src/143348720.htm" class="localvar">L</a>, <a href="../h_src/143348448.htm" class="localvar">s</a>, <a href="../h_src/143348108.htm" class="localvar">se</a> - <a href="../h_src/143348448.htm" class="localvar">s</a>, <a href="../h_src/143347564.htm" class="localvar">cc</a> + 1);  <a  class="comments">/* copy specifier to 'cc' */</a>
+   334 :    <a href="../h_src/143347292.htm" class="localvar">reslen</a> = <a href="../h_aa/143347020.htm" class="libfunc">strftime</a>(<a href="../h_src/143347156.htm" class="localvar">buff</a>, <a href="../h_src/143348992.htm" class="macro">SIZETIMEFMT</a>, <a href="../h_src/143347564.htm" class="localvar">cc</a>, <a href="../h_src/143347836.htm" class="localvar">stm</a>);
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   312 :    else
+   313 :    <a href="../h_src/143347836.htm" class="localvar">stm</a> = <a href="../h_src/143357764.htm" class="macro">l_localtime</a>(&amp;<a href="../h_src/143348244.htm" class="localvar">t</a>, &amp;<a href="../h_src/143347972.htm" class="localvar">tmr</a>);
+   314 :    if (<a href="../h_src/143347836.htm" class="localvar">stm</a> == NULL)  <a  class="comments">/* invalid date? */</a>
+   315 :    return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143348720.htm" class="localvar">L</a>,
+   316 :    &quot;date result cannot be represented in this installation&quot;);
+   327 :    if (*<a href="../h_src/143348448.htm" class="localvar">s</a> != '%')  <a  class="comments">/* not a conversion specifier? */</a>
+   328 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143347428.htm" class="localvar">b</a>, *<a href="../h_src/143348448.htm" class="localvar">s</a>++);
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+   305 :    <a href="../h_src/143349536.htm" class="function">time_t</a> <a href="../h_src/143348244.htm" class="localvar">t</a> = <a href="../h_src/57416168.htm" class="macro">luaL_opt</a>(<a href="../h_src/143348720.htm" class="localvar">L</a>, <a href="../h_aa/143348312.htm" class="libfunc">l_checktime</a>, 2, <a href="../h_aa/57983504.htm" class="libfunc">time</a>(NULL));
+   305 :    <a href="../h_src/143349536.htm" class="function">time_t</a> <a href="../h_src/143348244.htm" class="localvar">t</a> = <a href="../h_src/57416168.htm" class="macro">luaL_opt</a>(<a href="../h_src/143348720.htm" class="localvar">L</a>, <a href="../h_aa/143348312.htm" class="libfunc">l_checktime</a>, 2, <a href="../h_aa/57983504.htm" class="libfunc">time</a>(NULL));
+   309 :    <a href="../h_src/143347836.htm" class="localvar">stm</a> = <a href="../h_src/143357900.htm" class="macro">l_gmtime</a>(&amp;<a href="../h_src/143348244.htm" class="localvar">t</a>, &amp;<a href="../h_src/143347972.htm" class="localvar">tmr</a>);
+   313 :    <a href="../h_src/143347836.htm" class="localvar">stm</a> = <a href="../h_src/143357764.htm" class="macro">l_localtime</a>(&amp;<a href="../h_src/143348244.htm" class="localvar">t</a>, &amp;<a href="../h_src/143347972.htm" class="localvar">tmr</a>);
+   317 :    if (<a href="../h_aa/57564488.htm" class="libfunc">strcmp</a>(<a href="../h_src/143348448.htm" class="localvar">s</a>, &quot;*t&quot;) == 0) {
+   334 :    <a href="../h_src/143347292.htm" class="localvar">reslen</a> = <a href="../h_aa/143347020.htm" class="libfunc">strftime</a>(<a href="../h_src/143347156.htm" class="localvar">buff</a>, <a href="../h_src/143348992.htm" class="macro">SIZETIMEFMT</a>, <a href="../h_src/143347564.htm" class="localvar">cc</a>, <a href="../h_src/143347836.htm" class="localvar">stm</a>);
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

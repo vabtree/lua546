@@ -1,0 +1,74 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaT_callTMres</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57497848.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57497848.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57497848.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57497848.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/57497848.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/57497848.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58090712.htm#119" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>12</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>3</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>10</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Unclear Subexpression</h5>
+<pre>
+   123 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58086360.htm" class="localvar">L</a>, <a href="../h_src/58085544.htm" class="localvar">func</a>, <a href="../h_src/58086224.htm" class="localvar">f</a>);  <a  class="comments">/* push function (assume EXTRA_STACK) */</a>
+   124 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58086360.htm" class="localvar">L</a>, <a href="../h_src/58085544.htm" class="localvar">func</a> + 1, <a href="../h_src/58086088.htm" class="localvar">p1</a>);  <a  class="comments">/* 1st argument */</a>
+   125 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58086360.htm" class="localvar">L</a>, <a href="../h_src/58085544.htm" class="localvar">func</a> + 2, <a href="../h_src/58085952.htm" class="localvar">p2</a>);  <a  class="comments">/* 2nd argument */</a>
+   133 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/58086360.htm" class="localvar">L</a>, <a href="../h_src/58085816.htm" class="localvar">res</a>, --<a href="../h_src/58086360.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>);  <a  class="comments">/* move result to its place */</a>
+   133 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/58086360.htm" class="localvar">L</a>, <a href="../h_src/58085816.htm" class="localvar">res</a>, --<a href="../h_src/58086360.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>);  <a  class="comments">/* move result to its place */</a>
+   133 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/58086360.htm" class="localvar">L</a>, <a href="../h_src/58085816.htm" class="localvar">res</a>, --<a href="../h_src/58086360.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>);  <a  class="comments">/* move result to its place */</a>
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+   121 :    <a href="../h_aa/57441872.htm" class="type">ptrdiff_t</a> <a href="../h_src/58085680.htm" class="localvar">result</a> = <a href="../h_src/57634396.htm" class="macro">savestack</a>(<a href="../h_src/58086360.htm" class="localvar">L</a>, <a href="../h_src/58085816.htm" class="localvar">res</a>);
+   121 :    <a href="../h_aa/57441872.htm" class="type">ptrdiff_t</a> <a href="../h_src/58085680.htm" class="localvar">result</a> = <a href="../h_src/57634396.htm" class="macro">savestack</a>(<a href="../h_src/58086360.htm" class="localvar">L</a>, <a href="../h_src/58085816.htm" class="localvar">res</a>);
+   132 :    <a href="../h_src/58085816.htm" class="localvar">res</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/58086360.htm" class="localvar">L</a>, <a href="../h_src/58085680.htm" class="localvar">result</a>);
+   132 :    <a href="../h_src/58085816.htm" class="localvar">res</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/58086360.htm" class="localvar">L</a>, <a href="../h_src/58085680.htm" class="localvar">result</a>);
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   128 :    if (<a href="../h_src/57647316.htm" class="macro">isLuacode</a>(<a href="../h_src/58086360.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>))
+   129 :    <a href="../h_src/57633240.htm" class="function">luaD_call</a>(<a href="../h_src/58086360.htm" class="localvar">L</a>, <a href="../h_src/58085544.htm" class="localvar">func</a>, 1);
+   130 :    else
+   131 :    <a href="../h_src/57633172.htm" class="function">luaD_callnoyield</a>(<a href="../h_src/58086360.htm" class="localvar">L</a>, <a href="../h_src/58085544.htm" class="localvar">func</a>, 1);
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

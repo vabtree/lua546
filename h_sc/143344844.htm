@@ -1,0 +1,69 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>os_exit</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143344844.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143344844.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143344844.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143344844.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/143344844.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/143344844.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143359192.htm#392" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>6</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>3</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>7</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+   395 :    <a href="../h_src/143344572.htm" class="localvar">status</a> = (<a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/143344708.htm" class="localvar">L</a>, 1) ? EXIT_SUCCESS : EXIT_FAILURE);
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   394 :    if (<a href="../h_src/57428204.htm" class="macro">lua_isboolean</a>(<a href="../h_src/143344708.htm" class="localvar">L</a>, 1))
+   395 :    <a href="../h_src/143344572.htm" class="localvar">status</a> = (<a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/143344708.htm" class="localvar">L</a>, 1) ? EXIT_SUCCESS : EXIT_FAILURE);
+   396 :    else
+   397 :    <a href="../h_src/143344572.htm" class="localvar">status</a> = (int)<a href="../h_src/57419908.htm" class="function">luaL_optinteger</a>(<a href="../h_src/143344708.htm" class="localvar">L</a>, 1, EXIT_SUCCESS);
+   398 :    if (<a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/143344708.htm" class="localvar">L</a>, 2))
+   399 :    <a href="../h_src/57439832.htm" class="function">lua_close</a>(<a href="../h_src/143344708.htm" class="localvar">L</a>);
+   400 :    if (<a href="../h_src/143344708.htm" class="localvar">L</a>) <a href="../h_aa/143344436.htm" class="libfunc">exit</a>(<a href="../h_src/143344572.htm" class="localvar">status</a>);  <a  class="comments">/* 'if' to avoid warnings for unreachable 'return' */</a>
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+   400 :    if (<a href="../h_src/143344708.htm" class="localvar">L</a>) <a href="../h_aa/143344436.htm" class="libfunc">exit</a>(<a href="../h_src/143344572.htm" class="localvar">status</a>);  <a  class="comments">/* 'if' to avoid warnings for unreachable 'return' */</a>
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

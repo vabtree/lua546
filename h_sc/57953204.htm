@@ -1,0 +1,74 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>correctgraylist</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57953204.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57953204.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57953204.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57953204.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/57953204.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/57953204.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57829404.htm#1170" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>12</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>3</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>12</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+  1178 :    <a href="../h_src/57625284.htm" class="macro">nw2black</a>(<a href="../h_src/57952932.htm" class="localvar">curr</a>);  <a  class="comments">/* make it black, for next barrier */</a>
+  1179 :    <a href="../h_src/57623516.htm" class="macro">changeage</a>(<a href="../h_src/57952932.htm" class="localvar">curr</a>, <a href="../h_src/57624332.htm" class="macro">G_TOUCHED1</a>, <a href="../h_src/57624196.htm" class="macro">G_TOUCHED2</a>);
+  1189 :    <a href="../h_src/57623516.htm" class="macro">changeage</a>(<a href="../h_src/57952932.htm" class="localvar">curr</a>, <a href="../h_src/57624196.htm" class="macro">G_TOUCHED2</a>, <a href="../h_src/57624468.htm" class="macro">G_OLD</a>);  <a  class="comments">/* ... to OLD */</a>
+  1190 :    <a href="../h_src/57625284.htm" class="macro">nw2black</a>(<a href="../h_src/57952932.htm" class="localvar">curr</a>);  <a  class="comments">/* make object black (to be removed) */</a>
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+  1174 :    if (<a href="../h_src/57626372.htm" class="macro">iswhite</a>(<a href="../h_src/57952932.htm" class="localvar">curr</a>))
+  1175 :    goto remove;  <a  class="comments">/* remove all white objects */</a>
+  1188 :    if (<a href="../h_src/57623924.htm" class="macro">getage</a>(<a href="../h_src/57952932.htm" class="localvar">curr</a>) == <a href="../h_src/57624196.htm" class="macro">G_TOUCHED2</a>)  <a  class="comments">/* advance from TOUCHED2... */</a>
+  1189 :    <a href="../h_src/57623516.htm" class="macro">changeage</a>(<a href="../h_src/57952932.htm" class="localvar">curr</a>, <a href="../h_src/57624196.htm" class="macro">G_TOUCHED2</a>, <a href="../h_src/57624468.htm" class="macro">G_OLD</a>);  <a  class="comments">/* ... to OLD */</a>
+</pre>
+<pre>
+</pre>
+<h5>Jump Statement</h5>
+<pre>
+  1175 :    goto remove;  <a  class="comments">/* remove all white objects */</a>
+  1180 :    goto remain;  <a  class="comments">/* keep it in the list and go to next element */</a>
+  1184 :    goto remain;  <a  class="comments">/* keep non-white threads on the list */</a>
+  1191 :    goto remove;
+  1193 :    remove: *<a href="../h_src/57953068.htm" class="localvar">p</a> = *<a href="../h_src/57952796.htm" class="localvar">next</a>; continue;
+  1194 :    remain: <a href="../h_src/57953068.htm" class="localvar">p</a> = <a href="../h_src/57952796.htm" class="localvar">next</a>; continue;
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

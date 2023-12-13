@@ -1,0 +1,68 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>searcher_Croot</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143199596.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143199596.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143199596.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143199596.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/143199596.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/143199596.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143217276.htm#588" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>7</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>3</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>8</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   593 :    if (<a href="../h_src/143199052.htm" class="localvar">p</a> == NULL) return 0;  <a  class="comments">/* is root */</a>
+   596 :    if (<a href="../h_src/143199324.htm" class="localvar">filename</a> == NULL) return 1;  <a  class="comments">/* root not found */</a>
+   598 :    if (<a href="../h_src/143198916.htm" class="localvar">stat</a> != <a href="../h_src/143207892.htm" class="macro">ERRFUNC</a>)
+   599 :    return <a href="../h_src/143202180.htm" class="function">checkload</a>(<a href="../h_src/143199460.htm" class="localvar">L</a>, 0, <a href="../h_src/143199324.htm" class="localvar">filename</a>);  <a  class="comments">/* real error */</a>
+</pre>
+<pre>
+</pre>
+<h5>Return Ignored</h5>
+<pre>
+   594 :    <a href="../h_src/57435072.htm" class="function">lua_pushlstring</a>(<a href="../h_src/143199460.htm" class="localvar">L</a>, <a href="../h_src/143199188.htm" class="localvar">name</a>, <a href="../h_src/143199052.htm" class="localvar">p</a> - <a href="../h_src/143199188.htm" class="localvar">name</a>);
+   601 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/143199460.htm" class="localvar">L</a>, &quot;no module '%s' in file '%s'&quot;, <a href="../h_src/143199188.htm" class="localvar">name</a>, <a href="../h_src/143199324.htm" class="localvar">filename</a>);
+   605 :    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/143199460.htm" class="localvar">L</a>, <a href="../h_src/143199324.htm" class="localvar">filename</a>);  <a  class="comments">/* will be 2nd argument to module */</a>
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+   591 :    const char *<a href="../h_src/143199052.htm" class="localvar">p</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143199188.htm" class="localvar">name</a>, '.');
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

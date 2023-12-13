@@ -1,0 +1,225 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lua.c</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57461796.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/57461796.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/57461796.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/57461796.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_uf/57461796.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_df/57461796.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57461796.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/57461796.htm" class="file" target="_self">Source Code</a></li>
+<li id="current"><a href="../h_sc/57461796.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>98</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>7</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>121</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+   370 :    <a href="../h_src/57561360.htm" class="localvar">init</a> = <a href="../h_aa/57561428.htm" class="libfunc">getenv</a>(<a href="../h_src/57561564.htm" class="localvar">name</a> + 1);  <a  class="comments">/* try alternative name */</a>
+   505 :    <a href="../h_src/57557280.htm" class="localvar">l</a> = <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/57557416.htm" class="localvar">b</a>);
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+    85 :    if (<a href="../h_src/57571560.htm" class="localvar">badoption</a>[1] == 'e' || <a href="../h_src/57571560.htm" class="localvar">badoption</a>[1] == 'l')
+    86 :    <a href="../h_src/57411884.htm" class="macro">lua_writestringerror</a>(&quot;'%s' needs argument\n&quot;, <a href="../h_src/57571560.htm" class="localvar">badoption</a>);
+    87 :    else
+    88 :    <a href="../h_src/57411884.htm" class="macro">lua_writestringerror</a>(&quot;unrecognized option '%s'\n&quot;, <a href="../h_src/57571560.htm" class="localvar">badoption</a>);
+   111 :    if (<a href="../h_src/57571152.htm" class="localvar">pname</a>) <a href="../h_src/57411884.htm" class="macro">lua_writestringerror</a>(&quot;%s: &quot;, <a href="../h_src/57571152.htm" class="localvar">pname</a>);
+   138 :    <a href="../h_src/57438540.htm" class="function">lua_type</a>(<a href="../h_src/57570200.htm" class="localvar">L</a>, -1) == <a href="../h_src/57443504.htm" class="macro">LUA_TSTRING</a>)  <a  class="comments">/* that produces a string? */</a>
+   139 :    return 1;  <a  class="comments">/* that is the message */</a>
+   140 :    else
+   141 :    <a href="../h_src/57570064.htm" class="localvar">msg</a> = <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/57570200.htm" class="localvar">L</a>, &quot;(error object is a %s value)&quot;,
+   142 :    <a href="../h_src/57416712.htm" class="macro">luaL_typename</a>(<a href="../h_src/57570200.htm" class="localvar">L</a>, 1));
+   196 :    if (<a href="../h_src/57567548.htm" class="localvar">status</a> == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) <a href="../h_src/57567548.htm" class="localvar">status</a> = <a href="../h_src/57569928.htm" class="function">docall</a>(<a href="../h_src/57567684.htm" class="localvar">L</a>, 0, 0);
+   217 :    if (<a href="../h_src/57565848.htm" class="localvar">modname</a> == NULL)  <a  class="comments">/* no explicit name? */</a>
+   218 :    <a href="../h_src/57565848.htm" class="localvar">modname</a> = <a href="../h_src/57566188.htm" class="localvar">globname</a>;  <a  class="comments">/* module name is equal to global name */</a>
+   226 :    if (<a href="../h_src/57566052.htm" class="localvar">status</a> == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>)
+   227 :    <a href="../h_src/57433644.htm" class="function">lua_setglobal</a>(<a href="../h_src/57566324.htm" class="localvar">L</a>, <a href="../h_src/57566188.htm" class="localvar">globname</a>);  <a  class="comments">/* globname = require(modname) */</a>
+   237 :    if (<a href="../h_src/57434392.htm" class="function">lua_getglobal</a>(<a href="../h_src/57565576.htm" class="localvar">L</a>, &quot;arg&quot;) != <a href="../h_src/57443368.htm" class="macro">LUA_TTABLE</a>)
+   238 :    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/57565576.htm" class="localvar">L</a>, &quot;'arg' is not a table&quot;);
+   241 :    for (<a href="../h_src/57565440.htm" class="localvar">i</a> = 1; <a href="../h_src/57565440.htm" class="localvar">i</a> &lt;= <a href="../h_src/57565304.htm" class="localvar">n</a>; <a href="../h_src/57565440.htm" class="localvar">i</a>++)
+   242 :    <a href="../h_src/57434052.htm" class="function">lua_rawgeti</a>(<a href="../h_src/57565576.htm" class="localvar">L</a>, -<a href="../h_src/57565440.htm" class="localvar">i</a>, <a href="../h_src/57565440.htm" class="localvar">i</a>);
+   251 :    if (<a href="../h_aa/57564488.htm" class="libfunc">strcmp</a>(<a href="../h_src/57564624.htm" class="localvar">fname</a>, &quot;-&quot;) == 0 &amp;&amp; <a href="../h_aa/57564488.htm" class="libfunc">strcmp</a>(<a href="../h_src/57564896.htm" class="localvar">argv</a>[-1], &quot;--&quot;) != 0)
+   252 :    <a href="../h_src/57564624.htm" class="localvar">fname</a> = NULL;  <a  class="comments">/* stdin */</a>
+   281 :    if (<a href="../h_src/57563468.htm" class="localvar">argv</a>[0][0])  <a  class="comments">/* not empty? */</a>
+   282 :    <a href="../h_src/57572920.htm" class="variable">progname</a> = <a href="../h_src/57563468.htm" class="localvar">argv</a>[0];  <a  class="comments">/* save it */</a>
+   290 :    if (<a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>][0] != '-')  <a  class="comments">/* not an option? */</a>
+   291 :    return <a href="../h_src/57563196.htm" class="localvar">args</a>;  <a  class="comments">/* stop handling options */</a>
+   294 :    if (<a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>][2] != '\0')  <a  class="comments">/* extra characters after '--'? */</a>
+   295 :    return <a href="../h_src/57564284.htm" class="macro">has_error</a>;  <a  class="comments">/* invalid option */</a>
+   301 :    if (<a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>][2] != '\0')  <a  class="comments">/* extra characters? */</a>
+   302 :    return <a href="../h_src/57564284.htm" class="macro">has_error</a>;  <a  class="comments">/* invalid option */</a>
+   306 :    if (<a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>][2] != '\0')  <a  class="comments">/* extra characters? */</a>
+   307 :    return <a href="../h_src/57564284.htm" class="macro">has_error</a>;  <a  class="comments">/* invalid option */</a>
+   312 :    if (<a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>][2] != '\0')  <a  class="comments">/* extra characters? */</a>
+   313 :    return <a href="../h_src/57564284.htm" class="macro">has_error</a>;  <a  class="comments">/* invalid option */</a>
+   321 :    if (<a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>] == NULL || <a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>][0] == '-')
+   322 :    return <a href="../h_src/57564284.htm" class="macro">has_error</a>;  <a  class="comments">/* no next argument or it is another option */</a>
+   348 :    if (*<a href="../h_src/57561972.htm" class="localvar">extra</a> == '\0') <a href="../h_src/57561972.htm" class="localvar">extra</a> = <a href="../h_src/57562652.htm" class="localvar">argv</a>[++<a href="../h_src/57562380.htm" class="localvar">i</a>];
+   353 :    if (<a href="../h_src/57562108.htm" class="localvar">status</a> != <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) return 0;
+   372 :    if (<a href="../h_src/57561360.htm" class="localvar">init</a> == NULL) return <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>;
+   373 :    else if (<a href="../h_src/57561360.htm" class="localvar">init</a>[0] == '@')
+   374 :    return <a href="../h_src/57567412.htm" class="function">dofile</a>(<a href="../h_src/57561700.htm" class="localvar">L</a>, <a href="../h_src/57561360.htm" class="localvar">init</a>+1);
+   375 :    else
+   376 :    return <a href="../h_src/57567004.htm" class="function">dostring</a>(<a href="../h_src/57561700.htm" class="localvar">L</a>, <a href="../h_src/57561360.htm" class="localvar">init</a>, <a href="../h_src/57561564.htm" class="localvar">name</a>);
+   461 :    if (<a href="../h_src/57434392.htm" class="function">lua_getglobal</a>(<a href="../h_src/57559320.htm" class="localvar">L</a>, <a href="../h_src/57559184.htm" class="localvar">firstline</a> ? &quot;_PROMPT&quot; : &quot;_PROMPT2&quot;) == <a href="../h_src/57444048.htm" class="macro">LUA_TNIL</a>)
+   462 :    return (<a href="../h_src/57559184.htm" class="localvar">firstline</a> ? <a href="../h_src/57561088.htm" class="macro">LUA_PROMPT</a> : <a href="../h_src/57560952.htm" class="macro">LUA_PROMPT2</a>);  <a  class="comments">/* use the default */</a>
+   502 :    if (<a href="../h_src/57556872.htm" class="localvar">readstatus</a> == 0)
+   503 :    return 0;  <a  class="comments">/* no input (prompt will be popped by caller) */</a>
+   506 :    if (<a href="../h_src/57557280.htm" class="localvar">l</a> &gt; 0 &amp;&amp; <a href="../h_src/57557416.htm" class="localvar">b</a>[<a href="../h_src/57557280.htm" class="localvar">l</a>-1] == '\n')  <a  class="comments">/* line ends with newline? */</a>
+   507 :    <a href="../h_src/57557416.htm" class="localvar">b</a>[--<a href="../h_src/57557280.htm" class="localvar">l</a>] = '\0';  <a  class="comments">/* remove it */</a>
+   508 :    if (<a href="../h_src/57557688.htm" class="localvar">firstline</a> &amp;&amp; <a href="../h_src/57557416.htm" class="localvar">b</a>[0] == '=')  <a  class="comments">/* for compatibility with 5.2, ... */</a>
+   509 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/57557824.htm" class="localvar">L</a>, &quot;return %s&quot;, <a href="../h_src/57557416.htm" class="localvar">b</a> + 1);  <a  class="comments">/* change '=' to 'return' */</a>
+   510 :    else
+   511 :    <a href="../h_src/57435072.htm" class="function">lua_pushlstring</a>(<a href="../h_src/57557824.htm" class="localvar">L</a>, <a href="../h_src/57557416.htm" class="localvar">b</a>, <a href="../h_src/57557280.htm" class="localvar">l</a>);
+   530 :    else
+   531 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/57556600.htm" class="localvar">L</a>, 2);  <a  class="comments">/* pop result from 'luaL_loadbuffer' and modified line */</a>
+   564 :    if (!<a href="../h_src/57557960.htm" class="function">pushline</a>(<a href="../h_src/57555240.htm" class="localvar">L</a>, 1))
+   565 :    return -1;  <a  class="comments">/* no input */</a>
+   566 :    if ((<a href="../h_src/57555104.htm" class="localvar">status</a> = <a href="../h_src/57556736.htm" class="function">addreturn</a>(<a href="../h_src/57555240.htm" class="localvar">L</a>)) != <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>)  <a  class="comments">/* 'return ...' did not work? */</a>
+   567 :    <a href="../h_src/57555104.htm" class="localvar">status</a> = <a href="../h_src/57556056.htm" class="function">multiline</a>(<a href="../h_src/57555240.htm" class="localvar">L</a>);  <a  class="comments">/* try as command, maybe with continuation lines */</a>
+   583 :    if (<a href="../h_src/57432760.htm" class="macro">lua_pcall</a>(<a href="../h_src/57554832.htm" class="localvar">L</a>, <a href="../h_src/57554696.htm" class="localvar">n</a>, 0, 0) != <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>)
+   584 :    <a href="../h_src/57571288.htm" class="function">l_message</a>(<a href="../h_src/57572920.htm" class="variable">progname</a>, <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/57554832.htm" class="localvar">L</a>, &quot;error calling 'print' (%s)&quot;,
+   585 :    <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/57554832.htm" class="localvar">L</a>, -1)));
+   600 :    if (<a href="../h_src/57554288.htm" class="localvar">status</a> == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>)
+   601 :    <a href="../h_src/57554288.htm" class="localvar">status</a> = <a href="../h_src/57569928.htm" class="function">docall</a>(<a href="../h_src/57554424.htm" class="localvar">L</a>, 0, <a href="../h_src/57445612.htm" class="macro">LUA_MULTRET</a>);
+   602 :    if (<a href="../h_src/57554288.htm" class="localvar">status</a> == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) <a href="../h_src/57554968.htm" class="function">l_print</a>(<a href="../h_src/57554424.htm" class="localvar">L</a>);
+   603 :    else <a href="../h_src/57570880.htm" class="function">report</a>(<a href="../h_src/57554424.htm" class="localvar">L</a>, <a href="../h_src/57554288.htm" class="localvar">status</a>);
+   628 :    if (<a href="../h_src/57553336.htm" class="localvar">args</a> &amp; <a href="../h_src/57564012.htm" class="macro">has_v</a>)  <a  class="comments">/* option '-v'? */</a>
+   629 :    <a href="../h_src/57569112.htm" class="function">print_version</a>();
+   639 :    if (<a href="../h_src/57561836.htm" class="function">handle_luainit</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>) != <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>)  <a  class="comments">/* run LUA_INIT */</a>
+   640 :    return 0;  <a  class="comments">/* error running LUA_INIT */</a>
+   642 :    if (!<a href="../h_src/57562924.htm" class="function">runargs</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>, <a href="../h_src/57553608.htm" class="localvar">argv</a>, <a href="../h_src/57553200.htm" class="localvar">optlim</a>))  <a  class="comments">/* execute arguments -e and -l */</a>
+   643 :    return 0;  <a  class="comments">/* something failed */</a>
+   645 :    if (<a href="../h_src/57565168.htm" class="function">handle_script</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>, <a href="../h_src/57553608.htm" class="localvar">argv</a> + <a href="../h_src/57553472.htm" class="localvar">script</a>) != <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>)
+   646 :    return 0;  <a  class="comments">/* interrupt in case of error */</a>
+   648 :    if (<a href="../h_src/57553336.htm" class="localvar">args</a> &amp; <a href="../h_src/57564148.htm" class="macro">has_i</a>)  <a  class="comments">/* -i option? */</a>
+   649 :    <a href="../h_src/57554560.htm" class="function">doREPL</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>);  <a  class="comments">/* do read-eval-print loop */</a>
+   655 :    else <a href="../h_src/57567412.htm" class="function">dofile</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>, NULL);  <a  class="comments">/* executes stdin as a file */</a>
+</pre>
+<pre>
+</pre>
+<h5>Missing Default Case</h5>
+<pre>
+   356 :    case 'W':
+</pre>
+<pre>
+</pre>
+<h5>Unterminated Case</h5>
+<pre>
+   310 :    <a href="../h_src/57563196.htm" class="localvar">args</a> |= <a href="../h_src/57564148.htm" class="macro">has_i</a>;  <a  class="comments">/* (-i implies -v) */</a><a  class="comments">/* FALLTHROUGH */</a>
+   317 :    <a href="../h_src/57563196.htm" class="localvar">args</a> |= <a href="../h_src/57563876.htm" class="macro">has_e</a>;  <a  class="comments">/* FALLTHROUGH */</a>
+</pre>
+<pre>
+</pre>
+<h5>Return Ignored</h5>
+<pre>
+    66 :    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/57572444.htm" class="localvar">L</a>, &quot;interrupted!&quot;);
+   188 :    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/57568704.htm" class="localvar">L</a>, <a href="../h_src/57568500.htm" class="localvar">argv</a>[<a href="../h_src/57568092.htm" class="localvar">i</a>]);
+   223 :    <a href="../h_src/57434392.htm" class="function">lua_getglobal</a>(<a href="../h_src/57566324.htm" class="localvar">L</a>, &quot;require&quot;);
+   224 :    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/57566324.htm" class="localvar">L</a>, <a href="../h_src/57565848.htm" class="localvar">modname</a>);
+   238 :    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/57565576.htm" class="localvar">L</a>, &quot;'arg' is not a table&quot;);
+   242 :    <a href="../h_src/57434052.htm" class="function">lua_rawgeti</a>(<a href="../h_src/57565576.htm" class="localvar">L</a>, -<a href="../h_src/57565440.htm" class="localvar">i</a>, <a href="../h_src/57565440.htm" class="localvar">i</a>);
+   509 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/57557824.htm" class="localvar">L</a>, &quot;return %s&quot;, <a href="../h_src/57557416.htm" class="localvar">b</a> + 1);  <a  class="comments">/* change '=' to 'return' */</a>
+   511 :    <a href="../h_src/57435072.htm" class="function">lua_pushlstring</a>(<a href="../h_src/57557824.htm" class="localvar">L</a>, <a href="../h_src/57557416.htm" class="localvar">b</a>, <a href="../h_src/57557280.htm" class="localvar">l</a>);
+   548 :    <a href="../h_src/57427660.htm" class="macro">lua_pushliteral</a>(<a href="../h_src/57555920.htm" class="localvar">L</a>, &quot;\n&quot;);  <a  class="comments">/* add newline... */</a>
+   581 :    <a href="../h_src/57434392.htm" class="function">lua_getglobal</a>(<a href="../h_src/57554832.htm" class="localvar">L</a>, &quot;print&quot;);
+   603 :    else <a href="../h_src/57570880.htm" class="function">report</a>(<a href="../h_src/57554424.htm" class="localvar">L</a>, <a href="../h_src/57554288.htm" class="localvar">status</a>);
+   636 :    <a href="../h_src/57430448.htm" class="function">lua_gc</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>, <a href="../h_src/57431808.htm" class="macro">LUA_GCRESTART</a>);  <a  class="comments">/* start GC... */</a>
+   637 :    <a href="../h_src/57430448.htm" class="function">lua_gc</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>, <a href="../h_src/57430720.htm" class="macro">LUA_GCGEN</a>, 0, 0);  <a  class="comments">/* ...in generational mode */</a>
+   655 :    else <a href="../h_src/57567412.htm" class="function">dofile</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>, NULL);  <a  class="comments">/* executes stdin as a file */</a>
+   669 :    <a href="../h_src/57430448.htm" class="function">lua_gc</a>(<a href="../h_src/57552316.htm" class="localvar">L</a>, <a href="../h_src/57431944.htm" class="macro">LUA_GCSTOP</a>);  <a  class="comments">/* stop GC while building state */</a>
+   675 :    <a href="../h_src/57570880.htm" class="function">report</a>(<a href="../h_src/57552316.htm" class="localvar">L</a>, <a href="../h_src/57552588.htm" class="localvar">status</a>);
+</pre>
+<pre>
+</pre>
+<h5>Potential Static Function</h5>
+<pre>
+   662 :    int <a href="../h_src/57552928.htm" class="function">main</a> (int <a href="../h_src/57552860.htm" class="localvar">argc</a>, char **<a href="../h_src/57552724.htm" class="localvar">argv</a>) {
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+    78 :    <a href="../h_src/57572716.htm" class="macro">setsignal</a>(<a href="../h_src/57572036.htm" class="localvar">i</a>, SIG_DFL); <a  class="comments">/* if another SIGINT happens, terminate process */</a>
+    84 :    <a href="../h_src/57411884.htm" class="macro">lua_writestringerror</a>(&quot;%s: &quot;, <a href="../h_src/57572920.htm" class="variable">progname</a>);
+    84 :    <a href="../h_src/57411884.htm" class="macro">lua_writestringerror</a>(&quot;%s: &quot;, <a href="../h_src/57572920.htm" class="variable">progname</a>);
+    86 :    <a href="../h_src/57411884.htm" class="macro">lua_writestringerror</a>(&quot;'%s' needs argument\n&quot;, <a href="../h_src/57571560.htm" class="localvar">badoption</a>);
+    86 :    <a href="../h_src/57411884.htm" class="macro">lua_writestringerror</a>(&quot;'%s' needs argument\n&quot;, <a href="../h_src/57571560.htm" class="localvar">badoption</a>);
+    88 :    <a href="../h_src/57411884.htm" class="macro">lua_writestringerror</a>(&quot;unrecognized option '%s'\n&quot;, <a href="../h_src/57571560.htm" class="localvar">badoption</a>);
+    88 :    <a href="../h_src/57411884.htm" class="macro">lua_writestringerror</a>(&quot;unrecognized option '%s'\n&quot;, <a href="../h_src/57571560.htm" class="localvar">badoption</a>);
+    89 :    <a href="../h_src/57411884.htm" class="macro">lua_writestringerror</a>(
+    90 :    &quot;usage: %s [options] [script [args]]\n&quot;
+    91 :    &quot;Available options are:\n&quot;
+    92 :    &quot;  -e stat   execute string 'stat'\n&quot;
+    93 :    &quot;  -i        enter interactive mode after executing 'script'\n&quot;
+    94 :    &quot;  -l mod    require library 'mod' into global 'mod'\n&quot;
+    95 :    &quot;  -l g=mod  require library 'mod' into global 'g'\n&quot;
+    96 :    &quot;  -v        show version information\n&quot;
+    97 :    &quot;  -E        ignore environment variables\n&quot;
+    98 :    &quot;  -W        turn warnings on\n&quot;
+    99 :    &quot;  --        stop handling options\n&quot;
+   100 :    &quot;  -         stop handling options and execute stdin\n&quot;
+   101 :    ,
+   102 :    <a href="../h_src/57572920.htm" class="variable">progname</a>);
+   102 :    <a href="../h_src/57572920.htm" class="variable">progname</a>);
+   111 :    if (<a href="../h_src/57571152.htm" class="localvar">pname</a>) <a href="../h_src/57411884.htm" class="macro">lua_writestringerror</a>(&quot;%s: &quot;, <a href="../h_src/57571152.htm" class="localvar">pname</a>);
+   111 :    if (<a href="../h_src/57571152.htm" class="localvar">pname</a>) <a href="../h_src/57411884.htm" class="macro">lua_writestringerror</a>(&quot;%s: &quot;, <a href="../h_src/57571152.htm" class="localvar">pname</a>);
+   112 :    <a href="../h_src/57411884.htm" class="macro">lua_writestringerror</a>(&quot;%s\n&quot;, <a href="../h_src/57571016.htm" class="localvar">msg</a>);
+   112 :    <a href="../h_src/57411884.htm" class="macro">lua_writestringerror</a>(&quot;%s\n&quot;, <a href="../h_src/57571016.htm" class="localvar">msg</a>);
+   159 :    <a href="../h_src/57572716.htm" class="macro">setsignal</a>(SIGINT, <a href="../h_src/57572172.htm" class="function">laction</a>);  <a  class="comments">/* set C-signal handler */</a><a href="../h_aa/57571764.htm" class="libfunc">signal</a> handler */
+   161 :    <a href="../h_src/57572716.htm" class="macro">setsignal</a>(SIGINT, SIG_DFL); <a  class="comments">/* reset C-signal handler */</a><a href="../h_aa/57571764.htm" class="libfunc">signal</a> handler */
+   168 :    <a href="../h_src/57412428.htm" class="macro">lua_writestring</a>(<a href="../h_src/57446020.htm" class="macro">LUA_COPYRIGHT</a>, <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/57446020.htm" class="macro">LUA_COPYRIGHT</a>));
+   168 :    <a href="../h_src/57412428.htm" class="macro">lua_writestring</a>(<a href="../h_src/57446020.htm" class="macro">LUA_COPYRIGHT</a>, <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/57446020.htm" class="macro">LUA_COPYRIGHT</a>));
+   169 :    <a href="../h_src/57412156.htm" class="macro">lua_writeline</a>();
+   169 :    <a href="../h_src/57412156.htm" class="macro">lua_writeline</a>();
+   207 :    return <a href="../h_src/57567820.htm" class="function">dochunk</a>(<a href="../h_src/57566868.htm" class="localvar">L</a>, <a href="../h_src/57416032.htm" class="macro">luaL_loadbuffer</a>(<a href="../h_src/57566868.htm" class="localvar">L</a>, <a href="../h_src/57566732.htm" class="localvar">s</a>, <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/57566732.htm" class="localvar">s</a>), <a href="../h_src/57566596.htm" class="localvar">name</a>));
+   216 :    char *<a href="../h_src/57565848.htm" class="localvar">modname</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57566188.htm" class="localvar">globname</a>, '=');
+   251 :    if (<a href="../h_aa/57564488.htm" class="libfunc">strcmp</a>(<a href="../h_src/57564624.htm" class="localvar">fname</a>, &quot;-&quot;) == 0 &amp;&amp; <a href="../h_aa/57564488.htm" class="libfunc">strcmp</a>(<a href="../h_src/57564896.htm" class="localvar">argv</a>[-1], &quot;--&quot;) != 0)
+   251 :    if (<a href="../h_aa/57564488.htm" class="libfunc">strcmp</a>(<a href="../h_src/57564624.htm" class="localvar">fname</a>, &quot;-&quot;) == 0 &amp;&amp; <a href="../h_aa/57564488.htm" class="libfunc">strcmp</a>(<a href="../h_src/57564896.htm" class="localvar">argv</a>[-1], &quot;--&quot;) != 0)
+   367 :    const char *<a href="../h_src/57561360.htm" class="localvar">init</a> = <a href="../h_aa/57561428.htm" class="libfunc">getenv</a>(<a href="../h_src/57561564.htm" class="localvar">name</a> + 1);
+   370 :    <a href="../h_src/57561360.htm" class="localvar">init</a> = <a href="../h_aa/57561428.htm" class="libfunc">getenv</a>(<a href="../h_src/57561564.htm" class="localvar">name</a> + 1);  <a  class="comments">/* try alternative name */</a>
+   484 :    if (<a href="../h_src/57558232.htm" class="localvar">lmsg</a> &gt;= <a href="../h_src/57558776.htm" class="macro">marklen</a> &amp;&amp; <a href="../h_aa/57564488.htm" class="libfunc">strcmp</a>(<a href="../h_src/57558096.htm" class="localvar">msg</a> + <a href="../h_src/57558232.htm" class="localvar">lmsg</a> - <a href="../h_src/57558776.htm" class="macro">marklen</a>, <a href="../h_src/57558912.htm" class="macro">EOFMARK</a>) == 0) {
+   501 :    int <a href="../h_src/57556872.htm" class="localvar">readstatus</a> = <a href="../h_src/57559864.htm" class="macro">lua_readline</a>(<a href="../h_src/57557824.htm" class="localvar">L</a>, <a href="../h_src/57557416.htm" class="localvar">b</a>, <a href="../h_src/57557144.htm" class="localvar">prmt</a>);
+   501 :    int <a href="../h_src/57556872.htm" class="localvar">readstatus</a> = <a href="../h_src/57559864.htm" class="macro">lua_readline</a>(<a href="../h_src/57557824.htm" class="localvar">L</a>, <a href="../h_src/57557416.htm" class="localvar">b</a>, <a href="../h_src/57557144.htm" class="localvar">prmt</a>);
+   501 :    int <a href="../h_src/57556872.htm" class="localvar">readstatus</a> = <a href="../h_src/57559864.htm" class="macro">lua_readline</a>(<a href="../h_src/57557824.htm" class="localvar">L</a>, <a href="../h_src/57557416.htm" class="localvar">b</a>, <a href="../h_src/57557144.htm" class="localvar">prmt</a>);
+   505 :    <a href="../h_src/57557280.htm" class="localvar">l</a> = <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/57557416.htm" class="localvar">b</a>);
+   524 :    int <a href="../h_src/57556192.htm" class="localvar">status</a> = <a href="../h_src/57416032.htm" class="macro">luaL_loadbuffer</a>(<a href="../h_src/57556600.htm" class="localvar">L</a>, <a href="../h_src/57556328.htm" class="localvar">retline</a>, <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/57556328.htm" class="localvar">retline</a>), &quot;=stdin&quot;);
+   606 :    <a href="../h_src/57412156.htm" class="macro">lua_writeline</a>();
+   606 :    <a href="../h_src/57412156.htm" class="macro">lua_writeline</a>();
+   651 :    if (<a href="../h_src/57560408.htm" class="macro">lua_stdin_is_tty</a>()) {  <a  class="comments">/* running in interactive mode? */</a>
+   651 :    if (<a href="../h_src/57560408.htm" class="macro">lua_stdin_is_tty</a>()) {  <a  class="comments">/* running in interactive mode? */</a>
+</pre>
+<pre>
+
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,75 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>pushclosure</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58198124.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58198124.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58198124.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58198124.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/58198124.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/58198124.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58062016.htm#788" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>8</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>4</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>6</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Number of Built-In Operators</h5>
+<pre>
+   801 :    <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/58197988.htm" class="localvar">L</a>, <a href="../h_src/58196900.htm" class="localvar">ncl</a>, <a href="../h_src/58196900.htm" class="localvar">ncl</a>-&gt;<a href="../h_src/57508048.htm" class="variable">upvals</a>[<a href="../h_src/58197036.htm" class="localvar">i</a>]);
+</pre>
+<pre>
+</pre>
+<h5>Unclear Subexpression</h5>
+<pre>
+   795 :    <a href="../h_src/57511584.htm" class="macro">setclLvalue2s</a>(<a href="../h_src/58197988.htm" class="localvar">L</a>, <a href="../h_src/58197444.htm" class="localvar">ra</a>, <a href="../h_src/58196900.htm" class="localvar">ncl</a>);  <a  class="comments">/* anchor new closure in stack */</a>
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+   795 :    <a href="../h_src/57511584.htm" class="macro">setclLvalue2s</a>(<a href="../h_src/58197988.htm" class="localvar">L</a>, <a href="../h_src/58197444.htm" class="localvar">ra</a>, <a href="../h_src/58196900.htm" class="localvar">ncl</a>);  <a  class="comments">/* anchor new closure in stack */</a>
+   795 :    <a href="../h_src/57511584.htm" class="macro">setclLvalue2s</a>(<a href="../h_src/58197988.htm" class="localvar">L</a>, <a href="../h_src/58197444.htm" class="localvar">ra</a>, <a href="../h_src/58196900.htm" class="localvar">ncl</a>);  <a  class="comments">/* anchor new closure in stack */</a>
+   801 :    <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/58197988.htm" class="localvar">L</a>, <a href="../h_src/58196900.htm" class="localvar">ncl</a>, <a href="../h_src/58196900.htm" class="localvar">ncl</a>-&gt;<a href="../h_src/57508048.htm" class="variable">upvals</a>[<a href="../h_src/58197036.htm" class="localvar">i</a>]);
+   801 :    <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/58197988.htm" class="localvar">L</a>, <a href="../h_src/58196900.htm" class="localvar">ncl</a>, <a href="../h_src/58196900.htm" class="localvar">ncl</a>-&gt;<a href="../h_src/57508048.htm" class="variable">upvals</a>[<a href="../h_src/58197036.htm" class="localvar">i</a>]);
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   797 :    if (<a href="../h_src/58197172.htm" class="localvar">uv</a>[<a href="../h_src/58197036.htm" class="localvar">i</a>].<a href="../h_src/57517296.htm" class="variable">instack</a>)  <a  class="comments">/* upvalue refers to local variable? */</a>
+   798 :    <a href="../h_src/58196900.htm" class="localvar">ncl</a>-&gt;<a href="../h_src/57508048.htm" class="variable">upvals</a>[<a href="../h_src/58197036.htm" class="localvar">i</a>] = <a href="../h_src/57630588.htm" class="function">luaF_findupval</a>(<a href="../h_src/58197988.htm" class="localvar">L</a>, <a href="../h_src/58197580.htm" class="localvar">base</a> + <a href="../h_src/58197172.htm" class="localvar">uv</a>[<a href="../h_src/58197036.htm" class="localvar">i</a>].<a href="../h_src/57517228.htm" class="variable">idx</a>);
+   799 :    else  <a  class="comments">/* get upvalue from enclosing function */</a>
+   800 :    <a href="../h_src/58196900.htm" class="localvar">ncl</a>-&gt;<a href="../h_src/57508048.htm" class="variable">upvals</a>[<a href="../h_src/58197036.htm" class="localvar">i</a>] = <a href="../h_src/58197716.htm" class="localvar">encup</a>[<a href="../h_src/58197172.htm" class="localvar">uv</a>[<a href="../h_src/58197036.htm" class="localvar">i</a>].<a href="../h_src/57517228.htm" class="variable">idx</a>];
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

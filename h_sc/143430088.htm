@@ -1,0 +1,61 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>checktab</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143430088.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143430088.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143430088.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143430088.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/143430088.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/143430088.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143431652.htm#46" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>2</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>2</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>6</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Number of Built-In Operators</h5>
+<pre>
+    49 :    if (<a href="../h_src/57433780.htm" class="function">lua_getmetatable</a>(<a href="../h_src/143429952.htm" class="localvar">L</a>, <a href="../h_src/143429816.htm" class="localvar">arg</a>) &amp;&amp;  <a  class="comments">/* must have metatable */</a>
+    50 :    (!(<a href="../h_src/143429680.htm" class="localvar">what</a> &amp; <a href="../h_src/143431312.htm" class="macro">TAB_R</a>) || <a href="../h_src/143430632.htm" class="function">checkfield</a>(<a href="../h_src/143429952.htm" class="localvar">L</a>, &quot;__index&quot;, ++<a href="../h_src/143429544.htm" class="localvar">n</a>)) &amp;&amp;
+    51 :    (!(<a href="../h_src/143429680.htm" class="localvar">what</a> &amp; <a href="../h_src/143431176.htm" class="macro">TAB_W</a>) || <a href="../h_src/143430632.htm" class="function">checkfield</a>(<a href="../h_src/143429952.htm" class="localvar">L</a>, &quot;__newindex&quot;, ++<a href="../h_src/143429544.htm" class="localvar">n</a>)) &amp;&amp;
+    52 :    (!(<a href="../h_src/143429680.htm" class="localvar">what</a> &amp; <a href="../h_src/143431040.htm" class="macro">TAB_L</a>) || <a href="../h_src/143430632.htm" class="function">checkfield</a>(<a href="../h_src/143429952.htm" class="localvar">L</a>, &quot;__len&quot;, ++<a href="../h_src/143429544.htm" class="localvar">n</a>))) {
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+    55 :    else
+    56 :    <a href="../h_src/57419772.htm" class="function">luaL_checktype</a>(<a href="../h_src/143429952.htm" class="localvar">L</a>, <a href="../h_src/143429816.htm" class="localvar">arg</a>, <a href="../h_src/57443368.htm" class="macro">LUA_TTABLE</a>);  <a  class="comments">/* force an error */</a>
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

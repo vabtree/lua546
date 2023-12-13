@@ -1,0 +1,73 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>index2value</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57610052.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57610052.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57610052.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57610052.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/57610052.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/57610052.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57552180.htm#60" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>12</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>3</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>9</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Unclear Subexpression</h5>
+<pre>
+    65 :    if (<a href="../h_src/57609508.htm" class="localvar">o</a> &gt;= <a href="../h_src/57609916.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>) return &amp;<a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57609916.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57646228.htm" class="variable">nilvalue</a>;
+    66 :    else return <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57609508.htm" class="localvar">o</a>);
+    71 :    return <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57609916.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> + <a href="../h_src/57609780.htm" class="localvar">idx</a>);
+    74 :    return &amp;<a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57609916.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57646296.htm" class="variable">l_registry</a>;
+    78 :    if (<a href="../h_src/57512808.htm" class="macro">ttisCclosure</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57609644.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a>))) {  <a  class="comments">/* C closure? */</a>
+    79 :    <a href="../h_src/57508728.htm" class="type">CClosure</a> *<a href="../h_src/57609236.htm" class="localvar">func</a> = <a href="../h_src/57511992.htm" class="macro">clCvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57609644.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a>));
+    81 :    : &amp;<a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57609916.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57646228.htm" class="variable">nilvalue</a>;
+    85 :    return &amp;<a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57609916.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57646228.htm" class="variable">nilvalue</a>;  <a  class="comments">/* no upvalues */</a>
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+    79 :    <a href="../h_src/57508728.htm" class="type">CClosure</a> *<a href="../h_src/57609236.htm" class="localvar">func</a> = <a href="../h_src/57511992.htm" class="macro">clCvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57609644.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a>));
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+    65 :    if (<a href="../h_src/57609508.htm" class="localvar">o</a> &gt;= <a href="../h_src/57609916.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>) return &amp;<a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57609916.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57646228.htm" class="variable">nilvalue</a>;
+    66 :    else return <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57609508.htm" class="localvar">o</a>);
+    73 :    else if (<a href="../h_src/57609780.htm" class="localvar">idx</a> == <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>)
+    74 :    return &amp;<a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57609916.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57646296.htm" class="variable">l_registry</a>;
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

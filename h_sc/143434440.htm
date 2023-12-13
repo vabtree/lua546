@@ -1,0 +1,85 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>str_unpack</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143434440.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143434440.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143434440.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143434440.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/143434440.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/143434440.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143344164.htm#1754" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>15</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>5</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>13</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Unclear Subexpression</h5>
+<pre>
+  1766 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143434304.htm" class="localvar">L</a>, (<a href="../h_aa/57441192.htm" class="type">size_t</a>)<a href="../h_src/143433216.htm" class="localvar">ntoalign</a> + <a href="../h_src/143433352.htm" class="localvar">size</a> &lt;= <a href="../h_src/143433896.htm" class="localvar">ld</a> - <a href="../h_src/143433624.htm" class="localvar">pos</a>, 2,
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+  1766 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143434304.htm" class="localvar">L</a>, (<a href="../h_aa/57441192.htm" class="type">size_t</a>)<a href="../h_src/143433216.htm" class="localvar">ntoalign</a> + <a href="../h_src/143433352.htm" class="localvar">size</a> &lt;= <a href="../h_src/143433896.htm" class="localvar">ld</a> - <a href="../h_src/143433624.htm" class="localvar">pos</a>, 2,
+  1782 :    <a href="../h_src/143281128.htm" class="function">copywithendian</a>((char *)&amp;<a href="../h_src/143432808.htm" class="localvar">f</a>, <a href="../h_src/143433760.htm" class="localvar">data</a> + <a href="../h_src/143433624.htm" class="localvar">pos</a>, sizeof(<a href="../h_src/143432808.htm" class="localvar">f</a>), <a href="../h_src/143434168.htm" class="localvar">h</a>.<a href="../h_src/143287996.htm" class="variable">islittle</a>);
+  1788 :    <a href="../h_src/143281128.htm" class="function">copywithendian</a>((char *)&amp;<a href="../h_src/143432672.htm" class="localvar">f</a>, <a href="../h_src/143433760.htm" class="localvar">data</a> + <a href="../h_src/143433624.htm" class="localvar">pos</a>, sizeof(<a href="../h_src/143432672.htm" class="localvar">f</a>), <a href="../h_src/143434168.htm" class="localvar">h</a>.<a href="../h_src/143287996.htm" class="variable">islittle</a>);
+  1794 :    <a href="../h_src/143281128.htm" class="function">copywithendian</a>((char *)&amp;<a href="../h_src/143432536.htm" class="localvar">f</a>, <a href="../h_src/143433760.htm" class="localvar">data</a> + <a href="../h_src/143433624.htm" class="localvar">pos</a>, sizeof(<a href="../h_src/143432536.htm" class="localvar">f</a>), <a href="../h_src/143434168.htm" class="localvar">h</a>.<a href="../h_src/143287996.htm" class="variable">islittle</a>);
+  1803 :    <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/143432400.htm" class="localvar">len</a> = (<a href="../h_aa/57441192.htm" class="type">size_t</a>)<a href="../h_src/143435936.htm" class="function">unpackint</a>(<a href="../h_src/143434304.htm" class="localvar">L</a>, <a href="../h_src/143433760.htm" class="localvar">data</a> + <a href="../h_src/143433624.htm" class="localvar">pos</a>, <a href="../h_src/143434168.htm" class="localvar">h</a>.<a href="../h_src/143287996.htm" class="variable">islittle</a>, <a href="../h_src/143433352.htm" class="localvar">size</a>, 0);
+</pre>
+<pre>
+</pre>
+<h5>Missing Default Case</h5>
+<pre>
+  1817 :    case <a href="../h_src/143287180.htm" class="variable">Kpaddalign</a>: case <a href="../h_src/143287248.htm" class="variable">Kpadding</a>: case <a href="../h_src/143287112.htm" class="variable">Knop</a>:
+</pre>
+<pre>
+</pre>
+<h5>Return Ignored</h5>
+<pre>
+  1799 :    <a href="../h_src/57435072.htm" class="function">lua_pushlstring</a>(<a href="../h_src/143434304.htm" class="localvar">L</a>, <a href="../h_src/143433760.htm" class="localvar">data</a> + <a href="../h_src/143433624.htm" class="localvar">pos</a>, <a href="../h_src/143433352.htm" class="localvar">size</a>);
+  1805 :    <a href="../h_src/57435072.htm" class="function">lua_pushlstring</a>(<a href="../h_src/143434304.htm" class="localvar">L</a>, <a href="../h_src/143433760.htm" class="localvar">data</a> + <a href="../h_src/143433624.htm" class="localvar">pos</a> + <a href="../h_src/143433352.htm" class="localvar">size</a>, <a href="../h_src/143432400.htm" class="localvar">len</a>);
+  1813 :    <a href="../h_src/57435072.htm" class="function">lua_pushlstring</a>(<a href="../h_src/143434304.htm" class="localvar">L</a>, <a href="../h_src/143433760.htm" class="localvar">data</a> + <a href="../h_src/143433624.htm" class="localvar">pos</a>, <a href="../h_src/143432264.htm" class="localvar">len</a>);
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+  1761 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143434304.htm" class="localvar">L</a>, <a href="../h_src/143433624.htm" class="localvar">pos</a> &lt;= <a href="../h_src/143433896.htm" class="localvar">ld</a>, 3, &quot;initial position out of string&quot;);
+  1766 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143434304.htm" class="localvar">L</a>, (<a href="../h_aa/57441192.htm" class="type">size_t</a>)<a href="../h_src/143433216.htm" class="localvar">ntoalign</a> + <a href="../h_src/143433352.htm" class="localvar">size</a> &lt;= <a href="../h_src/143433896.htm" class="localvar">ld</a> - <a href="../h_src/143433624.htm" class="localvar">pos</a>, 2,
+  1804 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143434304.htm" class="localvar">L</a>, <a href="../h_src/143432400.htm" class="localvar">len</a> &lt;= <a href="../h_src/143433896.htm" class="localvar">ld</a> - <a href="../h_src/143433624.htm" class="localvar">pos</a> - <a href="../h_src/143433352.htm" class="localvar">size</a>, 2, &quot;data string too short&quot;);
+  1810 :    <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/143432264.htm" class="localvar">len</a> = <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/143433760.htm" class="localvar">data</a> + <a href="../h_src/143433624.htm" class="localvar">pos</a>);
+  1811 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143434304.htm" class="localvar">L</a>, <a href="../h_src/143433624.htm" class="localvar">pos</a> + <a href="../h_src/143432264.htm" class="localvar">len</a> &lt; <a href="../h_src/143433896.htm" class="localvar">ld</a>, 2,
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

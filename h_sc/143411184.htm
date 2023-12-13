@@ -1,0 +1,64 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>iter_aux</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143411184.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143411184.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143411184.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143411184.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/143411184.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/143411184.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143418664.htm#228" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>7</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>2</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>8</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+   231 :    <a href="../h_src/57438132.htm" class="function">lua_Unsigned</a> <a href="../h_src/143410504.htm" class="localvar">n</a> = (<a href="../h_src/57438132.htm" class="function">lua_Unsigned</a>)<a href="../h_src/57429428.htm" class="macro">lua_tointeger</a>(<a href="../h_src/143411048.htm" class="localvar">L</a>, 2);
+   233 :    while (<a href="../h_src/143417712.htm" class="macro">iscontp</a>(<a href="../h_src/143410640.htm" class="localvar">s</a> + <a href="../h_src/143410504.htm" class="localvar">n</a>)) <a href="../h_src/143410504.htm" class="localvar">n</a>++;  <a  class="comments">/* go to next character */</a>
+   239 :    const char *<a href="../h_src/143410232.htm" class="localvar">next</a> = <a href="../h_src/143417168.htm" class="function">utf8_decode</a>(<a href="../h_src/143410640.htm" class="localvar">s</a> + <a href="../h_src/143410504.htm" class="localvar">n</a>, &amp;<a href="../h_src/143410368.htm" class="localvar">code</a>, <a href="../h_src/143410912.htm" class="localvar">strict</a>);
+   242 :    <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143411048.htm" class="localvar">L</a>, <a href="../h_src/143410504.htm" class="localvar">n</a> + 1);
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   233 :    while (<a href="../h_src/143417712.htm" class="macro">iscontp</a>(<a href="../h_src/143410640.htm" class="localvar">s</a> + <a href="../h_src/143410504.htm" class="localvar">n</a>)) <a href="../h_src/143410504.htm" class="localvar">n</a>++;  <a  class="comments">/* go to next character */</a>
+   235 :    if (<a href="../h_src/143410504.htm" class="localvar">n</a> &gt;= <a href="../h_src/143410776.htm" class="localvar">len</a>)  <a  class="comments">/* (also handles original 'n' being negative) */</a>
+   236 :    return 0;  <a  class="comments">/* no more codepoints */</a>
+   240 :    if (<a href="../h_src/143410232.htm" class="localvar">next</a> == NULL || <a href="../h_src/143417712.htm" class="macro">iscontp</a>(<a href="../h_src/143410232.htm" class="localvar">next</a>))
+   241 :    return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143411048.htm" class="localvar">L</a>, <a href="../h_src/143418052.htm" class="macro">MSGInvalid</a>);
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

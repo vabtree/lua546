@@ -1,0 +1,76 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>pmain</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57554016.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57554016.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57554016.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57554016.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/57554016.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/57554016.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57461796.htm#617" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>11</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>3</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>14</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   628 :    if (<a href="../h_src/57553336.htm" class="localvar">args</a> &amp; <a href="../h_src/57564012.htm" class="macro">has_v</a>)  <a  class="comments">/* option '-v'? */</a>
+   629 :    <a href="../h_src/57569112.htm" class="function">print_version</a>();
+   639 :    if (<a href="../h_src/57561836.htm" class="function">handle_luainit</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>) != <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>)  <a  class="comments">/* run LUA_INIT */</a>
+   640 :    return 0;  <a  class="comments">/* error running LUA_INIT */</a>
+   642 :    if (!<a href="../h_src/57562924.htm" class="function">runargs</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>, <a href="../h_src/57553608.htm" class="localvar">argv</a>, <a href="../h_src/57553200.htm" class="localvar">optlim</a>))  <a  class="comments">/* execute arguments -e and -l */</a>
+   643 :    return 0;  <a  class="comments">/* something failed */</a>
+   645 :    if (<a href="../h_src/57565168.htm" class="function">handle_script</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>, <a href="../h_src/57553608.htm" class="localvar">argv</a> + <a href="../h_src/57553472.htm" class="localvar">script</a>) != <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>)
+   646 :    return 0;  <a  class="comments">/* interrupt in case of error */</a>
+   648 :    if (<a href="../h_src/57553336.htm" class="localvar">args</a> &amp; <a href="../h_src/57564148.htm" class="macro">has_i</a>)  <a  class="comments">/* -i option? */</a>
+   649 :    <a href="../h_src/57554560.htm" class="function">doREPL</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>);  <a  class="comments">/* do read-eval-print loop */</a>
+   655 :    else <a href="../h_src/57567412.htm" class="function">dofile</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>, NULL);  <a  class="comments">/* executes stdin as a file */</a>
+</pre>
+<pre>
+</pre>
+<h5>Return Ignored</h5>
+<pre>
+   636 :    <a href="../h_src/57430448.htm" class="function">lua_gc</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>, <a href="../h_src/57431808.htm" class="macro">LUA_GCRESTART</a>);  <a  class="comments">/* start GC... */</a>
+   637 :    <a href="../h_src/57430448.htm" class="function">lua_gc</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>, <a href="../h_src/57430720.htm" class="macro">LUA_GCGEN</a>, 0, 0);  <a  class="comments">/* ...in generational mode */</a>
+   655 :    else <a href="../h_src/57567412.htm" class="function">dofile</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>, NULL);  <a  class="comments">/* executes stdin as a file */</a>
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+   651 :    if (<a href="../h_src/57560408.htm" class="macro">lua_stdin_is_tty</a>()) {  <a  class="comments">/* running in interactive mode? */</a>
+   651 :    if (<a href="../h_src/57560408.htm" class="macro">lua_stdin_is_tty</a>()) {  <a  class="comments">/* running in interactive mode? */</a>
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

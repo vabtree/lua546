@@ -1,0 +1,81 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lua_newstate</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57439900.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57439900.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57439900.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57439900.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/57439900.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/57439900.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57985340.htm#360" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>16</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>4</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>13</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Unclear Subexpression</h5>
+<pre>
+   366 :    <a href="../h_src/58134164.htm" class="localvar">L</a> = &amp;<a href="../h_src/58133824.htm" class="localvar">l</a>-&gt;<a href="../h_src/57984524.htm" class="variable">l</a>.<a href="../h_src/57984796.htm" class="variable">l</a>;
+   367 :    <a href="../h_src/58134028.htm" class="localvar">g</a> = &amp;<a href="../h_src/58133824.htm" class="localvar">l</a>-&gt;<a href="../h_src/57984456.htm" class="variable">g</a>;
+   384 :    <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(&amp;<a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646296.htm" class="variable">l_registry</a>);
+   400 :    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(&amp;<a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646228.htm" class="variable">nilvalue</a>, 0);  <a  class="comments">/* to signal that state is not yet built */</a>
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+   364 :    <a href="../h_src/57984388.htm" class="type">LG</a> *<a href="../h_src/58133824.htm" class="localvar">l</a> = <a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57984388.htm" class="type">LG</a> *, (*<a href="../h_src/58134572.htm" class="localvar">f</a>)(<a href="../h_src/58134436.htm" class="localvar">ud</a>, NULL, <a href="../h_src/57442960.htm" class="macro">LUA_TTHREAD</a>, sizeof(<a href="../h_src/57984388.htm" class="type">LG</a>)));
+   368 :    <a href="../h_src/58134164.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642964.htm" class="variable">tt</a> = <a href="../h_src/57528992.htm" class="macro">LUA_VTHREAD</a>;
+   369 :    <a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646092.htm" class="variable">currentwhite</a> = <a href="../h_src/57627868.htm" class="macro">bitmask</a>(<a href="../h_src/57627188.htm" class="macro">WHITE0BIT</a>);
+   372 :    <a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645344.htm" class="variable">allgc</a> = <a href="../h_src/57638884.htm" class="macro">obj2gco</a>(<a href="../h_src/58134164.htm" class="localvar">L</a>);  <a  class="comments">/* by now, only object is the main thread */</a>
+   384 :    <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(&amp;<a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646296.htm" class="variable">l_registry</a>);
+   400 :    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(&amp;<a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646228.htm" class="variable">nilvalue</a>, 0);  <a  class="comments">/* to signal that state is not yet built */</a>
+   401 :    <a href="../h_src/57622836.htm" class="macro">setgcparam</a>(<a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645548.htm" class="variable">gcpause</a>, <a href="../h_src/57623108.htm" class="macro">LUAI_GCPAUSE</a>);
+   402 :    <a href="../h_src/57622836.htm" class="macro">setgcparam</a>(<a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645480.htm" class="variable">gcstepmul</a>, <a href="../h_src/57622700.htm" class="macro">LUAI_GCMUL</a>);
+   404 :    <a href="../h_src/57622836.htm" class="macro">setgcparam</a>(<a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645752.htm" class="variable">genmajormul</a>, <a href="../h_src/57623380.htm" class="macro">LUAI_GENMAJORMUL</a>);
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   365 :    if (<a href="../h_src/58133824.htm" class="localvar">l</a> == NULL) return NULL;
+   406 :    for (<a href="../h_src/58134300.htm" class="localvar">i</a>=0; <a href="../h_src/58134300.htm" class="localvar">i</a> &lt; <a href="../h_src/57426028.htm" class="macro">LUA_NUMTAGS</a>; <a href="../h_src/58134300.htm" class="localvar">i</a>++) <a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57643440.htm" class="variable">mt</a>[<a href="../h_src/58134300.htm" class="localvar">i</a>] = NULL;
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+   364 :    <a href="../h_src/57984388.htm" class="type">LG</a> *<a href="../h_src/58133824.htm" class="localvar">l</a> = <a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57984388.htm" class="type">LG</a> *, (*<a href="../h_src/58134572.htm" class="localvar">f</a>)(<a href="../h_src/58134436.htm" class="localvar">ud</a>, NULL, <a href="../h_src/57442960.htm" class="macro">LUA_TTHREAD</a>, sizeof(<a href="../h_src/57984388.htm" class="type">LG</a>)));
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

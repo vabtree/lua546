@@ -1,0 +1,76 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>traverseweakvalue</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57818252.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57818252.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57818252.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57818252.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/57818252.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/57818252.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57829404.htm#446" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>12</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>3</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>10</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Unclear Subexpression</h5>
+<pre>
+   452 :    if (<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/57817844.htm" class="localvar">n</a>)))  <a  class="comments">/* entry is empty? */</a>
+   457 :    if (!<a href="../h_src/57817572.htm" class="localvar">hasclears</a> &amp;&amp; <a href="../h_src/57824712.htm" class="function">iscleared</a>(<a href="../h_src/57818116.htm" class="localvar">g</a>, <a href="../h_src/57827432.htm" class="macro">gcvalueN</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/57817844.htm" class="localvar">n</a>))))  <a  class="comments">/* a white value? */</a>
+   462 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57817980.htm" class="localvar">h</a>, <a href="../h_src/57818116.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644936.htm" class="variable">weak</a>);  <a  class="comments">/* has to be cleared later */</a>
+   464 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57817980.htm" class="localvar">h</a>, <a href="../h_src/57818116.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a>);  <a  class="comments">/* must retraverse it in atomic phase */</a>
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+   447 :    <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/57817844.htm" class="localvar">n</a>, *<a href="../h_src/57817708.htm" class="localvar">limit</a> = <a href="../h_src/57826344.htm" class="macro">gnodelast</a>(<a href="../h_src/57817980.htm" class="localvar">h</a>);
+   462 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57817980.htm" class="localvar">h</a>, <a href="../h_src/57818116.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644936.htm" class="variable">weak</a>);  <a  class="comments">/* has to be cleared later */</a>
+   464 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57817980.htm" class="localvar">h</a>, <a href="../h_src/57818116.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a>);  <a  class="comments">/* must retraverse it in atomic phase */</a>
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   452 :    if (<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/57817844.htm" class="localvar">n</a>)))  <a  class="comments">/* entry is empty? */</a>
+   453 :    <a href="../h_src/57824984.htm" class="function">clearkey</a>(<a href="../h_src/57817844.htm" class="localvar">n</a>);  <a  class="comments">/* clear its key */</a>
+   456 :    <a href="../h_src/57827160.htm" class="macro">markkey</a>(<a href="../h_src/57818116.htm" class="localvar">g</a>, <a href="../h_src/57817844.htm" class="localvar">n</a>);
+   457 :    if (!<a href="../h_src/57817572.htm" class="localvar">hasclears</a> &amp;&amp; <a href="../h_src/57824712.htm" class="function">iscleared</a>(<a href="../h_src/57818116.htm" class="localvar">g</a>, <a href="../h_src/57827432.htm" class="macro">gcvalueN</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/57817844.htm" class="localvar">n</a>))))  <a  class="comments">/* a white value? */</a>
+   458 :    <a href="../h_src/57817572.htm" class="localvar">hasclears</a> = 1;  <a  class="comments">/* table will have to be cleared */</a>
+   461 :    if (<a href="../h_src/57818116.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646024.htm" class="variable">gcstate</a> == <a href="../h_src/57629500.htm" class="macro">GCSatomic</a> &amp;&amp; <a href="../h_src/57817572.htm" class="localvar">hasclears</a>)
+   462 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57817980.htm" class="localvar">h</a>, <a href="../h_src/57818116.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644936.htm" class="variable">weak</a>);  <a  class="comments">/* has to be cleared later */</a>
+   463 :    else
+   464 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57817980.htm" class="localvar">h</a>, <a href="../h_src/57818116.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a>);  <a  class="comments">/* must retraverse it in atomic phase */</a>
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

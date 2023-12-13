@@ -1,0 +1,212 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lmathlib.c</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143241756.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/143241756.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/143241756.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/143241756.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_uf/143241756.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_df/143241756.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/143241756.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/143241756.htm" class="file" target="_self">Source Code</a></li>
+<li id="current"><a href="../h_sc/143241756.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>84</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>7</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>103</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Unclear Subexpression</h5>
+<pre>
+   184 :    <a href="../h_src/143234140.htm" class="localvar">res</a> = <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143234004.htm" class="libfunc">log</a>)(<a href="../h_src/143234276.htm" class="localvar">x</a>)/<a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143234004.htm" class="libfunc">log</a>)(<a href="../h_src/143233936.htm" class="localvar">base</a>);
+   196 :    <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143233256.htm" class="localvar">L</a>, <a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143233256.htm" class="localvar">L</a>, 1) * (<a href="../h_src/57449148.htm" class="macro">l_mathop</a>(180.0) / <a href="../h_src/143241280.htm" class="macro">PI</a>));
+   493 :    <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/143225572.htm" class="localvar">h</a> = (<a href="../h_src/57442144.htm" class="type">lua_Number</a>)<a href="../h_src/143230400.htm" class="macro">trim32</a>(<a href="../h_src/143225708.htm" class="localvar">x</a>.<a href="../h_src/143230604.htm" class="variable">h</a>) * <a href="../h_src/143225980.htm" class="macro">shiftHI</a>;
+   493 :    <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/143225572.htm" class="localvar">h</a> = (<a href="../h_src/57442144.htm" class="type">lua_Number</a>)<a href="../h_src/143230400.htm" class="macro">trim32</a>(<a href="../h_src/143225708.htm" class="localvar">x</a>.<a href="../h_src/143230604.htm" class="variable">h</a>) * <a href="../h_src/143225980.htm" class="macro">shiftHI</a>;
+   495 :    return (<a href="../h_src/143225572.htm" class="localvar">h</a> + <a href="../h_src/143225436.htm" class="localvar">l</a>) * <a href="../h_src/143226252.htm" class="macro">scaleFIG</a>;
+   586 :    <a href="../h_src/143223396.htm" class="localvar">p</a> = <a href="../h_aa/143222988.htm" class="libfunc">project</a>(<a href="../h_aa/143224008.htm" class="libfunc">I2UInt</a>(<a href="../h_src/143223124.htm" class="localvar">rv</a>), (<a href="../h_src/143225300.htm" class="function">lua_Unsigned</a>)<a href="../h_src/143223532.htm" class="localvar">up</a> - (<a href="../h_src/143225300.htm" class="function">lua_Unsigned</a>)<a href="../h_src/143223668.htm" class="localvar">low</a>, <a href="../h_src/143223260.htm" class="localvar">state</a>);
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+    32 :    if (<a href="../h_src/143240872.htm" class="localvar">n</a> &lt; 0) n = (lua_Integer)(0u - (lua_Unsigned)n);
+    88 :    if (<a href="../h_src/57452140.htm" class="macro">lua_numbertointeger</a>(<a href="../h_src/143237540.htm" class="localvar">d</a>, &amp;<a href="../h_src/143237404.htm" class="localvar">n</a>))  <a  class="comments">/* does 'd' fit in an integer? */</a>
+    88 :    if (<a href="../h_src/57452140.htm" class="macro">lua_numbertointeger</a>(<a href="../h_src/143237540.htm" class="localvar">d</a>, &amp;<a href="../h_src/143237404.htm" class="localvar">n</a>))  <a  class="comments">/* does 'd' fit in an integer? */</a>
+    88 :    if (<a href="../h_src/57452140.htm" class="macro">lua_numbertointeger</a>(<a href="../h_src/143237540.htm" class="localvar">d</a>, &amp;<a href="../h_src/143237404.htm" class="localvar">n</a>))  <a  class="comments">/* does 'd' fit in an integer? */</a>
+   508 :    return <a href="../h_src/143230264.htm" class="function">packI</a>((<a href="../h_src/143230808.htm" class="type">lu_int32</a>)((<a href="../h_src/143224960.htm" class="localvar">n</a> &gt;&gt; 31) &gt;&gt; 1), (<a href="../h_src/143230808.htm" class="type">lu_int32</a>)<a href="../h_src/143224960.htm" class="localvar">n</a>);
+   508 :    return <a href="../h_src/143230264.htm" class="function">packI</a>((<a href="../h_src/143230808.htm" class="type">lu_int32</a>)((<a href="../h_src/143224960.htm" class="localvar">n</a> &gt;&gt; 31) &gt;&gt; 1), (<a href="../h_src/143230808.htm" class="type">lu_int32</a>)<a href="../h_src/143224960.htm" class="localvar">n</a>);
+   508 :    return <a href="../h_src/143230264.htm" class="function">packI</a>((<a href="../h_src/143230808.htm" class="type">lu_int32</a>)((<a href="../h_src/143224960.htm" class="localvar">n</a> &gt;&gt; 31) &gt;&gt; 1), (<a href="../h_src/143230808.htm" class="type">lu_int32</a>)<a href="../h_src/143224960.htm" class="localvar">n</a>);
+   508 :    return <a href="../h_src/143230264.htm" class="function">packI</a>((<a href="../h_src/143230808.htm" class="type">lu_int32</a>)((<a href="../h_src/143224960.htm" class="localvar">n</a> &gt;&gt; 31) &gt;&gt; 1), (<a href="../h_src/143230808.htm" class="type">lu_int32</a>)<a href="../h_src/143224960.htm" class="localvar">n</a>);
+   537 :    <a href="../h_src/143225300.htm" class="function">lua_Unsigned</a> <a href="../h_src/143224144.htm" class="localvar">lim</a> = <a href="../h_src/143224484.htm" class="localvar">n</a>;
+   550 :    while ((ran &amp;= <a href="../h_src/143224144.htm" class="localvar">lim</a>) &gt; <a href="../h_src/143224484.htm" class="localvar">n</a>)  <a  class="comments">/* project 'ran' into [0..lim] */</a>
+   586 :    <a href="../h_src/143223396.htm" class="localvar">p</a> = <a href="../h_aa/143222988.htm" class="libfunc">project</a>(<a href="../h_aa/143224008.htm" class="libfunc">I2UInt</a>(<a href="../h_src/143223124.htm" class="localvar">rv</a>), (<a href="../h_src/143225300.htm" class="function">lua_Unsigned</a>)<a href="../h_src/143223532.htm" class="localvar">up</a> - (<a href="../h_src/143225300.htm" class="function">lua_Unsigned</a>)<a href="../h_src/143223668.htm" class="localvar">low</a>, <a href="../h_src/143223260.htm" class="localvar">state</a>);
+   586 :    <a href="../h_src/143223396.htm" class="localvar">p</a> = <a href="../h_aa/143222988.htm" class="libfunc">project</a>(<a href="../h_aa/143224008.htm" class="libfunc">I2UInt</a>(<a href="../h_src/143223124.htm" class="localvar">rv</a>), (<a href="../h_src/143225300.htm" class="function">lua_Unsigned</a>)<a href="../h_src/143223532.htm" class="localvar">up</a> - (<a href="../h_src/143225300.htm" class="function">lua_Unsigned</a>)<a href="../h_src/143223668.htm" class="localvar">low</a>, <a href="../h_src/143223260.htm" class="localvar">state</a>);
+   586 :    <a href="../h_src/143223396.htm" class="localvar">p</a> = <a href="../h_aa/143222988.htm" class="libfunc">project</a>(<a href="../h_aa/143224008.htm" class="libfunc">I2UInt</a>(<a href="../h_src/143223124.htm" class="localvar">rv</a>), (<a href="../h_src/143225300.htm" class="function">lua_Unsigned</a>)<a href="../h_src/143223532.htm" class="localvar">up</a> - (<a href="../h_src/143225300.htm" class="function">lua_Unsigned</a>)<a href="../h_src/143223668.htm" class="localvar">low</a>, <a href="../h_src/143223260.htm" class="localvar">state</a>);
+   586 :    <a href="../h_src/143223396.htm" class="localvar">p</a> = <a href="../h_aa/143222988.htm" class="libfunc">project</a>(<a href="../h_aa/143224008.htm" class="libfunc">I2UInt</a>(<a href="../h_src/143223124.htm" class="localvar">rv</a>), (<a href="../h_src/143225300.htm" class="function">lua_Unsigned</a>)<a href="../h_src/143223532.htm" class="localvar">up</a> - (<a href="../h_src/143225300.htm" class="function">lua_Unsigned</a>)<a href="../h_src/143223668.htm" class="localvar">low</a>, <a href="../h_src/143223260.htm" class="localvar">state</a>);
+   587 :    <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143223804.htm" class="localvar">L</a>, <a href="../h_src/143223396.htm" class="localvar">p</a> + (<a href="../h_src/143225300.htm" class="function">lua_Unsigned</a>)<a href="../h_src/143223668.htm" class="localvar">low</a>);
+   587 :    <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143223804.htm" class="localvar">L</a>, <a href="../h_src/143223396.htm" class="localvar">p</a> + (<a href="../h_src/143225300.htm" class="function">lua_Unsigned</a>)<a href="../h_src/143223668.htm" class="localvar">low</a>);
+   612 :    <a href="../h_src/143225300.htm" class="function">lua_Unsigned</a> <a href="../h_src/143221696.htm" class="localvar">seed1</a> = (<a href="../h_src/143225300.htm" class="function">lua_Unsigned</a>)<a href="../h_aa/57983504.htm" class="libfunc">time</a>(NULL);
+   613 :    <a href="../h_src/143225300.htm" class="function">lua_Unsigned</a> <a href="../h_src/143221560.htm" class="localvar">seed2</a> = (<a href="../h_src/143225300.htm" class="function">lua_Unsigned</a>)(<a href="../h_aa/57441192.htm" class="type">size_t</a>)<a href="../h_src/143221968.htm" class="localvar">L</a>;
+   613 :    <a href="../h_src/143225300.htm" class="function">lua_Unsigned</a> <a href="../h_src/143221560.htm" class="localvar">seed2</a> = (<a href="../h_src/143225300.htm" class="function">lua_Unsigned</a>)(<a href="../h_aa/57441192.htm" class="type">size_t</a>)<a href="../h_src/143221968.htm" class="localvar">L</a>;
+   632 :    static const <a href="../h_src/57420996.htm" class="type">luaL_Reg</a> <a href="../h_src/143220744.htm" class="variable">randfuncs</a>[] = {
+   633 :    {&quot;random&quot;, <a href="../h_src/143223940.htm" class="function">math_random</a>},
+   634 :    {&quot;randomseed&quot;, <a href="../h_src/143221424.htm" class="function">math_randomseed</a>},
+   705 :    static const <a href="../h_src/57420996.htm" class="type">luaL_Reg</a> <a href="../h_src/143217480.htm" class="variable">mathlib</a>[] = {
+   706 :    {&quot;abs&quot;,   <a href="../h_src/143241144.htm" class="function">math_abs</a>},
+   707 :    {&quot;acos&quot;,  <a href="../h_src/143239308.htm" class="function">math_acos</a>},
+   708 :    {&quot;asin&quot;,  <a href="../h_src/143239648.htm" class="function">math_asin</a>},
+   709 :    {&quot;atan&quot;,  <a href="../h_src/143238968.htm" class="function">math_atan</a>},
+   710 :    {&quot;ceil&quot;,  <a href="../h_src/143236860.htm" class="function">math_ceil</a>},
+   711 :    {&quot;cos&quot;,   <a href="../h_src/143240328.htm" class="function">math_cos</a>},
+   712 :    {&quot;deg&quot;,   <a href="../h_src/143233392.htm" class="function">math_deg</a>},
+   713 :    {&quot;exp&quot;,   <a href="../h_src/143233732.htm" class="function">math_exp</a>},
+   714 :    {&quot;tointeger&quot;, <a href="../h_src/143238356.htm" class="function">math_toint</a>},
+   715 :    {&quot;floor&quot;, <a href="../h_src/143237268.htm" class="function">math_floor</a>},
+   716 :    {&quot;fmod&quot;,   <a href="../h_src/143236384.htm" class="function">math_fmod</a>},
+   717 :    {&quot;ult&quot;,   <a href="../h_src/143235092.htm" class="function">math_ult</a>},
+   718 :    {&quot;log&quot;,   <a href="../h_src/143234548.htm" class="function">math_log</a>},
+   719 :    {&quot;max&quot;,   <a href="../h_src/143232168.htm" class="function">math_max</a>},
+   720 :    {&quot;min&quot;,   <a href="../h_src/143232848.htm" class="function">math_min</a>},
+   721 :    {&quot;modf&quot;,   <a href="../h_src/143235976.htm" class="function">math_modf</a>},
+   722 :    {&quot;rad&quot;,   <a href="../h_src/143233120.htm" class="function">math_rad</a>},
+   723 :    {&quot;sin&quot;,   <a href="../h_src/143240668.htm" class="function">math_sin</a>},
+   724 :    {&quot;sqrt&quot;,  <a href="../h_src/143235432.htm" class="function">math_sqrt</a>},
+   725 :    {&quot;tan&quot;,   <a href="../h_src/143239988.htm" class="function">math_tan</a>},
+   726 :    {&quot;type&quot;, <a href="../h_src/143231488.htm" class="function">math_type</a>},
+   727 :    #if defined(<a href="../h_src/57453364.htm" class="macro">LUA_COMPAT_MATHLIB</a>)
+   728 :    {&quot;atan2&quot;, <a href="../h_src/143238968.htm" class="function">math_atan</a>},
+   729 :    {&quot;cosh&quot;,   <a href="../h_src/143220268.htm" class="function">math_cosh</a>},
+   730 :    {&quot;sinh&quot;,   <a href="../h_src/143219928.htm" class="function">math_sinh</a>},
+   731 :    {&quot;tanh&quot;,   <a href="../h_src/143219588.htm" class="function">math_tanh</a>},
+   732 :    {&quot;pow&quot;,   <a href="../h_src/143219248.htm" class="function">math_pow</a>},
+   733 :    {&quot;frexp&quot;, <a href="../h_src/143218704.htm" class="function">math_frexp</a>},
+   734 :    {&quot;ldexp&quot;, <a href="../h_src/143218296.htm" class="function">math_ldexp</a>},
+   735 :    {&quot;log10&quot;, <a href="../h_src/143217752.htm" class="function">math_log10</a>},
+   755 :    <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143217412.htm" class="localvar">L</a>, (<a href="../h_src/57442144.htm" class="type">lua_Number</a>)HUGE_VAL);
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+    32 :    if (<a href="../h_src/143240872.htm" class="localvar">n</a> &lt; 0) n = (lua_Integer)(0u - (lua_Unsigned)n);
+    35 :    else
+    36 :    <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143241008.htm" class="localvar">L</a>, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143240736.htm" class="libfunc">fabs</a>)(<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143241008.htm" class="localvar">L</a>, 1)));
+    76 :    if (<a href="../h_src/57551704.htm" class="macro">l_likely</a>(<a href="../h_src/143238084.htm" class="localvar">valid</a>))
+    77 :    <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143238220.htm" class="localvar">L</a>, <a href="../h_src/143237948.htm" class="localvar">n</a>);
+    88 :    if (<a href="../h_src/57452140.htm" class="macro">lua_numbertointeger</a>(<a href="../h_src/143237540.htm" class="localvar">d</a>, &amp;<a href="../h_src/143237404.htm" class="localvar">n</a>))  <a  class="comments">/* does 'd' fit in an integer? */</a>
+    89 :    <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143237676.htm" class="localvar">L</a>, <a href="../h_src/143237404.htm" class="localvar">n</a>);  <a  class="comments">/* result is integer */</a>
+    90 :    else
+    91 :    <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143237676.htm" class="localvar">L</a>, <a href="../h_src/143237540.htm" class="localvar">d</a>);  <a  class="comments">/* result is float */</a>
+    96 :    if (<a href="../h_src/57438676.htm" class="function">lua_isinteger</a>(<a href="../h_src/143237132.htm" class="localvar">L</a>, 1))
+    97 :    <a href="../h_src/57439288.htm" class="function">lua_settop</a>(<a href="../h_src/143237132.htm" class="localvar">L</a>, 1);  <a  class="comments">/* integer is its own floor */</a>
+   107 :    if (<a href="../h_src/57438676.htm" class="function">lua_isinteger</a>(<a href="../h_src/143236724.htm" class="localvar">L</a>, 1))
+   108 :    <a href="../h_src/57439288.htm" class="function">lua_settop</a>(<a href="../h_src/143236724.htm" class="localvar">L</a>, 1);  <a  class="comments">/* integer is its own ceil */</a>
+   124 :    else
+   125 :    <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143236248.htm" class="localvar">L</a>, <a href="../h_src/57429428.htm" class="macro">lua_tointeger</a>(<a href="../h_src/143236248.htm" class="localvar">L</a>, 1) % d);
+   172 :    if (<a href="../h_src/57427796.htm" class="macro">lua_isnoneornil</a>(<a href="../h_src/143234412.htm" class="localvar">L</a>, 2))
+   173 :    <a href="../h_src/143234140.htm" class="localvar">res</a> = <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143234004.htm" class="libfunc">log</a>)(<a href="../h_src/143234276.htm" class="localvar">x</a>);
+   181 :    if (<a href="../h_src/143233936.htm" class="localvar">base</a> == <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(10.0))
+   182 :    <a href="../h_src/143234140.htm" class="localvar">res</a> = <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143233800.htm" class="libfunc">log10</a>)(<a href="../h_src/143234276.htm" class="localvar">x</a>);
+   183 :    else
+   184 :    <a href="../h_src/143234140.htm" class="localvar">res</a> = <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143234004.htm" class="libfunc">log</a>)(<a href="../h_src/143234276.htm" class="localvar">x</a>)/<a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143234004.htm" class="libfunc">log</a>)(<a href="../h_src/143233936.htm" class="localvar">base</a>);
+   212 :    if (<a href="../h_src/57435344.htm" class="function">lua_compare</a>(<a href="../h_src/143232712.htm" class="localvar">L</a>, <a href="../h_src/143232304.htm" class="localvar">i</a>, <a href="../h_src/143232440.htm" class="localvar">imin</a>, <a href="../h_src/57435684.htm" class="macro">LUA_OPLT</a>))
+   213 :    <a href="../h_src/143232440.htm" class="localvar">imin</a> = <a href="../h_src/143232304.htm" class="localvar">i</a>;
+   226 :    if (<a href="../h_src/57435344.htm" class="function">lua_compare</a>(<a href="../h_src/143232032.htm" class="localvar">L</a>, <a href="../h_src/143231760.htm" class="localvar">imax</a>, <a href="../h_src/143231624.htm" class="localvar">i</a>, <a href="../h_src/57435684.htm" class="macro">LUA_OPLT</a>))
+   227 :    <a href="../h_src/143231760.htm" class="localvar">imax</a> = <a href="../h_src/143231624.htm" class="localvar">i</a>;
+   235 :    if (<a href="../h_src/57438540.htm" class="function">lua_type</a>(<a href="../h_src/143231352.htm" class="localvar">L</a>, 1) == <a href="../h_src/57443640.htm" class="macro">LUA_TNUMBER</a>)
+   236 :    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/143231352.htm" class="localvar">L</a>, (<a href="../h_src/57438676.htm" class="function">lua_isinteger</a>(<a href="../h_src/143231352.htm" class="localvar">L</a>, 1)) ? &quot;integer&quot; : &quot;float&quot;);
+   404 :    if (<a href="../h_src/143230400.htm" class="macro">trim32</a>(<a href="../h_src/143228428.htm" class="localvar">result</a>.<a href="../h_src/143230536.htm" class="variable">l</a>) &lt; <a href="../h_src/143230400.htm" class="macro">trim32</a>(<a href="../h_src/143228700.htm" class="localvar">i1</a>.<a href="../h_src/143230536.htm" class="variable">l</a>))  <a  class="comments">/* carry? */</a>
+   405 :    <a href="../h_src/143228428.htm" class="localvar">result</a>.<a href="../h_src/143230604.htm" class="variable">h</a>++;
+   534 :    if ((<a href="../h_src/143224484.htm" class="localvar">n</a> &amp; (<a href="../h_src/143224484.htm" class="localvar">n</a> + 1)) == 0)  <a  class="comments">/* is 'n + 1' a power of 2? */</a>
+   535 :    return ran &amp; <a href="../h_src/143224484.htm" class="localvar">n</a>;  <a  class="comments">/* no bias */</a>
+   550 :    while ((ran &amp;= <a href="../h_src/143224144.htm" class="localvar">lim</a>) &gt; <a href="../h_src/143224484.htm" class="localvar">n</a>)  <a  class="comments">/* project 'ran' into [0..lim] */</a>
+   551 :    ran = <a href="../h_aa/143224008.htm" class="libfunc">I2UInt</a>(<a href="../h_src/143226932.htm" class="function">nextrand</a>(<a href="../h_src/143224280.htm" class="localvar">state</a>-&gt;<a href="../h_src/143224688.htm" class="variable">s</a>));  <a  class="comments">/* not inside [0..n]? try again */</a>
+   599 :    for (<a href="../h_src/143222240.htm" class="localvar">i</a> = 0; <a href="../h_src/143222240.htm" class="localvar">i</a> &lt; 16; <a href="../h_src/143222240.htm" class="localvar">i</a>++)
+   600 :    <a href="../h_src/143226932.htm" class="function">nextrand</a>(<a href="../h_src/143222648.htm" class="localvar">state</a>);  <a  class="comments">/* discard initial values to &quot;spread&quot; seed */</a>
+</pre>
+<pre>
+</pre>
+<h5>Return Ignored</h5>
+<pre>
+   236 :    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/143231352.htm" class="localvar">L</a>, (<a href="../h_src/57438676.htm" class="function">lua_isinteger</a>(<a href="../h_src/143231352.htm" class="localvar">L</a>, 1)) ? &quot;integer&quot; : &quot;float&quot;);
+   600 :    <a href="../h_src/143226932.htm" class="function">nextrand</a>(<a href="../h_src/143222648.htm" class="localvar">state</a>);  <a  class="comments">/* discard initial values to &quot;spread&quot; seed */</a>
+</pre>
+<pre>
+</pre>
+<h5>Potential Static Function</h5>
+<pre>
+   532 :    static <a href="../h_src/143225300.htm" class="function">lua_Unsigned</a> project (lua_Unsigned ran, lua_Unsigned <a href="../h_src/143224484.htm" class="localvar">n</a>,
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+    36 :    <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143241008.htm" class="localvar">L</a>, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143240736.htm" class="libfunc">fabs</a>)(<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143241008.htm" class="localvar">L</a>, 1)));
+    41 :    <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143240532.htm" class="localvar">L</a>, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143240396.htm" class="libfunc">sin</a>)(<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143240532.htm" class="localvar">L</a>, 1)));
+    46 :    <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143240192.htm" class="localvar">L</a>, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143240056.htm" class="libfunc">cos</a>)(<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143240192.htm" class="localvar">L</a>, 1)));
+    51 :    <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143239852.htm" class="localvar">L</a>, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143239716.htm" class="libfunc">tan</a>)(<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143239852.htm" class="localvar">L</a>, 1)));
+    56 :    <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143239512.htm" class="localvar">L</a>, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143239376.htm" class="libfunc">asin</a>)(<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143239512.htm" class="localvar">L</a>, 1)));
+    61 :    <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143239172.htm" class="localvar">L</a>, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143239036.htm" class="libfunc">acos</a>)(<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143239172.htm" class="localvar">L</a>, 1)));
+    68 :    <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143238832.htm" class="localvar">L</a>, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143238424.htm" class="libfunc">atan2</a>)(<a href="../h_src/143238696.htm" class="localvar">y</a>, <a href="../h_src/143238560.htm" class="localvar">x</a>));
+    76 :    if (<a href="../h_src/57551704.htm" class="macro">l_likely</a>(<a href="../h_src/143238084.htm" class="localvar">valid</a>))
+    99 :    <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/143236996.htm" class="localvar">d</a> = <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/57917572.htm" class="libfunc">floor</a>)(<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143237132.htm" class="localvar">L</a>, 1));
+   110 :    <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/143236520.htm" class="localvar">d</a> = <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143236588.htm" class="libfunc">ceil</a>)(<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143236724.htm" class="localvar">L</a>, 1));
+   147 :    <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/143235568.htm" class="localvar">ip</a> = (<a href="../h_src/143235704.htm" class="localvar">n</a> &lt; 0) ? <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143236588.htm" class="libfunc">ceil</a>)(<a href="../h_src/143235704.htm" class="localvar">n</a>) : <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/57917572.htm" class="libfunc">floor</a>)(<a href="../h_src/143235704.htm" class="localvar">n</a>);
+   147 :    <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/143235568.htm" class="localvar">ip</a> = (<a href="../h_src/143235704.htm" class="localvar">n</a> &lt; 0) ? <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143236588.htm" class="libfunc">ceil</a>)(<a href="../h_src/143235704.htm" class="localvar">n</a>) : <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/57917572.htm" class="libfunc">floor</a>)(<a href="../h_src/143235704.htm" class="localvar">n</a>);
+   157 :    <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143235296.htm" class="localvar">L</a>, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143235160.htm" class="libfunc">sqrt</a>)(<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143235296.htm" class="localvar">L</a>, 1)));
+   173 :    <a href="../h_src/143234140.htm" class="localvar">res</a> = <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143234004.htm" class="libfunc">log</a>)(<a href="../h_src/143234276.htm" class="localvar">x</a>);
+   182 :    <a href="../h_src/143234140.htm" class="localvar">res</a> = <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143233800.htm" class="libfunc">log10</a>)(<a href="../h_src/143234276.htm" class="localvar">x</a>);
+   184 :    <a href="../h_src/143234140.htm" class="localvar">res</a> = <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143234004.htm" class="libfunc">log</a>)(<a href="../h_src/143234276.htm" class="localvar">x</a>)/<a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143234004.htm" class="libfunc">log</a>)(<a href="../h_src/143233936.htm" class="localvar">base</a>);
+   184 :    <a href="../h_src/143234140.htm" class="localvar">res</a> = <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143234004.htm" class="libfunc">log</a>)(<a href="../h_src/143234276.htm" class="localvar">x</a>)/<a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143234004.htm" class="libfunc">log</a>)(<a href="../h_src/143233936.htm" class="localvar">base</a>);
+   191 :    <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143233596.htm" class="localvar">L</a>, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143233460.htm" class="libfunc">exp</a>)(<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143233596.htm" class="localvar">L</a>, 1)));
+   210 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143232712.htm" class="localvar">L</a>, <a href="../h_src/143232576.htm" class="localvar">n</a> &gt;= 1, 1, &quot;value expected&quot;);
+   224 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143232032.htm" class="localvar">L</a>, <a href="../h_src/143231896.htm" class="localvar">n</a> &gt;= 1, 1, &quot;value expected&quot;);
+   551 :    ran = <a href="../h_aa/143224008.htm" class="libfunc">I2UInt</a>(<a href="../h_src/143226932.htm" class="function">nextrand</a>(<a href="../h_src/143224280.htm" class="localvar">state</a>-&gt;<a href="../h_src/143224688.htm" class="variable">s</a>));  <a  class="comments">/* not inside [0..n]? try again */</a>
+   571 :    <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143223804.htm" class="localvar">L</a>, <a href="../h_aa/143224008.htm" class="libfunc">I2UInt</a>(<a href="../h_src/143223124.htm" class="localvar">rv</a>));  <a  class="comments">/* full random integer */</a>
+   584 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143223804.htm" class="localvar">L</a>, <a href="../h_src/143223668.htm" class="localvar">low</a> &lt;= <a href="../h_src/143223532.htm" class="localvar">up</a>, 1, &quot;interval is empty&quot;);
+   586 :    <a href="../h_src/143223396.htm" class="localvar">p</a> = <a href="../h_aa/143222988.htm" class="libfunc">project</a>(<a href="../h_aa/143224008.htm" class="libfunc">I2UInt</a>(<a href="../h_src/143223124.htm" class="localvar">rv</a>), (<a href="../h_src/143225300.htm" class="function">lua_Unsigned</a>)<a href="../h_src/143223532.htm" class="localvar">up</a> - (<a href="../h_src/143225300.htm" class="function">lua_Unsigned</a>)<a href="../h_src/143223668.htm" class="localvar">low</a>, <a href="../h_src/143223260.htm" class="localvar">state</a>);
+   586 :    <a href="../h_src/143223396.htm" class="localvar">p</a> = <a href="../h_aa/143222988.htm" class="libfunc">project</a>(<a href="../h_aa/143224008.htm" class="libfunc">I2UInt</a>(<a href="../h_src/143223124.htm" class="localvar">rv</a>), (<a href="../h_src/143225300.htm" class="function">lua_Unsigned</a>)<a href="../h_src/143223532.htm" class="localvar">up</a> - (<a href="../h_src/143225300.htm" class="function">lua_Unsigned</a>)<a href="../h_src/143223668.htm" class="localvar">low</a>, <a href="../h_src/143223260.htm" class="localvar">state</a>);
+   612 :    <a href="../h_src/143225300.htm" class="function">lua_Unsigned</a> <a href="../h_src/143221696.htm" class="localvar">seed1</a> = (<a href="../h_src/143225300.htm" class="function">lua_Unsigned</a>)<a href="../h_aa/57983504.htm" class="libfunc">time</a>(NULL);
+   660 :    <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143220132.htm" class="localvar">L</a>, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143219996.htm" class="libfunc">cosh</a>)(<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143220132.htm" class="localvar">L</a>, 1)));
+   665 :    <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143219792.htm" class="localvar">L</a>, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143219656.htm" class="libfunc">sinh</a>)(<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143219792.htm" class="localvar">L</a>, 1)));
+   670 :    <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143219452.htm" class="localvar">L</a>, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143219316.htm" class="libfunc">tanh</a>)(<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143219452.htm" class="localvar">L</a>, 1)));
+   677 :    <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143219112.htm" class="localvar">L</a>, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/57917640.htm" class="libfunc">pow</a>)(<a href="../h_src/143218976.htm" class="localvar">x</a>, <a href="../h_src/143218840.htm" class="localvar">y</a>));
+   683 :    <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143218568.htm" class="localvar">L</a>, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/58118864.htm" class="libfunc">frexp</a>)(<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143218568.htm" class="localvar">L</a>, 1), &amp;<a href="../h_src/143218432.htm" class="localvar">e</a>));
+   691 :    <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143218160.htm" class="localvar">L</a>, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/57804272.htm" class="libfunc">ldexp</a>)(<a href="../h_src/143218024.htm" class="localvar">x</a>, <a href="../h_src/143217888.htm" class="localvar">ep</a>));
+   696 :    <a href="../h_src/57435208.htm" class="function">lua_pushnumber</a>(<a href="../h_src/143217616.htm" class="localvar">L</a>, <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/143233800.htm" class="libfunc">log10</a>)(<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143217616.htm" class="localvar">L</a>, 1)));
+</pre>
+<pre>
+</pre>
+<h5>Missing Return Type</h5>
+<pre>
+   502 :    static lua_Unsigned I2UInt (<a href="../h_src/143230468.htm" class="type">Rand64</a> x) {
+   532 :    static <a href="../h_src/143225300.htm" class="function">lua_Unsigned</a> project (lua_Unsigned ran, lua_Unsigned <a href="../h_src/143224484.htm" class="localvar">n</a>,
+</pre>
+<pre>
+
+</pre>
+</body>
+</html>
+

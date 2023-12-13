@@ -1,0 +1,90 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lcorolib.c</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58293928.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/58293928.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/58293928.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/58293928.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_uf/58293928.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_df/58293928.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/58293928.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/58293928.htm" class="file" target="_self">Source Code</a></li>
+<li id="current"><a href="../h_sc/58293928.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>15</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>4</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>26</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+   192 :    static const <a href="../h_src/57420996.htm" class="type">luaL_Reg</a> <a href="../h_src/58287264.htm" class="variable">co_funcs</a>[] = {
+   193 :    {&quot;create&quot;, <a href="../h_src/58291140.htm" class="function">luaB_cocreate</a>},
+   194 :    {&quot;resume&quot;, <a href="../h_src/58292364.htm" class="function">luaB_coresume</a>},
+   195 :    {&quot;running&quot;, <a href="../h_src/58288216.htm" class="function">luaB_corunning</a>},
+   196 :    {&quot;status&quot;, <a href="../h_src/58289032.htm" class="function">luaB_costatus</a>},
+   197 :    {&quot;wrap&quot;, <a href="../h_src/58290732.htm" class="function">luaB_cowrap</a>},
+   198 :    {&quot;yield&quot;, <a href="../h_src/58290460.htm" class="function">luaB_yield</a>},
+   199 :    {&quot;isyieldable&quot;, <a href="../h_src/58288624.htm" class="function">luaB_yieldable</a>},
+   200 :    {&quot;close&quot;, <a href="../h_src/58287808.htm" class="function">luaB_close</a>},
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   128 :    if (<a href="../h_src/58289440.htm" class="localvar">L</a> == <a href="../h_src/58289304.htm" class="localvar">co</a>) return <a href="../h_src/58290188.htm" class="macro">COS_RUN</a>;
+   135 :    if (<a href="../h_src/57424668.htm" class="function">lua_getstack</a>(<a href="../h_src/58289304.htm" class="localvar">co</a>, 0, &amp;<a href="../h_src/58289168.htm" class="localvar">ar</a>))  <a  class="comments">/* does it have frames? */</a>
+   136 :    return <a href="../h_src/58289780.htm" class="macro">COS_NORM</a>;  <a  class="comments">/* it is running */</a>
+   137 :    else if (<a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/58289304.htm" class="localvar">co</a>) == 0)
+   138 :    return <a href="../h_src/58290052.htm" class="macro">COS_DEAD</a>;
+   139 :    else
+   140 :    return <a href="../h_src/58289916.htm" class="macro">COS_YIELD</a>;  <a  class="comments">/* initial state */</a>
+</pre>
+<pre>
+</pre>
+<h5>Return Ignored</h5>
+<pre>
+    35 :    <a href="../h_src/57427660.htm" class="macro">lua_pushliteral</a>(<a href="../h_src/58293044.htm" class="localvar">L</a>, &quot;too many arguments to resume&quot;);
+    43 :    <a href="../h_src/57427660.htm" class="macro">lua_pushliteral</a>(<a href="../h_src/58293044.htm" class="localvar">L</a>, &quot;too many results to resume&quot;);
+   106 :    <a href="../h_src/58291140.htm" class="function">luaB_cocreate</a>(<a href="../h_src/58290596.htm" class="localvar">L</a>);
+   151 :    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/58288896.htm" class="localvar">L</a>, <a href="../h_src/58289644.htm" class="variable">statname</a>[<a href="../h_src/58289576.htm" class="function">auxstatus</a>(<a href="../h_src/58288896.htm" class="localvar">L</a>, <a href="../h_src/58288760.htm" class="localvar">co</a>)]);
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+    23 :    <a href="../h_src/57417120.htm" class="macro">luaL_argexpected</a>(<a href="../h_src/58293452.htm" class="localvar">L</a>, <a href="../h_src/58293316.htm" class="localvar">co</a>, 1, &quot;thread&quot;);
+    34 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(!<a href="../h_src/57439016.htm" class="function">lua_checkstack</a>(<a href="../h_src/58292908.htm" class="localvar">co</a>, <a href="../h_src/58292772.htm" class="localvar">narg</a>))) {
+    40 :    if (<a href="../h_src/57551704.htm" class="macro">l_likely</a>(<a href="../h_src/58292636.htm" class="localvar">status</a> == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a> || status == <a href="../h_src/57445068.htm" class="macro">LUA_YIELD</a>)) {
+    41 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(!<a href="../h_src/57439016.htm" class="function">lua_checkstack</a>(<a href="../h_src/58293044.htm" class="localvar">L</a>, <a href="../h_src/58292500.htm" class="localvar">nres</a> + 1))) {
+    60 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/58291956.htm" class="localvar">r</a> &lt; 0)) {
+    76 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/58291412.htm" class="localvar">r</a> &lt; 0)) {  <a  class="comments">/* error? */</a>
+</pre>
+<pre>
+
+</pre>
+</body>
+</html>
+

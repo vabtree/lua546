@@ -1,0 +1,108 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>str_format</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143291804.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143291804.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143291804.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143291804.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/143291804.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/143291804.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143344164.htm#1273" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>23</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>7</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>22</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Number of Built-In Operators</h5>
+<pre>
+  1284 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143290716.htm" class="localvar">b</a>, *<a href="../h_src/143291124.htm" class="localvar">strfrmt</a>++);
+  1286 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143290716.htm" class="localvar">b</a>, *<a href="../h_src/143291124.htm" class="localvar">strfrmt</a>++);  <a  class="comments">/* %% */</a>
+</pre>
+<pre>
+</pre>
+<h5>Unclear Subexpression</h5>
+<pre>
+  1284 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143290716.htm" class="localvar">b</a>, *<a href="../h_src/143291124.htm" class="localvar">strfrmt</a>++);
+  1286 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143290716.htm" class="localvar">b</a>, *<a href="../h_src/143291124.htm" class="localvar">strfrmt</a>++);  <a  class="comments">/* %% */</a>
+  1295 :    switch (*<a href="../h_src/143291124.htm" class="localvar">strfrmt</a>++) {
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+  1313 :    <a href="../h_src/143290172.htm" class="localvar">nb</a> = <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143290308.htm" class="localvar">buff</a>, <a href="../h_src/143290444.htm" class="localvar">maxitem</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>, (<a href="../h_src/57450916.htm" class="macro">LUAI_UACINT</a>)<a href="../h_src/143290036.htm" class="localvar">n</a>);
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+  1283 :    if (*<a href="../h_src/143291124.htm" class="localvar">strfrmt</a> != <a href="../h_src/143326756.htm" class="macro">L_ESC</a>)
+  1284 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143290716.htm" class="localvar">b</a>, *<a href="../h_src/143291124.htm" class="localvar">strfrmt</a>++);
+  1285 :    else if (*++<a href="../h_src/143291124.htm" class="localvar">strfrmt</a> == <a href="../h_src/143326756.htm" class="macro">L_ESC</a>)
+  1286 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143290716.htm" class="localvar">b</a>, *<a href="../h_src/143291124.htm" class="localvar">strfrmt</a>++);  <a  class="comments">/* %% */</a>
+  1292 :    if (++<a href="../h_src/143291396.htm" class="localvar">arg</a> &gt; <a href="../h_src/143291532.htm" class="localvar">top</a>)
+  1293 :    return <a href="../h_src/57420384.htm" class="function">luaL_argerror</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143291396.htm" class="localvar">arg</a>, &quot;no value&quot;);
+  1344 :    if (<a href="../h_src/143290580.htm" class="localvar">form</a>[2] != '\0')  <a  class="comments">/* modifiers? */</a>
+  1345 :    return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, &quot;specifier '%%q' cannot have modifiers&quot;);
+  1352 :    if (<a href="../h_src/143290580.htm" class="localvar">form</a>[2] == '\0')  <a  class="comments">/* no modifiers? */</a>
+  1353 :    <a href="../h_src/57413380.htm" class="function">luaL_addvalue</a>(&amp;<a href="../h_src/143290716.htm" class="localvar">b</a>);  <a  class="comments">/* keep entire string */</a>
+</pre>
+<pre>
+</pre>
+<h5>Unterminated Case</h5>
+<pre>
+  1324 :    <a href="../h_src/143290308.htm" class="localvar">buff</a> = <a href="../h_src/57413584.htm" class="function">luaL_prepbuffsize</a>(&amp;<a href="../h_src/143290716.htm" class="localvar">b</a>, <a href="../h_src/143290444.htm" class="localvar">maxitem</a>);
+</pre>
+<pre>
+</pre>
+<h5>Jump Statement</h5>
+<pre>
+  1303 :    goto intcase;
+  1306 :    goto intcase;
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+  1298 :    <a href="../h_src/143290172.htm" class="localvar">nb</a> = <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143290308.htm" class="localvar">buff</a>, <a href="../h_src/143290444.htm" class="localvar">maxitem</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>, (int)<a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143291396.htm" class="localvar">arg</a>));
+  1313 :    <a href="../h_src/143290172.htm" class="localvar">nb</a> = <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143290308.htm" class="localvar">buff</a>, <a href="../h_src/143290444.htm" class="localvar">maxitem</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>, (<a href="../h_src/57450916.htm" class="macro">LUAI_UACINT</a>)<a href="../h_src/143290036.htm" class="localvar">n</a>);
+  1330 :    <a href="../h_src/143290172.htm" class="localvar">nb</a> = <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143290308.htm" class="localvar">buff</a>, <a href="../h_src/143290444.htm" class="localvar">maxitem</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>, (<a href="../h_src/57451732.htm" class="macro">LUAI_UACNUMBER</a>)<a href="../h_src/143289900.htm" class="localvar">n</a>);
+  1338 :    <a href="../h_src/143290580.htm" class="localvar">form</a>[<a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/143290580.htm" class="localvar">form</a>) - 1] = 's';  <a  class="comments">/* format it as a string */</a>
+  1340 :    <a href="../h_src/143290172.htm" class="localvar">nb</a> = <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143290308.htm" class="localvar">buff</a>, <a href="../h_src/143290444.htm" class="localvar">maxitem</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>, <a href="../h_src/143289764.htm" class="localvar">p</a>);
+  1355 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143289628.htm" class="localvar">l</a> == <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/143289492.htm" class="localvar">s</a>), <a href="../h_src/143291396.htm" class="localvar">arg</a>, &quot;string contains zeros&quot;);
+  1355 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143289628.htm" class="localvar">l</a> == <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/143289492.htm" class="localvar">s</a>), <a href="../h_src/143291396.htm" class="localvar">arg</a>, &quot;string contains zeros&quot;);
+  1357 :    if (<a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143290580.htm" class="localvar">form</a>, '.') == NULL &amp;&amp; <a href="../h_src/143289628.htm" class="localvar">l</a> &gt;= 100) {
+  1362 :    <a href="../h_src/143290172.htm" class="localvar">nb</a> = <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143290308.htm" class="localvar">buff</a>, <a href="../h_src/143290444.htm" class="localvar">maxitem</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>, <a href="../h_src/143289492.htm" class="localvar">s</a>);
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

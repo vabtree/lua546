@@ -1,0 +1,94 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaD_precall</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57633308.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57633308.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57633308.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57633308.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/57633308.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/57633308.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57884484.htm#588" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>18</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>6</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>8</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Unclear Subexpression</h5>
+<pre>
+   590 :    switch (<a href="../h_src/57534636.htm" class="macro">ttypetag</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57865308.htm" class="localvar">func</a>))) {
+   592 :    <a href="../h_src/57868300.htm" class="function">precallC</a>(<a href="../h_src/57865444.htm" class="localvar">L</a>, <a href="../h_src/57865308.htm" class="localvar">func</a>, <a href="../h_src/57865172.htm" class="localvar">nresults</a>, <a href="../h_src/57511992.htm" class="macro">clCvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57865308.htm" class="localvar">func</a>))-&gt;<a href="../h_src/57508932.htm" class="variable">f</a>);
+   595 :    <a href="../h_src/57868300.htm" class="function">precallC</a>(<a href="../h_src/57865444.htm" class="localvar">L</a>, <a href="../h_src/57865308.htm" class="localvar">func</a>, <a href="../h_src/57865172.htm" class="localvar">nresults</a>, <a href="../h_src/57512128.htm" class="macro">fvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57865308.htm" class="localvar">func</a>)));
+   599 :    <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57864900.htm" class="localvar">p</a> = <a href="../h_src/57512264.htm" class="macro">clLvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57865308.htm" class="localvar">func</a>))-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>;
+   607 :    <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57865444.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>++));  <a  class="comments">/* complete missing arguments */</a>
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+   592 :    <a href="../h_src/57868300.htm" class="function">precallC</a>(<a href="../h_src/57865444.htm" class="localvar">L</a>, <a href="../h_src/57865308.htm" class="localvar">func</a>, <a href="../h_src/57865172.htm" class="localvar">nresults</a>, <a href="../h_src/57511992.htm" class="macro">clCvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57865308.htm" class="localvar">func</a>))-&gt;<a href="../h_src/57508932.htm" class="variable">f</a>);
+   599 :    <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57864900.htm" class="localvar">p</a> = <a href="../h_src/57512264.htm" class="macro">clLvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57865308.htm" class="localvar">func</a>))-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>;
+   603 :    <a href="../h_src/57633988.htm" class="macro">checkstackGCp</a>(<a href="../h_src/57865444.htm" class="localvar">L</a>, <a href="../h_src/57864492.htm" class="localvar">fsize</a>, <a href="../h_src/57865308.htm" class="localvar">func</a>);
+   603 :    <a href="../h_src/57633988.htm" class="macro">checkstackGCp</a>(<a href="../h_src/57865444.htm" class="localvar">L</a>, <a href="../h_src/57864492.htm" class="localvar">fsize</a>, <a href="../h_src/57865308.htm" class="localvar">func</a>);
+   603 :    <a href="../h_src/57633988.htm" class="macro">checkstackGCp</a>(<a href="../h_src/57865444.htm" class="localvar">L</a>, <a href="../h_src/57864492.htm" class="localvar">fsize</a>, <a href="../h_src/57865308.htm" class="localvar">func</a>);
+   603 :    <a href="../h_src/57633988.htm" class="macro">checkstackGCp</a>(<a href="../h_src/57865444.htm" class="localvar">L</a>, <a href="../h_src/57864492.htm" class="localvar">fsize</a>, <a href="../h_src/57865308.htm" class="localvar">func</a>);
+   607 :    <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57865444.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>++));  <a  class="comments">/* complete missing arguments */</a>
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   606 :    for (; <a href="../h_src/57864764.htm" class="localvar">narg</a> &lt; <a href="../h_src/57864628.htm" class="localvar">nfixparams</a>; <a href="../h_src/57864764.htm" class="localvar">narg</a>++)
+   607 :    <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57865444.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>++));  <a  class="comments">/* complete missing arguments */</a>
+</pre>
+<pre>
+</pre>
+<h5>Jump Statement</h5>
+<pre>
+   614 :    goto retry;  <a  class="comments">/* try again with metamethod */</a>
+</pre>
+<pre>
+</pre>
+<h5>Return Ignored</h5>
+<pre>
+   592 :    <a href="../h_src/57868300.htm" class="function">precallC</a>(<a href="../h_src/57865444.htm" class="localvar">L</a>, <a href="../h_src/57865308.htm" class="localvar">func</a>, <a href="../h_src/57865172.htm" class="localvar">nresults</a>, <a href="../h_src/57511992.htm" class="macro">clCvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57865308.htm" class="localvar">func</a>))-&gt;<a href="../h_src/57508932.htm" class="variable">f</a>);
+   595 :    <a href="../h_src/57868300.htm" class="function">precallC</a>(<a href="../h_src/57865444.htm" class="localvar">L</a>, <a href="../h_src/57865308.htm" class="localvar">func</a>, <a href="../h_src/57865172.htm" class="localvar">nresults</a>, <a href="../h_src/57512128.htm" class="macro">fvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57865308.htm" class="localvar">func</a>)));
+   603 :    <a href="../h_src/57633988.htm" class="macro">checkstackGCp</a>(<a href="../h_src/57865444.htm" class="localvar">L</a>, <a href="../h_src/57864492.htm" class="localvar">fsize</a>, <a href="../h_src/57865308.htm" class="localvar">func</a>);
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+   603 :    <a href="../h_src/57633988.htm" class="macro">checkstackGCp</a>(<a href="../h_src/57865444.htm" class="localvar">L</a>, <a href="../h_src/57864492.htm" class="localvar">fsize</a>, <a href="../h_src/57865308.htm" class="localvar">func</a>);
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

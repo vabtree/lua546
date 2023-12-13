@@ -1,0 +1,68 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>GCTM</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57962316.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57962316.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57962316.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57962316.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/57962316.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/57962316.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57829404.htm#905" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>8</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>3</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>7</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Unclear Subexpression</h5>
+<pre>
+   918 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/57962180.htm" class="localvar">L</a>, <a href="../h_src/57962180.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>++, <a href="../h_src/57961908.htm" class="localvar">tm</a>);  <a  class="comments">/* push finalizer... */</a>
+   919 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/57962180.htm" class="localvar">L</a>, <a href="../h_src/57962180.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>++, &amp;<a href="../h_src/57961772.htm" class="localvar">v</a>);  <a  class="comments">/* ... and its argument */</a>
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+   920 :    <a href="../h_src/57962180.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> |= <a href="../h_src/57648404.htm" class="macro">CIST_FIN</a>;  <a  class="comments">/* will run a finalizer */</a>
+   921 :    <a href="../h_src/57961364.htm" class="localvar">status</a> = <a href="../h_src/57632968.htm" class="function">luaD_pcall</a>(<a href="../h_src/57962180.htm" class="localvar">L</a>, <a href="../h_src/57962724.htm" class="function">dothecall</a>, NULL, <a href="../h_src/57634396.htm" class="macro">savestack</a>(<a href="../h_src/57962180.htm" class="localvar">L</a>, <a href="../h_src/57962180.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 2), 0);
+   921 :    <a href="../h_src/57961364.htm" class="localvar">status</a> = <a href="../h_src/57632968.htm" class="function">luaD_pcall</a>(<a href="../h_src/57962180.htm" class="localvar">L</a>, <a href="../h_src/57962724.htm" class="function">dothecall</a>, NULL, <a href="../h_src/57634396.htm" class="macro">savestack</a>(<a href="../h_src/57962180.htm" class="localvar">L</a>, <a href="../h_src/57962180.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 2), 0);
+   922 :    <a href="../h_src/57962180.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp;= ~<a href="../h_src/57648404.htm" class="macro">CIST_FIN</a>;  <a  class="comments">/* not running a finalizer anymore */</a>
+   924 :    <a href="../h_src/57962044.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645684.htm" class="variable">gcstp</a> = <a href="../h_src/57961092.htm" class="localvar">oldgcstp</a>;  <a  class="comments">/* restore state */</a>
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+   925 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57961364.htm" class="localvar">status</a> != <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>)) {  <a  class="comments">/* error while running __gc? */</a>
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

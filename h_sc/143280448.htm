@@ -1,0 +1,111 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>str_pack</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143280448.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143280448.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143280448.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143280448.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/143280448.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/143280448.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143344164.htm#1601" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>26</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>7</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>20</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Number of Built-In Operators</h5>
+<pre>
+  1615 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143280176.htm" class="localvar">b</a>, <a href="../h_src/143289220.htm" class="macro">LUAL_PACKPADBYTE</a>);  <a  class="comments">/* fill alignment */</a>
+  1666 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143280176.htm" class="localvar">b</a>, <a href="../h_src/143289220.htm" class="macro">LUAL_PACKPADBYTE</a>);
+  1685 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143280176.htm" class="localvar">b</a>, '\0');  <a  class="comments">/* add zero at the end */</a>
+  1689 :    case <a href="../h_src/143287248.htm" class="variable">Kpadding</a>: <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143280176.htm" class="localvar">b</a>, <a href="../h_src/143289220.htm" class="macro">LUAL_PACKPADBYTE</a>);  <a  class="comments">/* FALLTHROUGH */</a>
+</pre>
+<pre>
+</pre>
+<h5>Unclear Subexpression</h5>
+<pre>
+  1621 :    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143438928.htm" class="localvar">lim</a> = (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)1 &lt;&lt; ((<a href="../h_src/143279496.htm" class="localvar">size</a> * <a href="../h_src/143288948.htm" class="macro">NB</a>) - 1);
+  1673 :    <a href="../h_src/143437568.htm" class="localvar">len</a> &lt; ((<a href="../h_aa/57441192.htm" class="type">size_t</a>)1 &lt;&lt; (<a href="../h_src/143279496.htm" class="localvar">size</a> * <a href="../h_src/143288948.htm" class="macro">NB</a>)),
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+  1615 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143280176.htm" class="localvar">b</a>, <a href="../h_src/143289220.htm" class="macro">LUAL_PACKPADBYTE</a>);  <a  class="comments">/* fill alignment */</a>
+  1636 :    float <a href="../h_src/143438656.htm" class="localvar">f</a> = (float)<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>(<a href="../h_src/143280312.htm" class="localvar">L</a>, <a href="../h_src/143279768.htm" class="localvar">arg</a>);  <a  class="comments">/* get argument */</a>
+  1639 :    <a href="../h_src/143281128.htm" class="function">copywithendian</a>(<a href="../h_src/143438520.htm" class="localvar">buff</a>, (char *)&amp;<a href="../h_src/143438656.htm" class="localvar">f</a>, sizeof(<a href="../h_src/143438656.htm" class="localvar">f</a>), <a href="../h_src/143280040.htm" class="localvar">h</a>.<a href="../h_src/143287996.htm" class="variable">islittle</a>);
+  1647 :    <a href="../h_src/143281128.htm" class="function">copywithendian</a>(<a href="../h_src/143438248.htm" class="localvar">buff</a>, (char *)&amp;<a href="../h_src/143438384.htm" class="localvar">f</a>, sizeof(<a href="../h_src/143438384.htm" class="localvar">f</a>), <a href="../h_src/143280040.htm" class="localvar">h</a>.<a href="../h_src/143287996.htm" class="variable">islittle</a>);
+  1655 :    <a href="../h_src/143281128.htm" class="function">copywithendian</a>(<a href="../h_src/143437976.htm" class="localvar">buff</a>, (char *)&amp;<a href="../h_src/143438112.htm" class="localvar">f</a>, sizeof(<a href="../h_src/143438112.htm" class="localvar">f</a>), <a href="../h_src/143280040.htm" class="localvar">h</a>.<a href="../h_src/143287996.htm" class="variable">islittle</a>);
+  1662 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143280312.htm" class="localvar">L</a>, <a href="../h_src/143437840.htm" class="localvar">len</a> &lt;= (<a href="../h_aa/57441192.htm" class="type">size_t</a>)<a href="../h_src/143279496.htm" class="localvar">size</a>, <a href="../h_src/143279768.htm" class="localvar">arg</a>,
+  1665 :    while (<a href="../h_src/143437840.htm" class="localvar">len</a>++ &lt; (<a href="../h_aa/57441192.htm" class="type">size_t</a>)<a href="../h_src/143279496.htm" class="localvar">size</a>)  <a  class="comments">/* pad extra space */</a>
+  1666 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143280176.htm" class="localvar">b</a>, <a href="../h_src/143289220.htm" class="macro">LUAL_PACKPADBYTE</a>);
+  1685 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143280176.htm" class="localvar">b</a>, '\0');  <a  class="comments">/* add zero at the end */</a>
+  1689 :    case <a href="../h_src/143287248.htm" class="variable">Kpadding</a>: <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143280176.htm" class="localvar">b</a>, <a href="../h_src/143289220.htm" class="macro">LUAL_PACKPADBYTE</a>);  <a  class="comments">/* FALLTHROUGH */</a>
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+  1614 :    while (<a href="../h_src/143279360.htm" class="localvar">ntoalign</a>-- &gt; 0)
+  1615 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143280176.htm" class="localvar">b</a>, <a href="../h_src/143289220.htm" class="macro">LUAL_PACKPADBYTE</a>);  <a  class="comments">/* fill alignment */</a>
+  1629 :    if (<a href="../h_src/143279496.htm" class="localvar">size</a> &lt; <a href="../h_src/143288676.htm" class="macro">SZINT</a>)  <a  class="comments">/* need overflow check? */</a>
+  1630 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(L, (lua_Unsigned)n &lt; ((lua_Unsigned)1 &lt;&lt; (size * <a href="../h_src/143288948.htm" class="macro">NB</a>)),
+  1631 :    arg, &quot;unsigned overflow&quot;);
+  1665 :    while (<a href="../h_src/143437840.htm" class="localvar">len</a>++ &lt; (<a href="../h_aa/57441192.htm" class="type">size_t</a>)<a href="../h_src/143279496.htm" class="localvar">size</a>)  <a  class="comments">/* pad extra space */</a>
+  1666 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143280176.htm" class="localvar">b</a>, <a href="../h_src/143289220.htm" class="macro">LUAL_PACKPADBYTE</a>);
+</pre>
+<pre>
+</pre>
+<h5>Missing Default Case</h5>
+<pre>
+  1690 :    case <a href="../h_src/143287180.htm" class="variable">Kpaddalign</a>: case <a href="../h_src/143287112.htm" class="variable">Knop</a>:
+</pre>
+<pre>
+</pre>
+<h5>Unterminated Case</h5>
+<pre>
+  1689 :    case <a href="../h_src/143287248.htm" class="variable">Kpadding</a>: <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143280176.htm" class="localvar">b</a>, <a href="../h_src/143289220.htm" class="macro">LUAL_PACKPADBYTE</a>);  <a  class="comments">/* FALLTHROUGH */</a>
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+  1622 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143280312.htm" class="localvar">L</a>, -<a href="../h_src/143438928.htm" class="localvar">lim</a> &lt;= <a href="../h_src/143439064.htm" class="localvar">n</a> &amp;&amp; <a href="../h_src/143439064.htm" class="localvar">n</a> &lt; <a href="../h_src/143438928.htm" class="localvar">lim</a>, <a href="../h_src/143279768.htm" class="localvar">arg</a>, &quot;integer overflow&quot;);
+  1662 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143280312.htm" class="localvar">L</a>, <a href="../h_src/143437840.htm" class="localvar">len</a> &lt;= (<a href="../h_aa/57441192.htm" class="type">size_t</a>)<a href="../h_src/143279496.htm" class="localvar">size</a>, <a href="../h_src/143279768.htm" class="localvar">arg</a>,
+  1672 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143280312.htm" class="localvar">L</a>, <a href="../h_src/143279496.htm" class="localvar">size</a> &gt;= (int)sizeof(<a href="../h_aa/57441192.htm" class="type">size_t</a>) ||
+  1673 :    <a href="../h_src/143437568.htm" class="localvar">len</a> &lt; ((<a href="../h_aa/57441192.htm" class="type">size_t</a>)1 &lt;&lt; (<a href="../h_src/143279496.htm" class="localvar">size</a> * <a href="../h_src/143288948.htm" class="macro">NB</a>)),
+  1683 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143280312.htm" class="localvar">L</a>, <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/143437160.htm" class="localvar">s</a>) == <a href="../h_src/143437296.htm" class="localvar">len</a>, <a href="../h_src/143279768.htm" class="localvar">arg</a>, &quot;string contains zeros&quot;);
+  1683 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143280312.htm" class="localvar">L</a>, <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/143437160.htm" class="localvar">s</a>) == <a href="../h_src/143437296.htm" class="localvar">len</a>, <a href="../h_src/143279768.htm" class="localvar">arg</a>, &quot;string contains zeros&quot;);
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

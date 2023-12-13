@@ -1,0 +1,87 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>PrintHeader</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143394728.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143394728.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143394728.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143394728.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/143394728.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/143394728.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143407988.htm#668" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>10</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>4</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>15</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Number of Built-In Operators</h5>
+<pre>
+   681 :    <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d%s param%s, %d slot%s, %d upvalue%s, &quot;,
+   682 :    (int)(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515936.htm" class="variable">numparams</a>),<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515868.htm" class="variable">is_vararg</a>?&quot;+&quot;:&quot;&quot;,<a href="../h_src/143395000.htm" class="macro">SS</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515936.htm" class="variable">numparams</a>),
+   683 :    <a href="../h_src/143394864.htm" class="macro">S</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515800.htm" class="variable">maxstacksize</a>),<a href="../h_src/143394864.htm" class="macro">S</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>));
+   684 :    <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d local%s, %d constant%s, %d function%s\n&quot;,
+   685 :    <a href="../h_src/143394864.htm" class="macro">S</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515392.htm" class="variable">sizelocvars</a>),<a href="../h_src/143394864.htm" class="macro">S</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515664.htm" class="variable">sizek</a>),<a href="../h_src/143394864.htm" class="macro">S</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515460.htm" class="variable">sizep</a>));
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+   682 :    (int)(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515936.htm" class="variable">numparams</a>),<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515868.htm" class="variable">is_vararg</a>?&quot;+&quot;:&quot;&quot;,<a href="../h_src/143395000.htm" class="macro">SS</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515936.htm" class="variable">numparams</a>),
+   683 :    <a href="../h_src/143394864.htm" class="macro">S</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515800.htm" class="variable">maxstacksize</a>),<a href="../h_src/143394864.htm" class="macro">S</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>));
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   671 :    if (*<a href="../h_src/143394456.htm" class="localvar">s</a>=='@' || *<a href="../h_src/143394456.htm" class="localvar">s</a>=='=')
+   672 :    <a href="../h_src/143394456.htm" class="localvar">s</a>++;
+   673 :    else if (*<a href="../h_src/143394456.htm" class="localvar">s</a>==<a href="../h_src/57445748.htm" class="macro">LUA_SIGNATURE</a>[0])
+   674 :    <a href="../h_src/143394456.htm" class="localvar">s</a>=&quot;(bstring)&quot;;
+   675 :    else
+   676 :    <a href="../h_src/143394456.htm" class="localvar">s</a>=&quot;(string)&quot;;
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+   677 :    <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;\n%s &lt;%s:%d,%d&gt; (%d instruction%s at %p)\n&quot;,
+   678 :    (<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515256.htm" class="variable">linedefined</a>==0)?&quot;main&quot;:&quot;function&quot;,<a href="../h_src/143394456.htm" class="localvar">s</a>,
+   679 :    <a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515256.htm" class="variable">linedefined</a>,<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515188.htm" class="variable">lastlinedefined</a>,
+   680 :    <a href="../h_src/143394864.htm" class="macro">S</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515596.htm" class="variable">sizecode</a>),<a href="../h_src/143400236.htm" class="macro">VOID</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>));
+   681 :    <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d%s param%s, %d slot%s, %d upvalue%s, &quot;,
+   682 :    (int)(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515936.htm" class="variable">numparams</a>),<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515868.htm" class="variable">is_vararg</a>?&quot;+&quot;:&quot;&quot;,<a href="../h_src/143395000.htm" class="macro">SS</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515936.htm" class="variable">numparams</a>),
+   683 :    <a href="../h_src/143394864.htm" class="macro">S</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515800.htm" class="variable">maxstacksize</a>),<a href="../h_src/143394864.htm" class="macro">S</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>));
+   684 :    <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d local%s, %d constant%s, %d function%s\n&quot;,
+   685 :    <a href="../h_src/143394864.htm" class="macro">S</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515392.htm" class="variable">sizelocvars</a>),<a href="../h_src/143394864.htm" class="macro">S</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515664.htm" class="variable">sizek</a>),<a href="../h_src/143394864.htm" class="macro">S</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515460.htm" class="variable">sizep</a>));
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

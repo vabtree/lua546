@@ -1,0 +1,83 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>traversethread</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57971836.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57971836.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57971836.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57971836.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/57971836.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/57971836.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57829404.htm#627" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>14</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>4</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>10</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Number of Built-In Operators</h5>
+<pre>
+   637 :    <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57971700.htm" class="localvar">g</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57971292.htm" class="localvar">o</a>));
+</pre>
+<pre>
+</pre>
+<h5>Unclear Subexpression</h5>
+<pre>
+   631 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57971564.htm" class="localvar">th</a>, <a href="../h_src/57971700.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a>);  <a  class="comments">/* insert into 'grayagain' list */</a>
+   637 :    <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57971700.htm" class="localvar">g</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57971292.htm" class="localvar">o</a>));
+   637 :    <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57971700.htm" class="localvar">g</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57971292.htm" class="localvar">o</a>));
+   642 :    <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57971292.htm" class="localvar">o</a>));  <a  class="comments">/* clear dead stack slice */</a>
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+   631 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57971564.htm" class="localvar">th</a>, <a href="../h_src/57971700.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a>);  <a  class="comments">/* insert into 'grayagain' list */</a>
+   639 :    <a href="../h_src/57827024.htm" class="macro">markobject</a>(<a href="../h_src/57971700.htm" class="localvar">g</a>, <a href="../h_src/57971428.htm" class="localvar">uv</a>);  <a  class="comments">/* open upvalues cannot be collected */</a>
+   642 :    <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57971292.htm" class="localvar">o</a>));  <a  class="comments">/* clear dead stack slice */</a>
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   630 :    if (<a href="../h_src/57623652.htm" class="macro">isold</a>(<a href="../h_src/57971564.htm" class="localvar">th</a>) || <a href="../h_src/57971700.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646024.htm" class="variable">gcstate</a> == <a href="../h_src/57629772.htm" class="macro">GCSpropagate</a>)
+   631 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57971564.htm" class="localvar">th</a>, <a href="../h_src/57971700.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a>);  <a  class="comments">/* insert into 'grayagain' list */</a>
+   632 :    if (<a href="../h_src/57971292.htm" class="localvar">o</a> == NULL)
+   633 :    return 1;  <a  class="comments">/* stack not completely built yet */</a>
+   637 :    <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57971700.htm" class="localvar">g</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57971292.htm" class="localvar">o</a>));
+   639 :    <a href="../h_src/57827024.htm" class="macro">markobject</a>(<a href="../h_src/57971700.htm" class="localvar">g</a>, <a href="../h_src/57971428.htm" class="localvar">uv</a>);  <a  class="comments">/* open upvalues cannot be collected */</a>
+   641 :    for (; <a href="../h_src/57971292.htm" class="localvar">o</a> &lt; <a href="../h_src/57971564.htm" class="localvar">th</a>-&gt;<a href="../h_src/57642352.htm" class="variable">stack_last</a>.<a href="../h_src/57531984.htm" class="variable">p</a> + <a href="../h_src/57652688.htm" class="macro">EXTRA_STACK</a>; <a href="../h_src/57971292.htm" class="localvar">o</a>++)
+   642 :    <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57971292.htm" class="localvar">o</a>));  <a  class="comments">/* clear dead stack slice */</a>
+   649 :    else if (!<a href="../h_src/57971700.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645616.htm" class="variable">gcemergency</a>)
+   650 :    <a href="../h_src/57632696.htm" class="function">luaD_shrinkstack</a>(<a href="../h_src/57971564.htm" class="localvar">th</a>); <a  class="comments">/* do not change stack in emergency cycle */</a>
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

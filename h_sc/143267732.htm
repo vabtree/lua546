@@ -1,0 +1,62 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>db_gethook</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143267732.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143267732.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143267732.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143267732.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/143267732.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/143267732.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58287060.htm#395" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>6</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>2</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>6</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   405 :    else if (<a href="../h_src/143266916.htm" class="localvar">hook</a> != <a href="../h_src/143270452.htm" class="function">hookf</a>)  <a  class="comments">/* external hook? */</a>
+   406 :    <a href="../h_src/57427660.htm" class="macro">lua_pushliteral</a>(<a href="../h_src/143267596.htm" class="localvar">L</a>, &quot;external hook&quot;);
+</pre>
+<pre>
+</pre>
+<h5>Return Ignored</h5>
+<pre>
+   406 :    <a href="../h_src/57427660.htm" class="macro">lua_pushliteral</a>(<a href="../h_src/143267596.htm" class="localvar">L</a>, &quot;external hook&quot;);
+   408 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143267596.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/58286720.htm" class="variable">HOOKKEY</a>);
+   410 :    <a href="../h_src/57434460.htm" class="function">lua_pushthread</a>(<a href="../h_src/143267324.htm" class="localvar">L1</a>); <a href="../h_src/57438948.htm" class="function">lua_xmove</a>(<a href="../h_src/143267324.htm" class="localvar">L1</a>, <a href="../h_src/143267596.htm" class="localvar">L</a>, 1);
+   411 :    <a href="../h_src/57434120.htm" class="function">lua_rawget</a>(<a href="../h_src/143267596.htm" class="localvar">L</a>, -2);   <a  class="comments">/* 1st result = hooktable[L1] */</a>
+   414 :    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/143267596.htm" class="localvar">L</a>, <a href="../h_src/143269364.htm" class="function">unmakemask</a>(<a href="../h_src/143267052.htm" class="localvar">mask</a>, <a href="../h_src/143267188.htm" class="localvar">buff</a>));  <a  class="comments">/* 2nd result = mask */</a>
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,82 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>auxsort</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143420228.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143420228.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143420228.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143420228.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/143420228.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/143420228.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143431652.htm#345" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>17</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>2</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>27</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   353 :    if (<a href="../h_src/143422540.htm" class="function">sort_comp</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, -1, -2))  <a  class="comments">/* a[up] &lt; a[lo]? */</a>
+   354 :    <a href="../h_src/143423084.htm" class="function">set2</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, <a href="../h_src/143419956.htm" class="localvar">lo</a>, <a href="../h_src/143419820.htm" class="localvar">up</a>);  <a  class="comments">/* swap a[lo] - a[up] */</a>
+   355 :    else
+   356 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 2);  <a  class="comments">/* remove both values */</a>
+   357 :    if (<a href="../h_src/143419820.htm" class="localvar">up</a> - <a href="../h_src/143419956.htm" class="localvar">lo</a> == 1)  <a  class="comments">/* only 2 elements? */</a>
+   358 :    return;  <a  class="comments">/* already sorted */</a>
+   359 :    if (<a href="../h_src/143419820.htm" class="localvar">up</a> - <a href="../h_src/143419956.htm" class="localvar">lo</a> &lt; <a href="../h_src/143423220.htm" class="macro">RANLIMIT</a> || <a href="../h_src/143419684.htm" class="localvar">rnd</a> == 0)  <a  class="comments">/* small interval or no randomize? */</a>
+   360 :    <a href="../h_src/143419548.htm" class="localvar">p</a> = (<a href="../h_src/143419956.htm" class="localvar">lo</a> + <a href="../h_src/143419820.htm" class="localvar">up</a>)/2;  <a  class="comments">/* middle element is a good pivot */</a>
+   361 :    else  <a  class="comments">/* for larger intervals, it is worth a random pivot */</a>
+   362 :    <a href="../h_src/143419548.htm" class="localvar">p</a> = <a href="../h_src/143421044.htm" class="function">choosePivot</a>(<a href="../h_src/143419956.htm" class="localvar">lo</a>, <a href="../h_src/143419820.htm" class="localvar">up</a>, <a href="../h_src/143419684.htm" class="localvar">rnd</a>);
+   365 :    if (<a href="../h_src/143422540.htm" class="function">sort_comp</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, -2, -1))  <a  class="comments">/* a[p] &lt; a[lo]? */</a>
+   366 :    <a href="../h_src/143423084.htm" class="function">set2</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, <a href="../h_src/143419548.htm" class="localvar">p</a>, <a href="../h_src/143419956.htm" class="localvar">lo</a>);  <a  class="comments">/* swap a[p] - a[lo] */</a>
+   370 :    if (<a href="../h_src/143422540.htm" class="function">sort_comp</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, -1, -2))  <a  class="comments">/* a[up] &lt; a[p]? */</a>
+   371 :    <a href="../h_src/143423084.htm" class="function">set2</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, <a href="../h_src/143419548.htm" class="localvar">p</a>, <a href="../h_src/143419820.htm" class="localvar">up</a>);  <a  class="comments">/* swap a[up] - a[p] */</a>
+   372 :    else
+   373 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 2);
+   375 :    if (<a href="../h_src/143419820.htm" class="localvar">up</a> - <a href="../h_src/143419956.htm" class="localvar">lo</a> == 2)  <a  class="comments">/* only 3 elements? */</a>
+   376 :    return;  <a  class="comments">/* already sorted */</a>
+   393 :    if ((<a href="../h_src/143419820.htm" class="localvar">up</a> - <a href="../h_src/143419956.htm" class="localvar">lo</a>) / 128 &gt; <a href="../h_src/143419412.htm" class="localvar">n</a>) <a  class="comments">/* partition too imbalanced? */</a>
+   394 :    <a href="../h_src/143419684.htm" class="localvar">rnd</a> = <a href="../h_src/143424036.htm" class="function">l_randomizePivot</a>();  <a  class="comments">/* try a new randomization */</a>
+</pre>
+<pre>
+</pre>
+<h5>Return Ignored</h5>
+<pre>
+   351 :    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419956.htm" class="localvar">lo</a>);
+   352 :    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419820.htm" class="localvar">up</a>);
+   363 :    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419548.htm" class="localvar">p</a>);
+   364 :    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419956.htm" class="localvar">lo</a>);
+   369 :    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419820.htm" class="localvar">up</a>);
+   377 :    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419548.htm" class="localvar">p</a>);  <a  class="comments">/* get middle element (Pivot) */</a>
+   379 :    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419820.htm" class="localvar">up</a> - 1);  <a  class="comments">/* push a[up - 1] */</a>
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

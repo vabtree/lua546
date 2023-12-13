@@ -1,0 +1,272 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>ltable.c</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58121924.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/58121924.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/58121924.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/58121924.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_uf/58121924.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_df/58121924.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/58121924.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/58121924.htm" class="file" target="_self">Source Code</a></li>
+<li id="current"><a href="../h_sc/58121924.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>142</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>9</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>142</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Number of Built-In Operators</h5>
+<pre>
+   217 :    if ((<a href="../h_src/57535044.htm" class="macro">rawtt</a>(<a href="../h_src/58116348.htm" class="localvar">k1</a>) != <a href="../h_src/57504240.htm" class="macro">keytt</a>(<a href="../h_src/58116212.htm" class="localvar">n2</a>)) &amp;&amp;  <a  class="comments">/* not the same variants? */</a>
+   218 :    !(<a href="../h_src/58116076.htm" class="localvar">deadok</a> &amp;&amp; <a href="../h_src/57502608.htm" class="macro">keyisdead</a>(<a href="../h_src/58116212.htm" class="localvar">n2</a>) &amp;&amp; <a href="../h_src/57527768.htm" class="macro">iscollectable</a>(<a href="../h_src/58116348.htm" class="localvar">k1</a>)))
+   319 :    if (<a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/58113900.htm" class="localvar">k</a>) - 1u &lt; <a href="../h_src/58121448.htm" class="macro">MAXASIZE</a>)  <a  class="comments">/* 'k' in [1, MAXASIZE]? */</a>
+   489 :    if (<a href="../h_src/58105876.htm" class="localvar">lsize</a> &gt; <a href="../h_src/58121312.htm" class="macro">MAXHBITS</a> || (1u &lt;&lt; <a href="../h_src/58105876.htm" class="localvar">lsize</a>) &gt; <a href="../h_src/58121176.htm" class="macro">MAXHSIZE</a>)
+   716 :    <a href="../h_src/57621068.htm" class="macro">luaC_barrierback</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, <a href="../h_src/57638884.htm" class="macro">obj2gco</a>(<a href="../h_src/58099484.htm" class="localvar">t</a>), <a href="../h_src/58099348.htm" class="localvar">key</a>);
+   733 :    else if (!<a href="../h_src/58115940.htm" class="macro">limitequalsasize</a>(<a href="../h_src/58097580.htm" class="localvar">t</a>) &amp;&amp;  <a  class="comments">/* key still may be in the array part? */</a>
+   734 :    (<a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/58097444.htm" class="localvar">key</a>) == <a href="../h_src/58097580.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a> + 1 ||
+   735 :    <a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/58097444.htm" class="localvar">key</a>) - 1u &lt; <a href="../h_src/57616172.htm" class="function">luaH_realasize</a>(<a href="../h_src/58097580.htm" class="localvar">t</a>))) {
+</pre>
+<pre>
+</pre>
+<h5>Unclear Subexpression</h5>
+<pre>
+   134 :    <a href="../h_src/58119272.htm" class="localvar">n</a> = <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/58118864.htm" class="libfunc">frexp</a>)(<a href="../h_src/58119272.htm" class="localvar">n</a>, &amp;<a href="../h_src/58119136.htm" class="localvar">i</a>) * -<a href="../h_src/57547352.htm" class="macro">cast_num</a>(INT_MIN);
+   303 :    return <a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58114308.htm" class="localvar">n</a>);  <a  class="comments">/* that's it */</a>
+   351 :    unsigned int <a href="../h_src/58112268.htm" class="localvar">i</a> = <a href="../h_src/58113764.htm" class="function">findindex</a>(<a href="../h_src/58112812.htm" class="localvar">L</a>, <a href="../h_src/58112676.htm" class="localvar">t</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58112540.htm" class="localvar">key</a>), <a href="../h_src/58112404.htm" class="localvar">asize</a>);  <a  class="comments">/* find original key */</a>
+   354 :    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58112540.htm" class="localvar">key</a>), <a href="../h_src/57536064.htm" class="variable">i</a> + 1);
+   355 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58112812.htm" class="localvar">L</a>, <a href="../h_src/58112540.htm" class="localvar">key</a> + 1, &amp;<a href="../h_src/58112676.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58112268.htm" class="localvar">i</a>]);
+   360 :    if (!<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/57618008.htm" class="macro">gnode</a>(<a href="../h_src/58112676.htm" class="localvar">t</a>, <a href="../h_src/58112268.htm" class="localvar">i</a>)))) {  <a  class="comments">/* a non-empty entry? */</a>
+   362 :    <a href="../h_src/57505804.htm" class="macro">getnodekey</a>(<a href="../h_src/58112812.htm" class="localvar">L</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58112540.htm" class="localvar">key</a>), <a href="../h_src/58111724.htm" class="localvar">n</a>);
+   363 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58112812.htm" class="localvar">L</a>, <a href="../h_src/58112540.htm" class="localvar">key</a> + 1, <a href="../h_src/57617872.htm" class="macro">gval</a><a href="../h_src/57532732.htm" class="variable">val</a>(<a href="../h_src/58111724.htm" class="localvar">n</a>));
+   363 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58112812.htm" class="localvar">L</a>, <a href="../h_src/58112540.htm" class="localvar">key</a> + 1, <a href="../h_src/57617872.htm" class="macro">gval</a><a href="../h_src/57532732.htm" class="variable">val</a>(<a href="../h_src/58111724.htm" class="localvar">n</a>));
+   462 :    if (!<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58106692.htm" class="localvar">n</a>))) {
+   497 :    <a href="../h_src/57530216.htm" class="macro">setempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58105740.htm" class="localvar">n</a>));
+   513 :    if (!<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58104788.htm" class="localvar">old</a>))) {
+   518 :    <a href="../h_src/57616648.htm" class="function">luaH_set</a>(<a href="../h_src/58105468.htm" class="localvar">L</a>, <a href="../h_src/58105196.htm" class="localvar">t</a>, &amp;<a href="../h_src/58104652.htm" class="localvar">k</a>, <a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58104788.htm" class="localvar">old</a>));
+   677 :    else if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57538784.htm" class="macro">luai_numisnan</a>(<a href="../h_src/58098804.htm" class="localvar">f</a>)))
+   683 :    if (!<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>)) || <a href="../h_src/57617464.htm" class="macro">isdummy</a>(<a href="../h_src/58099484.htm" class="localvar">t</a>)) {  <a  class="comments">/* main position is taken? */</a>
+   704 :    <a href="../h_src/57530216.htm" class="macro">setempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>));
+   718 :    <a href="../h_src/57533004.htm" class="macro">setobj2t</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, <a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>), <a href="../h_src/58099212.htm" class="localvar">value</a>);
+   743 :    return <a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58097308.htm" class="localvar">n</a>);  <a  class="comments">/* that's it */</a>
+   763 :    return <a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58096764.htm" class="localvar">n</a>);  <a  class="comments">/* that's it */</a>
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+    93 :    static const <a href="../h_src/57506008.htm" class="type">Node</a> <a href="../h_src/58120224.htm" class="variable">dummynode_</a> = {
+    99 :    static const <a href="../h_src/57535384.htm" class="type">TValue</a> <a href="../h_src/58120156.htm" class="variable">absentkey</a> = {<a href="../h_src/57530352.htm" class="macro">ABSTKEYCONSTANT</a>};
+   109 :    <a href="../h_src/57438132.htm" class="function">lua_Unsigned</a> <a href="../h_src/58119680.htm" class="localvar">ui</a> = <a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/58119816.htm" class="localvar">i</a>);
+   110 :    if (<a href="../h_src/58119680.htm" class="localvar">ui</a> &lt;= <a href="../h_src/57547080.htm" class="macro">cast_uint</a>(INT_MAX))
+   111 :    return <a href="../h_src/58120904.htm" class="macro">hashmod</a>(<a href="../h_src/58119952.htm" class="localvar">t</a>, <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/58119680.htm" class="localvar">ui</a>));
+   135 :    if (!<a href="../h_src/57452140.htm" class="macro">lua_numbertointeger</a>(<a href="../h_src/58119272.htm" class="localvar">n</a>, &amp;<a href="../h_src/58119000.htm" class="localvar">ni</a>)) {  <a  class="comments">/* is 'n' inf/-inf/NaN? */</a>
+   135 :    if (!<a href="../h_src/57452140.htm" class="macro">lua_numbertointeger</a>(<a href="../h_src/58119272.htm" class="localvar">n</a>, &amp;<a href="../h_src/58119000.htm" class="localvar">ni</a>)) {  <a  class="comments">/* is 'n' inf/-inf/NaN? */</a>
+   135 :    if (!<a href="../h_src/57452140.htm" class="macro">lua_numbertointeger</a>(<a href="../h_src/58119272.htm" class="localvar">n</a>, &amp;<a href="../h_src/58119000.htm" class="localvar">ni</a>)) {  <a  class="comments">/* is 'n' inf/-inf/NaN? */</a>
+   140 :    unsigned int <a href="../h_src/58118796.htm" class="localvar">u</a> = <a href="../h_src/57547080.htm" class="macro">cast_uint</a>(<a href="../h_src/58119136.htm" class="localvar">i</a>) + <a href="../h_src/57547080.htm" class="macro">cast_uint</a>(<a href="../h_src/58119000.htm" class="localvar">ni</a>);
+   140 :    unsigned int <a href="../h_src/58118796.htm" class="localvar">u</a> = <a href="../h_src/57547080.htm" class="macro">cast_uint</a>(<a href="../h_src/58119136.htm" class="localvar">i</a>) + <a href="../h_src/57547080.htm" class="macro">cast_uint</a>(<a href="../h_src/58119000.htm" class="localvar">ni</a>);
+   141 :    return <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/58118796.htm" class="localvar">u</a> &lt;= <a href="../h_src/57547080.htm" class="macro">cast_uint</a>(INT_MAX) ? u : ~<a href="../h_src/58118796.htm" class="localvar">u</a>);
+   141 :    return <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/58118796.htm" class="localvar">u</a> &lt;= <a href="../h_src/57547080.htm" class="macro">cast_uint</a>(INT_MAX) ? u : ~<a href="../h_src/58118796.htm" class="localvar">u</a>);
+   162 :    <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/58117980.htm" class="localvar">ts</a> = <a href="../h_src/57524368.htm" class="macro">tsvalue</a>(<a href="../h_src/58118388.htm" class="localvar">key</a>);
+   163 :    return <a href="../h_src/58120768.htm" class="macro">hashstr</a>(<a href="../h_src/58118524.htm" class="localvar">t</a>, <a href="../h_src/58117980.htm" class="localvar">ts</a>);
+   166 :    <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/58117844.htm" class="localvar">ts</a> = <a href="../h_src/57524368.htm" class="macro">tsvalue</a>(<a href="../h_src/58118388.htm" class="localvar">key</a>);
+   167 :    return <a href="../h_src/58121040.htm" class="macro">hashpow2</a>(<a href="../h_src/58118524.htm" class="localvar">t</a>, <a href="../h_src/57619096.htm" class="function">luaS_hashlongstr</a>(<a href="../h_src/58117844.htm" class="localvar">ts</a>));
+   175 :    return <a href="../h_src/58120496.htm" class="macro">hashpointer</a>(<a href="../h_src/58118524.htm" class="localvar">t</a>, <a href="../h_src/58117708.htm" class="localvar">p</a>);
+   179 :    return <a href="../h_src/58120496.htm" class="macro">hashpointer</a>(<a href="../h_src/58118524.htm" class="localvar">t</a>, <a href="../h_src/58117572.htm" class="localvar">f</a>);
+   183 :    return <a href="../h_src/58120496.htm" class="macro">hashpointer</a>(<a href="../h_src/58118524.htm" class="localvar">t</a>, <a href="../h_src/58117436.htm" class="localvar">o</a>);
+   232 :    return <a href="../h_src/57619028.htm" class="function">luaS_eqlngstr</a>(<a href="../h_src/57524368.htm" class="macro">tsvalue</a>(<a href="../h_src/58116348.htm" class="localvar">k1</a>), <a href="../h_src/57503424.htm" class="macro">keystrval</a>(<a href="../h_src/58116212.htm" class="localvar">n2</a>));
+   232 :    return <a href="../h_src/57619028.htm" class="function">luaS_eqlngstr</a>(<a href="../h_src/57524368.htm" class="macro">tsvalue</a>(<a href="../h_src/58116348.htm" class="localvar">k1</a>), <a href="../h_src/57503424.htm" class="macro">keystrval</a>(<a href="../h_src/58116212.htm" class="localvar">n2</a>));
+   285 :    <a href="../h_src/57505396.htm" class="macro">setrealasize</a>(<a href="../h_src/58115124.htm" class="localvar">t</a>);
+   319 :    if (<a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/58113900.htm" class="localvar">k</a>) - 1u &lt; <a href="../h_src/58121448.htm" class="macro">MAXASIZE</a>)  <a  class="comments">/* 'k' in [1, MAXASIZE]? */</a>
+   320 :    return <a href="../h_src/57547080.htm" class="macro">cast_uint</a>(<a href="../h_src/58113900.htm" class="localvar">k</a>);  <a  class="comments">/* 'key' is an appropriate array index */</a>
+   342 :    <a href="../h_src/58113084.htm" class="localvar">i</a> = <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/57617192.htm" class="macro">nodefromval</a>(<a href="../h_src/58112948.htm" class="localvar">n</a>) - <a href="../h_src/57618008.htm" class="macro">gnode</a>(<a href="../h_src/58113492.htm" class="localvar">t</a>, 0));  <a  class="comments">/* key index in hash table */</a>
+   342 :    <a href="../h_src/58113084.htm" class="localvar">i</a> = <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/57617192.htm" class="macro">nodefromval</a>(<a href="../h_src/58112948.htm" class="localvar">n</a>) - <a href="../h_src/57618008.htm" class="macro">gnode</a>(<a href="../h_src/58113492.htm" class="localvar">t</a>, 0));  <a  class="comments">/* key index in hash table */</a>
+   354 :    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58112540.htm" class="localvar">key</a>), <a href="../h_src/57536064.htm" class="variable">i</a> + 1);
+   354 :    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58112540.htm" class="localvar">key</a>), <a href="../h_src/57536064.htm" class="variable">i</a> + 1);
+   359 :    for (<a href="../h_src/58112268.htm" class="localvar">i</a> -= <a href="../h_src/58112404.htm" class="localvar">asize</a>; <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/58112268.htm" class="localvar">i</a>) &lt; <a href="../h_src/57502200.htm" class="macro">sizenode</a>(<a href="../h_src/58112676.htm" class="localvar">t</a>); <a href="../h_src/58112268.htm" class="localvar">i</a>++) {  <a  class="comments">/* hash part */</a>
+   373 :    <a href="../h_src/57495604.htm" class="macro">luaM_freearray</a>(<a href="../h_src/58110908.htm" class="localvar">L</a>, <a href="../h_src/58110772.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504580.htm" class="variable">node</a>, <a href="../h_src/57546400.htm" class="macro">cast_sizet</a>(<a href="../h_src/57502200.htm" class="macro">sizenode</a>(<a href="../h_src/58110772.htm" class="localvar">t</a>)));
+   489 :    if (<a href="../h_src/58105876.htm" class="localvar">lsize</a> &gt; <a href="../h_src/58121312.htm" class="macro">MAXHBITS</a> || (1u &lt;&lt; <a href="../h_src/58105876.htm" class="localvar">lsize</a>) &gt; <a href="../h_src/58121176.htm" class="macro">MAXHSIZE</a>)
+   491 :    <a href="../h_src/58106148.htm" class="localvar">size</a> = <a href="../h_src/57502336.htm" class="macro">twoto</a>(<a href="../h_src/58105876.htm" class="localvar">lsize</a>);
+   493 :    for (<a href="../h_src/58106012.htm" class="localvar">i</a> = 0; <a href="../h_src/58106012.htm" class="localvar">i</a> &lt; <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/58106148.htm" class="localvar">size</a>); <a href="../h_src/58106012.htm" class="localvar">i</a>++) {
+   497 :    <a href="../h_src/57530216.htm" class="macro">setempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58105740.htm" class="localvar">n</a>));
+   499 :    <a href="../h_src/58106284.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504852.htm" class="variable">lsizenode</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/58105876.htm" class="localvar">lsize</a>);
+   583 :    <a href="../h_src/57530216.htm" class="macro">setempty</a>(&amp;<a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58102884.htm" class="localvar">i</a>]);
+   607 :    <a href="../h_src/58100708.htm" class="localvar">totaluse</a> = <a href="../h_src/58101116.htm" class="localvar">na</a>;  <a  class="comments">/* all those keys are integer keys */</a>
+   628 :    <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58100300.htm" class="localvar">t</a> = <a href="../h_src/57639428.htm" class="macro">gco2t</a>(<a href="../h_src/58100436.htm" class="localvar">o</a>);
+   630 :    <a href="../h_src/58100300.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504920.htm" class="variable">flags</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/57498936.htm" class="macro">maskflags</a>);  <a  class="comments">/* table has no metamethod fields */</a>
+   674 :    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(&amp;<a href="../h_src/58098940.htm" class="localvar">aux</a>, <a href="../h_src/58098668.htm" class="localvar">k</a>);
+   704 :    <a href="../h_src/57530216.htm" class="macro">setempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>));
+   716 :    <a href="../h_src/57621068.htm" class="macro">luaC_barrierback</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, <a href="../h_src/57638884.htm" class="macro">obj2gco</a>(<a href="../h_src/58099484.htm" class="localvar">t</a>), <a href="../h_src/58099348.htm" class="localvar">key</a>);
+   736 :    <a href="../h_src/58097580.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a> = <a href="../h_src/57547080.htm" class="macro">cast_uint</a>(<a href="../h_src/58097444.htm" class="localvar">key</a>);  <a  class="comments">/* probably '#t' is here now */</a>
+   759 :    <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/58096764.htm" class="localvar">n</a> = <a href="../h_src/58120768.htm" class="macro">hashstr</a>(<a href="../h_src/58097036.htm" class="localvar">t</a>, <a href="../h_src/58096900.htm" class="localvar">key</a>);
+   762 :    if (<a href="../h_src/57503560.htm" class="macro">keyisshrstr</a>(<a href="../h_src/58096764.htm" class="localvar">n</a>) &amp;&amp; <a href="../h_src/57619300.htm" class="macro">eqshrstr</a>(<a href="../h_src/57503424.htm" class="macro">keystrval</a>(<a href="../h_src/58096764.htm" class="localvar">n</a>), <a href="../h_src/58096900.htm" class="localvar">key</a>))
+   779 :    <a href="../h_src/57524232.htm" class="macro">setsvalue</a>(<a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57444252.htm" class="type">lua_State</a> *, NULL), &amp;<a href="../h_src/58096220.htm" class="localvar">ko</a>, <a href="../h_src/58096356.htm" class="localvar">key</a>);
+   790 :    case <a href="../h_src/57525184.htm" class="macro">LUA_VSHRSTR</a>: return <a href="../h_src/57616920.htm" class="function">luaH_getshortstr</a>(<a href="../h_src/58095812.htm" class="localvar">t</a>, <a href="../h_src/57524368.htm" class="macro">tsvalue</a>(<a href="../h_src/58095676.htm" class="localvar">key</a>));
+   834 :    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(&amp;<a href="../h_src/58093092.htm" class="localvar">k</a>, <a href="../h_src/58093500.htm" class="localvar">key</a>);
+   859 :    <a href="../h_src/58092276.htm" class="localvar">i</a> = <a href="../h_src/58092412.htm" class="localvar">j</a>;  <a  class="comments">/* 'i' is a present index */</a>
+   860 :    if (<a href="../h_src/58092412.htm" class="localvar">j</a> &lt;= <a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/57450100.htm" class="macro">LUA_MAXINTEGER</a>) / 2)
+   860 :    if (<a href="../h_src/58092412.htm" class="localvar">j</a> &lt;= <a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/57450100.htm" class="macro">LUA_MAXINTEGER</a>) / 2)
+   863 :    <a href="../h_src/58092412.htm" class="localvar">j</a> = <a href="../h_src/57450100.htm" class="macro">LUA_MAXINTEGER</a>;
+   871 :    while (<a href="../h_src/58092412.htm" class="localvar">j</a> - <a href="../h_src/58092276.htm" class="localvar">i</a> &gt; 1u) {  <a  class="comments">/* do a binary search between them */</a>
+   872 :    <a href="../h_src/57438132.htm" class="function">lua_Unsigned</a> <a href="../h_src/58092140.htm" class="localvar">m</a> = (<a href="../h_src/58092276.htm" class="localvar">i</a> + <a href="../h_src/58092412.htm" class="localvar">j</a>) / 2;
+   872 :    <a href="../h_src/57438132.htm" class="function">lua_Unsigned</a> <a href="../h_src/58092140.htm" class="localvar">m</a> = (<a href="../h_src/58092276.htm" class="localvar">i</a> + <a href="../h_src/58092412.htm" class="localvar">j</a>) / 2;
+   873 :    if (<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617056.htm" class="function">luaH_getint</a>(<a href="../h_src/58092548.htm" class="localvar">t</a>, <a href="../h_src/58092140.htm" class="localvar">m</a>))) <a href="../h_src/58092412.htm" class="localvar">j</a> = <a href="../h_src/58092140.htm" class="localvar">m</a>;
+   931 :    <a href="../h_src/57505260.htm" class="macro">setnorealasize</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>);  <a  class="comments">/* now 'alimit' is not the real size */</a>
+   940 :    <a href="../h_src/57505260.htm" class="macro">setnorealasize</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>);
+   964 :    if (<a href="../h_src/57617464.htm" class="macro">isdummy</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>) || <a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617056.htm" class="function">luaH_getint</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>, <a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57442076.htm" class="type">lua_Integer</a>, <a href="../h_src/58091188.htm" class="localvar">limit</a> + 1))))
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   110 :    if (<a href="../h_src/58119680.htm" class="localvar">ui</a> &lt;= <a href="../h_src/57547080.htm" class="macro">cast_uint</a>(INT_MAX))
+   111 :    return <a href="../h_src/58120904.htm" class="macro">hashmod</a>(<a href="../h_src/58119952.htm" class="localvar">t</a>, <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/58119680.htm" class="localvar">ui</a>));
+   112 :    else
+   113 :    return <a href="../h_src/58120904.htm" class="macro">hashmod</a>(<a href="../h_src/58119952.htm" class="localvar">t</a>, <a href="../h_src/58119680.htm" class="localvar">ui</a>);
+   218 :    !(<a href="../h_src/58116076.htm" class="localvar">deadok</a> &amp;&amp; <a href="../h_src/57502608.htm" class="macro">keyisdead</a>(<a href="../h_src/58116212.htm" class="localvar">n2</a>) &amp;&amp; <a href="../h_src/57527768.htm" class="macro">iscollectable</a>(<a href="../h_src/58116348.htm" class="localvar">k1</a>)))
+   219 :    return 0;  <a  class="comments">/* cannot be same key */</a>
+   251 :    if (<a href="../h_src/58115940.htm" class="macro">limitequalsasize</a>(<a href="../h_src/58115804.htm" class="localvar">t</a>))
+   252 :    return <a href="../h_src/58115804.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a>;  <a  class="comments">/* this is the size */</a>
+   302 :    if (<a href="../h_src/58116484.htm" class="function">equalkey</a>(<a href="../h_src/58114580.htm" class="localvar">key</a>, <a href="../h_src/58114308.htm" class="localvar">n</a>, <a href="../h_src/58114444.htm" class="localvar">deadok</a>))
+   303 :    return <a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58114308.htm" class="localvar">n</a>);  <a  class="comments">/* that's it */</a>
+   306 :    if (<a href="../h_src/58114172.htm" class="localvar">nx</a> == 0)
+   307 :    return &amp;<a href="../h_src/58120156.htm" class="variable">absentkey</a>;  <a  class="comments">/* not found */</a>
+   319 :    if (<a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/58113900.htm" class="localvar">k</a>) - 1u &lt; <a href="../h_src/58121448.htm" class="macro">MAXASIZE</a>)  <a  class="comments">/* 'k' in [1, MAXASIZE]? */</a>
+   320 :    return <a href="../h_src/57547080.htm" class="macro">cast_uint</a>(<a href="../h_src/58113900.htm" class="localvar">k</a>);  <a  class="comments">/* 'key' is an appropriate array index */</a>
+   321 :    else
+   322 :    return 0;
+   334 :    if (<a href="../h_src/57531168.htm" class="macro">ttisnil</a>(<a href="../h_src/58113356.htm" class="localvar">key</a>)) return 0;  <a  class="comments">/* first iteration */</a>
+   336 :    if (<a href="../h_src/58113084.htm" class="localvar">i</a> - 1u &lt; <a href="../h_src/58113220.htm" class="localvar">asize</a>)  <a  class="comments">/* is 'key' inside array part? */</a>
+   337 :    return <a href="../h_src/58113084.htm" class="localvar">i</a>;  <a  class="comments">/* yes; that's the index */</a>
+   340 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57530760.htm" class="macro">isabstkey</a>(<a href="../h_src/58112948.htm" class="localvar">n</a>)))
+   341 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/58113628.htm" class="localvar">L</a>, &quot;invalid key to 'next'&quot;);  <a  class="comments">/* key not found */</a>
+   372 :    if (!<a href="../h_src/57617464.htm" class="macro">isdummy</a>(<a href="../h_src/58110772.htm" class="localvar">t</a>))
+   373 :    <a href="../h_src/57495604.htm" class="macro">luaM_freearray</a>(<a href="../h_src/58110908.htm" class="localvar">L</a>, <a href="../h_src/58110772.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504580.htm" class="variable">node</a>, <a href="../h_src/57546400.htm" class="macro">cast_sizet</a>(<a href="../h_src/57502200.htm" class="macro">sizenode</a>(<a href="../h_src/58110772.htm" class="localvar">t</a>)));
+   419 :    else
+   420 :    return 0;
+   441 :    if (<a href="../h_src/58108188.htm" class="localvar">i</a> &gt; <a href="../h_src/58107780.htm" class="localvar">lim</a>)
+   442 :    break;  <a  class="comments">/* no more elements to count */</a>
+   446 :    if (!<a href="../h_src/57530488.htm" class="macro">isempty</a>(&amp;<a href="../h_src/58108868.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58108188.htm" class="localvar">i</a>-1]))
+   447 :    <a href="../h_src/58107916.htm" class="localvar">lc</a>++;
+   463 :    if (<a href="../h_src/57503832.htm" class="macro">keyisinteger</a>(<a href="../h_src/58106692.htm" class="localvar">n</a>))
+   464 :    <a href="../h_src/58106964.htm" class="localvar">ause</a> += <a href="../h_src/58109548.htm" class="function">countint</a>(<a href="../h_src/57503696.htm" class="macro">keyival</a>(<a href="../h_src/58106692.htm" class="localvar">n</a>), <a href="../h_src/58107372.htm" class="localvar">nums</a>);
+   489 :    if (<a href="../h_src/58105876.htm" class="localvar">lsize</a> &gt; <a href="../h_src/58121312.htm" class="macro">MAXHBITS</a> || (1u &lt;&lt; <a href="../h_src/58105876.htm" class="localvar">lsize</a>) &gt; <a href="../h_src/58121176.htm" class="macro">MAXHSIZE</a>)
+   490 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/58106420.htm" class="localvar">L</a>, &quot;table overflow&quot;);
+   566 :    if (!<a href="../h_src/57530488.htm" class="macro">isempty</a>(&amp;<a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58102884.htm" class="localvar">i</a>]))
+   567 :    <a href="../h_src/57616988.htm" class="function">luaH_setint</a>(<a href="../h_src/58103428.htm" class="localvar">L</a>, <a href="../h_src/58103292.htm" class="localvar">t</a>, <a href="../h_src/58102884.htm" class="localvar">i</a> + 1, &amp;<a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58102884.htm" class="localvar">i</a>]);
+   582 :    for (<a href="../h_src/58102884.htm" class="localvar">i</a> = <a href="../h_src/58102612.htm" class="localvar">oldasize</a>; <a href="../h_src/58102884.htm" class="localvar">i</a> &lt; <a href="../h_src/58103156.htm" class="localvar">newasize</a>; <a href="../h_src/58102884.htm" class="localvar">i</a>++)  <a  class="comments">/* clear new slice of the array */</a>
+   583 :    <a href="../h_src/57530216.htm" class="macro">setempty</a>(&amp;<a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58102884.htm" class="localvar">i</a>]);
+   604 :    for (<a href="../h_src/58100844.htm" class="localvar">i</a> = 0; <a href="../h_src/58100844.htm" class="localvar">i</a> &lt;= <a href="../h_src/58121584.htm" class="macro">MAXABITS</a>; <a href="../h_src/58100844.htm" class="localvar">i</a>++) <a href="../h_src/58100980.htm" class="localvar">nums</a>[<a href="../h_src/58100844.htm" class="localvar">i</a>] = 0;  <a  class="comments">/* reset counts */</a>
+   610 :    if (<a href="../h_src/57526544.htm" class="macro">ttisinteger</a>(<a href="../h_src/58101388.htm" class="localvar">ek</a>))
+   611 :    <a href="../h_src/58101116.htm" class="localvar">na</a> += <a href="../h_src/58109548.htm" class="function">countint</a>(<a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58101388.htm" class="localvar">ek</a>), <a href="../h_src/58100980.htm" class="localvar">nums</a>);
+   649 :    if (<a href="../h_src/57503968.htm" class="macro">keyisnil</a>(<a href="../h_src/58099756.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504512.htm" class="variable">lastfree</a>))
+   650 :    return <a href="../h_src/58099756.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504512.htm" class="variable">lastfree</a>;
+   668 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57531168.htm" class="macro">ttisnil</a>(<a href="../h_src/58099348.htm" class="localvar">key</a>)))
+   669 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, &quot;table index is nil&quot;);
+   677 :    else if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57538784.htm" class="macro">luai_numisnan</a>(<a href="../h_src/58098804.htm" class="localvar">f</a>)))
+   678 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, &quot;table index is NaN&quot;);
+   680 :    if (<a href="../h_src/57531168.htm" class="macro">ttisnil</a>(<a href="../h_src/58099212.htm" class="localvar">value</a>))
+   681 :    return;  <a  class="comments">/* do not insert nil values */</a>
+   696 :    while (<a href="../h_src/58098396.htm" class="localvar">othern</a> + <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58098396.htm" class="localvar">othern</a>) != <a href="../h_src/58099076.htm" class="localvar">mp</a>)  <a  class="comments">/* find previous */</a>
+   697 :    <a href="../h_src/58098396.htm" class="localvar">othern</a> += <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58098396.htm" class="localvar">othern</a>);
+   708 :    if (<a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>) != 0)
+   709 :    <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58098260.htm" class="localvar">f</a>) = <a href="../h_src/57547216.htm" class="macro">cast_int</a>((<a href="../h_src/58099076.htm" class="localvar">mp</a> + <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>)) - <a href="../h_src/58098260.htm" class="localvar">f</a>);  <a  class="comments">/* chain new position */</a>
+   710 :    else <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57617736.htm" class="macro">gnext</a>(f) == 0);
+   731 :    if (<a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/58097444.htm" class="localvar">key</a>) - 1u &lt; <a href="../h_src/58097580.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a>)  <a  class="comments">/* 'key' in [1, t-&gt;alimit]? */</a>
+   732 :    return &amp;<a href="../h_src/58097580.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58097444.htm" class="localvar">key</a> - 1];
+   742 :    if (<a href="../h_src/57503832.htm" class="macro">keyisinteger</a>(<a href="../h_src/58097308.htm" class="localvar">n</a>) &amp;&amp; <a href="../h_src/57503696.htm" class="macro">keyival</a>(<a href="../h_src/58097308.htm" class="localvar">n</a>) == <a href="../h_src/58097444.htm" class="localvar">key</a>)
+   743 :    return <a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58097308.htm" class="localvar">n</a>);  <a  class="comments">/* that's it */</a>
+   746 :    if (<a href="../h_src/58097172.htm" class="localvar">nx</a> == 0) break;
+   762 :    if (<a href="../h_src/57503560.htm" class="macro">keyisshrstr</a>(<a href="../h_src/58096764.htm" class="localvar">n</a>) &amp;&amp; <a href="../h_src/57619300.htm" class="macro">eqshrstr</a>(<a href="../h_src/57503424.htm" class="macro">keystrval</a>(<a href="../h_src/58096764.htm" class="localvar">n</a>), <a href="../h_src/58096900.htm" class="localvar">key</a>))
+   763 :    return <a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58096764.htm" class="localvar">n</a>);  <a  class="comments">/* that's it */</a>
+   766 :    if (<a href="../h_src/58096628.htm" class="localvar">nx</a> == 0)
+   767 :    return &amp;<a href="../h_src/58120156.htm" class="variable">absentkey</a>;  <a  class="comments">/* not found */</a>
+   775 :    if (<a href="../h_src/58096356.htm" class="localvar">key</a>-&gt;<a href="../h_src/57523620.htm" class="variable">tt</a> == <a href="../h_src/57525184.htm" class="macro">LUA_VSHRSTR</a>)
+   776 :    return <a href="../h_src/57616920.htm" class="function">luaH_getshortstr</a>(<a href="../h_src/58096492.htm" class="localvar">t</a>, <a href="../h_src/58096356.htm" class="localvar">key</a>);
+   795 :    if (<a href="../h_src/57611208.htm" class="function">luaV_flttointeger</a>(<a href="../h_src/57526272.htm" class="macro">fltvalue</a>(<a href="../h_src/58095676.htm" class="localvar">key</a>), &amp;<a href="../h_src/58095540.htm" class="localvar">k</a>, <a href="../h_src/57613520.htm" class="variable">F2Ieq</a>)) <a  class="comments">/* integral index? */</a>
+   796 :    return <a href="../h_src/57617056.htm" class="function">luaH_getint</a>(<a href="../h_src/58095812.htm" class="localvar">t</a>, <a href="../h_src/58095540.htm" class="localvar">k</a>);  <a  class="comments">/* use specialized version */</a>
+   813 :    if (<a href="../h_src/57530760.htm" class="macro">isabstkey</a>(<a href="../h_src/58094996.htm" class="localvar">slot</a>))
+   814 :    <a href="../h_src/57616716.htm" class="function">luaH_newkey</a>(<a href="../h_src/58095404.htm" class="localvar">L</a>, <a href="../h_src/58095268.htm" class="localvar">t</a>, <a href="../h_src/58095132.htm" class="localvar">key</a>, <a href="../h_src/58094860.htm" class="localvar">value</a>);
+   857 :    if (<a href="../h_src/58092412.htm" class="localvar">j</a> == 0) <a href="../h_src/58092412.htm" class="localvar">j</a>++;  <a  class="comments">/* the caller ensures 'j + 1' is present */</a>
+   860 :    if (<a href="../h_src/58092412.htm" class="localvar">j</a> &lt;= <a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/57450100.htm" class="macro">LUA_MAXINTEGER</a>) / 2)
+   861 :    <a href="../h_src/58092412.htm" class="localvar">j</a> *= 2;
+   864 :    if (<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617056.htm" class="function">luaH_getint</a>(<a href="../h_src/58092548.htm" class="localvar">t</a>, <a href="../h_src/58092412.htm" class="localvar">j</a>)))  <a  class="comments">/* t[j] not present? */</a>
+   865 :    break;  <a  class="comments">/* 'j' now is an absent index */</a>
+   866 :    else  <a  class="comments">/* weird case */</a>
+   867 :    return <a href="../h_src/58092412.htm" class="localvar">j</a>;  <a  class="comments">/* well, max integer is a boundary... */</a>
+   873 :    if (<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617056.htm" class="function">luaH_getint</a>(<a href="../h_src/58092548.htm" class="localvar">t</a>, <a href="../h_src/58092140.htm" class="localvar">m</a>))) <a href="../h_src/58092412.htm" class="localvar">j</a> = <a href="../h_src/58092140.htm" class="localvar">m</a>;
+   874 :    else <a href="../h_src/58092276.htm" class="localvar">i</a> = <a href="../h_src/58092140.htm" class="localvar">m</a>;
+   884 :    if (<a href="../h_src/57530488.htm" class="macro">isempty</a>(&amp;<a href="../h_src/58091868.htm" class="localvar">array</a>[<a href="../h_src/58091460.htm" class="localvar">m</a> - 1])) <a href="../h_src/58091596.htm" class="localvar">j</a> = <a href="../h_src/58091460.htm" class="localvar">m</a>;
+   885 :    else <a href="../h_src/58091732.htm" class="localvar">i</a> = <a href="../h_src/58091460.htm" class="localvar">m</a>;
+   948 :    if (<a href="../h_src/57530488.htm" class="macro">isempty</a>(&amp;<a href="../h_src/58091324.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58091188.htm" class="localvar">limit</a>]))  <a  class="comments">/* 'limit + 1' is empty? */</a>
+   949 :    return <a href="../h_src/58091188.htm" class="localvar">limit</a>;  <a  class="comments">/* this is the boundary */</a>
+   964 :    if (<a href="../h_src/57617464.htm" class="macro">isdummy</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>) || <a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617056.htm" class="function">luaH_getint</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>, <a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57442076.htm" class="type">lua_Integer</a>, <a href="../h_src/58091188.htm" class="localvar">limit</a> + 1))))
+   965 :    return <a href="../h_src/58091188.htm" class="localvar">limit</a>;  <a  class="comments">/* 'limit + 1' is absent */</a>
+   966 :    else  <a  class="comments">/* 'limit + 1' is also present */</a>
+   967 :    return <a href="../h_aa/58090780.htm" class="libfunc">hash_search</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>, <a href="../h_src/58091188.htm" class="localvar">limit</a>);
+</pre>
+<pre>
+</pre>
+<h5>Unterminated Case</h5>
+<pre>
+   795 :    if (<a href="../h_src/57611208.htm" class="function">luaV_flttointeger</a>(<a href="../h_src/57526272.htm" class="macro">fltvalue</a>(<a href="../h_src/58095676.htm" class="localvar">key</a>), &amp;<a href="../h_src/58095540.htm" class="localvar">k</a>, <a href="../h_src/57613520.htm" class="variable">F2Ieq</a>)) <a  class="comments">/* integral index? */</a>
+</pre>
+<pre>
+</pre>
+<h5>Jump Statement</h5>
+<pre>
+   442 :    break;  <a  class="comments">/* no more elements to count */</a>
+   746 :    if (<a href="../h_src/58097172.htm" class="localvar">nx</a> == 0) break;
+   865 :    break;  <a  class="comments">/* 'j' now is an absent index */</a>
+</pre>
+<pre>
+</pre>
+<h5>Return Ignored</h5>
+<pre>
+   605 :    <a href="../h_src/58115260.htm" class="function">setlimittosize</a>(<a href="../h_src/58101524.htm" class="localvar">t</a>);
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+   134 :    <a href="../h_src/58119272.htm" class="localvar">n</a> = <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/58118864.htm" class="libfunc">frexp</a>)(<a href="../h_src/58119272.htm" class="localvar">n</a>, &amp;<a href="../h_src/58119136.htm" class="localvar">i</a>) * -<a href="../h_src/57547352.htm" class="macro">cast_num</a>(INT_MIN);
+   340 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57530760.htm" class="macro">isabstkey</a>(<a href="../h_src/58112948.htm" class="localvar">n</a>)))
+   574 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/58102476.htm" class="localvar">newarray</a> == NULL &amp;&amp; <a href="../h_src/58103156.htm" class="localvar">newasize</a> &gt; 0)) {  <a  class="comments">/* allocation failed? */</a>
+   668 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57531168.htm" class="macro">ttisnil</a>(<a href="../h_src/58099348.htm" class="localvar">key</a>)))
+   677 :    else if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57538784.htm" class="macro">luai_numisnan</a>(<a href="../h_src/58098804.htm" class="localvar">f</a>)))
+   967 :    return <a href="../h_aa/58090780.htm" class="libfunc">hash_search</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>, <a href="../h_src/58091188.htm" class="localvar">limit</a>);
+</pre>
+<pre>
+</pre>
+<h5>Missing Return Type</h5>
+<pre>
+   855 :    static <a href="../h_src/57438132.htm" class="function">lua_Unsigned</a> hash_search (<a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58092548.htm" class="localvar">t</a>, lua_Unsigned <a href="../h_src/58092412.htm" class="localvar">j</a>) {
+</pre>
+<pre>
+
+</pre>
+</body>
+</html>
+

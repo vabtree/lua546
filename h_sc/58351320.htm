@@ -1,0 +1,357 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lauxlib.c</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58351320.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/58351320.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/58351320.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/58351320.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_uf/58351320.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_df/58351320.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/58351320.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/58351320.htm" class="file" target="_self">Source Code</a></li>
+<li id="current"><a href="../h_sc/58351320.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>200</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>9</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>213</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Number of Built-In Operators</h5>
+<pre>
+   140 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/58347376.htm" class="localvar">b</a>, '\<a href="../h_src/57415080.htm" class="variable">n</a>');
+</pre>
+<pre>
+</pre>
+<h5>Unclear Subexpression</h5>
+<pre>
+   105 :    else if (*<a href="../h_src/58348872.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423648.htm" class="variable">namewhat</a> != '\0')  <a  class="comments">/* is there a name from code? */</a>
+   107 :    else if (*<a href="../h_src/58348872.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423580.htm" class="variable">what</a> == 'm')  <a  class="comments">/* main? */</a>
+   109 :    else if (*<a href="../h_src/58348872.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423580.htm" class="variable">what</a> != 'C')  <a  class="comments">/* for Lua functions, use &lt;file:line&gt; */</a>
+   683 :    <a href="../h_src/58328268.htm" class="localvar">ref</a> = (int)<a href="../h_src/57592916.htm" class="function">lua_rawlen</a>(<a href="../h_src/58328540.htm" class="localvar">L</a>, <a href="../h_src/58328404.htm" class="localvar">t</a>) + 1;  <a  class="comments">/* get a new reference */</a>
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+   140 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/58347376.htm" class="localvar">b</a>, '\<a href="../h_src/57415080.htm" class="variable">n</a>');
+   413 :    *<a href="../h_src/58338196.htm" class="localvar">len</a> = (<a href="../h_src/58338332.htm" class="localvar">def</a> ? <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/58338332.htm" class="localvar">def</a>) : 0);
+   494 :    static const <a href="../h_src/57420996.htm" class="type">luaL_Reg</a> <a href="../h_src/58333912.htm" class="variable">boxmt</a>[] = {  <a  class="comments">/* box metamethods */</a>
+   495 :    {&quot;__gc&quot;, <a href="../h_src/58334252.htm" class="function">boxgc</a>},
+   496 :    {&quot;__close&quot;, <a href="../h_src/58334252.htm" class="function">boxgc</a>},
+   634 :    <a href="../h_src/58329220.htm" class="localvar">B</a>-&gt;<a href="../h_src/57415148.htm" class="variable">size</a> = <a href="../h_src/57447244.htm" class="macro">LUAL_BUFFERSIZE</a>;
+   720 :    *<a href="../h_src/58326976.htm" class="localvar">size</a> = <a href="../h_src/58326772.htm" class="localvar">lf</a>-&gt;n;  <a  class="comments">/* return them (chars already in buffer) */</a>
+   721 :    <a href="../h_src/58326772.htm" class="localvar">lf</a>-&gt;n = 0;  <a  class="comments">/* no more pre-read characters */</a>
+   728 :    *<a href="../h_src/58326976.htm" class="localvar">size</a> = <a href="../h_aa/58326568.htm" class="libfunc">fread</a>(<a href="../h_src/58326772.htm" class="localvar">lf</a>-&gt;<a href="../h_src/58327520.htm" class="variable">buff</a>, 1, sizeof(<a href="../h_src/58326772.htm" class="localvar">lf</a>-&gt;<a href="../h_src/58327520.htm" class="variable">buff</a>), <a href="../h_src/58326772.htm" class="localvar">lf</a>-&gt;f);  <a  class="comments">/* read block */</a>
+   786 :    <a href="../h_src/58325140.htm" class="localvar">lf</a>.f = stdin;
+   790 :    <a href="../h_src/58325140.htm" class="localvar">lf</a>.f = <a href="../h_aa/58324460.htm" class="libfunc">fopen</a>(<a href="../h_src/58325412.htm" class="localvar">filename</a>, &quot;r&quot;);
+   793 :    <a href="../h_src/58325140.htm" class="localvar">lf</a>.n = 0;
+   797 :    <a href="../h_src/58325140.htm" class="localvar">lf</a>.n = 0;  <a  class="comments">/* remove possible newline */</a>
+   799 :    <a href="../h_src/58325140.htm" class="localvar">lf</a>.f = <a href="../h_aa/58324324.htm" class="libfunc">freopen</a>(<a href="../h_src/58325412.htm" class="localvar">filename</a>, &quot;rb&quot;, <a href="../h_src/58325140.htm" class="localvar">lf</a>.f);  <a  class="comments">/* reopen in binary mode */</a>
+   805 :    <a href="../h_src/58325140.htm" class="localvar">lf</a>.<a href="../h_src/58327520.htm" class="variable">buff</a>[<a href="../h_src/58325140.htm" class="localvar">lf</a>.n++] = <a href="../h_src/58324732.htm" class="localvar">c</a>;  <a  class="comments">/* 'c' is the first character of the stream */</a>
+   899 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, &quot;%I&quot;, (<a href="../h_src/57450916.htm" class="macro">LUAI_UACINT</a>)<a href="../h_src/57429428.htm" class="macro">lua_tointeger</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, <a href="../h_src/58320312.htm" class="localvar">idx</a>));
+   998 :    while ((<a href="../h_src/58317728.htm" class="localvar">wild</a> = <a href="../h_aa/58317456.htm" class="libfunc">strstr</a>(<a href="../h_src/58318136.htm" class="localvar">s</a>, <a href="../h_src/58318000.htm" class="localvar">p</a>)) != NULL) {
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+    53 :    if (<a href="../h_src/58350028.htm" class="localvar">level</a> == 0 || !<a href="../h_src/57428612.htm" class="macro">lua_istable</a>(<a href="../h_src/58350300.htm" class="localvar">L</a>, -1))
+    54 :    return 0;  <a  class="comments">/* not found */</a>
+   105 :    else if (*<a href="../h_src/58348872.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423648.htm" class="variable">namewhat</a> != '\0')  <a  class="comments">/* is there a name from code? */</a>
+   106 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58349008.htm" class="localvar">L</a>, &quot;%s '%s'&quot;, <a href="../h_src/58348872.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423648.htm" class="variable">namewhat</a>, <a href="../h_src/58348872.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423716.htm" class="variable">name</a>);  <a  class="comments">/* use it */</a>
+   107 :    else if (*<a href="../h_src/58348872.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423580.htm" class="variable">what</a> == 'm')  <a  class="comments">/* main? */</a>
+   108 :    <a href="../h_src/57427660.htm" class="macro">lua_pushliteral</a>(<a href="../h_src/58349008.htm" class="localvar">L</a>, &quot;main chunk&quot;);
+   109 :    else if (*<a href="../h_src/58348872.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423580.htm" class="variable">what</a> != 'C')  <a  class="comments">/* for Lua functions, use &lt;file:line&gt; */</a>
+   110 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58349008.htm" class="localvar">L</a>, &quot;function &lt;%s:%d&gt;&quot;, <a href="../h_src/58348872.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57422764.htm" class="variable">short_src</a>, <a href="../h_src/58348872.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423308.htm" class="variable">linedefined</a>);
+   111 :    else  <a  class="comments">/* nothing left... */</a>
+   112 :    <a href="../h_src/57427660.htm" class="macro">lua_pushliteral</a>(<a href="../h_src/58349008.htm" class="localvar">L</a>, &quot;?&quot;);
+   124 :    if (<a href="../h_src/57424668.htm" class="function">lua_getstack</a>(<a href="../h_src/58348600.htm" class="localvar">L</a>, <a href="../h_src/58348056.htm" class="localvar">m</a>, &amp;<a href="../h_src/58348464.htm" class="localvar">ar</a>)) <a href="../h_src/58348328.htm" class="localvar">li</a> = <a href="../h_src/58348056.htm" class="localvar">m</a> + 1;
+   125 :    else <a href="../h_src/58348192.htm" class="localvar">le</a> = <a href="../h_src/58348056.htm" class="localvar">m</a>;
+   152 :    if (<a href="../h_src/58347240.htm" class="localvar">ar</a>.<a href="../h_src/57423376.htm" class="variable">currentline</a> &lt;= 0)
+   153 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58347920.htm" class="localvar">L</a>, &quot;\n\t%s: in &quot;, <a href="../h_src/58347240.htm" class="localvar">ar</a>.<a href="../h_src/57422764.htm" class="variable">short_src</a>);
+   154 :    else
+   155 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58347920.htm" class="localvar">L</a>, &quot;\n\t%s:%d: in &quot;, <a href="../h_src/58347240.htm" class="localvar">ar</a>.<a href="../h_src/57422764.htm" class="variable">short_src</a>, <a href="../h_src/58347240.htm" class="localvar">ar</a>.<a href="../h_src/57423376.htm" class="variable">currentline</a>);
+   159 :    if (<a href="../h_src/58347240.htm" class="localvar">ar</a>.<a href="../h_src/57422968.htm" class="variable">istailcall</a>)
+   160 :    <a href="../h_src/57413448.htm" class="function">luaL_addstring</a>(&amp;<a href="../h_src/58347376.htm" class="localvar">b</a>, &quot;\n\t(...tail calls...)&quot;);
+   177 :    if (!<a href="../h_src/57424668.htm" class="function">lua_getstack</a>(<a href="../h_src/58346696.htm" class="localvar">L</a>, 0, &amp;<a href="../h_src/58346288.htm" class="localvar">ar</a>))  <a  class="comments">/* no stack frame? */</a>
+   178 :    return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/58346696.htm" class="localvar">L</a>, &quot;bad argument #%d (%s)&quot;, <a href="../h_src/58346560.htm" class="localvar">arg</a>, <a href="../h_src/58346424.htm" class="localvar">extramsg</a>);
+   182 :    if (<a href="../h_src/58346560.htm" class="localvar">arg</a> == 0)  <a  class="comments">/* error is in the self argument itself? */</a>
+   183 :    return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/58346696.htm" class="localvar">L</a>, &quot;calling '%s' on bad self (%s)&quot;,
+   184 :    <a href="../h_src/58346288.htm" class="localvar">ar</a>.<a href="../h_src/57423716.htm" class="variable">name</a>, <a href="../h_src/58346424.htm" class="localvar">extramsg</a>);
+   186 :    if (<a href="../h_src/58346288.htm" class="localvar">ar</a>.<a href="../h_src/57423716.htm" class="variable">name</a> == NULL)
+   187 :    <a href="../h_src/58346288.htm" class="localvar">ar</a>.<a href="../h_src/57423716.htm" class="variable">name</a> = (<a href="../h_src/58349892.htm" class="function">pushglobalfuncname</a>(<a href="../h_src/58346696.htm" class="localvar">L</a>, &amp;<a href="../h_src/58346288.htm" class="localvar">ar</a>)) ? <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/58346696.htm" class="localvar">L</a>, -1) : &quot;?&quot;;
+   196 :    if (<a href="../h_src/57420588.htm" class="function">luaL_getmetafield</a>(<a href="../h_src/58346152.htm" class="localvar">L</a>, <a href="../h_src/58346016.htm" class="localvar">arg</a>, &quot;__name&quot;) == <a href="../h_src/57443504.htm" class="macro">LUA_TSTRING</a>)
+   197 :    <a href="../h_src/58345608.htm" class="localvar">typearg</a> = <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/58346152.htm" class="localvar">L</a>, -1);  <a  class="comments">/* use the given type name */</a>
+   198 :    else if (<a href="../h_src/57438540.htm" class="function">lua_type</a>(<a href="../h_src/58346152.htm" class="localvar">L</a>, <a href="../h_src/58346016.htm" class="localvar">arg</a>) == <a href="../h_src/57443776.htm" class="macro">LUA_TLIGHTUSERDATA</a>)
+   199 :    <a href="../h_src/58345608.htm" class="localvar">typearg</a> = &quot;light userdata&quot;;  <a  class="comments">/* special name for messages */</a>
+   200 :    else
+   201 :    <a href="../h_src/58345608.htm" class="localvar">typearg</a> = <a href="../h_src/57416712.htm" class="macro">luaL_typename</a>(<a href="../h_src/58346152.htm" class="localvar">L</a>, <a href="../h_src/58346016.htm" class="localvar">arg</a>);  <a  class="comments">/* standard name */</a>
+   253 :    if (<a href="../h_src/58343704.htm" class="localvar">fname</a>)
+   254 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58343976.htm" class="localvar">L</a>, &quot;%s: %s&quot;, <a href="../h_src/58343704.htm" class="localvar">fname</a>, <a href="../h_aa/58343432.htm" class="libfunc">strerror</a>(<a href="../h_src/58343568.htm" class="localvar">en</a>));
+   255 :    else
+   256 :    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/58343976.htm" class="localvar">L</a>, <a href="../h_aa/58343432.htm" class="libfunc">strerror</a>(<a href="../h_src/58343568.htm" class="localvar">en</a>));
+   286 :    if (<a href="../h_src/58342956.htm" class="localvar">stat</a> != 0 &amp;&amp; errno != 0)  <a  class="comments">/* error with an 'errno'? */</a>
+   287 :    return <a href="../h_src/57419092.htm" class="function">luaL_fileresult</a>(<a href="../h_src/58343092.htm" class="localvar">L</a>, 0, NULL);
+   291 :    if (*<a href="../h_src/58342820.htm" class="localvar">what</a> == 'e' &amp;&amp; <a href="../h_src/58342956.htm" class="localvar">stat</a> == 0)  <a  class="comments">/* successful termination? */</a>
+   292 :    <a href="../h_src/57434596.htm" class="function">lua_pushboolean</a>(<a href="../h_src/58343092.htm" class="localvar">L</a>, 1);
+   293 :    else
+   294 :    <a href="../h_src/57415760.htm" class="macro">luaL_pushfail</a>(<a href="../h_src/58343092.htm" class="localvar">L</a>);
+   312 :    if (<a href="../h_src/57416304.htm" class="macro">luaL_getmetatable</a>(<a href="../h_src/58342684.htm" class="localvar">L</a>, <a href="../h_src/58342548.htm" class="localvar">tname</a>) != <a href="../h_src/57444048.htm" class="macro">LUA_TNIL</a>)  <a  class="comments">/* name already in use? */</a>
+   313 :    return 0;  <a  class="comments">/* leave previous value on top, but return 0 */</a>
+   335 :    if (!<a href="../h_src/57435412.htm" class="function">lua_rawequal</a>(<a href="../h_src/58342140.htm" class="localvar">L</a>, -1, -2))  <a  class="comments">/* not the same? */</a>
+   336 :    <a href="../h_src/58341732.htm" class="localvar">p</a> = NULL;  <a  class="comments">/* value is a userdata with wrong metatable */</a>
+   366 :    if (<a href="../h_aa/57564488.htm" class="libfunc">strcmp</a>(<a href="../h_src/58340644.htm" class="localvar">lst</a>[<a href="../h_src/58340372.htm" class="localvar">i</a>], <a href="../h_src/58340508.htm" class="localvar">name</a>) == 0)
+   367 :    return <a href="../h_src/58340372.htm" class="localvar">i</a>;
+   365 :    for (<a href="../h_src/58340372.htm" class="localvar">i</a>=0; <a href="../h_src/58340644.htm" class="localvar">lst</a>[<a href="../h_src/58340372.htm" class="localvar">i</a>]; <a href="../h_src/58340372.htm" class="localvar">i</a>++)
+   366 :    if (<a href="../h_aa/57564488.htm" class="libfunc">strcmp</a>(<a href="../h_src/58340644.htm" class="localvar">lst</a>[<a href="../h_src/58340372.htm" class="localvar">i</a>], <a href="../h_src/58340508.htm" class="localvar">name</a>) == 0)
+   367 :    return <a href="../h_src/58340372.htm" class="localvar">i</a>;
+   368 :    return <a href="../h_src/57420384.htm" class="function">luaL_argerror</a>(<a href="../h_src/58341052.htm" class="localvar">L</a>, <a href="../h_src/58340916.htm" class="localvar">arg</a>,
+   382 :    if (<a href="../h_src/58339964.htm" class="localvar">msg</a>)
+   383 :    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/58340236.htm" class="localvar">L</a>, &quot;stack overflow (%s)&quot;, <a href="../h_src/58339964.htm" class="localvar">msg</a>);
+   384 :    else
+   385 :    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/58340236.htm" class="localvar">L</a>, &quot;stack overflow&quot;);
+   391 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57438540.htm" class="function">lua_type</a>(<a href="../h_src/58339828.htm" class="localvar">L</a>, <a href="../h_src/58339692.htm" class="localvar">arg</a>) != <a href="../h_src/58339556.htm" class="localvar">t</a>))
+   392 :    <a href="../h_src/58345472.htm" class="function">tag_error</a>(<a href="../h_src/58339828.htm" class="localvar">L</a>, <a href="../h_src/58339692.htm" class="localvar">arg</a>, <a href="../h_src/58339556.htm" class="localvar">t</a>);
+   397 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57438540.htm" class="function">lua_type</a>(<a href="../h_src/58339420.htm" class="localvar">L</a>, <a href="../h_src/58339284.htm" class="localvar">arg</a>) == <a href="../h_src/57444184.htm" class="macro">LUA_TNONE</a>))
+   398 :    <a href="../h_src/57420384.htm" class="function">luaL_argerror</a>(<a href="../h_src/58339420.htm" class="localvar">L</a>, <a href="../h_src/58339284.htm" class="localvar">arg</a>, &quot;value expected&quot;);
+   404 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(!<a href="../h_src/58338740.htm" class="localvar">s</a>)) <a href="../h_src/58345472.htm" class="function">tag_error</a>(<a href="../h_src/58339148.htm" class="localvar">L</a>, <a href="../h_src/58339012.htm" class="localvar">arg</a>, <a href="../h_src/57443504.htm" class="macro">LUA_TSTRING</a>);
+   412 :    if (<a href="../h_src/58338196.htm" class="localvar">len</a>)
+   413 :    *<a href="../h_src/58338196.htm" class="localvar">len</a> = (<a href="../h_src/58338332.htm" class="localvar">def</a> ? <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/58338332.htm" class="localvar">def</a>) : 0);
+   416 :    else return <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/58338604.htm" class="localvar">L</a>, <a href="../h_src/58338468.htm" class="localvar">arg</a>, <a href="../h_src/58338196.htm" class="localvar">len</a>);
+   423 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(!<a href="../h_src/58337788.htm" class="localvar">isnum</a>))
+   424 :    <a href="../h_src/58345472.htm" class="function">tag_error</a>(<a href="../h_src/58338060.htm" class="localvar">L</a>, <a href="../h_src/58337924.htm" class="localvar">arg</a>, <a href="../h_src/57443640.htm" class="macro">LUA_TNUMBER</a>);
+   435 :    if (<a href="../h_src/57438880.htm" class="function">lua_isnumber</a>(<a href="../h_src/58336972.htm" class="localvar">L</a>, <a href="../h_src/58336836.htm" class="localvar">arg</a>))
+   436 :    <a href="../h_src/57420384.htm" class="function">luaL_argerror</a>(<a href="../h_src/58336972.htm" class="localvar">L</a>, <a href="../h_src/58336836.htm" class="localvar">arg</a>, &quot;number has no integer representation&quot;);
+   437 :    else
+   438 :    <a href="../h_src/58345472.htm" class="function">tag_error</a>(<a href="../h_src/58336972.htm" class="localvar">L</a>, <a href="../h_src/58336836.htm" class="localvar">arg</a>, <a href="../h_src/57443640.htm" class="macro">LUA_TNUMBER</a>);
+   505 :    if (<a href="../h_src/57419636.htm" class="function">luaL_newmetatable</a>(<a href="../h_src/58333708.htm" class="localvar">L</a>, &quot;_UBOX*&quot;))  <a  class="comments">/* creating metatable? */</a>
+   506 :    <a href="../h_src/57417868.htm" class="function">luaL_setfuncs</a>(<a href="../h_src/58333708.htm" class="localvar">L</a>, <a href="../h_src/58333912.htm" class="variable">boxmt</a>, 0);  <a  class="comments">/* set its metamethods */</a>
+   534 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/58350844.htm" class="macro">MAX_SIZET</a> - sz &lt; B-&gt;n))  <a  class="comments">/* overflow in (B-&gt;n + sz)? */</a><a href="../h_src/58333028.htm" class="localvar">B</a>-&gt;<a href="../h_src/57415080.htm" class="variable">n</a> + <a href="../h_src/58332892.htm" class="localvar">sz</a>)? */
+   535 :    return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/58333028.htm" class="localvar">B</a>-&gt;<a href="../h_src/57415012.htm" class="variable">L</a>, &quot;buffer too large&quot;);
+   536 :    if (<a href="../h_src/58332756.htm" class="localvar">newsize</a> &lt; <a href="../h_src/58333028.htm" class="localvar">B</a>-&gt;<a href="../h_src/57415080.htm" class="variable">n</a> + <a href="../h_src/58332892.htm" class="localvar">sz</a>)  <a  class="comments">/* not big enough? */</a>
+   537 :    <a href="../h_src/58332756.htm" class="localvar">newsize</a> = <a href="../h_src/58333028.htm" class="localvar">B</a>-&gt;<a href="../h_src/57415080.htm" class="variable">n</a> + <a href="../h_src/58332892.htm" class="localvar">sz</a>;
+   549 :    if (<a href="../h_src/58332484.htm" class="localvar">B</a>-&gt;<a href="../h_src/57415148.htm" class="variable">size</a> - <a href="../h_src/58332484.htm" class="localvar">B</a>-&gt;<a href="../h_src/57415080.htm" class="variable">n</a> &gt;= <a href="../h_src/58332348.htm" class="localvar">sz</a>)  <a  class="comments">/* enough space? */</a>
+   550 :    return <a href="../h_src/58332484.htm" class="localvar">B</a>-&gt;<a href="../h_src/57415216.htm" class="variable">b</a> + <a href="../h_src/58332484.htm" class="localvar">B</a>-&gt;<a href="../h_src/57415080.htm" class="variable">n</a>;
+   556 :    if (<a href="../h_src/58333436.htm" class="macro">buffonstack</a>(<a href="../h_src/58332484.htm" class="localvar">B</a>))  <a  class="comments">/* buffer already has a box? */</a>
+   557 :    <a href="../h_src/58331940.htm" class="localvar">newbuff</a> = (char *)<a href="../h_src/58335408.htm" class="function">resizebox</a>(<a href="../h_src/58332076.htm" class="localvar">L</a>, <a href="../h_src/58332212.htm" class="localvar">boxidx</a>, <a href="../h_src/58331804.htm" class="localvar">newsize</a>);  <a  class="comments">/* resize it */</a>
+   598 :    if (<a href="../h_src/58333436.htm" class="macro">buffonstack</a>(<a href="../h_src/58330580.htm" class="localvar">B</a>))
+   599 :    <a href="../h_src/57429768.htm" class="function">lua_closeslot</a>(<a href="../h_src/58330444.htm" class="localvar">L</a>, -2);  <a  class="comments">/* close the box */</a>
+   682 :    else  <a  class="comments">/* no free elements */</a>
+   683 :    <a href="../h_src/58328268.htm" class="localvar">ref</a> = (int)<a href="../h_src/57592916.htm" class="function">lua_rawlen</a>(<a href="../h_src/58328540.htm" class="localvar">L</a>, <a href="../h_src/58328404.htm" class="localvar">t</a>) + 1;  <a  class="comments">/* get a new reference */</a>
+   727 :    if (<a href="../h_aa/58326636.htm" class="libfunc">feof</a>(<a href="../h_src/58326772.htm" class="localvar">lf</a>-&gt;f)) return NULL;
+   791 :    if (<a href="../h_src/58325140.htm" class="localvar">lf</a>.f == NULL) return <a href="../h_src/58326500.htm" class="function">errfile</a>(<a href="../h_src/58325548.htm" class="localvar">L</a>, &quot;open&quot;, <a href="../h_src/58324596.htm" class="localvar">fnameindex</a>);
+   794 :    if (<a href="../h_aa/58324392.htm" class="libfunc">skipcomment</a>(<a href="../h_src/58325140.htm" class="localvar">lf</a>.f, &amp;<a href="../h_src/58324732.htm" class="localvar">c</a>))  <a  class="comments">/* read initial portion */</a>
+   795 :    <a href="../h_src/58325140.htm" class="localvar">lf</a>.<a href="../h_src/58327520.htm" class="variable">buff</a>[<a href="../h_src/58325140.htm" class="localvar">lf</a>.n++] = '\n';  <a  class="comments">/* add newline to correct line numbers */</a>
+   800 :    if (<a href="../h_src/58325140.htm" class="localvar">lf</a>.f == NULL) return <a href="../h_src/58326500.htm" class="function">errfile</a>(<a href="../h_src/58325548.htm" class="localvar">L</a>, &quot;reopen&quot;, <a href="../h_src/58324596.htm" class="localvar">fnameindex</a>);
+   804 :    if (<a href="../h_src/58324732.htm" class="localvar">c</a> != EOF)
+   805 :    <a href="../h_src/58325140.htm" class="localvar">lf</a>.<a href="../h_src/58327520.htm" class="variable">buff</a>[<a href="../h_src/58325140.htm" class="localvar">lf</a>.n++] = <a href="../h_src/58324732.htm" class="localvar">c</a>;  <a  class="comments">/* 'c' is the first character of the stream */</a>
+   808 :    if (<a href="../h_src/58325412.htm" class="localvar">filename</a>) <a href="../h_aa/58324188.htm" class="libfunc">fclose</a>(<a href="../h_src/58325140.htm" class="localvar">lf</a>.f);  <a  class="comments">/* close file (even in case of errors) */</a>
+   827 :    if (<a href="../h_src/58323168.htm" class="localvar">ls</a>-&gt;<a href="../h_src/58323916.htm" class="variable">size</a> == 0) return NULL;
+   852 :    if (!<a href="../h_src/57433780.htm" class="function">lua_getmetatable</a>(<a href="../h_src/58321944.htm" class="localvar">L</a>, <a href="../h_src/58321808.htm" class="localvar">obj</a>))  <a  class="comments">/* no metatable? */</a>
+   853 :    return <a href="../h_src/57444048.htm" class="macro">LUA_TNIL</a>;
+   858 :    if (<a href="../h_src/58321536.htm" class="localvar">tt</a> == <a href="../h_src/57444048.htm" class="macro">LUA_TNIL</a>)  <a  class="comments">/* is metafield nil? */</a>
+   859 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/58321944.htm" class="localvar">L</a>, 2);  <a  class="comments">/* remove metatable and metafield */</a>
+   860 :    else
+   861 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/58321944.htm" class="localvar">L</a>, -2);  <a  class="comments">/* remove only metatable */</a>
+   869 :    if (<a href="../h_src/57420588.htm" class="function">luaL_getmetafield</a>(<a href="../h_src/58321400.htm" class="localvar">L</a>, <a href="../h_src/58321264.htm" class="localvar">obj</a>, <a href="../h_src/58321128.htm" class="localvar">event</a>) == <a href="../h_src/57444048.htm" class="macro">LUA_TNIL</a>)  <a  class="comments">/* no metafield? */</a>
+   870 :    return 0;
+   882 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(!<a href="../h_src/58320584.htm" class="localvar">isnum</a>))
+   883 :    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/58320992.htm" class="localvar">L</a>, &quot;object length is not an integer&quot;);
+   892 :    if (!<a href="../h_src/57438812.htm" class="function">lua_isstring</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, -1))
+   893 :    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, &quot;'__tostring' must return a string&quot;);
+   898 :    if (<a href="../h_src/57438676.htm" class="function">lua_isinteger</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, <a href="../h_src/58320312.htm" class="localvar">idx</a>))
+   899 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, &quot;%I&quot;, (<a href="../h_src/57450916.htm" class="macro">LUAI_UACINT</a>)<a href="../h_src/57429428.htm" class="macro">lua_tointeger</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, <a href="../h_src/58320312.htm" class="localvar">idx</a>));
+   900 :    else
+   901 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, &quot;%f&quot;, (<a href="../h_src/57451732.htm" class="macro">LUAI_UACNUMBER</a>)<a href="../h_src/57429564.htm" class="macro">lua_tonumber</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, <a href="../h_src/58320312.htm" class="localvar">idx</a>));
+   918 :    if (<a href="../h_src/58320040.htm" class="localvar">tt</a> != <a href="../h_src/57444048.htm" class="macro">LUA_TNIL</a>)
+   919 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, -2);  <a  class="comments">/* remove '__name' */</a>
+   936 :    if (<a href="../h_src/58319632.htm" class="localvar">l</a>-&gt;<a href="../h_src/57421064.htm" class="variable">func</a> == NULL)  <a  class="comments">/* place holder? */</a>
+   937 :    <a href="../h_src/57434596.htm" class="function">lua_pushboolean</a>(<a href="../h_src/58319768.htm" class="localvar">L</a>, 0);
+   940 :    for (<a href="../h_src/58319360.htm" class="localvar">i</a> = 0; <a href="../h_src/58319360.htm" class="localvar">i</a> &lt; <a href="../h_src/58319496.htm" class="localvar">nup</a>; <a href="../h_src/58319360.htm" class="localvar">i</a>++)  <a  class="comments">/* copy upvalues to the top */</a>
+   941 :    <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/58319768.htm" class="localvar">L</a>, -<a href="../h_src/58319496.htm" class="localvar">nup</a>);
+   955 :    if (<a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/58319224.htm" class="localvar">L</a>, <a href="../h_src/58319088.htm" class="localvar">idx</a>, <a href="../h_src/58318952.htm" class="localvar">fname</a>) == <a href="../h_src/57443368.htm" class="macro">LUA_TTABLE</a>)
+   956 :    return 1;  <a  class="comments">/* table already there */</a>
+  1023 :    else
+  1024 :    return <a href="../h_aa/58315960.htm" class="libfunc">realloc</a>(<a href="../h_src/58316436.htm" class="localvar">ptr</a>, <a href="../h_src/58316164.htm" class="localvar">nsize</a>);
+  1030 :    if (<a href="../h_src/58315620.htm" class="localvar">msg</a> == NULL) <a href="../h_src/58315620.htm" class="localvar">msg</a> = &quot;error object is not a string&quot;;
+  1053 :    if (<a href="../h_src/58314668.htm" class="localvar">tocont</a> || *(<a href="../h_src/58314804.htm" class="localvar">message</a>++) != '@')  <a  class="comments">/* not a control message? */</a>
+  1054 :    return 0;
+  1056 :    if (<a href="../h_aa/57564488.htm" class="libfunc">strcmp</a>(<a href="../h_src/58314804.htm" class="localvar">message</a>, &quot;off&quot;) == 0)
+  1057 :    <a href="../h_src/57432080.htm" class="function">lua_setwarnf</a>(<a href="../h_src/58314940.htm" class="localvar">L</a>, <a href="../h_src/58315484.htm" class="function">warnfoff</a>, <a href="../h_src/58314940.htm" class="localvar">L</a>);  <a  class="comments">/* turn warnings off */</a>
+  1058 :    else if (<a href="../h_aa/57564488.htm" class="libfunc">strcmp</a>(<a href="../h_src/58314804.htm" class="localvar">message</a>, &quot;on&quot;) == 0)
+  1059 :    <a href="../h_src/57432080.htm" class="function">lua_setwarnf</a>(<a href="../h_src/58314940.htm" class="localvar">L</a>, <a href="../h_src/58315348.htm" class="function">warnfon</a>, <a href="../h_src/58314940.htm" class="localvar">L</a>);   <a  class="comments">/* turn warnings on */</a>
+  1077 :    if (<a href="../h_src/58313852.htm" class="localvar">tocont</a>)  <a  class="comments">/* not the last part? */</a>
+  1078 :    <a href="../h_src/57432080.htm" class="function">lua_setwarnf</a>(<a href="../h_src/58313716.htm" class="localvar">L</a>, <a href="../h_src/58315212.htm" class="function">warnfcont</a>, <a href="../h_src/58313716.htm" class="localvar">L</a>);  <a  class="comments">/* to be continued */</a>
+  1087 :    if (<a href="../h_src/58315076.htm" class="function">checkcontrol</a>((<a href="../h_src/57444252.htm" class="type">lua_State</a> *)<a href="../h_src/58313580.htm" class="localvar">ud</a>, <a href="../h_src/58313444.htm" class="localvar">message</a>, <a href="../h_src/58313308.htm" class="localvar">tocont</a>))  <a  class="comments">/* control message? */</a>
+  1088 :    return;  <a  class="comments">/* nothing else to be done */</a>
+  1106 :    if (<a href="../h_src/58312764.htm" class="localvar">sz</a> != <a href="../h_src/57420928.htm" class="macro">LUAL_NUMSIZES</a>)  <a  class="comments">/* check numeric types */</a>
+  1107 :    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/58313036.htm" class="localvar">L</a>, &quot;core and library have incompatible numeric types&quot;);
+  1108 :    else if (<a href="../h_src/58312628.htm" class="localvar">v</a> != <a href="../h_src/58312900.htm" class="localvar">ver</a>)
+  1109 :    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/58313036.htm" class="localvar">L</a>, &quot;version mismatch: app. needs %f, Lua core provides %f&quot;,
+  1110 :    (<a href="../h_src/57451732.htm" class="macro">LUAI_UACNUMBER</a>)<a href="../h_src/58312900.htm" class="localvar">ver</a>, (<a href="../h_src/57451732.htm" class="macro">LUAI_UACNUMBER</a>)<a href="../h_src/58312628.htm" class="localvar">v</a>);
+</pre>
+<pre>
+</pre>
+<h5>Return Ignored</h5>
+<pre>
+    64 :    <a href="../h_src/57427660.htm" class="macro">lua_pushliteral</a>(<a href="../h_src/58350300.htm" class="localvar">L</a>, &quot;.&quot;);  <a  class="comments">/* place '.' between the two names */</a>
+    81 :    <a href="../h_src/57424600.htm" class="function">lua_getinfo</a>(<a href="../h_src/58349756.htm" class="localvar">L</a>, &quot;f&quot;, <a href="../h_src/58349620.htm" class="localvar">ar</a>);  <a  class="comments">/* push function */</a>
+    82 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/58349756.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/57421540.htm" class="macro">LUA_LOADED_TABLE</a>);
+    86 :    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/58349756.htm" class="localvar">L</a>, <a href="../h_src/58349348.htm" class="localvar">name</a> + 3);  <a  class="comments">/* push name without prefix */</a>
+   102 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58349008.htm" class="localvar">L</a>, &quot;function '%s'&quot;, <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/58349008.htm" class="localvar">L</a>, -1));
+   106 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58349008.htm" class="localvar">L</a>, &quot;%s '%s'&quot;, <a href="../h_src/58348872.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423648.htm" class="variable">namewhat</a>, <a href="../h_src/58348872.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423716.htm" class="variable">name</a>);  <a  class="comments">/* use it */</a>
+   108 :    <a href="../h_src/57427660.htm" class="macro">lua_pushliteral</a>(<a href="../h_src/58349008.htm" class="localvar">L</a>, &quot;main chunk&quot;);
+   110 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58349008.htm" class="localvar">L</a>, &quot;function &lt;%s:%d&gt;&quot;, <a href="../h_src/58348872.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57422764.htm" class="variable">short_src</a>, <a href="../h_src/58348872.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423308.htm" class="variable">linedefined</a>);
+   112 :    <a href="../h_src/57427660.htm" class="macro">lua_pushliteral</a>(<a href="../h_src/58349008.htm" class="localvar">L</a>, &quot;?&quot;);
+   146 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58347920.htm" class="localvar">L</a>, &quot;\n\t...\t(skipping %d levels)&quot;, <a href="../h_src/58346832.htm" class="localvar">n</a>);
+   151 :    <a href="../h_src/57424600.htm" class="function">lua_getinfo</a>(<a href="../h_src/58347784.htm" class="localvar">L1</a>, &quot;Slnt&quot;, &amp;<a href="../h_src/58347240.htm" class="localvar">ar</a>);
+   153 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58347920.htm" class="localvar">L</a>, &quot;\n\t%s: in &quot;, <a href="../h_src/58347240.htm" class="localvar">ar</a>.<a href="../h_src/57422764.htm" class="variable">short_src</a>);
+   155 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58347920.htm" class="localvar">L</a>, &quot;\n\t%s:%d: in &quot;, <a href="../h_src/58347240.htm" class="localvar">ar</a>.<a href="../h_src/57422764.htm" class="variable">short_src</a>, <a href="../h_src/58347240.htm" class="localvar">ar</a>.<a href="../h_src/57423376.htm" class="variable">currentline</a>);
+   179 :    <a href="../h_src/57424600.htm" class="function">lua_getinfo</a>(<a href="../h_src/58346696.htm" class="localvar">L</a>, &quot;n&quot;, &amp;<a href="../h_src/58346288.htm" class="localvar">ar</a>);
+   208 :    <a href="../h_src/57420316.htm" class="function">luaL_typeerror</a>(<a href="../h_src/58345336.htm" class="localvar">L</a>, <a href="../h_src/58345200.htm" class="localvar">arg</a>, <a href="../h_src/57438472.htm" class="function">lua_typename</a>(<a href="../h_src/58345336.htm" class="localvar">L</a>, <a href="../h_src/58345064.htm" class="localvar">tag</a>));
+   219 :    <a href="../h_src/57424600.htm" class="function">lua_getinfo</a>(<a href="../h_src/58344928.htm" class="localvar">L</a>, &quot;Sl&quot;, &amp;<a href="../h_src/58344656.htm" class="localvar">ar</a>);  <a  class="comments">/* get info about it */</a>
+   221 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58344928.htm" class="localvar">L</a>, &quot;%s:%d: &quot;, <a href="../h_src/58344656.htm" class="localvar">ar</a>.<a href="../h_src/57422764.htm" class="variable">short_src</a>, <a href="../h_src/58344656.htm" class="localvar">ar</a>.<a href="../h_src/57423376.htm" class="variable">currentline</a>);
+   225 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58344928.htm" class="localvar">L</a>, &quot;&quot;);  <a  class="comments">/* else, no information available... */</a>
+   238 :    <a href="../h_src/57434936.htm" class="function">lua_pushvfstring</a>(<a href="../h_src/58344520.htm" class="localvar">L</a>, <a href="../h_src/58344384.htm" class="localvar">fmt</a>, <a href="../h_src/58344112.htm" class="localvar">argp</a>);
+   254 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58343976.htm" class="localvar">L</a>, &quot;%s: %s&quot;, <a href="../h_src/58343704.htm" class="localvar">fname</a>, <a href="../h_aa/58343432.htm" class="libfunc">strerror</a>(<a href="../h_src/58343568.htm" class="localvar">en</a>));
+   256 :    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/58343976.htm" class="localvar">L</a>, <a href="../h_aa/58343432.htm" class="libfunc">strerror</a>(<a href="../h_src/58343568.htm" class="localvar">en</a>));
+   295 :    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/58343092.htm" class="localvar">L</a>, <a href="../h_src/58342820.htm" class="localvar">what</a>);
+   316 :    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/58342684.htm" class="localvar">L</a>, <a href="../h_src/58342548.htm" class="localvar">tname</a>);
+   325 :    <a href="../h_src/57416304.htm" class="macro">luaL_getmetatable</a>(<a href="../h_src/58342412.htm" class="localvar">L</a>, <a href="../h_src/58342276.htm" class="localvar">tname</a>);
+   326 :    <a href="../h_src/57433168.htm" class="function">lua_setmetatable</a>(<a href="../h_src/58342412.htm" class="localvar">L</a>, -2);
+   334 :    <a href="../h_src/57416304.htm" class="macro">luaL_getmetatable</a>(<a href="../h_src/58342140.htm" class="localvar">L</a>, <a href="../h_src/58341868.htm" class="localvar">tname</a>);  <a  class="comments">/* get correct metatable */</a>
+   383 :    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/58340236.htm" class="localvar">L</a>, &quot;stack overflow (%s)&quot;, <a href="../h_src/58339964.htm" class="localvar">msg</a>);
+   385 :    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/58340236.htm" class="localvar">L</a>, &quot;stack overflow&quot;);
+   398 :    <a href="../h_src/57420384.htm" class="function">luaL_argerror</a>(<a href="../h_src/58339420.htm" class="localvar">L</a>, <a href="../h_src/58339284.htm" class="localvar">arg</a>, &quot;value expected&quot;);
+   436 :    <a href="../h_src/57420384.htm" class="function">luaL_argerror</a>(<a href="../h_src/58336972.htm" class="localvar">L</a>, <a href="../h_src/58336836.htm" class="localvar">arg</a>, &quot;number has no integer representation&quot;);
+   479 :    <a href="../h_src/57427660.htm" class="macro">lua_pushliteral</a>(<a href="../h_src/58335272.htm" class="localvar">L</a>, &quot;not enough memory&quot;);
+   480 :    <a href="../h_src/57430380.htm" class="function">lua_error</a>(<a href="../h_src/58335272.htm" class="localvar">L</a>);  <a  class="comments">/* raise a memory error */</a>
+   489 :    <a href="../h_src/58335408.htm" class="function">resizebox</a>(<a href="../h_src/58334116.htm" class="localvar">L</a>, 1, 0);
+   507 :    <a href="../h_src/57433168.htm" class="function">lua_setmetatable</a>(<a href="../h_src/58333708.htm" class="localvar">L</a>, -2);
+   597 :    <a href="../h_src/57435072.htm" class="function">lua_pushlstring</a>(<a href="../h_src/58330444.htm" class="localvar">L</a>, <a href="../h_src/58330580.htm" class="localvar">B</a>-&gt;<a href="../h_src/57415216.htm" class="variable">b</a>, <a href="../h_src/58330580.htm" class="localvar">B</a>-&gt;<a href="../h_src/57415080.htm" class="variable">n</a>);
+   679 :    <a href="../h_src/57434052.htm" class="function">lua_rawgeti</a>(<a href="../h_src/58328540.htm" class="localvar">L</a>, <a href="../h_src/58328404.htm" class="localvar">t</a>, <a href="../h_src/58328268.htm" class="localvar">ref</a>);  <a  class="comments">/* remove it from list */</a>
+   692 :    <a href="../h_src/57434052.htm" class="function">lua_rawgeti</a>(<a href="../h_src/58328132.htm" class="localvar">L</a>, <a href="../h_src/58327996.htm" class="localvar">t</a>, <a href="../h_src/58328676.htm" class="macro">freelist</a>);
+   737 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58326364.htm" class="localvar">L</a>, &quot;cannot %s %s: %s&quot;, <a href="../h_src/58326228.htm" class="localvar">what</a>, <a href="../h_src/58325820.htm" class="localvar">filename</a>, <a href="../h_src/58325956.htm" class="localvar">serr</a>);
+   785 :    <a href="../h_src/57427660.htm" class="macro">lua_pushliteral</a>(<a href="../h_src/58325548.htm" class="localvar">L</a>, &quot;=stdin&quot;);
+   789 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58325548.htm" class="localvar">L</a>, &quot;@%s&quot;, <a href="../h_src/58325412.htm" class="localvar">filename</a>);
+   856 :    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/58321944.htm" class="localvar">L</a>, <a href="../h_src/58321672.htm" class="localvar">event</a>);
+   883 :    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/58320992.htm" class="localvar">L</a>, &quot;object length is not an integer&quot;);
+   893 :    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, &quot;'__tostring' must return a string&quot;);
+   899 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, &quot;%I&quot;, (<a href="../h_src/57450916.htm" class="macro">LUAI_UACINT</a>)<a href="../h_src/57429428.htm" class="macro">lua_tointeger</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, <a href="../h_src/58320312.htm" class="localvar">idx</a>));
+   901 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, &quot;%f&quot;, (<a href="../h_src/57451732.htm" class="macro">LUAI_UACNUMBER</a>)<a href="../h_src/57429564.htm" class="macro">lua_tonumber</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, <a href="../h_src/58320312.htm" class="localvar">idx</a>));
+   908 :    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, (<a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, <a href="../h_src/58320312.htm" class="localvar">idx</a>) ? &quot;true&quot; : &quot;false&quot;));
+   911 :    <a href="../h_src/57427660.htm" class="macro">lua_pushliteral</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, &quot;nil&quot;);
+   917 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, &quot;%s: %p&quot;, <a href="../h_src/58319904.htm" class="localvar">kind</a>, <a href="../h_src/57437860.htm" class="function">lua_topointer</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, <a href="../h_src/58320312.htm" class="localvar">idx</a>));
+   976 :    <a href="../h_src/57417732.htm" class="function">luaL_getsubtable</a>(<a href="../h_src/58318816.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/57421540.htm" class="macro">LUA_LOADED_TABLE</a>);
+   977 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/58318816.htm" class="localvar">L</a>, -1, <a href="../h_src/58318680.htm" class="localvar">modname</a>);  <a  class="comments">/* LOADED[modname] */</a>
+   981 :    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/58318816.htm" class="localvar">L</a>, <a href="../h_src/58318680.htm" class="localvar">modname</a>);  <a  class="comments">/* argument to open function */</a>
+  1066 :    <a href="../h_src/58315076.htm" class="function">checkcontrol</a>((<a href="../h_src/57444252.htm" class="type">lua_State</a> *)<a href="../h_src/58314532.htm" class="localvar">ud</a>, <a href="../h_src/58314396.htm" class="localvar">message</a>, <a href="../h_src/58314260.htm" class="localvar">tocont</a>);
+  1097 :    <a href="../h_src/57439560.htm" class="function">lua_atpanic</a>(<a href="../h_src/58313172.htm" class="localvar">L</a>, &amp;<a href="../h_src/58315892.htm" class="function">panic</a>);
+  1107 :    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/58313036.htm" class="localvar">L</a>, &quot;core and library have incompatible numeric types&quot;);
+  1109 :    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/58313036.htm" class="localvar">L</a>, &quot;version mismatch: app. needs %f, Lua core provides %f&quot;,
+  1110 :    (<a href="../h_src/57451732.htm" class="macro">LUAI_UACNUMBER</a>)<a href="../h_src/58312900.htm" class="localvar">ver</a>, (<a href="../h_src/57451732.htm" class="macro">LUAI_UACNUMBER</a>)<a href="../h_src/58312628.htm" class="localvar">v</a>);
+</pre>
+<pre>
+</pre>
+<h5>Potential Static Function</h5>
+<pre>
+   843 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int <a href="../h_src/57418276.htm" class="function">luaL_loadstring</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58322216.htm" class="localvar">L</a>, const char *<a href="../h_src/58322080.htm" class="localvar">s</a>) {
+   689 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void <a href="../h_src/57418616.htm" class="function">luaL_unref</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58328132.htm" class="localvar">L</a>, int <a href="../h_src/58327996.htm" class="localvar">t</a>, int <a href="../h_src/58327860.htm" class="localvar">ref</a>) {
+   661 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int <a href="../h_src/57418684.htm" class="function">luaL_ref</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58328540.htm" class="localvar">L</a>, int <a href="../h_src/58328404.htm" class="localvar">t</a>) {
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+    85 :    if (<a href="../h_aa/58349212.htm" class="libfunc">strncmp</a>(<a href="../h_src/58349348.htm" class="localvar">name</a>, <a href="../h_src/57422016.htm" class="macro">LUA_GNAME</a> &quot;.&quot;, 3) == 0) {  <a  class="comments">/* name start with '_G.'? */</a>
+   180 :    if (<a href="../h_aa/57564488.htm" class="libfunc">strcmp</a>(<a href="../h_src/58346288.htm" class="localvar">ar</a>.<a href="../h_src/57423648.htm" class="variable">namewhat</a>, &quot;method&quot;) == 0) {
+   236 :    va_start(<a href="../h_src/58344112.htm" class="localvar">argp</a>, <a href="../h_src/58344384.htm" class="localvar">fmt</a>);
+   239 :    va_end(<a href="../h_src/58344112.htm" class="localvar">argp</a>);
+   254 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58343976.htm" class="localvar">L</a>, &quot;%s: %s&quot;, <a href="../h_src/58343704.htm" class="localvar">fname</a>, <a href="../h_aa/58343432.htm" class="libfunc">strerror</a>(<a href="../h_src/58343568.htm" class="localvar">en</a>));
+   256 :    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/58343976.htm" class="localvar">L</a>, <a href="../h_aa/58343432.htm" class="libfunc">strerror</a>(<a href="../h_src/58343568.htm" class="localvar">en</a>));
+   347 :    <a href="../h_src/57417120.htm" class="macro">luaL_argexpected</a>(<a href="../h_src/58341596.htm" class="localvar">L</a>, <a href="../h_src/58341188.htm" class="localvar">p</a> != NULL, <a href="../h_src/58341460.htm" class="localvar">ud</a>, <a href="../h_src/58341324.htm" class="localvar">tname</a>);
+   366 :    if (<a href="../h_aa/57564488.htm" class="libfunc">strcmp</a>(<a href="../h_src/58340644.htm" class="localvar">lst</a>[<a href="../h_src/58340372.htm" class="localvar">i</a>], <a href="../h_src/58340508.htm" class="localvar">name</a>) == 0)
+   381 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(!<a href="../h_src/57439016.htm" class="function">lua_checkstack</a>(<a href="../h_src/58340236.htm" class="localvar">L</a>, <a href="../h_src/58340100.htm" class="localvar">space</a>))) {
+   391 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57438540.htm" class="function">lua_type</a>(<a href="../h_src/58339828.htm" class="localvar">L</a>, <a href="../h_src/58339692.htm" class="localvar">arg</a>) != <a href="../h_src/58339556.htm" class="localvar">t</a>))
+   397 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57438540.htm" class="function">lua_type</a>(<a href="../h_src/58339420.htm" class="localvar">L</a>, <a href="../h_src/58339284.htm" class="localvar">arg</a>) == <a href="../h_src/57444184.htm" class="macro">LUA_TNONE</a>))
+   404 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(!<a href="../h_src/58338740.htm" class="localvar">s</a>)) <a href="../h_src/58345472.htm" class="function">tag_error</a>(<a href="../h_src/58339148.htm" class="localvar">L</a>, <a href="../h_src/58339012.htm" class="localvar">arg</a>, <a href="../h_src/57443504.htm" class="macro">LUA_TSTRING</a>);
+   413 :    *<a href="../h_src/58338196.htm" class="localvar">len</a> = (<a href="../h_src/58338332.htm" class="localvar">def</a> ? <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/58338332.htm" class="localvar">def</a>) : 0);
+   423 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(!<a href="../h_src/58337788.htm" class="localvar">isnum</a>))
+   445 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(!<a href="../h_src/58336428.htm" class="localvar">isnum</a>)) {
+   478 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/58334388.htm" class="localvar">temp</a> == NULL &amp;&amp; <a href="../h_src/58335000.htm" class="localvar">newsize</a> &gt; 0)) {  <a  class="comments">/* allocation error? */</a>
+   534 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/58350844.htm" class="macro">MAX_SIZET</a> - sz &lt; B-&gt;n))  <a  class="comments">/* overflow in (B-&gt;n + sz)? */</a><a href="../h_src/58333028.htm" class="localvar">B</a>-&gt;<a href="../h_src/57415080.htm" class="variable">n</a> + <a href="../h_src/58332892.htm" class="localvar">sz</a>)? */
+   564 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/58331940.htm" class="localvar">newbuff</a>, <a href="../h_src/58332484.htm" class="localvar">B</a>-&gt;<a href="../h_src/57415216.htm" class="variable">b</a>, <a href="../h_src/58332484.htm" class="localvar">B</a>-&gt;<a href="../h_src/57415080.htm" class="variable">n</a> * sizeof(char));  <a  class="comments">/* copy original content */</a>
+   583 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/58330988.htm" class="localvar">b</a>, <a href="../h_src/58331260.htm" class="localvar">s</a>, <a href="../h_src/58331124.htm" class="localvar">l</a> * sizeof(char));
+   590 :    <a href="../h_src/57413516.htm" class="function">luaL_addlstring</a>(<a href="../h_src/58330852.htm" class="localvar">B</a>, <a href="../h_src/58330716.htm" class="localvar">s</a>, <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/58330716.htm" class="localvar">s</a>));
+   624 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/58329492.htm" class="localvar">b</a>, <a href="../h_src/58329628.htm" class="localvar">s</a>, <a href="../h_src/58329764.htm" class="localvar">len</a> * sizeof(char));
+   683 :    <a href="../h_src/58328268.htm" class="localvar">ref</a> = (int)<a href="../h_src/57592916.htm" class="function">lua_rawlen</a>(<a href="../h_src/58328540.htm" class="localvar">L</a>, <a href="../h_src/58328404.htm" class="localvar">t</a>) + 1;  <a  class="comments">/* get a new reference */</a>
+   727 :    if (<a href="../h_aa/58326636.htm" class="libfunc">feof</a>(<a href="../h_src/58326772.htm" class="localvar">lf</a>-&gt;f)) return NULL;
+   728 :    *<a href="../h_src/58326976.htm" class="localvar">size</a> = <a href="../h_aa/58326568.htm" class="libfunc">fread</a>(<a href="../h_src/58326772.htm" class="localvar">lf</a>-&gt;<a href="../h_src/58327520.htm" class="variable">buff</a>, 1, sizeof(<a href="../h_src/58326772.htm" class="localvar">lf</a>-&gt;<a href="../h_src/58327520.htm" class="variable">buff</a>), <a href="../h_src/58326772.htm" class="localvar">lf</a>-&gt;f);  <a  class="comments">/* read block */</a>
+   735 :    const char *<a href="../h_src/58325956.htm" class="localvar">serr</a> = <a href="../h_aa/58343432.htm" class="libfunc">strerror</a>(errno);
+   771 :    *<a href="../h_src/58325616.htm" class="variable">cp</a> = <a href="../h_aa/58325684.htm" class="libfunc">getc</a>(f);  <a  class="comments">/* next character after comment, if present */</a>
+   790 :    <a href="../h_src/58325140.htm" class="localvar">lf</a>.f = <a href="../h_aa/58324460.htm" class="libfunc">fopen</a>(<a href="../h_src/58325412.htm" class="localvar">filename</a>, &quot;r&quot;);
+   794 :    if (<a href="../h_aa/58324392.htm" class="libfunc">skipcomment</a>(<a href="../h_src/58325140.htm" class="localvar">lf</a>.f, &amp;<a href="../h_src/58324732.htm" class="localvar">c</a>))  <a  class="comments">/* read initial portion */</a>
+   799 :    <a href="../h_src/58325140.htm" class="localvar">lf</a>.f = <a href="../h_aa/58324324.htm" class="libfunc">freopen</a>(<a href="../h_src/58325412.htm" class="localvar">filename</a>, &quot;rb&quot;, <a href="../h_src/58325140.htm" class="localvar">lf</a>.f);  <a  class="comments">/* reopen in binary mode */</a>
+   801 :    <a href="../h_aa/58324392.htm" class="libfunc">skipcomment</a>(<a href="../h_src/58325140.htm" class="localvar">lf</a>.f, &amp;<a href="../h_src/58324732.htm" class="localvar">c</a>);  <a  class="comments">/* re-read initial portion */</a>
+   807 :    <a href="../h_src/58324868.htm" class="localvar">readstatus</a> = <a href="../h_aa/58324256.htm" class="libfunc">ferror</a>(<a href="../h_src/58325140.htm" class="localvar">lf</a>.f);
+   808 :    if (<a href="../h_src/58325412.htm" class="localvar">filename</a>) <a href="../h_aa/58324188.htm" class="libfunc">fclose</a>(<a href="../h_src/58325140.htm" class="localvar">lf</a>.f);  <a  class="comments">/* close file (even in case of errors) */</a>
+   844 :    return <a href="../h_src/57416032.htm" class="macro">luaL_loadbuffer</a>(<a href="../h_src/58322216.htm" class="localvar">L</a>, <a href="../h_src/58322080.htm" class="localvar">s</a>, <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/58322080.htm" class="localvar">s</a>), <a href="../h_src/58322080.htm" class="localvar">s</a>);
+   882 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(!<a href="../h_src/58320584.htm" class="localvar">isnum</a>))
+   997 :    <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58317592.htm" class="localvar">l</a> = <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/58318000.htm" class="localvar">p</a>);
+   998 :    while ((<a href="../h_src/58317728.htm" class="localvar">wild</a> = <a href="../h_aa/58317456.htm" class="libfunc">strstr</a>(<a href="../h_src/58318136.htm" class="localvar">s</a>, <a href="../h_src/58318000.htm" class="localvar">p</a>)) != NULL) {
+  1020 :    <a href="../h_aa/58316028.htm" class="libfunc">free</a>(<a href="../h_src/58316436.htm" class="localvar">ptr</a>);
+  1024 :    return <a href="../h_aa/58315960.htm" class="libfunc">realloc</a>(<a href="../h_src/58316436.htm" class="localvar">ptr</a>, <a href="../h_src/58316164.htm" class="localvar">nsize</a>);
+  1031 :    <a href="../h_src/57411884.htm" class="macro">lua_writestringerror</a>(&quot;PANIC: unprotected error in call to Lua API (%s)\n&quot;,
+  1032 :    <a href="../h_src/58315620.htm" class="localvar">msg</a>);
+  1032 :    <a href="../h_src/58315620.htm" class="localvar">msg</a>);
+  1056 :    if (<a href="../h_aa/57564488.htm" class="libfunc">strcmp</a>(<a href="../h_src/58314804.htm" class="localvar">message</a>, &quot;off&quot;) == 0)
+  1058 :    else if (<a href="../h_aa/57564488.htm" class="libfunc">strcmp</a>(<a href="../h_src/58314804.htm" class="localvar">message</a>, &quot;on&quot;) == 0)
+  1076 :    <a href="../h_src/57411884.htm" class="macro">lua_writestringerror</a>(&quot;%s&quot;, <a href="../h_src/58313988.htm" class="localvar">message</a>);  <a  class="comments">/* write message */</a>
+  1076 :    <a href="../h_src/57411884.htm" class="macro">lua_writestringerror</a>(&quot;%s&quot;, <a href="../h_src/58313988.htm" class="localvar">message</a>);  <a  class="comments">/* write message */</a>
+  1080 :    <a href="../h_src/57411884.htm" class="macro">lua_writestringerror</a>(&quot;%s&quot;, &quot;\n&quot;);  <a  class="comments">/* finish message with end-of-line */</a>
+  1080 :    <a href="../h_src/57411884.htm" class="macro">lua_writestringerror</a>(&quot;%s&quot;, &quot;\n&quot;);  <a  class="comments">/* finish message with end-of-line */</a>
+  1089 :    <a href="../h_src/57411884.htm" class="macro">lua_writestringerror</a>(&quot;%s&quot;, &quot;Lua warning: &quot;);  <a  class="comments">/* start a new warning */</a>
+  1089 :    <a href="../h_src/57411884.htm" class="macro">lua_writestringerror</a>(&quot;%s&quot;, &quot;Lua warning: &quot;);  <a  class="comments">/* start a new warning */</a>
+  1096 :    if (<a href="../h_src/57551704.htm" class="macro">l_likely</a>(<a href="../h_src/58313172.htm" class="localvar">L</a>)) {
+</pre>
+<pre>
+</pre>
+<h5>Variable Number of Arguments</h5>
+<pre>
+   234 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int <a href="../h_src/57419296.htm" class="function">luaL_error</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58344520.htm" class="localvar">L</a>, const char *<a href="../h_src/58344384.htm" class="localvar">fmt</a>, <a href="../h_src/58344248.htm" class="localvar">...</a>) {
+</pre>
+<pre>
+</pre>
+<h5>Unused Local</h5>
+<pre>
+   234 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int <a href="../h_src/57419296.htm" class="function">luaL_error</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58344520.htm" class="localvar">L</a>, const char *<a href="../h_src/58344384.htm" class="localvar">fmt</a>, <a href="../h_src/58344248.htm" class="localvar">...</a>) {
+   710 :    int <a href="../h_src/58327588.htm" class="variable">n</a>;  <a  class="comments">/* number of pre-read characters */</a>
+</pre>
+<pre>
+
+</pre>
+</body>
+</html>
+

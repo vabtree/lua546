@@ -1,0 +1,91 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaH_newkey</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57616716.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57616716.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57616716.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57616716.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/57616716.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/57616716.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58121924.htm#665" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>16</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>5</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>16</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Number of Built-In Operators</h5>
+<pre>
+   716 :    <a href="../h_src/57621068.htm" class="macro">luaC_barrierback</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, <a href="../h_src/57638884.htm" class="macro">obj2gco</a>(<a href="../h_src/58099484.htm" class="localvar">t</a>), <a href="../h_src/58099348.htm" class="localvar">key</a>);
+</pre>
+<pre>
+</pre>
+<h5>Unclear Subexpression</h5>
+<pre>
+   677 :    else if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57538784.htm" class="macro">luai_numisnan</a>(<a href="../h_src/58098804.htm" class="localvar">f</a>)))
+   683 :    if (!<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>)) || <a href="../h_src/57617464.htm" class="macro">isdummy</a>(<a href="../h_src/58099484.htm" class="localvar">t</a>)) {  <a  class="comments">/* main position is taken? */</a>
+   704 :    <a href="../h_src/57530216.htm" class="macro">setempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>));
+   718 :    <a href="../h_src/57533004.htm" class="macro">setobj2t</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, <a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>), <a href="../h_src/58099212.htm" class="localvar">value</a>);
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+   674 :    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(&amp;<a href="../h_src/58098940.htm" class="localvar">aux</a>, <a href="../h_src/58098668.htm" class="localvar">k</a>);
+   704 :    <a href="../h_src/57530216.htm" class="macro">setempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>));
+   716 :    <a href="../h_src/57621068.htm" class="macro">luaC_barrierback</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, <a href="../h_src/57638884.htm" class="macro">obj2gco</a>(<a href="../h_src/58099484.htm" class="localvar">t</a>), <a href="../h_src/58099348.htm" class="localvar">key</a>);
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   668 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57531168.htm" class="macro">ttisnil</a>(<a href="../h_src/58099348.htm" class="localvar">key</a>)))
+   669 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, &quot;table index is nil&quot;);
+   677 :    else if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57538784.htm" class="macro">luai_numisnan</a>(<a href="../h_src/58098804.htm" class="localvar">f</a>)))
+   678 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, &quot;table index is NaN&quot;);
+   680 :    if (<a href="../h_src/57531168.htm" class="macro">ttisnil</a>(<a href="../h_src/58099212.htm" class="localvar">value</a>))
+   681 :    return;  <a  class="comments">/* do not insert nil values */</a>
+   696 :    while (<a href="../h_src/58098396.htm" class="localvar">othern</a> + <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58098396.htm" class="localvar">othern</a>) != <a href="../h_src/58099076.htm" class="localvar">mp</a>)  <a  class="comments">/* find previous */</a>
+   697 :    <a href="../h_src/58098396.htm" class="localvar">othern</a> += <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58098396.htm" class="localvar">othern</a>);
+   708 :    if (<a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>) != 0)
+   709 :    <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58098260.htm" class="localvar">f</a>) = <a href="../h_src/57547216.htm" class="macro">cast_int</a>((<a href="../h_src/58099076.htm" class="localvar">mp</a> + <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>)) - <a href="../h_src/58098260.htm" class="localvar">f</a>);  <a  class="comments">/* chain new position */</a>
+   710 :    else <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57617736.htm" class="macro">gnext</a>(f) == 0);
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+   668 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57531168.htm" class="macro">ttisnil</a>(<a href="../h_src/58099348.htm" class="localvar">key</a>)))
+   677 :    else if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57538784.htm" class="macro">luai_numisnan</a>(<a href="../h_src/58098804.htm" class="localvar">f</a>)))
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

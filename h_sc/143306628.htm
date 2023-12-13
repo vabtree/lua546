@@ -1,0 +1,80 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>add_s</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143306628.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143306628.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143306628.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143306628.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/143306628.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/143306628.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143344164.htm#871" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>10</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>4</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>12</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+   877 :    while ((<a href="../h_src/143305540.htm" class="localvar">p</a> = (char *)<a href="../h_aa/143315808.htm" class="libfunc">memchr</a>(<a href="../h_src/143305676.htm" class="localvar">news</a>, <a href="../h_src/143326756.htm" class="macro">L_ESC</a>, <a href="../h_src/143305948.htm" class="localvar">l</a>)) != NULL) {
+   884 :    else if (<a href="../h_aa/58309772.htm" class="libfunc">isdigit</a>(<a href="../h_src/143343552.htm" class="macro">uchar</a>(*<a href="../h_src/143305540.htm" class="localvar">p</a>))) {  <a  class="comments">/* '%n' */</a>
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   880 :    if (*<a href="../h_src/143305540.htm" class="localvar">p</a> == <a href="../h_src/143326756.htm" class="macro">L_ESC</a>)  <a  class="comments">/* '%%' */</a>
+   881 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(<a href="../h_src/57415216.htm" class="variable">b</a>, *<a href="../h_src/143305540.htm" class="localvar">p</a>);
+   882 :    else if (*<a href="../h_src/143305540.htm" class="localvar">p</a> == '0')  <a  class="comments">/* '%0' */</a>
+   883 :    <a href="../h_src/57413516.htm" class="function">luaL_addlstring</a>(<a href="../h_src/143306356.htm" class="localvar">b</a>, <a href="../h_src/143306220.htm" class="localvar">s</a>, <a href="../h_src/143306084.htm" class="localvar">e</a> - <a href="../h_src/143306220.htm" class="localvar">s</a>);
+   887 :    if (<a href="../h_src/143305268.htm" class="localvar">resl</a> == <a href="../h_src/143328456.htm" class="macro">CAP_POSITION</a>)
+   888 :    <a href="../h_src/57413380.htm" class="function">luaL_addvalue</a>(<a href="../h_src/143306356.htm" class="localvar">b</a>);  <a  class="comments">/* add position to accumulated result */</a>
+   889 :    else
+   890 :    <a href="../h_src/57413516.htm" class="function">luaL_addlstring</a>(<a href="../h_src/143306356.htm" class="localvar">b</a>, <a href="../h_src/143305404.htm" class="localvar">cap</a>, <a href="../h_src/143305268.htm" class="localvar">resl</a>);
+   892 :    else
+   893 :    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143305812.htm" class="localvar">L</a>, &quot;invalid use of '%c' in replacement string&quot;, <a href="../h_src/143326756.htm" class="macro">L_ESC</a>);
+</pre>
+<pre>
+</pre>
+<h5>Return Ignored</h5>
+<pre>
+   893 :    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143305812.htm" class="localvar">L</a>, &quot;invalid use of '%c' in replacement string&quot;, <a href="../h_src/143326756.htm" class="macro">L_ESC</a>);
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+   877 :    while ((<a href="../h_src/143305540.htm" class="localvar">p</a> = (char *)<a href="../h_aa/143315808.htm" class="libfunc">memchr</a>(<a href="../h_src/143305676.htm" class="localvar">news</a>, <a href="../h_src/143326756.htm" class="macro">L_ESC</a>, <a href="../h_src/143305948.htm" class="localvar">l</a>)) != NULL) {
+   884 :    else if (<a href="../h_aa/58309772.htm" class="libfunc">isdigit</a>(<a href="../h_src/143343552.htm" class="macro">uchar</a>(*<a href="../h_src/143305540.htm" class="localvar">p</a>))) {  <a  class="comments">/* '%n' */</a>
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,77 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>getdetails</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143283304.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143283304.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143283304.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143283304.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/143283304.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/143283304.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143344164.htm#1541" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>8</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>4</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>9</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+  1556 :    *<a href="../h_src/143282624.htm" class="localvar">ntoalign</a> = (<a href="../h_src/143282352.htm" class="localvar">align</a> - (int)(<a href="../h_src/143283032.htm" class="localvar">totalsize</a> &amp; (<a href="../h_src/143282352.htm" class="localvar">align</a> - 1))) &amp; (<a href="../h_src/143282352.htm" class="localvar">align</a> - 1);
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+  1546 :    if (**<a href="../h_src/143282896.htm" class="localvar">fmt</a> == '\0' || <a href="../h_src/143284868.htm" class="function">getoption</a>(<a href="../h_src/143283168.htm" class="localvar">h</a>, <a href="../h_src/143282896.htm" class="localvar">fmt</a>, &amp;<a href="../h_src/143282352.htm" class="localvar">align</a>) == <a href="../h_src/143287452.htm" class="variable">Kchar</a> || <a href="../h_src/143282352.htm" class="localvar">align</a> == 0)
+  1547 :    <a href="../h_src/57420384.htm" class="function">luaL_argerror</a>(<a href="../h_src/143283168.htm" class="localvar">h</a>-&gt;<a href="../h_src/143288064.htm" class="variable">L</a>, 1, &quot;invalid next option for option 'X'&quot;);
+  1549 :    if (<a href="../h_src/143282352.htm" class="localvar">align</a> &lt;= 1 || <a href="../h_src/143282488.htm" class="localvar">opt</a> == <a href="../h_src/143287452.htm" class="variable">Kchar</a>)  <a  class="comments">/* need no alignment? */</a>
+  1550 :    *<a href="../h_src/143282624.htm" class="localvar">ntoalign</a> = 0;
+  1552 :    if (<a href="../h_src/143282352.htm" class="localvar">align</a> &gt; <a href="../h_src/143283168.htm" class="localvar">h</a>-&gt;<a href="../h_src/143287928.htm" class="variable">maxalign</a>)  <a  class="comments">/* enforce maximum alignment */</a>
+  1553 :    <a href="../h_src/143282352.htm" class="localvar">align</a> = <a href="../h_src/143283168.htm" class="localvar">h</a>-&gt;<a href="../h_src/143287928.htm" class="variable">maxalign</a>;
+  1554 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>((<a href="../h_src/143282352.htm" class="localvar">align</a> &amp; (<a href="../h_src/143282352.htm" class="localvar">align</a> - 1)) != 0))  <a  class="comments">/* not a power of 2? */</a>
+  1555 :    <a href="../h_src/57420384.htm" class="function">luaL_argerror</a>(<a href="../h_src/143283168.htm" class="localvar">h</a>-&gt;<a href="../h_src/143288064.htm" class="variable">L</a>, 1, &quot;format asks for alignment not power of 2&quot;);
+</pre>
+<pre>
+</pre>
+<h5>Return Ignored</h5>
+<pre>
+  1547 :    <a href="../h_src/57420384.htm" class="function">luaL_argerror</a>(<a href="../h_src/143283168.htm" class="localvar">h</a>-&gt;<a href="../h_src/143288064.htm" class="variable">L</a>, 1, &quot;invalid next option for option 'X'&quot;);
+  1555 :    <a href="../h_src/57420384.htm" class="function">luaL_argerror</a>(<a href="../h_src/143283168.htm" class="localvar">h</a>-&gt;<a href="../h_src/143288064.htm" class="variable">L</a>, 1, &quot;format asks for alignment not power of 2&quot;);
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+  1554 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>((<a href="../h_src/143282352.htm" class="localvar">align</a> &amp; (<a href="../h_src/143282352.htm" class="localvar">align</a> - 1)) != 0))  <a  class="comments">/* not a power of 2? */</a>
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

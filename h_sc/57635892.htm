@@ -1,0 +1,70 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaG_findlocal</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57635892.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57635892.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57635892.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57635892.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/57635892.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/57635892.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57759256.htm#196" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>6</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>3</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>8</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Unclear Subexpression</h5>
+<pre>
+   203 :    <a href="../h_src/57753000.htm" class="localvar">name</a> = <a href="../h_src/57630180.htm" class="function">luaF_getlocalname</a>(<a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57753544.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>, <a href="../h_src/57753408.htm" class="localvar">n</a>, <a href="../h_src/57758644.htm" class="function">currentpc</a>(<a href="../h_src/57753544.htm" class="localvar">ci</a>));
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+   203 :    <a href="../h_src/57753000.htm" class="localvar">name</a> = <a href="../h_src/57630180.htm" class="function">luaF_getlocalname</a>(<a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57753544.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>, <a href="../h_src/57753408.htm" class="localvar">n</a>, <a href="../h_src/57758644.htm" class="function">currentpc</a>(<a href="../h_src/57753544.htm" class="localvar">ci</a>));
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   200 :    if (<a href="../h_src/57753408.htm" class="localvar">n</a> &lt; 0)  <a  class="comments">/* access to vararg values? */</a>
+   201 :    return <a href="../h_src/57754360.htm" class="function">findvararg</a>(<a href="../h_src/57753544.htm" class="localvar">ci</a>, <a href="../h_src/57753408.htm" class="localvar">n</a>, <a href="../h_src/57753272.htm" class="localvar">pos</a>);
+   202 :    else
+   203 :    <a href="../h_src/57753000.htm" class="localvar">name</a> = <a href="../h_src/57630180.htm" class="function">luaF_getlocalname</a>(<a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57753544.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>, <a href="../h_src/57753408.htm" class="localvar">n</a>, <a href="../h_src/57758644.htm" class="function">currentpc</a>(<a href="../h_src/57753544.htm" class="localvar">ci</a>));
+   211 :    else
+   212 :    return NULL;  <a  class="comments">/* no name */</a>
+   214 :    if (<a href="../h_src/57753272.htm" class="localvar">pos</a>)
+   215 :    *<a href="../h_src/57753272.htm" class="localvar">pos</a> = <a href="../h_src/57753136.htm" class="localvar">base</a> + (<a href="../h_src/57753408.htm" class="localvar">n</a> - 1);
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

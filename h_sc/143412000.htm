@@ -1,0 +1,70 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>byteoffset</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143412000.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143412000.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143412000.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143412000.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/143412000.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/143412000.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143418664.htm#187" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>7</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>3</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>9</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+   193 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143411864.htm" class="localvar">L</a>, 1 &lt;= <a href="../h_src/143411320.htm" class="localvar">posi</a> &amp;&amp; --<a href="../h_src/143411320.htm" class="localvar">posi</a> &lt;= (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)<a href="../h_src/143411728.htm" class="localvar">len</a>, 3,
+   212 :    while (<a href="../h_src/143411456.htm" class="localvar">n</a> &gt; 0 &amp;&amp; <a href="../h_src/143411320.htm" class="localvar">posi</a> &lt; (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)<a href="../h_src/143411728.htm" class="localvar">len</a>) {
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   197 :    while (<a href="../h_src/143411320.htm" class="localvar">posi</a> &gt; 0 &amp;&amp; <a href="../h_src/143417712.htm" class="macro">iscontp</a>(<a href="../h_src/143411592.htm" class="localvar">s</a> + <a href="../h_src/143411320.htm" class="localvar">posi</a>)) <a href="../h_src/143411320.htm" class="localvar">posi</a>--;
+   200 :    if (<a href="../h_src/143417712.htm" class="macro">iscontp</a>(<a href="../h_src/143411592.htm" class="localvar">s</a> + <a href="../h_src/143411320.htm" class="localvar">posi</a>))
+   201 :    return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143411864.htm" class="localvar">L</a>, &quot;initial position is a continuation byte&quot;);
+   220 :    if (<a href="../h_src/143411456.htm" class="localvar">n</a> == 0)  <a  class="comments">/* did it find given character? */</a>
+   221 :    <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143411864.htm" class="localvar">L</a>, <a href="../h_src/143411320.htm" class="localvar">posi</a> + 1);
+   222 :    else  <a  class="comments">/* no such character */</a>
+   223 :    <a href="../h_src/57415760.htm" class="macro">luaL_pushfail</a>(<a href="../h_src/143411864.htm" class="localvar">L</a>);
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+   193 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143411864.htm" class="localvar">L</a>, 1 &lt;= <a href="../h_src/143411320.htm" class="localvar">posi</a> &amp;&amp; --<a href="../h_src/143411320.htm" class="localvar">posi</a> &lt;= (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)<a href="../h_src/143411728.htm" class="localvar">len</a>, 3,
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

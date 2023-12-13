@@ -1,0 +1,262 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lobject.c</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57919748.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/57919748.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/57919748.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/57919748.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_uf/57919748.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_df/57919748.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57919748.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/57919748.htm" class="file" target="_self">Source Code</a></li>
+<li id="current"><a href="../h_sc/57919748.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>155</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>9</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>129</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Number of Built-In Operators</h5>
+<pre>
+    96 :    if (<a href="../h_src/57612704.htm" class="macro">tointegerns</a>(<a href="../h_src/57917232.htm" class="localvar">p1</a>, &amp;<a href="../h_src/57916824.htm" class="localvar">i1</a>) &amp;&amp; <a href="../h_src/57612704.htm" class="macro">tointegerns</a>(<a href="../h_src/57917096.htm" class="localvar">p2</a>, &amp;<a href="../h_src/57916688.htm" class="localvar">i2</a>)) {
+   104 :    if (<a href="../h_src/57612976.htm" class="macro">tonumberns</a>(<a href="../h_src/57917232.htm" class="localvar">p1</a>, <a href="../h_src/57916416.htm" class="localvar">n1</a>) &amp;&amp; <a href="../h_src/57612976.htm" class="macro">tonumberns</a><a href="../h_src/57535996.htm" class="variable">n</a>umberns(<a href="../h_src/57917096.htm" class="localvar">p2</a>, <a href="../h_src/57916280.htm" class="localvar">n2</a>)) {
+   116 :    else if (<a href="../h_src/57612976.htm" class="macro">tonumberns</a>(<a href="../h_src/57917232.htm" class="localvar">p1</a>, <a href="../h_src/57916008.htm" class="localvar">n1</a>) &amp;&amp; <a href="../h_src/57612976.htm" class="macro">tonumberns</a><a href="../h_src/57535996.htm" class="variable">n</a>umberns(<a href="../h_src/57917096.htm" class="localvar">p2</a>, <a href="../h_src/57915872.htm" class="localvar">n2</a>)) {
+</pre>
+<pre>
+</pre>
+<h5>Unclear Subexpression</h5>
+<pre>
+    80 :    case <a href="../h_src/57437248.htm" class="macro">LUA_OPPOW</a>: return <a href="../h_src/57540280.htm" class="macro">luai_numpow</a>(<a href="../h_src/57918184.htm" class="localvar">L</a>, <a href="../h_src/57917912.htm" class="localvar">v1</a>, <a href="../h_src/57917776.htm" class="localvar">v2</a>);
+   128 :    if (!<a href="../h_src/57501792.htm" class="function">luaO_rawarith</a>(<a href="../h_src/57915464.htm" class="localvar">L</a>, <a href="../h_src/57915328.htm" class="localvar">op</a>, <a href="../h_src/57915192.htm" class="localvar">p1</a>, <a href="../h_src/57915056.htm" class="localvar">p2</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57914920.htm" class="localvar">res</a>))) {
+   416 :    <a href="../h_src/57524096.htm" class="macro">setsvalue2s</a>(<a href="../h_src/57904584.htm" class="localvar">L</a>, <a href="../h_src/57904584.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57618552.htm" class="function">luaS_newlstr</a>(<a href="../h_src/57904584.htm" class="localvar">L</a>, <a href="../h_src/57904856.htm" class="localvar">str</a>, <a href="../h_src/57904720.htm" class="localvar">lstr</a>));
+   545 :    return <a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57901932.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1));
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+    56 :    case <a href="../h_src/57437792.htm" class="macro">LUA_OPADD</a>: return <a href="../h_src/57612568.htm" class="macro">intop</a>(+, <a href="../h_src/57918592.htm" class="localvar">v1</a>, <a href="../h_src/57918456.htm" class="localvar">v2</a>);
+    56 :    case <a href="../h_src/57437792.htm" class="macro">LUA_OPADD</a>: return <a href="../h_src/57612568.htm" class="macro">intop</a>(+, <a href="../h_src/57918592.htm" class="localvar">v1</a>, <a href="../h_src/57918456.htm" class="localvar">v2</a>);
+    57 :    case <a href="../h_src/57437656.htm" class="macro">LUA_OPSUB</a>:return <a href="../h_src/57612568.htm" class="macro">intop</a>(-, <a href="../h_src/57918592.htm" class="localvar">v1</a>, <a href="../h_src/57918456.htm" class="localvar">v2</a>);
+    57 :    case <a href="../h_src/57437656.htm" class="macro">LUA_OPSUB</a>:return <a href="../h_src/57612568.htm" class="macro">intop</a>(-, <a href="../h_src/57918592.htm" class="localvar">v1</a>, <a href="../h_src/57918456.htm" class="localvar">v2</a>);
+    58 :    case <a href="../h_src/57437520.htm" class="macro">LUA_OPMUL</a>:return <a href="../h_src/57612568.htm" class="macro">intop</a>(*, <a href="../h_src/57918592.htm" class="localvar">v1</a>, <a href="../h_src/57918456.htm" class="localvar">v2</a>);
+    58 :    case <a href="../h_src/57437520.htm" class="macro">LUA_OPMUL</a>:return <a href="../h_src/57612568.htm" class="macro">intop</a>(*, <a href="../h_src/57918592.htm" class="localvar">v1</a>, <a href="../h_src/57918456.htm" class="localvar">v2</a>);
+    61 :    case <a href="../h_src/57436840.htm" class="macro">LUA_OPBAND</a>: return <a href="../h_src/57612568.htm" class="macro">intop</a>(&amp;, <a href="../h_src/57918592.htm" class="localvar">v1</a>, <a href="../h_src/57918456.htm" class="localvar">v2</a>);
+    62 :    case <a href="../h_src/57436704.htm" class="macro">LUA_OPBOR</a>: return <a href="../h_src/57612568.htm" class="macro">intop</a>(|, <a href="../h_src/57918592.htm" class="localvar">v1</a>, <a href="../h_src/57918456.htm" class="localvar">v2</a>);
+    63 :    case <a href="../h_src/57436568.htm" class="macro">LUA_OPBXOR</a>: return <a href="../h_src/57612568.htm" class="macro">intop</a>(^, <a href="../h_src/57918592.htm" class="localvar">v1</a>, <a href="../h_src/57918456.htm" class="localvar">v2</a>);
+    65 :    case <a href="../h_src/57436296.htm" class="macro">LUA_OPSHR</a>: return <a href="../h_src/57611888.htm" class="macro">luaV_shiftr</a>(<a href="../h_src/57918592.htm" class="localvar">v1</a>, <a href="../h_src/57918456.htm" class="localvar">v2</a>);
+    65 :    case <a href="../h_src/57436296.htm" class="macro">LUA_OPSHR</a>: return <a href="../h_src/57611888.htm" class="macro">luaV_shiftr</a>(<a href="../h_src/57918592.htm" class="localvar">v1</a>, <a href="../h_src/57918456.htm" class="localvar">v2</a>);
+    66 :    case <a href="../h_src/57436160.htm" class="macro">LUA_OPUNM</a>: return <a href="../h_src/57612568.htm" class="macro">intop</a>(-, 0, <a href="../h_src/57918592.htm" class="localvar">v1</a>);
+    66 :    case <a href="../h_src/57436160.htm" class="macro">LUA_OPUNM</a>: return <a href="../h_src/57612568.htm" class="macro">intop</a>(-, 0, <a href="../h_src/57918592.htm" class="localvar">v1</a>);
+    67 :    case <a href="../h_src/57436024.htm" class="macro">LUA_OPBNOT</a>: return <a href="../h_src/57612568.htm" class="macro">intop</a>(^, ~<a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(0), <a href="../h_src/57918592.htm" class="localvar">v1</a>);
+    97 :    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(<a href="../h_src/57916960.htm" class="localvar">res</a>, <a href="../h_src/57919000.htm" class="function">intarith</a>(<a href="../h_src/57917504.htm" class="localvar">L</a>, <a href="../h_src/57917368.htm" class="localvar">op</a>, <a href="../h_src/57916824.htm" class="localvar">i1</a>, <a href="../h_src/57916688.htm" class="localvar">i2</a>));
+   105 :    <a href="../h_src/57525728.htm" class="macro">setfltvalue</a>(<a href="../h_src/57916960.htm" class="localvar">res</a>, <a href="../h_src/57918320.htm" class="function">numarith</a>(<a href="../h_src/57917504.htm" class="localvar">L</a>, <a href="../h_src/57917368.htm" class="localvar">op</a>, <a href="../h_src/57916416.htm" class="localvar">n1</a>, <a href="../h_src/57916280.htm" class="localvar">n2</a>));
+   113 :    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(<a href="../h_src/57916960.htm" class="localvar">res</a>, <a href="../h_src/57919000.htm" class="function">intarith</a>(<a href="../h_src/57917504.htm" class="localvar">L</a>, <a href="../h_src/57917368.htm" class="localvar">op</a>, <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/57917232.htm" class="localvar">p1</a>), <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/57917096.htm" class="localvar">p2</a>)));
+   117 :    <a href="../h_src/57525728.htm" class="macro">setfltvalue</a>(<a href="../h_src/57916960.htm" class="localvar">res</a>, <a href="../h_src/57918320.htm" class="function">numarith</a>(<a href="../h_src/57917504.htm" class="localvar">L</a>, <a href="../h_src/57917368.htm" class="localvar">op</a>, <a href="../h_src/57916008.htm" class="localvar">n1</a>, <a href="../h_src/57915872.htm" class="localvar">n2</a>));
+   174 :    while (<a href="../h_src/57760140.htm" class="macro">lisspace</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57913968.htm" class="localvar">s</a>))) <a href="../h_src/57913968.htm" class="localvar">s</a>++;  <a  class="comments">/* skip initial spaces */</a>
+   183 :    else if (<a href="../h_src/57759868.htm" class="macro">lisxdigit</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57913968.htm" class="localvar">s</a>))) {
+   202 :    if (!<a href="../h_src/57760276.htm" class="macro">lisdigit</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57913968.htm" class="localvar">s</a>)))
+   204 :    while (<a href="../h_src/57760276.htm" class="macro">lisdigit</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57913968.htm" class="localvar">s</a>)))  <a  class="comments">/* read exponent */</a>
+   233 :    while (<a href="../h_src/57760140.htm" class="macro">lisspace</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57911588.htm" class="localvar">endptr</a>))) <a href="../h_src/57911588.htm" class="localvar">endptr</a>++;  <a  class="comments">/* skip trailing spaces */</a>
+   254 :    int <a href="../h_src/57910636.htm" class="localvar">mode</a> = <a href="../h_src/57910772.htm" class="localvar">pmode</a> ? <a href="../h_src/57759732.htm" class="macro">ltolower</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57910772.htm" class="localvar">pmode</a>)) : 0;
+   264 :    <a href="../h_src/57910500.htm" class="localvar">buff</a>[<a href="../h_src/57910364.htm" class="localvar">pdot</a> - <a href="../h_src/57911248.htm" class="localvar">s</a>] = <a href="../h_src/57448468.htm" class="macro">lua_getlocaledecpoint</a>();  <a  class="comments">/* correct decimal point */</a>
+   267 :    <a href="../h_src/57910976.htm" class="localvar">endptr</a> = <a href="../h_src/57911248.htm" class="localvar">s</a> + (<a href="../h_src/57910976.htm" class="localvar">endptr</a> - <a href="../h_src/57910500.htm" class="localvar">buff</a>);  <a  class="comments">/* make relative to 's' */</a>
+   267 :    <a href="../h_src/57910976.htm" class="localvar">endptr</a> = <a href="../h_src/57911248.htm" class="localvar">s</a> + (<a href="../h_src/57910976.htm" class="localvar">endptr</a> - <a href="../h_src/57910500.htm" class="localvar">buff</a>);  <a  class="comments">/* make relative to 's' */</a>
+   277 :    <a href="../h_src/57438132.htm" class="function">lua_Unsigned</a> <a href="../h_src/57909480.htm" class="localvar">a</a> = 0;
+   280 :    while (<a href="../h_src/57760140.htm" class="macro">lisspace</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57909752.htm" class="localvar">s</a>))) <a href="../h_src/57909752.htm" class="localvar">s</a>++;  <a  class="comments">/* skip initial spaces */</a>
+   285 :    for (; <a href="../h_src/57759868.htm" class="macro">lisxdigit</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57909752.htm" class="localvar">s</a>)); <a href="../h_src/57909752.htm" class="localvar">s</a>++) {
+   286 :    <a href="../h_src/57909480.htm" class="localvar">a</a> = <a href="../h_src/57909480.htm" class="localvar">a</a> * 16 + <a href="../h_src/57501588.htm" class="function">luaO_hexavalue</a>(*<a href="../h_src/57909752.htm" class="localvar">s</a>);
+   286 :    <a href="../h_src/57909480.htm" class="localvar">a</a> = <a href="../h_src/57909480.htm" class="localvar">a</a> * 16 + <a href="../h_src/57501588.htm" class="function">luaO_hexavalue</a>(*<a href="../h_src/57909752.htm" class="localvar">s</a>);
+   291 :    for (; <a href="../h_src/57760276.htm" class="macro">lisdigit</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57909752.htm" class="localvar">s</a>)); <a href="../h_src/57909752.htm" class="localvar">s</a>++) {
+   293 :    if (<a href="../h_src/57909480.htm" class="localvar">a</a> &gt;= <a href="../h_src/57910160.htm" class="macro">MAXBY10</a> &amp;&amp; (<a href="../h_src/57909480.htm" class="localvar">a</a> &gt; <a href="../h_src/57910160.htm" class="macro">MAXBY10</a> || <a href="../h_src/57909072.htm" class="localvar">d</a> &gt; <a href="../h_src/57910024.htm" class="macro">MAXLASTD</a> + <a href="../h_src/57909208.htm" class="localvar">neg</a>))  <a  class="comments">/* overflow? */</a>
+   293 :    if (<a href="../h_src/57909480.htm" class="localvar">a</a> &gt;= <a href="../h_src/57910160.htm" class="macro">MAXBY10</a> &amp;&amp; (<a href="../h_src/57909480.htm" class="localvar">a</a> &gt; <a href="../h_src/57910160.htm" class="macro">MAXBY10</a> || <a href="../h_src/57909072.htm" class="localvar">d</a> &gt; <a href="../h_src/57910024.htm" class="macro">MAXLASTD</a> + <a href="../h_src/57909208.htm" class="localvar">neg</a>))  <a  class="comments">/* overflow? */</a>
+   293 :    if (<a href="../h_src/57909480.htm" class="localvar">a</a> &gt;= <a href="../h_src/57910160.htm" class="macro">MAXBY10</a> &amp;&amp; (<a href="../h_src/57909480.htm" class="localvar">a</a> &gt; <a href="../h_src/57910160.htm" class="macro">MAXBY10</a> || <a href="../h_src/57909072.htm" class="localvar">d</a> &gt; <a href="../h_src/57910024.htm" class="macro">MAXLASTD</a> + <a href="../h_src/57909208.htm" class="localvar">neg</a>))  <a  class="comments">/* overflow? */</a>
+   293 :    if (<a href="../h_src/57909480.htm" class="localvar">a</a> &gt;= <a href="../h_src/57910160.htm" class="macro">MAXBY10</a> &amp;&amp; (<a href="../h_src/57909480.htm" class="localvar">a</a> &gt; <a href="../h_src/57910160.htm" class="macro">MAXBY10</a> || <a href="../h_src/57909072.htm" class="localvar">d</a> &gt; <a href="../h_src/57910024.htm" class="macro">MAXLASTD</a> + <a href="../h_src/57909208.htm" class="localvar">neg</a>))  <a  class="comments">/* overflow? */</a>
+   293 :    if (<a href="../h_src/57909480.htm" class="localvar">a</a> &gt;= <a href="../h_src/57910160.htm" class="macro">MAXBY10</a> &amp;&amp; (<a href="../h_src/57909480.htm" class="localvar">a</a> &gt; <a href="../h_src/57910160.htm" class="macro">MAXBY10</a> || <a href="../h_src/57909072.htm" class="localvar">d</a> &gt; <a href="../h_src/57910024.htm" class="macro">MAXLASTD</a> + <a href="../h_src/57909208.htm" class="localvar">neg</a>))  <a  class="comments">/* overflow? */</a>
+   295 :    <a href="../h_src/57909480.htm" class="localvar">a</a> = <a href="../h_src/57909480.htm" class="localvar">a</a> * 10 + <a href="../h_src/57909072.htm" class="localvar">d</a>;
+   295 :    <a href="../h_src/57909480.htm" class="localvar">a</a> = <a href="../h_src/57909480.htm" class="localvar">a</a> * 10 + <a href="../h_src/57909072.htm" class="localvar">d</a>;
+   299 :    while (<a href="../h_src/57760140.htm" class="macro">lisspace</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57909752.htm" class="localvar">s</a>))) <a href="../h_src/57909752.htm" class="localvar">s</a>++;  <a  class="comments">/* skip trailing spaces */</a>
+   302 :    *<a href="../h_src/57909616.htm" class="localvar">result</a> = <a href="../h_src/57545856.htm" class="macro">l_castU2S</a>((<a href="../h_src/57909208.htm" class="localvar">neg</a>) ? 0u - <a href="../h_src/57909480.htm" class="localvar">a</a> : <a href="../h_src/57909480.htm" class="localvar">a</a>);
+   312 :    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(<a href="../h_src/57908800.htm" class="localvar">o</a>, <a href="../h_src/57536064.htm" class="variable">i</a>);
+   315 :    <a href="../h_src/57525728.htm" class="macro">setfltvalue</a>(<a href="../h_src/57908800.htm" class="localvar">o</a>, <a href="../h_src/57535996.htm" class="variable">n</a>);
+   327 :    <a href="../h_src/57907984.htm" class="localvar">buff</a>[<a href="../h_src/57502064.htm" class="macro">UTF8BUFFSZ</a> - 1] = <a href="../h_src/57546672.htm" class="macro">cast_char</a>(<a href="../h_src/57907848.htm" class="localvar">x</a>);
+   331 :    <a href="../h_src/57907984.htm" class="localvar">buff</a>[<a href="../h_src/57502064.htm" class="macro">UTF8BUFFSZ</a> - (<a href="../h_src/57907712.htm" class="localvar">n</a>++)] = <a href="../h_src/57546672.htm" class="macro">cast_char</a>(0x80 | (<a href="../h_src/57907848.htm" class="localvar">x</a> &amp; 0x3f));
+   335 :    <a href="../h_src/57907984.htm" class="localvar">buff</a>[<a href="../h_src/57502064.htm" class="macro">UTF8BUFFSZ</a> - <a href="../h_src/57907712.htm" class="localvar">n</a>] = <a href="../h_src/57546672.htm" class="macro">cast_char</a>((~<a href="../h_src/57907576.htm" class="localvar">mfb</a> &lt;&lt; 1) | <a href="../h_src/57907848.htm" class="localvar">x</a>);  <a  class="comments">/* add first byte */</a>
+   359 :    <a href="../h_src/57906896.htm" class="localvar">len</a> = <a href="../h_src/57450780.htm" class="macro">lua_integer2str</a>(<a href="../h_src/57907032.htm" class="localvar">buff</a>, <a href="../h_src/57907440.htm" class="macro">MAXNUMBER2STR</a>, <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/57907168.htm" class="localvar">obj</a>));
+   363 :    <a href="../h_src/57907032.htm" class="localvar">buff</a>[<a href="../h_src/57906896.htm" class="localvar">len</a>++] = <a href="../h_src/57448468.htm" class="macro">lua_getlocaledecpoint</a>();
+   377 :    <a href="../h_src/57524232.htm" class="macro">setsvalue</a>(<a href="../h_src/57906624.htm" class="localvar">L</a>, <a href="../h_src/57906488.htm" class="localvar">obj</a>, <a href="../h_src/57618552.htm" class="function">luaS_newlstr</a>(<a href="../h_src/57906624.htm" class="localvar">L</a>, <a href="../h_src/57906352.htm" class="localvar">buff</a>, <a href="../h_src/57906216.htm" class="localvar">len</a>));
+   416 :    <a href="../h_src/57524096.htm" class="macro">setsvalue2s</a>(<a href="../h_src/57904584.htm" class="localvar">L</a>, <a href="../h_src/57904584.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57618552.htm" class="function">luaS_newlstr</a>(<a href="../h_src/57904584.htm" class="localvar">L</a>, <a href="../h_src/57904856.htm" class="localvar">str</a>, <a href="../h_src/57904720.htm" class="localvar">lstr</a>));
+   442 :    return <a href="../h_src/57903768.htm" class="localvar">buff</a>-&gt;<a href="../h_src/57905332.htm" class="variable">space</a> + <a href="../h_src/57903768.htm" class="localvar">buff</a>-&gt;<a href="../h_src/57905400.htm" class="variable">blen</a>;
+   455 :    char *<a href="../h_src/57902816.htm" class="localvar">bf</a> = <a href="../h_src/57903904.htm" class="function">getbuff</a>(<a href="../h_src/57903224.htm" class="localvar">buff</a>, <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/57902952.htm" class="localvar">slen</a>));
+   457 :    <a href="../h_src/57903496.htm" class="macro">addsize</a>(<a href="../h_src/57903224.htm" class="localvar">buff</a>, <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/57902952.htm" class="localvar">slen</a>));
+   485 :    while ((<a href="../h_src/57901388.htm" class="localvar">e</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57901796.htm" class="localvar">fmt</a>, '%')) != NULL) {
+   495 :    char <a href="../h_src/57901116.htm" class="localvar">c</a> = <a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(va_arg(<a href="../h_src/57901660.htm" class="localvar">argp</a>, int));
+   495 :    char <a href="../h_src/57901116.htm" class="localvar">c</a> = <a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(va_arg(<a href="../h_src/57901660.htm" class="localvar">argp</a>, int));
+   501 :    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(&amp;<a href="../h_src/57900980.htm" class="localvar">num</a>, va_arg(<a href="../h_src/57901660.htm" class="localvar">argp</a>, int));
+   501 :    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(&amp;<a href="../h_src/57900980.htm" class="localvar">num</a>, va_arg(<a href="../h_src/57901660.htm" class="localvar">argp</a>, int));
+   507 :    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(&amp;<a href="../h_src/57900708.htm" class="localvar">num</a>, <a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57442076.htm" class="type">lua_Integer</a>, va_arg(<a href="../h_src/57901660.htm" class="localvar">argp</a>, <a href="../h_src/57548916.htm" class="type">l_uacInt</a>)));
+   507 :    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(&amp;<a href="../h_src/57900708.htm" class="localvar">num</a>, <a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57442076.htm" class="type">lua_Integer</a>, va_arg(<a href="../h_src/57901660.htm" class="localvar">argp</a>, <a href="../h_src/57548916.htm" class="type">l_uacInt</a>)));
+   507 :    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(&amp;<a href="../h_src/57900708.htm" class="localvar">num</a>, <a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57442076.htm" class="type">lua_Integer</a>, va_arg(<a href="../h_src/57901660.htm" class="localvar">argp</a>, <a href="../h_src/57548916.htm" class="type">l_uacInt</a>)));
+   513 :    <a href="../h_src/57525728.htm" class="macro">setfltvalue</a>(&amp;<a href="../h_src/57900436.htm" class="localvar">num</a>, <a href="../h_src/57547352.htm" class="macro">cast_num</a>(va_arg(<a href="../h_src/57901660.htm" class="localvar">argp</a>, <a href="../h_src/57548984.htm" class="type">l_uacNumber</a>)));
+   513 :    <a href="../h_src/57525728.htm" class="macro">setfltvalue</a>(&amp;<a href="../h_src/57900436.htm" class="localvar">num</a>, <a href="../h_src/57547352.htm" class="macro">cast_num</a>(va_arg(<a href="../h_src/57901660.htm" class="localvar">argp</a>, <a href="../h_src/57548984.htm" class="type">l_uacNumber</a>)));
+   527 :    int <a href="../h_src/57899484.htm" class="localvar">len</a> = <a href="../h_src/57501928.htm" class="function">luaO_utf8esc</a>(<a href="../h_src/57899620.htm" class="localvar">bf</a>, va_arg(<a href="../h_src/57901660.htm" class="localvar">argp</a>, long));
+   528 :    <a href="../h_src/57903360.htm" class="function">addstr2buff</a>(&amp;<a href="../h_src/57901524.htm" class="localvar">buff</a>, <a href="../h_src/57899620.htm" class="localvar">bf</a> + <a href="../h_src/57502064.htm" class="macro">UTF8BUFFSZ</a> - <a href="../h_src/57899484.htm" class="localvar">len</a>, <a href="../h_src/57899484.htm" class="localvar">len</a>);
+   528 :    <a href="../h_src/57903360.htm" class="function">addstr2buff</a>(&amp;<a href="../h_src/57901524.htm" class="localvar">buff</a>, <a href="../h_src/57899620.htm" class="localvar">bf</a> + <a href="../h_src/57502064.htm" class="macro">UTF8BUFFSZ</a> - <a href="../h_src/57899484.htm" class="localvar">len</a>, <a href="../h_src/57899484.htm" class="localvar">len</a>);
+   545 :    return <a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57901932.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1));
+   594 :    if (<a href="../h_src/57897580.htm" class="localvar">nl</a> != NULL) <a href="../h_src/57897852.htm" class="localvar">srclen</a> = <a href="../h_src/57897580.htm" class="localvar">nl</a> - <a href="../h_src/57897988.htm" class="localvar">source</a>;  <a  class="comments">/* stop at first newline */</a>
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   100 :    else return 0;  <a  class="comments">/* fail */</a>
+   108 :    else return 0;  <a  class="comments">/* fail */</a>
+   120 :    else return 0;  <a  class="comments">/* fail */</a>
+   136 :    if (<a href="../h_src/57760276.htm" class="macro">lisdigit</a>(<a href="../h_src/57914784.htm" class="localvar">c</a>)) return <a href="../h_src/57914784.htm" class="localvar">c</a> - '0';
+   137 :    else return (<a href="../h_src/57759732.htm" class="macro">ltolower</a>(<a href="../h_src/57914784.htm" class="localvar">c</a>) - 'a') + 10;
+   143 :    else if (**<a href="../h_src/57914512.htm" class="localvar">s</a> == '+') (*<a href="../h_src/57914512.htm" class="localvar">s</a>)++;
+   174 :    while (<a href="../h_src/57760140.htm" class="macro">lisspace</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57913968.htm" class="localvar">s</a>))) <a href="../h_src/57913968.htm" class="localvar">s</a>++;  <a  class="comments">/* skip initial spaces */</a>
+   176 :    if (!(*<a href="../h_src/57913968.htm" class="localvar">s</a> == '0' &amp;&amp; (*(<a href="../h_src/57913968.htm" class="localvar">s</a> + 1) == 'x' || *(<a href="../h_src/57913968.htm" class="localvar">s</a> + 1) == 'X')))  <a  class="comments">/* check '0x' */</a>
+   177 :    return <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(0.0);  <a  class="comments">/* invalid format (no '0x') */</a>
+   180 :    if (<a href="../h_src/57912812.htm" class="localvar">hasdot</a>) break;  <a  class="comments">/* second dot? stop loop */</a>
+   181 :    else <a href="../h_src/57912812.htm" class="localvar">hasdot</a> = 1;
+   184 :    if (<a href="../h_src/57913356.htm" class="localvar">sigdig</a> == 0 &amp;&amp; *<a href="../h_src/57913968.htm" class="localvar">s</a> == '0')  <a  class="comments">/* non-significant digit (zero)? */</a>
+   185 :    <a href="../h_src/57913220.htm" class="localvar">nosigdig</a>++;
+   186 :    else if (++<a href="../h_src/57913356.htm" class="localvar">sigdig</a> &lt;= <a href="../h_src/57914240.htm" class="macro">MAXSIGDIG</a>)  <a  class="comments">/* can read it without overflow? */</a>
+   187 :    <a href="../h_src/57913492.htm" class="localvar">r</a> = (<a href="../h_src/57913492.htm" class="localvar">r</a> * <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(16.0)) + <a href="../h_src/57501588.htm" class="function">luaO_hexavalue</a>(*<a href="../h_src/57913968.htm" class="localvar">s</a>);
+   188 :    else <a href="../h_src/57913084.htm" class="localvar">e</a>++; <a  class="comments">/* too many digits; ignore, but still count for exponent */</a>
+   189 :    if (<a href="../h_src/57912812.htm" class="localvar">hasdot</a>) <a href="../h_src/57913084.htm" class="localvar">e</a>--;  <a  class="comments">/* decimal digit? correct exponent */</a>
+   191 :    else break;  <a  class="comments">/* neither a dot nor a digit */</a>
+   193 :    if (<a href="../h_src/57913220.htm" class="localvar">nosigdig</a> + <a href="../h_src/57913356.htm" class="localvar">sigdig</a> == 0)  <a  class="comments">/* no digits? */</a>
+   194 :    return <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(0.0);  <a  class="comments">/* invalid format */</a>
+   202 :    if (!<a href="../h_src/57760276.htm" class="macro">lisdigit</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57913968.htm" class="localvar">s</a>)))
+   203 :    return <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(0.0);  <a  class="comments">/* invalid; must have at least one digit */</a>
+   204 :    while (<a href="../h_src/57760276.htm" class="macro">lisdigit</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57913968.htm" class="localvar">s</a>)))  <a  class="comments">/* read exponent */</a>
+   205 :    <a href="../h_src/57912676.htm" class="localvar">exp1</a> = <a href="../h_src/57912676.htm" class="localvar">exp1</a> * 10 + *(<a href="../h_src/57913968.htm" class="localvar">s</a>++) - '0';
+   206 :    if (<a href="../h_src/57912540.htm" class="localvar">neg1</a>) <a href="../h_src/57912676.htm" class="localvar">exp1</a> = -<a href="../h_src/57912676.htm" class="localvar">exp1</a>;
+   210 :    if (<a href="../h_src/57912948.htm" class="localvar">neg</a>) <a href="../h_src/57913492.htm" class="localvar">r</a> = -<a href="../h_src/57913492.htm" class="localvar">r</a>;
+   232 :    if (<a href="../h_src/57911588.htm" class="localvar">endptr</a> == <a href="../h_src/57911996.htm" class="localvar">s</a>) return NULL;  <a  class="comments">/* nothing recognized? */</a>
+   233 :    while (<a href="../h_src/57760140.htm" class="macro">lisspace</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57911588.htm" class="localvar">endptr</a>))) <a href="../h_src/57911588.htm" class="localvar">endptr</a>++;  <a  class="comments">/* skip trailing spaces */</a>
+   255 :    if (<a href="../h_src/57910636.htm" class="localvar">mode</a> == 'n')  <a  class="comments">/* reject 'inf' and 'nan' */</a>
+   256 :    return NULL;
+   261 :    if (<a href="../h_src/57910364.htm" class="localvar">pdot</a> == NULL || <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/57911248.htm" class="localvar">s</a>) &gt; <a href="../h_src/57912268.htm" class="macro">L_MAXLENNUM</a>)
+   262 :    return NULL;  <a  class="comments">/* string too long or no dot; fail */</a>
+   266 :    if (<a href="../h_src/57910976.htm" class="localvar">endptr</a> != NULL)
+   267 :    <a href="../h_src/57910976.htm" class="localvar">endptr</a> = <a href="../h_src/57911248.htm" class="localvar">s</a> + (<a href="../h_src/57910976.htm" class="localvar">endptr</a> - <a href="../h_src/57910500.htm" class="localvar">buff</a>);  <a  class="comments">/* make relative to 's' */</a>
+   280 :    while (<a href="../h_src/57760140.htm" class="macro">lisspace</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57909752.htm" class="localvar">s</a>))) <a href="../h_src/57909752.htm" class="localvar">s</a>++;  <a  class="comments">/* skip initial spaces */</a>
+   293 :    if (<a href="../h_src/57909480.htm" class="localvar">a</a> &gt;= <a href="../h_src/57910160.htm" class="macro">MAXBY10</a> &amp;&amp; (<a href="../h_src/57909480.htm" class="localvar">a</a> &gt; <a href="../h_src/57910160.htm" class="macro">MAXBY10</a> || <a href="../h_src/57909072.htm" class="localvar">d</a> &gt; <a href="../h_src/57910024.htm" class="macro">MAXLASTD</a> + <a href="../h_src/57909208.htm" class="localvar">neg</a>))  <a  class="comments">/* overflow? */</a>
+   294 :    return NULL;  <a  class="comments">/* do not accept it (as integer) */</a>
+   299 :    while (<a href="../h_src/57760140.htm" class="macro">lisspace</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57909752.htm" class="localvar">s</a>))) <a href="../h_src/57909752.htm" class="localvar">s</a>++;  <a  class="comments">/* skip trailing spaces */</a>
+   300 :    if (<a href="../h_src/57909344.htm" class="localvar">empty</a> || *<a href="../h_src/57909752.htm" class="localvar">s</a> != '\0') return NULL;  <a  class="comments">/* something wrong in the numeral */</a>
+   317 :    else
+   318 :    return 0;  <a  class="comments">/* conversion failed */</a>
+   326 :    if (<a href="../h_src/57907848.htm" class="localvar">x</a> &lt; 0x80)  <a  class="comments">/* ascii? */</a>
+   327 :    <a href="../h_src/57907984.htm" class="localvar">buff</a>[<a href="../h_src/57502064.htm" class="macro">UTF8BUFFSZ</a> - 1] = <a href="../h_src/57546672.htm" class="macro">cast_char</a>(<a href="../h_src/57907848.htm" class="localvar">x</a>);
+   358 :    if (<a href="../h_src/57526544.htm" class="macro">ttisinteger</a>(<a href="../h_src/57907168.htm" class="localvar">obj</a>))
+   359 :    <a href="../h_src/57906896.htm" class="localvar">len</a> = <a href="../h_src/57450780.htm" class="macro">lua_integer2str</a>(<a href="../h_src/57907032.htm" class="localvar">buff</a>, <a href="../h_src/57907440.htm" class="macro">MAXNUMBER2STR</a>, <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/57907168.htm" class="localvar">obj</a>));
+   418 :    if (!<a href="../h_src/57904992.htm" class="localvar">buff</a>-&gt;<a href="../h_src/57905468.htm" class="variable">pushed</a>)  <a  class="comments">/* no previous string on the stack? */</a>
+   419 :    <a href="../h_src/57904992.htm" class="localvar">buff</a>-&gt;<a href="../h_src/57905468.htm" class="variable">pushed</a> = 1;  <a  class="comments">/* now there is one */</a>
+   420 :    else  <a  class="comments">/* join previous string with new one */</a>
+   421 :    <a href="../h_src/57610868.htm" class="function">luaV_concat</a>(<a href="../h_src/57904584.htm" class="localvar">L</a>, 2);
+   440 :    if (<a href="../h_src/57903632.htm" class="localvar">sz</a> &gt; <a href="../h_src/57905808.htm" class="macro">BUFVFS</a> - <a href="../h_src/57903768.htm" class="localvar">buff</a>-&gt;<a href="../h_src/57905400.htm" class="variable">blen</a>)  <a  class="comments">/* not enough space? */</a>
+   441 :    <a href="../h_src/57904176.htm" class="function">clearbuff</a>(<a href="../h_src/57903768.htm" class="localvar">buff</a>);
+   490 :    if (<a href="../h_src/57901252.htm" class="localvar">s</a> == NULL) <a href="../h_src/57901252.htm" class="localvar">s</a> = &quot;(null)&quot;;
+   570 :    if (<a href="../h_src/57897852.htm" class="localvar">srclen</a> &lt;= <a href="../h_src/57897716.htm" class="localvar">bufflen</a>)  <a  class="comments">/* small enough? */</a>
+   571 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/57898124.htm" class="localvar">out</a>, <a href="../h_src/57897988.htm" class="localvar">source</a> + 1, <a href="../h_src/57897852.htm" class="localvar">srclen</a> * sizeof(char));
+   578 :    if (<a href="../h_src/57897852.htm" class="localvar">srclen</a> &lt;= <a href="../h_src/57897716.htm" class="localvar">bufflen</a>)  <a  class="comments">/* small enough? */</a>
+   579 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/57898124.htm" class="localvar">out</a>, <a href="../h_src/57897988.htm" class="localvar">source</a> + 1, <a href="../h_src/57897852.htm" class="localvar">srclen</a> * sizeof(char));
+   594 :    if (<a href="../h_src/57897580.htm" class="localvar">nl</a> != NULL) <a href="../h_src/57897852.htm" class="localvar">srclen</a> = <a href="../h_src/57897580.htm" class="localvar">nl</a> - <a href="../h_src/57897988.htm" class="localvar">source</a>;  <a  class="comments">/* stop at first newline */</a>
+   595 :    if (<a href="../h_src/57897852.htm" class="localvar">srclen</a> &gt; <a href="../h_src/57897716.htm" class="localvar">bufflen</a>) <a href="../h_src/57897852.htm" class="localvar">srclen</a> = <a href="../h_src/57897716.htm" class="localvar">bufflen</a>;
+</pre>
+<pre>
+</pre>
+<h5>Unterminated Case</h5>
+<pre>
+   537 :    *(<a href="../h_src/57901388.htm" class="localvar">e</a> + 1));
+</pre>
+<pre>
+</pre>
+<h5>Jump Statement</h5>
+<pre>
+   180 :    if (<a href="../h_src/57912812.htm" class="localvar">hasdot</a>) break;  <a  class="comments">/* second dot? stop loop */</a>
+   191 :    else break;  <a  class="comments">/* neither a dot nor a digit */</a>
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+    80 :    case <a href="../h_src/57437248.htm" class="macro">LUA_OPPOW</a>: return <a href="../h_src/57540280.htm" class="macro">luai_numpow</a>(<a href="../h_src/57918184.htm" class="localvar">L</a>, <a href="../h_src/57917912.htm" class="localvar">v1</a>, <a href="../h_src/57917776.htm" class="localvar">v2</a>);
+    81 :    case <a href="../h_src/57436976.htm" class="macro">LUA_OPIDIV</a>: return <a href="../h_src/57541096.htm" class="macro">luai_numidiv</a>(<a href="../h_src/57918184.htm" class="localvar">L</a>, <a href="../h_src/57917912.htm" class="localvar">v1</a>, <a href="../h_src/57917776.htm" class="localvar">v2</a>);
+    96 :    if (<a href="../h_src/57612704.htm" class="macro">tointegerns</a>(<a href="../h_src/57917232.htm" class="localvar">p1</a>, &amp;<a href="../h_src/57916824.htm" class="localvar">i1</a>) &amp;&amp; <a href="../h_src/57612704.htm" class="macro">tointegerns</a>(<a href="../h_src/57917096.htm" class="localvar">p2</a>, &amp;<a href="../h_src/57916688.htm" class="localvar">i2</a>)) {
+    96 :    if (<a href="../h_src/57612704.htm" class="macro">tointegerns</a>(<a href="../h_src/57917232.htm" class="localvar">p1</a>, &amp;<a href="../h_src/57916824.htm" class="localvar">i1</a>) &amp;&amp; <a href="../h_src/57612704.htm" class="macro">tointegerns</a>(<a href="../h_src/57917096.htm" class="localvar">p2</a>, &amp;<a href="../h_src/57916688.htm" class="localvar">i2</a>)) {
+   166 :    int <a href="../h_src/57913628.htm" class="localvar">dot</a> = <a href="../h_src/57448468.htm" class="macro">lua_getlocaledecpoint</a>();
+   211 :    return <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/57804272.htm" class="libfunc">ldexp</a>)(<a href="../h_src/57913492.htm" class="localvar">r</a>, <a href="../h_src/57913084.htm" class="localvar">e</a>);
+   231 :    : <a href="../h_src/57449012.htm" class="macro">lua_str2number</a>(<a href="../h_src/57911996.htm" class="localvar">s</a>, &amp;<a href="../h_src/57911588.htm" class="localvar">endptr</a>);
+   253 :    const char *<a href="../h_src/57910772.htm" class="localvar">pmode</a> = <a href="../h_aa/57910840.htm" class="libfunc">strpbrk</a>(<a href="../h_src/57911248.htm" class="localvar">s</a>, &quot;.xXnN&quot;);  <a  class="comments">/* look for special chars */</a>
+   260 :    const char *<a href="../h_src/57910364.htm" class="localvar">pdot</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57911248.htm" class="localvar">s</a>, '.');
+   261 :    if (<a href="../h_src/57910364.htm" class="localvar">pdot</a> == NULL || <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/57911248.htm" class="localvar">s</a>) &gt; <a href="../h_src/57912268.htm" class="macro">L_MAXLENNUM</a>)
+   263 :    <a href="../h_aa/57910228.htm" class="libfunc">strcpy</a>(<a href="../h_src/57910500.htm" class="localvar">buff</a>, <a href="../h_src/57911248.htm" class="localvar">s</a>);  <a  class="comments">/* copy string to buffer */</a>
+   264 :    <a href="../h_src/57910500.htm" class="localvar">buff</a>[<a href="../h_src/57910364.htm" class="localvar">pdot</a> - <a href="../h_src/57911248.htm" class="localvar">s</a>] = <a href="../h_src/57448468.htm" class="macro">lua_getlocaledecpoint</a>();  <a  class="comments">/* correct decimal point */</a>
+   359 :    <a href="../h_src/57906896.htm" class="localvar">len</a> = <a href="../h_src/57450780.htm" class="macro">lua_integer2str</a>(<a href="../h_src/57907032.htm" class="localvar">buff</a>, <a href="../h_src/57907440.htm" class="macro">MAXNUMBER2STR</a>, <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/57907168.htm" class="localvar">obj</a>));
+   361 :    <a href="../h_src/57906896.htm" class="localvar">len</a> = <a href="../h_src/57452276.htm" class="macro">lua_number2str</a>(<a href="../h_src/57907032.htm" class="localvar">buff</a>, <a href="../h_src/57907440.htm" class="macro">MAXNUMBER2STR</a>, <a href="../h_src/57526272.htm" class="macro">fltvalue</a>(<a href="../h_src/57907168.htm" class="localvar">obj</a>));
+   362 :    if (<a href="../h_src/57907032.htm" class="localvar">buff</a>[<a href="../h_aa/57906692.htm" class="libfunc">strspn</a>(<a href="../h_src/57907032.htm" class="localvar">buff</a>, &quot;-0123456789&quot;)] == '\0') {  <a  class="comments">/* looks like an int? */</a>
+   363 :    <a href="../h_src/57907032.htm" class="localvar">buff</a>[<a href="../h_src/57906896.htm" class="localvar">len</a>++] = <a href="../h_src/57448468.htm" class="macro">lua_getlocaledecpoint</a>();
+   456 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/57902816.htm" class="localvar">bf</a>, <a href="../h_src/57903088.htm" class="localvar">str</a>, <a href="../h_src/57902952.htm" class="localvar">slen</a>);  <a  class="comments">/* add string to buffer */</a>
+   485 :    while ((<a href="../h_src/57901388.htm" class="localvar">e</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57901796.htm" class="localvar">fmt</a>, '%')) != NULL) {
+   491 :    <a href="../h_src/57903360.htm" class="function">addstr2buff</a>(&amp;<a href="../h_src/57901524.htm" class="localvar">buff</a>, <a href="../h_src/57901252.htm" class="localvar">s</a>, <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/57901252.htm" class="localvar">s</a>));
+   521 :    int <a href="../h_src/57899756.htm" class="localvar">len</a> = <a href="../h_src/57449556.htm" class="macro">lua_pointer2str</a>(<a href="../h_src/57900028.htm" class="localvar">bf</a>, <a href="../h_src/57900164.htm" class="localvar">sz</a>, <a href="../h_src/57899892.htm" class="localvar">p</a>);
+   542 :    <a href="../h_src/57903360.htm" class="function">addstr2buff</a>(&amp;<a href="../h_src/57901524.htm" class="localvar">buff</a>, <a href="../h_src/57901796.htm" class="localvar">fmt</a>, <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/57901796.htm" class="localvar">fmt</a>));  <a  class="comments">/* rest of 'fmt' */</a>
+   552 :    va_start(<a href="../h_src/57898804.htm" class="localvar">argp</a>, <a href="../h_src/57899212.htm" class="localvar">fmt</a>);
+   554 :    va_end(<a href="../h_src/57898804.htm" class="localvar">argp</a>);
+   571 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/57898124.htm" class="localvar">out</a>, <a href="../h_src/57897988.htm" class="localvar">source</a> + 1, <a href="../h_src/57897852.htm" class="localvar">srclen</a> * sizeof(char));
+   573 :    <a href="../h_src/57898260.htm" class="macro">addstr</a>(<a href="../h_src/57898124.htm" class="localvar">out</a>, <a href="../h_src/57897988.htm" class="localvar">source</a> + 1, <a href="../h_src/57897716.htm" class="localvar">bufflen</a> - 1);
+   579 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/57898124.htm" class="localvar">out</a>, <a href="../h_src/57897988.htm" class="localvar">source</a> + 1, <a href="../h_src/57897852.htm" class="localvar">srclen</a> * sizeof(char));
+   581 :    <a href="../h_src/57898260.htm" class="macro">addstr</a>(<a href="../h_src/57898124.htm" class="localvar">out</a>, <a href="../h_src/57898668.htm" class="macro">RETS</a>, <a href="../h_src/57549392.htm" class="macro">LL</a>(<a href="../h_src/57898668.htm" class="macro">RETS</a>));
+   583 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/57898124.htm" class="localvar">out</a>, <a href="../h_src/57897988.htm" class="localvar">source</a> + 1 + <a href="../h_src/57897852.htm" class="localvar">srclen</a> - <a href="../h_src/57897716.htm" class="localvar">bufflen</a>, <a href="../h_src/57897716.htm" class="localvar">bufflen</a> * sizeof(char));
+   587 :    const char *<a href="../h_src/57897580.htm" class="localvar">nl</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57897988.htm" class="localvar">source</a>, '\n');  <a  class="comments">/* find first new line (if any) */</a>
+   588 :    <a href="../h_src/57898260.htm" class="macro">addstr</a>(<a href="../h_src/57898124.htm" class="localvar">out</a>, <a href="../h_src/57898532.htm" class="macro">PRE</a>, <a href="../h_src/57549392.htm" class="macro">LL</a>(<a href="../h_src/57898532.htm" class="macro">PRE</a>));  <a  class="comments">/* add prefix */</a>
+   591 :    <a href="../h_src/57898260.htm" class="macro">addstr</a>(<a href="../h_src/57898124.htm" class="localvar">out</a>, <a href="../h_src/57897988.htm" class="localvar">source</a>, <a href="../h_src/57897852.htm" class="localvar">srclen</a>);  <a  class="comments">/* keep it */</a>
+   596 :    <a href="../h_src/57898260.htm" class="macro">addstr</a>(<a href="../h_src/57898124.htm" class="localvar">out</a>, <a href="../h_src/57897988.htm" class="localvar">source</a>, <a href="../h_src/57897852.htm" class="localvar">srclen</a>);
+   597 :    <a href="../h_src/57898260.htm" class="macro">addstr</a>(<a href="../h_src/57898124.htm" class="localvar">out</a>, <a href="../h_src/57898668.htm" class="macro">RETS</a>, <a href="../h_src/57549392.htm" class="macro">LL</a>(<a href="../h_src/57898668.htm" class="macro">RETS</a>));
+   599 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/57898124.htm" class="localvar">out</a>, <a href="../h_src/57898396.htm" class="macro">POS</a>, (<a href="../h_src/57549392.htm" class="macro">LL</a>(<a href="../h_src/57898396.htm" class="macro">POS</a>) + 1) * sizeof(char));
+</pre>
+<pre>
+</pre>
+<h5>Variable Number of Arguments</h5>
+<pre>
+   549 :    const char *<a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57899348.htm" class="localvar">L</a>, const char *<a href="../h_src/57899212.htm" class="localvar">fmt</a>, <a href="../h_src/57899076.htm" class="localvar">...</a>) {
+</pre>
+<pre>
+</pre>
+<h5>Unused Local</h5>
+<pre>
+   549 :    const char *<a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57899348.htm" class="localvar">L</a>, const char *<a href="../h_src/57899212.htm" class="localvar">fmt</a>, <a href="../h_src/57899076.htm" class="localvar">...</a>) {
+</pre>
+<pre>
+
+</pre>
+</body>
+</html>
+

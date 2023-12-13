@@ -1,0 +1,71 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>collectargs</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57563604.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57563604.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57563604.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57563604.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/57563604.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/57563604.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57461796.htm#277" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>9</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>2</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>16</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   281 :    if (<a href="../h_src/57563468.htm" class="localvar">argv</a>[0][0])  <a  class="comments">/* not empty? */</a>
+   282 :    <a href="../h_src/57572920.htm" class="variable">progname</a> = <a href="../h_src/57563468.htm" class="localvar">argv</a>[0];  <a  class="comments">/* save it */</a>
+   290 :    if (<a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>][0] != '-')  <a  class="comments">/* not an option? */</a>
+   291 :    return <a href="../h_src/57563196.htm" class="localvar">args</a>;  <a  class="comments">/* stop handling options */</a>
+   294 :    if (<a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>][2] != '\0')  <a  class="comments">/* extra characters after '--'? */</a>
+   295 :    return <a href="../h_src/57564284.htm" class="macro">has_error</a>;  <a  class="comments">/* invalid option */</a>
+   301 :    if (<a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>][2] != '\0')  <a  class="comments">/* extra characters? */</a>
+   302 :    return <a href="../h_src/57564284.htm" class="macro">has_error</a>;  <a  class="comments">/* invalid option */</a>
+   306 :    if (<a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>][2] != '\0')  <a  class="comments">/* extra characters? */</a>
+   307 :    return <a href="../h_src/57564284.htm" class="macro">has_error</a>;  <a  class="comments">/* invalid option */</a>
+   312 :    if (<a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>][2] != '\0')  <a  class="comments">/* extra characters? */</a>
+   313 :    return <a href="../h_src/57564284.htm" class="macro">has_error</a>;  <a  class="comments">/* invalid option */</a>
+   321 :    if (<a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>] == NULL || <a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>][0] == '-')
+   322 :    return <a href="../h_src/57564284.htm" class="macro">has_error</a>;  <a  class="comments">/* no next argument or it is another option */</a>
+</pre>
+<pre>
+</pre>
+<h5>Unterminated Case</h5>
+<pre>
+   310 :    <a href="../h_src/57563196.htm" class="localvar">args</a> |= <a href="../h_src/57564148.htm" class="macro">has_i</a>;  <a  class="comments">/* (-i implies -v) */</a><a  class="comments">/* FALLTHROUGH */</a>
+   317 :    <a href="../h_src/57563196.htm" class="localvar">args</a> |= <a href="../h_src/57563876.htm" class="macro">has_e</a>;  <a  class="comments">/* FALLTHROUGH */</a>
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

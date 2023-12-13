@@ -1,0 +1,82 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>tunpack</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143425056.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143425056.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143425056.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143425056.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/143425056.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/143425056.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143431652.htm#194" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>10</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>5</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>8</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Unclear Subexpression</h5>
+<pre>
+   199 :    <a href="../h_src/143424784.htm" class="localvar">n</a> = (<a href="../h_src/57438132.htm" class="function">lua_Unsigned</a>)<a href="../h_src/143424512.htm" class="localvar">e</a> - <a href="../h_src/143424648.htm" class="localvar">i</a>;  <a  class="comments">/* number of elements minus 1 (avoid overflows) */</a>
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+   199 :    <a href="../h_src/143424784.htm" class="localvar">n</a> = (<a href="../h_src/57438132.htm" class="function">lua_Unsigned</a>)<a href="../h_src/143424512.htm" class="localvar">e</a> - <a href="../h_src/143424648.htm" class="localvar">i</a>;  <a  class="comments">/* number of elements minus 1 (avoid overflows) */</a>
+   199 :    <a href="../h_src/143424784.htm" class="localvar">n</a> = (<a href="../h_src/57438132.htm" class="function">lua_Unsigned</a>)<a href="../h_src/143424512.htm" class="localvar">e</a> - <a href="../h_src/143424648.htm" class="localvar">i</a>;  <a  class="comments">/* number of elements minus 1 (avoid overflows) */</a>
+   201 :    !<a href="../h_src/57439016.htm" class="function">lua_checkstack</a>(<a href="../h_src/143424920.htm" class="localvar">L</a>, (int)(++<a href="../h_src/143424784.htm" class="localvar">n</a>))))
+   207 :    return (int)<a href="../h_src/143424784.htm" class="localvar">n</a>;
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   198 :    if (<a href="../h_src/143424648.htm" class="localvar">i</a> &gt; <a href="../h_src/143424512.htm" class="localvar">e</a>) return 0;  <a  class="comments">/* empty range */</a>
+   201 :    !<a href="../h_src/57439016.htm" class="function">lua_checkstack</a>(<a href="../h_src/143424920.htm" class="localvar">L</a>, (int)(++<a href="../h_src/143424784.htm" class="localvar">n</a>))))
+   202 :    return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143424920.htm" class="localvar">L</a>, &quot;too many results to unpack&quot;);
+</pre>
+<pre>
+</pre>
+<h5>Return Ignored</h5>
+<pre>
+   204 :    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143424920.htm" class="localvar">L</a>, 1, <a href="../h_src/143424648.htm" class="localvar">i</a>);
+   206 :    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143424920.htm" class="localvar">L</a>, 1, <a href="../h_src/143424512.htm" class="localvar">e</a>);  <a  class="comments">/* push last element */</a>
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+   200 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/143424784.htm" class="localvar">n</a> &gt;= (unsigned int)INT_MAX  ||
+   201 :    !<a href="../h_src/57439016.htm" class="function">lua_checkstack</a>(<a href="../h_src/143424920.htm" class="localvar">L</a>, (int)(++<a href="../h_src/143424784.htm" class="localvar">n</a>))))
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

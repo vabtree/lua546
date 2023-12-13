@@ -1,0 +1,72 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>utf8_decode</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143417168.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143417168.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143417168.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143417168.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/143417168.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/143417168.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143418664.htm#61" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>8</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>3</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>12</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Unclear Subexpression</h5>
+<pre>
+    76 :    <a href="../h_src/143416216.htm" class="localvar">res</a> |= ((<a href="../h_src/143417916.htm" class="type">utfint</a>)(<a href="../h_src/143416352.htm" class="localvar">c</a> &amp; 0x7F) &lt;&lt; (<a href="../h_src/143416080.htm" class="localvar">count</a> * 5));  <a  class="comments">/* add first byte */</a>
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+    64 :    unsigned int <a href="../h_src/143416352.htm" class="localvar">c</a> = (unsigned char)<a href="../h_src/143417032.htm" class="localvar">s</a>[0];
+    71 :    unsigned int <a href="../h_src/143415944.htm" class="localvar">cc</a> = (unsigned char)<a href="../h_src/143417032.htm" class="localvar">s</a>[++<a href="../h_src/143416080.htm" class="localvar">count</a>];  <a  class="comments">/* read next byte */</a>
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+    66 :    if (<a href="../h_src/143416352.htm" class="localvar">c</a> &lt; 0x80)  <a  class="comments">/* ascii? */</a>
+    67 :    <a href="../h_src/143416216.htm" class="localvar">res</a> = <a href="../h_src/143416352.htm" class="localvar">c</a>;
+    72 :    if (!<a href="../h_src/143417848.htm" class="macro">iscont</a>(<a href="../h_src/143415944.htm" class="localvar">cc</a>))  <a  class="comments">/* not a continuation byte? */</a>
+    73 :    return NULL;  <a  class="comments">/* invalid byte sequence */</a>
+    77 :    if (<a href="../h_src/143416080.htm" class="localvar">count</a> &gt; 5 || <a href="../h_src/143416216.htm" class="localvar">res</a> &gt; <a href="../h_src/143418188.htm" class="macro">MAXUTF</a> || <a href="../h_src/143416216.htm" class="localvar">res</a> &lt; <a href="../h_src/143416488.htm" class="localvar">limits</a>[<a href="../h_src/143416080.htm" class="localvar">count</a>])
+    78 :    return NULL;  <a  class="comments">/* invalid byte sequence */</a>
+    83 :    if (<a href="../h_src/143416216.htm" class="localvar">res</a> &gt; <a href="../h_src/143418324.htm" class="macro">MAXUNICODE</a> || (0xD800u &lt;= <a href="../h_src/143416216.htm" class="localvar">res</a> &amp;&amp; <a href="../h_src/143416216.htm" class="localvar">res</a> &lt;= 0xDFFFu))
+    84 :    return NULL;
+    86 :    if (<a href="../h_src/143416828.htm" class="localvar">val</a>) *<a href="../h_src/143416828.htm" class="localvar">val</a> = <a href="../h_src/143416216.htm" class="localvar">res</a>;
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

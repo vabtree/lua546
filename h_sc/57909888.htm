@@ -1,0 +1,75 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>l_str2int</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57909888.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57909888.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57909888.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57909888.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/57909888.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/57909888.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57919748.htm#276" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>19</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>2</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>11</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+   277 :    <a href="../h_src/57438132.htm" class="function">lua_Unsigned</a> <a href="../h_src/57909480.htm" class="localvar">a</a> = 0;
+   280 :    while (<a href="../h_src/57760140.htm" class="macro">lisspace</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57909752.htm" class="localvar">s</a>))) <a href="../h_src/57909752.htm" class="localvar">s</a>++;  <a  class="comments">/* skip initial spaces */</a>
+   285 :    for (; <a href="../h_src/57759868.htm" class="macro">lisxdigit</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57909752.htm" class="localvar">s</a>)); <a href="../h_src/57909752.htm" class="localvar">s</a>++) {
+   286 :    <a href="../h_src/57909480.htm" class="localvar">a</a> = <a href="../h_src/57909480.htm" class="localvar">a</a> * 16 + <a href="../h_src/57501588.htm" class="function">luaO_hexavalue</a>(*<a href="../h_src/57909752.htm" class="localvar">s</a>);
+   286 :    <a href="../h_src/57909480.htm" class="localvar">a</a> = <a href="../h_src/57909480.htm" class="localvar">a</a> * 16 + <a href="../h_src/57501588.htm" class="function">luaO_hexavalue</a>(*<a href="../h_src/57909752.htm" class="localvar">s</a>);
+   291 :    for (; <a href="../h_src/57760276.htm" class="macro">lisdigit</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57909752.htm" class="localvar">s</a>)); <a href="../h_src/57909752.htm" class="localvar">s</a>++) {
+   293 :    if (<a href="../h_src/57909480.htm" class="localvar">a</a> &gt;= <a href="../h_src/57910160.htm" class="macro">MAXBY10</a> &amp;&amp; (<a href="../h_src/57909480.htm" class="localvar">a</a> &gt; <a href="../h_src/57910160.htm" class="macro">MAXBY10</a> || <a href="../h_src/57909072.htm" class="localvar">d</a> &gt; <a href="../h_src/57910024.htm" class="macro">MAXLASTD</a> + <a href="../h_src/57909208.htm" class="localvar">neg</a>))  <a  class="comments">/* overflow? */</a>
+   293 :    if (<a href="../h_src/57909480.htm" class="localvar">a</a> &gt;= <a href="../h_src/57910160.htm" class="macro">MAXBY10</a> &amp;&amp; (<a href="../h_src/57909480.htm" class="localvar">a</a> &gt; <a href="../h_src/57910160.htm" class="macro">MAXBY10</a> || <a href="../h_src/57909072.htm" class="localvar">d</a> &gt; <a href="../h_src/57910024.htm" class="macro">MAXLASTD</a> + <a href="../h_src/57909208.htm" class="localvar">neg</a>))  <a  class="comments">/* overflow? */</a>
+   293 :    if (<a href="../h_src/57909480.htm" class="localvar">a</a> &gt;= <a href="../h_src/57910160.htm" class="macro">MAXBY10</a> &amp;&amp; (<a href="../h_src/57909480.htm" class="localvar">a</a> &gt; <a href="../h_src/57910160.htm" class="macro">MAXBY10</a> || <a href="../h_src/57909072.htm" class="localvar">d</a> &gt; <a href="../h_src/57910024.htm" class="macro">MAXLASTD</a> + <a href="../h_src/57909208.htm" class="localvar">neg</a>))  <a  class="comments">/* overflow? */</a>
+   293 :    if (<a href="../h_src/57909480.htm" class="localvar">a</a> &gt;= <a href="../h_src/57910160.htm" class="macro">MAXBY10</a> &amp;&amp; (<a href="../h_src/57909480.htm" class="localvar">a</a> &gt; <a href="../h_src/57910160.htm" class="macro">MAXBY10</a> || <a href="../h_src/57909072.htm" class="localvar">d</a> &gt; <a href="../h_src/57910024.htm" class="macro">MAXLASTD</a> + <a href="../h_src/57909208.htm" class="localvar">neg</a>))  <a  class="comments">/* overflow? */</a>
+   293 :    if (<a href="../h_src/57909480.htm" class="localvar">a</a> &gt;= <a href="../h_src/57910160.htm" class="macro">MAXBY10</a> &amp;&amp; (<a href="../h_src/57909480.htm" class="localvar">a</a> &gt; <a href="../h_src/57910160.htm" class="macro">MAXBY10</a> || <a href="../h_src/57909072.htm" class="localvar">d</a> &gt; <a href="../h_src/57910024.htm" class="macro">MAXLASTD</a> + <a href="../h_src/57909208.htm" class="localvar">neg</a>))  <a  class="comments">/* overflow? */</a>
+   295 :    <a href="../h_src/57909480.htm" class="localvar">a</a> = <a href="../h_src/57909480.htm" class="localvar">a</a> * 10 + <a href="../h_src/57909072.htm" class="localvar">d</a>;
+   295 :    <a href="../h_src/57909480.htm" class="localvar">a</a> = <a href="../h_src/57909480.htm" class="localvar">a</a> * 10 + <a href="../h_src/57909072.htm" class="localvar">d</a>;
+   299 :    while (<a href="../h_src/57760140.htm" class="macro">lisspace</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57909752.htm" class="localvar">s</a>))) <a href="../h_src/57909752.htm" class="localvar">s</a>++;  <a  class="comments">/* skip trailing spaces */</a>
+   302 :    *<a href="../h_src/57909616.htm" class="localvar">result</a> = <a href="../h_src/57545856.htm" class="macro">l_castU2S</a>((<a href="../h_src/57909208.htm" class="localvar">neg</a>) ? 0u - <a href="../h_src/57909480.htm" class="localvar">a</a> : <a href="../h_src/57909480.htm" class="localvar">a</a>);
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   280 :    while (<a href="../h_src/57760140.htm" class="macro">lisspace</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57909752.htm" class="localvar">s</a>))) <a href="../h_src/57909752.htm" class="localvar">s</a>++;  <a  class="comments">/* skip initial spaces */</a>
+   293 :    if (<a href="../h_src/57909480.htm" class="localvar">a</a> &gt;= <a href="../h_src/57910160.htm" class="macro">MAXBY10</a> &amp;&amp; (<a href="../h_src/57909480.htm" class="localvar">a</a> &gt; <a href="../h_src/57910160.htm" class="macro">MAXBY10</a> || <a href="../h_src/57909072.htm" class="localvar">d</a> &gt; <a href="../h_src/57910024.htm" class="macro">MAXLASTD</a> + <a href="../h_src/57909208.htm" class="localvar">neg</a>))  <a  class="comments">/* overflow? */</a>
+   294 :    return NULL;  <a  class="comments">/* do not accept it (as integer) */</a>
+   299 :    while (<a href="../h_src/57760140.htm" class="macro">lisspace</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57909752.htm" class="localvar">s</a>))) <a href="../h_src/57909752.htm" class="localvar">s</a>++;  <a  class="comments">/* skip trailing spaces */</a>
+   300 :    if (<a href="../h_src/57909344.htm" class="localvar">empty</a> || *<a href="../h_src/57909752.htm" class="localvar">s</a> != '\0') return NULL;  <a  class="comments">/* something wrong in the numeral */</a>
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

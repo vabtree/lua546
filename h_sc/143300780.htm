@@ -1,0 +1,76 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>num2straux</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143300780.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143300780.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143300780.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143300780.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/143300780.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/143300780.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143344164.htm#1024" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>10</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>4</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>7</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Unclear Subexpression</h5>
+<pre>
+  1028 :    else if (<a href="../h_src/143300372.htm" class="localvar">x</a> == 0) {  <a  class="comments">/* can be -0... */</a>
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+  1026 :    if (<a href="../h_src/143300372.htm" class="localvar">x</a> != <a href="../h_src/143300372.htm" class="localvar">x</a> || <a href="../h_src/143300372.htm" class="localvar">x</a> == (<a href="../h_src/57442144.htm" class="type">lua_Number</a>)HUGE_VAL || <a href="../h_src/143300372.htm" class="localvar">x</a> == -(<a href="../h_src/57442144.htm" class="type">lua_Number</a>)HUGE_VAL)
+  1026 :    if (<a href="../h_src/143300372.htm" class="localvar">x</a> != <a href="../h_src/143300372.htm" class="localvar">x</a> || <a href="../h_src/143300372.htm" class="localvar">x</a> == (<a href="../h_src/57442144.htm" class="type">lua_Number</a>)HUGE_VAL || <a href="../h_src/143300372.htm" class="localvar">x</a> == -(<a href="../h_src/57442144.htm" class="type">lua_Number</a>)HUGE_VAL)
+  1044 :    <a href="../h_src/143300644.htm" class="localvar">buff</a>[<a href="../h_src/143299964.htm" class="localvar">n</a>++] = <a href="../h_src/57448468.htm" class="macro">lua_getlocaledecpoint</a>();  <a  class="comments">/* add radix point */</a>
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+  1026 :    if (<a href="../h_src/143300372.htm" class="localvar">x</a> != <a href="../h_src/143300372.htm" class="localvar">x</a> || <a href="../h_src/143300372.htm" class="localvar">x</a> == (<a href="../h_src/57442144.htm" class="type">lua_Number</a>)HUGE_VAL || <a href="../h_src/143300372.htm" class="localvar">x</a> == -(<a href="../h_src/57442144.htm" class="type">lua_Number</a>)HUGE_VAL)
+  1027 :    return <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143300644.htm" class="localvar">buff</a>, <a href="../h_src/143300508.htm" class="localvar">sz</a>, <a href="../h_src/57451460.htm" class="macro">LUA_NUMBER_FMT</a>, (<a href="../h_src/57451732.htm" class="macro">LUAI_UACNUMBER</a>)<a href="../h_src/143300372.htm" class="localvar">x</a>);
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+  1027 :    return <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143300644.htm" class="localvar">buff</a>, <a href="../h_src/143300508.htm" class="localvar">sz</a>, <a href="../h_src/57451460.htm" class="macro">LUA_NUMBER_FMT</a>, (<a href="../h_src/57451732.htm" class="macro">LUAI_UACNUMBER</a>)<a href="../h_src/143300372.htm" class="localvar">x</a>);
+  1030 :    return <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143300644.htm" class="localvar">buff</a>, <a href="../h_src/143300508.htm" class="localvar">sz</a>, <a href="../h_src/57451460.htm" class="macro">LUA_NUMBER_FMT</a> &quot;x0p+0&quot;, (<a href="../h_src/57451732.htm" class="macro">LUAI_UACNUMBER</a>)<a href="../h_src/143300372.htm" class="localvar">x</a>);
+  1034 :    <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/143300100.htm" class="localvar">m</a> = <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(<a href="../h_aa/58118864.htm" class="libfunc">frexp</a>)(<a href="../h_src/143300372.htm" class="localvar">x</a>, &amp;<a href="../h_src/143300236.htm" class="localvar">e</a>);  <a  class="comments">/* 'x' fraction and exponent */</a>
+  1044 :    <a href="../h_src/143300644.htm" class="localvar">buff</a>[<a href="../h_src/143299964.htm" class="localvar">n</a>++] = <a href="../h_src/57448468.htm" class="macro">lua_getlocaledecpoint</a>();  <a  class="comments">/* add radix point */</a>
+  1049 :    <a href="../h_src/143299964.htm" class="localvar">n</a> += <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143300644.htm" class="localvar">buff</a> + <a href="../h_src/143299964.htm" class="localvar">n</a>, <a href="../h_src/143300508.htm" class="localvar">sz</a> - <a href="../h_src/143299964.htm" class="localvar">n</a>, &quot;p%+d&quot;, <a href="../h_src/143300236.htm" class="localvar">e</a>);  <a  class="comments">/* add exponent */</a>
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

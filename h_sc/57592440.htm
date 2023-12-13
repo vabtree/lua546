@@ -1,0 +1,70 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaH_getn</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57592440.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57592440.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57592440.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57592440.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/57592440.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/57592440.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58121924.htm#923" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>7</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>3</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>8</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+   931 :    <a href="../h_src/57505260.htm" class="macro">setnorealasize</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>);  <a  class="comments">/* now 'alimit' is not the real size */</a>
+   940 :    <a href="../h_src/57505260.htm" class="macro">setnorealasize</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>);
+   964 :    if (<a href="../h_src/57617464.htm" class="macro">isdummy</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>) || <a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617056.htm" class="function">luaH_getint</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>, <a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57442076.htm" class="type">lua_Integer</a>, <a href="../h_src/58091188.htm" class="localvar">limit</a> + 1))))
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   948 :    if (<a href="../h_src/57530488.htm" class="macro">isempty</a>(&amp;<a href="../h_src/58091324.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58091188.htm" class="localvar">limit</a>]))  <a  class="comments">/* 'limit + 1' is empty? */</a>
+   949 :    return <a href="../h_src/58091188.htm" class="localvar">limit</a>;  <a  class="comments">/* this is the boundary */</a>
+   964 :    if (<a href="../h_src/57617464.htm" class="macro">isdummy</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>) || <a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617056.htm" class="function">luaH_getint</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>, <a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57442076.htm" class="type">lua_Integer</a>, <a href="../h_src/58091188.htm" class="localvar">limit</a> + 1))))
+   965 :    return <a href="../h_src/58091188.htm" class="localvar">limit</a>;  <a  class="comments">/* 'limit + 1' is absent */</a>
+   966 :    else  <a  class="comments">/* 'limit + 1' is also present */</a>
+   967 :    return <a href="../h_aa/58090780.htm" class="libfunc">hash_search</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>, <a href="../h_src/58091188.htm" class="localvar">limit</a>);
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+   967 :    return <a href="../h_aa/58090780.htm" class="libfunc">hash_search</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>, <a href="../h_src/58091188.htm" class="localvar">limit</a>);
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

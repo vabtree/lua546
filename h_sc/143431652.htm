@@ -1,0 +1,179 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>ltablib.c</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143431652.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/143431652.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/143431652.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/143431652.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_uf/143431652.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_df/143431652.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/143431652.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/143431652.htm" class="file" target="_self">Source Code</a></li>
+<li id="current"><a href="../h_sc/143431652.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>69</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>6</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>86</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Number of Built-In Operators</h5>
+<pre>
+    49 :    if (<a href="../h_src/57433780.htm" class="function">lua_getmetatable</a>(<a href="../h_src/143429952.htm" class="localvar">L</a>, <a href="../h_src/143429816.htm" class="localvar">arg</a>) &amp;&amp;  <a  class="comments">/* must have metatable */</a>
+    50 :    (!(<a href="../h_src/143429680.htm" class="localvar">what</a> &amp; <a href="../h_src/143431312.htm" class="macro">TAB_R</a>) || <a href="../h_src/143430632.htm" class="function">checkfield</a>(<a href="../h_src/143429952.htm" class="localvar">L</a>, &quot;__index&quot;, ++<a href="../h_src/143429544.htm" class="localvar">n</a>)) &amp;&amp;
+    51 :    (!(<a href="../h_src/143429680.htm" class="localvar">what</a> &amp; <a href="../h_src/143431176.htm" class="macro">TAB_W</a>) || <a href="../h_src/143430632.htm" class="function">checkfield</a>(<a href="../h_src/143429952.htm" class="localvar">L</a>, &quot;__newindex&quot;, ++<a href="../h_src/143429544.htm" class="localvar">n</a>)) &amp;&amp;
+    52 :    (!(<a href="../h_src/143429680.htm" class="localvar">what</a> &amp; <a href="../h_src/143431040.htm" class="macro">TAB_L</a>) || <a href="../h_src/143430632.htm" class="function">checkfield</a>(<a href="../h_src/143429952.htm" class="localvar">L</a>, &quot;__len&quot;, ++<a href="../h_src/143429544.htm" class="localvar">n</a>))) {
+</pre>
+<pre>
+</pre>
+<h5>Unclear Subexpression</h5>
+<pre>
+   199 :    <a href="../h_src/143424784.htm" class="localvar">n</a> = (<a href="../h_src/57438132.htm" class="function">lua_Unsigned</a>)<a href="../h_src/143424512.htm" class="localvar">e</a> - <a href="../h_src/143424648.htm" class="localvar">i</a>;  <a  class="comments">/* number of elements minus 1 (avoid overflows) */</a>
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+    64 :    <a href="../h_src/143429000.htm" class="localvar">e</a> = <a href="../h_src/57415896.htm" class="macro">luaL_intop</a>(+, <a href="../h_src/143429000.htm" class="localvar">e</a>, 1);  <a  class="comments">/* first empty element */</a>
+    64 :    <a href="../h_src/143429000.htm" class="localvar">e</a> = <a href="../h_src/57415896.htm" class="macro">luaL_intop</a>(+, <a href="../h_src/143429000.htm" class="localvar">e</a>, 1);  <a  class="comments">/* first empty element */</a>
+   124 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143428048.htm" class="localvar">L</a>, <a href="../h_src/143427912.htm" class="localvar">f</a> &gt; 0 || <a href="../h_src/143427776.htm" class="localvar">e</a> &lt; <a href="../h_src/57450100.htm" class="macro">LUA_MAXINTEGER</a> + f, 3,
+   127 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143428048.htm" class="localvar">L</a>, <a href="../h_src/143427640.htm" class="localvar">t</a> &lt;= <a href="../h_src/57450100.htm" class="macro">LUA_MAXINTEGER</a> - <a href="../h_src/143427368.htm" class="localvar">n</a> + 1, 4,
+   127 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143428048.htm" class="localvar">L</a>, <a href="../h_src/143427640.htm" class="localvar">t</a> &lt;= <a href="../h_src/57450100.htm" class="macro">LUA_MAXINTEGER</a> - <a href="../h_src/143427368.htm" class="localvar">n</a> + 1, 4,
+   151 :    <a href="../h_src/57416712.htm" class="macro">luaL_typename</a>(<a href="../h_src/143426960.htm" class="localvar">L</a>, -1), (<a href="../h_src/57450916.htm" class="macro">LUAI_UACINT</a>)<a href="../h_src/143426688.htm" class="localvar">i</a>);
+   199 :    <a href="../h_src/143424784.htm" class="localvar">n</a> = (<a href="../h_src/57438132.htm" class="function">lua_Unsigned</a>)<a href="../h_src/143424512.htm" class="localvar">e</a> - <a href="../h_src/143424648.htm" class="localvar">i</a>;  <a  class="comments">/* number of elements minus 1 (avoid overflows) */</a>
+   199 :    <a href="../h_src/143424784.htm" class="localvar">n</a> = (<a href="../h_src/57438132.htm" class="function">lua_Unsigned</a>)<a href="../h_src/143424512.htm" class="localvar">e</a> - <a href="../h_src/143424648.htm" class="localvar">i</a>;  <a  class="comments">/* number of elements minus 1 (avoid overflows) */</a>
+   201 :    !<a href="../h_src/57439016.htm" class="function">lua_checkstack</a>(<a href="../h_src/143424920.htm" class="localvar">L</a>, (int)(++<a href="../h_src/143424784.htm" class="localvar">n</a>))))
+   207 :    return (int)<a href="../h_src/143424784.htm" class="localvar">n</a>;
+   247 :    clock_t <a href="../h_src/143423900.htm" class="localvar">c</a> = <a href="../h_aa/143354092.htm" class="libfunc">clock</a>();
+   248 :    time_t <a href="../h_src/143423764.htm" class="localvar">t</a> = <a href="../h_aa/57983504.htm" class="libfunc">time</a>(NULL);
+   252 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/143423628.htm" class="localvar">buff</a> + <a href="../h_src/143424172.htm" class="macro">sof</a>(<a href="../h_src/143423900.htm" class="localvar">c</a>), &amp;<a href="../h_src/143423764.htm" class="localvar">t</a>, <a href="../h_src/143424172.htm" class="macro">sof</a>(<a href="../h_src/143423764.htm" class="localvar">t</a>) * sizeof(unsigned int));
+   406 :    <a href="../h_src/143420228.htm" class="function">auxsort</a>(<a href="../h_src/143419140.htm" class="localvar">L</a>, 1, (<a href="../h_src/143424376.htm" class="type">IdxT</a>)<a href="../h_src/143419004.htm" class="localvar">n</a>, 0);
+   414 :    static const <a href="../h_src/57420996.htm" class="type">luaL_Reg</a> <a href="../h_src/143418868.htm" class="variable">tab_funcs</a>[] = {
+   415 :    {&quot;concat&quot;, <a href="../h_src/143426552.htm" class="function">tconcat</a>},
+   416 :    {&quot;insert&quot;, <a href="../h_src/143429408.htm" class="function">tinsert</a>},
+   417 :    {&quot;pack&quot;, <a href="../h_src/143425600.htm" class="function">tpack</a>},
+   418 :    {&quot;unpack&quot;, <a href="../h_src/143425056.htm" class="function">tunpack</a>},
+   419 :    {&quot;remove&quot;, <a href="../h_src/143428728.htm" class="function">tremove</a>},
+   420 :    {&quot;move&quot;, <a href="../h_src/143428184.htm" class="function">tmove</a>},
+   421 :    {&quot;sort&quot;, <a href="../h_src/143419276.htm" class="function">sort</a>},
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+    55 :    else
+    56 :    <a href="../h_src/57419772.htm" class="function">luaL_checktype</a>(<a href="../h_src/143429952.htm" class="localvar">L</a>, <a href="../h_src/143429816.htm" class="localvar">arg</a>, <a href="../h_src/57443368.htm" class="macro">LUA_TTABLE</a>);  <a  class="comments">/* force an error */</a>
+    94 :    if (<a href="../h_src/143428320.htm" class="localvar">pos</a> != <a href="../h_src/143428456.htm" class="localvar">size</a>)  <a  class="comments">/* validate 'pos' if given */</a>
+    95 :    <a  class="comments">/* check whether 'pos' is in [1, size + 1] */</a>
+    96 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(L, (lua_Unsigned)pos - 1u &lt;= (lua_Unsigned)size, 2,
+    97 :    &quot;position out of bounds&quot;);
+   149 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(!<a href="../h_src/57438812.htm" class="function">lua_isstring</a>(<a href="../h_src/143426960.htm" class="localvar">L</a>, -1)))
+   150 :    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143426960.htm" class="localvar">L</a>, &quot;invalid value (%s) at index %I in table for 'concat'&quot;,
+   151 :    <a href="../h_src/57416712.htm" class="macro">luaL_typename</a>(<a href="../h_src/143426960.htm" class="localvar">L</a>, -1), (<a href="../h_src/57450916.htm" class="macro">LUAI_UACINT</a>)<a href="../h_src/143426688.htm" class="localvar">i</a>);
+   168 :    if (<a href="../h_src/143425736.htm" class="localvar">i</a> == <a href="../h_src/143426144.htm" class="localvar">last</a>)  <a  class="comments">/* add last value (if interval was not empty) */</a>
+   169 :    <a href="../h_src/143427096.htm" class="function">addfield</a>(<a href="../h_src/143426416.htm" class="localvar">L</a>, &amp;<a href="../h_src/143426280.htm" class="localvar">b</a>, <a href="../h_src/143425736.htm" class="localvar">i</a>);
+   186 :    for (<a href="../h_src/143425328.htm" class="localvar">i</a> = <a href="../h_src/143425192.htm" class="localvar">n</a>; <a href="../h_src/143425328.htm" class="localvar">i</a> &gt;= 1; <a href="../h_src/143425328.htm" class="localvar">i</a>--)  <a  class="comments">/* assign elements */</a>
+   187 :    <a href="../h_src/57433440.htm" class="function">lua_seti</a>(<a href="../h_src/143425464.htm" class="localvar">L</a>, 1, <a href="../h_src/143425328.htm" class="localvar">i</a>);
+   198 :    if (<a href="../h_src/143424648.htm" class="localvar">i</a> &gt; <a href="../h_src/143424512.htm" class="localvar">e</a>) return 0;  <a  class="comments">/* empty range */</a>
+   201 :    !<a href="../h_src/57439016.htm" class="function">lua_checkstack</a>(<a href="../h_src/143424920.htm" class="localvar">L</a>, (int)(++<a href="../h_src/143424784.htm" class="localvar">n</a>))))
+   202 :    return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143424920.htm" class="localvar">L</a>, &quot;too many results to unpack&quot;);
+   253 :    for (<a href="../h_src/143423492.htm" class="localvar">i</a> = 0; <a href="../h_src/143423492.htm" class="localvar">i</a> &lt; <a href="../h_src/143424172.htm" class="macro">sof</a>(<a href="../h_src/143423628.htm" class="localvar">buff</a>); <a href="../h_src/143423492.htm" class="localvar">i</a>++)
+   254 :    <a href="../h_src/143423356.htm" class="localvar">rnd</a> += <a href="../h_src/143423628.htm" class="localvar">buff</a>[<a href="../h_src/143423492.htm" class="localvar">i</a>];
+   276 :    if (<a href="../h_src/57428340.htm" class="macro">lua_isnil</a>(<a href="../h_src/143422404.htm" class="localvar">L</a>, 2))  <a  class="comments">/* no function? */</a>
+   277 :    return <a href="../h_src/57435344.htm" class="function">lua_compare</a>(<a href="../h_src/143422404.htm" class="localvar">L</a>, <a href="../h_src/143422268.htm" class="localvar">a</a>, <a href="../h_src/143422132.htm" class="localvar">b</a>, <a href="../h_src/57435684.htm" class="macro">LUA_OPLT</a>);  <a  class="comments">/* a &lt; b */</a>
+   305 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/143421316.htm" class="localvar">i</a> == <a href="../h_src/143421452.htm" class="localvar">up</a> - 1))  <a  class="comments">/* a[i] &lt; P  but a[up - 1] == P  ?? */</a>
+   306 :    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143421724.htm" class="localvar">L</a>, &quot;invalid order function for sorting&quot;);
+   312 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/143421180.htm" class="localvar">j</a> &lt; <a href="../h_src/143421316.htm" class="localvar">i</a>))  <a  class="comments">/* j &lt; i  but  a[j] &gt; P ?? */</a>
+   313 :    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143421724.htm" class="localvar">L</a>, &quot;invalid order function for sorting&quot;);
+   353 :    if (<a href="../h_src/143422540.htm" class="function">sort_comp</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, -1, -2))  <a  class="comments">/* a[up] &lt; a[lo]? */</a>
+   354 :    <a href="../h_src/143423084.htm" class="function">set2</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, <a href="../h_src/143419956.htm" class="localvar">lo</a>, <a href="../h_src/143419820.htm" class="localvar">up</a>);  <a  class="comments">/* swap a[lo] - a[up] */</a>
+   355 :    else
+   356 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 2);  <a  class="comments">/* remove both values */</a>
+   357 :    if (<a href="../h_src/143419820.htm" class="localvar">up</a> - <a href="../h_src/143419956.htm" class="localvar">lo</a> == 1)  <a  class="comments">/* only 2 elements? */</a>
+   358 :    return;  <a  class="comments">/* already sorted */</a>
+   359 :    if (<a href="../h_src/143419820.htm" class="localvar">up</a> - <a href="../h_src/143419956.htm" class="localvar">lo</a> &lt; <a href="../h_src/143423220.htm" class="macro">RANLIMIT</a> || <a href="../h_src/143419684.htm" class="localvar">rnd</a> == 0)  <a  class="comments">/* small interval or no randomize? */</a>
+   360 :    <a href="../h_src/143419548.htm" class="localvar">p</a> = (<a href="../h_src/143419956.htm" class="localvar">lo</a> + <a href="../h_src/143419820.htm" class="localvar">up</a>)/2;  <a  class="comments">/* middle element is a good pivot */</a>
+   361 :    else  <a  class="comments">/* for larger intervals, it is worth a random pivot */</a>
+   362 :    <a href="../h_src/143419548.htm" class="localvar">p</a> = <a href="../h_src/143421044.htm" class="function">choosePivot</a>(<a href="../h_src/143419956.htm" class="localvar">lo</a>, <a href="../h_src/143419820.htm" class="localvar">up</a>, <a href="../h_src/143419684.htm" class="localvar">rnd</a>);
+   365 :    if (<a href="../h_src/143422540.htm" class="function">sort_comp</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, -2, -1))  <a  class="comments">/* a[p] &lt; a[lo]? */</a>
+   366 :    <a href="../h_src/143423084.htm" class="function">set2</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, <a href="../h_src/143419548.htm" class="localvar">p</a>, <a href="../h_src/143419956.htm" class="localvar">lo</a>);  <a  class="comments">/* swap a[p] - a[lo] */</a>
+   370 :    if (<a href="../h_src/143422540.htm" class="function">sort_comp</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, -1, -2))  <a  class="comments">/* a[up] &lt; a[p]? */</a>
+   371 :    <a href="../h_src/143423084.htm" class="function">set2</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, <a href="../h_src/143419548.htm" class="localvar">p</a>, <a href="../h_src/143419820.htm" class="localvar">up</a>);  <a  class="comments">/* swap a[up] - a[p] */</a>
+   372 :    else
+   373 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 2);
+   375 :    if (<a href="../h_src/143419820.htm" class="localvar">up</a> - <a href="../h_src/143419956.htm" class="localvar">lo</a> == 2)  <a  class="comments">/* only 3 elements? */</a>
+   376 :    return;  <a  class="comments">/* already sorted */</a>
+   393 :    if ((<a href="../h_src/143419820.htm" class="localvar">up</a> - <a href="../h_src/143419956.htm" class="localvar">lo</a>) / 128 &gt; <a href="../h_src/143419412.htm" class="localvar">n</a>) <a  class="comments">/* partition too imbalanced? */</a>
+   394 :    <a href="../h_src/143419684.htm" class="localvar">rnd</a> = <a href="../h_src/143424036.htm" class="function">l_randomizePivot</a>();  <a  class="comments">/* try a new randomization */</a>
+   403 :    if (!<a href="../h_src/57427796.htm" class="macro">lua_isnoneornil</a>(<a href="../h_src/143419140.htm" class="localvar">L</a>, 2))  <a  class="comments">/* is there a 2nd argument? */</a>
+   404 :    <a href="../h_src/57419772.htm" class="function">luaL_checktype</a>(<a href="../h_src/143419140.htm" class="localvar">L</a>, 2, <a href="../h_src/57443232.htm" class="macro">LUA_TFUNCTION</a>);  <a  class="comments">/* must be a function */</a>
+</pre>
+<pre>
+</pre>
+<h5>Return Ignored</h5>
+<pre>
+    37 :    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/143430496.htm" class="localvar">L</a>, <a href="../h_src/143430360.htm" class="localvar">key</a>);
+    77 :    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143429272.htm" class="localvar">L</a>, 1, <a href="../h_src/143428864.htm" class="localvar">i</a> - 1);
+    98 :    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143428592.htm" class="localvar">L</a>, 1, <a href="../h_src/143428320.htm" class="localvar">pos</a>);  <a  class="comments">/* result = t[pos] */</a>
+   100 :    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143428592.htm" class="localvar">L</a>, 1, <a href="../h_src/143428320.htm" class="localvar">pos</a> + 1);
+   131 :    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143428048.htm" class="localvar">L</a>, 1, <a href="../h_src/143427912.htm" class="localvar">f</a> + <a href="../h_src/143427232.htm" class="localvar">i</a>);
+   137 :    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143428048.htm" class="localvar">L</a>, 1, <a href="../h_src/143427912.htm" class="localvar">f</a> + <a href="../h_src/143427232.htm" class="localvar">i</a>);
+   148 :    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143426960.htm" class="localvar">L</a>, 1, <a href="../h_src/143426688.htm" class="localvar">i</a>);
+   150 :    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143426960.htm" class="localvar">L</a>, &quot;invalid value (%s) at index %I in table for 'concat'&quot;,
+   151 :    <a href="../h_src/57416712.htm" class="macro">luaL_typename</a>(<a href="../h_src/143426960.htm" class="localvar">L</a>, -1), (<a href="../h_src/57450916.htm" class="macro">LUAI_UACINT</a>)<a href="../h_src/143426688.htm" class="localvar">i</a>);
+   204 :    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143424920.htm" class="localvar">L</a>, 1, <a href="../h_src/143424648.htm" class="localvar">i</a>);
+   206 :    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143424920.htm" class="localvar">L</a>, 1, <a href="../h_src/143424512.htm" class="localvar">e</a>);  <a  class="comments">/* push last element */</a>
+   306 :    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143421724.htm" class="localvar">L</a>, &quot;invalid order function for sorting&quot;);
+   313 :    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143421724.htm" class="localvar">L</a>, &quot;invalid order function for sorting&quot;);
+   351 :    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419956.htm" class="localvar">lo</a>);
+   352 :    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419820.htm" class="localvar">up</a>);
+   363 :    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419548.htm" class="localvar">p</a>);
+   364 :    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419956.htm" class="localvar">lo</a>);
+   369 :    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419820.htm" class="localvar">up</a>);
+   377 :    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419548.htm" class="localvar">p</a>);  <a  class="comments">/* get middle element (Pivot) */</a>
+   379 :    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419820.htm" class="localvar">up</a> - 1);  <a  class="comments">/* push a[up - 1] */</a>
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+   124 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143428048.htm" class="localvar">L</a>, <a href="../h_src/143427912.htm" class="localvar">f</a> &gt; 0 || <a href="../h_src/143427776.htm" class="localvar">e</a> &lt; <a href="../h_src/57450100.htm" class="macro">LUA_MAXINTEGER</a> + f, 3,
+   127 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143428048.htm" class="localvar">L</a>, <a href="../h_src/143427640.htm" class="localvar">t</a> &lt;= <a href="../h_src/57450100.htm" class="macro">LUA_MAXINTEGER</a> - <a href="../h_src/143427368.htm" class="localvar">n</a> + 1, 4,
+   149 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(!<a href="../h_src/57438812.htm" class="function">lua_isstring</a>(<a href="../h_src/143426960.htm" class="localvar">L</a>, -1)))
+   200 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/143424784.htm" class="localvar">n</a> &gt;= (unsigned int)INT_MAX  ||
+   201 :    !<a href="../h_src/57439016.htm" class="function">lua_checkstack</a>(<a href="../h_src/143424920.htm" class="localvar">L</a>, (int)(++<a href="../h_src/143424784.htm" class="localvar">n</a>))))
+   247 :    clock_t <a href="../h_src/143423900.htm" class="localvar">c</a> = <a href="../h_aa/143354092.htm" class="libfunc">clock</a>();
+   248 :    time_t <a href="../h_src/143423764.htm" class="localvar">t</a> = <a href="../h_aa/57983504.htm" class="libfunc">time</a>(NULL);
+   251 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/143423628.htm" class="localvar">buff</a>, &amp;<a href="../h_src/143423900.htm" class="localvar">c</a>, <a href="../h_src/143424172.htm" class="macro">sof</a>(<a href="../h_src/143423900.htm" class="localvar">c</a>) * sizeof(unsigned int));
+   252 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/143423628.htm" class="localvar">buff</a> + <a href="../h_src/143424172.htm" class="macro">sof</a>(<a href="../h_src/143423900.htm" class="localvar">c</a>), &amp;<a href="../h_src/143423764.htm" class="localvar">t</a>, <a href="../h_src/143424172.htm" class="macro">sof</a>(<a href="../h_src/143423764.htm" class="localvar">t</a>) * sizeof(unsigned int));
+   305 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/143421316.htm" class="localvar">i</a> == <a href="../h_src/143421452.htm" class="localvar">up</a> - 1))  <a  class="comments">/* a[i] &lt; P  but a[up - 1] == P  ?? */</a>
+   312 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/143421180.htm" class="localvar">j</a> &lt; <a href="../h_src/143421316.htm" class="localvar">i</a>))  <a  class="comments">/* j &lt; i  but  a[j] &gt; P ?? */</a>
+   402 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143419140.htm" class="localvar">L</a>, <a href="../h_src/143419004.htm" class="localvar">n</a> &lt; INT_MAX, 1, &quot;array too big&quot;);
+</pre>
+<pre>
+
+</pre>
+</body>
+</html>
+

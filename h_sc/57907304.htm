@@ -1,0 +1,68 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>tostringbuff</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57907304.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57907304.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57907304.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57907304.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/57907304.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/57907304.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57919748.htm#355" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>7</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>3</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>5</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+   359 :    <a href="../h_src/57906896.htm" class="localvar">len</a> = <a href="../h_src/57450780.htm" class="macro">lua_integer2str</a>(<a href="../h_src/57907032.htm" class="localvar">buff</a>, <a href="../h_src/57907440.htm" class="macro">MAXNUMBER2STR</a>, <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/57907168.htm" class="localvar">obj</a>));
+   363 :    <a href="../h_src/57907032.htm" class="localvar">buff</a>[<a href="../h_src/57906896.htm" class="localvar">len</a>++] = <a href="../h_src/57448468.htm" class="macro">lua_getlocaledecpoint</a>();
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   358 :    if (<a href="../h_src/57526544.htm" class="macro">ttisinteger</a>(<a href="../h_src/57907168.htm" class="localvar">obj</a>))
+   359 :    <a href="../h_src/57906896.htm" class="localvar">len</a> = <a href="../h_src/57450780.htm" class="macro">lua_integer2str</a>(<a href="../h_src/57907032.htm" class="localvar">buff</a>, <a href="../h_src/57907440.htm" class="macro">MAXNUMBER2STR</a>, <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/57907168.htm" class="localvar">obj</a>));
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+   359 :    <a href="../h_src/57906896.htm" class="localvar">len</a> = <a href="../h_src/57450780.htm" class="macro">lua_integer2str</a>(<a href="../h_src/57907032.htm" class="localvar">buff</a>, <a href="../h_src/57907440.htm" class="macro">MAXNUMBER2STR</a>, <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/57907168.htm" class="localvar">obj</a>));
+   361 :    <a href="../h_src/57906896.htm" class="localvar">len</a> = <a href="../h_src/57452276.htm" class="macro">lua_number2str</a>(<a href="../h_src/57907032.htm" class="localvar">buff</a>, <a href="../h_src/57907440.htm" class="macro">MAXNUMBER2STR</a>, <a href="../h_src/57526272.htm" class="macro">fltvalue</a>(<a href="../h_src/57907168.htm" class="localvar">obj</a>));
+   362 :    if (<a href="../h_src/57907032.htm" class="localvar">buff</a>[<a href="../h_aa/57906692.htm" class="libfunc">strspn</a>(<a href="../h_src/57907032.htm" class="localvar">buff</a>, &quot;-0123456789&quot;)] == '\0') {  <a  class="comments">/* looks like an int? */</a>
+   363 :    <a href="../h_src/57907032.htm" class="localvar">buff</a>[<a href="../h_src/57906896.htm" class="localvar">len</a>++] = <a href="../h_src/57448468.htm" class="macro">lua_getlocaledecpoint</a>();
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

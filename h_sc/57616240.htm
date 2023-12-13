@@ -1,0 +1,65 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaH_next</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57616240.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57616240.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57616240.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57616240.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/57616240.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/57616240.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58121924.htm#349" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>10</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>2</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>7</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Unclear Subexpression</h5>
+<pre>
+   351 :    unsigned int <a href="../h_src/58112268.htm" class="localvar">i</a> = <a href="../h_src/58113764.htm" class="function">findindex</a>(<a href="../h_src/58112812.htm" class="localvar">L</a>, <a href="../h_src/58112676.htm" class="localvar">t</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58112540.htm" class="localvar">key</a>), <a href="../h_src/58112404.htm" class="localvar">asize</a>);  <a  class="comments">/* find original key */</a>
+   354 :    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58112540.htm" class="localvar">key</a>), <a href="../h_src/57536064.htm" class="variable">i</a> + 1);
+   355 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58112812.htm" class="localvar">L</a>, <a href="../h_src/58112540.htm" class="localvar">key</a> + 1, &amp;<a href="../h_src/58112676.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58112268.htm" class="localvar">i</a>]);
+   360 :    if (!<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/57618008.htm" class="macro">gnode</a>(<a href="../h_src/58112676.htm" class="localvar">t</a>, <a href="../h_src/58112268.htm" class="localvar">i</a>)))) {  <a  class="comments">/* a non-empty entry? */</a>
+   362 :    <a href="../h_src/57505804.htm" class="macro">getnodekey</a>(<a href="../h_src/58112812.htm" class="localvar">L</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58112540.htm" class="localvar">key</a>), <a href="../h_src/58111724.htm" class="localvar">n</a>);
+   363 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58112812.htm" class="localvar">L</a>, <a href="../h_src/58112540.htm" class="localvar">key</a> + 1, <a href="../h_src/57617872.htm" class="macro">gval</a><a href="../h_src/57532732.htm" class="variable">val</a>(<a href="../h_src/58111724.htm" class="localvar">n</a>));
+   363 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58112812.htm" class="localvar">L</a>, <a href="../h_src/58112540.htm" class="localvar">key</a> + 1, <a href="../h_src/57617872.htm" class="macro">gval</a><a href="../h_src/57532732.htm" class="variable">val</a>(<a href="../h_src/58111724.htm" class="localvar">n</a>));
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+   354 :    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58112540.htm" class="localvar">key</a>), <a href="../h_src/57536064.htm" class="variable">i</a> + 1);
+   354 :    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58112540.htm" class="localvar">key</a>), <a href="../h_src/57536064.htm" class="variable">i</a> + 1);
+   359 :    for (<a href="../h_src/58112268.htm" class="localvar">i</a> -= <a href="../h_src/58112404.htm" class="localvar">asize</a>; <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/58112268.htm" class="localvar">i</a>) &lt; <a href="../h_src/57502200.htm" class="macro">sizenode</a>(<a href="../h_src/58112676.htm" class="localvar">t</a>); <a href="../h_src/58112268.htm" class="localvar">i</a>++) {  <a  class="comments">/* hash part */</a>
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

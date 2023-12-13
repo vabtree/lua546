@@ -1,0 +1,75 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>l_str2d</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57911384.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57911384.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57911384.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57911384.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/57911384.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/57911384.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57919748.htm#251" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>12</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>3</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>11</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+   254 :    int <a href="../h_src/57910636.htm" class="localvar">mode</a> = <a href="../h_src/57910772.htm" class="localvar">pmode</a> ? <a href="../h_src/57759732.htm" class="macro">ltolower</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57910772.htm" class="localvar">pmode</a>)) : 0;
+   264 :    <a href="../h_src/57910500.htm" class="localvar">buff</a>[<a href="../h_src/57910364.htm" class="localvar">pdot</a> - <a href="../h_src/57911248.htm" class="localvar">s</a>] = <a href="../h_src/57448468.htm" class="macro">lua_getlocaledecpoint</a>();  <a  class="comments">/* correct decimal point */</a>
+   267 :    <a href="../h_src/57910976.htm" class="localvar">endptr</a> = <a href="../h_src/57911248.htm" class="localvar">s</a> + (<a href="../h_src/57910976.htm" class="localvar">endptr</a> - <a href="../h_src/57910500.htm" class="localvar">buff</a>);  <a  class="comments">/* make relative to 's' */</a>
+   267 :    <a href="../h_src/57910976.htm" class="localvar">endptr</a> = <a href="../h_src/57911248.htm" class="localvar">s</a> + (<a href="../h_src/57910976.htm" class="localvar">endptr</a> - <a href="../h_src/57910500.htm" class="localvar">buff</a>);  <a  class="comments">/* make relative to 's' */</a>
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   255 :    if (<a href="../h_src/57910636.htm" class="localvar">mode</a> == 'n')  <a  class="comments">/* reject 'inf' and 'nan' */</a>
+   256 :    return NULL;
+   261 :    if (<a href="../h_src/57910364.htm" class="localvar">pdot</a> == NULL || <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/57911248.htm" class="localvar">s</a>) &gt; <a href="../h_src/57912268.htm" class="macro">L_MAXLENNUM</a>)
+   262 :    return NULL;  <a  class="comments">/* string too long or no dot; fail */</a>
+   266 :    if (<a href="../h_src/57910976.htm" class="localvar">endptr</a> != NULL)
+   267 :    <a href="../h_src/57910976.htm" class="localvar">endptr</a> = <a href="../h_src/57911248.htm" class="localvar">s</a> + (<a href="../h_src/57910976.htm" class="localvar">endptr</a> - <a href="../h_src/57910500.htm" class="localvar">buff</a>);  <a  class="comments">/* make relative to 's' */</a>
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+   253 :    const char *<a href="../h_src/57910772.htm" class="localvar">pmode</a> = <a href="../h_aa/57910840.htm" class="libfunc">strpbrk</a>(<a href="../h_src/57911248.htm" class="localvar">s</a>, &quot;.xXnN&quot;);  <a  class="comments">/* look for special chars */</a>
+   260 :    const char *<a href="../h_src/57910364.htm" class="localvar">pdot</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57911248.htm" class="localvar">s</a>, '.');
+   261 :    if (<a href="../h_src/57910364.htm" class="localvar">pdot</a> == NULL || <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/57911248.htm" class="localvar">s</a>) &gt; <a href="../h_src/57912268.htm" class="macro">L_MAXLENNUM</a>)
+   263 :    <a href="../h_aa/57910228.htm" class="libfunc">strcpy</a>(<a href="../h_src/57910500.htm" class="localvar">buff</a>, <a href="../h_src/57911248.htm" class="localvar">s</a>);  <a  class="comments">/* copy string to buffer */</a>
+   264 :    <a href="../h_src/57910500.htm" class="localvar">buff</a>[<a href="../h_src/57910364.htm" class="localvar">pdot</a> - <a href="../h_src/57911248.htm" class="localvar">s</a>] = <a href="../h_src/57448468.htm" class="macro">lua_getlocaledecpoint</a>();  <a  class="comments">/* correct decimal point */</a>
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,72 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>findsetreg</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57742732.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57742732.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57742732.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57742732.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/57742732.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/57742732.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57759256.htm#465" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>9</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>3</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>10</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Number of Built-In Operators</h5>
+<pre>
+   492 :    int <a href="../h_src/57741100.htm" class="localvar">b</a> = <a href="../h_src/57691760.htm" class="macro">GETARG_sJ</a>(<a href="../h_src/57741780.htm" class="localvar">i</a>);
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+   474 :    int <a href="../h_src/57741508.htm" class="localvar">a</a> = <a href="../h_src/57694072.htm" class="macro">GETARG_A</a>(<a href="../h_src/57741780.htm" class="localvar">i</a>);
+   478 :    int <a href="../h_src/57741236.htm" class="localvar">b</a> = <a href="../h_src/57693800.htm" class="macro">GETARG_B</a>(<a href="../h_src/57741780.htm" class="localvar">i</a>);
+   492 :    int <a href="../h_src/57741100.htm" class="localvar">b</a> = <a href="../h_src/57691760.htm" class="macro">GETARG_sJ</a>(<a href="../h_src/57741780.htm" class="localvar">i</a>);
+   492 :    int <a href="../h_src/57741100.htm" class="localvar">b</a> = <a href="../h_src/57691760.htm" class="macro">GETARG_sJ</a>(<a href="../h_src/57741780.htm" class="localvar">i</a>);
+   501 :    <a href="../h_src/57741372.htm" class="localvar">change</a> = (<a href="../h_src/57684280.htm" class="macro">testAMode</a>(<a href="../h_src/57741644.htm" class="localvar">op</a>) &amp;&amp; <a href="../h_src/57742324.htm" class="localvar">reg</a> == <a href="../h_src/57741508.htm" class="localvar">a</a>);
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   469 :    if (<a href="../h_src/57683736.htm" class="macro">testMMMode</a>(<a href="../h_src/57694752.htm" class="macro">GET_OPCODE</a>(<a href="../h_src/57742596.htm" class="localvar">p</a>-&gt;<a href="../h_src/57514916.htm" class="variable">code</a>[<a href="../h_src/57742460.htm" class="localvar">lastpc</a>])))
+   470 :    <a href="../h_src/57742460.htm" class="localvar">lastpc</a>--;  <a  class="comments">/* previous instruction was not actually executed */</a>
+   495 :    if (<a href="../h_src/57740964.htm" class="localvar">dest</a> &lt;= <a href="../h_src/57742460.htm" class="localvar">lastpc</a> &amp;&amp; <a href="../h_src/57740964.htm" class="localvar">dest</a> &gt; <a href="../h_src/57741916.htm" class="localvar">jmptarget</a>)
+   496 :    <a href="../h_src/57741916.htm" class="localvar">jmptarget</a> = <a href="../h_src/57740964.htm" class="localvar">dest</a>;  <a  class="comments">/* update 'jmptarget' */</a>
+   504 :    if (<a href="../h_src/57741372.htm" class="localvar">change</a>)
+   505 :    <a href="../h_src/57742052.htm" class="localvar">setreg</a> = <a href="../h_src/57743140.htm" class="function">filterpc</a>(<a href="../h_src/57742188.htm" class="localvar">pc</a>, <a href="../h_src/57741916.htm" class="localvar">jmptarget</a>);
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

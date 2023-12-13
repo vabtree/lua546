@@ -1,0 +1,69 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaM_growaux_</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57656564.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/57656564.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57656564.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/57656564.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/57656564.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/57656564.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/57926752.htm#97" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>6</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>3</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>8</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+   115 :    <a href="../h_src/57924780.htm" class="localvar">newblock</a> = <a href="../h_src/57656700.htm" class="function">luaM_saferealloc_</a>(<a href="../h_src/57925732.htm" class="localvar">L</a>, <a href="../h_src/57925596.htm" class="localvar">block</a>, <a href="../h_src/57546400.htm" class="macro">cast_sizet</a>(*<a href="../h_src/57925324.htm" class="localvar">psize</a>) * <a href="../h_src/57925188.htm" class="localvar">size_elems</a>,
+   116 :    <a href="../h_src/57546400.htm" class="macro">cast_sizet</a>(<a href="../h_src/57924644.htm" class="localvar">size</a>) * <a href="../h_src/57925188.htm" class="localvar">size_elems</a>);
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   101 :    if (<a href="../h_src/57925460.htm" class="localvar">nelems</a> + 1 &lt;= <a href="../h_src/57924644.htm" class="localvar">size</a>)  <a  class="comments">/* does one extra element still fit? */</a>
+   102 :    return <a href="../h_src/57925596.htm" class="localvar">block</a>;  <a  class="comments">/* nothing to be done */</a>
+   104 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57924644.htm" class="localvar">size</a> &gt;= <a href="../h_src/57925052.htm" class="localvar">limit</a>))  <a  class="comments">/* cannot grow even a little? */</a>
+   105 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/57925732.htm" class="localvar">L</a>, &quot;too many %s (limit is %d)&quot;, <a href="../h_src/57924916.htm" class="localvar">what</a>, <a href="../h_src/57925052.htm" class="localvar">limit</a>);
+   110 :    if (<a href="../h_src/57924644.htm" class="localvar">size</a> &lt; <a href="../h_src/57925868.htm" class="macro">MINSIZEARRAY</a>)
+   111 :    <a href="../h_src/57924644.htm" class="localvar">size</a> = <a href="../h_src/57925868.htm" class="macro">MINSIZEARRAY</a>;  <a  class="comments">/* minimum size */</a>
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+   104 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57924644.htm" class="localvar">size</a> &gt;= <a href="../h_src/57925052.htm" class="localvar">limit</a>))  <a  class="comments">/* cannot grow even a little? */</a>
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,77 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>pmain</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143401936.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/143401936.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/143401936.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/143401936.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/143401936.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/143401936.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/143407988.htm#168" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>12</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>4</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>9</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+   185 :    FILE* D= (<a href="../h_src/143406016.htm" class="variable">output</a>==NULL) ? stdout : <a href="../h_aa/58324460.htm" class="libfunc">fopen</a>(<a href="../h_src/143406016.htm" class="variable">output</a>,&quot;wb&quot;);
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   175 :    if (!<a href="../h_src/57439016.htm" class="function">lua_checkstack</a>(<a href="../h_src/143401800.htm" class="localvar">L</a>,<a href="../h_src/143401664.htm" class="localvar">argc</a>)) <a href="../h_src/143405812.htm" class="function">fatal</a>(&quot;too many input files&quot;);
+   179 :    if (<a href="../h_src/57418480.htm" class="macro">luaL_loadfile</a>(<a href="../h_src/143401800.htm" class="localvar">L</a>,<a href="../h_src/143401120.htm" class="localvar">filename</a>)!=<a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) <a href="../h_src/143405812.htm" class="function">fatal</a>(<a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143401800.htm" class="localvar">L</a>,-1));
+   182 :    if (<a href="../h_src/143406288.htm" class="variable">listing</a>) <a href="../h_src/143406696.htm" class="macro">luaU_print</a>(<a href="../h_src/143401392.htm" class="localvar">f</a>,<a href="../h_src/143406288.htm" class="variable">listing</a>&gt;1);
+   186 :    if (D==NULL) <a href="../h_src/143405540.htm" class="function">cannot</a>(&quot;open&quot;);
+   190 :    if (<a href="../h_aa/58324256.htm" class="libfunc">ferror</a>(D)) <a href="../h_src/143405540.htm" class="function">cannot</a>(&quot;write&quot;);
+   191 :    if (<a href="../h_aa/58324188.htm" class="libfunc">fclose</a>(D)) <a href="../h_src/143405540.htm" class="function">cannot</a>(&quot;close&quot;);
+</pre>
+<pre>
+</pre>
+<h5>Return Ignored</h5>
+<pre>
+   188 :    <a href="../h_src/57614744.htm" class="function">luaU_dump</a>(<a href="../h_src/143401800.htm" class="localvar">L</a>,<a href="../h_src/143401392.htm" class="localvar">f</a>,<a href="../h_src/143402616.htm" class="function">writer</a>,D,<a href="../h_src/143406152.htm" class="variable">stripping</a>);
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+   178 :    const char* <a href="../h_src/143401120.htm" class="localvar">filename</a>=<a href="../h_src/143404996.htm" class="macro">IS</a>(&quot;-&quot;) ? NULL : <a href="../h_src/143401528.htm" class="localvar">argv</a>[<a href="../h_src/143401256.htm" class="localvar">i</a>];
+   185 :    FILE* D= (<a href="../h_src/143406016.htm" class="variable">output</a>==NULL) ? stdout : <a href="../h_aa/58324460.htm" class="libfunc">fopen</a>(<a href="../h_src/143406016.htm" class="variable">output</a>,&quot;wb&quot;);
+   190 :    if (<a href="../h_aa/58324256.htm" class="libfunc">ferror</a>(D)) <a href="../h_src/143405540.htm" class="function">cannot</a>(&quot;write&quot;);
+   191 :    if (<a href="../h_aa/58324188.htm" class="libfunc">fclose</a>(D)) <a href="../h_src/143405540.htm" class="function">cannot</a>(&quot;close&quot;);
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

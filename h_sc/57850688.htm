@@ -1,0 +1,94 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>ldump.c</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57850688.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/57850688.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/57850688.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/57850688.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_uf/57850688.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_df/57850688.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57850688.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/57850688.htm" class="file" target="_self">Source Code</a></li>
+<li id="current"><a href="../h_sc/57850688.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>15</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>6</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>16</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Number of Built-In Operators</h5>
+<pre>
+    73 :    <a href="../h_src/57849804.htm" class="macro">dumpVector</a>(<a href="../h_src/57847968.htm" class="localvar">D</a>, <a href="../h_src/57847696.htm" class="localvar">buff</a> + <a href="../h_src/57848240.htm" class="macro">DIBS</a> - n, <a href="../h_src/57847560.htm" class="localvar">n</a>);
+</pre>
+<pre>
+</pre>
+<h5>Unclear Subexpression</h5>
+<pre>
+    44 :    <a href="../h_src/57849328.htm" class="localvar">D</a>-&gt;<a href="../h_src/57850008.htm" class="variable">status</a> = (*<a href="../h_src/57849328.htm" class="localvar">D</a>-&gt;<a href="../h_src/57850212.htm" class="variable">writer</a>)(<a href="../h_src/57849328.htm" class="localvar">D</a>-&gt;<a href="../h_src/57850280.htm" class="variable">L</a>, <a href="../h_src/57849192.htm" class="localvar">b</a>, <a href="../h_src/57849056.htm" class="localvar">size</a>, <a href="../h_src/57849328.htm" class="localvar">D</a>-&gt;<a href="../h_src/57850144.htm" class="variable">data</a>);
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+    44 :    <a href="../h_src/57849328.htm" class="localvar">D</a>-&gt;<a href="../h_src/57850008.htm" class="variable">status</a> = (*<a href="../h_src/57849328.htm" class="localvar">D</a>-&gt;<a href="../h_src/57850212.htm" class="variable">writer</a>)(<a href="../h_src/57849328.htm" class="localvar">D</a>-&gt;<a href="../h_src/57850280.htm" class="variable">L</a>, <a href="../h_src/57849192.htm" class="localvar">b</a>, <a href="../h_src/57849056.htm" class="localvar">size</a>, <a href="../h_src/57849328.htm" class="localvar">D</a>-&gt;<a href="../h_src/57850144.htm" class="variable">data</a>);
+    54 :    <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57848376.htm" class="localvar">x</a> = (<a href="../h_src/57550480.htm" class="type">lu_byte</a>)<a href="../h_src/57848512.htm" class="localvar">y</a>;
+    69 :    <a href="../h_src/57847696.htm" class="localvar">buff</a>[<a href="../h_src/57848240.htm" class="macro">DIBS</a> - (++<a href="../h_src/57847560.htm" class="localvar">n</a>)] = <a href="../h_src/57847832.htm" class="localvar">x</a> &amp; 0x7f;  <a  class="comments">/* fill buffer in reverse order */</a>
+    73 :    <a href="../h_src/57849804.htm" class="macro">dumpVector</a>(<a href="../h_src/57847968.htm" class="localvar">D</a>, <a href="../h_src/57847696.htm" class="localvar">buff</a> + <a href="../h_src/57848240.htm" class="macro">DIBS</a> - n, <a href="../h_src/57847560.htm" class="localvar">n</a>);
+    73 :    <a href="../h_src/57849804.htm" class="macro">dumpVector</a>(<a href="../h_src/57847968.htm" class="localvar">D</a>, <a href="../h_src/57847696.htm" class="localvar">buff</a> + <a href="../h_src/57848240.htm" class="macro">DIBS</a> - n, <a href="../h_src/57847560.htm" class="localvar">n</a>);
+   129 :    <a href="../h_src/57846200.htm" class="function">dumpString</a>(<a href="../h_src/57844840.htm" class="localvar">D</a>, <a href="../h_src/57524368.htm" class="macro">tsvalue</a>(<a href="../h_src/57844296.htm" class="localvar">o</a>));
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+    93 :    if (<a href="../h_src/57845928.htm" class="localvar">s</a> == NULL)
+    94 :    <a href="../h_src/57848104.htm" class="function">dumpSize</a>(<a href="../h_src/57846064.htm" class="localvar">D</a>, 0);
+   142 :    for (<a href="../h_src/57843616.htm" class="localvar">i</a> = 0; <a href="../h_src/57843616.htm" class="localvar">i</a> &lt; <a href="../h_src/57843480.htm" class="localvar">n</a>; <a href="../h_src/57843616.htm" class="localvar">i</a>++)
+   143 :    <a href="../h_src/57845112.htm" class="function">dumpFunction</a>(<a href="../h_src/57843888.htm" class="localvar">D</a>, <a href="../h_src/57843752.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a>[<a href="../h_src/57843616.htm" class="localvar">i</a>], <a href="../h_src/57843752.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>);
+   178 :    for (<a href="../h_src/57842256.htm" class="localvar">i</a> = 0; <a href="../h_src/57842256.htm" class="localvar">i</a> &lt; <a href="../h_src/57842120.htm" class="localvar">n</a>; <a href="../h_src/57842256.htm" class="localvar">i</a>++)
+   179 :    <a href="../h_src/57846200.htm" class="function">dumpString</a>(<a href="../h_src/57842528.htm" class="localvar">D</a>, <a href="../h_src/57842392.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/57842256.htm" class="localvar">i</a>].<a href="../h_src/57517364.htm" class="variable">name</a>);
+   184 :    if (<a href="../h_src/57841984.htm" class="localvar">D</a>-&gt;<a href="../h_src/57850076.htm" class="variable">strip</a> || <a href="../h_src/57841848.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a> == <a href="../h_src/57841712.htm" class="localvar">psource</a>)
+   185 :    <a href="../h_src/57846200.htm" class="function">dumpString</a>(<a href="../h_src/57841984.htm" class="localvar">D</a>, NULL);  <a  class="comments">/* no debug info or same source as its parent */</a>
+   186 :    else
+   187 :    <a href="../h_src/57846200.htm" class="function">dumpString</a>(<a href="../h_src/57841984.htm" class="localvar">D</a>, <a href="../h_src/57841848.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>);
+</pre>
+<pre>
+</pre>
+<h5>Unterminated Case</h5>
+<pre>
+   132 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(tt == <a href="../h_src/57531576.htm" class="macro">LUA_VNIL</a> || tt == <a href="../h_src/57530080.htm" class="macro">LUA_VFALSE</a> || tt == <a href="../h_src/57529944.htm" class="macro">LUA_VTRUE</a>);
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+    44 :    <a href="../h_src/57849328.htm" class="localvar">D</a>-&gt;<a href="../h_src/57850008.htm" class="variable">status</a> = (*<a href="../h_src/57849328.htm" class="localvar">D</a>-&gt;<a href="../h_src/57850212.htm" class="variable">writer</a>)(<a href="../h_src/57849328.htm" class="localvar">D</a>-&gt;<a href="../h_src/57850280.htm" class="variable">L</a>, <a href="../h_src/57849192.htm" class="localvar">b</a>, <a href="../h_src/57849056.htm" class="localvar">size</a>, <a href="../h_src/57849328.htm" class="localvar">D</a>-&gt;<a href="../h_src/57850144.htm" class="variable">data</a>);
+</pre>
+<pre>
+
+</pre>
+</body>
+</html>
+

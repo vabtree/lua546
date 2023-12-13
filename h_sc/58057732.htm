@@ -1,0 +1,115 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>forprep</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58057732.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58057732.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58057732.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58057732.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/58057732.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/58057732.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58062016.htm#206" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>37</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>5</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>28</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Number of Built-In Operators</h5>
+<pre>
+   238 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(!<a href="../h_src/57613112.htm" class="macro">tonumber</a>(<a href="../h_src/58217164.htm" class="localvar">plimit</a>, &amp;<a href="../h_src/58215940.htm" class="localvar">limit</a>)))
+   240 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(!<a href="../h_src/57613112.htm" class="macro">tonumber</a>(<a href="../h_src/58217028.htm" class="localvar">pstep</a>, &amp;<a href="../h_src/58215804.htm" class="localvar">step</a>)))
+   242 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(!<a href="../h_src/57613112.htm" class="macro">tonumber</a>(<a href="../h_src/58217300.htm" class="localvar">pinit</a>, &amp;<a href="../h_src/58216076.htm" class="localvar">init</a>)))
+</pre>
+<pre>
+</pre>
+<h5>Unclear Subexpression</h5>
+<pre>
+   207 :    <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58217300.htm" class="localvar">pinit</a> = <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58057460.htm" class="localvar">ra</a>);
+   208 :    <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58217164.htm" class="localvar">plimit</a> = <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58057460.htm" class="localvar">ra</a> + 1);
+   209 :    <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58217028.htm" class="localvar">pstep</a> = <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58057460.htm" class="localvar">ra</a> + 2);
+   216 :    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58057460.htm" class="localvar">ra</a> + 3), <a href="../h_src/58216892.htm" class="localvar">init</a>);  <a  class="comments">/* control variable */</a>
+   244 :    if (<a href="../h_src/58215804.htm" class="localvar">step</a> == 0)
+   253 :    <a href="../h_src/57525728.htm" class="macro">setfltvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58057460.htm" class="localvar">ra</a>), <a href="../h_src/58216076.htm" class="localvar">init</a>);  <a  class="comments">/* internal index */</a><a href="../h_src/57535996.htm" class="variable">n</a>al index */
+   254 :    <a href="../h_src/57525728.htm" class="macro">setfltvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58057460.htm" class="localvar">ra</a> + 3), <a href="../h_src/58216076.htm" class="localvar">init</a>);  <a  class="comments">/* control variable */</a>
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+   216 :    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58057460.htm" class="localvar">ra</a> + 3), <a href="../h_src/58216892.htm" class="localvar">init</a>);  <a  class="comments">/* control variable */</a>
+   222 :    <a href="../h_src/58216348.htm" class="localvar">count</a> = <a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/58216620.htm" class="localvar">limit</a>) - <a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/58216892.htm" class="localvar">init</a>);
+   222 :    <a href="../h_src/58216348.htm" class="localvar">count</a> = <a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/58216620.htm" class="localvar">limit</a>) - <a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/58216892.htm" class="localvar">init</a>);
+   222 :    <a href="../h_src/58216348.htm" class="localvar">count</a> = <a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/58216620.htm" class="localvar">limit</a>) - <a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/58216892.htm" class="localvar">init</a>);
+   224 :    <a href="../h_src/58216348.htm" class="localvar">count</a> /= <a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/58216756.htm" class="localvar">step</a>);
+   227 :    <a href="../h_src/58216348.htm" class="localvar">count</a> = <a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/58216892.htm" class="localvar">init</a>) - <a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/58216620.htm" class="localvar">limit</a>);
+   227 :    <a href="../h_src/58216348.htm" class="localvar">count</a> = <a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/58216892.htm" class="localvar">init</a>) - <a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/58216620.htm" class="localvar">limit</a>);
+   227 :    <a href="../h_src/58216348.htm" class="localvar">count</a> = <a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/58216892.htm" class="localvar">init</a>) - <a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/58216620.htm" class="localvar">limit</a>);
+   229 :    <a href="../h_src/58216348.htm" class="localvar">count</a> /= <a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(-(<a href="../h_src/58216756.htm" class="localvar">step</a> + 1)) + 1u;
+   229 :    <a href="../h_src/58216348.htm" class="localvar">count</a> /= <a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(-(<a href="../h_src/58216756.htm" class="localvar">step</a> + 1)) + 1u;
+   233 :    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(<a href="../h_src/58217164.htm" class="localvar">plimit</a>, <a href="../h_src/57545856.htm" class="macro">l_castU2S</a>(<a href="../h_src/58216348.htm" class="localvar">count</a>));
+   233 :    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(<a href="../h_src/58217164.htm" class="localvar">plimit</a>, <a href="../h_src/57545856.htm" class="macro">l_castU2S</a>(<a href="../h_src/58216348.htm" class="localvar">count</a>));
+   251 :    <a href="../h_src/57525728.htm" class="macro">setfltvalue</a>(<a href="../h_src/58217164.htm" class="localvar">plimit</a>, <a href="../h_src/58215940.htm" class="localvar">limit</a>);
+   252 :    <a href="../h_src/57525728.htm" class="macro">setfltvalue</a>(<a href="../h_src/58217028.htm" class="localvar">pstep</a>, <a href="../h_src/58215804.htm" class="localvar">step</a>);
+   253 :    <a href="../h_src/57525728.htm" class="macro">setfltvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58057460.htm" class="localvar">ra</a>), <a href="../h_src/58216076.htm" class="localvar">init</a>);  <a  class="comments">/* internal index */</a><a href="../h_src/57535996.htm" class="variable">n</a>al index */
+   254 :    <a href="../h_src/57525728.htm" class="macro">setfltvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58057460.htm" class="localvar">ra</a> + 3), <a href="../h_src/58216076.htm" class="localvar">init</a>);  <a  class="comments">/* control variable */</a>
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+   214 :    if (<a href="../h_src/58216756.htm" class="localvar">step</a> == 0)
+   215 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/58057596.htm" class="localvar">L</a>, &quot;'for' step is zero&quot;);
+   217 :    if (<a href="../h_src/58058684.htm" class="function">forlimit</a>(<a href="../h_src/58057596.htm" class="localvar">L</a>, <a href="../h_src/58216892.htm" class="localvar">init</a>, <a href="../h_src/58217164.htm" class="localvar">plimit</a>, &amp;<a href="../h_src/58216620.htm" class="localvar">limit</a>, <a href="../h_src/58216756.htm" class="localvar">step</a>))
+   218 :    return 1;  <a  class="comments">/* skip the loop */</a>
+   223 :    if (<a href="../h_src/58216756.htm" class="localvar">step</a> != 1)  <a  class="comments">/* avoid division in the too common case */</a>
+   224 :    <a href="../h_src/58216348.htm" class="localvar">count</a> /= <a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/58216756.htm" class="localvar">step</a>);
+   238 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(!<a href="../h_src/57613112.htm" class="macro">tonumber</a>(<a href="../h_src/58217164.htm" class="localvar">plimit</a>, &amp;<a href="../h_src/58215940.htm" class="localvar">limit</a>)))
+   239 :    <a href="../h_src/57635620.htm" class="function">luaG_forerror</a>(<a href="../h_src/58057596.htm" class="localvar">L</a>, <a href="../h_src/58217164.htm" class="localvar">plimit</a>, &quot;limit&quot;);
+   240 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(!<a href="../h_src/57613112.htm" class="macro">tonumber</a>(<a href="../h_src/58217028.htm" class="localvar">pstep</a>, &amp;<a href="../h_src/58215804.htm" class="localvar">step</a>)))
+   241 :    <a href="../h_src/57635620.htm" class="function">luaG_forerror</a>(<a href="../h_src/58057596.htm" class="localvar">L</a>, <a href="../h_src/58217028.htm" class="localvar">pstep</a>, &quot;step&quot;);
+   242 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(!<a href="../h_src/57613112.htm" class="macro">tonumber</a>(<a href="../h_src/58217300.htm" class="localvar">pinit</a>, &amp;<a href="../h_src/58216076.htm" class="localvar">init</a>)))
+   243 :    <a href="../h_src/57635620.htm" class="function">luaG_forerror</a>(<a href="../h_src/58057596.htm" class="localvar">L</a>, <a href="../h_src/58217300.htm" class="localvar">pinit</a>, &quot;initial value&quot;);
+   244 :    if (<a href="../h_src/58215804.htm" class="localvar">step</a> == 0)
+   245 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/58057596.htm" class="localvar">L</a>, &quot;'for' step is zero&quot;);
+   247 :    : <a href="../h_src/57539328.htm" class="macro">luai_numlt</a>(<a href="../h_src/58216076.htm" class="localvar">init</a>, <a href="../h_src/58215940.htm" class="localvar">limit</a>))
+   248 :    return 1;  <a  class="comments">/* skip the loop */</a>
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+   238 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(!<a href="../h_src/57613112.htm" class="macro">tonumber</a>(<a href="../h_src/58217164.htm" class="localvar">plimit</a>, &amp;<a href="../h_src/58215940.htm" class="localvar">limit</a>)))
+   240 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(!<a href="../h_src/57613112.htm" class="macro">tonumber</a>(<a href="../h_src/58217028.htm" class="localvar">pstep</a>, &amp;<a href="../h_src/58215804.htm" class="localvar">step</a>)))
+   242 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(!<a href="../h_src/57613112.htm" class="macro">tonumber</a>(<a href="../h_src/58217300.htm" class="localvar">pinit</a>, &amp;<a href="../h_src/58216076.htm" class="localvar">init</a>)))
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

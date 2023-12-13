@@ -1,0 +1,62 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>gotostat</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58006080.htm" class="function" target="_self">Info</a></li>
+<li><a href="../h_rx/58006080.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58006080.htm" class="function" target="_self">Flow Chart</a></li>
+<li id="current"><a href="../h_src/58006080.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/58006080.htm" class="function" target="_self">Definition</a></li>
+<li id="current"><a href="../h_sc/58006080.htm" class="function" target="_self">Source Checks</a></li>
+<li><a href="../h_src/58057080.htm#1416" class="function" target="_self">Source File</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>4</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>2</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>5</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+  1421 :    if (<a href="../h_src/58005400.htm" class="localvar">lb</a> == NULL)  <a  class="comments">/* no label? */</a>
+  1422 :    <a  class="comments">/* forward jump; will be resolved when the label is declared */</a>
+  1423 :    <a href="../h_src/58032192.htm" class="function">newgotoentry</a>(<a href="../h_src/58005944.htm" class="localvar">ls</a>, <a href="../h_src/58005536.htm" class="localvar">name</a>, <a href="../h_src/58005672.htm" class="localvar">line</a>, <a href="../h_src/57669592.htm" class="function">luaK_jump</a>(<a href="../h_src/58005808.htm" class="localvar">fs</a>));
+  1427 :    if (<a href="../h_src/57674488.htm" class="function">luaY_nvarstack</a>(<a href="../h_src/58005808.htm" class="localvar">fs</a>) &gt; <a href="../h_src/58005264.htm" class="localvar">lblevel</a>)  <a  class="comments">/* leaving the scope of a variable? */</a>
+  1428 :    <a href="../h_src/57672380.htm" class="macro">luaK_codeABC</a>(<a href="../h_src/58005808.htm" class="localvar">fs</a>, <a href="../h_src/57686864.htm" class="variable">OP_CLOSE</a>, <a href="../h_src/58005264.htm" class="localvar">lblevel</a>, 0, 0);
+</pre>
+<pre>
+</pre>
+<h5>Return Ignored</h5>
+<pre>
+  1423 :    <a href="../h_src/58032192.htm" class="function">newgotoentry</a>(<a href="../h_src/58005944.htm" class="localvar">ls</a>, <a href="../h_src/58005536.htm" class="localvar">name</a>, <a href="../h_src/58005672.htm" class="localvar">line</a>, <a href="../h_src/57669592.htm" class="function">luaK_jump</a>(<a href="../h_src/58005808.htm" class="localvar">fs</a>));
+  1428 :    <a href="../h_src/57672380.htm" class="macro">luaK_codeABC</a>(<a href="../h_src/58005808.htm" class="localvar">fs</a>, <a href="../h_src/57686864.htm" class="variable">OP_CLOSE</a>, <a href="../h_src/58005264.htm" class="localvar">lblevel</a>, 0, 0);
+</pre>
+<pre>
+
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

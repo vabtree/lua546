@@ -1,0 +1,189 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lstate.c</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57985340.htm" class="file" target="_self">Info</a></li>
+<li><a href="../h_im/57985340.htm" class="file" target="_self">Global Interface</a></li>
+<li><a href="../h_rx/57985340.htm" class="file" target="_self">File Inclusion</a></li>
+<li><a href="../h_nm/57985340.htm" class="file" target="_self">Internals</a></li>
+<li><a href="../h_uf/57985340.htm" class="file" target="_self">Use of Elements</a></li>
+<li><a href="../h_df/57985340.htm" class="file" target="_self">Dependencies</a></li>
+<li id="current"><a href="../h_src/57985340.htm" class="file" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_src/57985340.htm" class="file" target="_self">Source Code</a></li>
+<li id="current"><a href="../h_sc/57985340.htm" class="file" target="_self">Source Checks</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Source Checks  <a class="legend">(see key)</a></h4>
+<table cellpadding=0 cellspacing=0 border=0>
+<tr><td>total instances:</td><td class=mtrc>91</td></tr>
+<tr><td>total checks involved:</td><td class=mtrc>8</td></tr>
+<tr><td>total lines  involved:</td><td class=mtrc>70</td></tr>
+<tr><th></th></tr>
+</table>
+<pre>
+</pre>
+<h5>Unclear Subexpression</h5>
+<pre>
+   186 :    <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57980444.htm" class="localvar">L1</a>-&gt;<a href="../h_src/57642284.htm" class="variable">stack</a>.<a href="../h_src/57531984.htm" class="variable">p</a> + <a href="../h_src/57980172.htm" class="localvar">i</a>));  <a  class="comments">/* erase new stack */</a>
+   190 :    <a href="../h_src/57980036.htm" class="localvar">ci</a> = &amp;<a href="../h_src/57980444.htm" class="localvar">L1</a>-&gt;<a href="../h_src/57641740.htm" class="variable">base_ci</a>;
+   196 :    <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57980444.htm" class="localvar">L1</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>));  <a  class="comments">/* 'function' entry for this 'ci' */</a>
+   206 :    <a href="../h_src/57979764.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a> = &amp;<a href="../h_src/57979764.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641740.htm" class="variable">base_ci</a>;  <a  class="comments">/* free the entire 'ci' list */</a>
+   219 :    <a href="../h_src/57507028.htm" class="macro">sethvalue</a>(<a href="../h_src/57979492.htm" class="localvar">L</a>, &amp;<a href="../h_src/57979356.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646296.htm" class="variable">l_registry</a>, <a href="../h_src/57979220.htm" class="localvar">registry</a>);
+   240 :    <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(&amp;<a href="../h_src/57977860.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646228.htm" class="variable">nilvalue</a>);  <a  class="comments">/* now state is complete */</a>
+   271 :    if (!<a href="../h_src/57641060.htm" class="macro">completestate</a>(<a href="../h_src/58137020.htm" class="localvar">g</a>))  <a  class="comments">/* closing a partially built state? */</a>
+   274 :    <a href="../h_src/58137156.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a> = &amp;<a href="../h_src/58137156.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641740.htm" class="variable">base_ci</a>;  <a  class="comments">/* unwind CallInfo list */</a>
+   282 :    (*<a href="../h_src/58137020.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646772.htm" class="variable">frealloc</a>)(<a href="../h_src/58137020.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646704.htm" class="variable">ud</a>, <a href="../h_src/57984320.htm" class="macro">fromstate</a>(<a href="../h_src/58137156.htm" class="localvar">L</a>), sizeof(<a href="../h_src/57984388.htm" class="type">LG</a>), 0);  <a  class="comments">/* free main block */</a>
+   296 :    <a href="../h_src/57528448.htm" class="macro">setthvalue2s</a>(<a href="../h_src/58136748.htm" class="localvar">L</a>, <a href="../h_src/58136748.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/58136340.htm" class="localvar">L1</a>);
+   304 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/57429700.htm" class="macro">lua_getextraspace</a>(<a href="../h_src/58136340.htm" class="localvar">L1</a>), <a href="../h_src/57429700.htm" class="macro">lua_getextraspace</a>(<a href="../h_src/58136612.htm" class="localvar">g</a>-&gt;<a href="../h_src/57643848.htm" class="variable">mainthread</a>),
+   304 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/57429700.htm" class="macro">lua_getextraspace</a>(<a href="../h_src/58136340.htm" class="localvar">L1</a>), <a href="../h_src/57429700.htm" class="macro">lua_getextraspace</a>(<a href="../h_src/58136612.htm" class="localvar">g</a>-&gt;<a href="../h_src/57643848.htm" class="variable">mainthread</a>),
+   324 :    <a href="../h_src/57537764.htm" class="type">CallInfo</a> *<a href="../h_src/58135252.htm" class="localvar">ci</a> = <a href="../h_src/58135524.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a> = &amp;<a href="../h_src/58135524.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641740.htm" class="variable">base_ci</a>;  <a  class="comments">/* unwind CallInfo list */</a>
+   325 :    <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58135524.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642284.htm" class="variable">stack</a>.<a href="../h_src/57531984.htm" class="variable">p</a>));  <a  class="comments">/* 'function' entry for basic 'ci' */</a>
+   366 :    <a href="../h_src/58134164.htm" class="localvar">L</a> = &amp;<a href="../h_src/58133824.htm" class="localvar">l</a>-&gt;<a href="../h_src/57984524.htm" class="variable">l</a>.<a href="../h_src/57984796.htm" class="variable">l</a>;
+   367 :    <a href="../h_src/58134028.htm" class="localvar">g</a> = &amp;<a href="../h_src/58133824.htm" class="localvar">l</a>-&gt;<a href="../h_src/57984456.htm" class="variable">g</a>;
+   384 :    <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(&amp;<a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646296.htm" class="variable">l_registry</a>);
+   400 :    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(&amp;<a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646228.htm" class="variable">nilvalue</a>, 0);  <a  class="comments">/* to signal that state is not yet built */</a>
+   434 :    <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58132600.htm" class="localvar">errobj</a> = <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58132872.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1);  <a  class="comments">/* error object */</a>
+</pre>
+<pre>
+</pre>
+<h5>Conversion Issue</h5>
+<pre>
+    73 :    unsigned int <a href="../h_src/57983436.htm" class="localvar">h</a> = <a href="../h_src/57547080.htm" class="macro">cast_uint</a>(<a href="../h_aa/57983504.htm" class="libfunc">time</a>(NULL));
+    75 :    <a href="../h_src/57984048.htm" class="macro">addbuff</a>(<a href="../h_src/57983640.htm" class="localvar">buff</a>, <a href="../h_src/57983300.htm" class="localvar">p</a>, <a href="../h_src/57983776.htm" class="localvar">L</a>);  <a  class="comments">/* heap variable */</a>
+    75 :    <a href="../h_src/57984048.htm" class="macro">addbuff</a>(<a href="../h_src/57983640.htm" class="localvar">buff</a>, <a href="../h_src/57983300.htm" class="localvar">p</a>, <a href="../h_src/57983776.htm" class="localvar">L</a>);  <a  class="comments">/* heap variable */</a>
+    76 :    <a href="../h_src/57984048.htm" class="macro">addbuff</a>(<a href="../h_src/57983640.htm" class="localvar">buff</a>, <a href="../h_src/57983300.htm" class="localvar">p</a>, &amp;<a href="../h_src/57983436.htm" class="localvar">h</a>);  <a  class="comments">/* local variable */</a>
+    76 :    <a href="../h_src/57984048.htm" class="macro">addbuff</a>(<a href="../h_src/57983640.htm" class="localvar">buff</a>, <a href="../h_src/57983300.htm" class="localvar">p</a>, &amp;<a href="../h_src/57983436.htm" class="localvar">h</a>);  <a  class="comments">/* local variable */</a>
+    77 :    <a href="../h_src/57984048.htm" class="macro">addbuff</a>(<a href="../h_src/57983640.htm" class="localvar">buff</a>, <a href="../h_src/57983300.htm" class="localvar">p</a>, &amp;<a href="../h_src/57439900.htm" class="function">lua_newstate</a><a href="../h_src/57982892.htm" class="localvar">t</a>a<a href="../h_src/57982892.htm" class="localvar">t</a>e);  <a  class="comments">/* public function */</a>
+    77 :    <a href="../h_src/57984048.htm" class="macro">addbuff</a>(<a href="../h_src/57983640.htm" class="localvar">buff</a>, <a href="../h_src/57983300.htm" class="localvar">p</a>, &amp;<a href="../h_src/57439900.htm" class="function">lua_newstate</a><a href="../h_src/57982892.htm" class="localvar">t</a>a<a href="../h_src/57982892.htm" class="localvar">t</a>e);  <a  class="comments">/* public function */</a>
+    90 :    <a href="../h_src/57550548.htm" class="type">l_mem</a> <a href="../h_src/57982484.htm" class="localvar">tb</a> = <a href="../h_src/57638748.htm" class="macro">gettotalbytes</a>(<a href="../h_src/57982756.htm" class="localvar">g</a>);
+    92 :    if (<a href="../h_src/57982620.htm" class="localvar">debt</a> &lt; <a href="../h_src/57982484.htm" class="localvar">tb</a> - <a href="../h_src/57549936.htm" class="macro">MAX_LMEM</a>)
+    93 :    <a href="../h_src/57982620.htm" class="localvar">debt</a> = <a href="../h_src/57982484.htm" class="localvar">tb</a> - <a href="../h_src/57549936.htm" class="macro">MAX_LMEM</a>;  <a  class="comments">/* will make 'totalbytes == MAX_LMEM' */</a>
+   113 :    <a href="../h_src/57981940.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650852.htm" class="variable">l</a>.<a href="../h_src/57651056.htm" class="variable">trap</a> = 0;
+   186 :    <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57980444.htm" class="localvar">L1</a>-&gt;<a href="../h_src/57642284.htm" class="variable">stack</a>.<a href="../h_src/57531984.htm" class="variable">p</a> + <a href="../h_src/57980172.htm" class="localvar">i</a>));  <a  class="comments">/* erase new stack */</a>
+   192 :    <a href="../h_src/57980036.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> = <a href="../h_src/57649220.htm" class="macro">CIST_C</a>;
+   196 :    <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57980444.htm" class="localvar">L1</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>));  <a  class="comments">/* 'function' entry for this 'ci' */</a>
+   219 :    <a href="../h_src/57507028.htm" class="macro">sethvalue</a>(<a href="../h_src/57979492.htm" class="localvar">L</a>, &amp;<a href="../h_src/57979356.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646296.htm" class="variable">l_registry</a>, <a href="../h_src/57979220.htm" class="localvar">registry</a>);
+   219 :    <a href="../h_src/57507028.htm" class="macro">sethvalue</a>(<a href="../h_src/57979492.htm" class="localvar">L</a>, &amp;<a href="../h_src/57979356.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646296.htm" class="variable">l_registry</a>, <a href="../h_src/57979220.htm" class="localvar">registry</a>);
+   222 :    <a href="../h_src/57528584.htm" class="macro">setthvalue</a>(<a href="../h_src/57979492.htm" class="localvar">L</a>, &amp;<a href="../h_src/57979220.htm" class="localvar">registry</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/57442552.htm" class="macro">LUA_RIDX_MAINTHREAD</a> - 1], <a href="../h_src/57979492.htm" class="localvar">L</a>);
+   222 :    <a href="../h_src/57528584.htm" class="macro">setthvalue</a>(<a href="../h_src/57979492.htm" class="localvar">L</a>, &amp;<a href="../h_src/57979220.htm" class="localvar">registry</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/57442552.htm" class="macro">LUA_RIDX_MAINTHREAD</a> - 1], <a href="../h_src/57979492.htm" class="localvar">L</a>);
+   224 :    <a href="../h_src/57507028.htm" class="macro">sethvalue</a>(<a href="../h_src/57979492.htm" class="localvar">L</a>, &amp;<a href="../h_src/57979220.htm" class="localvar">registry</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/57442416.htm" class="macro">LUA_RIDX_GLOBALS</a> - 1], <a href="../h_src/57616512.htm" class="function">luaH_new</a>(<a href="../h_src/57979492.htm" class="localvar">L</a>));
+   224 :    <a href="../h_src/57507028.htm" class="macro">sethvalue</a>(<a href="../h_src/57979492.htm" class="localvar">L</a>, &amp;<a href="../h_src/57979220.htm" class="localvar">registry</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/57442416.htm" class="macro">LUA_RIDX_GLOBALS</a> - 1], <a href="../h_src/57616512.htm" class="function">luaH_new</a>(<a href="../h_src/57979492.htm" class="localvar">L</a>));
+   240 :    <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(&amp;<a href="../h_src/57977860.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646228.htm" class="variable">nilvalue</a>);  <a  class="comments">/* now state is complete */</a>
+   258 :    <a href="../h_src/57977588.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641264.htm" class="variable">hookmask</a> = 0;
+   282 :    (*<a href="../h_src/58137020.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646772.htm" class="variable">frealloc</a>)(<a href="../h_src/58137020.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646704.htm" class="variable">ud</a>, <a href="../h_src/57984320.htm" class="macro">fromstate</a>(<a href="../h_src/58137156.htm" class="localvar">L</a>), sizeof(<a href="../h_src/57984388.htm" class="type">LG</a>), 0);  <a  class="comments">/* free main block */</a>
+   282 :    (*<a href="../h_src/58137020.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646772.htm" class="variable">frealloc</a>)(<a href="../h_src/58137020.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646704.htm" class="variable">ud</a>, <a href="../h_src/57984320.htm" class="macro">fromstate</a>(<a href="../h_src/58137156.htm" class="localvar">L</a>), sizeof(<a href="../h_src/57984388.htm" class="type">LG</a>), 0);  <a  class="comments">/* free main block */</a>
+   294 :    <a href="../h_src/58136340.htm" class="localvar">L1</a> = <a href="../h_src/57639156.htm" class="macro">gco2th</a>(<a href="../h_src/58136476.htm" class="localvar">o</a>);
+   296 :    <a href="../h_src/57528448.htm" class="macro">setthvalue2s</a>(<a href="../h_src/58136748.htm" class="localvar">L</a>, <a href="../h_src/58136748.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/58136340.htm" class="localvar">L1</a>);
+   296 :    <a href="../h_src/57528448.htm" class="macro">setthvalue2s</a>(<a href="../h_src/58136748.htm" class="localvar">L</a>, <a href="../h_src/58136748.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/58136340.htm" class="localvar">L1</a>);
+   304 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/57429700.htm" class="macro">lua_getextraspace</a>(<a href="../h_src/58136340.htm" class="localvar">L1</a>), <a href="../h_src/57429700.htm" class="macro">lua_getextraspace</a>(<a href="../h_src/58136612.htm" class="localvar">g</a>-&gt;<a href="../h_src/57643848.htm" class="variable">mainthread</a>),
+   304 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/57429700.htm" class="macro">lua_getextraspace</a>(<a href="../h_src/58136340.htm" class="localvar">L1</a>), <a href="../h_src/57429700.htm" class="macro">lua_getextraspace</a>(<a href="../h_src/58136612.htm" class="localvar">g</a>-&gt;<a href="../h_src/57643848.htm" class="variable">mainthread</a>),
+   314 :    <a href="../h_src/57984728.htm" class="type">LX</a> *<a href="../h_src/58135660.htm" class="localvar">l</a> = <a href="../h_src/57984320.htm" class="macro">fromstate</a>(<a href="../h_src/58135796.htm" class="localvar">L1</a>);
+   314 :    <a href="../h_src/57984728.htm" class="type">LX</a> *<a href="../h_src/58135660.htm" class="localvar">l</a> = <a href="../h_src/57984320.htm" class="macro">fromstate</a>(<a href="../h_src/58135796.htm" class="localvar">L1</a>);
+   325 :    <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58135524.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642284.htm" class="variable">stack</a>.<a href="../h_src/57531984.htm" class="variable">p</a>));  <a  class="comments">/* 'function' entry for basic 'ci' */</a>
+   327 :    <a href="../h_src/58135252.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> = <a href="../h_src/57649220.htm" class="macro">CIST_C</a>;
+   364 :    <a href="../h_src/57984388.htm" class="type">LG</a> *<a href="../h_src/58133824.htm" class="localvar">l</a> = <a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57984388.htm" class="type">LG</a> *, (*<a href="../h_src/58134572.htm" class="localvar">f</a>)(<a href="../h_src/58134436.htm" class="localvar">ud</a>, NULL, <a href="../h_src/57442960.htm" class="macro">LUA_TTHREAD</a>, sizeof(<a href="../h_src/57984388.htm" class="type">LG</a>)));
+   368 :    <a href="../h_src/58134164.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642964.htm" class="variable">tt</a> = <a href="../h_src/57528992.htm" class="macro">LUA_VTHREAD</a>;
+   369 :    <a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646092.htm" class="variable">currentwhite</a> = <a href="../h_src/57627868.htm" class="macro">bitmask</a>(<a href="../h_src/57627188.htm" class="macro">WHITE0BIT</a>);
+   372 :    <a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645344.htm" class="variable">allgc</a> = <a href="../h_src/57638884.htm" class="macro">obj2gco</a>(<a href="../h_src/58134164.htm" class="localvar">L</a>);  <a  class="comments">/* by now, only object is the main thread */</a>
+   384 :    <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(&amp;<a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646296.htm" class="variable">l_registry</a>);
+   400 :    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(&amp;<a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646228.htm" class="variable">nilvalue</a>, 0);  <a  class="comments">/* to signal that state is not yet built */</a>
+   401 :    <a href="../h_src/57622836.htm" class="macro">setgcparam</a>(<a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645548.htm" class="variable">gcpause</a>, <a href="../h_src/57623108.htm" class="macro">LUAI_GCPAUSE</a>);
+   402 :    <a href="../h_src/57622836.htm" class="macro">setgcparam</a>(<a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645480.htm" class="variable">gcstepmul</a>, <a href="../h_src/57622700.htm" class="macro">LUAI_GCMUL</a>);
+   404 :    <a href="../h_src/57622836.htm" class="macro">setgcparam</a>(<a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645752.htm" class="variable">genmajormul</a>, <a href="../h_src/57623380.htm" class="macro">LUAI_GENMAJORMUL</a>);
+   436 :    ? <a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/58132600.htm" class="localvar">errobj</a>)
+</pre>
+<pre>
+</pre>
+<h5>Needs Compound Statement</h5>
+<pre>
+    92 :    if (<a href="../h_src/57982620.htm" class="localvar">debt</a> &lt; <a href="../h_src/57982484.htm" class="localvar">tb</a> - <a href="../h_src/57549936.htm" class="macro">MAX_LMEM</a>)
+    93 :    <a href="../h_src/57982620.htm" class="localvar">debt</a> = <a href="../h_src/57982484.htm" class="localvar">tb</a> - <a href="../h_src/57549936.htm" class="macro">MAX_LMEM</a>;  <a  class="comments">/* will make 'totalbytes == MAX_LMEM' */</a>
+   141 :    if (<a href="../h_src/57981260.htm" class="localvar">ci</a> == NULL)
+   142 :    return;  <a  class="comments">/* no extra elements */</a>
+   148 :    if (<a href="../h_src/57980988.htm" class="localvar">next2</a> == NULL)
+   149 :    break;  <a  class="comments">/* no more elements */</a>
+   166 :    if (<a href="../h_src/57653640.htm" class="macro">getCcalls</a>(<a href="../h_src/57980852.htm" class="localvar">L</a>) == <a href="../h_src/57543680.htm" class="macro">LUAI_MAXCCALLS</a>)
+   167 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/57980852.htm" class="localvar">L</a>, &quot;C stack overflow&quot;);
+   168 :    else if (<a href="../h_src/57653640.htm" class="macro">getCcalls</a>(<a href="../h_src/57980852.htm" class="localvar">L</a>) &gt;= (<a href="../h_src/57543680.htm" class="macro">LUAI_MAXCCALLS</a> / 10 * 11))
+   169 :    <a href="../h_src/57632560.htm" class="function">luaD_throw</a>(<a href="../h_src/57980852.htm" class="localvar">L</a>, <a href="../h_src/57444524.htm" class="macro">LUA_ERRERR</a>);  <a  class="comments">/* error while handling stack error */</a>
+   175 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57653640.htm" class="macro">getCcalls</a>(<a href="../h_src/57980716.htm" class="localvar">L</a>) &gt;= <a href="../h_src/57543680.htm" class="macro">LUAI_MAXCCALLS</a>))
+   176 :    <a href="../h_src/57638272.htm" class="function">luaE_checkcstack</a>(<a href="../h_src/57980716.htm" class="localvar">L</a>);
+   185 :    for (<a href="../h_src/57980172.htm" class="localvar">i</a> = 0; <a href="../h_src/57980172.htm" class="localvar">i</a> &lt; <a href="../h_src/57652552.htm" class="macro">BASIC_STACK_SIZE</a> + <a href="../h_src/57652688.htm" class="macro">EXTRA_STACK</a>; <a href="../h_src/57980172.htm" class="localvar">i</a>++)
+   186 :    <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57980444.htm" class="localvar">L1</a>-&gt;<a href="../h_src/57642284.htm" class="variable">stack</a>.<a href="../h_src/57531984.htm" class="variable">p</a> + <a href="../h_src/57980172.htm" class="localvar">i</a>));  <a  class="comments">/* erase new stack */</a>
+   204 :    if (<a href="../h_src/57979764.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642284.htm" class="variable">stack</a>.<a href="../h_src/57531984.htm" class="variable">p</a> == NULL)
+   205 :    return;  <a  class="comments">/* stack not completely built yet */</a>
+   271 :    if (!<a href="../h_src/57641060.htm" class="macro">completestate</a>(<a href="../h_src/58137020.htm" class="localvar">g</a>))  <a  class="comments">/* closing a partially built state? */</a>
+   272 :    <a href="../h_src/57620864.htm" class="function">luaC_freeallobjects</a>(<a href="../h_src/58137156.htm" class="localvar">L</a>);  <a  class="comments">/* just collect its objects */</a>
+   328 :    if (<a href="../h_src/58135388.htm" class="localvar">status</a> == <a href="../h_src/57445068.htm" class="macro">LUA_YIELD</a>)
+   329 :    <a href="../h_src/58135388.htm" class="localvar">status</a> = <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>;
+   332 :    if (<a href="../h_src/58135388.htm" class="localvar">status</a> != <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>)  <a  class="comments">/* errors? */</a>
+   333 :    <a href="../h_src/57633648.htm" class="function">luaD_seterrorobj</a>(<a href="../h_src/58135524.htm" class="localvar">L</a>, <a href="../h_src/58135388.htm" class="localvar">status</a>, <a href="../h_src/58135524.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642284.htm" class="variable">stack</a>.<a href="../h_src/57531984.htm" class="variable">p</a> + 1);
+   334 :    else
+   335 :    <a href="../h_src/58135524.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/58135524.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642284.htm" class="variable">stack</a>.<a href="../h_src/57531984.htm" class="variable">p</a> + 1;
+   365 :    if (<a href="../h_src/58133824.htm" class="localvar">l</a> == NULL) return NULL;
+   406 :    for (<a href="../h_src/58134300.htm" class="localvar">i</a>=0; <a href="../h_src/58134300.htm" class="localvar">i</a> &lt; <a href="../h_src/57426028.htm" class="macro">LUA_NUMTAGS</a>; <a href="../h_src/58134300.htm" class="localvar">i</a>++) <a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57643440.htm" class="variable">mt</a>[<a href="../h_src/58134300.htm" class="localvar">i</a>] = NULL;
+   425 :    if (<a href="../h_src/58133008.htm" class="localvar">wf</a> != NULL)
+   426 :    <a href="../h_src/58133008.htm" class="localvar">wf</a>(<a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/58133416.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57643168.htm" class="variable">ud_warn</a>, <a href="../h_src/58133280.htm" class="localvar">msg</a>, <a href="../h_src/58133144.htm" class="localvar">tocont</a>);
+</pre>
+<pre>
+</pre>
+<h5>Jump Statement</h5>
+<pre>
+   149 :    break;  <a  class="comments">/* no more elements */</a>
+</pre>
+<pre>
+</pre>
+<h5>Return Ignored</h5>
+<pre>
+   275 :    <a href="../h_src/57633036.htm" class="function">luaD_closeprotected</a>(<a href="../h_src/58137156.htm" class="localvar">L</a>, 1, <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>);  <a  class="comments">/* close all upvalues */</a>
+   337 :    <a href="../h_src/57632832.htm" class="function">luaD_reallocstack</a>(<a href="../h_src/58135524.htm" class="localvar">L</a>, <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/58135252.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651464.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - <a href="../h_src/58135524.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642284.htm" class="variable">stack</a>.<a href="../h_src/57531984.htm" class="variable">p</a>), 0);
+   426 :    <a href="../h_src/58133008.htm" class="localvar">wf</a>(<a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/58133416.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57643168.htm" class="variable">ud_warn</a>, <a href="../h_src/58133280.htm" class="localvar">msg</a>, <a href="../h_src/58133144.htm" class="localvar">tocont</a>);
+</pre>
+<pre>
+</pre>
+<h5>Potential Static Function</h5>
+<pre>
+   355 :    <a href="../h_src/57551840.htm" class="macro">LUA_API</a> int <a href="../h_src/57439628.htm" class="function">lua_resetthread</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58134708.htm" class="localvar">L</a>) {
+</pre>
+<pre>
+</pre>
+<h5>Missing/Mismatched Function Declarator</h5>
+<pre>
+    73 :    unsigned int <a href="../h_src/57983436.htm" class="localvar">h</a> = <a href="../h_src/57547080.htm" class="macro">cast_uint</a>(<a href="../h_aa/57983504.htm" class="libfunc">time</a>(NULL));
+    75 :    <a href="../h_src/57984048.htm" class="macro">addbuff</a>(<a href="../h_src/57983640.htm" class="localvar">buff</a>, <a href="../h_src/57983300.htm" class="localvar">p</a>, <a href="../h_src/57983776.htm" class="localvar">L</a>);  <a  class="comments">/* heap variable */</a>
+    76 :    <a href="../h_src/57984048.htm" class="macro">addbuff</a>(<a href="../h_src/57983640.htm" class="localvar">buff</a>, <a href="../h_src/57983300.htm" class="localvar">p</a>, &amp;<a href="../h_src/57983436.htm" class="localvar">h</a>);  <a  class="comments">/* local variable */</a>
+    77 :    <a href="../h_src/57984048.htm" class="macro">addbuff</a>(<a href="../h_src/57983640.htm" class="localvar">buff</a>, <a href="../h_src/57983300.htm" class="localvar">p</a>, &amp;<a href="../h_src/57439900.htm" class="function">lua_newstate</a><a href="../h_src/57982892.htm" class="localvar">t</a>a<a href="../h_src/57982892.htm" class="localvar">t</a>e);  <a  class="comments">/* public function */</a>
+   175 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57653640.htm" class="macro">getCcalls</a>(<a href="../h_src/57980716.htm" class="localvar">L</a>) &gt;= <a href="../h_src/57543680.htm" class="macro">LUAI_MAXCCALLS</a>))
+   282 :    (*<a href="../h_src/58137020.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646772.htm" class="variable">frealloc</a>)(<a href="../h_src/58137020.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646704.htm" class="variable">ud</a>, <a href="../h_src/57984320.htm" class="macro">fromstate</a>(<a href="../h_src/58137156.htm" class="localvar">L</a>), sizeof(<a href="../h_src/57984388.htm" class="type">LG</a>), 0);  <a  class="comments">/* free main block */</a>
+   304 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/57429700.htm" class="macro">lua_getextraspace</a>(<a href="../h_src/58136340.htm" class="localvar">L1</a>), <a href="../h_src/57429700.htm" class="macro">lua_getextraspace</a>(<a href="../h_src/58136612.htm" class="localvar">g</a>-&gt;<a href="../h_src/57643848.htm" class="variable">mainthread</a>),
+   305 :    <a href="../h_src/57447516.htm" class="macro">LUA_EXTRASPACE</a>);
+   364 :    <a href="../h_src/57984388.htm" class="type">LG</a> *<a href="../h_src/58133824.htm" class="localvar">l</a> = <a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57984388.htm" class="type">LG</a> *, (*<a href="../h_src/58134572.htm" class="localvar">f</a>)(<a href="../h_src/58134436.htm" class="localvar">ud</a>, NULL, <a href="../h_src/57442960.htm" class="macro">LUA_TTHREAD</a>, sizeof(<a href="../h_src/57984388.htm" class="type">LG</a>)));
+</pre>
+<pre>
+</pre>
+<h5>Unused Local</h5>
+<pre>
+    36 :    <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57984864.htm" class="variable">extra_</a>[<a href="../h_src/57447516.htm" class="macro">LUA_EXTRASPACE</a>];
+</pre>
+<pre>
+
+</pre>
+</body>
+</html>
+
