@@ -1,0 +1,152 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">CallInfo::</a>callstatus</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57649424.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57649424.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57649424.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57649424.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57649424.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57864220.htm" class=function>ccall</a>                                            ldo.c
+   636 :    <a href="../h_src/57863540.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> = <a href="../h_src/57649084.htm" class="macro">CIST_FRESH</a>;  <a  class="comments">/* mark that it is a &quot;fresh&quot; execute */</a>
+<a href="../h_aa/57862452.htm" class=function>finishpcallk</a>                                     ldo.c
+   685 :    <a href="../h_src/57647588.htm" class="macro">setcistrecst</a>(<a href="../h_src/57862180.htm" class="localvar">ci</a>, <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>);  <a  class="comments">/* clear original status */</a>
+   687 :    <a href="../h_src/57862180.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp;= ~<a href="../h_src/57648812.htm" class="macro">CIST_YPCALL</a>;
+<a href="../h_aa/57962316.htm" class=function>GCTM</a>                                             lgc.c
+   920 :    <a href="../h_src/57962180.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> |= <a href="../h_src/57648404.htm" class="macro">CIST_FIN</a>;  <a  class="comments">/* will run a finalizer */</a>
+   922 :    <a href="../h_src/57962180.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp;= ~<a href="../h_src/57648404.htm" class="macro">CIST_FIN</a>;  <a  class="comments">/* not running a finalizer anymore */</a>
+<a href="../h_aa/57432828.htm" class=function>lua_pcallk</a>                                       lapi.c
+  1074 :    <a href="../h_src/57647180.htm" class="macro">setoah</a>(<a href="../h_src/57722700.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a>, <a href="../h_src/57724060.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642760.htm" class="variable">allowhook</a>);  <a  class="comments">/* save value of 'allowhook' */</a>
+  1075 :    <a href="../h_src/57722700.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> |= <a href="../h_src/57648812.htm" class="macro">CIST_YPCALL</a>;  <a  class="comments">/* function can do error recovery */</a>
+  1077 :    <a href="../h_src/57722700.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp;= ~<a href="../h_src/57648812.htm" class="macro">CIST_YPCALL</a>;
+<a href="../h_aa/57633512.htm" class=function>luaD_hook</a>                                        ldo.c
+   351 :    <a href="../h_src/57874964.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> |= <a href="../h_src/57875100.htm" class="localvar">mask</a>;
+   359 :    <a href="../h_src/57874964.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp;= ~<a href="../h_src/57875100.htm" class="localvar">mask</a>;
+<a href="../h_aa/57633376.htm" class=function>luaD_pretailcall</a>                                 ldo.c
+   566 :    <a href="../h_src/57866940.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> |= <a href="../h_src/57648676.htm" class="macro">CIST_TAIL</a>;
+<a href="../h_aa/57638000.htm" class=function>luaE_resetthread</a>                                 lstate.c
+   327 :    <a href="../h_src/58135252.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> = <a href="../h_src/57649220.htm" class="macro">CIST_C</a>;
+<a href="../h_aa/57635076.htm" class=function>luaG_traceexec</a>                                   ldebug.c
+   897 :    <a href="../h_src/57885436.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp;= ~<a href="../h_src/57648540.htm" class="macro">CIST_HOOKYIELD</a>;  <a  class="comments">/* erase mark */</a>
+   919 :    <a href="../h_src/57885436.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> |= <a href="../h_src/57648540.htm" class="macro">CIST_HOOKYIELD</a>;  <a  class="comments">/* mark that it yielded */</a>
+<a href="../h_aa/57497508.htm" class=function>luaT_callorderTM</a>                                 ltm.c
+   208 :    <a href="../h_src/58080512.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> |= <a href="../h_src/57647860.htm" class="macro">CIST_LEQ</a>;  <a  class="comments">/* mark it is doing 'lt' for 'le' */</a>
+   210 :    <a href="../h_src/58080512.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> ^= <a href="../h_src/57647860.htm" class="macro">CIST_LEQ</a>;  <a  class="comments">/* clear mark */</a>
+<a href="../h_aa/57611004.htm" class=function>luaV_finishOp</a>                                    lvm.c
+   833 :    <a href="../h_src/58196356.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> ^= <a href="../h_src/57647860.htm" class="macro">CIST_LEQ</a>;  <a  class="comments">/* clear mark */</a>
+<a href="../h_aa/57871564.htm" class=function>moveresults</a>                                      ldo.c
+   452 :    <a href="../h_src/57871428.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> |= <a href="../h_src/57648132.htm" class="macro">CIST_CLSRET</a>;  <a  class="comments">/* in case of yields */</a>
+   455 :    <a href="../h_src/57871428.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp;= ~<a href="../h_src/57648132.htm" class="macro">CIST_CLSRET</a>;
+<a href="../h_aa/57858508.htm" class=function>precover</a>                                         ldo.c
+   824 :    <a href="../h_src/57647588.htm" class="macro">setcistrecst</a>(<a href="../h_src/57858100.htm" class="localvar">ci</a>, <a href="../h_src/57858236.htm" class="localvar">status</a>);  <a  class="comments">/* status to finish 'pcall' */</a>
+<a href="../h_aa/57869252.htm" class=function>prepCallInfo</a>                                     ldo.c
+   507 :    <a href="../h_src/57868436.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> = <a href="../h_src/57868708.htm" class="localvar">mask</a>;
+<a href="../h_aa/57980580.htm" class=function>stack_init</a>                                       lstate.c
+   192 :    <a href="../h_src/57980036.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> = <a href="../h_src/57649220.htm" class="macro">CIST_C</a>;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57747764.htm" class=function>auxgetinfo</a>                                       ldebug.c
+   337 :    <a href="../h_src/57747356.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423376.htm" class="variable">currentline</a> = (<a href="../h_src/57747084.htm" class="localvar">ci</a> &amp;&amp; <a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57747084.htm" class="localvar">ci</a>)) ? <a href="../h_src/57757148.htm" class="function">getcurrentline</a>(<a href="../h_src/57747084.htm" class="localvar">ci</a>) : -1;
+   353 :    <a href="../h_src/57747356.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57422968.htm" class="variable">istailcall</a> = (<a href="../h_src/57747084.htm" class="localvar">ci</a>) ? <a href="../h_src/57747084.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp; <a href="../h_src/57648676.htm" class="macro">CIST_TAIL</a> : 0;
+   365 :    if (<a href="../h_src/57747084.htm" class="localvar">ci</a> == NULL || !(<a href="../h_src/57747084.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp; <a href="../h_src/57648268.htm" class="macro">CIST_TRAN</a>))
+<a href="../h_aa/57879724.htm" class=function>correctstack</a>                                     ldo.c
+   192 :    if (<a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57879452.htm" class="localvar">ci</a>))
+<a href="../h_aa/57860548.htm" class=function>findpcall</a>                                        ldo.c
+   757 :    if (<a href="../h_src/57860276.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp; <a href="../h_src/57648812.htm" class="macro">CIST_YPCALL</a>)
+<a href="../h_aa/57861772.htm" class=function>finishCcall</a>                                      ldo.c
+   710 :    if (<a href="../h_src/57861500.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp; <a href="../h_src/57648132.htm" class="macro">CIST_CLSRET</a>) {  <a  class="comments">/* was returning? */</a>
+   719 :    if (<a href="../h_src/57861500.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp; <a href="../h_src/57648812.htm" class="macro">CIST_YPCALL</a>)   <a  class="comments">/* was inside a 'lua_pcallk'? */</a>
+<a href="../h_aa/57862452.htm" class=function>finishpcallk</a>                                     ldo.c
+   676 :    int <a href="../h_src/57862044.htm" class="localvar">status</a> = <a href="../h_src/57647724.htm" class="macro">getcistrecst</a>(<a href="../h_src/57862180.htm" class="localvar">ci</a>);  <a  class="comments">/* get original status */</a>
+   681 :    <a href="../h_src/57862316.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642760.htm" class="variable">allowhook</a> = <a href="../h_src/57647044.htm" class="macro">getoah</a>(<a href="../h_src/57862180.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a>);  <a  class="comments">/* restore 'allowhook' */</a>
+   685 :    <a href="../h_src/57647588.htm" class="macro">setcistrecst</a>(<a href="../h_src/57862180.htm" class="localvar">ci</a>, <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>);  <a  class="comments">/* clear original status */</a>
+   687 :    <a href="../h_src/57862180.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp;= ~<a href="../h_src/57648812.htm" class="macro">CIST_YPCALL</a>;
+<a href="../h_aa/57758780.htm" class=function>funcnamefromcall</a>                                 ldebug.c
+   640 :    if (<a href="../h_src/57897132.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp; <a href="../h_src/57648948.htm" class="macro">CIST_HOOKED</a>) {  <a  class="comments">/* was it called inside a hook? */</a>
+   644 :    else if (<a href="../h_src/57897132.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp; <a href="../h_src/57648404.htm" class="macro">CIST_FIN</a>) {  <a  class="comments">/* was it called as a finalizer? */</a>
+   648 :    else if (<a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57897132.htm" class="localvar">ci</a>))
+<a href="../h_aa/57962316.htm" class=function>GCTM</a>                                             lgc.c
+   920 :    <a href="../h_src/57962180.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> |= <a href="../h_src/57648404.htm" class="macro">CIST_FIN</a>;  <a  class="comments">/* will run a finalizer */</a>
+   922 :    <a href="../h_src/57962180.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp;= ~<a href="../h_src/57648404.htm" class="macro">CIST_FIN</a>;  <a  class="comments">/* not running a finalizer anymore */</a>
+<a href="../h_aa/57748308.htm" class=function>getfuncname</a>                                      ldebug.c
+   321 :    if (<a href="../h_src/57748036.htm" class="localvar">ci</a> != NULL &amp;&amp; !(<a href="../h_src/57748036.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp; <a href="../h_src/57648676.htm" class="macro">CIST_TAIL</a>))
+<a href="../h_aa/57432828.htm" class=function>lua_pcallk</a>                                       lapi.c
+  1074 :    <a href="../h_src/57647180.htm" class="macro">setoah</a>(<a href="../h_src/57722700.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a>, <a href="../h_src/57724060.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642760.htm" class="variable">allowhook</a>);  <a  class="comments">/* save value of 'allowhook' */</a>
+  1075 :    <a href="../h_src/57722700.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> |= <a href="../h_src/57648812.htm" class="macro">CIST_YPCALL</a>;  <a  class="comments">/* function can do error recovery */</a>
+  1077 :    <a href="../h_src/57722700.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp;= ~<a href="../h_src/57648812.htm" class="macro">CIST_YPCALL</a>;
+<a href="../h_aa/57432488.htm" class=function>lua_yieldk</a>                                       ldo.c
+   886 :    if (<a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57856604.htm" class="localvar">ci</a>)) {  <a  class="comments">/* inside a hook? */</a>
+<a href="../h_aa/57633512.htm" class=function>luaD_hook</a>                                        ldo.c
+   345 :    if (<a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57874964.htm" class="localvar">ci</a>) &amp;&amp; <a href="../h_src/57875916.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> &lt; <a href="../h_src/57874964.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651464.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>)
+   351 :    <a href="../h_src/57874964.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> |= <a href="../h_src/57875100.htm" class="localvar">mask</a>;
+   359 :    <a href="../h_src/57874964.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp;= ~<a href="../h_src/57875100.htm" class="localvar">mask</a>;
+<a href="../h_aa/57633444.htm" class=function>luaD_hookcall</a>                                    ldo.c
+   372 :    int <a href="../h_src/57874148.htm" class="localvar">event</a> = (<a href="../h_src/57874284.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp; <a href="../h_src/57648676.htm" class="macro">CIST_TAIL</a>) ? <a href="../h_src/57425348.htm" class="macro">LUA_HOOKTAILCALL</a>
+<a href="../h_aa/57633376.htm" class=function>luaD_pretailcall</a>                                 ldo.c
+   566 :    <a href="../h_src/57866940.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> |= <a href="../h_src/57648676.htm" class="macro">CIST_TAIL</a>;
+<a href="../h_aa/57635892.htm" class=function>luaG_findlocal</a>                                   ldebug.c
+   199 :    if (<a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57753544.htm" class="localvar">ci</a>)) {
+   209 :    <a href="../h_src/57753000.htm" class="localvar">name</a> = <a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57753544.htm" class="localvar">ci</a>) ? &quot;(temporary)&quot; : &quot;(C temporary)&quot;;
+<a href="../h_aa/57635280.htm" class=function>luaG_runerror</a>                                    ldebug.c
+   830 :    if (<a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57887340.htm" class="localvar">ci</a>)) {  <a  class="comments">/* if Lua function, add source:line information */</a>
+<a href="../h_aa/57635076.htm" class=function>luaG_traceexec</a>                                   ldebug.c
+   896 :    if (<a href="../h_src/57885436.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp; <a href="../h_src/57648540.htm" class="macro">CIST_HOOKYIELD</a>) {  <a  class="comments">/* called hook last time? */</a>
+   897 :    <a href="../h_src/57885436.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp;= ~<a href="../h_src/57648540.htm" class="macro">CIST_HOOKYIELD</a>;  <a  class="comments">/* erase mark */</a>
+   919 :    <a href="../h_src/57885436.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> |= <a href="../h_src/57648540.htm" class="macro">CIST_HOOKYIELD</a>;  <a  class="comments">/* mark that it yielded */</a>
+<a href="../h_aa/57497508.htm" class=function>luaT_callorderTM</a>                                 ltm.c
+   208 :    <a href="../h_src/58080512.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> |= <a href="../h_src/57647860.htm" class="macro">CIST_LEQ</a>;  <a  class="comments">/* mark it is doing 'lt' for 'le' */</a>
+   210 :    <a href="../h_src/58080512.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> ^= <a href="../h_src/57647860.htm" class="macro">CIST_LEQ</a>;  <a  class="comments">/* clear mark */</a>
+<a href="../h_aa/57497916.htm" class=function>luaT_callTM</a>                                      ltm.c
+   112 :    if (<a href="../h_src/57647316.htm" class="macro">isLuacode</a>(<a href="../h_src/58088264.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>))
+<a href="../h_aa/57497848.htm" class=function>luaT_callTMres</a>                                   ltm.c
+   128 :    if (<a href="../h_src/57647316.htm" class="macro">isLuacode</a>(<a href="../h_src/58086360.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>))
+<a href="../h_aa/57610936.htm" class=function>luaV_execute</a>                                     lvm.c
+  1779 :    if (<a href="../h_src/58188060.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp; <a href="../h_src/57649084.htm" class="macro">CIST_FRESH</a>)
+<a href="../h_aa/57611004.htm" class=function>luaV_finishOp</a>                                    lvm.c
+   832 :    if (<a href="../h_src/58196356.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp; <a href="../h_src/57647860.htm" class="macro">CIST_LEQ</a>) {  <a  class="comments">/* &quot;&lt;=&quot; using &quot;&lt;&quot; instead? */</a>
+   833 :    <a href="../h_src/58196356.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> ^= <a href="../h_src/57647860.htm" class="macro">CIST_LEQ</a>;  <a  class="comments">/* clear mark */</a>
+<a href="../h_aa/57871564.htm" class=function>moveresults</a>                                      ldo.c
+   452 :    <a href="../h_src/57871428.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> |= <a href="../h_src/57648132.htm" class="macro">CIST_CLSRET</a>;  <a  class="comments">/* in case of yields */</a>
+   455 :    <a href="../h_src/57871428.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp;= ~<a href="../h_src/57648132.htm" class="macro">CIST_CLSRET</a>;
+<a href="../h_aa/57858508.htm" class=function>precover</a>                                         ldo.c
+   824 :    <a href="../h_src/57647588.htm" class="macro">setcistrecst</a>(<a href="../h_src/57858100.htm" class="localvar">ci</a>, <a href="../h_src/57858236.htm" class="localvar">status</a>);  <a  class="comments">/* status to finish 'pcall' */</a>
+<a href="../h_aa/57859324.htm" class=function>resume</a>                                           ldo.c
+   794 :    if (<a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57858644.htm" class="localvar">ci</a>)) {  <a  class="comments">/* yielded inside a hook? */</a>
+<a href="../h_aa/57873876.htm" class=function>rethook</a>                                          ldo.c
+   392 :    if (<a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57873604.htm" class="localvar">ci</a>)) {
+   402 :    if (<a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57873604.htm" class="localvar">ci</a> = <a href="../h_src/57873604.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651396.htm" class="variable">previous</a>))
+<a href="../h_aa/57756876.htm" class=function>settraps</a>                                         ldebug.c
+   116 :    if (<a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57756740.htm" class="localvar">ci</a>))
+<a href="../h_aa/57861092.htm" class=function>unroll</a>                                           ldo.c
+   740 :    if (!<a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57860684.htm" class="localvar">ci</a>))  <a  class="comments">/* C function? */</a>
+<a href="../h_aa/57894820.htm" class=function>varinfo</a>                                          ldebug.c
+   710 :    if (<a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57894412.htm" class="localvar">ci</a>)) {
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable callstatus</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

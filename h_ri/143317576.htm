@@ -1,0 +1,57 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>ms</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143317576.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/143317576.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/143317576.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/143317576.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/143327232.htm" class=function>match</a>                                            lstrlib.c
+   571 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/143317576.htm" class="localvar">ms</a>-&gt;<a href="../h_src/143327912.htm" class="variable">matchdepth</a>-- == 0))
+   572 :    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143317576.htm" class="localvar">ms</a>-&gt;<a href="../h_src/143327980.htm" class="variable">L</a>, &quot;pattern too complex&quot;);
+   574 :    if (<a href="../h_src/143317304.htm" class="localvar">p</a> != <a href="../h_src/143317576.htm" class="localvar">ms</a>-&gt;<a href="../h_src/143328048.htm" class="variable">p_end</a>) {  <a  class="comments">/* end of pattern? */</a>
+   578 :    <a href="../h_src/143317440.htm" class="localvar">s</a> = <a href="../h_src/143320024.htm" class="function">start_capture</a>(<a href="../h_src/143317576.htm" class="localvar">ms</a>, <a href="../h_src/143317440.htm" class="localvar">s</a>, <a href="../h_src/143317304.htm" class="localvar">p</a> + 2, <a href="../h_src/143328456.htm" class="macro">CAP_POSITION</a>);
+   580 :    <a href="../h_src/143317440.htm" class="localvar">s</a> = <a href="../h_src/143320024.htm" class="function">start_capture</a>(<a href="../h_src/143317576.htm" class="localvar">ms</a>, <a href="../h_src/143317440.htm" class="localvar">s</a>, <a href="../h_src/143317304.htm" class="localvar">p</a> + 1, <a href="../h_src/143328592.htm" class="macro">CAP_UNFINISHED</a>);
+   584 :    <a href="../h_src/143317440.htm" class="localvar">s</a> = <a href="../h_src/143319072.htm" class="function">end_capture</a>(<a href="../h_src/143317576.htm" class="localvar">ms</a>, <a href="../h_src/143317440.htm" class="localvar">s</a>, <a href="../h_src/143317304.htm" class="localvar">p</a> + 1);
+   588 :    if ((<a href="../h_src/143317304.htm" class="localvar">p</a> + 1) != <a href="../h_src/143317576.htm" class="localvar">ms</a>-&gt;<a href="../h_src/143328048.htm" class="variable">p_end</a>)  <a  class="comments">/* is the '$' the last char in pattern? */</a>
+   590 :    <a href="../h_src/143317440.htm" class="localvar">s</a> = (<a href="../h_src/143317440.htm" class="localvar">s</a> == <a href="../h_src/143317576.htm" class="localvar">ms</a>-&gt;<a href="../h_src/143328116.htm" class="variable">src_end</a>) ? <a href="../h_src/143317440.htm" class="localvar">s</a> : NULL;  <a  class="comments">/* check end of string */</a>
+   596 :    <a href="../h_src/143317440.htm" class="localvar">s</a> = <a href="../h_src/143322744.htm" class="function">matchbalance</a>(<a href="../h_src/143317576.htm" class="localvar">ms</a>, <a href="../h_src/143317440.htm" class="localvar">s</a>, <a href="../h_src/143317304.htm" class="localvar">p</a> + 2);
+   606 :    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143317576.htm" class="localvar">ms</a>-&gt;<a href="../h_src/143327980.htm" class="variable">L</a>, &quot;missing '[' after '%%f' in pattern&quot;);
+   607 :    <a href="../h_src/143317168.htm" class="localvar">ep</a> = <a href="../h_src/143325668.htm" class="function">classend</a>(<a href="../h_src/143317576.htm" class="localvar">ms</a>, <a href="../h_src/143317304.htm" class="localvar">p</a>);  <a  class="comments">/* points to what is next */</a>
+   608 :    <a href="../h_src/143317032.htm" class="localvar">previous</a> = (<a href="../h_src/143317440.htm" class="localvar">s</a> == <a href="../h_src/143317576.htm" class="localvar">ms</a>-&gt;<a href="../h_src/143328184.htm" class="variable">src_init</a>) ? '\0' : *(<a href="../h_src/143317440.htm" class="localvar">s</a> - 1);
+   619 :    <a href="../h_src/143317440.htm" class="localvar">s</a> = <a href="../h_src/143318256.htm" class="function">match_capture</a>(<a href="../h_src/143317576.htm" class="localvar">ms</a>, <a href="../h_src/143317440.htm" class="localvar">s</a>, <a href="../h_src/143343552.htm" class="macro">uchar</a>(*(<a href="../h_src/143317304.htm" class="localvar">p</a> + 1)));
+   630 :    const char *<a href="../h_src/143316896.htm" class="localvar">ep</a> = <a href="../h_src/143325668.htm" class="function">classend</a>(<a href="../h_src/143317576.htm" class="localvar">ms</a>, <a href="../h_src/143317304.htm" class="localvar">p</a>);  <a  class="comments">/* points to optional suffix */</a>
+   632 :    if (!<a href="../h_src/143323560.htm" class="function">singlematch</a>(<a href="../h_src/143317576.htm" class="localvar">ms</a>, <a href="../h_src/143317440.htm" class="localvar">s</a>, <a href="../h_src/143317304.htm" class="localvar">p</a>, <a href="../h_src/143316896.htm" class="localvar">ep</a>)) {
+   643 :    if ((<a href="../h_src/143316760.htm" class="localvar">res</a> = <a href="../h_src/143327232.htm" class="function">match</a>(<a href="../h_src/143317576.htm" class="localvar">ms</a>, <a href="../h_src/143317440.htm" class="localvar">s</a> + 1, <a href="../h_src/143316896.htm" class="localvar">ep</a> + 1)) != NULL)
+   654 :    <a href="../h_src/143317440.htm" class="localvar">s</a> = <a href="../h_src/143321792.htm" class="function">max_expand</a>(<a href="../h_src/143317576.htm" class="localvar">ms</a>, <a href="../h_src/143317440.htm" class="localvar">s</a>, <a href="../h_src/143317304.htm" class="localvar">p</a>, <a href="../h_src/143316896.htm" class="localvar">ep</a>);
+   657 :    <a href="../h_src/143317440.htm" class="localvar">s</a> = <a href="../h_src/143320840.htm" class="function">min_expand</a>(<a href="../h_src/143317576.htm" class="localvar">ms</a>, <a href="../h_src/143317440.htm" class="localvar">s</a>, <a href="../h_src/143317304.htm" class="localvar">p</a>, <a href="../h_src/143316896.htm" class="localvar">ep</a>);
+   667 :    <a href="../h_src/143317576.htm" class="localvar">ms</a>-&gt;<a href="../h_src/143327912.htm" class="variable">matchdepth</a>++;
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable ms</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

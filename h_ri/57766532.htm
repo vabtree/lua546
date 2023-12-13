@@ -1,0 +1,58 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>e1</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57766532.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57766532.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57766532.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57766532.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57669048.htm" class=function>luaK_posfix</a>                                      lcode.c
+  1705 :    if (<a href="../h_src/57672516.htm" class="macro">foldbinop</a>(<a href="../h_src/57766668.htm" class="localvar">opr</a>) &amp;&amp; <a href="../h_src/57785844.htm" class="function">constfolding</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57766668.htm" class="localvar">opr</a> + <a href="../h_src/57437792.htm" class="macro">LUA_OPADD</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>))
+  1710 :    <a href="../h_src/57669320.htm" class="function">luaK_concat</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, &amp;<a href="../h_src/57766396.htm" class="localvar">e2</a>-&gt;<a href="../h_src/57679452.htm" class="variable">f</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>-&gt;<a href="../h_src/57679452.htm" class="variable">f</a>);
+  1711 :    *<a href="../h_src/57766532.htm" class="localvar">e1</a> = *<a href="../h_src/57766396.htm" class="localvar">e2</a>;
+  1716 :    <a href="../h_src/57669320.htm" class="function">luaK_concat</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, &amp;<a href="../h_src/57766396.htm" class="localvar">e2</a>-&gt;<a href="../h_src/57679520.htm" class="variable">t</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>-&gt;<a href="../h_src/57679520.htm" class="variable">t</a>);
+  1717 :    *<a href="../h_src/57766532.htm" class="localvar">e1</a> = *<a href="../h_src/57766396.htm" class="localvar">e2</a>;
+  1722 :    <a href="../h_src/57767756.htm" class="function">codeconcat</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>, <a href="../h_src/57766260.htm" class="localvar">line</a>);
+  1726 :    <a href="../h_src/57773740.htm" class="function">codecommutative</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57766668.htm" class="localvar">opr</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>, <a href="../h_src/57766260.htm" class="localvar">line</a>);
+  1730 :    if (<a href="../h_src/57777412.htm" class="function">finishbinexpneg</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>, <a href="../h_src/57689108.htm" class="variable">OP_ADDI</a>, <a href="../h_src/57766260.htm" class="localvar">line</a>, <a href="../h_src/57500432.htm" class="variable">TM_SUB</a>))
+  1735 :    <a href="../h_src/57774692.htm" class="function">codearith</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57766668.htm" class="localvar">opr</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>, 0, <a href="../h_src/57766260.htm" class="localvar">line</a>);
+  1739 :    <a href="../h_src/57772788.htm" class="function">codebitwise</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57766668.htm" class="localvar">opr</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>, <a href="../h_src/57766260.htm" class="localvar">line</a>);
+  1743 :    if (<a href="../h_src/57787884.htm" class="function">isSCint</a>(<a href="../h_src/57766532.htm" class="localvar">e1</a>)) {
+  1744 :    <a href="../h_src/57776188.htm" class="function">swapexps</a>(<a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>);
+  1745 :    <a href="../h_src/57779996.htm" class="function">codebini</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57688292.htm" class="variable">OP_SHLI</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>, 1, <a href="../h_src/57766260.htm" class="localvar">line</a>, <a href="../h_src/57499820.htm" class="variable">TM_SHL</a>);  <a  class="comments">/* I &lt;&lt; r2 */</a>
+  1747 :    else if (<a href="../h_src/57777412.htm" class="function">finishbinexpneg</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>, <a href="../h_src/57688360.htm" class="variable">OP_SHRI</a>, <a href="../h_src/57766260.htm" class="localvar">line</a>, <a href="../h_src/57499820.htm" class="variable">TM_SHL</a>)) {
+  1751 :    <a href="../h_src/57781084.htm" class="function">codebinexpval</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57766668.htm" class="localvar">opr</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>, <a href="../h_src/57766260.htm" class="localvar">line</a>);
+  1756 :    <a href="../h_src/57779996.htm" class="function">codebini</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57688360.htm" class="variable">OP_SHRI</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>, 0, <a href="../h_src/57766260.htm" class="localvar">line</a>, <a href="../h_src/57499752.htm" class="variable">TM_SHR</a>);  <a  class="comments">/* r1 &gt;&gt; I */</a>
+  1758 :    <a href="../h_src/57781084.htm" class="function">codebinexpval</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57766668.htm" class="localvar">opr</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>, <a href="../h_src/57766260.htm" class="localvar">line</a>);
+  1762 :    <a href="../h_src/57770476.htm" class="function">codeeq</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57766668.htm" class="localvar">opr</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>);
+  1767 :    <a href="../h_src/57776188.htm" class="function">swapexps</a>(<a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>);
+  1771 :    <a href="../h_src/57771836.htm" class="function">codeorder</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57766668.htm" class="localvar">opr</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable e1</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

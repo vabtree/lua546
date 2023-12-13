@@ -1,0 +1,120 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>cast_void</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57547624.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57547624.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57547624.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57547624.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57808488.htm" class=function>addk</a>                                             lcode.c
+   567 :    <a href="../h_src/57621340.htm" class="macro">luaC_barrier</a>(<a href="../h_src/57807808.htm" class="localvar">L</a>, <a href="../h_src/57807672.htm" class="localvar">f</a>, <a href="../h_src/57808080.htm" class="localvar">v</a>);
+<a href="../h_aa/58026888.htm" class=function>addprototype</a>                                     lparser.c
+   710 :    <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/58026480.htm" class="localvar">L</a>, <a href="../h_src/58026208.htm" class="localvar">f</a>, <a href="../h_src/58026616.htm" class="localvar">clp</a>);
+<a href="../h_aa/57729772.htm" class=function>aux_rawset</a>                                       lapi.c
+   903 :    <a href="../h_src/57621068.htm" class="macro">luaC_barrierback</a>(<a href="../h_src/57729636.htm" class="localvar">L</a>, <a href="../h_src/57638884.htm" class="macro">obj2gco</a>(<a href="../h_src/57729092.htm" class="localvar">t</a>), <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57729636.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1));
+<a href="../h_aa/57733988.htm" class=function>auxsetstr</a>                                        lapi.c
+   834 :    <a href="../h_src/57612024.htm" class="macro">luaV_finishfastset</a>(<a href="../h_src/57733852.htm" class="localvar">L</a>, <a href="../h_src/57733716.htm" class="localvar">t</a>, <a href="../h_src/57733444.htm" class="localvar">slot</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57733852.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1));
+<a href="../h_aa/58069360.htm" class=function>loadCode</a>                                         lundump.c
+   146 :    <a href="../h_src/58069088.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514916.htm" class="variable">code</a> = <a href="../h_src/57495196.htm" class="macro">luaM_newvectorchecked</a>(<a href="../h_src/58069224.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, <a href="../h_src/58068952.htm" class="localvar">n</a>, <a href="../h_src/57545108.htm" class="type">Instruction</a>);
+<a href="../h_aa/58068680.htm" class=function>loadConstants</a>                                    lundump.c
+   158 :    <a href="../h_src/58068408.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515052.htm" class="variable">k</a> = <a href="../h_src/57495196.htm" class="macro">luaM_newvectorchecked</a>(<a href="../h_src/58068544.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, <a href="../h_src/58068136.htm" class="localvar">n</a>, <a href="../h_src/57535384.htm" class="type">TValue</a>);
+<a href="../h_aa/58065824.htm" class=function>loadDebug</a>                                        lundump.c
+   230 :    <a href="../h_src/58065552.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514304.htm" class="variable">lineinfo</a> = <a href="../h_src/57495196.htm" class="macro">luaM_newvectorchecked</a>(<a href="../h_src/58065688.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, <a href="../h_src/58065280.htm" class="localvar">n</a>, <a href="../h_src/57550412.htm" class="type">ls_byte</a>);
+   234 :    <a href="../h_src/58065552.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514168.htm" class="variable">abslineinfo</a> = <a href="../h_src/57495196.htm" class="macro">luaM_newvectorchecked</a>(<a href="../h_src/58065688.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, <a href="../h_src/58065280.htm" class="localvar">n</a>, <a href="../h_src/57516344.htm" class="type">AbsLineInfo</a>);
+   241 :    <a href="../h_src/58065552.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514032.htm" class="variable">locvars</a> = <a href="../h_src/57495196.htm" class="macro">luaM_newvectorchecked</a>(<a href="../h_src/58065688.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, <a href="../h_src/58065280.htm" class="localvar">n</a>, <a href="../h_src/57516684.htm" class="type">LocVar</a>);
+<a href="../h_aa/58067184.htm" class=function>loadProtos</a>                                       lundump.c
+   194 :    <a href="../h_src/58066912.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a> = <a href="../h_src/57495196.htm" class="macro">luaM_newvectorchecked</a>(<a href="../h_src/58067048.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, <a href="../h_src/58066640.htm" class="localvar">n</a>, <a href="../h_src/57513828.htm" class="type">Proto</a> *);
+   200 :    <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/58067048.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, <a href="../h_src/58066912.htm" class="localvar">f</a>, <a href="../h_src/58066912.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a>[<a href="../h_src/58066776.htm" class="localvar">i</a>]);
+<a href="../h_aa/58071128.htm" class=function>loadStringN</a>                                      lundump.c
+   128 :    <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/58070720.htm" class="localvar">L</a>, <a href="../h_src/58070856.htm" class="localvar">p</a>, <a href="../h_src/58070584.htm" class="localvar">ts</a>);
+<a href="../h_aa/58066504.htm" class=function>loadUpvalues</a>                                     lundump.c
+   215 :    <a href="../h_src/58066232.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a> = <a href="../h_src/57495196.htm" class="macro">luaM_newvectorchecked</a>(<a href="../h_src/58066368.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, <a href="../h_src/58065960.htm" class="localvar">n</a>, <a href="../h_src/57517092.htm" class="type">Upvaldesc</a>);
+<a href="../h_aa/57439084.htm" class=function>lua_copy</a>                                         lapi.c
+   263 :    <a href="../h_src/57621340.htm" class="macro">luaC_barrier</a>(<a href="../h_src/57602504.htm" class="localvar">L</a>, <a href="../h_src/57511992.htm" class="macro">clCvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57602504.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a>)), <a href="../h_src/57602096.htm" class="localvar">fr</a>);
+<a href="../h_aa/57432624.htm" class=function>lua_load</a>                                         lapi.c
+  1102 :    <a href="../h_src/57621340.htm" class="macro">luaC_barrier</a>(<a href="../h_src/57722564.htm" class="localvar">L</a>, <a href="../h_src/57721612.htm" class="localvar">f</a>-&gt;<a href="../h_src/57508048.htm" class="variable">upvals</a>[0], <a href="../h_src/57721476.htm" class="localvar">gt</a>);
+<a href="../h_aa/57433304.htm" class=function>lua_rawseti</a>                                      lapi.c
+   927 :    <a href="../h_src/57621068.htm" class="macro">luaC_barrierback</a>(<a href="../h_src/57728004.htm" class="localvar">L</a>, <a href="../h_src/57638884.htm" class="macro">obj2gco</a>(<a href="../h_src/57727596.htm" class="localvar">t</a>), <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57728004.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1));
+<a href="../h_aa/57433440.htm" class=function>lua_seti</a>                                         lapi.c
+   884 :    <a href="../h_src/57612024.htm" class="macro">luaV_finishfastset</a>(<a href="../h_src/57730996.htm" class="localvar">L</a>, <a href="../h_src/57730588.htm" class="localvar">t</a>, <a href="../h_src/57730452.htm" class="localvar">slot</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57730996.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1));
+<a href="../h_aa/57433100.htm" class=function>lua_setiuservalue</a>                                lapi.c
+   984 :    <a href="../h_src/57621068.htm" class="macro">luaC_barrierback</a>(<a href="../h_src/57726916.htm" class="localvar">L</a>, <a href="../h_src/57527496.htm" class="macro">gcvalue</a>(<a href="../h_src/57726508.htm" class="localvar">o</a>), <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57726916.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1));
+<a href="../h_aa/57433168.htm" class=function>lua_setmetatable</a>                                 lapi.c
+   949 :    <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/57727460.htm" class="localvar">L</a>, <a href="../h_src/57527496.htm" class="macro">gcvalue</a>(<a href="../h_src/57727188.htm" class="localvar">obj</a>), <a href="../h_src/57727052.htm" class="localvar">mt</a>);
+   957 :    <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/57727460.htm" class="localvar">L</a>, <a href="../h_src/57521444.htm" class="macro">uvalue</a>(<a href="../h_src/57727188.htm" class="localvar">obj</a>), <a href="../h_src/57727052.htm" class="localvar">mt</a>);
+<a href="../h_aa/57433576.htm" class=function>lua_settable</a>                                     lapi.c
+   862 :    <a href="../h_src/57612024.htm" class="macro">luaV_finishfastset</a>(<a href="../h_src/57732220.htm" class="localvar">L</a>, <a href="../h_src/57731948.htm" class="localvar">t</a>, <a href="../h_src/57731812.htm" class="localvar">slot</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57732220.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1));
+<a href="../h_aa/57424328.htm" class=function>lua_setupvalue</a>                                   lapi.c
+  1410 :    <a href="../h_src/57621340.htm" class="macro">luaC_barrier</a>(<a href="../h_src/57710868.htm" class="localvar">L</a>, <a href="../h_src/57710188.htm" class="localvar">owner</a>, <a href="../h_src/57710324.htm" class="localvar">val</a>);
+<a href="../h_aa/57424192.htm" class=function>lua_upvaluejoin</a>                                  lapi.c
+  1460 :    <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/57707808.htm" class="localvar">L</a>, <a href="../h_src/57707128.htm" class="localvar">f1</a>, *<a href="../h_src/57706992.htm" class="localvar">up1</a>);
+<a href="../h_aa/57630452.htm" class=function>luaF_closeupval</a>                                  lfunc.c
+   204 :    <a href="../h_src/57621340.htm" class="macro">luaC_barrier</a>(<a href="../h_src/57832804.htm" class="localvar">L</a>, <a href="../h_src/57832532.htm" class="localvar">uv</a>, <a href="../h_src/57832260.htm" class="localvar">slot</a>);
+<a href="../h_aa/57630656.htm" class=function>luaF_initupvals</a>                                  lfunc.c
+    56 :    <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/57839060.htm" class="localvar">L</a>, <a href="../h_src/57838924.htm" class="localvar">cl</a>, <a href="../h_src/57838516.htm" class="localvar">uv</a>);
+<a href="../h_aa/57616716.htm" class=function>luaH_newkey</a>                                      ltable.c
+   716 :    <a href="../h_src/57621068.htm" class="macro">luaC_barrierback</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, <a href="../h_src/57638884.htm" class="macro">obj2gco</a>(<a href="../h_src/58099484.htm" class="localvar">t</a>), <a href="../h_src/58099348.htm" class="localvar">key</a>);
+<a href="../h_aa/57614812.htm" class=function>luaU_undump</a>                                      lundump.c
+   329 :    <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/58062968.htm" class="localvar">L</a>, <a href="../h_src/58062424.htm" class="localvar">cl</a>, <a href="../h_src/58062424.htm" class="localvar">cl</a>-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>);
+<a href="../h_aa/57610868.htm" class=function>luaV_concat</a>                                      lvm.c
+   648 :    <a href="../h_src/57547624.htm" class="macro">cast_void</a>(<a href="../h_src/58204040.htm" class="macro">tostring</a>(<a href="../h_src/58202952.htm" class="localvar">L</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58202680.htm" class="localvar">top</a> - 2)));  <a  class="comments">/* result is first operand */</a>
+<a href="../h_aa/57610936.htm" class=function>luaV_execute</a>                                     lvm.c
+  1182 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57683464.htm" class="macro">isIT</a>(i) || (<a href="../h_src/57547624.htm" class="macro">cast_void</a>(L-&gt;top.p = base), 1));
+  1248 :    <a href="../h_src/57621340.htm" class="macro">luaC_barrier</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58182756.htm" class="localvar">uv</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58182892.htm" class="localvar">ra</a>));
+  1271 :    ? (<a href="../h_src/57547624.htm" class="macro">cast_void</a>(<a href="../h_src/58180852.htm" class="localvar">n</a> = <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58180988.htm" class="localvar">rc</a>)), <a href="../h_src/57612160.htm" class="macro">luaV_fastgeti</a>(L, <a href="../h_src/58181124.htm" class="localvar">rb</a>, <a href="../h_src/58180852.htm" class="localvar">n</a>, <a href="../h_src/58181260.htm" class="localvar">slot</a>))
+  1314 :    <a href="../h_src/57612024.htm" class="macro">luaV_finishfastset</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58178268.htm" class="localvar">upval</a>, <a href="../h_src/58178404.htm" class="localvar">slot</a>, <a href="../h_src/58177996.htm" class="localvar">rc</a>);
+  1327 :    ? (<a href="../h_src/57547624.htm" class="macro">cast_void</a>(<a href="../h_src/58176908.htm" class="localvar">n</a> = <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58177180.htm" class="localvar">rb</a>)), <a href="../h_src/57612160.htm" class="macro">luaV_fastgeti</a>(L, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58177452.htm" class="localvar">ra</a>), <a href="../h_src/58176908.htm" class="localvar">n</a>, <a href="../h_src/58177316.htm" class="localvar">slot</a>))
+  1329 :    <a href="../h_src/57612024.htm" class="macro">luaV_finishfastset</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58177452.htm" class="localvar">ra</a>), <a href="../h_src/58177316.htm" class="localvar">slot</a>, <a href="../h_src/58177044.htm" class="localvar">rc</a>);
+  1341 :    <a href="../h_src/57612024.htm" class="macro">luaV_finishfastset</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58176500.htm" class="localvar">ra</a>), <a href="../h_src/58176364.htm" class="localvar">slot</a>, <a href="../h_src/58176092.htm" class="localvar">rc</a>);
+  1357 :    <a href="../h_src/57612024.htm" class="macro">luaV_finishfastset</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58175412.htm" class="localvar">ra</a>), <a href="../h_src/58175276.htm" class="localvar">slot</a>, <a href="../h_src/58175004.htm" class="localvar">rc</a>);
+  1867 :    <a href="../h_src/57621068.htm" class="macro">luaC_barrierback</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/57638884.htm" class="macro">obj2gco</a>(<a href="../h_src/58354380.htm" class="localvar">h</a>), <a href="../h_src/58354244.htm" class="localvar">val</a>);
+<a href="../h_aa/57611072.htm" class=function>luaV_finishset</a>                                   lvm.c
+   342 :    <a href="../h_src/57621068.htm" class="macro">luaC_barrierback</a>(<a href="../h_src/58212948.htm" class="localvar">L</a>, <a href="../h_src/57638884.htm" class="macro">obj2gco</a>(<a href="../h_src/58211996.htm" class="localvar">h</a>), <a href="../h_src/58212540.htm" class="localvar">val</a>);
+   359 :    <a href="../h_src/57612024.htm" class="macro">luaV_finishfastset</a>(<a href="../h_src/58212948.htm" class="localvar">L</a>, <a href="../h_src/58212812.htm" class="localvar">t</a>, <a href="../h_src/58212404.htm" class="localvar">slot</a>, <a href="../h_src/58212540.htm" class="localvar">val</a>);
+<a href="../h_aa/57674420.htm" class=function>luaY_parser</a>                                      lparser.c
+  1953 :    <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/57987108.htm" class="localvar">L</a>, <a href="../h_src/57986020.htm" class="localvar">cl</a>, <a href="../h_src/57986020.htm" class="localvar">cl</a>-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>);
+  1955 :    <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/57987108.htm" class="localvar">L</a>, <a href="../h_src/57986156.htm" class="localvar">funcstate</a>.<a href="../h_src/57676052.htm" class="variable">f</a>, <a href="../h_src/57986156.htm" class="localvar">funcstate</a>.<a href="../h_src/57676052.htm" class="variable">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>);
+<a href="../h_aa/57987788.htm" class=function>mainfunc</a>                                         lparser.c
+  1934 :    <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/57987652.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/57987516.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57676052.htm" class="variable">f</a>, <a href="../h_src/57987244.htm" class="localvar">env</a>-&gt;<a href="../h_src/57517364.htm" class="variable">name</a>);
+<a href="../h_aa/58041372.htm" class=function>newupvalue</a>                                       lparser.c
+   380 :    <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/58041236.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/58041236.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57676052.htm" class="variable">f</a>, <a href="../h_src/58041100.htm" class="localvar">name</a>);
+<a href="../h_aa/58025392.htm" class=function>open_func</a>                                        lparser.c
+   750 :    <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/58025256.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/58024848.htm" class="localvar">f</a>, <a href="../h_src/58024848.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>);
+<a href="../h_aa/58198124.htm" class=function>pushclosure</a>                                      lvm.c
+   801 :    <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/58197988.htm" class="localvar">L</a>, <a href="../h_src/58196900.htm" class="localvar">ncl</a>, <a href="../h_src/58196900.htm" class="localvar">ncl</a>-&gt;<a href="../h_src/57508048.htm" class="variable">upvals</a>[<a href="../h_src/58197036.htm" class="localvar">i</a>]);
+<a href="../h_aa/57930288.htm" class=function>readutf8esc</a>                                      llex.c
+   349 :    while (<a href="../h_src/57547624.htm" class="macro">cast_void</a>(<a href="../h_src/57940012.htm" class="macro">save_and_next</a>(<a href="../h_src/57930152.htm" class="localvar">ls</a>)), <a href="../h_src/57759868.htm" class="macro">lisxdigit</a>(<a href="../h_src/57930152.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>)) {
+<a href="../h_aa/58049532.htm" class=function>registerlocalvar</a>                                 lparser.c
+   184 :    <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/58049396.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/58048988.htm" class="localvar">f</a>, <a href="../h_src/58049124.htm" class="localvar">varname</a>);
+<a href="../h_aa/57974964.htm" class=function>traversetable</a>                                    lgc.c
+   547 :    (<a href="../h_src/57547624.htm" class="macro">cast_void</a>(<a href="../h_src/57974556.htm" class="localvar">weakkey</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/57974284.htm" class="localvar">mode</a>), 'k')),
+   548 :    <a href="../h_src/57547624.htm" class="macro">cast_void</a>(<a href="../h_src/57974420.htm" class="localvar">weakvalue</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/57974284.htm" class="localvar">mode</a>), 'v')),
+</pre>
+<h4><a class="legend">Table lists functions that directly use cast_void</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

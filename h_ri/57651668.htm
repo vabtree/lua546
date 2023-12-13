@@ -1,0 +1,62 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">stringtable::</a>size</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57651668.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57651668.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57651668.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57651668.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57651668.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57439900.htm" class=function>lua_newstate</a>                                     lstate.c
+   382 :    <a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646364.htm" class="variable">strt</a>.<a href="../h_src/57651668.htm" class="variable">size</a> = <a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646364.htm" class="variable">strt</a>.<a href="../h_src/57651736.htm" class="variable">nuse</a> = 0;
+<a href="../h_aa/57618824.htm" class=function>luaS_init</a>                                        lstring.c
+   129 :    <a href="../h_src/58127772.htm" class="localvar">tb</a>-&gt;<a href="../h_src/57651668.htm" class="variable">size</a> = <a href="../h_src/57544632.htm" class="macro">MINSTRTABSIZE</a>;
+<a href="../h_aa/57618960.htm" class=function>luaS_resize</a>                                      lstring.c
+    99 :    <a href="../h_src/58129132.htm" class="localvar">tb</a>-&gt;<a href="../h_src/57651668.htm" class="variable">size</a> = <a href="../h_src/58129336.htm" class="localvar">nsize</a>;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57963676.htm" class=function>checkSizes</a>                                       lgc.c
+   871 :    if (<a href="../h_src/57963404.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646364.htm" class="variable">strt</a>.<a href="../h_src/57651736.htm" class="variable">nuse</a> &lt; <a href="../h_src/57963404.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646364.htm" class="variable">strt</a>.<a href="../h_src/57651668.htm" class="variable">size</a> / 4) {  <a  class="comments">/* string table too big? */</a>
+   873 :    <a href="../h_src/57618960.htm" class="function">luaS_resize</a>(<a href="../h_src/57963540.htm" class="localvar">L</a>, <a href="../h_src/57963404.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646364.htm" class="variable">strt</a>.<a href="../h_src/57651668.htm" class="variable">size</a> / 2);
+<a href="../h_aa/58137292.htm" class=function>close_state</a>                                      lstate.c
+   279 :    <a href="../h_src/57495604.htm" class="macro">luaM_freearray</a>(<a href="../h_src/58137156.htm" class="localvar">L</a>, <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/58137156.htm" class="localvar">L</a>)-&gt;strt.<a href="../h_src/57651804.htm" class="variable">hash</a>, <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/58137156.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57646364.htm" class="variable">strt</a>.<a href="../h_src/57651668.htm" class="variable">size</a>);
+<a href="../h_aa/58125596.htm" class=function>growstrtab</a>                                       lstring.c
+   180 :    if (<a href="../h_src/58125324.htm" class="localvar">tb</a>-&gt;<a href="../h_src/57651668.htm" class="variable">size</a> &lt;= <a href="../h_src/58131988.htm" class="macro">MAXSTRTB</a> / 2)  <a  class="comments">/* can grow string table? */</a>
+   181 :    <a href="../h_src/57618960.htm" class="function">luaS_resize</a>(<a href="../h_src/58125460.htm" class="localvar">L</a>, <a href="../h_src/58125324.htm" class="localvar">tb</a>-&gt;<a href="../h_src/57651668.htm" class="variable">size</a> * 2);
+<a href="../h_aa/58125188.htm" class=function>internshrstr</a>                                     lstring.c
+   193 :    <a href="../h_src/57522736.htm" class="type">TString</a> **<a href="../h_src/58124100.htm" class="localvar">list</a> = &amp;<a href="../h_src/58124372.htm" class="localvar">tb</a>-&gt;<a href="../h_src/57651804.htm" class="variable">hash</a>[<a href="../h_src/57502472.htm" class="macro">lmod</a>(<a href="../h_src/58124236.htm" class="localvar">h</a>, <a href="../h_src/58124372.htm" class="localvar">tb</a>-&gt;<a href="../h_src/57651668.htm" class="variable">size</a>)];
+   204 :    if (<a href="../h_src/58124372.htm" class="localvar">tb</a>-&gt;<a href="../h_src/57651736.htm" class="variable">nuse</a> &gt;= <a href="../h_src/58124372.htm" class="localvar">tb</a>-&gt;<a href="../h_src/57651668.htm" class="variable">size</a>) {  <a  class="comments">/* need to grow string table? */</a>
+   206 :    <a href="../h_src/58124100.htm" class="localvar">list</a> = &amp;<a href="../h_src/58124372.htm" class="localvar">tb</a>-&gt;<a href="../h_src/57651804.htm" class="variable">hash</a>[<a href="../h_src/57502472.htm" class="macro">lmod</a>(<a href="../h_src/58124236.htm" class="localvar">h</a>, <a href="../h_src/58124372.htm" class="localvar">tb</a>-&gt;<a href="../h_src/57651668.htm" class="variable">size</a>)];  <a  class="comments">/* rehash with new size */</a>
+<a href="../h_aa/57618756.htm" class=function>luaS_remove</a>                                      lstring.c
+   166 :    <a href="../h_src/57522736.htm" class="type">TString</a> **<a href="../h_src/58125732.htm" class="localvar">p</a> = &amp;<a href="../h_src/58125868.htm" class="localvar">tb</a>-&gt;<a href="../h_src/57651804.htm" class="variable">hash</a>[<a href="../h_src/57502472.htm" class="macro">lmod</a>(<a href="../h_src/58126004.htm" class="localvar">ts</a>-&gt;<a href="../h_src/57523348.htm" class="variable">hash</a>, <a href="../h_src/58125868.htm" class="localvar">tb</a>-&gt;<a href="../h_src/57651668.htm" class="variable">size</a>)];
+<a href="../h_aa/57618960.htm" class=function>luaS_resize</a>                                      lstring.c
+    87 :    int <a href="../h_src/58128996.htm" class="localvar">osize</a> = <a href="../h_src/58129132.htm" class="localvar">tb</a>-&gt;<a href="../h_src/57651668.htm" class="variable">size</a>;
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable size</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

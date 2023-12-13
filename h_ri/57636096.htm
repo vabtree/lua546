@@ -1,0 +1,45 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>MAXIWTHABS</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57636096.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57636096.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57636096.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57636096.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57886660.htm" class=function>changedline</a>                                      ldebug.c
+   850 :    if (<a href="../h_src/57886252.htm" class="localvar">newpc</a> - <a href="../h_src/57886388.htm" class="localvar">oldpc</a> &lt; <a href="../h_src/57636096.htm" class="macro">MAXIWTHABS</a> / 2) {  <a  class="comments">/* not too far apart? */</a>
+<a href="../h_aa/57758372.htm" class=function>getbaseline</a>                                      ldebug.c
+    66 :    int <a href="../h_src/57757828.htm" class="localvar">i</a> = <a href="../h_src/57547080.htm" class="macro">cast_uint</a>(<a href="../h_src/57758100.htm" class="localvar">pc</a>) / <a href="../h_src/57636096.htm" class="macro">MAXIWTHABS</a> - 1;  <a  class="comments">/* get an estimate */</a>
+<a href="../h_aa/57816376.htm" class=function>removelastlineinfo</a>                               lcode.c
+   363 :    <a href="../h_src/57816240.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674692.htm" class="variable">iwthabs</a> = <a href="../h_src/57636096.htm" class="macro">MAXIWTHABS</a> + 1;  <a  class="comments">/* force next line info to be absolute */</a>
+<a href="../h_aa/57817260.htm" class=function>savelineinfo</a>                                     lcode.c
+   332 :    if (<a href="../h_aa/57816444.htm" class="libfunc">abs</a>(<a href="../h_src/57816716.htm" class="localvar">linedif</a>) &gt;= <a href="../h_src/57657420.htm" class="macro">LIMLINEDIFF</a> || <a href="../h_src/57817124.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674692.htm" class="variable">iwthabs</a>++ &gt;= <a href="../h_src/57636096.htm" class="macro">MAXIWTHABS</a>) {
+</pre>
+<h4><a class="legend">Table lists functions that directly use MAXIWTHABS</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

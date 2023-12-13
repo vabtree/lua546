@@ -1,0 +1,47 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaL_loadbuffer</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57416032.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57416032.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57416032.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57416032.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57556736.htm" class=function>addreturn</a>                                        lua.c
+   524 :    int <a href="../h_src/57556192.htm" class="localvar">status</a> = <a href="../h_src/57416032.htm" class="macro">luaL_loadbuffer</a>(<a href="../h_src/57556600.htm" class="localvar">L</a>, <a href="../h_src/57556328.htm" class="localvar">retline</a>, <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/57556328.htm" class="localvar">retline</a>), &quot;=stdin&quot;);
+<a href="../h_aa/143266780.htm" class=function>db_debug</a>                                         ldblib.c
+   427 :    if (<a href="../h_src/57416032.htm" class="macro">luaL_loadbuffer</a>(<a href="../h_src/143266644.htm" class="localvar">L</a>, <a href="../h_src/143266508.htm" class="localvar">buffer</a>, <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/143266508.htm" class="localvar">buffer</a>), &quot;=(debug command)&quot;) ||
+<a href="../h_aa/57567004.htm" class=function>dostring</a>                                         lua.c
+   207 :    return <a href="../h_src/57567820.htm" class="function">dochunk</a>(<a href="../h_src/57566868.htm" class="localvar">L</a>, <a href="../h_src/57416032.htm" class="macro">luaL_loadbuffer</a>(<a href="../h_src/57566868.htm" class="localvar">L</a>, <a href="../h_src/57566732.htm" class="localvar">s</a>, <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/57566732.htm" class="localvar">s</a>), <a href="../h_src/57566596.htm" class="localvar">name</a>));
+<a href="../h_aa/57418276.htm" class=function>luaL_loadstring</a>                                  lauxlib.c
+   844 :    return <a href="../h_src/57416032.htm" class="macro">luaL_loadbuffer</a>(<a href="../h_src/58322216.htm" class="localvar">L</a>, <a href="../h_src/58322080.htm" class="localvar">s</a>, <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/58322080.htm" class="localvar">s</a>), <a href="../h_src/58322080.htm" class="localvar">s</a>);
+<a href="../h_aa/57556056.htm" class=function>multiline</a>                                        lua.c
+   543 :    int <a href="../h_src/57555512.htm" class="localvar">status</a> = <a href="../h_src/57416032.htm" class="macro">luaL_loadbuffer</a>(<a href="../h_src/57555920.htm" class="localvar">L</a>, <a href="../h_src/57555648.htm" class="localvar">line</a>, <a href="../h_src/57555784.htm" class="localvar">len</a>, &quot;=stdin&quot;);  <a  class="comments">/* try it */</a>
+</pre>
+<h4><a class="legend">Table lists functions that directly use luaL_loadbuffer</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,54 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">Labeldesc::</a>nactvar</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57677548.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57677548.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57677548.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57677548.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57677548.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/58030696.htm" class=function>createlabel</a>                                      lparser.c
+   615 :    <a href="../h_src/58029880.htm" class="localvar">ll</a>-&gt;<a href="../h_src/57677140.htm" class="variable">arr</a>[<a href="../h_src/58029744.htm" class="localvar">l</a>].<a href="../h_src/57677548.htm" class="variable">nactvar</a> = <a href="../h_src/58030016.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675576.htm" class="variable">bl</a>-&gt;<a href="../h_src/58056128.htm" class="variable">nactvar</a>;
+<a href="../h_aa/58029608.htm" class=function>movegotosout</a>                                     lparser.c
+   637 :    <a href="../h_src/58028928.htm" class="localvar">gt</a>-&gt;<a href="../h_src/57677548.htm" class="variable">nactvar</a> = <a href="../h_src/58029336.htm" class="localvar">bl</a>-&gt;<a href="../h_src/58056128.htm" class="variable">nactvar</a>;  <a  class="comments">/* update goto level */</a>
+<a href="../h_aa/58033144.htm" class=function>newlabelentry</a>                                    lparser.c
+   567 :    <a href="../h_src/58032872.htm" class="localvar">l</a>-&gt;<a href="../h_src/57677140.htm" class="variable">arr</a>[<a href="../h_src/58032328.htm" class="localvar">n</a>].<a href="../h_src/57677548.htm" class="variable">nactvar</a> = <a href="../h_src/58033008.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>-&gt;<a href="../h_src/57674896.htm" class="variable">nactvar</a>;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/58006080.htm" class=function>gotostat</a>                                         lparser.c
+  1426 :    int <a href="../h_src/58005264.htm" class="localvar">lblevel</a> = <a href="../h_src/58047220.htm" class="function">reglevel</a>(<a href="../h_src/58005808.htm" class="localvar">fs</a>, <a href="../h_src/58005400.htm" class="localvar">lb</a>-&gt;<a href="../h_src/57677548.htm" class="variable">nactvar</a>);  <a  class="comments">/* label level */</a>
+<a href="../h_aa/58035660.htm" class=function>jumpscopeerror</a>                                   lparser.c
+   515 :    const char *<a href="../h_src/58035252.htm" class="localvar">varname</a> = <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58047628.htm" class="function">getlocalvardesc</a>(<a href="../h_src/58035524.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>, <a href="../h_src/58035388.htm" class="localvar">gt</a>-&gt;<a href="../h_src/57677548.htm" class="variable">nactvar</a>)-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678228.htm" class="variable">name</a>);
+<a href="../h_aa/58029608.htm" class=function>movegotosout</a>                                     lparser.c
+   635 :    if (<a href="../h_src/58047220.htm" class="function">reglevel</a>(<a href="../h_src/58029472.htm" class="localvar">fs</a>, <a href="../h_src/58028928.htm" class="localvar">gt</a>-&gt;<a href="../h_src/57677548.htm" class="variable">nactvar</a>) &gt; <a href="../h_src/58047220.htm" class="function">reglevel</a>(<a href="../h_src/58029472.htm" class="localvar">fs</a>, <a href="../h_src/58029336.htm" class="localvar">bl</a>-&gt;<a href="../h_src/58056128.htm" class="variable">nactvar</a>))
+<a href="../h_aa/58034980.htm" class=function>solvegoto</a>                                        lparser.c
+   532 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/58034096.htm" class="localvar">gt</a>-&gt;<a href="../h_src/57677548.htm" class="variable">nactvar</a> &lt; <a href="../h_src/58034572.htm" class="localvar">label</a>-&gt;<a href="../h_src/57677548.htm" class="variable">nactvar</a>))  <a  class="comments">/* enter some scope? */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable nactvar</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

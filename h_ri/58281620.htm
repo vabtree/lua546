@@ -1,0 +1,67 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>L</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58281620.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/58281620.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/58281620.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/58281620.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/58281756.htm" class=function>db_getinfo</a>                                       ldblib.c
+   152 :    <a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143276028.htm" class="localvar">L1</a> = <a href="../h_src/58284340.htm" class="function">getthread</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, &amp;<a href="../h_src/143276164.htm" class="localvar">arg</a>);
+   153 :    const char *<a href="../h_src/143275892.htm" class="localvar">options</a> = <a href="../h_src/57416848.htm" class="macro">luaL_optstring</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, <a href="../h_src/143276164.htm" class="localvar">arg</a>+2, &quot;flnSrtu&quot;);
+   154 :    <a href="../h_src/58286652.htm" class="function">checkstack</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, <a href="../h_src/143276028.htm" class="localvar">L1</a>, 3);
+   155 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, <a href="../h_src/143275892.htm" class="localvar">options</a>[0] != '&gt;', <a href="../h_src/143276164.htm" class="localvar">arg</a> + 2, &quot;invalid option '&gt;'&quot;);
+   156 :    if (<a href="../h_src/57428748.htm" class="macro">lua_isfunction</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, <a href="../h_src/143276164.htm" class="localvar">arg</a> + 1)) {  <a  class="comments">/* info about a function? */</a>
+   157 :    <a href="../h_src/143275892.htm" class="localvar">options</a> = <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, &quot;&gt;%s&quot;, <a href="../h_src/143275892.htm" class="localvar">options</a>);  <a  class="comments">/* add '&gt;' to 'options' */</a>
+   158 :    <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, <a href="../h_src/143276164.htm" class="localvar">arg</a> + 1);  <a  class="comments">/* move function to 'L1' stack */</a>
+   159 :    <a href="../h_src/57438948.htm" class="function">lua_xmove</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, <a href="../h_src/143276028.htm" class="localvar">L1</a>, 1);
+   162 :    if (!<a href="../h_src/57424668.htm" class="function">lua_getstack</a>(<a href="../h_src/143276028.htm" class="localvar">L1</a>, (int)<a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, <a href="../h_src/143276164.htm" class="localvar">arg</a> + 1), &amp;<a href="../h_src/58281484.htm" class="localvar">ar</a>)) {
+   163 :    <a href="../h_src/57415760.htm" class="macro">luaL_pushfail</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>);  <a  class="comments">/* level out of range */</a>
+   168 :    return <a href="../h_src/57420384.htm" class="function">luaL_argerror</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, <a href="../h_src/143276164.htm" class="localvar">arg</a>+2, &quot;invalid option&quot;);
+   169 :    <a href="../h_src/57429156.htm" class="macro">lua_newtable</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>);  <a  class="comments">/* table to collect results */</a>
+   171 :    <a href="../h_src/57435072.htm" class="function">lua_pushlstring</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, <a href="../h_src/58281484.htm" class="localvar">ar</a>.<a href="../h_src/57423512.htm" class="variable">source</a>, <a href="../h_src/58281484.htm" class="localvar">ar</a>.<a href="../h_src/57423444.htm" class="variable">srclen</a>);
+   172 :    <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, -2, &quot;source&quot;);
+   173 :    <a href="../h_src/58283932.htm" class="function">settabss</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, &quot;short_src&quot;, <a href="../h_src/58281484.htm" class="localvar">ar</a>.<a href="../h_src/57422764.htm" class="variable">short_src</a>);
+   174 :    <a href="../h_src/58283388.htm" class="function">settabsi</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, &quot;linedefined&quot;, <a href="../h_src/58281484.htm" class="localvar">ar</a>.<a href="../h_src/57423308.htm" class="variable">linedefined</a>);
+   175 :    <a href="../h_src/58283388.htm" class="function">settabsi</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, &quot;lastlinedefined&quot;, <a href="../h_src/58281484.htm" class="localvar">ar</a>.<a href="../h_src/57423240.htm" class="variable">lastlinedefined</a>);
+   176 :    <a href="../h_src/58283932.htm" class="function">settabss</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, &quot;what&quot;, <a href="../h_src/58281484.htm" class="localvar">ar</a>.<a href="../h_src/57423580.htm" class="variable">what</a>);
+   179 :    <a href="../h_src/58283388.htm" class="function">settabsi</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, &quot;currentline&quot;, <a href="../h_src/58281484.htm" class="localvar">ar</a>.<a href="../h_src/57423376.htm" class="variable">currentline</a>);
+   181 :    <a href="../h_src/58283388.htm" class="function">settabsi</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, &quot;nups&quot;, <a href="../h_src/58281484.htm" class="localvar">ar</a>.<a href="../h_src/57423172.htm" class="variable">nups</a>);
+   182 :    <a href="../h_src/58283388.htm" class="function">settabsi</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, &quot;nparams&quot;, <a href="../h_src/58281484.htm" class="localvar">ar</a>.<a href="../h_src/57423104.htm" class="variable">nparams</a>);
+   183 :    <a href="../h_src/58282844.htm" class="function">settabsb</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, &quot;isvararg&quot;, <a href="../h_src/58281484.htm" class="localvar">ar</a>.<a href="../h_src/57423036.htm" class="variable">isvararg</a>);
+   186 :    <a href="../h_src/58283932.htm" class="function">settabss</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, &quot;name&quot;, <a href="../h_src/58281484.htm" class="localvar">ar</a>.<a href="../h_src/57423716.htm" class="variable">name</a>);
+   187 :    <a href="../h_src/58283932.htm" class="function">settabss</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, &quot;namewhat&quot;, <a href="../h_src/58281484.htm" class="localvar">ar</a>.<a href="../h_src/57423648.htm" class="variable">namewhat</a>);
+   190 :    <a href="../h_src/58283388.htm" class="function">settabsi</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, &quot;ftransfer&quot;, <a href="../h_src/58281484.htm" class="localvar">ar</a>.<a href="../h_src/57422900.htm" class="variable">ftransfer</a>);
+   191 :    <a href="../h_src/58283388.htm" class="function">settabsi</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, &quot;ntransfer&quot;, <a href="../h_src/58281484.htm" class="localvar">ar</a>.<a href="../h_src/57422832.htm" class="variable">ntransfer</a>);
+   194 :    <a href="../h_src/58282844.htm" class="function">settabsb</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, &quot;istailcall&quot;, <a href="../h_src/58281484.htm" class="localvar">ar</a>.<a href="../h_src/57422968.htm" class="variable">istailcall</a>);
+   196 :    <a href="../h_src/58282300.htm" class="function">treatstackoption</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, <a href="../h_src/143276028.htm" class="localvar">L1</a>, &quot;activelines&quot;);
+   198 :    <a href="../h_src/58282300.htm" class="function">treatstackoption</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, <a href="../h_src/143276028.htm" class="localvar">L1</a>, &quot;func&quot;);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable L</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

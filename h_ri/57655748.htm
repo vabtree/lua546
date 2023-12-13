@@ -1,0 +1,64 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">Mbuffer::</a>buffer</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57655748.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57655748.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57655748.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57655748.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57655748.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57633580.htm" class=function>luaD_protectedparser</a>                             ldo.c
+  1014 :    <a href="../h_src/57655476.htm" class="macro">luaZ_initbuffer</a>(L, &amp;<a href="../h_src/57850960.htm" class="localvar">p</a>.<a href="../h_src/57853272.htm" class="variable">buff</a>);
+  1016 :    <a href="../h_src/57654524.htm" class="macro">luaZ_freebuffer</a>(<a href="../h_src/57851504.htm" class="localvar">L</a>, &amp;<a href="../h_src/57850960.htm" class="localvar">p</a>.<a href="../h_src/57853272.htm" class="variable">buff</a>);
+<a href="../h_aa/57699988.htm" class=function>luaX_setinput</a>                                    llex.c
+   179 :    <a href="../h_src/57654660.htm" class="macro">luaZ_resizebuffer</a>(<a href="../h_src/57935252.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/57935252.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>, <a href="../h_src/57543952.htm" class="macro">LUA_MINBUFFER</a>);  <a  class="comments">/* initialize buffer */</a><a href="../h_src/57655748.htm" class="variable">buffer</a> */
+<a href="../h_aa/57939740.htm" class=function>save</a>                                             llex.c
+    64 :    <a href="../h_src/57654660.htm" class="macro">luaZ_resizebuffer</a>(<a href="../h_src/57939604.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/57939332.htm" class="localvar">b</a>, <a href="../h_src/57939196.htm" class="localvar">newsize</a>);
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57927976.htm" class=function>llex</a>                                             llex.c
+   545 :    <a href="../h_src/57927296.htm" class="localvar">ts</a> = <a href="../h_src/57699852.htm" class="function">luaX_newstring</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>, <a href="../h_src/57655340.htm" class="macro">luaZ_buffer</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>),
+<a href="../h_aa/57633580.htm" class=function>luaD_protectedparser</a>                             ldo.c
+  1016 :    <a href="../h_src/57654524.htm" class="macro">luaZ_freebuffer</a>(<a href="../h_src/57851504.htm" class="localvar">L</a>, &amp;<a href="../h_src/57850960.htm" class="localvar">p</a>.<a href="../h_src/57853272.htm" class="variable">buff</a>);
+<a href="../h_aa/57699988.htm" class=function>luaX_setinput</a>                                    llex.c
+   179 :    <a href="../h_src/57654660.htm" class="macro">luaZ_resizebuffer</a>(<a href="../h_src/57935252.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/57935252.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>, <a href="../h_src/57543952.htm" class="macro">LUA_MINBUFFER</a>);  <a  class="comments">/* initialize buffer */</a><a href="../h_src/57655748.htm" class="variable">buffer</a> */
+<a href="../h_aa/57932464.htm" class=function>read_long_string</a>                                 llex.c
+   314 :    <a href="../h_src/57932192.htm" class="localvar">seminfo</a>-&gt;<a href="../h_src/57702300.htm" class="variable">ts</a> = <a href="../h_src/57699852.htm" class="function">luaX_newstring</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>, <a href="../h_src/57655340.htm" class="macro">luaZ_buffer</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>) + <a href="../h_src/57932056.htm" class="localvar">sep</a>,
+<a href="../h_aa/57933892.htm" class=function>read_numeral</a>                                     llex.c
+   245 :    if (<a href="../h_src/57501656.htm" class="function">luaO_str2num</a>(<a href="../h_src/57655340.htm" class="macro">luaZ_buffer</a>(<a href="../h_src/57933756.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>), &amp;<a href="../h_src/57933416.htm" class="localvar">obj</a>) == 0)  <a  class="comments">/* format error? */</a>
+<a href="../h_aa/57928656.htm" class=function>read_string</a>                                      llex.c
+   440 :    <a href="../h_src/57928248.htm" class="localvar">seminfo</a>-&gt;<a href="../h_src/57702300.htm" class="variable">ts</a> = <a href="../h_src/57699852.htm" class="function">luaX_newstring</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>, <a href="../h_src/57655340.htm" class="macro">luaZ_buffer</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>) + 1,
+<a href="../h_aa/57939740.htm" class=function>save</a>                                             llex.c
+    64 :    <a href="../h_src/57654660.htm" class="macro">luaZ_resizebuffer</a>(<a href="../h_src/57939604.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/57939332.htm" class="localvar">b</a>, <a href="../h_src/57939196.htm" class="localvar">newsize</a>);
+    66 :    <a href="../h_src/57939332.htm" class="localvar">b</a>-&gt;<a href="../h_src/57655748.htm" class="variable">buffer</a>[<a href="../h_src/57655068.htm" class="macro">luaZ_bufflen</a>(<a href="../h_src/57939332.htm" class="localvar">b</a>)++] = <a href="../h_src/57546672.htm" class="macro">cast_char</a>(<a href="../h_src/57939468.htm" class="localvar">c</a>);
+<a href="../h_aa/57938108.htm" class=function>txtToken</a>                                         llex.c
+   104 :    return <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/57937972.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, &quot;'%s'&quot;, <a href="../h_src/57655340.htm" class="macro">luaZ_buffer</a>(<a href="../h_src/57937972.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>));
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable buffer</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

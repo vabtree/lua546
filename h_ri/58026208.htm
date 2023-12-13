@@ -1,0 +1,49 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>f</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58026208.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/58026208.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/58026208.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/58026208.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/58026888.htm" class=function>addprototype</a>                                     lparser.c
+   702 :    <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/58026208.htm" class="localvar">f</a> = <a href="../h_src/58026344.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57676052.htm" class="variable">f</a>;  <a  class="comments">/* prototype of current function */</a>
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/58026888.htm" class=function>addprototype</a>                                     lparser.c
+   703 :    if (<a href="../h_src/58026344.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675236.htm" class="variable">np</a> &gt;= <a href="../h_src/58026208.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515460.htm" class="variable">sizep</a>) {
+   704 :    int <a href="../h_src/58026072.htm" class="localvar">oldsize</a> = <a href="../h_src/58026208.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515460.htm" class="variable">sizep</a>;
+   705 :    <a href="../h_src/57494924.htm" class="macro">luaM_growvector</a>(<a href="../h_src/58026480.htm" class="localvar">L</a>, <a href="../h_src/58026208.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a>, <a href="../h_src/58026344.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675236.htm" class="variable">np</a>, <a href="../h_src/58026208.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515460.htm" class="variable">sizep</a>, <a href="../h_src/57513828.htm" class="type">Proto</a> *, <a href="../h_src/57696520.htm" class="macro">MAXARG_Bx</a>, &quot;functions&quot;);
+   706 :    while (<a href="../h_src/58026072.htm" class="localvar">oldsize</a> &lt; <a href="../h_src/58026208.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515460.htm" class="variable">sizep</a>)
+   707 :    <a href="../h_src/58026208.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a>[<a href="../h_src/58026072.htm" class="localvar">oldsize</a>++] = NULL;
+   709 :    <a href="../h_src/58026208.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a>[<a href="../h_src/58026344.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675236.htm" class="variable">np</a>++] = <a href="../h_src/58026616.htm" class="localvar">clp</a> = <a href="../h_src/57630996.htm" class="function">luaF_newproto</a>(<a href="../h_src/58026480.htm" class="localvar">L</a>);
+   710 :    <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/58026480.htm" class="localvar">L</a>, <a href="../h_src/58026208.htm" class="localvar">f</a>, <a href="../h_src/58026616.htm" class="localvar">clp</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable f</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,47 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>argv</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57553608.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57553608.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57553608.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57553608.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57554016.htm" class=function>pmain</a>                                            lua.c
+   619 :    char **<a href="../h_src/57553608.htm" class="localvar">argv</a> = (char **)<a href="../h_src/57437996.htm" class="function">lua_touserdata</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>, 2);
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57554016.htm" class=function>pmain</a>                                            lua.c
+   621 :    int <a href="../h_src/57553336.htm" class="localvar">args</a> = <a href="../h_src/57563604.htm" class="function">collectargs</a>(<a href="../h_src/57553608.htm" class="localvar">argv</a>, &amp;<a href="../h_src/57553472.htm" class="localvar">script</a>);
+   625 :    <a href="../h_src/57571696.htm" class="function">print_usage</a>(<a href="../h_src/57553608.htm" class="localvar">argv</a>[<a href="../h_src/57553472.htm" class="localvar">script</a>]);  <a  class="comments">/* 'script' has index of bad arg. */</a>
+   635 :    <a href="../h_src/57568840.htm" class="function">createargtable</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>, <a href="../h_src/57553608.htm" class="localvar">argv</a>, <a href="../h_src/57553744.htm" class="localvar">argc</a>, <a href="../h_src/57553472.htm" class="localvar">script</a>);  <a  class="comments">/* create table 'arg' */</a>
+   642 :    if (!<a href="../h_src/57562924.htm" class="function">runargs</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>, <a href="../h_src/57553608.htm" class="localvar">argv</a>, <a href="../h_src/57553200.htm" class="localvar">optlim</a>))  <a  class="comments">/* execute arguments -e and -l */</a>
+   645 :    if (<a href="../h_src/57565168.htm" class="function">handle_script</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>, <a href="../h_src/57553608.htm" class="localvar">argv</a> + <a href="../h_src/57553472.htm" class="localvar">script</a>) != <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>)
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable argv</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

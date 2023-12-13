@@ -1,0 +1,61 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>sprintf</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57906760.htm" class="libfunc" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57906760.htm" class="libfunc" target="_self">Calling Hierarchy</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57906760.htm" class="libfunc" target="_self">Called By</a></li>
+<li><a href="../h_rx/57906760.htm" class="libfunc" target="_self">Call Tree</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/143295748.htm" class=function>addliteral</a>                                       lstrlib.c
+  1193 :    <a href="../h_src/143294796.htm" class="localvar">nb</a> = <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143294932.htm" class="localvar">buff</a>, <a href="../h_src/143298604.htm" class="macro">MAX_ITEM</a>, <a href="../h_src/143294524.htm" class="localvar">format</a>, (<a href="../h_src/57450916.htm" class="macro">LUAI_UACINT</a>)<a href="../h_src/143294660.htm" class="localvar">n</a>);
+<a href="../h_aa/143297516.htm" class=function>addquoted</a>                                        lstrlib.c
+  1132 :    <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143296972.htm" class="localvar">buff</a>, sizeof(<a href="../h_src/143296972.htm" class="localvar">buff</a>), &quot;\\%d&quot;, (int)<a href="../h_src/143343552.htm" class="macro">uchar</a>(*<a href="../h_src/143297244.htm" class="localvar">s</a>));
+  1134 :    <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143296972.htm" class="localvar">buff</a>, sizeof(<a href="../h_src/143296972.htm" class="localvar">buff</a>), &quot;\\%03d&quot;, (int)<a href="../h_src/143343552.htm" class="macro">uchar</a>(*<a href="../h_src/143297244.htm" class="localvar">s</a>));
+<a href="../h_aa/57501452.htm" class=function>luaO_pushvfstring</a>                                lobject.c
+   521 :    int <a href="../h_src/57899756.htm" class="localvar">len</a> = <a href="../h_src/57449556.htm" class="macro">lua_pointer2str</a>(<a href="../h_src/57900028.htm" class="localvar">bf</a>, <a href="../h_src/57900164.htm" class="localvar">sz</a>, <a href="../h_src/57899892.htm" class="localvar">p</a>);
+<a href="../h_aa/143300780.htm" class=function>num2straux</a>                                       lstrlib.c
+  1027 :    return <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143300644.htm" class="localvar">buff</a>, <a href="../h_src/143300508.htm" class="localvar">sz</a>, <a href="../h_src/57451460.htm" class="macro">LUA_NUMBER_FMT</a>, (<a href="../h_src/57451732.htm" class="macro">LUAI_UACNUMBER</a>)<a href="../h_src/143300372.htm" class="localvar">x</a>);
+  1030 :    return <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143300644.htm" class="localvar">buff</a>, <a href="../h_src/143300508.htm" class="localvar">sz</a>, <a href="../h_src/57451460.htm" class="macro">LUA_NUMBER_FMT</a> &quot;x0p+0&quot;, (<a href="../h_src/57451732.htm" class="macro">LUAI_UACNUMBER</a>)<a href="../h_src/143300372.htm" class="localvar">x</a>);
+  1049 :    <a href="../h_src/143299964.htm" class="localvar">n</a> += <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143300644.htm" class="localvar">buff</a> + <a href="../h_src/143299964.htm" class="localvar">n</a>, <a href="../h_src/143300508.htm" class="localvar">sz</a> - <a href="../h_src/143299964.htm" class="localvar">n</a>, &quot;p%+d&quot;, <a href="../h_src/143300236.htm" class="localvar">e</a>);  <a  class="comments">/* add exponent */</a>
+<a href="../h_aa/143398536.htm" class=function>PrintConstant</a>                                    luac.c
+   311 :    <a href="../h_aa/57906760.htm" class="libfunc">sprintf</a>(<a href="../h_src/143397992.htm" class="localvar">buff</a>,<a href="../h_src/57451460.htm" class="macro">LUA_NUMBER_FMT</a>,<a href="../h_src/57526272.htm" class="macro">fltvalue</a>(<a href="../h_src/143398128.htm" class="localvar">o</a>));
+<a href="../h_aa/143296836.htm" class=function>quotefloat</a>                                       lstrlib.c
+  1171 :    return <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143296564.htm" class="localvar">buff</a>, <a href="../h_src/143298604.htm" class="macro">MAX_ITEM</a>, &quot;%s&quot;, <a href="../h_src/143296292.htm" class="localvar">s</a>);
+<a href="../h_aa/143291804.htm" class=function>str_format</a>                                       lstrlib.c
+  1298 :    <a href="../h_src/143290172.htm" class="localvar">nb</a> = <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143290308.htm" class="localvar">buff</a>, <a href="../h_src/143290444.htm" class="localvar">maxitem</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>, (int)<a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143291396.htm" class="localvar">arg</a>));
+  1313 :    <a href="../h_src/143290172.htm" class="localvar">nb</a> = <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143290308.htm" class="localvar">buff</a>, <a href="../h_src/143290444.htm" class="localvar">maxitem</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>, (<a href="../h_src/57450916.htm" class="macro">LUAI_UACINT</a>)<a href="../h_src/143290036.htm" class="localvar">n</a>);
+  1330 :    <a href="../h_src/143290172.htm" class="localvar">nb</a> = <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143290308.htm" class="localvar">buff</a>, <a href="../h_src/143290444.htm" class="localvar">maxitem</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>, (<a href="../h_src/57451732.htm" class="macro">LUAI_UACNUMBER</a>)<a href="../h_src/143289900.htm" class="localvar">n</a>);
+  1340 :    <a href="../h_src/143290172.htm" class="localvar">nb</a> = <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143290308.htm" class="localvar">buff</a>, <a href="../h_src/143290444.htm" class="localvar">maxitem</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>, <a href="../h_src/143289764.htm" class="localvar">p</a>);
+  1362 :    <a href="../h_src/143290172.htm" class="localvar">nb</a> = <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143290308.htm" class="localvar">buff</a>, <a href="../h_src/143290444.htm" class="localvar">maxitem</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>, <a href="../h_src/143289492.htm" class="localvar">s</a>);
+<a href="../h_aa/57907304.htm" class=function>tostringbuff</a>                                     lobject.c
+   359 :    <a href="../h_src/57906896.htm" class="localvar">len</a> = <a href="../h_src/57450780.htm" class="macro">lua_integer2str</a>(<a href="../h_src/57907032.htm" class="localvar">buff</a>, <a href="../h_src/57907440.htm" class="macro">MAXNUMBER2STR</a>, <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/57907168.htm" class="localvar">obj</a>));
+   361 :    <a href="../h_src/57906896.htm" class="localvar">len</a> = <a href="../h_src/57452276.htm" class="macro">lua_number2str</a>(<a href="../h_src/57907032.htm" class="localvar">buff</a>, <a href="../h_src/57907440.htm" class="macro">MAXNUMBER2STR</a>, <a href="../h_src/57526272.htm" class="macro">fltvalue</a>(<a href="../h_src/57907168.htm" class="localvar">obj</a>));
+</pre>
+<h4><a class="legend">Table lists functions that directly use sprintf</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

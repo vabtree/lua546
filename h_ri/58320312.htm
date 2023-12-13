@@ -1,0 +1,53 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>idx</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58320312.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/58320312.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/58320312.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/58320312.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57420452.htm" class=function>luaL_tolstring</a>                                   lauxlib.c
+   890 :    <a href="../h_src/58320312.htm" class="localvar">idx</a> = <a href="../h_src/57439424.htm" class="function">lua_absindex</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>,<a href="../h_src/58320312.htm" class="localvar">idx</a>);
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57420452.htm" class=function>luaL_tolstring</a>                                   lauxlib.c
+   890 :    <a href="../h_src/58320312.htm" class="localvar">idx</a> = <a href="../h_src/57439424.htm" class="function">lua_absindex</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>,<a href="../h_src/58320312.htm" class="localvar">idx</a>);
+   891 :    if (<a href="../h_src/57420520.htm" class="function">luaL_callmeta</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, <a href="../h_src/58320312.htm" class="localvar">idx</a>, &quot;__tostring&quot;)) {  <a  class="comments">/* metafield? */</a>
+   896 :    switch (<a href="../h_src/57438540.htm" class="function">lua_type</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, <a href="../h_src/58320312.htm" class="localvar">idx</a>)) {
+   898 :    if (<a href="../h_src/57438676.htm" class="function">lua_isinteger</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, <a href="../h_src/58320312.htm" class="localvar">idx</a>))
+   899 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, &quot;%I&quot;, (<a href="../h_src/57450916.htm" class="macro">LUAI_UACINT</a>)<a href="../h_src/57429428.htm" class="macro">lua_tointeger</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, <a href="../h_src/58320312.htm" class="localvar">idx</a>));
+   901 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, &quot;%f&quot;, (<a href="../h_src/57451732.htm" class="macro">LUAI_UACNUMBER</a>)<a href="../h_src/57429564.htm" class="macro">lua_tonumber</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, <a href="../h_src/58320312.htm" class="localvar">idx</a>));
+   905 :    <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, <a href="../h_src/58320312.htm" class="localvar">idx</a>);
+   908 :    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, (<a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, <a href="../h_src/58320312.htm" class="localvar">idx</a>) ? &quot;true&quot; : &quot;false&quot;));
+   914 :    int <a href="../h_src/58320040.htm" class="localvar">tt</a> = <a href="../h_src/57420588.htm" class="function">luaL_getmetafield</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, <a href="../h_src/58320312.htm" class="localvar">idx</a>, &quot;__name&quot;);  <a  class="comments">/* try name */</a>
+   916 :    <a href="../h_src/57416712.htm" class="macro">luaL_typename</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, <a href="../h_src/58320312.htm" class="localvar">idx</a>);
+   917 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, &quot;%s: %p&quot;, <a href="../h_src/58319904.htm" class="localvar">kind</a>, <a href="../h_src/57437860.htm" class="function">lua_topointer</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, <a href="../h_src/58320312.htm" class="localvar">idx</a>));
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable idx</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

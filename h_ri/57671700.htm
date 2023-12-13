@@ -1,0 +1,52 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>getinstruction</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57671700.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57671700.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57671700.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57671700.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57798492.htm" class=function>discharge2reg</a>                                    lcode.c
+   856 :    <a href="../h_src/57545108.htm" class="type">Instruction</a> *<a href="../h_src/57797948.htm" class="localvar">pc</a> = &amp;<a href="../h_src/57671700.htm" class="macro">getinstruction</a>(<a href="../h_src/57798356.htm" class="localvar">fs</a>, <a href="../h_src/57798220.htm" class="localvar">e</a>);
+<a href="../h_aa/57989556.htm" class=function>exprstat</a>                                         lparser.c
+  1807 :    <a href="../h_src/57989012.htm" class="localvar">inst</a> = &amp;<a href="../h_src/57671700.htm" class="macro">getinstruction</a>(<a href="../h_src/57989284.htm" class="localvar">fs</a>, &amp;<a href="../h_src/57989148.htm" class="localvar">v</a>.<a href="../h_src/58008460.htm" class="variable">v</a>);
+<a href="../h_aa/57790740.htm" class=function>jumponcond</a>                                       lcode.c
+  1117 :    <a href="../h_src/57545108.htm" class="type">Instruction</a> <a href="../h_src/57790196.htm" class="localvar">ie</a> = <a href="../h_src/57671700.htm" class="macro">getinstruction</a>(<a href="../h_src/57790604.htm" class="localvar">fs</a>, <a href="../h_src/57790468.htm" class="localvar">e</a>);
+<a href="../h_aa/57669660.htm" class=function>luaK_setoneret</a>                                   lcode.c
+   757 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57693392.htm" class="macro">GETARG_C</a>(<a href="../h_src/57671700.htm" class="macro">getinstruction</a>(fs, e)) == 2);
+   759 :    <a href="../h_src/57798900.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a> = <a href="../h_src/57694072.htm" class="macro">GETARG_A</a>(<a href="../h_src/57671700.htm" class="macro">getinstruction</a>(<a href="../h_src/57799036.htm" class="localvar">fs</a>, <a href="../h_src/57798900.htm" class="localvar">e</a>));
+   762 :    <a href="../h_src/57693120.htm" class="macro">SETARG_C</a>(<a href="../h_src/57671700.htm" class="macro">getinstruction</a>(<a href="../h_src/57799036.htm" class="localvar">fs</a>, <a href="../h_src/57798900.htm" class="localvar">e</a>), 2);
+<a href="../h_aa/57669728.htm" class=function>luaK_setreturns</a>                                  lcode.c
+   722 :    <a href="../h_src/57545108.htm" class="type">Instruction</a> *<a href="../h_src/57799580.htm" class="localvar">pc</a> = &amp;<a href="../h_src/57671700.htm" class="macro">getinstruction</a>(<a href="../h_src/57799988.htm" class="localvar">fs</a>, <a href="../h_src/57799852.htm" class="localvar">e</a>);
+<a href="../h_aa/57988876.htm" class=function>retstat</a>                                          lparser.c
+  1826 :    <a href="../h_src/57694616.htm" class="macro">SET_OPCODE</a>(<a href="../h_src/57671700.htm" class="macro">getinstruction</a>(<a href="../h_src/57988604.htm" class="localvar">fs</a>,&amp;<a href="../h_src/57988468.htm" class="localvar">e</a>), <a href="../h_src/57685844.htm" class="variable">OP_TAILCALL</a>);
+  1827 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57694072.htm" class="macro">GETARG_A</a>(<a href="../h_src/57671700.htm" class="macro">getinstruction</a>(fs,&amp;e)) == luaY_nvarstack(fs));
+</pre>
+<h4><a class="legend">Table lists functions that directly use getinstruction</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

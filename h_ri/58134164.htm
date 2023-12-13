@@ -1,0 +1,54 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>L</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58134164.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/58134164.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/58134164.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/58134164.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57439900.htm" class=function>lua_newstate</a>                                     lstate.c
+   366 :    <a href="../h_src/58134164.htm" class="localvar">L</a> = &amp;<a href="../h_src/58133824.htm" class="localvar">l</a>-&gt;<a href="../h_src/57984524.htm" class="variable">l</a>.<a href="../h_src/57984796.htm" class="variable">l</a>;
+   410 :    <a href="../h_src/58134164.htm" class="localvar">L</a> = NULL;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57439900.htm" class=function>lua_newstate</a>                                     lstate.c
+   368 :    <a href="../h_src/58134164.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642964.htm" class="variable">tt</a> = <a href="../h_src/57528992.htm" class="macro">LUA_VTHREAD</a>;
+   370 :    <a href="../h_src/58134164.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642896.htm" class="variable">marked</a> = <a href="../h_src/57625148.htm" class="macro">luaC_white</a>(<a href="../h_src/58134028.htm" class="localvar">g</a>);
+   371 :    <a href="../h_src/57977724.htm" class="function">preinit_thread</a>(<a href="../h_src/58134164.htm" class="localvar">L</a>, <a href="../h_src/58134028.htm" class="localvar">g</a>);
+   372 :    <a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645344.htm" class="variable">allgc</a> = <a href="../h_src/57638884.htm" class="macro">obj2gco</a>(<a href="../h_src/58134164.htm" class="localvar">L</a>);  <a  class="comments">/* by now, only object is the main thread */</a>
+   373 :    <a href="../h_src/58134164.htm" class="localvar">L</a>-&gt;<a href="../h_src/57643032.htm" class="variable">next</a> = NULL;
+   374 :    <a href="../h_src/57653504.htm" class="macro">incnny</a>(<a href="../h_src/58134164.htm" class="localvar">L</a>);  <a  class="comments">/* main thread is always non yieldable */</a>
+   379 :    <a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57643848.htm" class="variable">mainthread</a> = <a href="../h_src/58134164.htm" class="localvar">L</a>;
+   380 :    <a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646160.htm" class="variable">seed</a> = <a href="../h_src/57983912.htm" class="function">luai_makeseed</a>(<a href="../h_src/58134164.htm" class="localvar">L</a>);
+   407 :    if (<a href="../h_src/57632492.htm" class="function">luaD_rawrunprotected</a>(<a href="../h_src/58134164.htm" class="localvar">L</a>, <a href="../h_src/57978268.htm" class="function">f_luaopen</a>, NULL) != <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) {
+   409 :    <a href="../h_src/58137292.htm" class="function">close_state</a>(<a href="../h_src/58134164.htm" class="localvar">L</a>);
+   412 :    return <a href="../h_src/58134164.htm" class="localvar">L</a>;
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable L</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

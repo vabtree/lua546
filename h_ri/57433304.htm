@@ -1,0 +1,53 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lua_rawseti</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57433304.htm" class="function" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57433304.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57433304.htm" class="function" target="_self">Flow Chart</a></li>
+<li><a href="../h_src/57433304.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57433304.htm" class="function" target="_self">Called By</a></li>
+<li><a href="../h_rx/57433304.htm" class="function" target="_self">Call Tree</a></li>
+<li><a href="../h_ro/57433304.htm" class="function" target="_self">Calls and Uses</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/143208980.htm" class=function>addtoclib</a>                                        loadlib.c
+   354 :    <a href="../h_src/57433304.htm" class="function">lua_rawseti</a>(<a href="../h_src/143208844.htm" class="localvar">L</a>, -2, <a href="../h_src/57418140.htm" class="function">luaL_len</a>(<a href="../h_src/143208844.htm" class="localvar">L</a>, -2) + 1);  <a  class="comments">/* CLIBS[#CLIBS + 1] = plib */</a>
+<a href="../h_aa/57568840.htm" class=function>createargtable</a>                                   lua.c
+   189 :    <a href="../h_src/57433304.htm" class="function">lua_rawseti</a>(<a href="../h_src/57568704.htm" class="localvar">L</a>, -2, <a href="../h_src/57568092.htm" class="localvar">i</a> - <a href="../h_src/57568228.htm" class="localvar">script</a>);
+<a href="../h_aa/143197148.htm" class=function>createsearcherstable</a>                             loadlib.c
+   725 :    <a href="../h_src/57433304.htm" class="function">lua_rawseti</a>(<a href="../h_src/143197012.htm" class="localvar">L</a>, -2, <a href="../h_src/143196672.htm" class="localvar">i</a>+1);
+<a href="../h_aa/57418684.htm" class=function>luaL_ref</a>                                         lauxlib.c
+   671 :    <a href="../h_src/57433304.htm" class="function">lua_rawseti</a>(<a href="../h_src/58328540.htm" class="localvar">L</a>, <a href="../h_src/58328404.htm" class="localvar">t</a>, <a href="../h_src/58328676.htm" class="macro">freelist</a>);  <a  class="comments">/* ref = t[freelist] = 0 */</a>
+   680 :    <a href="../h_src/57433304.htm" class="function">lua_rawseti</a>(<a href="../h_src/58328540.htm" class="localvar">L</a>, <a href="../h_src/58328404.htm" class="localvar">t</a>, <a href="../h_src/58328676.htm" class="macro">freelist</a>);  <a  class="comments">/* (t[freelist] = t[ref]) */</a>
+   684 :    <a href="../h_src/57433304.htm" class="function">lua_rawseti</a>(<a href="../h_src/58328540.htm" class="localvar">L</a>, <a href="../h_src/58328404.htm" class="localvar">t</a>, <a href="../h_src/58328268.htm" class="localvar">ref</a>);
+<a href="../h_aa/57418616.htm" class=function>luaL_unref</a>                                       lauxlib.c
+   694 :    <a href="../h_src/57433304.htm" class="function">lua_rawseti</a>(<a href="../h_src/58328132.htm" class="localvar">L</a>, <a href="../h_src/58327996.htm" class="localvar">t</a>, <a href="../h_src/58327860.htm" class="localvar">ref</a>);  <a  class="comments">/* t[ref] = t[freelist] */</a>
+   696 :    <a href="../h_src/57433304.htm" class="function">lua_rawseti</a>(<a href="../h_src/58328132.htm" class="localvar">L</a>, <a href="../h_src/58327996.htm" class="localvar">t</a>, <a href="../h_src/58328676.htm" class="macro">freelist</a>);  <a  class="comments">/* t[freelist] = ref */</a>
+</pre>
+<h4><a class="legend">Table lists functions that directly use lua_rawseti</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

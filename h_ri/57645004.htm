@@ -1,0 +1,62 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">global_State::</a>grayagain</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57645004.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57645004.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57645004.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57645004.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57645004.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57826616.htm" class=function>atomic</a>                                           lgc.c
+  1528 :    <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a> = NULL;
+<a href="../h_aa/57819204.htm" class=function>cleargraylists</a>                                   lgc.c
+   395 :    <a href="../h_src/57819068.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645072.htm" class="variable">gray</a> = <a href="../h_src/57819068.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a> = NULL;
+<a href="../h_aa/57439900.htm" class=function>lua_newstate</a>                                     lstate.c
+   394 :    <a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645072.htm" class="variable">gray</a> = <a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a> = NULL;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57826616.htm" class=function>atomic</a>                                           lgc.c
+  1527 :    <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57944772.htm" class="localvar">grayagain</a> = <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a>;  <a  class="comments">/* save original list */</a>
+<a href="../h_aa/57952660.htm" class=function>correctgraylists</a>                                 lgc.c
+  1204 :    <a href="../h_src/57527972.htm" class="type">GCObject</a> **<a href="../h_src/57952388.htm" class="localvar">list</a> = <a href="../h_src/57953204.htm" class="function">correctgraylist</a>(&amp;<a href="../h_src/57952524.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a>);
+<a href="../h_aa/57818660.htm" class=function>genlink</a>                                          lgc.c
+   433 :    <a href="../h_src/57825120.htm" class="macro">linkobjgclist</a>(<a href="../h_src/57818388.htm" class="localvar">o</a>, <a href="../h_src/57818524.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a>);  <a  class="comments">/* link it back in 'grayagain' */</a>
+<a href="../h_aa/57620388.htm" class=function>luaC_barrierback_</a>                                lgc.c
+   237 :    <a href="../h_src/57825120.htm" class="macro">linkobjgclist</a>(<a href="../h_src/57823624.htm" class="localvar">o</a>, <a href="../h_src/57823488.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a>);
+<a href="../h_aa/57955924.htm" class=function>sweep2old</a>                                        lgc.c
+  1090 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57955244.htm" class="localvar">th</a>, <a href="../h_src/57955380.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a>);  <a  class="comments">/* insert into 'grayagain' list */</a>
+<a href="../h_aa/57817436.htm" class=function>traverseephemeron</a>                                lgc.c
+   512 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57977140.htm" class="localvar">h</a>, <a href="../h_src/57977276.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a>);  <a  class="comments">/* must retraverse it in atomic phase */</a>
+<a href="../h_aa/57971836.htm" class=function>traversethread</a>                                   lgc.c
+   631 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57971564.htm" class="localvar">th</a>, <a href="../h_src/57971700.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a>);  <a  class="comments">/* insert into 'grayagain' list */</a>
+<a href="../h_aa/57818252.htm" class=function>traverseweakvalue</a>                                lgc.c
+   464 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57817980.htm" class="localvar">h</a>, <a href="../h_src/57818116.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a>);  <a  class="comments">/* must retraverse it in atomic phase */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable grayagain</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

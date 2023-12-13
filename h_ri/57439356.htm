@@ -1,0 +1,90 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lua_gettop</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57439356.htm" class="function" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57439356.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57439356.htm" class="function" target="_self">Flow Chart</a></li>
+<li><a href="../h_src/57439356.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57439356.htm" class="function" target="_self">Called By</a></li>
+<li><a href="../h_rx/57439356.htm" class="function" target="_self">Call Tree</a></li>
+<li><a href="../h_ro/57439356.htm" class="function" target="_self">Calls and Uses</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/143251616.htm" class=function>aux_lines</a>                                        liolib.c
+   364 :    int <a href="../h_src/143251208.htm" class="localvar">n</a> = <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/143251480.htm" class="localvar">L</a>) - 1;  <a  class="comments">/* number of arguments to read */</a>
+<a href="../h_aa/58289576.htm" class=function>auxstatus</a>                                        lcorolib.c
+   137 :    else if (<a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/58289304.htm" class="localvar">co</a>) == 0)
+<a href="../h_aa/57569928.htm" class=function>docall</a>                                           lua.c
+   155 :    int <a href="../h_src/57569248.htm" class="localvar">base</a> = <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/57569792.htm" class="localvar">L</a>) - <a href="../h_src/57569656.htm" class="localvar">narg</a>;  <a  class="comments">/* function index */</a>
+<a href="../h_aa/58297668.htm" class=function>dofilecont</a>                                       lbaselib.c
+   411 :    return <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/58297532.htm" class="localvar">L</a>) - 1;
+<a href="../h_aa/58295900.htm" class=function>finishpcall</a>                                      lbaselib.c
+   468 :    return <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/58295764.htm" class="localvar">L</a>) - (int)<a href="../h_src/58295492.htm" class="localvar">extra</a>;  <a  class="comments">/* return all results */</a>
+<a href="../h_aa/57554968.htm" class=function>l_print</a>                                          lua.c
+   578 :    int <a href="../h_src/57554696.htm" class="localvar">n</a> = <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/57554832.htm" class="localvar">L</a>);
+<a href="../h_aa/58296716.htm" class=function>luaB_assert</a>                                      lbaselib.c
+   427 :    return <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/58296580.htm" class="localvar">L</a>);  <a  class="comments">/* return all arguments */</a>
+<a href="../h_aa/58291820.htm" class=function>luaB_auxwrap</a>                                     lcorolib.c
+    75 :    int <a href="../h_src/58291412.htm" class="localvar">r</a> = <a href="../h_src/58293180.htm" class="function">auxresume</a>(<a href="../h_src/58291684.htm" class="localvar">L</a>, <a href="../h_src/58291548.htm" class="localvar">co</a>, <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/58291684.htm" class="localvar">L</a>));
+<a href="../h_aa/58292364.htm" class=function>luaB_coresume</a>                                    lcorolib.c
+    59 :    <a href="../h_src/58291956.htm" class="localvar">r</a> = <a href="../h_src/58293180.htm" class="function">auxresume</a>(<a href="../h_src/58292228.htm" class="localvar">L</a>, <a href="../h_src/58292092.htm" class="localvar">co</a>, <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/58292228.htm" class="localvar">L</a>) - 1);
+<a href="../h_aa/58295356.htm" class=function>luaB_pcall</a>                                       lbaselib.c
+   477 :    <a href="../h_src/58295084.htm" class="localvar">status</a> = <a href="../h_src/57432828.htm" class="function">lua_pcallk</a>(<a href="../h_src/58295220.htm" class="localvar">L</a>, <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/58295220.htm" class="localvar">L</a>) - 2, <a href="../h_src/57445612.htm" class="macro">LUA_MULTRET</a>, 0, 0, <a href="../h_src/58295900.htm" class="function">finishpcall</a>);
+<a href="../h_aa/58312152.htm" class=function>luaB_print</a>                                       lbaselib.c
+    25 :    int <a href="../h_src/58311880.htm" class="localvar">n</a> = <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/58312016.htm" class="localvar">L</a>);  <a  class="comments">/* number of arguments */</a>
+<a href="../h_aa/58296444.htm" class=function>luaB_select</a>                                      lbaselib.c
+   439 :    int <a href="../h_src/58296172.htm" class="localvar">n</a> = <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/58296308.htm" class="localvar">L</a>);
+<a href="../h_aa/58311336.htm" class=function>luaB_warn</a>                                        lbaselib.c
+    46 :    int <a href="../h_src/58311064.htm" class="localvar">n</a> = <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/58311200.htm" class="localvar">L</a>);  <a  class="comments">/* number of arguments */</a>
+<a href="../h_aa/58294948.htm" class=function>luaB_xpcall</a>                                      lbaselib.c
+   489 :    int <a href="../h_src/58294540.htm" class="localvar">n</a> = <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/58294812.htm" class="localvar">L</a>);
+<a href="../h_aa/58290460.htm" class=function>luaB_yield</a>                                       lcorolib.c
+   113 :    return <a href="../h_src/57432216.htm" class="macro">lua_yield</a>(<a href="../h_src/58290324.htm" class="localvar">L</a>, <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/58290324.htm" class="localvar">L</a>));
+<a href="../h_aa/57418548.htm" class=function>luaL_loadfilex</a>                                   lauxlib.c
+   783 :    int <a href="../h_src/58324596.htm" class="localvar">fnameindex</a> = <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/58325548.htm" class="localvar">L</a>) + 1;  <a  class="comments">/* index of filename on the stack */</a>
+<a href="../h_aa/143232168.htm" class=function>math_max</a>                                         lmathlib.c
+   221 :    int <a href="../h_src/143231896.htm" class="localvar">n</a> = <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/143232032.htm" class="localvar">L</a>);  <a  class="comments">/* number of arguments */</a>
+<a href="../h_aa/143232848.htm" class=function>math_min</a>                                         lmathlib.c
+   207 :    int <a href="../h_src/143232576.htm" class="localvar">n</a> = <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/143232712.htm" class="localvar">L</a>);  <a  class="comments">/* number of arguments */</a>
+<a href="../h_aa/143223940.htm" class=function>math_random</a>                                      lmathlib.c
+   562 :    switch (<a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/143223804.htm" class="localvar">L</a>)) {  <a  class="comments">/* check number of arguments */</a>
+<a href="../h_aa/58349892.htm" class=function>pushglobalfuncname</a>                               lauxlib.c
+    80 :    int <a href="../h_src/58349484.htm" class="localvar">top</a> = <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/58349756.htm" class="localvar">L</a>);
+<a href="../h_aa/143335188.htm" class=function>str_char</a>                                         lstrlib.c
+   196 :    int <a href="../h_src/143334916.htm" class="localvar">n</a> = <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/143335052.htm" class="localvar">L</a>);  <a  class="comments">/* number of arguments */</a>
+<a href="../h_aa/143291804.htm" class=function>str_format</a>                                       lstrlib.c
+  1274 :    int <a href="../h_src/143291532.htm" class="localvar">top</a> = <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>);
+<a href="../h_aa/143429408.htm" class=function>tinsert</a>                                          ltablib.c
+    65 :    switch (<a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/143429272.htm" class="localvar">L</a>)) {
+<a href="../h_aa/143425600.htm" class=function>tpack</a>                                            ltablib.c
+   183 :    int <a href="../h_src/143425192.htm" class="localvar">n</a> = <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/143425464.htm" class="localvar">L</a>);  <a  class="comments">/* number of elements to pack */</a>
+<a href="../h_aa/143412680.htm" class=function>utfchar</a>                                          lutf8lib.c
+   166 :    int <a href="../h_src/143412408.htm" class="localvar">n</a> = <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/143412544.htm" class="localvar">L</a>);  <a  class="comments">/* number of arguments */</a>
+</pre>
+<h4><a class="legend">Table lists functions that directly use lua_gettop</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

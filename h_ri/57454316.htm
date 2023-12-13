@@ -1,0 +1,177 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>LUALIB_API</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57454316.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57454316.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57454316.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57454316.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57422356.htm" class=file>lauxlib.h</a>
+    46 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void (<a href="../h_src/57420792.htm" class="function">luaL_checkversion_</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57442144.htm" class="type">lua_Number</a> ver, <a href="../h_aa/57441192.htm" class="type">size_t</a> sz);
+    50 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int (<a href="../h_src/57420588.htm" class="function">luaL_getmetafield</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int obj, const char *e);
+    51 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int (<a href="../h_src/57420520.htm" class="function">luaL_callmeta</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int obj, const char *e);
+    52 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> const char *(<a href="../h_src/57420452.htm" class="function">luaL_tolstring</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx, <a href="../h_aa/57441192.htm" class="type">size_t</a> *len);
+    53 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int (<a href="../h_src/57420384.htm" class="function">luaL_argerror</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int arg, const char *extramsg);
+    54 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int (<a href="../h_src/57420316.htm" class="function">luaL_typeerror</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int arg, const char *tname);
+    55 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> const char *(<a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int arg,
+    57 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> const char *(<a href="../h_src/57420180.htm" class="function">luaL_optlstring</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int arg,
+    59 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> <a href="../h_src/57442144.htm" class="type">lua_Number</a> (<a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int arg);
+    60 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> <a href="../h_src/57442144.htm" class="type">lua_Number</a> (<a href="../h_src/57420044.htm" class="function">luaL_optnumber</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int arg, <a href="../h_src/57442144.htm" class="type">lua_Number</a> def);
+    62 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> <a href="../h_src/57442076.htm" class="type">lua_Integer</a> (<a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int arg);
+    63 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> <a href="../h_src/57442076.htm" class="type">lua_Integer</a> (<a href="../h_src/57419908.htm" class="function">luaL_optinteger</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int arg,
+    66 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void (<a href="../h_src/57419840.htm" class="function">luaL_checkstack</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int sz, const char *msg);
+    67 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void (<a href="../h_src/57419772.htm" class="function">luaL_checktype</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int arg, int t);
+    68 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void (<a href="../h_src/57419704.htm" class="function">luaL_checkany</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int arg);
+    70 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int   (<a href="../h_src/57419636.htm" class="function">luaL_newmetatable</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const char *tname);
+    71 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void  (<a href="../h_src/57419568.htm" class="function">luaL_setmetatable</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const char *tname);
+    72 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void *(<a href="../h_src/57419500.htm" class="function">luaL_testudata</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int ud, const char *tname);
+    73 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void *(<a href="../h_src/57419432.htm" class="function">luaL_checkudata</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int ud, const char *tname);
+    75 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void (<a href="../h_src/57419364.htm" class="function">luaL_where</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int lvl);
+    76 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int (<a href="../h_src/57419296.htm" class="function">luaL_error</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const char *fmt, ...);
+    78 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int (<a href="../h_src/57419228.htm" class="function">luaL_checkoption</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int arg, const char *def,
+    81 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int (<a href="../h_src/57419092.htm" class="function">luaL_fileresult</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int stat, const char *fname);
+    82 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int (<a href="../h_src/57419024.htm" class="function">luaL_execresult</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int stat);
+    89 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int (<a href="../h_src/57418684.htm" class="function">luaL_ref</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int t);
+    90 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void (<a href="../h_src/57418616.htm" class="function">luaL_unref</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int t, int ref);
+    92 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int (<a href="../h_src/57418548.htm" class="function">luaL_loadfilex</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const char *filename,
+    97 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int (<a href="../h_src/57418344.htm" class="function">luaL_loadbufferx</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const char *buff, <a href="../h_aa/57441192.htm" class="type">size_t</a> sz,
+    99 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int (<a href="../h_src/57418276.htm" class="function">luaL_loadstring</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const char *s);
+   101 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> <a href="../h_src/57444252.htm" class="type">lua_State</a> *(<a href="../h_src/57418208.htm" class="function">luaL_newstate</a>) (void);
+   103 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> <a href="../h_src/57442076.htm" class="type">lua_Integer</a> (<a href="../h_src/57418140.htm" class="function">luaL_len</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx);
+   105 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void (<a href="../h_src/57418072.htm" class="function">luaL_addgsub</a>) (<a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> *b, const char *s,
+   107 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> const char *(<a href="../h_src/57417936.htm" class="function">luaL_gsub</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const char *s,
+   110 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void (<a href="../h_src/57417868.htm" class="function">luaL_setfuncs</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const <a href="../h_src/57420996.htm" class="type">luaL_Reg</a> *l, int nup);
+   112 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int (<a href="../h_src/57417732.htm" class="function">luaL_getsubtable</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, int idx, const char *fname);
+   114 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void (<a href="../h_src/57417664.htm" class="function">luaL_traceback</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57444252.htm" class="type">lua_State</a> *L1,
+   117 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void (<a href="../h_src/57417596.htm" class="function">luaL_requiref</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, const char *modname,
+   215 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void (<a href="../h_src/57413652.htm" class="function">luaL_buffinit</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> *B);
+   216 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> char *(<a href="../h_src/57413584.htm" class="function">luaL_prepbuffsize</a>) (<a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> *B, <a href="../h_aa/57441192.htm" class="type">size_t</a> sz);
+   217 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void (<a href="../h_src/57413516.htm" class="function">luaL_addlstring</a>) (<a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> *B, const char *s, <a href="../h_aa/57441192.htm" class="type">size_t</a> l);
+   218 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void (<a href="../h_src/57413448.htm" class="function">luaL_addstring</a>) (<a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> *B, const char *s);
+   219 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void (<a href="../h_src/57413380.htm" class="function">luaL_addvalue</a>) (<a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> *B);
+   220 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void (<a href="../h_src/57413312.htm" class="function">luaL_pushresult</a>) (<a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> *B);
+   221 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void (<a href="../h_src/57413244.htm" class="function">luaL_pushresultsize</a>) (<a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> *B, <a href="../h_aa/57441192.htm" class="type">size_t</a> sz);
+   222 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> char *(<a href="../h_src/57413176.htm" class="function">luaL_buffinitsize</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> *B, <a href="../h_aa/57441192.htm" class="type">size_t</a> sz);
+<a href="../h_aa/57410932.htm" class=file>lualib.h</a>
+    49 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void (<a href="../h_src/57573736.htm" class="function">luaL_openlibs</a>) (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L);
+<a href="../h_aa/57418072.htm" class=function>luaL_addgsub</a>                                     lauxlib.c
+   994 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void <a href="../h_src/57418072.htm" class="function">luaL_addgsub</a> (<a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> *<a href="../h_src/58318272.htm" class="localvar">b</a>, const char *<a href="../h_src/58318136.htm" class="localvar">s</a>,
+<a href="../h_aa/57413516.htm" class=function>luaL_addlstring</a>                                  lauxlib.c
+   580 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void <a href="../h_src/57413516.htm" class="function">luaL_addlstring</a> (<a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> *<a href="../h_src/58331396.htm" class="localvar">B</a>, const char *<a href="../h_src/58331260.htm" class="localvar">s</a>, <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58331124.htm" class="localvar">l</a>) {
+<a href="../h_aa/57413448.htm" class=function>luaL_addstring</a>                                   lauxlib.c
+   589 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void <a href="../h_src/57413448.htm" class="function">luaL_addstring</a> (<a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> *<a href="../h_src/58330852.htm" class="localvar">B</a>, const char *<a href="../h_src/58330716.htm" class="localvar">s</a>) {
+<a href="../h_aa/57413380.htm" class=function>luaL_addvalue</a>                                    lauxlib.c
+   619 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void <a href="../h_src/57413380.htm" class="function">luaL_addvalue</a> (<a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> *<a href="../h_src/58330036.htm" class="localvar">B</a>) {
+<a href="../h_aa/57420384.htm" class=function>luaL_argerror</a>                                    lauxlib.c
+   175 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int <a href="../h_src/57420384.htm" class="function">luaL_argerror</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58346696.htm" class="localvar">L</a>, int <a href="../h_src/58346560.htm" class="localvar">arg</a>, const char *<a href="../h_src/58346424.htm" class="localvar">extramsg</a>) {
+<a href="../h_aa/57413652.htm" class=function>luaL_buffinit</a>                                    lauxlib.c
+   630 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void <a href="../h_src/57413652.htm" class="function">luaL_buffinit</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58329356.htm" class="localvar">L</a>, <a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> *<a href="../h_src/58329220.htm" class="localvar">B</a>) {
+<a href="../h_aa/57413176.htm" class=function>luaL_buffinitsize</a>                                lauxlib.c
+   639 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> char *<a href="../h_src/57413176.htm" class="function">luaL_buffinitsize</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58329084.htm" class="localvar">L</a>, <a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> *<a href="../h_src/58328948.htm" class="localvar">B</a>, <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58328812.htm" class="localvar">sz</a>) {
+<a href="../h_aa/57420520.htm" class=function>luaL_callmeta</a>                                    lauxlib.c
+   867 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int <a href="../h_src/57420520.htm" class="function">luaL_callmeta</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58321400.htm" class="localvar">L</a>, int <a href="../h_src/58321264.htm" class="localvar">obj</a>, const char *<a href="../h_src/58321128.htm" class="localvar">event</a>) {
+<a href="../h_aa/57419704.htm" class=function>luaL_checkany</a>                                    lauxlib.c
+   396 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void <a href="../h_src/57419704.htm" class="function">luaL_checkany</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58339420.htm" class="localvar">L</a>, int <a href="../h_src/58339284.htm" class="localvar">arg</a>) {
+<a href="../h_aa/57419976.htm" class=function>luaL_checkinteger</a>                                lauxlib.c
+   442 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58336700.htm" class="localvar">L</a>, int <a href="../h_src/58336564.htm" class="localvar">arg</a>) {
+<a href="../h_aa/57420248.htm" class=function>luaL_checklstring</a>                                lauxlib.c
+   402 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> const char *<a href="../h_src/57420248.htm" class="function">luaL_checklstring</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58339148.htm" class="localvar">L</a>, int <a href="../h_src/58339012.htm" class="localvar">arg</a>, <a href="../h_aa/57441192.htm" class="type">size_t</a> *<a href="../h_src/58338876.htm" class="localvar">len</a>) {
+<a href="../h_aa/57420112.htm" class=function>luaL_checknumber</a>                                 lauxlib.c
+   420 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/57420112.htm" class="function">luaL_checknumber</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58338060.htm" class="localvar">L</a>, int <a href="../h_src/58337924.htm" class="localvar">arg</a>) {
+<a href="../h_aa/57419228.htm" class=function>luaL_checkoption</a>                                 lauxlib.c
+   360 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int <a href="../h_src/57419228.htm" class="function">luaL_checkoption</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58341052.htm" class="localvar">L</a>, int <a href="../h_src/58340916.htm" class="localvar">arg</a>, const char *<a href="../h_src/58340780.htm" class="localvar">def</a>,
+<a href="../h_aa/57419840.htm" class=function>luaL_checkstack</a>                                  lauxlib.c
+   380 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void <a href="../h_src/57419840.htm" class="function">luaL_checkstack</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58340236.htm" class="localvar">L</a>, int <a href="../h_src/58340100.htm" class="localvar">space</a>, const char *<a href="../h_src/58339964.htm" class="localvar">msg</a>) {
+<a href="../h_aa/57419772.htm" class=function>luaL_checktype</a>                                   lauxlib.c
+   390 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void <a href="../h_src/57419772.htm" class="function">luaL_checktype</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58339828.htm" class="localvar">L</a>, int <a href="../h_src/58339692.htm" class="localvar">arg</a>, int <a href="../h_src/58339556.htm" class="localvar">t</a>) {
+<a href="../h_aa/57419432.htm" class=function>luaL_checkudata</a>                                  lauxlib.c
+   345 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void *<a href="../h_src/57419432.htm" class="function">luaL_checkudata</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58341596.htm" class="localvar">L</a>, int <a href="../h_src/58341460.htm" class="localvar">ud</a>, const char *<a href="../h_src/58341324.htm" class="localvar">tname</a>) {
+<a href="../h_aa/57420792.htm" class=function>luaL_checkversion_</a>                               lauxlib.c
+  1104 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void <a href="../h_src/57420792.htm" class="function">luaL_checkversion_</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58313036.htm" class="localvar">L</a>, <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/58312900.htm" class="localvar">ver</a>, <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58312764.htm" class="localvar">sz</a>) {
+<a href="../h_aa/57419296.htm" class=function>luaL_error</a>                                       lauxlib.c
+   234 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int <a href="../h_src/57419296.htm" class="function">luaL_error</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58344520.htm" class="localvar">L</a>, const char *<a href="../h_src/58344384.htm" class="localvar">fmt</a>, <a href="../h_src/58344248.htm" class="localvar">...</a>) {
+<a href="../h_aa/57419024.htm" class=function>luaL_execresult</a>                                  lauxlib.c
+   285 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int <a href="../h_src/57419024.htm" class="function">luaL_execresult</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58343092.htm" class="localvar">L</a>, int <a href="../h_src/58342956.htm" class="localvar">stat</a>) {
+<a href="../h_aa/57419092.htm" class=function>luaL_fileresult</a>                                  lauxlib.c
+   245 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int <a href="../h_src/57419092.htm" class="function">luaL_fileresult</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58343976.htm" class="localvar">L</a>, int <a href="../h_src/58343840.htm" class="localvar">stat</a>, const char *<a href="../h_src/58343704.htm" class="localvar">fname</a>) {
+<a href="../h_aa/57420588.htm" class=function>luaL_getmetafield</a>                                lauxlib.c
+   851 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int <a href="../h_src/57420588.htm" class="function">luaL_getmetafield</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58321944.htm" class="localvar">L</a>, int <a href="../h_src/58321808.htm" class="localvar">obj</a>, const char *<a href="../h_src/58321672.htm" class="localvar">event</a>) {
+<a href="../h_aa/57417732.htm" class=function>luaL_getsubtable</a>                                 lauxlib.c
+   954 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int <a href="../h_src/57417732.htm" class="function">luaL_getsubtable</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58319224.htm" class="localvar">L</a>, int <a href="../h_src/58319088.htm" class="localvar">idx</a>, const char *<a href="../h_src/58318952.htm" class="localvar">fname</a>) {
+<a href="../h_aa/57417936.htm" class=function>luaL_gsub</a>                                        lauxlib.c
+  1007 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> const char *<a href="../h_src/57417936.htm" class="function">luaL_gsub</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58317388.htm" class="localvar">L</a>, const char *<a href="../h_src/58317252.htm" class="localvar">s</a>,
+<a href="../h_aa/57418140.htm" class=function>luaL_len</a>                                         lauxlib.c
+   877 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/57418140.htm" class="function">luaL_len</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58320992.htm" class="localvar">L</a>, int <a href="../h_src/58320856.htm" class="localvar">idx</a>) {
+<a href="../h_aa/57418344.htm" class=function>luaL_loadbufferx</a>                                 lauxlib.c
+   834 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int <a href="../h_src/57418344.htm" class="function">luaL_loadbufferx</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58323032.htm" class="localvar">L</a>, const char *<a href="../h_src/58322896.htm" class="localvar">buff</a>, <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58322760.htm" class="localvar">size</a>,
+<a href="../h_aa/57418548.htm" class=function>luaL_loadfilex</a>                                   lauxlib.c
+   778 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int <a href="../h_src/57418548.htm" class="function">luaL_loadfilex</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58325548.htm" class="localvar">L</a>, const char *<a href="../h_src/58325412.htm" class="localvar">filename</a>,
+<a href="../h_aa/57418276.htm" class=function>luaL_loadstring</a>                                  lauxlib.c
+   843 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int <a href="../h_src/57418276.htm" class="function">luaL_loadstring</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58322216.htm" class="localvar">L</a>, const char *<a href="../h_src/58322080.htm" class="localvar">s</a>) {
+<a href="../h_aa/57419636.htm" class=function>luaL_newmetatable</a>                                lauxlib.c
+   311 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int <a href="../h_src/57419636.htm" class="function">luaL_newmetatable</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58342684.htm" class="localvar">L</a>, const char *<a href="../h_src/58342548.htm" class="localvar">tname</a>) {
+<a href="../h_aa/57418208.htm" class=function>luaL_newstate</a>                                    lauxlib.c
+  1094 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> <a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57418208.htm" class="function">luaL_newstate</a> (void) {
+<a href="../h_aa/57573736.htm" class=function>luaL_openlibs</a>                                    linit.c
+    57 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void <a href="../h_src/57573736.htm" class="function">luaL_openlibs</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143408260.htm" class="localvar">L</a>) {
+<a href="../h_aa/57419908.htm" class=function>luaL_optinteger</a>                                  lauxlib.c
+   452 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/57419908.htm" class="function">luaL_optinteger</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58336156.htm" class="localvar">L</a>, int <a href="../h_src/58336020.htm" class="localvar">arg</a>,
+<a href="../h_aa/57420180.htm" class=function>luaL_optlstring</a>                                  lauxlib.c
+   409 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> const char *<a href="../h_src/57420180.htm" class="function">luaL_optlstring</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58338604.htm" class="localvar">L</a>, int <a href="../h_src/58338468.htm" class="localvar">arg</a>,
+<a href="../h_aa/57420044.htm" class=function>luaL_optnumber</a>                                   lauxlib.c
+   429 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/57420044.htm" class="function">luaL_optnumber</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58337516.htm" class="localvar">L</a>, int <a href="../h_src/58337380.htm" class="localvar">arg</a>, <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/58337244.htm" class="localvar">def</a>) {
+<a href="../h_aa/57413584.htm" class=function>luaL_prepbuffsize</a>                                lauxlib.c
+   575 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> char *<a href="../h_src/57413584.htm" class="function">luaL_prepbuffsize</a> (<a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> *<a href="../h_src/58331668.htm" class="localvar">B</a>, <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58331532.htm" class="localvar">sz</a>) {
+<a href="../h_aa/57413312.htm" class=function>luaL_pushresult</a>                                  lauxlib.c
+   594 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void <a href="../h_src/57413312.htm" class="function">luaL_pushresult</a> (<a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> *<a href="../h_src/58330580.htm" class="localvar">B</a>) {
+<a href="../h_aa/57413244.htm" class=function>luaL_pushresultsize</a>                              lauxlib.c
+   604 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void <a href="../h_src/57413244.htm" class="function">luaL_pushresultsize</a> (<a href="../h_src/57421744.htm" class="type">luaL_Buffer</a> *<a href="../h_src/58330308.htm" class="localvar">B</a>, <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58330172.htm" class="localvar">sz</a>) {
+<a href="../h_aa/57418684.htm" class=function>luaL_ref</a>                                         lauxlib.c
+   661 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int <a href="../h_src/57418684.htm" class="function">luaL_ref</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58328540.htm" class="localvar">L</a>, int <a href="../h_src/58328404.htm" class="localvar">t</a>) {
+<a href="../h_aa/57417596.htm" class=function>luaL_requiref</a>                                    lauxlib.c
+   974 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void <a href="../h_src/57417596.htm" class="function">luaL_requiref</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58318816.htm" class="localvar">L</a>, const char *<a href="../h_src/58318680.htm" class="localvar">modname</a>,
+<a href="../h_aa/57417868.htm" class=function>luaL_setfuncs</a>                                    lauxlib.c
+   933 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void <a href="../h_src/57417868.htm" class="function">luaL_setfuncs</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58319768.htm" class="localvar">L</a>, const <a href="../h_src/57420996.htm" class="type">luaL_Reg</a> *<a href="../h_src/58319632.htm" class="localvar">l</a>, int <a href="../h_src/58319496.htm" class="localvar">nup</a>) {
+<a href="../h_aa/57419568.htm" class=function>luaL_setmetatable</a>                                lauxlib.c
+   324 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void <a href="../h_src/57419568.htm" class="function">luaL_setmetatable</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58342412.htm" class="localvar">L</a>, const char *<a href="../h_src/58342276.htm" class="localvar">tname</a>) {
+<a href="../h_aa/57419500.htm" class=function>luaL_testudata</a>                                   lauxlib.c
+   330 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void *<a href="../h_src/57419500.htm" class="function">luaL_testudata</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58342140.htm" class="localvar">L</a>, int <a href="../h_src/58342004.htm" class="localvar">ud</a>, const char *<a href="../h_src/58341868.htm" class="localvar">tname</a>) {
+<a href="../h_aa/57420452.htm" class=function>luaL_tolstring</a>                                   lauxlib.c
+   889 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> const char *<a href="../h_src/57420452.htm" class="function">luaL_tolstring</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58320448.htm" class="localvar">L</a>, int <a href="../h_src/58320312.htm" class="localvar">idx</a>, <a href="../h_aa/57441192.htm" class="type">size_t</a> *<a href="../h_src/58320176.htm" class="localvar">len</a>) {
+<a href="../h_aa/57417664.htm" class=function>luaL_traceback</a>                                   lauxlib.c
+   131 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void <a href="../h_src/57417664.htm" class="function">luaL_traceback</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58347920.htm" class="localvar">L</a>, <a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58347784.htm" class="localvar">L1</a>,
+<a href="../h_aa/57420316.htm" class=function>luaL_typeerror</a>                                   lauxlib.c
+   193 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> int <a href="../h_src/57420316.htm" class="function">luaL_typeerror</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58346152.htm" class="localvar">L</a>, int <a href="../h_src/58346016.htm" class="localvar">arg</a>, const char *<a href="../h_src/58345880.htm" class="localvar">tname</a>) {
+<a href="../h_aa/57418616.htm" class=function>luaL_unref</a>                                       lauxlib.c
+   689 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void <a href="../h_src/57418616.htm" class="function">luaL_unref</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58328132.htm" class="localvar">L</a>, int <a href="../h_src/58327996.htm" class="localvar">t</a>, int <a href="../h_src/58327860.htm" class="localvar">ref</a>) {
+<a href="../h_aa/57419364.htm" class=function>luaL_where</a>                                       lauxlib.c
+   216 :    <a href="../h_src/57454316.htm" class="macro">LUALIB_API</a> void <a href="../h_src/57419364.htm" class="function">luaL_where</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58344928.htm" class="localvar">L</a>, int <a href="../h_src/58344792.htm" class="localvar">level</a>) {
+</pre>
+<h4><a class="legend">Table lists functions that directly use LUALIB_API</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

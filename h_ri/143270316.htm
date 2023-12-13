@@ -1,0 +1,45 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>L</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143270316.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/143270316.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/143270316.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/143270316.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/143270452.htm" class=function>hookf</a>                                            ldblib.c
+   326 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143270316.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/58286720.htm" class="variable">HOOKKEY</a>);
+   327 :    <a href="../h_src/57434460.htm" class="function">lua_pushthread</a>(<a href="../h_src/143270316.htm" class="localvar">L</a>);
+   328 :    if (<a href="../h_src/57434120.htm" class="function">lua_rawget</a>(<a href="../h_src/143270316.htm" class="localvar">L</a>, -2) == <a href="../h_src/57443232.htm" class="macro">LUA_TFUNCTION</a>) {  <a  class="comments">/* is there a hook function? */</a>
+   329 :    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/143270316.htm" class="localvar">L</a>, <a href="../h_src/143270044.htm" class="localvar">hooknames</a>[(int)<a href="../h_src/143270180.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423784.htm" class="variable">event</a>]);  <a  class="comments">/* push event name */</a>
+   331 :    <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143270316.htm" class="localvar">L</a>, <a href="../h_src/143270180.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423376.htm" class="variable">currentline</a>);  <a  class="comments">/* push current line */</a>
+   332 :    else <a href="../h_src/57435276.htm" class="function">lua_pushnil</a>(<a href="../h_src/143270316.htm" class="localvar">L</a>);
+   334 :    <a href="../h_src/57432964.htm" class="macro">lua_call</a>(<a href="../h_src/143270316.htm" class="localvar">L</a>, 2, 0);  <a  class="comments">/* call hook function */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable L</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

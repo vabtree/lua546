@@ -1,0 +1,55 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>upisopen</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57631540.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57631540.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57631540.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57631540.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57967212.htm" class=function>freeupval</a>                                        lgc.c
+   764 :    if (<a href="../h_src/57631540.htm" class="macro">upisopen</a>(<a href="../h_src/57966940.htm" class="localvar">uv</a>))
+<a href="../h_aa/57630452.htm" class=function>luaF_closeupval</a>                                  lfunc.c
+   196 :    while ((<a href="../h_src/57832532.htm" class="localvar">uv</a> = <a href="../h_src/57832804.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642216.htm" class="variable">openupval</a>) != NULL &amp;&amp; (<a href="../h_src/57832396.htm" class="localvar">upl</a> = <a href="../h_src/57631404.htm" class="macro">uplevel</a>(<a href="../h_src/57832532.htm" class="localvar">uv</a>)) &gt;= <a href="../h_src/57832668.htm" class="localvar">level</a>) {
+   198 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57631404.htm" class="macro">uplevel</a>(uv) &lt; L-&gt;top.p);
+<a href="../h_aa/57630588.htm" class=function>luaF_findupval</a>                                   lfunc.c
+    91 :    while ((<a href="../h_src/57837020.htm" class="localvar">p</a> = *<a href="../h_src/57837156.htm" class="localvar">pp</a>) != NULL &amp;&amp; <a href="../h_src/57631404.htm" class="macro">uplevel</a>(<a href="../h_src/57837020.htm" class="localvar">p</a>) &gt;= <a href="../h_src/57837292.htm" class="localvar">level</a>) {  <a  class="comments">/* search for it */</a>
+    93 :    if (<a href="../h_src/57631404.htm" class="macro">uplevel</a>(<a href="../h_src/57837020.htm" class="localvar">p</a>) == <a href="../h_src/57837292.htm" class="localvar">level</a>)  <a  class="comments">/* corresponding upvalue? */</a>
+<a href="../h_aa/57630316.htm" class=function>luaF_unlinkupval</a>                                 lfunc.c
+   183 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57631540.htm" class="macro">upisopen</a>(uv));
+<a href="../h_aa/57826752.htm" class=function>reallymarkobject</a>                                 lgc.c
+   306 :    if (<a href="../h_src/57631540.htm" class="macro">upisopen</a>(<a href="../h_src/57821312.htm" class="localvar">uv</a>))
+<a href="../h_aa/57880268.htm" class=function>relstack</a>                                         ldo.c
+   171 :    <a href="../h_src/57879860.htm" class="localvar">up</a>-&gt;<a href="../h_src/57510564.htm" class="variable">v</a>.<a href="../h_src/57510700.htm" class="variable">offset</a> = <a href="../h_src/57634396.htm" class="macro">savestack</a>(<a href="../h_src/57880132.htm" class="localvar">L</a>, <a href="../h_src/57631404.htm" class="macro">uplevel</a>(<a href="../h_src/57879860.htm" class="localvar">up</a>));
+<a href="../h_aa/57820088.htm" class=function>remarkupvals</a>                                     lgc.c
+   384 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57631540.htm" class="macro">upisopen</a>(uv) &amp;&amp; <a href="../h_src/57626100.htm" class="macro">isgray</a>(uv));
+<a href="../h_aa/57955924.htm" class=function>sweep2old</a>                                        lgc.c
+  1092 :    else if (<a href="../h_src/57955516.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528108.htm" class="variable">tt</a> == <a href="../h_src/57513760.htm" class="macro">LUA_VUPVAL</a> &amp;&amp; <a href="../h_src/57631540.htm" class="macro">upisopen</a>(<a href="../h_src/57639020.htm" class="macro">gco2upv</a>(<a href="../h_src/57955516.htm" class="localvar">curr</a>)))
+</pre>
+<h4><a class="legend">Table lists functions that directly use upisopen</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

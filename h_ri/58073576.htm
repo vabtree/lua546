@@ -1,0 +1,59 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>loadByte</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58073576.htm" class="function" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/58073576.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58073576.htm" class="function" target="_self">Flow Chart</a></li>
+<li><a href="../h_src/58073576.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/58073576.htm" class="function" target="_self">Called By</a></li>
+<li><a href="../h_rx/58073576.htm" class="function" target="_self">Call Tree</a></li>
+<li><a href="../h_ro/58073576.htm" class="function" target="_self">Calls and Uses</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/58063240.htm" class=function>checkHeader</a>                                      lundump.c
+   295 :    if (<a href="../h_src/58073576.htm" class="function">loadByte</a>(<a href="../h_src/58063104.htm" class="localvar">S</a>) != <a href="../h_src/57615084.htm" class="macro">LUAC_VERSION</a>)
+   297 :    if (<a href="../h_src/58073576.htm" class="function">loadByte</a>(<a href="../h_src/58063104.htm" class="localvar">S</a>) != <a href="../h_src/57614948.htm" class="macro">LUAC_FORMAT</a>)
+<a href="../h_aa/58063920.htm" class=function>fchecksize</a>                                       lundump.c
+   285 :    if (<a href="../h_src/58073576.htm" class="function">loadByte</a>(<a href="../h_src/58063784.htm" class="localvar">S</a>) != <a href="../h_src/58063648.htm" class="localvar">size</a>)
+<a href="../h_aa/58068680.htm" class=function>loadConstants</a>                                    lundump.c
+   164 :    int <a href="../h_src/58067864.htm" class="localvar">t</a> = <a href="../h_src/58073576.htm" class="function">loadByte</a>(<a href="../h_src/58068544.htm" class="localvar">S</a>);
+<a href="../h_aa/58068816.htm" class=function>loadFunction</a>                                     lundump.c
+   264 :    <a href="../h_src/58065008.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515936.htm" class="variable">numparams</a> = <a href="../h_src/58073576.htm" class="function">loadByte</a>(<a href="../h_src/58065144.htm" class="localvar">S</a>);
+   265 :    <a href="../h_src/58065008.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515868.htm" class="variable">is_vararg</a> = <a href="../h_src/58073576.htm" class="function">loadByte</a>(<a href="../h_src/58065144.htm" class="localvar">S</a>);
+   266 :    <a href="../h_src/58065008.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515800.htm" class="variable">maxstacksize</a> = <a href="../h_src/58073576.htm" class="function">loadByte</a>(<a href="../h_src/58065144.htm" class="localvar">S</a>);
+<a href="../h_aa/58073168.htm" class=function>loadUnsigned</a>                                     lundump.c
+    74 :    <a href="../h_src/58072624.htm" class="localvar">b</a> = <a href="../h_src/58073576.htm" class="function">loadByte</a>(<a href="../h_src/58073032.htm" class="localvar">S</a>);
+<a href="../h_aa/58066504.htm" class=function>loadUpvalues</a>                                     lundump.c
+   220 :    <a href="../h_src/58066232.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/58066096.htm" class="localvar">i</a>].<a href="../h_src/57517296.htm" class="variable">instack</a> = <a href="../h_src/58073576.htm" class="function">loadByte</a>(<a href="../h_src/58066368.htm" class="localvar">S</a>);
+   221 :    <a href="../h_src/58066232.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/58066096.htm" class="localvar">i</a>].<a href="../h_src/57517228.htm" class="variable">idx</a> = <a href="../h_src/58073576.htm" class="function">loadByte</a>(<a href="../h_src/58066368.htm" class="localvar">S</a>);
+   222 :    <a href="../h_src/58066232.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/58066096.htm" class="localvar">i</a>].<a href="../h_src/57517160.htm" class="variable">kind</a> = <a href="../h_src/58073576.htm" class="function">loadByte</a>(<a href="../h_src/58066368.htm" class="localvar">S</a>);
+<a href="../h_aa/57614812.htm" class=function>luaU_undump</a>                                      lundump.c
+   325 :    <a href="../h_src/58062424.htm" class="localvar">cl</a> = <a href="../h_src/57630724.htm" class="function">luaF_newLclosure</a>(<a href="../h_src/58062968.htm" class="localvar">L</a>, <a href="../h_src/58073576.htm" class="function">loadByte</a>(&amp;<a href="../h_src/58062560.htm" class="localvar">S</a>));
+</pre>
+<h4><a class="legend">Table lists functions that directly use loadByte</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

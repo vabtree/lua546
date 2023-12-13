@@ -1,0 +1,48 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>GCSatomic</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57629500.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57629500.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57629500.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57629500.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57826616.htm" class=function>atomic</a>                                           lgc.c
+  1531 :    <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646024.htm" class="variable">gcstate</a> = <a href="../h_src/57629500.htm" class="macro">GCSatomic</a>;
+<a href="../h_aa/57941508.htm" class=function>fullinc</a>                                          lgc.c
+  1709 :    if (<a href="../h_src/57628412.htm" class="macro">keepinvariant</a>(<a href="../h_src/57941236.htm" class="localvar">g</a>))  <a  class="comments">/* black objects? */</a>
+<a href="../h_aa/57620456.htm" class=function>luaC_barrier_</a>                                    lgc.c
+   211 :    if (<a href="../h_src/57628412.htm" class="macro">keepinvariant</a>(<a href="../h_src/57823896.htm" class="localvar">g</a>)) {  <a  class="comments">/* must keep invariant? */</a>
+<a href="../h_aa/57971836.htm" class=function>traversethread</a>                                   lgc.c
+   634 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(g-&gt;gcstate == <a href="../h_src/57629500.htm" class="macro">GCSatomic</a> ||
+   640 :    if (<a href="../h_src/57971700.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646024.htm" class="variable">gcstate</a> == <a href="../h_src/57629500.htm" class="macro">GCSatomic</a>) {  <a  class="comments">/* final traversal? */</a>
+<a href="../h_aa/57818252.htm" class=function>traverseweakvalue</a>                                lgc.c
+   461 :    if (<a href="../h_src/57818116.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646024.htm" class="variable">gcstate</a> == <a href="../h_src/57629500.htm" class="macro">GCSatomic</a> &amp;&amp; <a href="../h_src/57817572.htm" class="localvar">hasclears</a>)
+</pre>
+<h4><a class="legend">Table lists functions that directly use GCSatomic</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

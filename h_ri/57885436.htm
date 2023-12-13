@@ -1,0 +1,51 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>ci</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57885436.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57885436.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57885436.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57885436.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57635076.htm" class=function>luaG_traceexec</a>                                   ldebug.c
+   881 :    <a href="../h_src/57537764.htm" class="type">CallInfo</a> *<a href="../h_src/57885436.htm" class="localvar">ci</a> = <a href="../h_src/57885708.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57635076.htm" class=function>luaG_traceexec</a>                                   ldebug.c
+   883 :    const <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57885164.htm" class="localvar">p</a> = <a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57885436.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>;
+   886 :    <a href="../h_src/57885436.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650852.htm" class="variable">l</a>.<a href="../h_src/57651056.htm" class="variable">trap</a> = 0;  <a  class="comments">/* don't need to stop again */</a>
+   890 :    <a href="../h_src/57885436.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650852.htm" class="variable">l</a>.<a href="../h_src/57651124.htm" class="variable">savedpc</a> = <a href="../h_src/57885572.htm" class="localvar">pc</a>;  <a  class="comments">/* save 'pc' */</a>
+   896 :    if (<a href="../h_src/57885436.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp; <a href="../h_src/57648540.htm" class="macro">CIST_HOOKYIELD</a>) {  <a  class="comments">/* called hook last time? */</a>
+   897 :    <a href="../h_src/57885436.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp;= ~<a href="../h_src/57648540.htm" class="macro">CIST_HOOKYIELD</a>;  <a  class="comments">/* erase mark */</a>
+   900 :    if (!<a href="../h_src/57683464.htm" class="macro">isIT</a>(*(<a href="../h_src/57885436.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650852.htm" class="variable">l</a>.<a href="../h_src/57651124.htm" class="variable">savedpc</a> - 1)))  <a  class="comments">/* top not being used? */</a>
+   901 :    <a href="../h_src/57885708.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57885436.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651464.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>;  <a  class="comments">/* correct top */</a>
+   918 :    <a href="../h_src/57885436.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650852.htm" class="variable">l</a>.<a href="../h_src/57651124.htm" class="variable">savedpc</a>--;  <a  class="comments">/* undo increment (resume will increment it again) */</a>
+   919 :    <a href="../h_src/57885436.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> |= <a href="../h_src/57648540.htm" class="macro">CIST_HOOKYIELD</a>;  <a  class="comments">/* mark that it yielded */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable ci</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

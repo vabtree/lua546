@@ -1,0 +1,61 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">global_State::</a>lastatomic</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57646432.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57646432.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57646432.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57646432.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57646432.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57950484.htm" class=function>atomic2gen</a>                                       lgc.c
+  1306 :    <a href="../h_src/57950212.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646432.htm" class="variable">lastatomic</a> = 0;
+<a href="../h_aa/57949260.htm" class=function>enterinc</a>                                         lgc.c
+  1351 :    <a href="../h_src/57949124.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646432.htm" class="variable">lastatomic</a> = 0;
+<a href="../h_aa/57947492.htm" class=function>genstep</a>                                          lgc.c
+  1454 :    <a href="../h_src/57947220.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646432.htm" class="variable">lastatomic</a> = <a href="../h_src/57946812.htm" class="localvar">numobjs</a>;  <a  class="comments">/* signal that last collection was bad */</a>
+<a href="../h_aa/57439900.htm" class=function>lua_newstate</a>                                     lstate.c
+   399 :    <a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646432.htm" class="variable">lastatomic</a> = 0;
+<a href="../h_aa/57620252.htm" class=function>luaC_changemode</a>                                  lgc.c
+  1366 :    <a href="../h_src/57948716.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646432.htm" class="variable">lastatomic</a> = 0;
+<a href="../h_aa/57948172.htm" class=function>stepgenfull</a>                                      lgc.c
+  1416 :    <a href="../h_src/57947900.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646432.htm" class="variable">lastatomic</a> = <a href="../h_src/57947764.htm" class="localvar">newatomic</a>;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57947492.htm" class=function>genstep</a>                                          lgc.c
+  1441 :    if (<a href="../h_src/57947220.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646432.htm" class="variable">lastatomic</a> != 0)  <a  class="comments">/* last collection was a bad one? */</a>
+<a href="../h_aa/57430448.htm" class=function>lua_gc</a>                                           lapi.c
+  1202 :    <a href="../h_src/57719572.htm" class="localvar">res</a> = <a href="../h_src/57622428.htm" class="macro">isdecGCmodegen</a>(<a href="../h_src/57719436.htm" class="localvar">g</a>) ? <a href="../h_src/57430720.htm" class="macro">LUA_GCGEN</a> : <a href="../h_src/57430584.htm" class="macro">LUA_GCINC</a>;
+  1214 :    <a href="../h_src/57719572.htm" class="localvar">res</a> = <a href="../h_src/57622428.htm" class="macro">isdecGCmodegen</a>(<a href="../h_src/57719436.htm" class="localvar">g</a>) ? <a href="../h_src/57430720.htm" class="macro">LUA_GCGEN</a> : <a href="../h_src/57430584.htm" class="macro">LUA_GCINC</a>;
+<a href="../h_aa/57620796.htm" class=function>luaC_step</a>                                        lgc.c
+  1693 :    if(<a href="../h_src/57622428.htm" class="macro">isdecGCmodegen</a>(<a href="../h_src/57941644.htm" class="localvar">g</a>))
+<a href="../h_aa/57948172.htm" class=function>stepgenfull</a>                                      lgc.c
+  1402 :    <a href="../h_src/57550616.htm" class="type">lu_mem</a> <a href="../h_src/57947628.htm" class="localvar">lastatomic</a> = <a href="../h_src/57947900.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646432.htm" class="variable">lastatomic</a>;  <a  class="comments">/* count from last collection */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable lastatomic</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

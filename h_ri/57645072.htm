@@ -1,0 +1,56 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">global_State::</a>gray</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57645072.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57645072.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57645072.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57645072.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57645072.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57826616.htm" class=function>atomic</a>                                           lgc.c
+  1540 :    <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645072.htm" class="variable">gray</a> = <a href="../h_src/57944772.htm" class="localvar">grayagain</a>;
+<a href="../h_aa/57819204.htm" class=function>cleargraylists</a>                                   lgc.c
+   395 :    <a href="../h_src/57819068.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645072.htm" class="variable">gray</a> = <a href="../h_src/57819068.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a> = NULL;
+<a href="../h_aa/57439900.htm" class=function>lua_newstate</a>                                     lstate.c
+   394 :    <a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645072.htm" class="variable">gray</a> = <a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a> = NULL;
+<a href="../h_aa/57971156.htm" class=function>propagatemark</a>                                    lgc.c
+   661 :    <a href="../h_src/57971020.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645072.htm" class="variable">gray</a> = *<a href="../h_src/57826208.htm" class="function">getgclist</a>(<a href="../h_src/57970884.htm" class="localvar">o</a>);  <a  class="comments">/* remove from 'gray' list */</a>
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57970748.htm" class=function>propagateall</a>                                     lgc.c
+   676 :    while (<a href="../h_src/57970612.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645072.htm" class="variable">gray</a>)
+<a href="../h_aa/57971156.htm" class=function>propagatemark</a>                                    lgc.c
+   659 :    <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57970884.htm" class="localvar">o</a> = <a href="../h_src/57971020.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645072.htm" class="variable">gray</a>;
+<a href="../h_aa/57826752.htm" class=function>reallymarkobject</a>                                 lgc.c
+   324 :    <a href="../h_src/57825120.htm" class="macro">linkobjgclist</a>(<a href="../h_src/57821448.htm" class="localvar">o</a>, <a href="../h_src/57821584.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645072.htm" class="variable">gray</a>);  <a  class="comments">/* to be visited later */</a>
+<a href="../h_aa/57943684.htm" class=function>singlestep</a>                                       lgc.c
+  1596 :    if (<a href="../h_src/57943412.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645072.htm" class="variable">gray</a> == NULL) {  <a  class="comments">/* no more gray objects? */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable gray</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

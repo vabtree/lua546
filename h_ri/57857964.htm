@@ -1,0 +1,58 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>L</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57857964.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57857964.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57857964.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57857964.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57432420.htm" class=function>lua_resume</a>                                       ldo.c
+   835 :    if (<a href="../h_src/57857964.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642828.htm" class="variable">status</a> == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) {  <a  class="comments">/* may be starting a coroutine */</a>
+   836 :    if (<a href="../h_src/57857964.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a> != &amp;<a href="../h_src/57857964.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641740.htm" class="variable">base_ci</a>)  <a  class="comments">/* not in base level? */</a>
+   837 :    return <a href="../h_src/57860140.htm" class="function">resume_error</a>(<a href="../h_src/57857964.htm" class="localvar">L</a>, &quot;cannot resume non-suspended coroutine&quot;, <a href="../h_src/57857692.htm" class="localvar">nargs</a>);
+   838 :    else if (<a href="../h_src/57857964.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - (<a href="../h_src/57857964.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a> + 1) == <a href="../h_src/57857692.htm" class="localvar">nargs</a>)  <a  class="comments">/* no function? */</a>
+   839 :    return <a href="../h_src/57860140.htm" class="function">resume_error</a>(<a href="../h_src/57857964.htm" class="localvar">L</a>, &quot;cannot resume dead coroutine&quot;, <a href="../h_src/57857692.htm" class="localvar">nargs</a>);
+   841 :    else if (<a href="../h_src/57857964.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642828.htm" class="variable">status</a> != <a href="../h_src/57445068.htm" class="macro">LUA_YIELD</a>)  <a  class="comments">/* ended with errors? */</a>
+   842 :    return <a href="../h_src/57860140.htm" class="function">resume_error</a>(<a href="../h_src/57857964.htm" class="localvar">L</a>, &quot;cannot resume dead coroutine&quot;, <a href="../h_src/57857692.htm" class="localvar">nargs</a>);
+   843 :    <a href="../h_src/57857964.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641536.htm" class="variable">nCcalls</a> = (<a href="../h_src/57857828.htm" class="localvar">from</a>) ? <a href="../h_src/57653640.htm" class="macro">getCcalls</a>(<a href="../h_src/57857828.htm" class="localvar">from</a>) : 0;
+   844 :    if (<a href="../h_src/57653640.htm" class="macro">getCcalls</a>(<a href="../h_src/57857964.htm" class="localvar">L</a>) &gt;= <a href="../h_src/57543680.htm" class="macro">LUAI_MAXCCALLS</a>)
+   845 :    return <a href="../h_src/57860140.htm" class="function">resume_error</a>(<a href="../h_src/57857964.htm" class="localvar">L</a>, &quot;C stack overflow&quot;, <a href="../h_src/57857692.htm" class="localvar">nargs</a>);
+   846 :    <a href="../h_src/57857964.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641536.htm" class="variable">nCcalls</a>++;
+   847 :    <a href="../h_src/57541640.htm" class="macro">luai_userstateresume</a>(<a href="../h_src/57857964.htm" class="localvar">L</a>, nargs);
+   848 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57857964.htm" class="localvar">L</a>, (L-&gt;status == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) ? nargs + 1 : nargs);
+   849 :    <a href="../h_src/57857420.htm" class="localvar">status</a> = <a href="../h_src/57632492.htm" class="function">luaD_rawrunprotected</a>(<a href="../h_src/57857964.htm" class="localvar">L</a>, <a href="../h_src/57859324.htm" class="function">resume</a>, &amp;<a href="../h_src/57857692.htm" class="localvar">nargs</a>);
+   851 :    <a href="../h_src/57857420.htm" class="localvar">status</a> = <a href="../h_src/57858508.htm" class="function">precover</a>(<a href="../h_src/57857964.htm" class="localvar">L</a>, <a href="../h_src/57857420.htm" class="localvar">status</a>);
+   855 :    <a href="../h_src/57857964.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642828.htm" class="variable">status</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/57857420.htm" class="localvar">status</a>);  <a  class="comments">/* mark thread as 'dead' */</a>
+   856 :    <a href="../h_src/57633648.htm" class="function">luaD_seterrorobj</a>(<a href="../h_src/57857964.htm" class="localvar">L</a>, <a href="../h_src/57857420.htm" class="localvar">status</a>, <a href="../h_src/57857964.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>);  <a  class="comments">/* push error message */</a>
+   857 :    <a href="../h_src/57857964.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57651464.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57857964.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>;
+   859 :    *<a href="../h_src/57857556.htm" class="localvar">nresults</a> = (<a href="../h_src/57857420.htm" class="localvar">status</a> == <a href="../h_src/57445068.htm" class="macro">LUA_YIELD</a>) ? <a href="../h_src/57857964.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57649560.htm" class="variable">u2</a>.<a href="../h_src/57650104.htm" class="variable">nyield</a>
+   860 :    : <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/57857964.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - (<a href="../h_src/57857964.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a> + 1));
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable L</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,49 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>from</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57665444.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57665444.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57665444.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57665444.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57670748.htm" class=function>luaK_nil</a>                                         lcode.c
+   139 :    if (<a href="../h_src/57664900.htm" class="localvar">pfrom</a> &lt; <a href="../h_src/57665444.htm" class="localvar">from</a>) <a href="../h_src/57665444.htm" class="localvar">from</a> = <a href="../h_src/57664900.htm" class="localvar">pfrom</a>;  <a  class="comments">/* from = min(from, pfrom) */</a>
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57670748.htm" class=function>luaK_nil</a>                                         lcode.c
+   132 :    int <a href="../h_src/57665172.htm" class="localvar">l</a> = <a href="../h_src/57665444.htm" class="localvar">from</a> + <a href="../h_src/57665308.htm" class="localvar">n</a> - 1;  <a  class="comments">/* last register to set nil */</a>
+   137 :    if ((<a href="../h_src/57664900.htm" class="localvar">pfrom</a> &lt;= <a href="../h_src/57665444.htm" class="localvar">from</a> &amp;&amp; <a href="../h_src/57665444.htm" class="localvar">from</a> &lt;= <a href="../h_src/57664764.htm" class="localvar">pl</a> + 1) ||
+   138 :    (<a href="../h_src/57665444.htm" class="localvar">from</a> &lt;= <a href="../h_src/57664900.htm" class="localvar">pfrom</a> &amp;&amp; <a href="../h_src/57664900.htm" class="localvar">pfrom</a> &lt;= <a href="../h_src/57665172.htm" class="localvar">l</a> + 1)) {  <a  class="comments">/* can connect both? */</a>
+   139 :    if (<a href="../h_src/57664900.htm" class="localvar">pfrom</a> &lt; <a href="../h_src/57665444.htm" class="localvar">from</a>) <a href="../h_src/57665444.htm" class="localvar">from</a> = <a href="../h_src/57664900.htm" class="localvar">pfrom</a>;  <a  class="comments">/* from = min(from, pfrom) */</a>
+   141 :    <a href="../h_src/57693936.htm" class="macro">SETARG_A</a>(*<a href="../h_src/57665036.htm" class="localvar">previous</a>, <a href="../h_src/57665444.htm" class="localvar">from</a>);
+   142 :    <a href="../h_src/57693528.htm" class="macro">SETARG_B</a>(*<a href="../h_src/57665036.htm" class="localvar">previous</a>, <a href="../h_src/57665172.htm" class="localvar">l</a> - <a href="../h_src/57665444.htm" class="localvar">from</a>);
+   146 :    <a href="../h_src/57672380.htm" class="macro">luaK_codeABC</a>(<a href="../h_src/57665580.htm" class="localvar">fs</a>, <a href="../h_src/57689992.htm" class="variable">OP_LOADNIL</a>, <a href="../h_src/57665444.htm" class="localvar">from</a>, <a href="../h_src/57665308.htm" class="localvar">n</a> - 1, 0);  <a  class="comments">/* else no optimization */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable from</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

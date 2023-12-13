@@ -1,0 +1,51 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>t</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58103292.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/58103292.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/58103292.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/58103292.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57616444.htm" class=function>luaH_resize</a>                                      ltable.c
+   557 :    unsigned int <a href="../h_src/58102612.htm" class="localvar">oldasize</a> = <a href="../h_src/58115260.htm" class="function">setlimittosize</a>(<a href="../h_src/58103292.htm" class="localvar">t</a>);
+   562 :    <a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a> = <a href="../h_src/58103156.htm" class="localvar">newasize</a>;  <a  class="comments">/* pretend array has new size... */</a>
+   563 :    <a href="../h_src/58104244.htm" class="function">exchangehashpart</a>(<a href="../h_src/58103292.htm" class="localvar">t</a>, &amp;<a href="../h_src/58102748.htm" class="localvar">newt</a>);  <a  class="comments">/* and new hash */</a>
+   566 :    if (!<a href="../h_src/57530488.htm" class="macro">isempty</a>(&amp;<a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58102884.htm" class="localvar">i</a>]))
+   567 :    <a href="../h_src/57616988.htm" class="function">luaH_setint</a>(<a href="../h_src/58103428.htm" class="localvar">L</a>, <a href="../h_src/58103292.htm" class="localvar">t</a>, <a href="../h_src/58102884.htm" class="localvar">i</a> + 1, &amp;<a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58102884.htm" class="localvar">i</a>]);
+   569 :    <a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a> = <a href="../h_src/58102612.htm" class="localvar">oldasize</a>;  <a  class="comments">/* restore current size... */</a>
+   570 :    <a href="../h_src/58104244.htm" class="function">exchangehashpart</a>(<a href="../h_src/58103292.htm" class="localvar">t</a>, &amp;<a href="../h_src/58102748.htm" class="localvar">newt</a>);  <a  class="comments">/* and hash (in case of errors) */</a>
+   573 :    <a href="../h_src/58102476.htm" class="localvar">newarray</a> = <a href="../h_src/57657244.htm" class="macro">luaM_reallocvector</a>(<a href="../h_src/58103428.htm" class="localvar">L</a>, <a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>, <a href="../h_src/58102612.htm" class="localvar">oldasize</a>, <a href="../h_src/58103156.htm" class="localvar">newasize</a>, <a href="../h_src/57535384.htm" class="type">TValue</a>);
+   579 :    <a href="../h_src/58104244.htm" class="function">exchangehashpart</a>(<a href="../h_src/58103292.htm" class="localvar">t</a>, &amp;<a href="../h_src/58102748.htm" class="localvar">newt</a>);  <a  class="comments">/* 't' has the new hash ('newt' has the old) */</a>
+   580 :    <a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a> = <a href="../h_src/58102476.htm" class="localvar">newarray</a>;  <a  class="comments">/* set new array part */</a>
+   581 :    <a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a> = <a href="../h_src/58103156.htm" class="localvar">newasize</a>;
+   583 :    <a href="../h_src/57530216.htm" class="macro">setempty</a>(&amp;<a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58102884.htm" class="localvar">i</a>]);
+   585 :    <a href="../h_src/58105604.htm" class="function">reinsert</a>(<a href="../h_src/58103428.htm" class="localvar">L</a>, &amp;<a href="../h_src/58102748.htm" class="localvar">newt</a>, <a href="../h_src/58103292.htm" class="localvar">t</a>);  <a  class="comments">/* 'newt' now has the old hash */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable t</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

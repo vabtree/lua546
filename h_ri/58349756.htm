@@ -1,0 +1,48 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>L</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58349756.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/58349756.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/58349756.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/58349756.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/58349892.htm" class=function>pushglobalfuncname</a>                               lauxlib.c
+    80 :    int <a href="../h_src/58349484.htm" class="localvar">top</a> = <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/58349756.htm" class="localvar">L</a>);
+    81 :    <a href="../h_src/57424600.htm" class="function">lua_getinfo</a>(<a href="../h_src/58349756.htm" class="localvar">L</a>, &quot;f&quot;, <a href="../h_src/58349620.htm" class="localvar">ar</a>);  <a  class="comments">/* push function */</a>
+    82 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/58349756.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/57421540.htm" class="macro">LUA_LOADED_TABLE</a>);
+    83 :    if (<a href="../h_src/58350436.htm" class="function">findfield</a>(<a href="../h_src/58349756.htm" class="localvar">L</a>, <a href="../h_src/58349484.htm" class="localvar">top</a> + 1, 2)) {
+    84 :    const char *<a href="../h_src/58349348.htm" class="localvar">name</a> = <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/58349756.htm" class="localvar">L</a>, -1);
+    86 :    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/58349756.htm" class="localvar">L</a>, <a href="../h_src/58349348.htm" class="localvar">name</a> + 3);  <a  class="comments">/* push name without prefix */</a>
+    87 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/58349756.htm" class="localvar">L</a>, -2);  <a  class="comments">/* remove original name */</a>
+    89 :    <a href="../h_src/57439084.htm" class="function">lua_copy</a>(<a href="../h_src/58349756.htm" class="localvar">L</a>, -1, <a href="../h_src/58349484.htm" class="localvar">top</a> + 1);  <a  class="comments">/* copy name to proper place */</a>
+    90 :    <a href="../h_src/57439288.htm" class="function">lua_settop</a>(<a href="../h_src/58349756.htm" class="localvar">L</a>, <a href="../h_src/58349484.htm" class="localvar">top</a> + 1);  <a  class="comments">/* remove table &quot;loaded&quot; and name copy */</a>
+    94 :    <a href="../h_src/57439288.htm" class="function">lua_settop</a>(<a href="../h_src/58349756.htm" class="localvar">L</a>, <a href="../h_src/58349484.htm" class="localvar">top</a>);  <a  class="comments">/* remove function and global table */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable L</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

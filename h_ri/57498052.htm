@@ -1,0 +1,57 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaT_gettmbyobj</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57498052.htm" class="function" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57498052.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57498052.htm" class="function" target="_self">Flow Chart</a></li>
+<li><a href="../h_src/57498052.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57498052.htm" class="function" target="_self">Called By</a></li>
+<li><a href="../h_rx/57498052.htm" class="function" target="_self">Call Tree</a></li>
+<li><a href="../h_ro/57498052.htm" class="function" target="_self">Calls and Uses</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/58084320.htm" class=function>callbinTM</a>                                        ltm.c
+   139 :    const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58083504.htm" class="localvar">tm</a> = <a href="../h_src/57498052.htm" class="function">luaT_gettmbyobj</a>(<a href="../h_src/58084184.htm" class="localvar">L</a>, <a href="../h_src/58084048.htm" class="localvar">p1</a>, <a href="../h_src/58083640.htm" class="localvar">event</a>);  <a  class="comments">/* try first operand */</a>
+   141 :    <a href="../h_src/58083504.htm" class="localvar">tm</a> = <a href="../h_src/57498052.htm" class="function">luaT_gettmbyobj</a>(<a href="../h_src/58084184.htm" class="localvar">L</a>, <a href="../h_src/58083912.htm" class="localvar">p2</a>, <a href="../h_src/58083640.htm" class="localvar">event</a>);  <a  class="comments">/* try second operand */</a>
+<a href="../h_aa/57836884.htm" class=function>callclosemethod</a>                                  lfunc.c
+   109 :    const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57836068.htm" class="localvar">tm</a> = <a href="../h_src/57498052.htm" class="function">luaT_gettmbyobj</a>(<a href="../h_src/57836748.htm" class="localvar">L</a>, <a href="../h_src/57836612.htm" class="localvar">obj</a>, <a href="../h_src/57499276.htm" class="variable">TM_CLOSE</a>);
+<a href="../h_aa/57835116.htm" class=function>checkclosemth</a>                                    lfunc.c
+   126 :    const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57834708.htm" class="localvar">tm</a> = <a href="../h_src/57498052.htm" class="function">luaT_gettmbyobj</a>(<a href="../h_src/57834980.htm" class="localvar">L</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57834844.htm" class="localvar">level</a>), <a href="../h_src/57499276.htm" class="variable">TM_CLOSE</a>);
+<a href="../h_aa/57962316.htm" class=function>GCTM</a>                                             lgc.c
+   911 :    <a href="../h_src/57961908.htm" class="localvar">tm</a> = <a href="../h_src/57498052.htm" class="function">luaT_gettmbyobj</a>(<a href="../h_src/57962180.htm" class="localvar">L</a>, &amp;<a href="../h_src/57961772.htm" class="localvar">v</a>, <a href="../h_src/57500772.htm" class="variable">TM_GC</a>);
+<a href="../h_aa/57633104.htm" class=function>luaD_tryfuncTM</a>                                   ldo.c
+   416 :    <a href="../h_src/57872516.htm" class="localvar">tm</a> = <a href="../h_src/57498052.htm" class="function">luaT_gettmbyobj</a>(<a href="../h_src/57872788.htm" class="localvar">L</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57872652.htm" class="localvar">func</a>), <a href="../h_src/57499344.htm" class="variable">TM_CALL</a>);  <a  class="comments">/* (after previous GC) */</a>
+<a href="../h_aa/57611140.htm" class=function>luaV_finishget</a>                                   lvm.c
+   294 :    <a href="../h_src/58213356.htm" class="localvar">tm</a> = <a href="../h_src/57498052.htm" class="function">luaT_gettmbyobj</a>(<a href="../h_src/58214172.htm" class="localvar">L</a>, <a href="../h_src/58214036.htm" class="localvar">t</a>, <a href="../h_src/57500908.htm" class="variable">TM_INDEX</a>);
+<a href="../h_aa/57611072.htm" class=function>luaV_finishset</a>                                   lvm.c
+   348 :    <a href="../h_src/58212132.htm" class="localvar">tm</a> = <a href="../h_src/57498052.htm" class="function">luaT_gettmbyobj</a>(<a href="../h_src/58212948.htm" class="localvar">L</a>, <a href="../h_src/58212812.htm" class="localvar">t</a>, <a href="../h_src/57500840.htm" class="variable">TM_NEWINDEX</a>);
+<a href="../h_aa/57610528.htm" class=function>luaV_objlen</a>                                      lvm.c
+   704 :    <a href="../h_src/58200912.htm" class="localvar">tm</a> = <a href="../h_src/57498052.htm" class="function">luaT_gettmbyobj</a>(<a href="../h_src/58201320.htm" class="localvar">L</a>, <a href="../h_src/58201048.htm" class="localvar">rb</a>, <a href="../h_src/57500636.htm" class="variable">TM_LEN</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use luaT_gettmbyobj</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

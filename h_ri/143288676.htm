@@ -1,0 +1,47 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>SZINT</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143288676.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/143288676.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/143288676.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/143288676.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/143282216.htm" class=function>packint</a>                                          lstrlib.c
+  1577 :    if (<a href="../h_src/143281536.htm" class="localvar">neg</a> &amp;&amp; <a href="../h_src/143281672.htm" class="localvar">size</a> &gt; <a href="../h_src/143288676.htm" class="macro">SZINT</a>) {  <a  class="comments">/* negative number need sign extension? */</a>
+  1578 :    for (<a href="../h_src/143281264.htm" class="localvar">i</a> = <a href="../h_src/143288676.htm" class="macro">SZINT</a>; <a href="../h_src/143281264.htm" class="localvar">i</a> &lt; <a href="../h_src/143281672.htm" class="localvar">size</a>; <a href="../h_src/143281264.htm" class="localvar">i</a>++)  <a  class="comments">/* correct extra bytes */</a>
+<a href="../h_aa/143280448.htm" class=function>str_pack</a>                                         lstrlib.c
+  1620 :    if (<a href="../h_src/143279496.htm" class="localvar">size</a> &lt; <a href="../h_src/143288676.htm" class="macro">SZINT</a>) {  <a  class="comments">/* need overflow check? */</a>
+  1629 :    if (<a href="../h_src/143279496.htm" class="localvar">size</a> &lt; <a href="../h_src/143288676.htm" class="macro">SZINT</a>)  <a  class="comments">/* need overflow check? */</a>
+<a href="../h_aa/143435936.htm" class=function>unpackint</a>                                        lstrlib.c
+  1732 :    int <a href="../h_src/143434848.htm" class="localvar">limit</a> = (<a href="../h_src/143435392.htm" class="localvar">size</a>  &lt;= <a href="../h_src/143288676.htm" class="macro">SZINT</a>) ? <a href="../h_src/143435392.htm" class="localvar">size</a> : <a href="../h_src/143288676.htm" class="macro">SZINT</a>;
+  1737 :    if (<a href="../h_src/143435392.htm" class="localvar">size</a> &lt; <a href="../h_src/143288676.htm" class="macro">SZINT</a>) {  <a  class="comments">/* real size smaller than lua_Integer? */</a><a href="../h_src/57442076.htm" class="type">lua_Integer</a>? */
+  1743 :    else if (<a href="../h_src/143435392.htm" class="localvar">size</a> &gt; <a href="../h_src/143288676.htm" class="macro">SZINT</a>) {  <a  class="comments">/* must check unread bytes */</a>
+</pre>
+<h4><a class="legend">Table lists functions that directly use SZINT</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

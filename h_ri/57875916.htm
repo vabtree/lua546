@@ -1,0 +1,53 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>L</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57875916.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57875916.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57875916.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57875916.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57633512.htm" class=function>luaD_hook</a>                                        ldo.c
+   330 :    <a href="../h_src/57440240.htm" class="type">lua_Hook</a> <a href="../h_src/57875236.htm" class="localvar">hook</a> = <a href="../h_src/57875916.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641672.htm" class="variable">hook</a>;
+   331 :    if (<a href="../h_src/57875236.htm" class="localvar">hook</a> &amp;&amp; <a href="../h_src/57875916.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642760.htm" class="variable">allowhook</a>) {  <a  class="comments">/* make sure there is a hook */</a>
+   333 :    <a href="../h_src/57537764.htm" class="type">CallInfo</a> *<a href="../h_src/57874964.htm" class="localvar">ci</a> = <a href="../h_src/57875916.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>;
+   334 :    <a href="../h_aa/57441872.htm" class="type">ptrdiff_t</a> <a href="../h_src/57874828.htm" class="localvar">top</a> = <a href="../h_src/57634396.htm" class="macro">savestack</a>(<a href="../h_src/57875916.htm" class="localvar">L</a>, <a href="../h_src/57875916.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>);  <a  class="comments">/* preserve original 'top' */</a>
+   335 :    <a href="../h_aa/57441872.htm" class="type">ptrdiff_t</a> <a href="../h_src/57874692.htm" class="localvar">ci_top</a> = <a href="../h_src/57634396.htm" class="macro">savestack</a>(<a href="../h_src/57875916.htm" class="localvar">L</a>, <a href="../h_src/57874964.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651464.htm" class="variable">top</a><a href="../h_src/57531984.htm" class="variable">p</a>.<a href="../h_src/57531984.htm" class="variable">p</a>);  <a  class="comments">/* idem for 'ci-&gt;top' */</a>
+   345 :    if (<a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57874964.htm" class="localvar">ci</a>) &amp;&amp; <a href="../h_src/57875916.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> &lt; <a href="../h_src/57874964.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651464.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>)
+   346 :    <a href="../h_src/57875916.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57874964.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651464.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>;  <a  class="comments">/* protect entire activation register */</a>
+   347 :    <a href="../h_src/57634532.htm" class="macro">luaD_checkstack</a>(<a href="../h_src/57875916.htm" class="localvar">L</a>, <a href="../h_src/57442688.htm" class="macro">LUA_MINSTACK</a>);  <a  class="comments">/* ensure minimum stack size */</a>
+   348 :    if (<a href="../h_src/57874964.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651464.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> &lt; <a href="../h_src/57875916.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> + <a href="../h_src/57442688.htm" class="macro">LUA_MINSTACK</a>)
+   349 :    <a href="../h_src/57874964.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651464.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57875916.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> + <a href="../h_src/57442688.htm" class="macro">LUA_MINSTACK</a>;
+   350 :    <a href="../h_src/57875916.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642760.htm" class="variable">allowhook</a> = 0;  <a  class="comments">/* cannot call hooks inside a hook */</a>
+   353 :    (*<a href="../h_src/57875236.htm" class="localvar">hook</a>)(<a href="../h_src/57875916.htm" class="localvar">L</a>, &amp;<a href="../h_src/57874556.htm" class="localvar">ar</a>);
+   356 :    <a href="../h_src/57875916.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642760.htm" class="variable">allowhook</a> = 1;
+   357 :    <a href="../h_src/57874964.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651464.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57875916.htm" class="localvar">L</a>, <a href="../h_src/57874692.htm" class="localvar">ci_top</a>);
+   358 :    <a href="../h_src/57875916.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57875916.htm" class="localvar">L</a>, <a href="../h_src/57874828.htm" class="localvar">top</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable L</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

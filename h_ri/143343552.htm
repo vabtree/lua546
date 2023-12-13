@@ -1,0 +1,71 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>uchar</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143343552.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/143343552.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/143343552.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/143343552.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/143306628.htm" class=function>add_s</a>                                            lstrlib.c
+   884 :    else if (<a href="../h_aa/58309772.htm" class="libfunc">isdigit</a>(<a href="../h_src/143343552.htm" class="macro">uchar</a>(*<a href="../h_src/143305540.htm" class="localvar">p</a>))) {  <a  class="comments">/* '%n' */</a>
+<a href="../h_aa/143297516.htm" class=function>addquoted</a>                                        lstrlib.c
+  1129 :    else if (<a href="../h_aa/143324648.htm" class="libfunc">iscntrl</a>(<a href="../h_src/143343552.htm" class="macro">uchar</a>(*<a href="../h_src/143297244.htm" class="localvar">s</a>))) {
+  1131 :    if (!<a href="../h_aa/58309772.htm" class="libfunc">isdigit</a>(<a href="../h_src/143343552.htm" class="macro">uchar</a>(*(<a href="../h_src/143297244.htm" class="localvar">s</a>+1))))
+  1132 :    <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143296972.htm" class="localvar">buff</a>, sizeof(<a href="../h_src/143296972.htm" class="localvar">buff</a>), &quot;\\%d&quot;, (int)<a href="../h_src/143343552.htm" class="macro">uchar</a>(*<a href="../h_src/143297244.htm" class="localvar">s</a>));
+  1134 :    <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143296972.htm" class="localvar">buff</a>, sizeof(<a href="../h_src/143296972.htm" class="localvar">buff</a>), &quot;\\%03d&quot;, (int)<a href="../h_src/143343552.htm" class="macro">uchar</a>(*<a href="../h_src/143297244.htm" class="localvar">s</a>));
+<a href="../h_aa/143294116.htm" class=function>checkformat</a>                                      lstrlib.c
+  1236 :    if (!<a href="../h_aa/143324716.htm" class="libfunc">isalpha</a>(<a href="../h_src/143343552.htm" class="macro">uchar</a>(*<a href="../h_src/143293436.htm" class="localvar">spec</a>)))  <a  class="comments">/* did not go to the end? */</a>
+<a href="../h_aa/143294388.htm" class=function>get2digits</a>                                       lstrlib.c
+  1211 :    if (<a href="../h_aa/58309772.htm" class="libfunc">isdigit</a>(<a href="../h_src/143343552.htm" class="macro">uchar</a>(*<a href="../h_src/143294252.htm" class="localvar">s</a>))) {
+  1213 :    if (<a href="../h_aa/58309772.htm" class="libfunc">isdigit</a>(<a href="../h_src/143343552.htm" class="macro">uchar</a>(*<a href="../h_src/143294252.htm" class="localvar">s</a>))) <a href="../h_src/143294252.htm" class="localvar">s</a>++;  <a  class="comments">/* (2 digits at most) */</a>
+<a href="../h_aa/143299828.htm" class=function>lua_number2strx</a>                                  lstrlib.c
+  1062 :    <a href="../h_src/143299556.htm" class="localvar">buff</a>[<a href="../h_src/143298876.htm" class="localvar">i</a>] = <a href="../h_aa/58309704.htm" class="libfunc">toupper</a>(<a href="../h_src/143343552.htm" class="macro">uchar</a>(<a href="../h_src/143299556.htm" class="localvar">buff</a>[<a href="../h_src/143298876.htm" class="localvar">i</a>]));
+<a href="../h_aa/143327232.htm" class=function>match</a>                                            lstrlib.c
+   609 :    if (!<a href="../h_src/143324240.htm" class="function">matchbracketclass</a>(<a href="../h_src/143343552.htm" class="macro">uchar</a>(<a href="../h_src/143317032.htm" class="localvar">previous</a>), <a href="../h_src/143317304.htm" class="localvar">p</a>, <a href="../h_src/143317168.htm" class="localvar">ep</a> - 1) &amp;&amp;
+   610 :    <a href="../h_src/143324240.htm" class="function">matchbracketclass</a>(<a href="../h_src/143343552.htm" class="macro">uchar</a>(*<a href="../h_src/143317440.htm" class="localvar">s</a>), <a href="../h_src/143317304.htm" class="localvar">p</a>, <a href="../h_src/143317168.htm" class="localvar">ep</a> - 1)) {
+   619 :    <a href="../h_src/143317440.htm" class="localvar">s</a> = <a href="../h_src/143318256.htm" class="function">match_capture</a>(<a href="../h_src/143317576.htm" class="localvar">ms</a>, <a href="../h_src/143317440.htm" class="localvar">s</a>, <a href="../h_src/143343552.htm" class="macro">uchar</a>(*(<a href="../h_src/143317304.htm" class="localvar">p</a> + 1)));
+<a href="../h_aa/143324240.htm" class=function>matchbracketclass</a>                                lstrlib.c
+   456 :    if (<a href="../h_src/143325260.htm" class="function">match_class</a>(<a href="../h_src/143324104.htm" class="localvar">c</a>, <a href="../h_src/143343552.htm" class="macro">uchar</a>(*<a href="../h_src/143323968.htm" class="localvar">p</a>)))
+   461 :    if (<a href="../h_src/143343552.htm" class="macro">uchar</a>(*(<a href="../h_src/143323968.htm" class="localvar">p</a>-2)) &lt;= <a href="../h_src/143324104.htm" class="localvar">c</a> &amp;&amp; <a href="../h_src/143324104.htm" class="localvar">c</a> &lt;= <a href="../h_src/143343552.htm" class="macro">uchar</a>(*<a href="../h_src/143323968.htm" class="localvar">p</a>))
+   464 :    else if (<a href="../h_src/143343552.htm" class="macro">uchar</a>(*<a href="../h_src/143323968.htm" class="localvar">p</a>) == <a href="../h_src/143324104.htm" class="localvar">c</a>) return <a href="../h_src/143323696.htm" class="localvar">sig</a>;
+<a href="../h_aa/143323560.htm" class=function>singlematch</a>                                      lstrlib.c
+   475 :    int <a href="../h_src/143322880.htm" class="localvar">c</a> = <a href="../h_src/143343552.htm" class="macro">uchar</a>(*<a href="../h_src/143323288.htm" class="localvar">s</a>);
+   478 :    case <a href="../h_src/143326756.htm" class="macro">L_ESC</a>: return <a href="../h_src/143325260.htm" class="function">match_class</a>(<a href="../h_src/143322880.htm" class="localvar">c</a>, <a href="../h_src/143343552.htm" class="macro">uchar</a>(*(<a href="../h_src/143323152.htm" class="localvar">p</a>+1)));
+   480 :    default:  return (<a href="../h_src/143343552.htm" class="macro">uchar</a>(*<a href="../h_src/143323152.htm" class="localvar">p</a>) == <a href="../h_src/143322880.htm" class="localvar">c</a>);
+<a href="../h_aa/143336412.htm" class=function>str_byte</a>                                         lstrlib.c
+   190 :    <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143336276.htm" class="localvar">L</a>, <a href="../h_src/143343552.htm" class="macro">uchar</a>(<a href="../h_src/143336004.htm" class="localvar">s</a>[<a href="../h_src/143335732.htm" class="localvar">posi</a>+<a href="../h_src/143335324.htm" class="localvar">i</a>-1]));
+<a href="../h_aa/143335188.htm" class=function>str_char</a>                                         lstrlib.c
+   203 :    <a href="../h_src/143334508.htm" class="localvar">p</a>[<a href="../h_src/143334780.htm" class="localvar">i</a> - 1] = <a href="../h_src/143343552.htm" class="macro">uchar</a>(<a href="../h_src/143334372.htm" class="localvar">c</a>);
+<a href="../h_aa/143339744.htm" class=function>str_lower</a>                                        lstrlib.c
+   131 :    <a href="../h_src/143338928.htm" class="localvar">p</a>[<a href="../h_src/143339336.htm" class="localvar">i</a>] = <a href="../h_aa/143338792.htm" class="libfunc">tolower</a>(<a href="../h_src/143343552.htm" class="macro">uchar</a>(<a href="../h_src/143339064.htm" class="localvar">s</a>[<a href="../h_src/143339336.htm" class="localvar">i</a>]));
+<a href="../h_aa/143338724.htm" class=function>str_upper</a>                                        lstrlib.c
+   144 :    <a href="../h_src/143337908.htm" class="localvar">p</a>[<a href="../h_src/143338316.htm" class="localvar">i</a>] = <a href="../h_aa/58309704.htm" class="libfunc">toupper</a>(<a href="../h_src/143343552.htm" class="macro">uchar</a>(<a href="../h_src/143338044.htm" class="localvar">s</a>[<a href="../h_src/143338316.htm" class="localvar">i</a>]));
+</pre>
+<h4><a class="legend">Table lists functions that directly use uchar</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

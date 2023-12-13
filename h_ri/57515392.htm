@@ -1,0 +1,63 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">Proto::</a>sizelocvars</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57515392.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57515392.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57515392.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57515392.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57515392.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/58065824.htm" class=function>loadDebug</a>                                        lundump.c
+   242 :    <a href="../h_src/58065552.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515392.htm" class="variable">sizelocvars</a> = <a href="../h_src/58065280.htm" class="localvar">n</a>;
+<a href="../h_aa/57630996.htm" class=function>luaF_newproto</a>                                    lfunc.c
+   259 :    <a href="../h_src/57830356.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515392.htm" class="variable">sizelocvars</a> = 0;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/58024712.htm" class=function>close_func</a>                                       lparser.c
+   770 :    <a href="../h_src/57657108.htm" class="macro">luaM_shrinkvector</a>(<a href="../h_src/58024440.htm" class="localvar">L</a>, <a href="../h_src/58024168.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514032.htm" class="variable">locvars</a>, <a href="../h_src/58024168.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515392.htm" class="variable">sizelocvars</a>, <a href="../h_src/58024304.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674964.htm" class="variable">ndebugvars</a>, <a href="../h_src/57516684.htm" class="type">LocVar</a>);
+<a href="../h_aa/57842664.htm" class=function>dumpDebug</a>                                        ldump.c
+   169 :    <a href="../h_src/57842120.htm" class="localvar">n</a> = (<a href="../h_src/57842528.htm" class="localvar">D</a>-&gt;<a href="../h_src/57850076.htm" class="variable">strip</a>) ? 0 : <a href="../h_src/57842392.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515392.htm" class="variable">sizelocvars</a>;
+<a href="../h_aa/57630248.htm" class=function>luaF_freeproto</a>                                   lfunc.c
+   273 :    <a href="../h_src/57495604.htm" class="macro">luaM_freearray</a>(<a href="../h_src/57830220.htm" class="localvar">L</a>, <a href="../h_src/57830084.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514032.htm" class="variable">locvars</a>, <a href="../h_src/57830084.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515392.htm" class="variable">sizelocvars</a>);
+<a href="../h_aa/57630180.htm" class=function>luaF_getlocalname</a>                                lfunc.c
+   285 :    for (<a href="../h_src/57829540.htm" class="localvar">i</a> = 0; <a href="../h_src/57829540.htm" class="localvar">i</a>&lt;<a href="../h_src/57829948.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515392.htm" class="variable">sizelocvars</a> &amp;&amp; <a href="../h_src/57829948.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514032.htm" class="variable">locvars</a>[<a href="../h_src/57829540.htm" class="localvar">i</a>].<a href="../h_src/57516820.htm" class="variable">startpc</a> &lt;= <a href="../h_src/57829676.htm" class="localvar">pc</a>; <a href="../h_src/57829540.htm" class="localvar">i</a>++) {
+<a href="../h_aa/143394320.htm" class=function>PrintDebug</a>                                       luac.c
+   700 :    <a href="../h_src/143393912.htm" class="localvar">n</a>=<a href="../h_src/143394184.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515392.htm" class="variable">sizelocvars</a>;
+<a href="../h_aa/143394728.htm" class=function>PrintHeader</a>                                      luac.c
+   685 :    <a href="../h_src/143394864.htm" class="macro">S</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515392.htm" class="variable">sizelocvars</a>),<a href="../h_src/143394864.htm" class="macro">S</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515664.htm" class="variable">sizek</a>),<a href="../h_src/143394864.htm" class="macro">S</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515460.htm" class="variable">sizep</a>));
+<a href="../h_aa/58049532.htm" class=function>registerlocalvar</a>                                 lparser.c
+   177 :    int <a href="../h_src/58048852.htm" class="localvar">oldsize</a> = <a href="../h_src/58048988.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515392.htm" class="variable">sizelocvars</a>;
+   178 :    <a href="../h_src/57494924.htm" class="macro">luaM_growvector</a>(<a href="../h_src/58049396.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/58048988.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514032.htm" class="variable">locvars</a>, <a href="../h_src/58049260.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674964.htm" class="variable">ndebugvars</a>, <a href="../h_src/58048988.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515392.htm" class="variable">sizelocvars</a>,
+   180 :    while (<a href="../h_src/58048852.htm" class="localvar">oldsize</a> &lt; <a href="../h_src/58048988.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515392.htm" class="variable">sizelocvars</a>)
+<a href="../h_aa/57973604.htm" class=function>traverseproto</a>                                    lgc.c
+   587 :    for (<a href="../h_src/57973196.htm" class="localvar">i</a> = 0; <a href="../h_src/57973196.htm" class="localvar">i</a> &lt; <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515392.htm" class="variable">sizelocvars</a>; <a href="../h_src/57973196.htm" class="localvar">i</a>++)  <a  class="comments">/* mark local-variable names */</a>
+   589 :    return 1 + <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515664.htm" class="variable">sizek</a> + <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a> + <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515460.htm" class="variable">sizep</a> + <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515392.htm" class="variable">sizelocvars</a>;
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable sizelocvars</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

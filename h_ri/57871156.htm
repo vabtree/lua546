@@ -1,0 +1,51 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>nres</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57871156.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57871156.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57871156.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57871156.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57871564.htm" class=function>moveresults</a>                                      ldo.c
+   470 :    <a href="../h_src/57871156.htm" class="localvar">nres</a> = <a href="../h_src/57871020.htm" class="localvar">wanted</a>;  <a  class="comments">/* don't need them */</a>
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57871564.htm" class=function>moveresults</a>                                      ldo.c
+   441 :    if (<a href="../h_src/57871156.htm" class="localvar">nres</a> == 0)   <a  class="comments">/* no results? */</a>
+   444 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/57871428.htm" class="localvar">L</a>, <a href="../h_src/57871292.htm" class="localvar">res</a>, <a href="../h_src/57871428.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - <a href="../h_src/57871156.htm" class="localvar">nres</a>);  <a  class="comments">/* move it to proper place */</a>
+   448 :    <a href="../h_src/57871020.htm" class="localvar">wanted</a> = <a href="../h_src/57871156.htm" class="localvar">nres</a>;  <a  class="comments">/* we want all results */</a>
+   453 :    <a href="../h_src/57871428.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57649560.htm" class="variable">u2</a>.<a href="../h_src/57650036.htm" class="variable">nres</a> = <a href="../h_src/57871156.htm" class="localvar">nres</a>;
+   458 :    <a href="../h_src/57873876.htm" class="function">rethook</a>(<a href="../h_src/57871428.htm" class="localvar">L</a>, <a href="../h_src/57871428.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>, <a href="../h_src/57871156.htm" class="localvar">nres</a>);
+   463 :    <a href="../h_src/57871020.htm" class="localvar">wanted</a> = <a href="../h_src/57871156.htm" class="localvar">nres</a>;  <a  class="comments">/* we want all results */</a>
+   468 :    <a href="../h_src/57870884.htm" class="localvar">firstresult</a> = <a href="../h_src/57871428.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - <a href="../h_src/57871156.htm" class="localvar">nres</a>;  <a  class="comments">/* index of first result */</a>
+   469 :    if (<a href="../h_src/57871156.htm" class="localvar">nres</a> &gt; <a href="../h_src/57871020.htm" class="localvar">wanted</a>)  <a  class="comments">/* extra results? */</a>
+   471 :    for (<a href="../h_src/57870748.htm" class="localvar">i</a> = 0; <a href="../h_src/57870748.htm" class="localvar">i</a> &lt; <a href="../h_src/57871156.htm" class="localvar">nres</a>; <a href="../h_src/57870748.htm" class="localvar">i</a>++)  <a  class="comments">/* move all results to correct place */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable nres</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

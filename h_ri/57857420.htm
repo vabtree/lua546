@@ -1,0 +1,49 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>status</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57857420.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57857420.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57857420.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57857420.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57432420.htm" class=function>lua_resume</a>                                       ldo.c
+   849 :    <a href="../h_src/57857420.htm" class="localvar">status</a> = <a href="../h_src/57632492.htm" class="function">luaD_rawrunprotected</a>(<a href="../h_src/57857964.htm" class="localvar">L</a>, <a href="../h_src/57859324.htm" class="function">resume</a>, &amp;<a href="../h_src/57857692.htm" class="localvar">nargs</a>);
+   851 :    <a href="../h_src/57857420.htm" class="localvar">status</a> = <a href="../h_src/57858508.htm" class="function">precover</a>(<a href="../h_src/57857964.htm" class="localvar">L</a>, <a href="../h_src/57857420.htm" class="localvar">status</a>);
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57432420.htm" class=function>lua_resume</a>                                       ldo.c
+   851 :    <a href="../h_src/57857420.htm" class="localvar">status</a> = <a href="../h_src/57858508.htm" class="function">precover</a>(<a href="../h_src/57857964.htm" class="localvar">L</a>, <a href="../h_src/57857420.htm" class="localvar">status</a>);
+   852 :    if (<a href="../h_src/57551704.htm" class="macro">l_likely</a>(!<a href="../h_src/57884144.htm" class="macro">errorstatus</a>(<a href="../h_src/57857420.htm" class="localvar">status</a>)))
+   855 :    <a href="../h_src/57857964.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642828.htm" class="variable">status</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/57857420.htm" class="localvar">status</a>);  <a  class="comments">/* mark thread as 'dead' */</a>
+   856 :    <a href="../h_src/57633648.htm" class="function">luaD_seterrorobj</a>(<a href="../h_src/57857964.htm" class="localvar">L</a>, <a href="../h_src/57857420.htm" class="localvar">status</a>, <a href="../h_src/57857964.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>);  <a  class="comments">/* push error message */</a>
+   859 :    *<a href="../h_src/57857556.htm" class="localvar">nresults</a> = (<a href="../h_src/57857420.htm" class="localvar">status</a> == <a href="../h_src/57445068.htm" class="macro">LUA_YIELD</a>) ? <a href="../h_src/57857964.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57649560.htm" class="variable">u2</a>.<a href="../h_src/57650104.htm" class="variable">nyield</a>
+   862 :    return <a href="../h_src/57857420.htm" class="localvar">status</a>;
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable status</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

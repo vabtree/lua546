@@ -1,0 +1,64 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">global_State::</a>tobefnz</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57644732.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57644732.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57644732.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57644732.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57644732.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57439900.htm" class=function>lua_newstate</a>                                     lstate.c
+   390 :    <a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645140.htm" class="variable">finobj</a> = <a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644732.htm" class="variable">tobefnz</a> = <a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644664.htm" class="variable">fixedgc</a> = NULL;
+<a href="../h_aa/57963132.htm" class=function>udata2finalize</a>                                   lgc.c
+   887 :    <a href="../h_src/57962996.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644732.htm" class="variable">tobefnz</a> = <a href="../h_src/57962860.htm" class="localvar">o</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>;  <a  class="comments">/* remove it from 'tobefnz' list */</a>
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57950484.htm" class=function>atomic2gen</a>                                       lgc.c
+  1303 :    <a href="../h_src/57955924.htm" class="function">sweep2old</a>(<a href="../h_src/57950348.htm" class="localvar">L</a>, &amp;<a href="../h_src/57950212.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644732.htm" class="variable">tobefnz</a>);
+<a href="../h_aa/57959732.htm" class=function>callallpendingfinalizers</a>                         lgc.c
+   950 :    while (<a href="../h_src/57959460.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644732.htm" class="variable">tobefnz</a>)
+<a href="../h_aa/57949260.htm" class=function>enterinc</a>                                         lgc.c
+  1347 :    <a href="../h_src/57953748.htm" class="function">whitelist</a>(<a href="../h_src/57949124.htm" class="localvar">g</a>, <a href="../h_src/57949124.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644732.htm" class="variable">tobefnz</a>);
+<a href="../h_aa/57820632.htm" class=function>markbeingfnz</a>                                     lgc.c
+   348 :    for (<a href="../h_src/57820360.htm" class="localvar">o</a> = <a href="../h_src/57820496.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644732.htm" class="variable">tobefnz</a>; <a href="../h_src/57820360.htm" class="localvar">o</a> != NULL; <a href="../h_src/57820360.htm" class="localvar">o</a> = <a href="../h_src/57820360.htm" class="localvar">o</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>) {
+<a href="../h_aa/57960412.htm" class=function>runafewfinalizers</a>                                lgc.c
+   939 :    for (<a href="../h_src/57959868.htm" class="localvar">i</a> = 0; <a href="../h_src/57959868.htm" class="localvar">i</a> &lt; <a href="../h_src/57960140.htm" class="localvar">n</a> &amp;&amp; <a href="../h_src/57960004.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644732.htm" class="variable">tobefnz</a>; <a href="../h_src/57959868.htm" class="localvar">i</a>++)
+<a href="../h_aa/57959052.htm" class=function>separatetobefnz</a>                                  lgc.c
+   975 :    <a href="../h_src/57527972.htm" class="type">GCObject</a> **<a href="../h_src/57958372.htm" class="localvar">lastnext</a> = <a href="../h_src/57959324.htm" class="function">findlast</a>(&amp;<a href="../h_src/57958916.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644732.htm" class="variable">tobefnz</a>);
+<a href="../h_aa/57943684.htm" class=function>singlestep</a>                                       lgc.c
+  1615 :    <a href="../h_src/57943276.htm" class="localvar">work</a> = <a href="../h_src/57944636.htm" class="function">sweepstep</a>(<a href="../h_src/57943548.htm" class="localvar">L</a>, <a href="../h_src/57943412.htm" class="localvar">g</a>, <a href="../h_src/57629092.htm" class="macro">GCSswptobefnz</a>, &amp;<a href="../h_src/57943412.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644732.htm" class="variable">tobefnz</a>);
+  1629 :    if (<a href="../h_src/57943412.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644732.htm" class="variable">tobefnz</a> &amp;&amp; !<a href="../h_src/57943412.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645616.htm" class="variable">gcemergency</a>) {
+<a href="../h_aa/57963132.htm" class=function>udata2finalize</a>                                   lgc.c
+   885 :    <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57962860.htm" class="localvar">o</a> = <a href="../h_src/57962996.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644732.htm" class="variable">tobefnz</a>;  <a  class="comments">/* get first element */</a>
+<a href="../h_aa/57951164.htm" class=function>youngcollection</a>                                  lgc.c
+  1258 :    <a href="../h_src/57952252.htm" class="function">markold</a>(<a href="../h_src/57950892.htm" class="localvar">g</a>, <a href="../h_src/57950892.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644732.htm" class="variable">tobefnz</a>, NULL);
+  1279 :    <a href="../h_src/57955108.htm" class="function">sweepgen</a>(<a href="../h_src/57951028.htm" class="localvar">L</a>, <a href="../h_src/57950892.htm" class="localvar">g</a>, &amp;<a href="../h_src/57950892.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644732.htm" class="variable">tobefnz</a>, NULL, &amp;<a href="../h_src/57950620.htm" class="localvar">dummy</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable tobefnz</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

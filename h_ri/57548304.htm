@@ -1,0 +1,192 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luai_apicheck</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57548304.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57548304.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57548304.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57548304.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57729772.htm" class=function>aux_rawset</a>                                       lapi.c
+   899 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57729636.htm" class="localvar">L</a>, n);
+<a href="../h_aa/57584212.htm" class=function>auxgetstr</a>                                        lapi.c
+   644 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57584076.htm" class="localvar">L</a>);
+   648 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57584076.htm" class="localvar">L</a>);
+<a href="../h_aa/57733988.htm" class=function>auxsetstr</a>                                        lapi.c
+   832 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57733852.htm" class="localvar">L</a>, 1);
+   839 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57733852.htm" class="localvar">L</a>);
+<a href="../h_aa/57749668.htm" class=function>collectvalidlines</a>                                ldebug.c
+   293 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57749532.htm" class="localvar">L</a>);
+   302 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57749532.htm" class="localvar">L</a>);
+<a href="../h_aa/57861772.htm" class=function>finishCcall</a>                                      ldo.c
+   725 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57861636.htm" class="localvar">L</a>, n);
+<a href="../h_aa/57579860.htm" class=function>finishrawget</a>                                     lapi.c
+   719 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57579724.htm" class="localvar">L</a>);
+<a href="../h_aa/57579180.htm" class=function>gettable</a>                                         lapi.c
+   727 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57579044.htm" class="localvar">L</a>, <a href="../h_src/57507300.htm" class="macro">ttistable</a>(t), &quot;table expected&quot;);
+<a href="../h_aa/57709644.htm" class=function>getupvalref</a>                                      lapi.c
+  1421 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57709508.htm" class="localvar">L</a>, <a href="../h_src/57513080.htm" class="macro">ttisLclosure</a>(fi), &quot;Lua function expected&quot;);
+<a href="../h_aa/57609100.htm" class=function>index2stack</a>                                      lapi.c
+    99 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57608964.htm" class="localvar">L</a>, o &lt; L-&gt;top.p, &quot;invalid index&quot;);
+   103 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57608964.htm" class="localvar">L</a>, idx != 0 &amp;&amp; -idx &lt;= L-&gt;top.p - (ci-&gt;func.p + 1),
+   105 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57608964.htm" class="localvar">L</a>, !<a href="../h_src/57610324.htm" class="macro">ispseudo</a>(idx), &quot;invalid index&quot;);
+<a href="../h_aa/57610052.htm" class=function>index2value</a>                                      lapi.c
+    64 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57609916.htm" class="localvar">L</a>, idx &lt;= ci-&gt;top.p - (ci-&gt;func.p + 1), &quot;unacceptable index&quot;);
+    69 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57609916.htm" class="localvar">L</a>, idx != 0 &amp;&amp; -idx &lt;= L-&gt;top.p - (ci-&gt;func.p + 1),
+    77 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57609916.htm" class="localvar">L</a>, idx &lt;= <a href="../h_src/57631676.htm" class="macro">MAXUPVAL</a> + 1, &quot;upvalue index too large&quot;);
+    84 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57609916.htm" class="localvar">L</a>, <a href="../h_src/57512944.htm" class="macro">ttislcf</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(ci-&gt;func.p)), &quot;caller not a C function&quot;);
+<a href="../h_aa/57435888.htm" class=function>lua_arith</a>                                        lapi.c
+   338 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57597472.htm" class="localvar">L</a>, 2);  <a  class="comments">/* all other operations expect two operands */</a>
+   340 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57597472.htm" class="localvar">L</a>, 1);
+   342 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57597472.htm" class="localvar">L</a>);
+<a href="../h_aa/57433032.htm" class=function>lua_callk</a>                                        lapi.c
+  1008 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57725828.htm" class="localvar">L</a>, k == NULL || !<a href="../h_src/57647452.htm" class="macro">isLua</a>(L-&gt;ci),
+  1010 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57725828.htm" class="localvar">L</a>, nargs+1);
+  1011 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57725828.htm" class="localvar">L</a>, L-&gt;status == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>, &quot;cannot do calls on non-normal thread&quot;);
+  1012 :    <a href="../h_src/57725964.htm" class="macro">checkresults</a>(<a href="../h_src/57725828.htm" class="localvar">L</a>, nargs, nresults);
+<a href="../h_aa/57439016.htm" class=function>lua_checkstack</a>                                   lapi.c
+   116 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57608420.htm" class="localvar">L</a>, n &gt;= 0, &quot;negative 'n'&quot;);
+<a href="../h_aa/57429768.htm" class=function>lua_closeslot</a>                                    lapi.c
+   213 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57605224.htm" class="localvar">L</a>, <a href="../h_src/57637524.htm" class="macro">hastocloseCfunc</a>(L-&gt;ci-&gt;nresults) &amp;&amp; L-&gt;tbclist.p == level,
+<a href="../h_aa/57435344.htm" class=function>lua_compare</a>                                      lapi.c
+   363 :    default: <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57596928.htm" class="localvar">L</a>, 0, &quot;invalid option&quot;);
+<a href="../h_aa/57430244.htm" class=function>lua_concat</a>                                       lapi.c
+  1287 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57716580.htm" class="localvar">L</a>, n);
+  1292 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57716580.htm" class="localvar">L</a>);
+<a href="../h_aa/57439084.htm" class=function>lua_copy</a>                                         lapi.c
+   260 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57602504.htm" class="localvar">L</a>, <a href="../h_src/57610460.htm" class="macro">isvalid</a>(L, to), &quot;invalid index&quot;);
+<a href="../h_aa/57433916.htm" class=function>lua_createtable</a>                                  lapi.c
+   767 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57736708.htm" class="localvar">L</a>);
+<a href="../h_aa/57432556.htm" class=function>lua_dump</a>                                         lapi.c
+  1114 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57721068.htm" class="localvar">L</a>, 1);
+<a href="../h_aa/57430380.htm" class=function>lua_error</a>                                        lapi.c
+  1242 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57717940.htm" class="localvar">L</a>, 1);
+<a href="../h_aa/57434188.htm" class=function>lua_geti</a>                                         lapi.c
+   708 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57581084.htm" class="localvar">L</a>);
+<a href="../h_aa/57424600.htm" class=function>lua_getinfo</a>                                      ldebug.c
+   392 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57746812.htm" class="localvar">L</a>, <a href="../h_src/57513216.htm" class="macro">ttisfunction</a>(func), &quot;function expected&quot;);
+   405 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57746812.htm" class="localvar">L</a>);
+<a href="../h_aa/57433712.htm" class=function>lua_getiuservalue</a>                                lapi.c
+   807 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57734940.htm" class="localvar">L</a>, <a href="../h_src/57521716.htm" class="macro">ttisfulluserdata</a>(o), &quot;full userdata expected&quot;);
+   816 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57734940.htm" class="localvar">L</a>);
+<a href="../h_aa/57424532.htm" class=function>lua_getlocal</a>                                     ldebug.c
+   234 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57752728.htm" class="localvar">L</a>);
+<a href="../h_aa/57433780.htm" class=function>lua_getmetatable</a>                                 lapi.c
+   794 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57735892.htm" class="localvar">L</a>);
+<a href="../h_aa/57424396.htm" class=function>lua_getupvalue</a>                                   lapi.c
+  1391 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57711820.htm" class="localvar">L</a>);
+<a href="../h_aa/57430176.htm" class=function>lua_len</a>                                          lapi.c
+  1304 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57716036.htm" class="localvar">L</a>);
+<a href="../h_aa/57439764.htm" class=function>lua_newthread</a>                                    lstate.c
+   297 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/58136748.htm" class="localvar">L</a>);
+<a href="../h_aa/57433848.htm" class=function>lua_newuserdatauv</a>                                lapi.c
+  1346 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57713928.htm" class="localvar">L</a>, 0 &lt;= nuvalue &amp;&amp; nuvalue &lt; USHRT_MAX, &quot;invalid value&quot;);
+  1349 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57713928.htm" class="localvar">L</a>);
+<a href="../h_aa/57430312.htm" class=function>lua_next</a>                                         lapi.c
+  1257 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57717668.htm" class="localvar">L</a>, 1);
+  1261 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57717668.htm" class="localvar">L</a>);
+<a href="../h_aa/57432828.htm" class=function>lua_pcallk</a>                                       lapi.c
+  1049 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57724060.htm" class="localvar">L</a>, k == NULL || !<a href="../h_src/57647452.htm" class="macro">isLua</a>(L-&gt;ci),
+  1051 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57724060.htm" class="localvar">L</a>, nargs+1);
+  1052 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57724060.htm" class="localvar">L</a>, L-&gt;status == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>, &quot;cannot do calls on non-normal thread&quot;);
+  1053 :    <a href="../h_src/57725964.htm" class="macro">checkresults</a>(<a href="../h_src/57724060.htm" class="localvar">L</a>, nargs, nresults);
+  1058 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57724060.htm" class="localvar">L</a>, <a href="../h_src/57513216.htm" class="macro">ttisfunction</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(o)), &quot;error handler must be a function&quot;);
+<a href="../h_aa/57434596.htm" class=function>lua_pushboolean</a>                                  lapi.c
+   611 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57585300.htm" class="localvar">L</a>);
+<a href="../h_aa/57434664.htm" class=function>lua_pushcclosure</a>                                 lapi.c
+   583 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57586524.htm" class="localvar">L</a>);
+   587 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57586524.htm" class="localvar">L</a>, n);
+   588 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57586524.htm" class="localvar">L</a>, n &lt;= <a href="../h_src/57631676.htm" class="macro">MAXUPVAL</a>, &quot;upvalue index too large&quot;);
+   598 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57586524.htm" class="localvar">L</a>);
+<a href="../h_aa/57435140.htm" class=function>lua_pushinteger</a>                                  lapi.c
+   516 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57589788.htm" class="localvar">L</a>);
+<a href="../h_aa/57434528.htm" class=function>lua_pushlightuserdata</a>                            lapi.c
+   619 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57585028.htm" class="localvar">L</a>);
+<a href="../h_aa/57435072.htm" class=function>lua_pushlstring</a>                                  lapi.c
+   531 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57589380.htm" class="localvar">L</a>);
+<a href="../h_aa/57435276.htm" class=function>lua_pushnil</a>                                      lapi.c
+   500 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57590332.htm" class="localvar">L</a>);
+<a href="../h_aa/57435208.htm" class=function>lua_pushnumber</a>                                   lapi.c
+   508 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57590196.htm" class="localvar">L</a>);
+<a href="../h_aa/57435004.htm" class=function>lua_pushstring</a>                                   lapi.c
+   548 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57588564.htm" class="localvar">L</a>);
+<a href="../h_aa/57434460.htm" class=function>lua_pushthread</a>                                   lapi.c
+   627 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57584620.htm" class="localvar">L</a>);
+<a href="../h_aa/57439220.htm" class=function>lua_pushvalue</a>                                    lapi.c
+   273 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57601552.htm" class="localvar">L</a>);
+<a href="../h_aa/57434120.htm" class=function>lua_rawget</a>                                       lapi.c
+   736 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57578636.htm" class="localvar">L</a>, 1);
+<a href="../h_aa/57433304.htm" class=function>lua_rawseti</a>                                      lapi.c
+   924 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57728004.htm" class="localvar">L</a>, 1);
+<a href="../h_aa/57432420.htm" class=function>lua_resume</a>                                       ldo.c
+   848 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57857964.htm" class="localvar">L</a>, (L-&gt;status == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) ? nargs + 1 : nargs);
+<a href="../h_aa/57439152.htm" class=function>lua_rotate</a>                                       lapi.c
+   246 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57603320.htm" class="localvar">L</a>, (n &gt;= 0 ? n : -n) &lt;= (t - p + 1), &quot;invalid 'n'&quot;);
+<a href="../h_aa/57433440.htm" class=function>lua_seti</a>                                         lapi.c
+   881 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57730996.htm" class="localvar">L</a>, 1);
+<a href="../h_aa/57433100.htm" class=function>lua_setiuservalue</a>                                lapi.c
+   977 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57726916.htm" class="localvar">L</a>, 1);
+   979 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57726916.htm" class="localvar">L</a>, <a href="../h_src/57521716.htm" class="macro">ttisfulluserdata</a>(o), &quot;full userdata expected&quot;);
+<a href="../h_aa/57433168.htm" class=function>lua_setmetatable</a>                                 lapi.c
+   937 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57727460.htm" class="localvar">L</a>, 1);
+   942 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57727460.htm" class="localvar">L</a>, <a href="../h_src/57507300.htm" class="macro">ttistable</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(L-&gt;top.p - 1)), &quot;table expected&quot;);
+<a href="../h_aa/57433576.htm" class=function>lua_settable</a>                                     lapi.c
+   859 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57732220.htm" class="localvar">L</a>, 2);
+<a href="../h_aa/57439288.htm" class=function>lua_settop</a>                                       lapi.c
+   189 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57606040.htm" class="localvar">L</a>, idx &lt;= ci-&gt;top.p - (func + 1), &quot;new top too large&quot;);
+   195 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57606040.htm" class="localvar">L</a>, -(idx+1) &lt;= (L-&gt;top.p - (func + 1)), &quot;invalid new top&quot;);
+   198 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57606040.htm" class="localvar">L</a>, L-&gt;tbclist.p &lt; L-&gt;top.p, &quot;previous pop of an unclosed slot&quot;);
+<a href="../h_aa/57424328.htm" class=function>lua_setupvalue</a>                                   lapi.c
+  1405 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57710868.htm" class="localvar">L</a>, 1);
+<a href="../h_aa/57430108.htm" class=function>lua_stringtonumber</a>                               lapi.c
+   374 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57595976.htm" class="localvar">L</a>);
+<a href="../h_aa/57429836.htm" class=function>lua_toclose</a>                                      lapi.c
+  1276 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57717124.htm" class="localvar">L</a>, L-&gt;tbclist.p &lt; o, &quot;given index below or equal a marked one&quot;);
+<a href="../h_aa/57438472.htm" class=function>lua_typename</a>                                     lapi.c
+   292 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57600600.htm" class="localvar">L</a>, <a href="../h_src/57444184.htm" class="macro">LUA_TNONE</a> &lt;= t &amp;&amp; t &lt; <a href="../h_src/57442824.htm" class="macro">LUA_NUMTYPES</a>, &quot;invalid type&quot;);
+<a href="../h_aa/57424260.htm" class=function>lua_upvalueid</a>                                    lapi.c
+  1446 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57708488.htm" class="localvar">L</a>, 0, &quot;function expected&quot;);
+<a href="../h_aa/57424192.htm" class=function>lua_upvaluejoin</a>                                  lapi.c
+  1458 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57707808.htm" class="localvar">L</a>, *up1 != NULL &amp;&amp; *up2 != NULL, &quot;invalid upvalue index&quot;);
+<a href="../h_aa/57438948.htm" class=function>lua_xmove</a>                                        lapi.c
+   132 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57607876.htm" class="localvar">from</a>, n);
+   133 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57607876.htm" class="localvar">from</a>, <a href="../h_src/57641196.htm" class="macro">G</a>(from) == <a href="../h_src/57641196.htm" class="macro">G</a>(to), &quot;moving among independent states&quot;);
+   134 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57607876.htm" class="localvar">from</a>, to-&gt;ci-&gt;top.p - to-&gt;top.p &gt;= n, &quot;stack overflow&quot;);
+<a href="../h_aa/57432488.htm" class=function>lua_yieldk</a>                                       ldo.c
+   877 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57857148.htm" class="localvar">L</a>, nresults);
+   888 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57857148.htm" class="localvar">L</a>, nresults == 0, &quot;hooks cannot yield values&quot;);
+   889 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57857148.htm" class="localvar">L</a>, k == NULL, &quot;hooks cannot continue after yielding&quot;);
+<a href="../h_aa/57868300.htm" class=function>precallC</a>                                         ldo.c
+   531 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57868164.htm" class="localvar">L</a>, n);
+<a href="../h_aa/57859324.htm" class=function>resume</a>                                           ldo.c
+   803 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57859188.htm" class="localvar">L</a>, n);
+<a href="../h_aa/57860140.htm" class=function>resume_error</a>                                     ldo.c
+   772 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57860004.htm" class="localvar">L</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use luai_apicheck</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

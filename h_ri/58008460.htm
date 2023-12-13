@@ -1,0 +1,64 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">LHS_assign::</a>v</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58008460.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/58008460.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/58008460.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/58008460.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/58008460.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/58008392.htm" class=function>check_conflict</a>                                   lparser.c
+  1340 :    <a href="../h_src/58008120.htm" class="localvar">lh</a>-&gt;<a href="../h_src/58008460.htm" class="variable">v</a>.<a href="../h_src/57680744.htm" class="variable">k</a> = <a href="../h_src/57681696.htm" class="variable">VINDEXSTR</a>;
+  1341 :    <a href="../h_src/58008120.htm" class="localvar">lh</a>-&gt;<a href="../h_src/58008460.htm" class="variable">v</a>.<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680200.htm" class="variable">t</a> = <a href="../h_src/58007712.htm" class="localvar">extra</a>;  <a  class="comments">/* assignment will use safe copy */</a>
+  1347 :    <a href="../h_src/58008120.htm" class="localvar">lh</a>-&gt;<a href="../h_src/58008460.htm" class="variable">v</a>.<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680200.htm" class="variable">t</a> = <a href="../h_src/58007712.htm" class="localvar">extra</a>;  <a  class="comments">/* assignment will use safe copy */</a>
+  1353 :    <a href="../h_src/58008120.htm" class="localvar">lh</a>-&gt;<a href="../h_src/58008460.htm" class="variable">v</a>.<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680268.htm" class="variable">idx</a> = <a href="../h_src/58007712.htm" class="localvar">extra</a>;  <a  class="comments">/* previous assignment will use safe copy */</a>
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/58008392.htm" class=function>check_conflict</a>                                   lparser.c
+  1336 :    if (<a href="../h_src/57681016.htm" class="macro">vkisindexed</a>(<a href="../h_src/58008120.htm" class="localvar">lh</a>-&gt;<a href="../h_src/58008460.htm" class="variable">v</a>.<a href="../h_src/57680744.htm" class="variable">k</a>)) {  <a  class="comments">/* assignment to table field? */</a>
+  1337 :    if (<a href="../h_src/58008120.htm" class="localvar">lh</a>-&gt;<a href="../h_src/58008460.htm" class="variable">v</a>.<a href="../h_src/57680744.htm" class="variable">k</a> == <a href="../h_src/57681832.htm" class="variable">VINDEXUP</a>) {  <a  class="comments">/* is table an upvalue? */</a>
+  1338 :    if (<a href="../h_src/58007984.htm" class="localvar">v</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a> == <a href="../h_src/57682036.htm" class="variable">VUPVAL</a> &amp;&amp; <a href="../h_src/58008120.htm" class="localvar">lh</a>-&gt;<a href="../h_src/58008460.htm" class="variable">v</a>.<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680200.htm" class="variable">t</a> == <a href="../h_src/58007984.htm" class="localvar">v</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a>) {
+  1345 :    if (<a href="../h_src/58007984.htm" class="localvar">v</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a> == <a href="../h_src/57682104.htm" class="variable">VLOCAL</a> &amp;&amp; <a href="../h_src/58008120.htm" class="localvar">lh</a>-&gt;<a href="../h_src/58008460.htm" class="variable">v</a>.<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680200.htm" class="variable">t</a> == <a href="../h_src/58007984.htm" class="localvar">v</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57679724.htm" class="variable">var</a>.<a href="../h_src/57679928.htm" class="variable">ridx</a>) {
+  1350 :    if (<a href="../h_src/58008120.htm" class="localvar">lh</a>-&gt;<a href="../h_src/58008460.htm" class="variable">v</a>.<a href="../h_src/57680744.htm" class="variable">k</a> == <a href="../h_src/57681900.htm" class="variable">VINDEXED</a> &amp;&amp; <a href="../h_src/58007984.htm" class="localvar">v</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a> == <a href="../h_src/57682104.htm" class="variable">VLOCAL</a> &amp;&amp;
+  1351 :    <a href="../h_src/58008120.htm" class="localvar">lh</a>-&gt;<a href="../h_src/58008460.htm" class="variable">v</a>.<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680268.htm" class="variable">idx</a> == <a href="../h_src/58007984.htm" class="localvar">v</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57679724.htm" class="variable">var</a>.<a href="../h_src/57679928.htm" class="variable">ridx</a>) {
+<a href="../h_aa/57989556.htm" class=function>exprstat</a>                                         lparser.c
+  1799 :    <a href="../h_src/58013628.htm" class="function">suffixedexp</a>(<a href="../h_src/57989420.htm" class="localvar">ls</a>, &amp;<a href="../h_src/57989148.htm" class="localvar">v</a>.<a href="../h_src/58008460.htm" class="variable">v</a>);
+  1806 :    <a href="../h_src/58052116.htm" class="macro">check_condition</a>(<a href="../h_src/57989420.htm" class="localvar">ls</a>, <a href="../h_src/57989148.htm" class="localvar">v</a>.<a href="../h_src/58008460.htm" class="variable">v</a>.<a href="../h_src/57680744.htm" class="variable">k</a> == <a href="../h_src/57681492.htm" class="variable">VCALL</a>, &quot;syntax error&quot;);
+  1807 :    <a href="../h_src/57989012.htm" class="localvar">inst</a> = &amp;<a href="../h_src/57671700.htm" class="macro">getinstruction</a>(<a href="../h_src/57989284.htm" class="localvar">fs</a>, &amp;<a href="../h_src/57989148.htm" class="localvar">v</a>.<a href="../h_src/58008460.htm" class="variable">v</a>);
+<a href="../h_aa/58007440.htm" class=function>restassign</a>                                       lparser.c
+  1377 :    <a href="../h_src/58052116.htm" class="macro">check_condition</a>(<a href="../h_src/58007304.htm" class="localvar">ls</a>, <a href="../h_src/57681152.htm" class="macro">vkisvar</a>(<a href="../h_src/58007168.htm" class="localvar">lh</a>-&gt;<a href="../h_src/58008460.htm" class="variable">v</a>.<a href="../h_src/57680744.htm" class="variable">k</a>), &quot;syntax error&quot;);
+  1378 :    <a href="../h_src/58045316.htm" class="function">check_readonly</a>(<a href="../h_src/58007304.htm" class="localvar">ls</a>, &amp;<a href="../h_src/58007168.htm" class="localvar">lh</a>-&gt;<a href="../h_src/58008460.htm" class="variable">v</a>);
+  1382 :    <a href="../h_src/58013628.htm" class="function">suffixedexp</a>(<a href="../h_src/58007304.htm" class="localvar">ls</a>, &amp;<a href="../h_src/58006760.htm" class="localvar">nv</a>.<a href="../h_src/58008460.htm" class="variable">v</a>);
+  1383 :    if (!<a href="../h_src/57681016.htm" class="macro">vkisindexed</a>(<a href="../h_src/58006760.htm" class="localvar">nv</a>.<a href="../h_src/58008460.htm" class="variable">v</a>.<a href="../h_src/57680744.htm" class="variable">k</a>))
+  1384 :    <a href="../h_src/58008392.htm" class="function">check_conflict</a>(<a href="../h_src/58007304.htm" class="localvar">ls</a>, <a href="../h_src/58007168.htm" class="localvar">lh</a>, &amp;<a href="../h_src/58006760.htm" class="localvar">nv</a>.<a href="../h_src/58008460.htm" class="variable">v</a>);
+  1397 :    <a href="../h_src/57669796.htm" class="function">luaK_storevar</a>(<a href="../h_src/58007304.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>, &amp;<a href="../h_src/58007168.htm" class="localvar">lh</a>-&gt;<a href="../h_src/58008460.htm" class="variable">v</a>, &amp;<a href="../h_src/58006896.htm" class="localvar">e</a>);
+  1402 :    <a href="../h_src/57669796.htm" class="function">luaK_storevar</a>(<a href="../h_src/58007304.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>, &amp;<a href="../h_src/58007168.htm" class="localvar">lh</a>-&gt;<a href="../h_src/58008460.htm" class="variable">v</a>, &amp;<a href="../h_src/58006896.htm" class="localvar">e</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable v</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

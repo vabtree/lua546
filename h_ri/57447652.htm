@@ -1,0 +1,129 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>LUAI_MAXSTACK</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57447652.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57447652.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57447652.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57447652.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/143264808.htm" class=file>liolib.c</a>
+   813 :    lua_setfield(L, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, k);  <a  class="comments">/* add file to registry */</a>
+<a href="../h_aa/143208980.htm" class=function>addtoclib</a>                                        loadlib.c
+   350 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143208844.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/143215848.htm" class="variable">CLIBS</a>);
+<a href="../h_aa/143209524.htm" class=function>checkclib</a>                                        loadlib.c
+   337 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143209388.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/143215848.htm" class="variable">CLIBS</a>);
+<a href="../h_aa/143196536.htm" class=function>createclibstable</a>                                 loadlib.c
+   736 :    <a href="../h_src/57417732.htm" class="function">luaL_getsubtable</a>(<a href="../h_src/143196400.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/143215848.htm" class="variable">CLIBS</a>);  <a  class="comments">/* create CLIBS table */</a>
+<a href="../h_aa/143267732.htm" class=function>db_gethook</a>                                       ldblib.c
+   408 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143267596.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/58286720.htm" class="variable">HOOKKEY</a>);
+<a href="../h_aa/58286108.htm" class=function>db_getregistry</a>                                   ldblib.c
+    42 :    <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/58285972.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>);
+<a href="../h_aa/143268820.htm" class=function>db_sethook</a>                                       ldblib.c
+   379 :    if (!<a href="../h_src/57417732.htm" class="function">luaL_getsubtable</a>(<a href="../h_src/143268684.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/58286720.htm" class="variable">HOOKKEY</a>)) {
+<a href="../h_aa/143202996.htm" class=function>findfile</a>                                         loadlib.c
+   526 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143202860.htm" class="localvar">L</a>, <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(1), <a href="../h_src/143202588.htm" class="localvar">pname</a>);
+<a href="../h_aa/143198372.htm" class=function>findloader</a>                                       loadlib.c
+   628 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(1), &quot;searchers&quot;)
+<a href="../h_aa/143253112.htm" class=function>g_iofile</a>                                         liolib.c
+   327 :    <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/143252976.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/143252840.htm" class="localvar">f</a>);
+   330 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143252976.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/143252840.htm" class="localvar">f</a>);
+<a href="../h_aa/143253588.htm" class=function>getiofile</a>                                        liolib.c
+   310 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143253520.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/143253384.htm" class="localvar">findex</a>);
+<a href="../h_aa/143308464.htm" class=function>gmatch_aux</a>                                       lstrlib.c
+   839 :    <a href="../h_src/143308532.htm" class="type">GMatchState</a> *<a href="../h_src/143308124.htm" class="localvar">gm</a> = (<a href="../h_src/143308532.htm" class="type">GMatchState</a> *)<a href="../h_src/57437996.htm" class="function">lua_touserdata</a>(<a href="../h_src/143308328.htm" class="localvar">L</a>, <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(3));
+<a href="../h_aa/143270452.htm" class=function>hookf</a>                                            ldblib.c
+   326 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143270316.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/58286720.htm" class="variable">HOOKKEY</a>);
+<a href="../h_aa/57609100.htm" class=function>index2stack</a>                                      lapi.c
+   105 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57608964.htm" class="localvar">L</a>, !<a href="../h_src/57610324.htm" class="macro">ispseudo</a>(idx), &quot;invalid index&quot;);
+<a href="../h_aa/57610052.htm" class=function>index2value</a>                                      lapi.c
+    68 :    else if (!<a href="../h_src/57610324.htm" class="macro">ispseudo</a>(<a href="../h_src/57609780.htm" class="localvar">idx</a>)) {  <a  class="comments">/* negative index */</a>
+    73 :    else if (<a href="../h_src/57609780.htm" class="localvar">idx</a> == <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>)
+    76 :    <a href="../h_src/57609780.htm" class="localvar">idx</a> = <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a> - <a href="../h_src/57609780.htm" class="localvar">idx</a>;
+<a href="../h_aa/143258416.htm" class=function>io_close</a>                                         liolib.c
+   230 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143258280.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/143261340.htm" class="macro">IO_OUTPUT</a>);  <a  class="comments">/* use default output */</a>
+<a href="../h_aa/143250800.htm" class=function>io_lines</a>                                         liolib.c
+   390 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143250664.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/143261476.htm" class="macro">IO_INPUT</a>);  <a  class="comments">/* get default input */</a>
+<a href="../h_aa/143251888.htm" class=function>io_readline</a>                                      liolib.c
+   630 :    <a href="../h_src/143261204.htm" class="type">LStream</a> *<a href="../h_src/143246652.htm" class="localvar">p</a> = (<a href="../h_src/143261204.htm" class="type">LStream</a> *)<a href="../h_src/57437996.htm" class="function">lua_touserdata</a>(<a href="../h_src/143246788.htm" class="localvar">L</a>, <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(1));
+   632 :    int <a href="../h_src/143246380.htm" class="localvar">n</a> = (int)<a href="../h_src/57429428.htm" class="macro">lua_tointeger</a>(<a href="../h_src/143246788.htm" class="localvar">L</a>, <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(2));
+   638 :    <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/143246788.htm" class="localvar">L</a>, <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(3 + <a href="../h_src/143246516.htm" class="localvar">i</a>));
+   648 :    if (<a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/143246788.htm" class="localvar">L</a>, <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(3))) {  <a  class="comments">/* generator created file? */</a>
+   650 :    <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/143246788.htm" class="localvar">L</a>, <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(1));  <a  class="comments">/* push file at index 1 */</a>
+<a href="../h_aa/143197692.htm" class=function>ll_require</a>                                       loadlib.c
+   660 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143197556.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/57421540.htm" class="macro">LUA_LOADED_TABLE</a>);
+<a href="../h_aa/57439424.htm" class=function>lua_absindex</a>                                     lapi.c
+   170 :    return (<a href="../h_src/57606312.htm" class="localvar">idx</a> &gt; 0 || <a href="../h_src/57610324.htm" class="macro">ispseudo</a>(<a href="../h_src/57606312.htm" class="localvar">idx</a>))
+<a href="../h_aa/57439084.htm" class=function>lua_copy</a>                                         lapi.c
+   262 :    if (<a href="../h_src/57610188.htm" class="macro">isupvalue</a>(<a href="../h_src/57602232.htm" class="localvar">toidx</a>))  <a  class="comments">/* function upvalue? */</a>
+<a href="../h_aa/58291820.htm" class=function>luaB_auxwrap</a>                                     lcorolib.c
+    74 :    <a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58291548.htm" class="localvar">co</a> = <a href="../h_src/57437928.htm" class="function">lua_tothread</a>(<a href="../h_src/58291684.htm" class="localvar">L</a>, <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(1));
+<a href="../h_aa/57632764.htm" class=function>luaD_growstack</a>                                   ldo.c
+   244 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57877684.htm" class="localvar">size</a> &gt; <a href="../h_src/57447652.htm" class="macro">LUAI_MAXSTACK</a>)) {
+   248 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57652416.htm" class="macro">stacksize</a>(L) == <a href="../h_src/57879180.htm" class="macro">ERRORSTACKSIZE</a>);
+   253 :    else if (<a href="../h_src/57877956.htm" class="localvar">n</a> &lt; <a href="../h_src/57447652.htm" class="macro">LUAI_MAXSTACK</a>) {  <a  class="comments">/* avoids arithmetic overflows */</a>
+   256 :    if (<a href="../h_src/57877548.htm" class="localvar">newsize</a> &gt; <a href="../h_src/57447652.htm" class="macro">LUAI_MAXSTACK</a>)  <a  class="comments">/* cannot cross the limit */</a>
+   257 :    <a href="../h_src/57877548.htm" class="localvar">newsize</a> = <a href="../h_src/57447652.htm" class="macro">LUAI_MAXSTACK</a>;
+   260 :    if (<a href="../h_src/57551704.htm" class="macro">l_likely</a>(<a href="../h_src/57877548.htm" class="localvar">newsize</a> &lt;= <a href="../h_src/57447652.htm" class="macro">LUAI_MAXSTACK</a>))
+   265 :    <a href="../h_src/57632832.htm" class="function">luaD_reallocstack</a>(<a href="../h_src/57878092.htm" class="localvar">L</a>, <a href="../h_src/57879180.htm" class="macro">ERRORSTACKSIZE</a>, <a href="../h_src/57877820.htm" class="localvar">raiseerror</a>);
+<a href="../h_aa/57632832.htm" class=function>luaD_reallocstack</a>                                ldo.c
+   217 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(newsize &lt;= <a href="../h_src/57447652.htm" class="macro">LUAI_MAXSTACK</a> || newsize == <a href="../h_src/57879180.htm" class="macro">ERRORSTACKSIZE</a>);
+<a href="../h_aa/57632696.htm" class=function>luaD_shrinkstack</a>                                 ldo.c
+   302 :    int <a href="../h_src/57876324.htm" class="localvar">max</a> = (<a href="../h_src/57876460.htm" class="localvar">inuse</a> &gt; <a href="../h_src/57447652.htm" class="macro">LUAI_MAXSTACK</a> / 3) ? <a href="../h_src/57447652.htm" class="macro">LUAI_MAXSTACK</a> : <a href="../h_src/57876460.htm" class="localvar">inuse</a> * 3;
+   305 :    if (<a href="../h_src/57876460.htm" class="localvar">inuse</a> &lt;= <a href="../h_src/57447652.htm" class="macro">LUAI_MAXSTACK</a> &amp;&amp; <a href="../h_src/57652416.htm" class="macro">stacksize</a>(<a href="../h_src/57876596.htm" class="localvar">L</a>) &gt; <a href="../h_src/57876324.htm" class="localvar">max</a>) {
+   306 :    int <a href="../h_src/57876188.htm" class="localvar">nsize</a> = (<a href="../h_src/57876460.htm" class="localvar">inuse</a> &gt; <a href="../h_src/57447652.htm" class="macro">LUAI_MAXSTACK</a> / 2) ? <a href="../h_src/57447652.htm" class="macro">LUAI_MAXSTACK</a> : <a href="../h_src/57876460.htm" class="localvar">inuse</a> * 2;
+<a href="../h_aa/57419636.htm" class=function>luaL_newmetatable</a>                                lauxlib.c
+   312 :    if (<a href="../h_src/57416304.htm" class="macro">luaL_getmetatable</a>(<a href="../h_src/58342684.htm" class="localvar">L</a>, <a href="../h_src/58342548.htm" class="localvar">tname</a>) != <a href="../h_src/57444048.htm" class="macro">LUA_TNIL</a>)  <a  class="comments">/* name already in use? */</a>
+   319 :    <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/58342684.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/58342548.htm" class="localvar">tname</a>);  <a  class="comments">/* registry.name = metatable */</a>
+<a href="../h_aa/57417596.htm" class=function>luaL_requiref</a>                                    lauxlib.c
+   976 :    <a href="../h_src/57417732.htm" class="function">luaL_getsubtable</a>(<a href="../h_src/58318816.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/57421540.htm" class="macro">LUA_LOADED_TABLE</a>);
+<a href="../h_aa/57419568.htm" class=function>luaL_setmetatable</a>                                lauxlib.c
+   325 :    <a href="../h_src/57416304.htm" class="macro">luaL_getmetatable</a>(<a href="../h_src/58342412.htm" class="localvar">L</a>, <a href="../h_src/58342276.htm" class="localvar">tname</a>);
+<a href="../h_aa/57419500.htm" class=function>luaL_testudata</a>                                   lauxlib.c
+   334 :    <a href="../h_src/57416304.htm" class="macro">luaL_getmetatable</a>(<a href="../h_src/58342140.htm" class="localvar">L</a>, <a href="../h_src/58341868.htm" class="localvar">tname</a>);  <a  class="comments">/* get correct metatable */</a>
+<a href="../h_aa/57410456.htm" class=function>luaopen_base</a>                                     lbaselib.c
+   539 :    <a href="../h_src/57427524.htm" class="macro">lua_pushglobaltable</a>(<a href="../h_src/58294064.htm" class="localvar">L</a>);
+<a href="../h_aa/57573804.htm" class=function>luaopen_package</a>                                  loadlib.c
+   756 :    <a href="../h_src/57417732.htm" class="function">luaL_getsubtable</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/57421540.htm" class="macro">LUA_LOADED_TABLE</a>);
+   759 :    <a href="../h_src/57417732.htm" class="function">luaL_getsubtable</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/57421404.htm" class="macro">LUA_PRELOAD_TABLE</a>);
+   761 :    <a href="../h_src/57427524.htm" class="macro">lua_pushglobaltable</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>);
+<a href="../h_aa/143223940.htm" class=function>math_random</a>                                      lmathlib.c
+   560 :    <a href="../h_src/143224552.htm" class="type">RanState</a> *<a href="../h_src/143223260.htm" class="localvar">state</a> = (<a href="../h_src/143224552.htm" class="type">RanState</a> *)<a href="../h_src/57437996.htm" class="function">lua_touserdata</a>(<a href="../h_src/143223804.htm" class="localvar">L</a>, <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(1));
+<a href="../h_aa/143221424.htm" class=function>math_randomseed</a>                                  lmathlib.c
+   619 :    <a href="../h_src/143224552.htm" class="type">RanState</a> *<a href="../h_src/143221152.htm" class="localvar">state</a> = (<a href="../h_src/143224552.htm" class="type">RanState</a> *)<a href="../h_src/57437996.htm" class="function">lua_touserdata</a>(<a href="../h_src/143221288.htm" class="localvar">L</a>, <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(1));
+<a href="../h_aa/143211292.htm" class=function>noenv</a>                                            loadlib.c
+   287 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143211156.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, &quot;LUA_NOENV&quot;);
+<a href="../h_aa/57554016.htm" class=function>pmain</a>                                            lua.c
+   632 :    <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, &quot;LUA_NOENV&quot;);
+<a href="../h_aa/58349892.htm" class=function>pushglobalfuncname</a>                               lauxlib.c
+    82 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/58349756.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/57421540.htm" class="macro">LUA_LOADED_TABLE</a>);
+<a href="../h_aa/143198780.htm" class=function>searcher_preload</a>                                 loadlib.c
+   612 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143198644.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/57421404.htm" class="macro">LUA_PRELOAD_TABLE</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use LUAI_MAXSTACK</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

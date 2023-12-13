@@ -1,0 +1,44 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>ci</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57862180.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57862180.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57862180.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57862180.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57862452.htm" class=function>finishpcallk</a>                                     ldo.c
+   676 :    int <a href="../h_src/57862044.htm" class="localvar">status</a> = <a href="../h_src/57647724.htm" class="macro">getcistrecst</a>(<a href="../h_src/57862180.htm" class="localvar">ci</a>);  <a  class="comments">/* get original status */</a>
+   680 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57861908.htm" class="localvar">func</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57862316.htm" class="localvar">L</a>, <a href="../h_src/57862180.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649560.htm" class="variable">u2</a>.<a href="../h_src/57650172.htm" class="variable">funcidx</a>);
+   681 :    <a href="../h_src/57862316.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642760.htm" class="variable">allowhook</a> = <a href="../h_src/57647044.htm" class="macro">getoah</a>(<a href="../h_src/57862180.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a>);  <a  class="comments">/* restore 'allowhook' */</a>
+   685 :    <a href="../h_src/57647588.htm" class="macro">setcistrecst</a>(<a href="../h_src/57862180.htm" class="localvar">ci</a>, <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>);  <a  class="comments">/* clear original status */</a>
+   687 :    <a href="../h_src/57862180.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp;= ~<a href="../h_src/57648812.htm" class="macro">CIST_YPCALL</a>;
+   688 :    <a href="../h_src/57862316.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641604.htm" class="variable">errfunc</a> = <a href="../h_src/57862180.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650444.htm" class="variable">c</a>.<a href="../h_src/57650648.htm" class="variable">old_errfunc</a>;
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable ci</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

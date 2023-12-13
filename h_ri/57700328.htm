@@ -1,0 +1,74 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">LexState::</a>dyd</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57700328.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57700328.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57700328.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57700328.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57700328.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57674420.htm" class=function>luaY_parser</a>                                      lparser.c
+  1957 :    <a href="../h_src/57986292.htm" class="localvar">lexstate</a>.<a href="../h_src/57700328.htm" class="variable">dyd</a> = <a href="../h_src/57986700.htm" class="localvar">dyd</a>;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/58045316.htm" class=function>check_readonly</a>                                   lparser.c
+   282 :    <a href="../h_src/58044772.htm" class="localvar">varname</a> = <a href="../h_src/58045180.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700328.htm" class="variable">dyd</a>-&gt;<a href="../h_src/57676460.htm" class="variable">actvar</a>.<a href="../h_src/57676732.htm" class="variable">arr</a>[<a href="../h_src/58045044.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a>].<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678228.htm" class="variable">name</a>;
+<a href="../h_aa/57667348.htm" class=function>const2val</a>                                        lcode.c
+    76 :    return &amp;<a href="../h_src/57667212.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700328.htm" class="variable">dyd</a>-&gt;<a href="../h_src/57676460.htm" class="variable">actvar</a>.<a href="../h_src/57676732.htm" class="variable">arr</a>[<a href="../h_src/57667076.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a>].<a href="../h_src/57678024.htm" class="variable">k</a>;
+<a href="../h_aa/58030696.htm" class=function>createlabel</a>                                      lparser.c
+   611 :    <a href="../h_src/57676936.htm" class="type">Labellist</a> *<a href="../h_src/58029880.htm" class="localvar">ll</a> = &amp;<a href="../h_src/58030560.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700328.htm" class="variable">dyd</a>-&gt;<a href="../h_src/57676324.htm" class="variable">label</a>;
+<a href="../h_aa/58028792.htm" class=function>enterblock</a>                                       lparser.c
+   645 :    <a href="../h_src/58028520.htm" class="localvar">bl</a>-&gt;<a href="../h_src/58056264.htm" class="variable">firstlabel</a> = <a href="../h_src/58028656.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700328.htm" class="variable">dyd</a>-&gt;<a href="../h_src/57676324.htm" class="variable">label</a>.<a href="../h_src/57677072.htm" class="variable">n</a>;
+   646 :    <a href="../h_src/58028520.htm" class="localvar">bl</a>-&gt;<a href="../h_src/58056196.htm" class="variable">firstgoto</a> = <a href="../h_src/58028656.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700328.htm" class="variable">dyd</a>-&gt;<a href="../h_src/57676392.htm" class="variable">gt</a>.<a href="../h_src/57677072.htm" class="variable">n</a>;
+<a href="../h_aa/58033960.htm" class=function>findlabel</a>                                        lparser.c
+   546 :    <a href="../h_src/57676256.htm" class="type">Dyndata</a> *<a href="../h_src/58033416.htm" class="localvar">dyd</a> = <a href="../h_src/58033824.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700328.htm" class="variable">dyd</a>;
+<a href="../h_aa/58047628.htm" class=function>getlocalvardesc</a>                                  lparser.c
+   220 :    return &amp;<a href="../h_src/58047492.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700328.htm" class="variable">dyd</a>-&gt;<a href="../h_src/57676460.htm" class="variable">actvar</a>.<a href="../h_src/57676732.htm" class="variable">arr</a>[<a href="../h_src/58047492.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675100.htm" class="variable">firstlocal</a> + <a href="../h_src/58047356.htm" class="localvar">vidx</a>];
+<a href="../h_aa/58027704.htm" class=function>leaveblock</a>                                       lparser.c
+   684 :    <a href="../h_src/58027296.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700328.htm" class="variable">dyd</a>-&gt;<a href="../h_src/57676324.htm" class="variable">label</a>.<a href="../h_src/57677072.htm" class="variable">n</a> = <a href="../h_src/58027432.htm" class="localvar">bl</a>-&gt;<a href="../h_src/58056264.htm" class="variable">firstlabel</a>;  <a  class="comments">/* remove local labels */</a>
+   689 :    if (<a href="../h_src/58027432.htm" class="localvar">bl</a>-&gt;<a href="../h_src/58056196.htm" class="variable">firstgoto</a> &lt; <a href="../h_src/58027296.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700328.htm" class="variable">dyd</a>-&gt;<a href="../h_src/57676392.htm" class="variable">gt</a>.<a href="../h_src/57677072.htm" class="variable">n</a>)  <a  class="comments">/* still pending gotos? */</a>
+   690 :    <a href="../h_src/58028248.htm" class="function">undefgoto</a>(<a href="../h_src/58027296.htm" class="localvar">ls</a>, &amp;<a href="../h_src/58027296.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700328.htm" class="variable">dyd</a>-&gt;<a href="../h_src/57676392.htm" class="variable">gt</a>.<a href="../h_src/57677140.htm" class="variable">arr</a>[<a href="../h_src/58027432.htm" class="localvar">bl</a>-&gt;<a href="../h_src/58056196.htm" class="variable">firstgoto</a>]);  <a  class="comments">/* error */</a>
+<a href="../h_aa/58029608.htm" class=function>movegotosout</a>                                     lparser.c
+   630 :    <a href="../h_src/57676936.htm" class="type">Labellist</a> *<a href="../h_src/58029064.htm" class="localvar">gl</a> = &amp;<a href="../h_src/58029472.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700328.htm" class="variable">dyd</a>-&gt;<a href="../h_src/57676392.htm" class="variable">gt</a>;
+<a href="../h_aa/58048716.htm" class=function>new_localvar</a>                                     lparser.c
+   196 :    <a href="../h_src/57676256.htm" class="type">Dyndata</a> *<a href="../h_src/58048036.htm" class="localvar">dyd</a> = <a href="../h_src/58048580.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700328.htm" class="variable">dyd</a>;
+<a href="../h_aa/58032192.htm" class=function>newgotoentry</a>                                     lparser.c
+   576 :    return <a href="../h_src/58033144.htm" class="function">newlabelentry</a>(<a href="../h_src/58032056.htm" class="localvar">ls</a>, &amp;<a href="../h_src/58032056.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700328.htm" class="variable">dyd</a>-&gt;<a href="../h_src/57676392.htm" class="variable">gt</a>, <a href="../h_src/58031920.htm" class="localvar">name</a>, <a href="../h_src/58031784.htm" class="localvar">line</a>, <a href="../h_src/58031648.htm" class="localvar">pc</a>);
+<a href="../h_aa/58025392.htm" class=function>open_func</a>                                        lparser.c
+   746 :    <a href="../h_src/58025120.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675100.htm" class="variable">firstlocal</a> = <a href="../h_src/58025256.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700328.htm" class="variable">dyd</a>-&gt;<a href="../h_src/57676460.htm" class="variable">actvar</a>.<a href="../h_src/57676664.htm" class="variable">n</a>;
+   747 :    <a href="../h_src/58025120.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675032.htm" class="variable">firstlabel</a> = <a href="../h_src/58025256.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700328.htm" class="variable">dyd</a>-&gt;<a href="../h_src/57676324.htm" class="variable">label</a>.<a href="../h_src/57677072.htm" class="variable">n</a>;
+<a href="../h_aa/58043140.htm" class=function>removevars</a>                                       lparser.c
+   329 :    <a href="../h_src/58043004.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700328.htm" class="variable">dyd</a>-&gt;<a href="../h_src/57676460.htm" class="variable">actvar</a>.<a href="../h_src/57676664.htm" class="variable">n</a> -= (<a href="../h_src/58043004.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674896.htm" class="variable">nactvar</a> - <a href="../h_src/58042868.htm" class="localvar">tolevel</a>);
+<a href="../h_aa/58034980.htm" class=function>solvegoto</a>                                        lparser.c
+   529 :    <a href="../h_src/57676936.htm" class="type">Labellist</a> *<a href="../h_src/58034232.htm" class="localvar">gl</a> = &amp;<a href="../h_src/58034844.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700328.htm" class="variable">dyd</a>-&gt;<a href="../h_src/57676392.htm" class="variable">gt</a>;  <a  class="comments">/* list of gotos */</a>
+<a href="../h_aa/58031512.htm" class=function>solvegotos</a>                                       lparser.c
+   586 :    <a href="../h_src/57676936.htm" class="type">Labellist</a> *<a href="../h_src/58031104.htm" class="localvar">gl</a> = &amp;<a href="../h_src/58031376.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700328.htm" class="variable">dyd</a>-&gt;<a href="../h_src/57676392.htm" class="variable">gt</a>;
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable dyd</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

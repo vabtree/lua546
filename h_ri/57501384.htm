@@ -1,0 +1,78 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaO_pushfstring</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57501384.htm" class="function" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57501384.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57501384.htm" class="function" target="_self">Flow Chart</a></li>
+<li><a href="../h_src/57501384.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57501384.htm" class="function" target="_self">Called By</a></li>
+<li><a href="../h_rx/57501384.htm" class="function" target="_self">Call Tree</a></li>
+<li><a href="../h_ro/57501384.htm" class="function" target="_self">Calls and Uses</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/58051980.htm" class=function>check_match</a>                                      lparser.c
+   135 :    <a href="../h_src/57699648.htm" class="function">luaX_syntaxerror</a>(<a href="../h_src/58051844.htm" class="localvar">ls</a>, <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/58051844.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>,
+<a href="../h_aa/58045316.htm" class=function>check_readonly</a>                                   lparser.c
+   301 :    const char *<a href="../h_src/58044364.htm" class="localvar">msg</a> = <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/58045180.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>,
+<a href="../h_aa/57853000.htm" class=function>checkmode</a>                                        ldo.c
+   981 :    <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/57852864.htm" class="localvar">L</a>,
+<a href="../h_aa/58004720.htm" class=function>checkrepeated</a>                                    lparser.c
+  1452 :    <a href="../h_src/58004176.htm" class="localvar">msg</a> = <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/58004584.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/58004176.htm" class="localvar">msg</a>, <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58004448.htm" class="localvar">name</a>), <a href="../h_src/58004312.htm" class="localvar">lb</a>-&gt;<a href="../h_src/57677616.htm" class="variable">line</a>);
+<a href="../h_aa/58074868.htm" class=function>error</a>                                            lundump.c
+    41 :    <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/58074664.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, &quot;%s: bad binary format (%s)&quot;, <a href="../h_src/58074664.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075072.htm" class="variable">name</a>, <a href="../h_src/58074528.htm" class="localvar">why</a>);
+<a href="../h_aa/58055516.htm" class=function>error_expected</a>                                   lparser.c
+    70 :    <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/58055380.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, &quot;%s expected&quot;, <a href="../h_src/57699580.htm" class="function">luaX_token2str</a>(<a href="../h_src/58055380.htm" class="localvar">ls</a>, <a href="../h_src/58055244.htm" class="localvar">token</a>)));
+<a href="../h_aa/58055108.htm" class=function>errorlimit</a>                                       lparser.c
+    80 :    : <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/58054564.htm" class="localvar">L</a>, &quot;function at line %d&quot;, <a href="../h_src/58054292.htm" class="localvar">line</a>);
+    81 :    <a href="../h_src/58054428.htm" class="localvar">msg</a> = <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/58054564.htm" class="localvar">L</a>, &quot;too many %s (limit is %d) in %s&quot;,
+<a href="../h_aa/58063920.htm" class=function>fchecksize</a>                                       lundump.c
+   286 :    <a href="../h_src/58074868.htm" class="function">error</a>(<a href="../h_src/58063784.htm" class="localvar">S</a>, <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/58063784.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, &quot;%s size mismatch&quot;, <a href="../h_src/58063512.htm" class="localvar">tname</a>));
+<a href="../h_aa/57895364.htm" class=function>formatvarinfo</a>                                    ldebug.c
+   699 :    return <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/57895228.htm" class="localvar">L</a>, &quot; (%s '%s')&quot;, <a href="../h_src/57895092.htm" class="localvar">kind</a>, <a href="../h_src/57894956.htm" class="localvar">name</a>);
+<a href="../h_aa/57993092.htm" class=function>getlocalattribute</a>                                lparser.c
+  1712 :    <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/57992956.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, &quot;unknown attribute '%s'&quot;, <a href="../h_src/57992820.htm" class="localvar">attr</a>));
+<a href="../h_aa/58035660.htm" class=function>jumpscopeerror</a>                                   lparser.c
+   517 :    <a href="../h_src/58035116.htm" class="localvar">msg</a> = <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/58035524.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/58035116.htm" class="localvar">msg</a>, <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58035388.htm" class="localvar">gt</a>-&gt;<a href="../h_src/57677752.htm" class="variable">name</a>), <a href="../h_src/58035388.htm" class="localvar">gt</a>-&gt;<a href="../h_src/57677616.htm" class="variable">line</a>, <a href="../h_src/58035252.htm" class="localvar">varname</a>);
+<a href="../h_aa/57939876.htm" class=function>lexerror</a>                                         llex.c
+   114 :    <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/57937700.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, &quot;%s near %s&quot;, <a href="../h_src/57937564.htm" class="localvar">msg</a>, <a href="../h_src/57938108.htm" class="function">txtToken</a>(<a href="../h_src/57937700.htm" class="localvar">ls</a>, <a href="../h_src/57937428.htm" class="localvar">token</a>));
+<a href="../h_aa/57635212.htm" class=function>luaG_addinfo</a>                                     ldebug.c
+   805 :    return <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/57889244.htm" class="localvar">L</a>, &quot;%s:%d: %s&quot;, <a href="../h_src/57888700.htm" class="localvar">buff</a>, <a href="../h_src/57888836.htm" class="localvar">line</a>, <a href="../h_src/57889108.htm" class="localvar">msg</a>);
+<a href="../h_aa/57699580.htm" class=function>luaX_token2str</a>                                   llex.c
+    85 :    return <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/57938516.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, &quot;'%c'&quot;, <a href="../h_src/57938380.htm" class="localvar">token</a>);
+    87 :    return <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/57938516.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, &quot;'&lt;\\%d&gt;'&quot;, <a href="../h_src/57938380.htm" class="localvar">token</a>);
+    92 :    return <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/57938516.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, &quot;'%s'&quot;, <a href="../h_src/57938244.htm" class="localvar">s</a>);
+<a href="../h_aa/57932464.htm" class=function>read_long_string</a>                                 llex.c
+   289 :    const char *<a href="../h_src/57931648.htm" class="localvar">msg</a> = <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>,
+<a href="../h_aa/57938108.htm" class=function>txtToken</a>                                         llex.c
+   104 :    return <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/57937972.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, &quot;'%s'&quot;, <a href="../h_src/57655340.htm" class="macro">luaZ_buffer</a>(<a href="../h_src/57937972.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>));
+<a href="../h_aa/58028248.htm" class=function>undefgoto</a>                                        lparser.c
+   662 :    <a href="../h_src/58027840.htm" class="localvar">msg</a> = <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/58028112.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/58027840.htm" class="localvar">msg</a>, <a href="../h_src/58027976.htm" class="localvar">gt</a>-&gt;<a href="../h_src/57677616.htm" class="variable">line</a>);
+   666 :    <a href="../h_src/58027840.htm" class="localvar">msg</a> = <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/58028112.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/58027840.htm" class="localvar">msg</a>, <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58027976.htm" class="localvar">gt</a>-&gt;<a href="../h_src/57677752.htm" class="variable">name</a>), <a href="../h_src/58027976.htm" class="localvar">gt</a>-&gt;<a href="../h_src/57677616.htm" class="variable">line</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use luaO_pushfstring</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

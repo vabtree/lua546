@@ -1,0 +1,61 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaL_optstring</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57416848.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57416848.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57416848.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57416848.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/58281756.htm" class=function>db_getinfo</a>                                       ldblib.c
+   153 :    const char *<a href="../h_src/143275892.htm" class="localvar">options</a> = <a href="../h_src/57416848.htm" class="macro">luaL_optstring</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, <a href="../h_src/143276164.htm" class="localvar">arg</a>+2, &quot;flnSrtu&quot;);
+<a href="../h_aa/143256104.htm" class=function>io_open</a>                                          liolib.c
+   271 :    const char *<a href="../h_src/143255696.htm" class="localvar">mode</a> = <a href="../h_src/57416848.htm" class="macro">luaL_optstring</a>(<a href="../h_src/143255968.htm" class="localvar">L</a>, 2, &quot;r&quot;);
+<a href="../h_aa/143254812.htm" class=function>io_popen</a>                                         liolib.c
+   292 :    const char *<a href="../h_src/143254404.htm" class="localvar">mode</a> = <a href="../h_src/57416848.htm" class="macro">luaL_optstring</a>(<a href="../h_src/143254676.htm" class="localvar">L</a>, 2, &quot;r&quot;);
+<a href="../h_aa/143203404.htm" class=function>ll_searchpath</a>                                    loadlib.c
+   511 :    <a href="../h_src/57416848.htm" class="macro">luaL_optstring</a>(<a href="../h_src/143203268.htm" class="localvar">L</a>, 3, &quot;.&quot;),
+   512 :    <a href="../h_src/57416848.htm" class="macro">luaL_optstring</a>(<a href="../h_src/143203268.htm" class="localvar">L</a>, 4, <a href="../h_src/57454996.htm" class="macro">LUA_DIRSEP</a>));
+<a href="../h_aa/58297124.htm" class=function>luaB_dofile</a>                                      lbaselib.c
+   416 :    const char *<a href="../h_src/58296852.htm" class="localvar">fname</a> = <a href="../h_src/57416848.htm" class="macro">luaL_optstring</a>(<a href="../h_src/58296988.htm" class="localvar">L</a>, 1, NULL);
+<a href="../h_aa/58298892.htm" class=function>luaB_load</a>                                        lbaselib.c
+   391 :    const char *<a href="../h_src/58298212.htm" class="localvar">mode</a> = <a href="../h_src/57416848.htm" class="macro">luaL_optstring</a>(<a href="../h_src/58298756.htm" class="localvar">L</a>, 3, &quot;bt&quot;);
+   394 :    const char *<a href="../h_src/58297940.htm" class="localvar">chunkname</a> = <a href="../h_src/57416848.htm" class="macro">luaL_optstring</a>(<a href="../h_src/58298756.htm" class="localvar">L</a>, 2, <a href="../h_src/58298348.htm" class="localvar">s</a>);
+   398 :    const char *<a href="../h_src/58297804.htm" class="localvar">chunkname</a> = <a href="../h_src/57416848.htm" class="macro">luaL_optstring</a>(<a href="../h_src/58298756.htm" class="localvar">L</a>, 2, &quot;=(load)&quot;);
+<a href="../h_aa/58300388.htm" class=function>luaB_loadfile</a>                                    lbaselib.c
+   341 :    const char *<a href="../h_src/58300116.htm" class="localvar">fname</a> = <a href="../h_src/57416848.htm" class="macro">luaL_optstring</a>(<a href="../h_src/58300252.htm" class="localvar">L</a>, 1, NULL);
+   342 :    const char *<a href="../h_src/58299980.htm" class="localvar">mode</a> = <a href="../h_src/57416848.htm" class="macro">luaL_optstring</a>(<a href="../h_src/58300252.htm" class="localvar">L</a>, 2, NULL);
+<a href="../h_aa/57419228.htm" class=function>luaL_checkoption</a>                                 lauxlib.c
+   362 :    const char *<a href="../h_src/58340508.htm" class="localvar">name</a> = (<a href="../h_src/58340780.htm" class="localvar">def</a>) ? <a href="../h_src/57416848.htm" class="macro">luaL_optstring</a>(<a href="../h_src/58341052.htm" class="localvar">L</a>, <a href="../h_src/58340916.htm" class="localvar">arg</a>, <a href="../h_src/58340780.htm" class="localvar">def</a>) :
+<a href="../h_aa/143356948.htm" class=function>os_execute</a>                                       loslib.c
+   143 :    const char *<a href="../h_src/143356676.htm" class="localvar">cmd</a> = <a href="../h_src/57416848.htm" class="macro">luaL_optstring</a>(<a href="../h_src/143356812.htm" class="localvar">L</a>, 1, NULL);
+<a href="../h_aa/143345728.htm" class=function>os_setlocale</a>                                     loslib.c
+   385 :    const char *<a href="../h_src/143345184.htm" class="localvar">l</a> = <a href="../h_src/57416848.htm" class="macro">luaL_optstring</a>(<a href="../h_src/143345592.htm" class="localvar">L</a>, 1, NULL);
+</pre>
+<h4><a class="legend">Table lists functions that directly use luaL_optstring</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

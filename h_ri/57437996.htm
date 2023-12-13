@@ -1,0 +1,62 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lua_touserdata</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57437996.htm" class="function" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57437996.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57437996.htm" class="function" target="_self">Flow Chart</a></li>
+<li><a href="../h_src/57437996.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57437996.htm" class="function" target="_self">Called By</a></li>
+<li><a href="../h_rx/57437996.htm" class="function" target="_self">Call Tree</a></li>
+<li><a href="../h_ro/57437996.htm" class="function" target="_self">Calls and Uses</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/143209524.htm" class=function>checkclib</a>                                        loadlib.c
+   339 :    <a href="../h_src/143209116.htm" class="localvar">plib</a> = <a href="../h_src/57437996.htm" class="function">lua_touserdata</a>(<a href="../h_src/143209388.htm" class="localvar">L</a>, -1);  <a  class="comments">/* plib = CLIBS[path] */</a>
+<a href="../h_aa/143208436.htm" class=function>gctm</a>                                             loadlib.c
+   367 :    <a href="../h_src/143215440.htm" class="function">lsys_unloadlib</a>(<a href="../h_src/57437996.htm" class="function">lua_touserdata</a>(<a href="../h_src/143208300.htm" class="localvar">L</a>, -1));
+<a href="../h_aa/143253588.htm" class=function>getiofile</a>                                        liolib.c
+   311 :    <a href="../h_src/143253248.htm" class="localvar">p</a> = (<a href="../h_src/143261204.htm" class="type">LStream</a> *)<a href="../h_src/57437996.htm" class="function">lua_touserdata</a>(<a href="../h_src/143253520.htm" class="localvar">L</a>, -1);
+<a href="../h_aa/143308464.htm" class=function>gmatch_aux</a>                                       lstrlib.c
+   839 :    <a href="../h_src/143308532.htm" class="type">GMatchState</a> *<a href="../h_src/143308124.htm" class="localvar">gm</a> = (<a href="../h_src/143308532.htm" class="type">GMatchState</a> *)<a href="../h_src/57437996.htm" class="function">lua_touserdata</a>(<a href="../h_src/143308328.htm" class="localvar">L</a>, <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(3));
+<a href="../h_aa/143251888.htm" class=function>io_readline</a>                                      liolib.c
+   630 :    <a href="../h_src/143261204.htm" class="type">LStream</a> *<a href="../h_src/143246652.htm" class="localvar">p</a> = (<a href="../h_src/143261204.htm" class="type">LStream</a> *)<a href="../h_src/57437996.htm" class="function">lua_touserdata</a>(<a href="../h_src/143246788.htm" class="localvar">L</a>, <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(1));
+<a href="../h_aa/57419500.htm" class=function>luaL_testudata</a>                                   lauxlib.c
+   331 :    void *<a href="../h_src/58341732.htm" class="localvar">p</a> = <a href="../h_src/57437996.htm" class="function">lua_touserdata</a>(<a href="../h_src/58342140.htm" class="localvar">L</a>, <a href="../h_src/58342004.htm" class="localvar">ud</a>);
+<a href="../h_aa/143223940.htm" class=function>math_random</a>                                      lmathlib.c
+   560 :    <a href="../h_src/143224552.htm" class="type">RanState</a> *<a href="../h_src/143223260.htm" class="localvar">state</a> = (<a href="../h_src/143224552.htm" class="type">RanState</a> *)<a href="../h_src/57437996.htm" class="function">lua_touserdata</a>(<a href="../h_src/143223804.htm" class="localvar">L</a>, <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(1));
+<a href="../h_aa/143221424.htm" class=function>math_randomseed</a>                                  lmathlib.c
+   619 :    <a href="../h_src/143224552.htm" class="type">RanState</a> *<a href="../h_src/143221152.htm" class="localvar">state</a> = (<a href="../h_src/143224552.htm" class="type">RanState</a> *)<a href="../h_src/57437996.htm" class="function">lua_touserdata</a>(<a href="../h_src/143221288.htm" class="localvar">L</a>, <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(1));
+<a href="../h_aa/57554016.htm" class=function>pmain</a>                                            lua.c
+   619 :    char **<a href="../h_src/57553608.htm" class="localvar">argv</a> = (char **)<a href="../h_src/57437996.htm" class="function">lua_touserdata</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>, 2);
+<a href="../h_aa/143401936.htm" class=function>pmain</a>                                            luac.c
+   171 :    char** <a href="../h_src/143401528.htm" class="localvar">argv</a>=(char**)<a href="../h_src/57437996.htm" class="function">lua_touserdata</a>(<a href="../h_src/143401800.htm" class="localvar">L</a>,2);
+<a href="../h_aa/58335408.htm" class=function>resizebox</a>                                        lauxlib.c
+   476 :    <a href="../h_src/58335476.htm" class="type">UBox</a> *<a href="../h_src/58334524.htm" class="localvar">box</a> = (<a href="../h_src/58335476.htm" class="type">UBox</a> *)<a href="../h_src/57437996.htm" class="function">lua_touserdata</a>(<a href="../h_src/58335272.htm" class="localvar">L</a>, <a href="../h_src/58335136.htm" class="localvar">idx</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use lua_touserdata</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

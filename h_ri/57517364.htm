@@ -1,0 +1,71 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">Upvaldesc::</a>name</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57517364.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57517364.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57517364.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57517364.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57517364.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/58041916.htm" class=function>allocupvalue</a>                                     lparser.c
+   359 :    <a href="../h_src/58041644.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/58041508.htm" class="localvar">oldsize</a>++].<a href="../h_src/57517364.htm" class="variable">name</a> = NULL;
+<a href="../h_aa/58065824.htm" class=function>loadDebug</a>                                        lundump.c
+   254 :    <a href="../h_src/58065552.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/58065416.htm" class="localvar">i</a>].<a href="../h_src/57517364.htm" class="variable">name</a> = <a href="../h_src/58071128.htm" class="function">loadStringN</a>(<a href="../h_src/58065688.htm" class="localvar">S</a>, <a href="../h_src/58065552.htm" class="localvar">f</a>);
+<a href="../h_aa/58066504.htm" class=function>loadUpvalues</a>                                     lundump.c
+   218 :    <a href="../h_src/58066232.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/58066096.htm" class="localvar">i</a>].<a href="../h_src/57517364.htm" class="variable">name</a> = NULL;
+<a href="../h_aa/57987788.htm" class=function>mainfunc</a>                                         lparser.c
+  1933 :    <a href="../h_src/57987244.htm" class="localvar">env</a>-&gt;<a href="../h_src/57517364.htm" class="variable">name</a> = <a href="../h_src/57987652.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700192.htm" class="variable">envn</a>;
+<a href="../h_aa/58041372.htm" class=function>newupvalue</a>                                       lparser.c
+   379 :    <a href="../h_src/58040828.htm" class="localvar">up</a>-&gt;<a href="../h_src/57517364.htm" class="variable">name</a> = <a href="../h_src/58041100.htm" class="localvar">name</a>;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57713112.htm" class=function>aux_upvalue</a>                                      lapi.c
+  1376 :    <a href="../h_src/57712092.htm" class="localvar">name</a> = <a href="../h_src/57711956.htm" class="localvar">p</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/57712840.htm" class="localvar">n</a>-1].<a href="../h_src/57517364.htm" class="variable">name</a>;
+<a href="../h_aa/58045316.htm" class=function>check_readonly</a>                                   lparser.c
+   294 :    <a href="../h_src/58044772.htm" class="localvar">varname</a> = <a href="../h_src/58044500.htm" class="localvar">up</a>-&gt;<a href="../h_src/57517364.htm" class="variable">name</a>;
+<a href="../h_aa/57842664.htm" class=function>dumpDebug</a>                                        ldump.c
+   179 :    <a href="../h_src/57846200.htm" class="function">dumpString</a>(<a href="../h_src/57842528.htm" class="localvar">D</a>, <a href="../h_src/57842392.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/57842256.htm" class="localvar">i</a>].<a href="../h_src/57517364.htm" class="variable">name</a>);
+<a href="../h_aa/57987788.htm" class=function>mainfunc</a>                                         lparser.c
+  1934 :    <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/57987652.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/57987516.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57676052.htm" class="variable">f</a>, <a href="../h_src/57987244.htm" class="localvar">env</a>-&gt;<a href="../h_src/57517364.htm" class="variable">name</a>);
+<a href="../h_aa/143397312.htm" class=function>PrintCode</a>                                        luac.c
+   389 :    <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a> &quot;%s&quot;,<a href="../h_src/143400372.htm" class="macro">UPVALNAME</a>(<a href="../h_src/143396224.htm" class="localvar">b</a>));
+   393 :    <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a> &quot;%s&quot;,<a href="../h_src/143400372.htm" class="macro">UPVALNAME</a>(<a href="../h_src/143396224.htm" class="localvar">b</a>));
+   397 :    <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a> &quot;%s&quot;,<a href="../h_src/143400372.htm" class="macro">UPVALNAME</a>(<a href="../h_src/143396224.htm" class="localvar">b</a>));
+   412 :    <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a> &quot;%s&quot;,<a href="../h_src/143400372.htm" class="macro">UPVALNAME</a>(<a href="../h_src/143396360.htm" class="localvar">a</a>));
+<a href="../h_aa/143394320.htm" class=function>PrintDebug</a>                                       luac.c
+   712 :    <a href="../h_src/143394048.htm" class="localvar">i</a>,<a href="../h_src/143400372.htm" class="macro">UPVALNAME</a>(<a href="../h_src/143394048.htm" class="localvar">i</a>),<a href="../h_src/143394184.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/143394048.htm" class="localvar">i</a>].<a href="../h_src/57517296.htm" class="variable">instack</a>,<a href="../h_src/143394184.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/143394048.htm" class="localvar">i</a>].<a href="../h_src/57517228.htm" class="variable">idx</a>);
+<a href="../h_aa/58042596.htm" class=function>searchupvalue</a>                                    lparser.c
+   346 :    if (<a href="../h_src/58056468.htm" class="macro">eqstr</a>(<a href="../h_src/58042052.htm" class="localvar">up</a>[<a href="../h_src/58042188.htm" class="localvar">i</a>].<a href="../h_src/57517364.htm" class="variable">name</a>, <a href="../h_src/58042324.htm" class="localvar">name</a>)) return <a href="../h_src/58042188.htm" class="localvar">i</a>;
+<a href="../h_aa/57973604.htm" class=function>traverseproto</a>                                    lgc.c
+   584 :    <a href="../h_src/57826888.htm" class="macro">markobjectN</a>(<a href="../h_src/57973468.htm" class="localvar">g</a>, <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/57973196.htm" class="localvar">i</a>].<a href="../h_src/57517364.htm" class="variable">name</a>);
+<a href="../h_aa/57754904.htm" class=function>upvalname</a>                                        ldebug.c
+   178 :    <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/57754496.htm" class="localvar">s</a> = <a href="../h_src/57548712.htm" class="macro">check_exp</a>(uv &lt; p-&gt;sizeupvalues, <a href="../h_src/57754768.htm" class="localvar">p</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/57754632.htm" class="localvar">uv</a>].<a href="../h_src/57517364.htm" class="variable">name</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable name</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,105 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">LexState::</a>t</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57701416.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57701416.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57701416.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57701416.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57701416.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57668776.htm" class=function>luaK_semerror</a>                                    lcode.c
+    47 :    <a href="../h_src/57668300.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a> = 0;  <a  class="comments">/* remove &quot;near &lt;token&gt;&quot; from final message */</a>
+<a href="../h_aa/57699784.htm" class=function>luaX_next</a>                                        llex.c
+   568 :    <a href="../h_src/57927024.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a> = <a href="../h_src/57927024.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701348.htm" class="variable">lookahead</a>;  <a  class="comments">/* use this one */</a>
+   572 :    <a href="../h_src/57927024.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a> = <a href="../h_src/57927976.htm" class="function">llex</a>(<a href="../h_src/57927024.htm" class="localvar">ls</a>, &amp;<a href="../h_src/57927024.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701892.htm" class="variable">seminfo</a>);  <a  class="comments">/* read next token */</a>
+<a href="../h_aa/57699988.htm" class=function>luaX_setinput</a>                                    llex.c
+   169 :    <a href="../h_src/57935252.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a> = 0;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/58024032.htm" class=function>block_follow</a>                                     lparser.c
+   789 :    switch (<a href="../h_src/58023896.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a>) {
+<a href="../h_aa/58052932.htm" class=function>check</a>                                            lparser.c
+   108 :    if (<a href="../h_src/58052796.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a> != <a href="../h_src/58052660.htm" class="localvar">c</a>)
+<a href="../h_aa/58018932.htm" class=function>constructor</a>                                      lparser.c
+   941 :    if (<a href="../h_src/58018796.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a> == '}') break;
+<a href="../h_aa/57989556.htm" class=function>exprstat</a>                                         lparser.c
+  1800 :    if (<a href="../h_src/57989420.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a> == '=' || <a href="../h_src/57989420.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a> == ',') { <a  class="comments">/* stat -&gt; assignment ? */</a>
+<a href="../h_aa/58019340.htm" class=function>field</a>                                            lparser.c
+   905 :    switch(<a href="../h_src/58019204.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a>) {
+<a href="../h_aa/57996356.htm" class=function>forstat</a>                                          lparser.c
+  1628 :    switch (<a href="../h_src/57996220.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a>) {
+<a href="../h_aa/58015260.htm" class=function>funcargs</a>                                         lparser.c
+  1029 :    switch (<a href="../h_src/58015124.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a>) {
+  1032 :    if (<a href="../h_src/58015124.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a> == ')')  <a  class="comments">/* arg list is empty? */</a>
+  1047 :    <a href="../h_src/58050348.htm" class="function">codestring</a>(&amp;<a href="../h_src/58014580.htm" class="localvar">args</a>, <a href="../h_src/58015124.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701892.htm" class="variable">seminfo</a>.<a href="../h_src/57702300.htm" class="variable">ts</a>);
+<a href="../h_aa/57990916.htm" class=function>funcname</a>                                         lparser.c
+  1772 :    while (<a href="../h_src/57990780.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a> == '.')
+  1774 :    if (<a href="../h_src/57990780.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a> == ':') {
+<a href="../h_aa/57994452.htm" class=function>ifstat</a>                                           lparser.c
+  1680 :    while (<a href="../h_src/57994316.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a> == <a href="../h_src/57705020.htm" class="variable">TK_ELSEIF</a>)
+<a href="../h_aa/58004040.htm" class=function>labelstat</a>                                        lparser.c
+  1461 :    while (<a href="../h_src/58003904.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a> == ';' || <a href="../h_src/58003904.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a> == <a href="../h_src/57703184.htm" class="variable">TK_DBCOLON</a>)
+<a href="../h_aa/57699784.htm" class=function>luaX_next</a>                                        llex.c
+   572 :    <a href="../h_src/57927024.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a> = <a href="../h_src/57927976.htm" class="function">llex</a>(<a href="../h_src/57927024.htm" class="localvar">ls</a>, &amp;<a href="../h_src/57927024.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701892.htm" class="variable">seminfo</a>);  <a  class="comments">/* read next token */</a>
+<a href="../h_aa/57699648.htm" class=function>luaX_syntaxerror</a>                                 llex.c
+   120 :    <a href="../h_src/57939876.htm" class="function">lexerror</a>(<a href="../h_src/57937292.htm" class="localvar">ls</a>, <a href="../h_src/57937156.htm" class="localvar">msg</a>, <a href="../h_src/57937292.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a>);
+<a href="../h_aa/58017572.htm" class=function>parlist</a>                                          lparser.c
+   965 :    if (<a href="../h_src/58017436.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a> != ')') {  <a  class="comments">/* is 'parlist' not empty? */</a>
+   967 :    switch (<a href="../h_src/58017436.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a>) {
+<a href="../h_aa/58014172.htm" class=function>primaryexp</a>                                       lparser.c
+  1082 :    switch (<a href="../h_src/58014036.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a>) {
+<a href="../h_aa/58021720.htm" class=function>recfield</a>                                         lparser.c
+   852 :    if (<a href="../h_src/58021584.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a> == <a href="../h_src/57702912.htm" class="variable">TK_NAME</a>) {
+<a href="../h_aa/57988876.htm" class=function>retstat</a>                                          lparser.c
+  1819 :    if (<a href="../h_src/58024032.htm" class="function">block_follow</a>(<a href="../h_src/57988740.htm" class="localvar">ls</a>, 1) || <a href="../h_src/57988740.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a> == ';')
+<a href="../h_aa/58012676.htm" class=function>simpleexp</a>                                        lparser.c
+  1143 :    switch (<a href="../h_src/58012540.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a>) {
+  1146 :    <a href="../h_src/58012404.htm" class="localvar">v</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680540.htm" class="variable">nval</a> = <a href="../h_src/58012540.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701892.htm" class="variable">seminfo</a>.<a href="../h_src/57702436.htm" class="variable">r</a>;
+  1151 :    <a href="../h_src/58012404.htm" class="localvar">v</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680608.htm" class="variable">ival</a> = <a href="../h_src/58012540.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701892.htm" class="variable">seminfo</a>.<a href="../h_src/57702368.htm" class="variable">i</a>;
+  1155 :    <a href="../h_src/58050348.htm" class="function">codestring</a>(<a href="../h_src/58012404.htm" class="localvar">v</a>, <a href="../h_src/58012540.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701892.htm" class="variable">seminfo</a>.<a href="../h_src/57702300.htm" class="variable">ts</a>);
+<a href="../h_aa/58055788.htm" class=function>statement</a>                                        lparser.c
+  1848 :    switch (<a href="../h_src/57988060.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a>) {
+<a href="../h_aa/58023624.htm" class=function>statlist</a>                                         lparser.c
+   802 :    if (<a href="../h_src/58023488.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a> == <a href="../h_src/57704136.htm" class="variable">TK_RETURN</a>) {
+<a href="../h_aa/58051300.htm" class=function>str_checkname</a>                                    lparser.c
+   146 :    <a href="../h_src/58051028.htm" class="localvar">ts</a> = <a href="../h_src/58051164.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701892.htm" class="variable">seminfo</a>.<a href="../h_src/57702300.htm" class="variable">ts</a>;
+<a href="../h_aa/58010976.htm" class=function>subexpr</a>                                          lparser.c
+  1264 :    <a href="../h_src/58010296.htm" class="localvar">uop</a> = <a href="../h_src/58012132.htm" class="function">getunopr</a>(<a href="../h_src/58010840.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a>);
+  1273 :    <a href="../h_src/58010432.htm" class="localvar">op</a> = <a href="../h_src/58011860.htm" class="function">getbinopr</a>(<a href="../h_src/58010840.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a>);
+<a href="../h_aa/58013628.htm" class=function>suffixedexp</a>                                      lparser.c
+  1109 :    switch (<a href="../h_src/58013492.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a>) {
+<a href="../h_aa/57995540.htm" class=function>test_then_block</a>                                  lparser.c
+  1647 :    if (<a href="../h_src/57995404.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a> == <a href="../h_src/57705224.htm" class="variable">TK_BREAK</a>) {  <a  class="comments">/* 'if x then break' ? */</a>
+  1668 :    if (<a href="../h_src/57995404.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a> == <a href="../h_src/57705088.htm" class="variable">TK_ELSE</a> ||
+  1669 :    <a href="../h_src/57995404.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a> == <a href="../h_src/57705020.htm" class="variable">TK_ELSEIF</a>)  <a  class="comments">/* followed by 'else'/'elseif'? */</a>
+<a href="../h_aa/58053340.htm" class=function>testnext</a>                                         lparser.c
+    96 :    if (<a href="../h_src/58053204.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a> == <a href="../h_src/58053068.htm" class="localvar">c</a>) {
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable t</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

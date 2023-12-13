@@ -1,0 +1,52 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaL_loadfilex</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57418548.htm" class="function" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57418548.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57418548.htm" class="function" target="_self">Flow Chart</a></li>
+<li><a href="../h_src/57418548.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57418548.htm" class="function" target="_self">Called By</a></li>
+<li><a href="../h_rx/57418548.htm" class="function" target="_self">Call Tree</a></li>
+<li><a href="../h_ro/57418548.htm" class="function" target="_self">Calls and Uses</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57567412.htm" class=function>dofile</a>                                           lua.c
+   202 :    return <a href="../h_src/57567820.htm" class="function">dochunk</a>(<a href="../h_src/57567276.htm" class="localvar">L</a>, <a href="../h_src/57418480.htm" class="macro">luaL_loadfile</a>(<a href="../h_src/57567276.htm" class="localvar">L</a>, <a href="../h_src/57567140.htm" class="localvar">name</a>));
+<a href="../h_aa/57565168.htm" class=function>handle_script</a>                                    lua.c
+   253 :    <a href="../h_src/57564760.htm" class="localvar">status</a> = <a href="../h_src/57418480.htm" class="macro">luaL_loadfile</a>(<a href="../h_src/57565032.htm" class="localvar">L</a>, <a href="../h_src/57564624.htm" class="localvar">fname</a>);
+<a href="../h_aa/58297124.htm" class=function>luaB_dofile</a>                                      lbaselib.c
+   418 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57418480.htm" class="macro">luaL_loadfile</a>(<a href="../h_src/58296988.htm" class="localvar">L</a>, <a href="../h_src/58296852.htm" class="localvar">fname</a>) != <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>))
+<a href="../h_aa/58300388.htm" class=function>luaB_loadfile</a>                                    lbaselib.c
+   344 :    int <a href="../h_src/58299708.htm" class="localvar">status</a> = <a href="../h_src/57418548.htm" class="function">luaL_loadfilex</a>(<a href="../h_src/58300252.htm" class="localvar">L</a>, <a href="../h_src/58300116.htm" class="localvar">fname</a>, <a href="../h_src/58299980.htm" class="localvar">mode</a>);
+<a href="../h_aa/143401936.htm" class=function>pmain</a>                                            luac.c
+   179 :    if (<a href="../h_src/57418480.htm" class="macro">luaL_loadfile</a>(<a href="../h_src/143401800.htm" class="localvar">L</a>,<a href="../h_src/143401120.htm" class="localvar">filename</a>)!=<a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) <a href="../h_src/143405812.htm" class="function">fatal</a>(<a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143401800.htm" class="localvar">L</a>,-1));
+<a href="../h_aa/143201636.htm" class=function>searcher_Lua</a>                                     loadlib.c
+   550 :    return <a href="../h_src/143202180.htm" class="function">checkload</a>(<a href="../h_src/143201500.htm" class="localvar">L</a>, (<a href="../h_src/57418480.htm" class="macro">luaL_loadfile</a>(<a href="../h_src/143201500.htm" class="localvar">L</a>, <a href="../h_src/143201364.htm" class="localvar">filename</a>) == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>), <a href="../h_src/143201364.htm" class="localvar">filename</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use luaL_loadfilex</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

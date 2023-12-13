@@ -1,0 +1,57 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaK_jump</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57669592.htm" class="function" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57669592.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57669592.htm" class="function" target="_self">Flow Chart</a></li>
+<li><a href="../h_src/57669592.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57669592.htm" class="function" target="_self">Called By</a></li>
+<li><a href="../h_rx/57669592.htm" class="function" target="_self">Call Tree</a></li>
+<li><a href="../h_ro/57669592.htm" class="function" target="_self">Calls and Uses</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/58005128.htm" class=function>breakstat</a>                                        lparser.c
+  1441 :    <a href="../h_src/58032192.htm" class="function">newgotoentry</a>(<a href="../h_src/58004992.htm" class="localvar">ls</a>, <a href="../h_src/57619572.htm" class="macro">luaS_newliteral</a>(<a href="../h_src/58004992.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, &quot;break&quot;), <a href="../h_src/58004856.htm" class="localvar">line</a>, <a href="../h_src/57669592.htm" class="function">luaK_jump</a>(<a href="../h_src/58004992.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>));
+<a href="../h_aa/57661908.htm" class=function>condjump</a>                                         lcode.c
+   224 :    return <a href="../h_src/57669592.htm" class="function">luaK_jump</a>(<a href="../h_src/57661772.htm" class="localvar">fs</a>);
+<a href="../h_aa/57796316.htm" class=function>exp2reg</a>                                          lcode.c
+   923 :    int <a href="../h_src/57795364.htm" class="localvar">fj</a> = (<a href="../h_src/57796044.htm" class="localvar">e</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a> == <a href="../h_src/57681628.htm" class="variable">VJMP</a>) ? <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a> : <a href="../h_src/57669592.htm" class="function">luaK_jump</a>(<a href="../h_src/57796180.htm" class="localvar">fs</a>);
+<a href="../h_aa/58006080.htm" class=function>gotostat</a>                                         lparser.c
+  1423 :    <a href="../h_src/58032192.htm" class="function">newgotoentry</a>(<a href="../h_src/58005944.htm" class="localvar">ls</a>, <a href="../h_src/58005536.htm" class="localvar">name</a>, <a href="../h_src/58005672.htm" class="localvar">line</a>, <a href="../h_src/57669592.htm" class="function">luaK_jump</a>(<a href="../h_src/58005808.htm" class="localvar">fs</a>));
+  1430 :    <a href="../h_src/57669456.htm" class="function">luaK_patchlist</a>(<a href="../h_src/58005808.htm" class="localvar">fs</a>, <a href="../h_src/57669592.htm" class="function">luaK_jump</a>(<a href="../h_src/58005808.htm" class="localvar">fs</a>), <a href="../h_src/58005400.htm" class="localvar">lb</a>-&gt;<a href="../h_src/57677684.htm" class="variable">pc</a>);
+<a href="../h_aa/58002544.htm" class=function>repeatstat</a>                                       lparser.c
+  1501 :    int <a href="../h_src/58001456.htm" class="localvar">exit</a> = <a href="../h_src/57669592.htm" class="function">luaK_jump</a>(<a href="../h_src/58002000.htm" class="localvar">fs</a>);  <a  class="comments">/* normal exit must jump over fix */</a>
+  1504 :    <a href="../h_src/58002136.htm" class="localvar">condexit</a> = <a href="../h_src/57669592.htm" class="function">luaK_jump</a>(<a href="../h_src/58002000.htm" class="localvar">fs</a>);  <a  class="comments">/* repeat after closing upvalues */</a>
+<a href="../h_aa/57995540.htm" class=function>test_then_block</a>                                  lparser.c
+  1659 :    <a href="../h_src/57994724.htm" class="localvar">jf</a> = <a href="../h_src/57669592.htm" class="function">luaK_jump</a>(<a href="../h_src/57994996.htm" class="localvar">fs</a>);
+  1670 :    <a href="../h_src/57669320.htm" class="function">luaK_concat</a>(<a href="../h_src/57994996.htm" class="localvar">fs</a>, <a href="../h_src/57995268.htm" class="localvar">escapelist</a>, <a href="../h_src/57669592.htm" class="function">luaK_jump</a>(<a href="../h_src/57994996.htm" class="localvar">fs</a>));  <a  class="comments">/* must jump over it */</a>
+<a href="../h_aa/58003496.htm" class=function>whilestat</a>                                        lparser.c
+  1480 :    <a href="../h_src/57671428.htm" class="macro">luaK_jumpto</a>(<a href="../h_src/58003088.htm" class="localvar">fs</a>, <a href="../h_src/58002952.htm" class="localvar">whileinit</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use luaK_jump</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,52 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">BlockCnt::</a>upval</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58056060.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/58056060.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/58056060.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/58056060.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/58056060.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/58028792.htm" class=function>enterblock</a>                                       lparser.c
+   647 :    <a href="../h_src/58028520.htm" class="localvar">bl</a>-&gt;<a href="../h_src/58056060.htm" class="variable">upval</a> = 0;
+<a href="../h_aa/58039196.htm" class=function>marktobeclosed</a>                                   lparser.c
+   424 :    <a href="../h_src/58038924.htm" class="localvar">bl</a>-&gt;<a href="../h_src/58056060.htm" class="variable">upval</a> = 1;
+<a href="../h_aa/58039740.htm" class=function>markupval</a>                                        lparser.c
+   414 :    <a href="../h_src/58039332.htm" class="localvar">bl</a>-&gt;<a href="../h_src/58056060.htm" class="variable">upval</a> = 1;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/58027704.htm" class=function>leaveblock</a>                                       lparser.c
+   681 :    if (!<a href="../h_src/58027160.htm" class="localvar">hasclose</a> &amp;&amp; <a href="../h_src/58027432.htm" class="localvar">bl</a>-&gt;<a href="../h_src/58056332.htm" class="variable">previous</a> &amp;&amp; <a href="../h_src/58027432.htm" class="localvar">bl</a>-&gt;<a href="../h_src/58056060.htm" class="variable">upval</a>)  <a  class="comments">/* still need a 'close'? */</a>
+<a href="../h_aa/58029608.htm" class=function>movegotosout</a>                                     lparser.c
+   636 :    <a href="../h_src/58028928.htm" class="localvar">gt</a>-&gt;<a href="../h_src/57677480.htm" class="variable">close</a> |= <a href="../h_src/58029336.htm" class="localvar">bl</a>-&gt;<a href="../h_src/58056060.htm" class="variable">upval</a>;  <a  class="comments">/* jump may need a close */</a>
+<a href="../h_aa/58002544.htm" class=function>repeatstat</a>                                       lparser.c
+  1500 :    if (<a href="../h_src/58001592.htm" class="localvar">bl2</a>.<a href="../h_src/58056060.htm" class="variable">upval</a>) {  <a  class="comments">/* upvalues? */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable upval</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

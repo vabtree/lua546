@@ -1,0 +1,99 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>UpVal</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57509612.htm" class="type" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57509612.htm" class="type" target="_self">Usage</a></li>
+<li><a href="../h_src/57509612.htm" class="type" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57509612.htm" class="type" target="_self">Used By</a></li>
+<li><a href="../h_rx/57509612.htm" class="type" target="_self">Cross Reference</a></li>
+<li><a href="../h_ro/57509612.htm" class="type" target="_self">Built From</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Used In</h4>
+<pre><a href="../h_aa/58197716.htm" class=variable>encup</a>                                            lvm.c
+   788 :    static void <a href="../h_src/58198124.htm" class="function">pushclosure</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58197988.htm" class="localvar">L</a>, <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/58197852.htm" class="localvar">p</a>, <a href="../h_src/57509612.htm" class="type">UpVal</a> **<a href="../h_src/58197716.htm" class="localvar">encup</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58197580.htm" class="localvar">base</a>,
+<a href="../h_aa/57709644.htm" class=function>getupvalref</a>                                      lapi.c
+  1417 :    static <a href="../h_src/57509612.htm" class="type">UpVal</a> **<a href="../h_src/57709644.htm" class="function">getupvalref</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57709508.htm" class="localvar">L</a>, int <a href="../h_src/57709372.htm" class="localvar">fidx</a>, int <a href="../h_src/57709236.htm" class="localvar">n</a>, <a href="../h_src/57507980.htm" class="type">LClosure</a> **<a href="../h_src/57709032.htm" class="localvar">pf</a>) {
+  1427 :    return (<a href="../h_src/57509612.htm" class="type">UpVal</a>**)&amp;<a href="../h_src/57708896.htm" class="localvar">nullup</a>;
+<a href="../h_aa/57630588.htm" class=function>luaF_findupval</a>                                   lfunc.c
+    87 :    <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57630588.htm" class="function">luaF_findupval</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57837428.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57837292.htm" class="localvar">level</a>) {
+                                                 lfunc.h
+    54 :    <a href="../h_src/57453908.htm" class="macro">LUAI_FUNC</a> <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57630588.htm" class="function">luaF_findupval</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *L, <a href="../h_src/57532188.htm" class="type">StkId</a> level);
+<a href="../h_aa/57630656.htm" class=function>luaF_initupvals</a>                                  lfunc.c
+    51 :    <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57838652.htm" class="localvar">o</a> = <a href="../h_src/57620592.htm" class="function">luaC_newobj</a>(<a href="../h_src/57839060.htm" class="localvar">L</a>, <a href="../h_src/57513760.htm" class="macro">LUA_VUPVAL</a>, sizeof(<a href="../h_src/57509612.htm" class="type">UpVal</a>));
+<a href="../h_aa/57838380.htm" class=function>newupval</a>                                         lfunc.c
+    65 :    static <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57838380.htm" class="function">newupval</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57838244.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57838108.htm" class="localvar">level</a>, <a href="../h_src/57509612.htm" class="type">UpVal</a> **<a href="../h_src/57837972.htm" class="localvar">prev</a>) {
+    66 :    <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57837836.htm" class="localvar">o</a> = <a href="../h_src/57620592.htm" class="function">luaC_newobj</a>(<a href="../h_src/57838244.htm" class="localvar">L</a>, <a href="../h_src/57513760.htm" class="macro">LUA_VUPVAL</a>, sizeof(<a href="../h_src/57509612.htm" class="type">UpVal</a>));
+<a href="../h_aa/57510224.htm" class=variable>u::open::next</a>                                    lobject.h
+   637 :    struct <a href="../h_src/57511176.htm" class="class">UpVal</a> *<a href="../h_src/57510224.htm" class="variable">next</a>;  <a  class="comments">/* linked list */</a>
+<a href="../h_aa/57837564.htm" class=variable>next</a>                                             lfunc.c
+    68 :    <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57837564.htm" class="localvar">next</a> = *<a href="../h_src/57837972.htm" class="localvar">prev</a>;
+<a href="../h_aa/57708896.htm" class=variable>nullup</a>                                           lapi.c
+  1418 :    static const <a href="../h_src/57509612.htm" class="type">UpVal</a> *const <a href="../h_src/57708896.htm" class="localvar">nullup</a> = NULL;
+<a href="../h_aa/57642216.htm" class=variable>lua_State::openupval</a>                             lstate.h
+   319 :    <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57642216.htm" class="variable">openupval</a>;  <a  class="comments">/* list of open upvalues in this stack */</a>
+<a href="../h_aa/57837020.htm" class=variable>p</a>                                                lfunc.c
+    89 :    <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57837020.htm" class="localvar">p</a>;
+<a href="../h_aa/57837156.htm" class=variable>pp</a>                                               lfunc.c
+    88 :    <a href="../h_src/57509612.htm" class="type">UpVal</a> **<a href="../h_src/57837156.htm" class="localvar">pp</a> = &amp;<a href="../h_src/57837428.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642216.htm" class="variable">openupval</a>;
+<a href="../h_aa/57837972.htm" class=variable>prev</a>                                             lfunc.c
+    65 :    static <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57838380.htm" class="function">newupval</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57838244.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57838108.htm" class="localvar">level</a>, <a href="../h_src/57509612.htm" class="type">UpVal</a> **<a href="../h_src/57837972.htm" class="localvar">prev</a>) {
+<a href="../h_aa/57510020.htm" class=variable>u::open::previous</a>                                lobject.h
+   638 :    struct <a href="../h_src/57511176.htm" class="class">UpVal</a> **<a href="../h_src/57510020.htm" class="variable">previous</a>;
+<a href="../h_aa/57879316.htm" class=variable>up</a>                                               ldo.c
+   184 :    <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57879316.htm" class="localvar">up</a>;
+<a href="../h_aa/57879860.htm" class=variable>up</a>                                               ldo.c
+   167 :    <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57879860.htm" class="localvar">up</a>;
+<a href="../h_aa/57706992.htm" class=variable>up1</a>                                              lapi.c
+  1456 :    <a href="../h_src/57509612.htm" class="type">UpVal</a> **<a href="../h_src/57706992.htm" class="localvar">up1</a> = <a href="../h_src/57709644.htm" class="function">getupvalref</a>(<a href="../h_src/57707808.htm" class="localvar">L</a>, <a href="../h_src/57707672.htm" class="localvar">fidx1</a>, <a href="../h_src/57707536.htm" class="localvar">n1</a>, &amp;<a href="../h_src/57707128.htm" class="localvar">f1</a>);
+<a href="../h_aa/57706856.htm" class=variable>up2</a>                                              lapi.c
+  1457 :    <a href="../h_src/57509612.htm" class="type">UpVal</a> **<a href="../h_src/57706856.htm" class="localvar">up2</a> = <a href="../h_src/57709644.htm" class="function">getupvalref</a>(<a href="../h_src/57707808.htm" class="localvar">L</a>, <a href="../h_src/57707400.htm" class="localvar">fidx2</a>, <a href="../h_src/57707264.htm" class="localvar">n2</a>, NULL);
+<a href="../h_aa/57508048.htm" class=variable>LClosure::upvals</a>                                 lobject.h
+   659 :    <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57508048.htm" class="variable">upvals</a>[1];  <a  class="comments">/* list of upvalues */</a>
+<a href="../h_aa/57819340.htm" class=variable>uv</a>                                               lgc.c
+   376 :    <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57819340.htm" class="localvar">uv</a>;
+<a href="../h_aa/57821312.htm" class=variable>uv</a>                                               lgc.c
+   305 :    <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57821312.htm" class="localvar">uv</a> = <a href="../h_src/57639020.htm" class="macro">gco2upv</a>(<a href="../h_src/57821448.htm" class="localvar">o</a>);
+<a href="../h_aa/57832532.htm" class=variable>uv</a>                                               lfunc.c
+   194 :    <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57832532.htm" class="localvar">uv</a>;
+<a href="../h_aa/57832940.htm" class=variable>uv</a>                                               lfunc.c
+   182 :    void <a href="../h_src/57630316.htm" class="function">luaF_unlinkupval</a> (<a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57832940.htm" class="localvar">uv</a>) {
+<a href="../h_aa/57837700.htm" class=variable>uv</a>                                               lfunc.c
+    67 :    <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57837700.htm" class="localvar">uv</a> = <a href="../h_src/57639020.htm" class="macro">gco2upv</a>(<a href="../h_src/57837836.htm" class="localvar">o</a>);
+<a href="../h_aa/57838516.htm" class=variable>uv</a>                                               lfunc.c
+    52 :    <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57838516.htm" class="localvar">uv</a> = <a href="../h_src/57639020.htm" class="macro">gco2upv</a>(<a href="../h_src/57838652.htm" class="localvar">o</a>);
+<a href="../h_aa/57966940.htm" class=variable>uv</a>                                               lgc.c
+   763 :    static void <a href="../h_src/57967212.htm" class="function">freeupval</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57967076.htm" class="localvar">L</a>, <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57966940.htm" class="localvar">uv</a>) {
+<a href="../h_aa/57971428.htm" class=variable>uv</a>                                               lgc.c
+   628 :    <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57971428.htm" class="localvar">uv</a>;
+<a href="../h_aa/57971972.htm" class=variable>uv</a>                                               lgc.c
+   608 :    <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57971972.htm" class="localvar">uv</a> = <a href="../h_src/57972244.htm" class="localvar">cl</a>-&gt;<a href="../h_src/57508048.htm" class="variable">upvals</a>[<a href="../h_src/57972108.htm" class="localvar">i</a>];
+<a href="../h_aa/58182756.htm" class=variable>uv</a>                                               lvm.c
+  1246 :    <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/58182756.htm" class="localvar">uv</a> = <a href="../h_src/58187924.htm" class="localvar">cl</a>-&gt;<a href="../h_src/57508048.htm" class="variable">upvals</a>[<a href="../h_src/57693800.htm" class="macro">GETARG_B</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>)];
+</pre>
+<h4><a class="legend">Table lists all symbols that directly use type UpVal</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

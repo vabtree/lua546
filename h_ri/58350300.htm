@@ -1,0 +1,49 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>L</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58350300.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/58350300.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/58350300.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/58350300.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/58350436.htm" class=function>findfield</a>                                        lauxlib.c
+    53 :    if (<a href="../h_src/58350028.htm" class="localvar">level</a> == 0 || !<a href="../h_src/57428612.htm" class="macro">lua_istable</a>(<a href="../h_src/58350300.htm" class="localvar">L</a>, -1))
+    55 :    <a href="../h_src/57435276.htm" class="function">lua_pushnil</a>(<a href="../h_src/58350300.htm" class="localvar">L</a>);  <a  class="comments">/* start 'next' loop */</a>
+    56 :    while (<a href="../h_src/57430312.htm" class="function">lua_next</a>(<a href="../h_src/58350300.htm" class="localvar">L</a>, -2)) {  <a  class="comments">/* for each pair in table */</a>
+    57 :    if (<a href="../h_src/57438540.htm" class="function">lua_type</a>(<a href="../h_src/58350300.htm" class="localvar">L</a>, -2) == <a href="../h_src/57443504.htm" class="macro">LUA_TSTRING</a>) {  <a  class="comments">/* ignore non-string keys */</a>
+    58 :    if (<a href="../h_src/57435412.htm" class="function">lua_rawequal</a>(<a href="../h_src/58350300.htm" class="localvar">L</a>, <a href="../h_src/58350164.htm" class="localvar">objidx</a>, -1)) {  <a  class="comments">/* found object? */</a>
+    59 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/58350300.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove value (but keep name) */</a>
+    62 :    else if (<a href="../h_src/58350436.htm" class="function">findfield</a>(<a href="../h_src/58350300.htm" class="localvar">L</a>, <a href="../h_src/58350164.htm" class="localvar">objidx</a>, <a href="../h_src/58350028.htm" class="localvar">level</a> - 1)) {  <a  class="comments">/* try recursively */</a>
+    64 :    <a href="../h_src/57427660.htm" class="macro">lua_pushliteral</a>(<a href="../h_src/58350300.htm" class="localvar">L</a>, &quot;.&quot;);  <a  class="comments">/* place '.' between the two names */</a>
+    65 :    <a href="../h_src/57426980.htm" class="macro">lua_replace</a>(<a href="../h_src/58350300.htm" class="localvar">L</a>, -3);  <a  class="comments">/* (in the slot occupied by table) */</a>
+    66 :    <a href="../h_src/57430244.htm" class="function">lua_concat</a>(<a href="../h_src/58350300.htm" class="localvar">L</a>, 3);  <a  class="comments">/* lib_name.field_name */</a>
+    70 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/58350300.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove value */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable L</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,52 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>p</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143305540.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/143305540.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/143305540.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/143305540.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/143306628.htm" class=function>add_s</a>                                            lstrlib.c
+   877 :    while ((<a href="../h_src/143305540.htm" class="localvar">p</a> = (char *)<a href="../h_aa/143315808.htm" class="libfunc">memchr</a>(<a href="../h_src/143305676.htm" class="localvar">news</a>, <a href="../h_src/143326756.htm" class="macro">L_ESC</a>, <a href="../h_src/143305948.htm" class="localvar">l</a>)) != NULL) {
+   879 :    <a href="../h_src/143305540.htm" class="localvar">p</a>++;  <a  class="comments">/* skip ESC */</a>
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/143306628.htm" class=function>add_s</a>                                            lstrlib.c
+   878 :    <a href="../h_src/57413516.htm" class="function">luaL_addlstring</a>(<a href="../h_src/143306356.htm" class="localvar">b</a>, <a href="../h_src/143305676.htm" class="localvar">news</a>, <a href="../h_src/143305540.htm" class="localvar">p</a> - <a href="../h_src/143305676.htm" class="localvar">news</a>);
+   879 :    <a href="../h_src/143305540.htm" class="localvar">p</a>++;  <a  class="comments">/* skip ESC */</a>
+   880 :    if (*<a href="../h_src/143305540.htm" class="localvar">p</a> == <a href="../h_src/143326756.htm" class="macro">L_ESC</a>)  <a  class="comments">/* '%%' */</a>
+   881 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(<a href="../h_src/57415216.htm" class="variable">b</a>, *<a href="../h_src/143305540.htm" class="localvar">p</a>);
+   882 :    else if (*<a href="../h_src/143305540.htm" class="localvar">p</a> == '0')  <a  class="comments">/* '%0' */</a>
+   884 :    else if (<a href="../h_aa/58309772.htm" class="libfunc">isdigit</a>(<a href="../h_src/143343552.htm" class="macro">uchar</a>(*<a href="../h_src/143305540.htm" class="localvar">p</a>))) {  <a  class="comments">/* '%n' */</a>
+   886 :    <a href="../h_aa/57441872.htm" class="type">ptrdiff_t</a> <a href="../h_src/143305268.htm" class="localvar">resl</a> = <a href="../h_src/143315740.htm" class="function">get_onecapture</a>(<a href="../h_src/143306492.htm" class="localvar">ms</a>, *<a href="../h_src/143305540.htm" class="localvar">p</a> - '1', <a href="../h_src/143306220.htm" class="localvar">s</a>, <a href="../h_src/143306084.htm" class="localvar">e</a>, &amp;<a href="../h_src/143305404.htm" class="localvar">cap</a>);
+   894 :    <a href="../h_src/143305948.htm" class="localvar">l</a> -= <a href="../h_src/143305540.htm" class="localvar">p</a> + 1 - <a href="../h_src/143305676.htm" class="localvar">news</a>;
+   895 :    <a href="../h_src/143305676.htm" class="localvar">news</a> = <a href="../h_src/143305540.htm" class="localvar">p</a> + 1;
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable p</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

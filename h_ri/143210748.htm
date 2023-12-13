@@ -1,0 +1,46 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>L</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143210748.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/143210748.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/143210748.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/143210748.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/143210884.htm" class=function>setpath</a>                                          loadlib.c
+   301 :    const char *<a href="../h_src/143210068.htm" class="localvar">nver</a> = <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/143210748.htm" class="localvar">L</a>, &quot;%s%s&quot;, <a href="../h_src/143210476.htm" class="localvar">envname</a>, <a href="../h_src/57410592.htm" class="macro">LUA_VERSUFFIX</a>);
+   305 :    if (<a href="../h_src/143209932.htm" class="localvar">path</a> == NULL || <a href="../h_src/143211292.htm" class="function">noenv</a>(<a href="../h_src/143210748.htm" class="localvar">L</a>))  <a  class="comments">/* no environment variable? */</a>
+   306 :    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/143210748.htm" class="localvar">L</a>, <a href="../h_src/143210340.htm" class="localvar">dft</a>);  <a  class="comments">/* use default */</a>
+   308 :    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/143210748.htm" class="localvar">L</a>, <a href="../h_src/143209932.htm" class="localvar">path</a>);  <a  class="comments">/* nothing to change */</a>
+   312 :    <a href="../h_src/57413652.htm" class="function">luaL_buffinit</a>(<a href="../h_src/143210748.htm" class="localvar">L</a>, &amp;<a href="../h_src/143209660.htm" class="localvar">b</a>);
+   324 :    <a href="../h_src/143214624.htm" class="function">setprogdir</a>(<a href="../h_src/143210748.htm" class="localvar">L</a>);
+   325 :    <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/143210748.htm" class="localvar">L</a>, -3, <a href="../h_src/143210612.htm" class="localvar">fieldname</a>);  <a  class="comments">/* package[fieldname] = path value */</a>
+   326 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143210748.htm" class="localvar">L</a>, 1);  <a  class="comments">/* pop versioned variable name ('nver') */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable L</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

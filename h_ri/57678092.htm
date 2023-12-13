@@ -1,0 +1,72 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">Vardesc::</a>vd</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57678092.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57678092.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57678092.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57678092.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57678092.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/58044228.htm" class=function>adjustlocalvars</a>                                  lparser.c
+   318 :    <a href="../h_src/58043276.htm" class="localvar">var</a>-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678364.htm" class="variable">ridx</a> = <a href="../h_src/58043684.htm" class="localvar">reglevel</a>++;
+   319 :    <a href="../h_src/58043276.htm" class="localvar">var</a>-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678296.htm" class="variable">pidx</a> = <a href="../h_src/58049532.htm" class="function">registerlocalvar</a>(<a href="../h_src/58044092.htm" class="localvar">ls</a>, <a href="../h_src/58043820.htm" class="localvar">fs</a>, <a href="../h_src/58043276.htm" class="localvar">var</a>-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678228.htm" class="variable">name</a>);
+<a href="../h_aa/57992276.htm" class=function>localstat</a>                                        lparser.c
+  1738 :    <a href="../h_src/58047628.htm" class="function">getlocalvardesc</a>(<a href="../h_src/57992004.htm" class="localvar">fs</a>, <a href="../h_src/57991596.htm" class="localvar">vidx</a>)-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678432.htm" class="variable">kind</a> = <a href="../h_src/57991460.htm" class="localvar">kind</a>;
+  1756 :    <a href="../h_src/57991732.htm" class="localvar">var</a>-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678432.htm" class="variable">kind</a> = <a href="../h_src/57678908.htm" class="macro">RDKCTC</a>;  <a  class="comments">/* variable is a compile-time constant */</a>
+<a href="../h_aa/58048716.htm" class=function>new_localvar</a>                                     lparser.c
+   203 :    <a href="../h_src/58047900.htm" class="localvar">var</a>-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678432.htm" class="variable">kind</a> = <a href="../h_src/57679316.htm" class="macro">VDKREG</a>;  <a  class="comments">/* default */</a>
+   204 :    <a href="../h_src/58047900.htm" class="localvar">var</a>-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678228.htm" class="variable">name</a> = <a href="../h_src/58048444.htm" class="localvar">name</a>;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/58044228.htm" class=function>adjustlocalvars</a>                                  lparser.c
+   319 :    <a href="../h_src/58043276.htm" class="localvar">var</a>-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678296.htm" class="variable">pidx</a> = <a href="../h_src/58049532.htm" class="function">registerlocalvar</a>(<a href="../h_src/58044092.htm" class="localvar">ls</a>, <a href="../h_src/58043820.htm" class="localvar">fs</a>, <a href="../h_src/58043276.htm" class="localvar">var</a>-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678228.htm" class="variable">name</a>);
+<a href="../h_aa/58045316.htm" class=function>check_readonly</a>                                   lparser.c
+   282 :    <a href="../h_src/58044772.htm" class="localvar">varname</a> = <a href="../h_src/58045180.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700328.htm" class="variable">dyd</a>-&gt;<a href="../h_src/57676460.htm" class="variable">actvar</a>.<a href="../h_src/57676732.htm" class="variable">arr</a>[<a href="../h_src/58045044.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a>].<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678228.htm" class="variable">name</a>;
+   287 :    if (<a href="../h_src/58044636.htm" class="localvar">vardesc</a>-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678432.htm" class="variable">kind</a> != <a href="../h_src/57679316.htm" class="macro">VDKREG</a>)  <a  class="comments">/* not a regular variable? */</a>
+   288 :    <a href="../h_src/58044772.htm" class="localvar">varname</a> = <a href="../h_src/58044636.htm" class="localvar">vardesc</a>-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678228.htm" class="variable">name</a>;
+<a href="../h_aa/58045860.htm" class=function>init_var</a>                                         lparser.c
+   270 :    <a href="../h_src/58045588.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57679724.htm" class="variable">var</a>.<a href="../h_src/57679928.htm" class="variable">ridx</a> = <a href="../h_src/58047628.htm" class="function">getlocalvardesc</a>(<a href="../h_src/58045724.htm" class="localvar">fs</a>, <a href="../h_src/58045452.htm" class="localvar">vidx</a>)-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678364.htm" class="variable">ridx</a>;
+<a href="../h_aa/58035660.htm" class=function>jumpscopeerror</a>                                   lparser.c
+   515 :    const char *<a href="../h_src/58035252.htm" class="localvar">varname</a> = <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58047628.htm" class="function">getlocalvardesc</a>(<a href="../h_src/58035524.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>, <a href="../h_src/58035388.htm" class="localvar">gt</a>-&gt;<a href="../h_src/57677548.htm" class="variable">nactvar</a>)-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678228.htm" class="variable">name</a>);
+<a href="../h_aa/58046540.htm" class=function>localdebuginfo</a>                                   lparser.c
+   253 :    if (<a href="../h_src/58046132.htm" class="localvar">vd</a>-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678432.htm" class="variable">kind</a> == <a href="../h_src/57678908.htm" class="macro">RDKCTC</a>)
+   256 :    int <a href="../h_src/58045996.htm" class="localvar">idx</a> = <a href="../h_src/58046132.htm" class="localvar">vd</a>-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678296.htm" class="variable">pidx</a>;
+<a href="../h_aa/57992276.htm" class=function>localstat</a>                                        lparser.c
+  1754 :    <a href="../h_src/57991732.htm" class="localvar">var</a>-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678432.htm" class="variable">kind</a> == <a href="../h_src/57679180.htm" class="macro">RDKCONST</a> &amp;&amp;  <a  class="comments">/* last variable is const? */</a>
+<a href="../h_aa/58041372.htm" class=function>newupvalue</a>                                       lparser.c
+   370 :    <a href="../h_src/58040828.htm" class="localvar">up</a>-&gt;<a href="../h_src/57517160.htm" class="variable">kind</a> = <a href="../h_src/58047628.htm" class="function">getlocalvardesc</a>(<a href="../h_src/58040692.htm" class="localvar">prev</a>, <a href="../h_src/58040964.htm" class="localvar">v</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57679724.htm" class="variable">var</a>.<a href="../h_src/57679860.htm" class="variable">vidx</a>)-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678432.htm" class="variable">kind</a>;
+<a href="../h_aa/58047220.htm" class=function>reglevel</a>                                         lparser.c
+   232 :    if (<a href="../h_src/58046812.htm" class="localvar">vd</a>-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678432.htm" class="variable">kind</a> != <a href="../h_src/57678908.htm" class="macro">RDKCTC</a>)  <a  class="comments">/* is in a register? */</a>
+   233 :    return <a href="../h_src/58046812.htm" class="localvar">vd</a>-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678364.htm" class="variable">ridx</a> + 1;
+<a href="../h_aa/58040556.htm" class=function>searchvar</a>                                        lparser.c
+   394 :    if (<a href="../h_src/58056468.htm" class="macro">eqstr</a>(<a href="../h_src/58040284.htm" class="localvar">n</a>, <a href="../h_src/58039876.htm" class="localvar">vd</a>-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678228.htm" class="variable">name</a>)) {  <a  class="comments">/* found? */</a>
+   395 :    if (<a href="../h_src/58039876.htm" class="localvar">vd</a>-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678432.htm" class="variable">kind</a> == <a href="../h_src/57678908.htm" class="macro">RDKCTC</a>)  <a  class="comments">/* compile-time constant? */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable vd</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

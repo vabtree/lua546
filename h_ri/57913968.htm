@@ -1,0 +1,62 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>s</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57913968.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57913968.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57913968.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57913968.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57914104.htm" class=function>lua_strx2number</a>                                  lobject.c
+   174 :    while (<a href="../h_src/57760140.htm" class="macro">lisspace</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57913968.htm" class="localvar">s</a>))) <a href="../h_src/57913968.htm" class="localvar">s</a>++;  <a  class="comments">/* skip initial spaces */</a>
+   178 :    for (<a href="../h_src/57913968.htm" class="localvar">s</a> += 2; ; <a href="../h_src/57913968.htm" class="localvar">s</a>++) {  <a  class="comments">/* skip '0x' and read numeral */</a>
+   200 :    <a href="../h_src/57913968.htm" class="localvar">s</a>++;  <a  class="comments">/* skip 'p' */</a>
+   205 :    <a href="../h_src/57912676.htm" class="localvar">exp1</a> = <a href="../h_src/57912676.htm" class="localvar">exp1</a> * 10 + *(<a href="../h_src/57913968.htm" class="localvar">s</a>++) - '0';
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57914104.htm" class=function>lua_strx2number</a>                                  lobject.c
+   173 :    *<a href="../h_src/57913832.htm" class="localvar">endptr</a> = <a href="../h_src/57546536.htm" class="macro">cast_charp</a>(<a href="../h_src/57913968.htm" class="localvar">s</a>);  <a  class="comments">/* nothing is valid yet */</a>
+   174 :    while (<a href="../h_src/57760140.htm" class="macro">lisspace</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57913968.htm" class="localvar">s</a>))) <a href="../h_src/57913968.htm" class="localvar">s</a>++;  <a  class="comments">/* skip initial spaces */</a>
+   175 :    <a href="../h_src/57912948.htm" class="localvar">neg</a> = <a href="../h_src/57914648.htm" class="function">isneg</a>(&amp;<a href="../h_src/57913968.htm" class="localvar">s</a>);  <a  class="comments">/* check sign */</a>
+   176 :    if (!(*<a href="../h_src/57913968.htm" class="localvar">s</a> == '0' &amp;&amp; (*(<a href="../h_src/57913968.htm" class="localvar">s</a> + 1) == 'x' || *(<a href="../h_src/57913968.htm" class="localvar">s</a> + 1) == 'X')))  <a  class="comments">/* check '0x' */</a>
+   178 :    for (<a href="../h_src/57913968.htm" class="localvar">s</a> += 2; ; <a href="../h_src/57913968.htm" class="localvar">s</a>++) {  <a  class="comments">/* skip '0x' and read numeral */</a>
+   179 :    if (*<a href="../h_src/57913968.htm" class="localvar">s</a> == <a href="../h_src/57913628.htm" class="localvar">dot</a>) {
+   183 :    else if (<a href="../h_src/57759868.htm" class="macro">lisxdigit</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57913968.htm" class="localvar">s</a>))) {
+   184 :    if (<a href="../h_src/57913356.htm" class="localvar">sigdig</a> == 0 &amp;&amp; *<a href="../h_src/57913968.htm" class="localvar">s</a> == '0')  <a  class="comments">/* non-significant digit (zero)? */</a>
+   187 :    <a href="../h_src/57913492.htm" class="localvar">r</a> = (<a href="../h_src/57913492.htm" class="localvar">r</a> * <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(16.0)) + <a href="../h_src/57501588.htm" class="function">luaO_hexavalue</a>(*<a href="../h_src/57913968.htm" class="localvar">s</a>);
+   195 :    *<a href="../h_src/57913832.htm" class="localvar">endptr</a> = <a href="../h_src/57546536.htm" class="macro">cast_charp</a>(<a href="../h_src/57913968.htm" class="localvar">s</a>);  <a  class="comments">/* valid up to here */</a>
+   197 :    if (*<a href="../h_src/57913968.htm" class="localvar">s</a> == 'p' || *<a href="../h_src/57913968.htm" class="localvar">s</a> == 'P') {  <a  class="comments">/* exponent part? */</a>
+   200 :    <a href="../h_src/57913968.htm" class="localvar">s</a>++;  <a  class="comments">/* skip 'p' */</a>
+   201 :    <a href="../h_src/57912540.htm" class="localvar">neg1</a> = <a href="../h_src/57914648.htm" class="function">isneg</a>(&amp;<a href="../h_src/57913968.htm" class="localvar">s</a>);  <a  class="comments">/* sign */</a>
+   202 :    if (!<a href="../h_src/57760276.htm" class="macro">lisdigit</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57913968.htm" class="localvar">s</a>)))
+   204 :    while (<a href="../h_src/57760276.htm" class="macro">lisdigit</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57913968.htm" class="localvar">s</a>)))  <a  class="comments">/* read exponent */</a>
+   205 :    <a href="../h_src/57912676.htm" class="localvar">exp1</a> = <a href="../h_src/57912676.htm" class="localvar">exp1</a> * 10 + *(<a href="../h_src/57913968.htm" class="localvar">s</a>++) - '0';
+   208 :    *<a href="../h_src/57913832.htm" class="localvar">endptr</a> = <a href="../h_src/57546536.htm" class="macro">cast_charp</a>(<a href="../h_src/57913968.htm" class="localvar">s</a>);  <a  class="comments">/* valid up to here */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable s</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,43 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>nres</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58292500.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/58292500.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/58292500.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/58292500.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/58293180.htm" class=function>auxresume</a>                                        lcorolib.c
+    39 :    <a href="../h_src/58292636.htm" class="localvar">status</a> = <a href="../h_src/57432420.htm" class="function">lua_resume</a>(<a href="../h_src/58292908.htm" class="localvar">co</a>, <a href="../h_src/58293044.htm" class="localvar">L</a>, <a href="../h_src/58292772.htm" class="localvar">narg</a>, &amp;<a href="../h_src/58292500.htm" class="localvar">nres</a>);
+    41 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(!<a href="../h_src/57439016.htm" class="function">lua_checkstack</a>(<a href="../h_src/58293044.htm" class="localvar">L</a>, <a href="../h_src/58292500.htm" class="localvar">nres</a> + 1))) {
+    42 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/58292908.htm" class="localvar">co</a>, <a href="../h_src/58292500.htm" class="localvar">nres</a>);  <a  class="comments">/* remove results anyway */</a>
+    46 :    <a href="../h_src/57438948.htm" class="function">lua_xmove</a>(<a href="../h_src/58292908.htm" class="localvar">co</a>, <a href="../h_src/58293044.htm" class="localvar">L</a>, <a href="../h_src/58292500.htm" class="localvar">nres</a>);  <a  class="comments">/* move yielded values */</a>
+    47 :    return <a href="../h_src/58292500.htm" class="localvar">nres</a>;
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable nres</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

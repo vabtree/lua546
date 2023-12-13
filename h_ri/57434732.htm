@@ -1,0 +1,92 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lua_pushfstring</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57434732.htm" class="function" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57434732.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57434732.htm" class="function" target="_self">Flow Chart</a></li>
+<li><a href="../h_src/57434732.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57434732.htm" class="function" target="_self">Called By</a></li>
+<li><a href="../h_rx/57434732.htm" class="function" target="_self">Call Tree</a></li>
+<li><a href="../h_ro/57434732.htm" class="function" target="_self">Calls and Uses</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57556736.htm" class=function>addreturn</a>                                        lua.c
+   523 :    const char *<a href="../h_src/57556328.htm" class="localvar">retline</a> = <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/57556600.htm" class="localvar">L</a>, &quot;return %s;&quot;, <a href="../h_src/57556464.htm" class="localvar">line</a>);
+<a href="../h_aa/143350488.htm" class=function>checkoption</a>                                      loslib.c
+   286 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/143350352.htm" class="localvar">L</a>, &quot;invalid conversion specifier '%%%s'&quot;, <a href="../h_src/143350216.htm" class="localvar">conv</a>));
+<a href="../h_aa/58281756.htm" class=function>db_getinfo</a>                                       ldblib.c
+   157 :    <a href="../h_src/143275892.htm" class="localvar">options</a> = <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, &quot;&gt;%s&quot;, <a href="../h_src/143275892.htm" class="localvar">options</a>);  <a  class="comments">/* add '&gt;' to 'options' */</a>
+<a href="../h_aa/58326500.htm" class=function>errfile</a>                                          lauxlib.c
+   737 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58326364.htm" class="localvar">L</a>, &quot;cannot %s %s: %s&quot;, <a href="../h_src/58326228.htm" class="localvar">what</a>, <a href="../h_src/58325820.htm" class="localvar">filename</a>, <a href="../h_src/58325956.htm" class="localvar">serr</a>);
+<a href="../h_aa/143260388.htm" class=function>f_tostring</a>                                       liolib.c
+   182 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/143260252.htm" class="localvar">L</a>, &quot;file (%p)&quot;, <a href="../h_src/143260116.htm" class="localvar">p</a>-&gt;f);
+<a href="../h_aa/57554968.htm" class=function>l_print</a>                                          lua.c
+   584 :    <a href="../h_src/57571288.htm" class="function">l_message</a>(<a href="../h_src/57572920.htm" class="variable">progname</a>, <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/57554832.htm" class="localvar">L</a>, &quot;error calling 'print' (%s)&quot;,
+<a href="../h_aa/143201092.htm" class=function>loadfunc</a>                                         loadlib.c
+   570 :    <a href="../h_src/143200548.htm" class="localvar">openfunc</a> = <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/143200956.htm" class="localvar">L</a>, <a href="../h_src/143216120.htm" class="macro">LUA_POF</a>&quot;%s&quot;, <a href="../h_src/143200548.htm" class="localvar">openfunc</a>);
+   575 :    <a href="../h_src/143200548.htm" class="localvar">openfunc</a> = <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/143200956.htm" class="localvar">L</a>, <a href="../h_src/143216120.htm" class="macro">LUA_POF</a>&quot;%s&quot;, <a href="../h_src/143200684.htm" class="localvar">modname</a>);
+<a href="../h_aa/57419228.htm" class=function>luaL_checkoption</a>                                 lauxlib.c
+   369 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58341052.htm" class="localvar">L</a>, &quot;invalid option '%s'&quot;, <a href="../h_src/58340508.htm" class="localvar">name</a>));
+<a href="../h_aa/57419092.htm" class=function>luaL_fileresult</a>                                  lauxlib.c
+   254 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58343976.htm" class="localvar">L</a>, &quot;%s: %s&quot;, <a href="../h_src/58343704.htm" class="localvar">fname</a>, <a href="../h_aa/58343432.htm" class="libfunc">strerror</a>(<a href="../h_src/58343568.htm" class="localvar">en</a>));
+<a href="../h_aa/57418548.htm" class=function>luaL_loadfilex</a>                                   lauxlib.c
+   789 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58325548.htm" class="localvar">L</a>, &quot;@%s&quot;, <a href="../h_src/58325412.htm" class="localvar">filename</a>);
+<a href="../h_aa/57420452.htm" class=function>luaL_tolstring</a>                                   lauxlib.c
+   899 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, &quot;%I&quot;, (<a href="../h_src/57450916.htm" class="macro">LUAI_UACINT</a>)<a href="../h_src/57429428.htm" class="macro">lua_tointeger</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, <a href="../h_src/58320312.htm" class="localvar">idx</a>));
+   901 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, &quot;%f&quot;, (<a href="../h_src/57451732.htm" class="macro">LUAI_UACNUMBER</a>)<a href="../h_src/57429564.htm" class="macro">lua_tonumber</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, <a href="../h_src/58320312.htm" class="localvar">idx</a>));
+   917 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, &quot;%s: %p&quot;, <a href="../h_src/58319904.htm" class="localvar">kind</a>, <a href="../h_src/57437860.htm" class="function">lua_topointer</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, <a href="../h_src/58320312.htm" class="localvar">idx</a>));
+<a href="../h_aa/57417664.htm" class=function>luaL_traceback</a>                                   lauxlib.c
+   146 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58347920.htm" class="localvar">L</a>, &quot;\n\t...\t(skipping %d levels)&quot;, <a href="../h_src/58346832.htm" class="localvar">n</a>);
+   153 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58347920.htm" class="localvar">L</a>, &quot;\n\t%s: in &quot;, <a href="../h_src/58347240.htm" class="localvar">ar</a>.<a href="../h_src/57422764.htm" class="variable">short_src</a>);
+   155 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58347920.htm" class="localvar">L</a>, &quot;\n\t%s:%d: in &quot;, <a href="../h_src/58347240.htm" class="localvar">ar</a>.<a href="../h_src/57422764.htm" class="variable">short_src</a>, <a href="../h_src/58347240.htm" class="localvar">ar</a>.<a href="../h_src/57423376.htm" class="variable">currentline</a>);
+<a href="../h_aa/57420316.htm" class=function>luaL_typeerror</a>                                   lauxlib.c
+   202 :    <a href="../h_src/58345744.htm" class="localvar">msg</a> = <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58346152.htm" class="localvar">L</a>, &quot;%s expected, got %s&quot;, <a href="../h_src/58345880.htm" class="localvar">tname</a>, <a href="../h_src/58345608.htm" class="localvar">typearg</a>);
+<a href="../h_aa/57419364.htm" class=function>luaL_where</a>                                       lauxlib.c
+   221 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58344928.htm" class="localvar">L</a>, &quot;%s:%d: &quot;, <a href="../h_src/58344656.htm" class="localvar">ar</a>.<a href="../h_src/57422764.htm" class="variable">short_src</a>, <a href="../h_src/58344656.htm" class="localvar">ar</a>.<a href="../h_src/57423376.htm" class="variable">currentline</a>);
+   225 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58344928.htm" class="localvar">L</a>, &quot;&quot;);  <a  class="comments">/* else, no information available... */</a>
+<a href="../h_aa/57570336.htm" class=function>msghandler</a>                                       lua.c
+   141 :    <a href="../h_src/57570064.htm" class="localvar">msg</a> = <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/57570200.htm" class="localvar">L</a>, &quot;(error object is a %s value)&quot;,
+<a href="../h_aa/143213672.htm" class=function>pusherror</a>                                        loadlib.c
+   201 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/143213536.htm" class="localvar">L</a>, &quot;system error %d\n&quot;, <a href="../h_src/143213332.htm" class="localvar">error</a>);
+<a href="../h_aa/58349144.htm" class=function>pushfuncname</a>                                     lauxlib.c
+   102 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58349008.htm" class="localvar">L</a>, &quot;function '%s'&quot;, <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/58349008.htm" class="localvar">L</a>, -1));
+   106 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58349008.htm" class="localvar">L</a>, &quot;%s '%s'&quot;, <a href="../h_src/58348872.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423648.htm" class="variable">namewhat</a>, <a href="../h_src/58348872.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423716.htm" class="variable">name</a>);  <a  class="comments">/* use it */</a>
+   110 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58349008.htm" class="localvar">L</a>, &quot;function &lt;%s:%d&gt;&quot;, <a href="../h_src/58348872.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57422764.htm" class="variable">short_src</a>, <a href="../h_src/58348872.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423308.htm" class="variable">linedefined</a>);
+<a href="../h_aa/57557960.htm" class=function>pushline</a>                                         lua.c
+   509 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/57557824.htm" class="localvar">L</a>, &quot;return %s&quot;, <a href="../h_src/57557416.htm" class="localvar">b</a> + 1);  <a  class="comments">/* change '=' to 'return' */</a>
+<a href="../h_aa/143413224.htm" class=function>pushutfchar</a>                                      lutf8lib.c
+   158 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/143413088.htm" class="localvar">L</a>, &quot;%U&quot;, (long)<a href="../h_src/143412816.htm" class="localvar">code</a>);
+<a href="../h_aa/143199596.htm" class=function>searcher_Croot</a>                                   loadlib.c
+   601 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/143199460.htm" class="localvar">L</a>, &quot;no module '%s' in file '%s'&quot;, <a href="../h_src/143199188.htm" class="localvar">name</a>, <a href="../h_src/143199324.htm" class="localvar">filename</a>);
+<a href="../h_aa/143198780.htm" class=function>searcher_preload</a>                                 loadlib.c
+   614 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/143198644.htm" class="localvar">L</a>, &quot;no field package.preload['%s']&quot;, <a href="../h_src/143198508.htm" class="localvar">name</a>);
+<a href="../h_aa/143210884.htm" class=function>setpath</a>                                          loadlib.c
+   301 :    const char *<a href="../h_src/143210068.htm" class="localvar">nver</a> = <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/143210748.htm" class="localvar">L</a>, &quot;%s%s&quot;, <a href="../h_src/143210476.htm" class="localvar">envname</a>, <a href="../h_src/57410592.htm" class="macro">LUA_VERSUFFIX</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use lua_pushfstring</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,50 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>L</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143275620.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/143275620.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/143275620.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/143275620.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/143275756.htm" class=function>db_getlocal</a>                                      ldblib.c
+   205 :    <a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143275348.htm" class="localvar">L1</a> = <a href="../h_src/58284340.htm" class="function">getthread</a>(<a href="../h_src/143275620.htm" class="localvar">L</a>, &amp;<a href="../h_src/143275484.htm" class="localvar">arg</a>);
+   206 :    int <a href="../h_src/143275212.htm" class="localvar">nvar</a> = (int)<a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143275620.htm" class="localvar">L</a>, <a href="../h_src/143275484.htm" class="localvar">arg</a> + 2);  <a  class="comments">/* local-variable index */</a>
+   207 :    if (<a href="../h_src/57428748.htm" class="macro">lua_isfunction</a>(<a href="../h_src/143275620.htm" class="localvar">L</a>, <a href="../h_src/143275484.htm" class="localvar">arg</a> + 1)) {  <a  class="comments">/* function argument? */</a>
+   208 :    <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/143275620.htm" class="localvar">L</a>, <a href="../h_src/143275484.htm" class="localvar">arg</a> + 1);  <a  class="comments">/* push function */</a>
+   209 :    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/143275620.htm" class="localvar">L</a>, <a href="../h_src/57424532.htm" class="function">lua_getlocal</a>(<a href="../h_src/143275620.htm" class="localvar">L</a>, NULL, <a href="../h_src/143275212.htm" class="localvar">nvar</a>));  <a  class="comments">/* push local name */</a>
+   215 :    int <a href="../h_src/143274804.htm" class="localvar">level</a> = (int)<a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143275620.htm" class="localvar">L</a>, <a href="../h_src/143275484.htm" class="localvar">arg</a> + 1);
+   217 :    return <a href="../h_src/57420384.htm" class="function">luaL_argerror</a>(<a href="../h_src/143275620.htm" class="localvar">L</a>, <a href="../h_src/143275484.htm" class="localvar">arg</a>+1, &quot;level out of range&quot;);
+   218 :    <a href="../h_src/58286652.htm" class="function">checkstack</a>(<a href="../h_src/143275620.htm" class="localvar">L</a>, <a href="../h_src/143275348.htm" class="localvar">L1</a>, 1);
+   221 :    <a href="../h_src/57438948.htm" class="function">lua_xmove</a>(<a href="../h_src/143275348.htm" class="localvar">L1</a>, <a href="../h_src/143275620.htm" class="localvar">L</a>, 1);  <a  class="comments">/* move local value */</a>
+   222 :    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/143275620.htm" class="localvar">L</a>, <a href="../h_src/143274940.htm" class="localvar">name</a>);  <a  class="comments">/* push name */</a>
+   223 :    <a href="../h_src/57439152.htm" class="function">lua_rotate</a>(<a href="../h_src/143275620.htm" class="localvar">L</a>, -2, 1);  <a  class="comments">/* re-order */</a>
+   227 :    <a href="../h_src/57415760.htm" class="macro">luaL_pushfail</a>(<a href="../h_src/143275620.htm" class="localvar">L</a>);  <a  class="comments">/* no name (nor value) */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable L</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

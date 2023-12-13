@@ -1,0 +1,47 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>IO_OUTPUT</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143261340.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/143261340.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/143261340.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/143261340.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/143258416.htm" class=function>io_close</a>                                         liolib.c
+   230 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143258280.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/143261340.htm" class="macro">IO_OUTPUT</a>);  <a  class="comments">/* use default output */</a>
+<a href="../h_aa/143243388.htm" class=function>io_flush</a>                                         liolib.c
+   729 :    return <a href="../h_src/57419092.htm" class="function">luaL_fileresult</a>(<a href="../h_src/143243252.htm" class="localvar">L</a>, <a href="../h_aa/57571356.htm" class="libfunc">fflush</a>(<a href="../h_src/143253588.htm" class="function">getiofile</a>(<a href="../h_src/143243252.htm" class="localvar">L</a>, <a href="../h_src/143261340.htm" class="macro">IO_OUTPUT</a>)) == 0, NULL);
+<a href="../h_aa/143252160.htm" class=function>io_output</a>                                        liolib.c
+   341 :    return <a href="../h_src/143253112.htm" class="function">g_iofile</a>(<a href="../h_src/143252024.htm" class="localvar">L</a>, <a href="../h_src/143261340.htm" class="macro">IO_OUTPUT</a>, &quot;w&quot;);
+<a href="../h_aa/143246108.htm" class=function>io_write</a>                                         liolib.c
+   686 :    return <a href="../h_aa/143245836.htm" class="libfunc">g_write</a>(<a href="../h_src/143245972.htm" class="localvar">L</a>, <a href="../h_src/143253588.htm" class="function">getiofile</a>(<a href="../h_src/143245972.htm" class="localvar">L</a>, <a href="../h_src/143261340.htm" class="macro">IO_OUTPUT</a>), 1);
+<a href="../h_aa/57409844.htm" class=function>luaopen_io</a>                                       liolib.c
+   824 :    <a href="../h_aa/143241824.htm" class="libfunc">createstdfile</a>(<a href="../h_src/143241960.htm" class="localvar">L</a>, stdout, <a href="../h_src/143261340.htm" class="macro">IO_OUTPUT</a>, &quot;stdout&quot;);
+</pre>
+<h4><a class="legend">Table lists functions that directly use IO_OUTPUT</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,64 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">Proto::</a>numparams</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57515936.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57515936.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57515936.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57515936.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57515936.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/58068816.htm" class=function>loadFunction</a>                                     lundump.c
+   264 :    <a href="../h_src/58065008.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515936.htm" class="variable">numparams</a> = <a href="../h_src/58073576.htm" class="function">loadByte</a>(<a href="../h_src/58065144.htm" class="localvar">S</a>);
+<a href="../h_aa/57630996.htm" class=function>luaF_newproto</a>                                    lfunc.c
+   255 :    <a href="../h_src/57830356.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515936.htm" class="variable">numparams</a> = 0;
+<a href="../h_aa/58017572.htm" class=function>parlist</a>                                          lparser.c
+   983 :    <a href="../h_src/58017164.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515936.htm" class="variable">numparams</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/58017300.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674896.htm" class="variable">nactvar</a>);
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57747764.htm" class=function>auxgetinfo</a>                                       ldebug.c
+   348 :    <a href="../h_src/57747356.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423104.htm" class="variable">nparams</a> = <a href="../h_src/57747220.htm" class="localvar">f</a>-&gt;<a href="../h_src/57507708.htm" class="variable">l</a>.<a href="../h_src/57508184.htm" class="variable">p</a>-&gt;<a href="../h_src/57515936.htm" class="variable">numparams</a>;
+<a href="../h_aa/57845112.htm" class=function>dumpFunction</a>                                     ldump.c
+   190 :    <a href="../h_src/57848784.htm" class="function">dumpByte</a>(<a href="../h_src/57841984.htm" class="localvar">D</a>, <a href="../h_src/57841848.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515936.htm" class="variable">numparams</a>);
+<a href="../h_aa/57633444.htm" class=function>luaD_hookcall</a>                                    ldo.c
+   376 :    <a href="../h_src/57633512.htm" class="function">luaD_hook</a>(<a href="../h_src/57874420.htm" class="localvar">L</a>, <a href="../h_src/57874148.htm" class="localvar">event</a>, -1, 1, <a href="../h_src/57874012.htm" class="localvar">p</a>-&gt;<a href="../h_src/57515936.htm" class="variable">numparams</a>);
+<a href="../h_aa/57633308.htm" class=function>luaD_precall</a>                                     ldo.c
+   601 :    int <a href="../h_src/57864628.htm" class="localvar">nfixparams</a> = <a href="../h_src/57864900.htm" class="localvar">p</a>-&gt;<a href="../h_src/57515936.htm" class="variable">numparams</a>;
+<a href="../h_aa/57633376.htm" class=function>luaD_pretailcall</a>                                 ldo.c
+   554 :    int <a href="../h_src/57866124.htm" class="localvar">nfixparams</a> = <a href="../h_src/57866396.htm" class="localvar">p</a>-&gt;<a href="../h_src/57515936.htm" class="variable">numparams</a>;
+<a href="../h_aa/57668844.htm" class=function>luaK_finish</a>                                      lcode.c
+  1860 :    <a href="../h_src/57693120.htm" class="macro">SETARG_C</a>(*<a href="../h_src/57762724.htm" class="localvar">pc</a>, <a href="../h_src/57762860.htm" class="localvar">p</a>-&gt;<a href="../h_src/57515936.htm" class="variable">numparams</a> + 1);  <a  class="comments">/* signal that it is vararg */</a>
+<a href="../h_aa/58017572.htm" class=function>parlist</a>                                          lparser.c
+   985 :    <a href="../h_src/58017980.htm" class="function">setvararg</a>(<a href="../h_src/58017300.htm" class="localvar">fs</a>, <a href="../h_src/58017164.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515936.htm" class="variable">numparams</a>);  <a  class="comments">/* declared vararg */</a>
+<a href="../h_aa/143394728.htm" class=function>PrintHeader</a>                                      luac.c
+   682 :    (int)(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515936.htm" class="variable">numparams</a>),<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515868.htm" class="variable">is_vararg</a>?&quot;+&quot;:&quot;&quot;,<a href="../h_src/143395000.htm" class="macro">SS</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515936.htm" class="variable">numparams</a>),
+<a href="../h_aa/57873876.htm" class=function>rethook</a>                                          ldo.c
+   395 :    <a href="../h_src/57873196.htm" class="localvar">delta</a> = <a href="../h_src/57873604.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650852.htm" class="variable">l</a>.<a href="../h_src/57650988.htm" class="variable">nextraargs</a> + <a href="../h_src/57872924.htm" class="localvar">p</a>-&gt;<a href="../h_src/57515936.htm" class="variable">numparams</a> + 1;
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable numparams</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

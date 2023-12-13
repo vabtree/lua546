@@ -1,0 +1,64 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>OFFSET_sJ</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57695976.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57695976.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57695976.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57695976.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57668436.htm" class=function>codesJ</a>                                           lcode.c
+   430 :    unsigned int <a href="../h_src/57812568.htm" class="localvar">j</a> = <a href="../h_src/57812840.htm" class="localvar">sj</a> + <a href="../h_src/57695976.htm" class="macro">OFFSET_sJ</a>;
+<a href="../h_aa/57763812.htm" class=function>finaltarget</a>                                      lcode.c
+  1833 :    <a href="../h_src/57763540.htm" class="localvar">i</a> += <a href="../h_src/57691760.htm" class="macro">GETARG_sJ</a>(<a href="../h_src/57763268.htm" class="localvar">pc</a>) + 1;
+<a href="../h_aa/57742732.htm" class=function>findsetreg</a>                                       ldebug.c
+   492 :    int <a href="../h_src/57741100.htm" class="localvar">b</a> = <a href="../h_src/57691760.htm" class="macro">GETARG_sJ</a>(<a href="../h_src/57741780.htm" class="localvar">i</a>);
+<a href="../h_aa/57664084.htm" class=function>fixjump</a>                                          lcode.c
+   171 :    if (!(-<a href="../h_src/57695976.htm" class="macro">OFFSET_sJ</a> &lt;= <a href="../h_src/57663404.htm" class="localvar">offset</a> &amp;&amp; <a href="../h_src/57663404.htm" class="localvar">offset</a> &lt;= <a href="../h_src/57696112.htm" class="macro">MAXARG_sJ</a> - <a href="../h_src/57695976.htm" class="macro">OFFSET_sJ</a>))
+   174 :    <a href="../h_src/57691624.htm" class="macro">SETARG_sJ</a>(*<a href="../h_src/57663540.htm" class="localvar">jmp</a>, <a href="../h_src/57663404.htm" class="localvar">offset</a>);
+<a href="../h_aa/57664628.htm" class=function>getjump</a>                                          lcode.c
+   155 :    int <a href="../h_src/57664220.htm" class="localvar">offset</a> = <a href="../h_src/57691760.htm" class="macro">GETARG_sJ</a>(<a href="../h_src/57664492.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57676052.htm" class="variable">f</a>-&gt;<a href="../h_src/57514916.htm" class="variable">code</a>[<a href="../h_src/57664356.htm" class="localvar">pc</a>]);
+<a href="../h_aa/57610936.htm" class=function>luaV_execute</a>                                     lvm.c
+  1602 :    <a href="../h_src/58189964.htm" class="macro">dojump</a>(<a href="../h_src/58188060.htm" class="localvar">ci</a>, <a href="../h_src/58186564.htm" class="localvar">i</a>, 0);
+  1610 :    <a href="../h_src/58189692.htm" class="macro">docondjump</a>();
+  1614 :    <a href="../h_src/58191732.htm" class="macro">op_order</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58193500.htm" class="macro">l_lti</a>, <a href="../h_src/58208120.htm" class="function">LTnum</a>, <a href="../h_src/58206760.htm" class="function">lessthanothers</a>);
+  1618 :    <a href="../h_src/58191732.htm" class="macro">op_order</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58193364.htm" class="macro">l_lei</a>, <a href="../h_src/58207440.htm" class="function">LEnum</a>, <a href="../h_src/58205808.htm" class="function">lessequalothers</a>);
+  1626 :    <a href="../h_src/58189692.htm" class="macro">docondjump</a>();
+  1639 :    <a href="../h_src/58189692.htm" class="macro">docondjump</a>();
+  1643 :    <a href="../h_src/58191596.htm" class="macro">op_orderI</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58193500.htm" class="macro">l_lti</a>, <a href="../h_src/57539328.htm" class="macro">luai_numlt</a>, 0, <a href="../h_src/57499548.htm" class="variable">TM_LT</a>);
+  1647 :    <a href="../h_src/58191596.htm" class="macro">op_orderI</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58193364.htm" class="macro">l_lei</a>, <a href="../h_src/57539192.htm" class="macro">luai_numle</a>, 0, <a href="../h_src/57499480.htm" class="variable">TM_LE</a>);
+  1651 :    <a href="../h_src/58191596.htm" class="macro">op_orderI</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58193228.htm" class="macro">l_gti</a>, <a href="../h_src/57539056.htm" class="macro">luai_numgt</a>, 1, <a href="../h_src/57499548.htm" class="variable">TM_LT</a>);
+  1655 :    <a href="../h_src/58191596.htm" class="macro">op_orderI</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58193092.htm" class="macro">l_gei</a>, <a href="../h_src/57538920.htm" class="macro">luai_numge</a>, 1, <a href="../h_src/57499480.htm" class="variable">TM_LE</a>);
+  1661 :    <a href="../h_src/58189692.htm" class="macro">docondjump</a>();
+  1671 :    <a href="../h_src/58189828.htm" class="macro">donextjump</a>(<a href="../h_src/58188060.htm" class="localvar">ci</a>);
+<a href="../h_aa/143397312.htm" class=function>PrintCode</a>                                        luac.c
+   558 :    <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d&quot;,<a href="../h_src/57691760.htm" class="macro">GETARG_sJ</a>(<a href="../h_src/143396632.htm" class="localvar">i</a>));
+   559 :    <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a> &quot;to %d&quot;,<a href="../h_src/57691760.htm" class="macro">GETARG_sJ</a>(<a href="../h_src/143396632.htm" class="localvar">i</a>)+<a href="../h_src/143396904.htm" class="localvar">pc</a>+2);
+</pre>
+<h4><a class="legend">Table lists functions that directly use OFFSET_sJ</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,52 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>curr</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57954020.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57954020.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57954020.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57954020.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57955108.htm" class=function>sweepgen</a>                                         lgc.c
+  1126 :    while ((<a href="../h_src/57954020.htm" class="localvar">curr</a> = *<a href="../h_src/57954700.htm" class="localvar">p</a>) != <a href="../h_src/57954564.htm" class="localvar">limit</a>) {
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57955108.htm" class=function>sweepgen</a>                                         lgc.c
+  1127 :    if (<a href="../h_src/57626372.htm" class="macro">iswhite</a>(<a href="../h_src/57954020.htm" class="localvar">curr</a>)) {  <a  class="comments">/* is 'curr' dead? */</a>
+  1129 :    *<a href="../h_src/57954700.htm" class="localvar">p</a> = <a href="../h_src/57954020.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>;  <a  class="comments">/* remove 'curr' from list */</a>
+  1130 :    <a href="../h_src/57966804.htm" class="function">freeobj</a>(<a href="../h_src/57954972.htm" class="localvar">L</a>, <a href="../h_src/57954020.htm" class="localvar">curr</a>);  <a  class="comments">/* erase 'curr' */</a>
+  1133 :    if (<a href="../h_src/57623924.htm" class="macro">getage</a>(<a href="../h_src/57954020.htm" class="localvar">curr</a>) == <a href="../h_src/57625012.htm" class="macro">G_NEW</a>) {  <a  class="comments">/* new objects go back to white */</a>
+  1134 :    int <a href="../h_src/57953884.htm" class="localvar">marked</a> = <a href="../h_src/57954020.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528040.htm" class="variable">marked</a> &amp; ~<a href="../h_src/57828248.htm" class="macro">maskgcbits</a>;  <a  class="comments">/* erase GC bits */</a>
+  1135 :    <a href="../h_src/57954020.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528040.htm" class="variable">marked</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/57953884.htm" class="localvar">marked</a> | <a href="../h_src/57624876.htm" class="macro">G_SURVIVAL</a> | <a href="../h_src/57954156.htm" class="localvar">white</a>);
+  1138 :    <a href="../h_src/57623788.htm" class="macro">setage</a>(<a href="../h_src/57954020.htm" class="localvar">curr</a>, <a href="../h_src/57954292.htm" class="localvar">nextage</a>[<a href="../h_src/57623924.htm" class="macro">getage</a>(<a href="../h_src/57954020.htm" class="localvar">curr</a>)]);
+  1139 :    if (<a href="../h_src/57623924.htm" class="macro">getage</a>(<a href="../h_src/57954020.htm" class="localvar">curr</a>) == <a href="../h_src/57624604.htm" class="macro">G_OLD1</a> &amp;&amp; *<a href="../h_src/57954428.htm" class="localvar">pfirstold1</a> == NULL)
+  1140 :    *<a href="../h_src/57954428.htm" class="localvar">pfirstold1</a> = <a href="../h_src/57954020.htm" class="localvar">curr</a>;  <a  class="comments">/* first OLD1 object in the list */</a>
+  1142 :    <a href="../h_src/57954700.htm" class="localvar">p</a> = &amp;<a href="../h_src/57954020.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>;  <a  class="comments">/* go to next element */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable curr</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

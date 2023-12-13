@@ -1,0 +1,49 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lua_getlocaledecpoint</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57448468.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57448468.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57448468.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57448468.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/143264808.htm" class=file>liolib.c</a>
+   483 :    <a href="../h_src/143248216.htm" class="variable">decp</a>[0] = <a href="../h_src/57448468.htm" class="macro">lua_getlocaledecpoint</a>();  <a  class="comments">/* get decimal point from locale */</a>
+<a href="../h_aa/57911384.htm" class=function>l_str2d</a>                                          lobject.c
+   264 :    <a href="../h_src/57910500.htm" class="localvar">buff</a>[<a href="../h_src/57910364.htm" class="localvar">pdot</a> - <a href="../h_src/57911248.htm" class="localvar">s</a>] = <a href="../h_src/57448468.htm" class="macro">lua_getlocaledecpoint</a>();  <a  class="comments">/* correct decimal point */</a>
+<a href="../h_aa/57914104.htm" class=function>lua_strx2number</a>                                  lobject.c
+   166 :    int <a href="../h_src/57913628.htm" class="localvar">dot</a> = <a href="../h_src/57448468.htm" class="macro">lua_getlocaledecpoint</a>();
+<a href="../h_aa/143300780.htm" class=function>num2straux</a>                                       lstrlib.c
+  1044 :    <a href="../h_src/143300644.htm" class="localvar">buff</a>[<a href="../h_src/143299964.htm" class="localvar">n</a>++] = <a href="../h_src/57448468.htm" class="macro">lua_getlocaledecpoint</a>();  <a  class="comments">/* add radix point */</a>
+<a href="../h_aa/143296836.htm" class=function>quotefloat</a>                                       lstrlib.c
+  1164 :    char <a href="../h_src/143296020.htm" class="localvar">point</a> = <a href="../h_src/57448468.htm" class="macro">lua_getlocaledecpoint</a>();  <a  class="comments">/* try locale point */</a>
+<a href="../h_aa/57907304.htm" class=function>tostringbuff</a>                                     lobject.c
+   363 :    <a href="../h_src/57907032.htm" class="localvar">buff</a>[<a href="../h_src/57906896.htm" class="localvar">len</a>++] = <a href="../h_src/57448468.htm" class="macro">lua_getlocaledecpoint</a>();
+</pre>
+<h4><a class="legend">Table lists functions that directly use lua_getlocaledecpoint</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

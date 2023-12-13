@@ -1,0 +1,52 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>bl</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58027432.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/58027432.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/58027432.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/58027432.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/58027704.htm" class=function>leaveblock</a>                                       lparser.c
+   673 :    <a href="../h_src/58055856.htm" class="type">BlockCnt</a> *<a href="../h_src/58027432.htm" class="localvar">bl</a> = <a href="../h_src/58027568.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675576.htm" class="variable">bl</a>;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/58027704.htm" class=function>leaveblock</a>                                       lparser.c
+   676 :    int <a href="../h_src/58027024.htm" class="localvar">stklevel</a> = <a href="../h_src/58047220.htm" class="function">reglevel</a>(<a href="../h_src/58027568.htm" class="localvar">fs</a>, <a href="../h_src/58027432.htm" class="localvar">bl</a>-&gt;<a href="../h_src/58056128.htm" class="variable">nactvar</a>);  <a  class="comments">/* level outside the block */</a>
+   677 :    <a href="../h_src/58043140.htm" class="function">removevars</a>(<a href="../h_src/58027568.htm" class="localvar">fs</a>, <a href="../h_src/58027432.htm" class="localvar">bl</a>-&gt;<a href="../h_src/58056128.htm" class="variable">nactvar</a>);  <a  class="comments">/* remove block locals */</a>
+   679 :    if (<a href="../h_src/58027432.htm" class="localvar">bl</a>-&gt;<a href="../h_src/58055992.htm" class="variable">isloop</a>)  <a  class="comments">/* has to fix pending breaks? */</a>
+   681 :    if (!<a href="../h_src/58027160.htm" class="localvar">hasclose</a> &amp;&amp; <a href="../h_src/58027432.htm" class="localvar">bl</a>-&gt;<a href="../h_src/58056332.htm" class="variable">previous</a> &amp;&amp; <a href="../h_src/58027432.htm" class="localvar">bl</a>-&gt;<a href="../h_src/58056060.htm" class="variable">upval</a>)  <a  class="comments">/* still need a 'close'? */</a>
+   684 :    <a href="../h_src/58027296.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700328.htm" class="variable">dyd</a>-&gt;<a href="../h_src/57676324.htm" class="variable">label</a>.<a href="../h_src/57677072.htm" class="variable">n</a> = <a href="../h_src/58027432.htm" class="localvar">bl</a>-&gt;<a href="../h_src/58056264.htm" class="variable">firstlabel</a>;  <a  class="comments">/* remove local labels */</a>
+   685 :    <a href="../h_src/58027568.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675576.htm" class="variable">bl</a> = <a href="../h_src/58027432.htm" class="localvar">bl</a>-&gt;<a href="../h_src/58056332.htm" class="variable">previous</a>;  <a  class="comments">/* current block now is previous one */</a>
+   686 :    if (<a href="../h_src/58027432.htm" class="localvar">bl</a>-&gt;<a href="../h_src/58056332.htm" class="variable">previous</a>)  <a  class="comments">/* was it a nested block? */</a>
+   687 :    <a href="../h_src/58029608.htm" class="function">movegotosout</a>(<a href="../h_src/58027568.htm" class="localvar">fs</a>, <a href="../h_src/58027432.htm" class="localvar">bl</a>);  <a  class="comments">/* update pending gotos to enclosing block */</a>
+   689 :    if (<a href="../h_src/58027432.htm" class="localvar">bl</a>-&gt;<a href="../h_src/58056196.htm" class="variable">firstgoto</a> &lt; <a href="../h_src/58027296.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700328.htm" class="variable">dyd</a>-&gt;<a href="../h_src/57676392.htm" class="variable">gt</a>.<a href="../h_src/57677072.htm" class="variable">n</a>)  <a  class="comments">/* still pending gotos? */</a>
+   690 :    <a href="../h_src/58028248.htm" class="function">undefgoto</a>(<a href="../h_src/58027296.htm" class="localvar">ls</a>, &amp;<a href="../h_src/58027296.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700328.htm" class="variable">dyd</a>-&gt;<a href="../h_src/57676392.htm" class="variable">gt</a>.<a href="../h_src/57677140.htm" class="variable">arr</a>[<a href="../h_src/58027432.htm" class="localvar">bl</a>-&gt;<a href="../h_src/58056196.htm" class="variable">firstgoto</a>]);  <a  class="comments">/* error */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable bl</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

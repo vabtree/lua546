@@ -1,0 +1,55 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>i</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57563060.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57563060.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57563060.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57563060.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57563604.htm" class=function>collectargs</a>                                      lua.c
+   288 :    for (<a href="../h_src/57563060.htm" class="localvar">i</a> = 1; <a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>] != NULL; <a href="../h_src/57563060.htm" class="localvar">i</a>++) {  <a  class="comments">/* handle arguments */</a>
+   320 :    <a href="../h_src/57563060.htm" class="localvar">i</a>++;  <a  class="comments">/* try next 'argv' */</a>
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57563604.htm" class=function>collectargs</a>                                      lua.c
+   288 :    for (<a href="../h_src/57563060.htm" class="localvar">i</a> = 1; <a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>] != NULL; <a href="../h_src/57563060.htm" class="localvar">i</a>++) {  <a  class="comments">/* handle arguments */</a>
+   289 :    *<a href="../h_src/57563332.htm" class="localvar">first</a> = <a href="../h_src/57563060.htm" class="localvar">i</a>;
+   290 :    if (<a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>][0] != '-')  <a  class="comments">/* not an option? */</a>
+   292 :    switch (<a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>][1]) {  <a  class="comments">/* else check option */</a>
+   294 :    if (<a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>][2] != '\0')  <a  class="comments">/* extra characters after '--'? */</a>
+   296 :    *<a href="../h_src/57563332.htm" class="localvar">first</a> = <a href="../h_src/57563060.htm" class="localvar">i</a> + 1;
+   301 :    if (<a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>][2] != '\0')  <a  class="comments">/* extra characters? */</a>
+   306 :    if (<a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>][2] != '\0')  <a  class="comments">/* extra characters? */</a>
+   312 :    if (<a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>][2] != '\0')  <a  class="comments">/* extra characters? */</a>
+   319 :    if (<a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>][2] == '\0') {  <a  class="comments">/* no concatenated argument? */</a>
+   320 :    <a href="../h_src/57563060.htm" class="localvar">i</a>++;  <a  class="comments">/* try next 'argv' */</a>
+   321 :    if (<a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>] == NULL || <a href="../h_src/57563468.htm" class="localvar">argv</a>[<a href="../h_src/57563060.htm" class="localvar">i</a>][0] == '-')
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable i</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

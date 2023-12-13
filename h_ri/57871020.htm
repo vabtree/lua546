@@ -1,0 +1,52 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>wanted</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57871020.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57871020.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57871020.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57871020.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57871564.htm" class=function>moveresults</a>                                      ldo.c
+   448 :    <a href="../h_src/57871020.htm" class="localvar">wanted</a> = <a href="../h_src/57871156.htm" class="localvar">nres</a>;  <a  class="comments">/* we want all results */</a>
+   461 :    <a href="../h_src/57871020.htm" class="localvar">wanted</a> = <a href="../h_src/57637252.htm" class="macro">decodeNresults</a>(<a href="../h_src/57871020.htm" class="localvar">wanted</a>);
+   463 :    <a href="../h_src/57871020.htm" class="localvar">wanted</a> = <a href="../h_src/57871156.htm" class="localvar">nres</a>;  <a  class="comments">/* we want all results */</a>
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57871564.htm" class=function>moveresults</a>                                      ldo.c
+   436 :    switch (<a href="../h_src/57871020.htm" class="localvar">wanted</a>) {  <a  class="comments">/* handle typical cases separately */</a>
+   451 :    if (<a href="../h_src/57637524.htm" class="macro">hastocloseCfunc</a>(<a href="../h_src/57871020.htm" class="localvar">wanted</a>)) {  <a  class="comments">/* to-be-closed variables? */</a>
+   461 :    <a href="../h_src/57871020.htm" class="localvar">wanted</a> = <a href="../h_src/57637252.htm" class="macro">decodeNresults</a>(<a href="../h_src/57871020.htm" class="localvar">wanted</a>);
+   462 :    if (<a href="../h_src/57871020.htm" class="localvar">wanted</a> == <a href="../h_src/57445612.htm" class="macro">LUA_MULTRET</a>)
+   469 :    if (<a href="../h_src/57871156.htm" class="localvar">nres</a> &gt; <a href="../h_src/57871020.htm" class="localvar">wanted</a>)  <a  class="comments">/* extra results? */</a>
+   470 :    <a href="../h_src/57871156.htm" class="localvar">nres</a> = <a href="../h_src/57871020.htm" class="localvar">wanted</a>;  <a  class="comments">/* don't need them */</a>
+   473 :    for (; <a href="../h_src/57870748.htm" class="localvar">i</a> &lt; <a href="../h_src/57871020.htm" class="localvar">wanted</a>; <a href="../h_src/57870748.htm" class="localvar">i</a>++)  <a  class="comments">/* complete wanted number of results */</a>
+   475 :    <a href="../h_src/57871428.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57871292.htm" class="localvar">res</a> + <a href="../h_src/57871020.htm" class="localvar">wanted</a>;  <a  class="comments">/* top points after the last result */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable wanted</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

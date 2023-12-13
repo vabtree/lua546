@@ -1,0 +1,59 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>getlocalvardesc</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58047628.htm" class="function" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/58047628.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/58047628.htm" class="function" target="_self">Flow Chart</a></li>
+<li><a href="../h_src/58047628.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/58047628.htm" class="function" target="_self">Called By</a></li>
+<li><a href="../h_rx/58047628.htm" class="function" target="_self">Call Tree</a></li>
+<li><a href="../h_ro/58047628.htm" class="function" target="_self">Calls and Uses</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/58044228.htm" class=function>adjustlocalvars</a>                                  lparser.c
+   317 :    <a href="../h_src/57677956.htm" class="type">Vardesc</a> *<a href="../h_src/58043276.htm" class="localvar">var</a> = <a href="../h_src/58047628.htm" class="function">getlocalvardesc</a>(<a href="../h_src/58043820.htm" class="localvar">fs</a>, <a href="../h_src/58043412.htm" class="localvar">vidx</a>);
+<a href="../h_aa/58045316.htm" class=function>check_readonly</a>                                   lparser.c
+   286 :    <a href="../h_src/57677956.htm" class="type">Vardesc</a> *<a href="../h_src/58044636.htm" class="localvar">vardesc</a> = <a href="../h_src/58047628.htm" class="function">getlocalvardesc</a>(<a href="../h_src/58044908.htm" class="localvar">fs</a>, <a href="../h_src/58045044.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57679724.htm" class="variable">var</a>.<a href="../h_src/57679860.htm" class="variable">vidx</a>);
+<a href="../h_aa/58045860.htm" class=function>init_var</a>                                         lparser.c
+   270 :    <a href="../h_src/58045588.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57679724.htm" class="variable">var</a>.<a href="../h_src/57679928.htm" class="variable">ridx</a> = <a href="../h_src/58047628.htm" class="function">getlocalvardesc</a>(<a href="../h_src/58045724.htm" class="localvar">fs</a>, <a href="../h_src/58045452.htm" class="localvar">vidx</a>)-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678364.htm" class="variable">ridx</a>;
+<a href="../h_aa/58035660.htm" class=function>jumpscopeerror</a>                                   lparser.c
+   515 :    const char *<a href="../h_src/58035252.htm" class="localvar">varname</a> = <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58047628.htm" class="function">getlocalvardesc</a>(<a href="../h_src/58035524.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>, <a href="../h_src/58035388.htm" class="localvar">gt</a>-&gt;<a href="../h_src/57677548.htm" class="variable">nactvar</a>)-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678228.htm" class="variable">name</a>);
+<a href="../h_aa/58046540.htm" class=function>localdebuginfo</a>                                   lparser.c
+   252 :    <a href="../h_src/57677956.htm" class="type">Vardesc</a> *<a href="../h_src/58046132.htm" class="localvar">vd</a> = <a href="../h_src/58047628.htm" class="function">getlocalvardesc</a>(<a href="../h_src/58046404.htm" class="localvar">fs</a>,  <a href="../h_src/58046268.htm" class="localvar">vidx</a>);
+<a href="../h_aa/57992276.htm" class=function>localstat</a>                                        lparser.c
+  1738 :    <a href="../h_src/58047628.htm" class="function">getlocalvardesc</a>(<a href="../h_src/57992004.htm" class="localvar">fs</a>, <a href="../h_src/57991596.htm" class="localvar">vidx</a>)-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678432.htm" class="variable">kind</a> = <a href="../h_src/57991460.htm" class="localvar">kind</a>;
+  1752 :    <a href="../h_src/57991732.htm" class="localvar">var</a> = <a href="../h_src/58047628.htm" class="function">getlocalvardesc</a>(<a href="../h_src/57992004.htm" class="localvar">fs</a>, <a href="../h_src/57991596.htm" class="localvar">vidx</a>);  <a  class="comments">/* get last variable */</a>
+<a href="../h_aa/58041372.htm" class=function>newupvalue</a>                                       lparser.c
+   370 :    <a href="../h_src/58040828.htm" class="localvar">up</a>-&gt;<a href="../h_src/57517160.htm" class="variable">kind</a> = <a href="../h_src/58047628.htm" class="function">getlocalvardesc</a>(<a href="../h_src/58040692.htm" class="localvar">prev</a>, <a href="../h_src/58040964.htm" class="localvar">v</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57679724.htm" class="variable">var</a>.<a href="../h_src/57679860.htm" class="variable">vidx</a>)-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678432.htm" class="variable">kind</a>;
+<a href="../h_aa/58047220.htm" class=function>reglevel</a>                                         lparser.c
+   231 :    <a href="../h_src/57677956.htm" class="type">Vardesc</a> *<a href="../h_src/58046812.htm" class="localvar">vd</a> = <a href="../h_src/58047628.htm" class="function">getlocalvardesc</a>(<a href="../h_src/58047084.htm" class="localvar">fs</a>, <a href="../h_src/58046948.htm" class="localvar">nvar</a>);  <a  class="comments">/* get previous variable */</a>
+<a href="../h_aa/58040556.htm" class=function>searchvar</a>                                        lparser.c
+   393 :    <a href="../h_src/57677956.htm" class="type">Vardesc</a> *<a href="../h_src/58039876.htm" class="localvar">vd</a> = <a href="../h_src/58047628.htm" class="function">getlocalvardesc</a>(<a href="../h_src/58040420.htm" class="localvar">fs</a>, <a href="../h_src/58040012.htm" class="localvar">i</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use getlocalvardesc</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

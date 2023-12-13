@@ -1,0 +1,47 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>reg</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143207212.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/143207212.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/143207212.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/143207212.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/143207756.htm" class=function>lookforfunc</a>                                      loadlib.c
+   391 :    void *<a href="../h_src/143207212.htm" class="localvar">reg</a> = <a href="../h_src/143209524.htm" class="function">checkclib</a>(<a href="../h_src/143207620.htm" class="localvar">L</a>, <a href="../h_src/143207484.htm" class="localvar">path</a>);  <a  class="comments">/* check loaded C libraries */</a>
+   393 :    <a href="../h_src/143207212.htm" class="localvar">reg</a> = <a href="../h_src/143215304.htm" class="function">lsys_load</a>(<a href="../h_src/143207620.htm" class="localvar">L</a>, <a href="../h_src/143207484.htm" class="localvar">path</a>, *<a href="../h_src/143207348.htm" class="localvar">sym</a> == '*');  <a  class="comments">/* global symbols if 'sym'=='*' */</a>
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/143207756.htm" class=function>lookforfunc</a>                                      loadlib.c
+   392 :    if (<a href="../h_src/143207212.htm" class="localvar">reg</a> == NULL) {  <a  class="comments">/* must load library? */</a>
+   394 :    if (<a href="../h_src/143207212.htm" class="localvar">reg</a> == NULL) return <a href="../h_src/143208028.htm" class="macro">ERRLIB</a>;  <a  class="comments">/* unable to load library */</a>
+   395 :    <a href="../h_src/143208980.htm" class="function">addtoclib</a>(<a href="../h_src/143207620.htm" class="localvar">L</a>, <a href="../h_src/143207484.htm" class="localvar">path</a>, <a href="../h_src/143207212.htm" class="localvar">reg</a>);
+   402 :    <a href="../h_src/57441736.htm" class="type">lua_CFunction</a> <a href="../h_src/143207076.htm" class="localvar">f</a> = <a href="../h_src/143215168.htm" class="function">lsys_sym</a>(<a href="../h_src/143207620.htm" class="localvar">L</a>, <a href="../h_src/143207212.htm" class="localvar">reg</a>, <a href="../h_src/143207348.htm" class="localvar">sym</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable reg</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

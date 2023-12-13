@@ -1,0 +1,85 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>memcpy</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57902680.htm" class="libfunc" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57902680.htm" class="libfunc" target="_self">Calling Hierarchy</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57902680.htm" class="libfunc" target="_self">Called By</a></li>
+<li><a href="../h_rx/57902680.htm" class="libfunc" target="_self">Call Tree</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57903360.htm" class=function>addstr2buff</a>                                      lobject.c
+   456 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/57902816.htm" class="localvar">bf</a>, <a href="../h_src/57903088.htm" class="localvar">str</a>, <a href="../h_src/57902952.htm" class="localvar">slen</a>);  <a  class="comments">/* add string to buffer */</a>
+<a href="../h_aa/143350488.htm" class=function>checkoption</a>                                      loslib.c
+   280 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/143349944.htm" class="localvar">buff</a>, <a href="../h_src/143350216.htm" class="localvar">conv</a>, <a href="../h_src/143349672.htm" class="localvar">oplen</a>);  <a  class="comments">/* copy valid option to buffer */</a>
+<a href="../h_aa/58203768.htm" class=function>copy2buff</a>                                        lvm.c
+   628 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/58203360.htm" class="localvar">buff</a> + <a href="../h_src/58203224.htm" class="localvar">tl</a>, <a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58203632.htm" class="localvar">top</a> - <a href="../h_src/58203496.htm" class="localvar">n</a>)), <a href="../h_src/58203088.htm" class="localvar">l</a> * sizeof(char));
+<a href="../h_aa/143281128.htm" class=function>copywithendian</a>                                   lstrlib.c
+  1592 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/143280992.htm" class="localvar">dest</a>, <a href="../h_src/143280856.htm" class="localvar">src</a>, <a href="../h_src/143280720.htm" class="localvar">size</a>);
+<a href="../h_aa/143293300.htm" class=function>getformat</a>                                        lstrlib.c
+  1254 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/143292892.htm" class="localvar">form</a>, <a href="../h_src/143293028.htm" class="localvar">strfrmt</a>, <a href="../h_src/143292756.htm" class="localvar">len</a> * sizeof(char));
+<a href="../h_aa/58125188.htm" class=function>internshrstr</a>                                     lstring.c
+   209 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58124644.htm" class="localvar">ts</a>), <a href="../h_src/58124916.htm" class="localvar">str</a>, <a href="../h_src/58124780.htm" class="localvar">l</a> * sizeof(char));
+<a href="../h_aa/143424036.htm" class=function>l_randomizePivot</a>                                 ltablib.c
+   251 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/143423628.htm" class="localvar">buff</a>, &amp;<a href="../h_src/143423900.htm" class="localvar">c</a>, <a href="../h_src/143424172.htm" class="macro">sof</a>(<a href="../h_src/143423900.htm" class="localvar">c</a>) * sizeof(unsigned int));
+   252 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/143423628.htm" class="localvar">buff</a> + <a href="../h_src/143424172.htm" class="macro">sof</a>(<a href="../h_src/143423900.htm" class="localvar">c</a>), &amp;<a href="../h_src/143423764.htm" class="localvar">t</a>, <a href="../h_src/143424172.htm" class="macro">sof</a>(<a href="../h_src/143423764.htm" class="localvar">t</a>) * sizeof(unsigned int));
+<a href="../h_aa/57439764.htm" class=function>lua_newthread</a>                                    lstate.c
+   304 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/57429700.htm" class="macro">lua_getextraspace</a>(<a href="../h_src/58136340.htm" class="localvar">L1</a>), <a href="../h_src/57429700.htm" class="macro">lua_getextraspace</a>(<a href="../h_src/58136612.htm" class="localvar">g</a>-&gt;<a href="../h_src/57643848.htm" class="variable">mainthread</a>),
+<a href="../h_aa/57983912.htm" class=function>luai_makeseed</a>                                    lstate.c
+    75 :    <a href="../h_src/57984048.htm" class="macro">addbuff</a>(<a href="../h_src/57983640.htm" class="localvar">buff</a>, <a href="../h_src/57983300.htm" class="localvar">p</a>, <a href="../h_src/57983776.htm" class="localvar">L</a>);  <a  class="comments">/* heap variable */</a>
+    76 :    <a href="../h_src/57984048.htm" class="macro">addbuff</a>(<a href="../h_src/57983640.htm" class="localvar">buff</a>, <a href="../h_src/57983300.htm" class="localvar">p</a>, &amp;<a href="../h_src/57983436.htm" class="localvar">h</a>);  <a  class="comments">/* local variable */</a>
+    77 :    <a href="../h_src/57984048.htm" class="macro">addbuff</a>(<a href="../h_src/57983640.htm" class="localvar">buff</a>, <a href="../h_src/57983300.htm" class="localvar">p</a>, &amp;<a href="../h_src/57439900.htm" class="function">lua_newstate</a><a href="../h_src/57982892.htm" class="localvar">t</a>a<a href="../h_src/57982892.htm" class="localvar">t</a>e);  <a  class="comments">/* public function */</a>
+<a href="../h_aa/57413516.htm" class=function>luaL_addlstring</a>                                  lauxlib.c
+   583 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/58330988.htm" class="localvar">b</a>, <a href="../h_src/58331260.htm" class="localvar">s</a>, <a href="../h_src/58331124.htm" class="localvar">l</a> * sizeof(char));
+<a href="../h_aa/57413380.htm" class=function>luaL_addvalue</a>                                    lauxlib.c
+   624 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/58329492.htm" class="localvar">b</a>, <a href="../h_src/58329628.htm" class="localvar">s</a>, <a href="../h_src/58329764.htm" class="localvar">len</a> * sizeof(char));
+<a href="../h_aa/57501316.htm" class=function>luaO_chunkid</a>                                     lobject.c
+   571 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/57898124.htm" class="localvar">out</a>, <a href="../h_src/57897988.htm" class="localvar">source</a> + 1, <a href="../h_src/57897852.htm" class="localvar">srclen</a> * sizeof(char));
+   573 :    <a href="../h_src/57898260.htm" class="macro">addstr</a>(<a href="../h_src/57898124.htm" class="localvar">out</a>, <a href="../h_src/57897988.htm" class="localvar">source</a> + 1, <a href="../h_src/57897716.htm" class="localvar">bufflen</a> - 1);
+   579 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/57898124.htm" class="localvar">out</a>, <a href="../h_src/57897988.htm" class="localvar">source</a> + 1, <a href="../h_src/57897852.htm" class="localvar">srclen</a> * sizeof(char));
+   581 :    <a href="../h_src/57898260.htm" class="macro">addstr</a>(<a href="../h_src/57898124.htm" class="localvar">out</a>, <a href="../h_src/57898668.htm" class="macro">RETS</a>, <a href="../h_src/57549392.htm" class="macro">LL</a>(<a href="../h_src/57898668.htm" class="macro">RETS</a>));
+   583 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/57898124.htm" class="localvar">out</a>, <a href="../h_src/57897988.htm" class="localvar">source</a> + 1 + <a href="../h_src/57897852.htm" class="localvar">srclen</a> - <a href="../h_src/57897716.htm" class="localvar">bufflen</a>, <a href="../h_src/57897716.htm" class="localvar">bufflen</a> * sizeof(char));
+   588 :    <a href="../h_src/57898260.htm" class="macro">addstr</a>(<a href="../h_src/57898124.htm" class="localvar">out</a>, <a href="../h_src/57898532.htm" class="macro">PRE</a>, <a href="../h_src/57549392.htm" class="macro">LL</a>(<a href="../h_src/57898532.htm" class="macro">PRE</a>));  <a  class="comments">/* add prefix */</a>
+   591 :    <a href="../h_src/57898260.htm" class="macro">addstr</a>(<a href="../h_src/57898124.htm" class="localvar">out</a>, <a href="../h_src/57897988.htm" class="localvar">source</a>, <a href="../h_src/57897852.htm" class="localvar">srclen</a>);  <a  class="comments">/* keep it */</a>
+   596 :    <a href="../h_src/57898260.htm" class="macro">addstr</a>(<a href="../h_src/57898124.htm" class="localvar">out</a>, <a href="../h_src/57897988.htm" class="localvar">source</a>, <a href="../h_src/57897852.htm" class="localvar">srclen</a>);
+   597 :    <a href="../h_src/57898260.htm" class="macro">addstr</a>(<a href="../h_src/57898124.htm" class="localvar">out</a>, <a href="../h_src/57898668.htm" class="macro">RETS</a>, <a href="../h_src/57549392.htm" class="macro">LL</a>(<a href="../h_src/57898668.htm" class="macro">RETS</a>));
+   599 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/57898124.htm" class="localvar">out</a>, <a href="../h_src/57898396.htm" class="macro">POS</a>, (<a href="../h_src/57549392.htm" class="macro">LL</a>(<a href="../h_src/57898396.htm" class="macro">POS</a>) + 1) * sizeof(char));
+<a href="../h_aa/57618552.htm" class=function>luaS_newlstr</a>                                     lstring.c
+   229 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58123556.htm" class="localvar">ts</a>), <a href="../h_src/58123828.htm" class="localvar">str</a>, <a href="../h_src/58123692.htm" class="localvar">l</a> * sizeof(char));
+<a href="../h_aa/57610936.htm" class=function>luaV_execute</a>                                     lvm.c
+  1830 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/58355332.htm" class="localvar">ra</a> + 4, <a href="../h_src/58355332.htm" class="localvar">ra</a>, 3 * sizeof(*<a href="../h_src/58355332.htm" class="localvar">ra</a>));
+<a href="../h_aa/57654252.htm" class=function>luaZ_read</a>                                        lzio.c
+    60 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/58351728.htm" class="localvar">b</a>, <a href="../h_src/58351864.htm" class="localvar">z</a>-&gt;<a href="../h_src/57654116.htm" class="variable">p</a>, <a href="../h_src/58351456.htm" class="localvar">m</a>);
+<a href="../h_aa/58332620.htm" class=function>prepbuffsize</a>                                     lauxlib.c
+   564 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/58331940.htm" class="localvar">newbuff</a>, <a href="../h_src/58332484.htm" class="localvar">B</a>-&gt;<a href="../h_src/57415216.htm" class="variable">b</a>, <a href="../h_src/58332484.htm" class="localvar">B</a>-&gt;<a href="../h_src/57415080.htm" class="variable">n</a> * sizeof(char));  <a  class="comments">/* copy original content */</a>
+<a href="../h_aa/143337772.htm" class=function>str_rep</a>                                          lstrlib.c
+   164 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/143336548.htm" class="localvar">p</a>, <a href="../h_src/143337228.htm" class="localvar">s</a>, <a href="../h_src/143337500.htm" class="localvar">l</a> * sizeof(char)); <a href="../h_src/143336548.htm" class="localvar">p</a> += <a href="../h_src/143337500.htm" class="localvar">l</a>;
+   166 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/143336548.htm" class="localvar">p</a>, <a href="../h_src/143336956.htm" class="localvar">sep</a>, <a href="../h_src/143337364.htm" class="localvar">lsep</a> * sizeof(char));
+   170 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/143336548.htm" class="localvar">p</a>, <a href="../h_src/143337228.htm" class="localvar">s</a>, <a href="../h_src/143337500.htm" class="localvar">l</a> * sizeof(char));  <a  class="comments">/* last copy (not followed by separator) */</a>
+</pre>
+<h4><a class="legend">Table lists functions that directly use memcpy</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

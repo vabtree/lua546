@@ -1,0 +1,80 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>AGEBITS</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57624060.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57624060.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57624060.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57624060.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57953204.htm" class=function>correctgraylist</a>                                  lgc.c
+  1176 :    else if (<a href="../h_src/57623924.htm" class="macro">getage</a>(<a href="../h_src/57952932.htm" class="localvar">curr</a>) == <a href="../h_src/57624332.htm" class="macro">G_TOUCHED1</a>) {  <a  class="comments">/* touched in this cycle? */</a>
+  1179 :    <a href="../h_src/57623516.htm" class="macro">changeage</a>(<a href="../h_src/57952932.htm" class="localvar">curr</a>, <a href="../h_src/57624332.htm" class="macro">G_TOUCHED1</a>, <a href="../h_src/57624196.htm" class="macro">G_TOUCHED2</a>);
+  1187 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57623652.htm" class="macro">isold</a>(curr));  <a  class="comments">/* young objects should be white here */</a>
+  1188 :    if (<a href="../h_src/57623924.htm" class="macro">getage</a>(<a href="../h_src/57952932.htm" class="localvar">curr</a>) == <a href="../h_src/57624196.htm" class="macro">G_TOUCHED2</a>)  <a  class="comments">/* advance from TOUCHED2... */</a>
+  1189 :    <a href="../h_src/57623516.htm" class="macro">changeage</a>(<a href="../h_src/57952932.htm" class="localvar">curr</a>, <a href="../h_src/57624196.htm" class="macro">G_TOUCHED2</a>, <a href="../h_src/57624468.htm" class="macro">G_OLD</a>);  <a  class="comments">/* ... to OLD */</a>
+<a href="../h_aa/57818660.htm" class=function>genlink</a>                                          lgc.c
+   432 :    if (<a href="../h_src/57623924.htm" class="macro">getage</a>(<a href="../h_src/57818388.htm" class="localvar">o</a>) == <a href="../h_src/57624332.htm" class="macro">G_TOUCHED1</a>) {  <a  class="comments">/* touched in this cycle? */</a>
+   435 :    else if (<a href="../h_src/57623924.htm" class="macro">getage</a>(<a href="../h_src/57818388.htm" class="localvar">o</a>) == <a href="../h_src/57624196.htm" class="macro">G_TOUCHED2</a>)
+   436 :    <a href="../h_src/57623516.htm" class="macro">changeage</a>(<a href="../h_src/57818388.htm" class="localvar">o</a>, <a href="../h_src/57624196.htm" class="macro">G_TOUCHED2</a>, <a href="../h_src/57624468.htm" class="macro">G_OLD</a>);  <a  class="comments">/* advance age */</a>
+<a href="../h_aa/57620456.htm" class=function>luaC_barrier_</a>                                    lgc.c
+   213 :    if (<a href="../h_src/57623652.htm" class="macro">isold</a>(<a href="../h_src/57824168.htm" class="localvar">o</a>)) {
+   214 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!<a href="../h_src/57623652.htm" class="macro">isold</a>(v));  <a  class="comments">/* white object could not be old */</a>
+   215 :    <a href="../h_src/57623788.htm" class="macro">setage</a>(<a href="../h_src/57824032.htm" class="localvar">v</a>, <a href="../h_src/57624740.htm" class="macro">G_OLD0</a>);  <a  class="comments">/* restore generational invariant */</a>
+<a href="../h_aa/57620388.htm" class=function>luaC_barrierback_</a>                                lgc.c
+   233 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>((g-&gt;gckind == <a href="../h_src/57652144.htm" class="macro">KGC_GEN</a>) == (<a href="../h_src/57623652.htm" class="macro">isold</a>(o) &amp;&amp; <a href="../h_src/57623924.htm" class="macro">getage</a>(o) != <a href="../h_src/57624332.htm" class="macro">G_TOUCHED1</a>));
+   234 :    if (<a href="../h_src/57623924.htm" class="macro">getage</a>(<a href="../h_src/57823624.htm" class="localvar">o</a>) == <a href="../h_src/57624196.htm" class="macro">G_TOUCHED2</a>)  <a  class="comments">/* already in gray list? */</a>
+   238 :    if (<a href="../h_src/57623652.htm" class="macro">isold</a>(<a href="../h_src/57823624.htm" class="localvar">o</a>))  <a  class="comments">/* generational mode? */</a>
+   239 :    <a href="../h_src/57623788.htm" class="macro">setage</a>(<a href="../h_src/57823624.htm" class="localvar">o</a>, <a href="../h_src/57624332.htm" class="macro">G_TOUCHED1</a>);  <a  class="comments">/* touched in current cycle */</a>
+<a href="../h_aa/57620932.htm" class=function>luaC_fix</a>                                         lgc.c
+   247 :    <a href="../h_src/57623788.htm" class="macro">setage</a>(<a href="../h_src/57823216.htm" class="localvar">o</a>, <a href="../h_src/57624468.htm" class="macro">G_OLD</a>);  <a  class="comments">/* and old forever */</a>
+<a href="../h_aa/57952252.htm" class=function>markold</a>                                          lgc.c
+  1222 :    if (<a href="../h_src/57623924.htm" class="macro">getage</a>(<a href="../h_src/57951708.htm" class="localvar">p</a>) == <a href="../h_src/57624604.htm" class="macro">G_OLD1</a>) {
+  1224 :    <a href="../h_src/57623516.htm" class="macro">changeage</a>(<a href="../h_src/57951708.htm" class="localvar">p</a>, <a href="../h_src/57624604.htm" class="macro">G_OLD1</a>, <a href="../h_src/57624468.htm" class="macro">G_OLD</a>);  <a  class="comments">/* now they are old */</a>
+<a href="../h_aa/57820088.htm" class=function>remarkupvals</a>                                     lgc.c
+   377 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!<a href="../h_src/57623652.htm" class="macro">isold</a>(thread) || thread-&gt;openupval == NULL);
+   381 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57623924.htm" class="macro">getage</a>(uv) &lt;= <a href="../h_src/57623924.htm" class="macro">getage</a>(thread));
+<a href="../h_aa/57955924.htm" class=function>sweep2old</a>                                        lgc.c
+  1087 :    <a href="../h_src/57623788.htm" class="macro">setage</a>(<a href="../h_src/57955516.htm" class="localvar">curr</a>, <a href="../h_src/57624468.htm" class="macro">G_OLD</a>);
+<a href="../h_aa/57955108.htm" class=function>sweepgen</a>                                         lgc.c
+  1128 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!<a href="../h_src/57623652.htm" class="macro">isold</a>(curr) &amp;&amp; <a href="../h_src/57625556.htm" class="macro">isdead</a>(g, curr));
+  1133 :    if (<a href="../h_src/57623924.htm" class="macro">getage</a>(<a href="../h_src/57954020.htm" class="localvar">curr</a>) == <a href="../h_src/57625012.htm" class="macro">G_NEW</a>) {  <a  class="comments">/* new objects go back to white */</a>
+  1134 :    int <a href="../h_src/57953884.htm" class="localvar">marked</a> = <a href="../h_src/57954020.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528040.htm" class="variable">marked</a> &amp; ~<a href="../h_src/57828248.htm" class="macro">maskgcbits</a>;  <a  class="comments">/* erase GC bits */</a>
+  1138 :    <a href="../h_src/57623788.htm" class="macro">setage</a>(<a href="../h_src/57954020.htm" class="localvar">curr</a>, <a href="../h_src/57954292.htm" class="localvar">nextage</a>[<a href="../h_src/57623924.htm" class="macro">getage</a>(<a href="../h_src/57954020.htm" class="localvar">curr</a>)]);
+  1139 :    if (<a href="../h_src/57623924.htm" class="macro">getage</a>(<a href="../h_src/57954020.htm" class="localvar">curr</a>) == <a href="../h_src/57624604.htm" class="macro">G_OLD1</a> &amp;&amp; *<a href="../h_src/57954428.htm" class="localvar">pfirstold1</a> == NULL)
+<a href="../h_aa/57965716.htm" class=function>sweeplist</a>                                        lgc.c
+   836 :    <a href="../h_src/57964492.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528040.htm" class="variable">marked</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>((<a href="../h_src/57964356.htm" class="localvar">marked</a> &amp; ~<a href="../h_src/57828248.htm" class="macro">maskgcbits</a>) | <a href="../h_src/57964628.htm" class="localvar">white</a>);
+<a href="../h_aa/57971836.htm" class=function>traversethread</a>                                   lgc.c
+   630 :    if (<a href="../h_src/57623652.htm" class="macro">isold</a>(<a href="../h_src/57971564.htm" class="localvar">th</a>) || <a href="../h_src/57971700.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646024.htm" class="variable">gcstate</a> == <a href="../h_src/57629772.htm" class="macro">GCSpropagate</a>)
+<a href="../h_aa/57963132.htm" class=function>udata2finalize</a>                                   lgc.c
+   893 :    else if (<a href="../h_src/57623924.htm" class="macro">getage</a>(<a href="../h_src/57962860.htm" class="localvar">o</a>) == <a href="../h_src/57624604.htm" class="macro">G_OLD1</a>)
+<a href="../h_aa/57953748.htm" class=function>whitelist</a>                                        lgc.c
+  1157 :    <a href="../h_src/57953476.htm" class="localvar">p</a>-&gt;<a href="../h_src/57528040.htm" class="variable">marked</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>((<a href="../h_src/57953476.htm" class="localvar">p</a>-&gt;<a href="../h_src/57528040.htm" class="variable">marked</a> &amp; ~<a href="../h_src/57828248.htm" class="macro">maskgcbits</a>) | <a href="../h_src/57953340.htm" class="localvar">white</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use AGEBITS</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

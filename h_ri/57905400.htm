@@ -1,0 +1,60 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">BuffFS::</a>blen</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57905400.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57905400.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57905400.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57905400.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57905400.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57902612.htm" class=function>addnum2buff</a>                                      lobject.c
+   472 :    <a href="../h_src/57903496.htm" class="macro">addsize</a>(<a href="../h_src/57902476.htm" class="localvar">buff</a>, <a href="../h_src/57902068.htm" class="localvar">len</a>);
+<a href="../h_aa/57903360.htm" class=function>addstr2buff</a>                                      lobject.c
+   457 :    <a href="../h_src/57903496.htm" class="macro">addsize</a>(<a href="../h_src/57903224.htm" class="localvar">buff</a>, <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/57902952.htm" class="localvar">slen</a>));
+<a href="../h_aa/57904176.htm" class=function>clearbuff</a>                                        lobject.c
+   430 :    <a href="../h_src/57904040.htm" class="localvar">buff</a>-&gt;<a href="../h_src/57905400.htm" class="variable">blen</a> = 0;  <a  class="comments">/* space now is empty */</a>
+<a href="../h_aa/57501452.htm" class=function>luaO_pushvfstring</a>                                lobject.c
+   483 :    <a href="../h_src/57901524.htm" class="localvar">buff</a>.<a href="../h_src/57905468.htm" class="variable">pushed</a> = <a href="../h_src/57901524.htm" class="localvar">buff</a>.<a href="../h_src/57905400.htm" class="variable">blen</a> = 0;
+   522 :    <a href="../h_src/57903496.htm" class="macro">addsize</a>(&amp;<a href="../h_src/57901524.htm" class="localvar">buff</a>, <a href="../h_src/57899756.htm" class="localvar">len</a>);
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57902612.htm" class=function>addnum2buff</a>                                      lobject.c
+   472 :    <a href="../h_src/57903496.htm" class="macro">addsize</a>(<a href="../h_src/57902476.htm" class="localvar">buff</a>, <a href="../h_src/57902068.htm" class="localvar">len</a>);
+<a href="../h_aa/57903360.htm" class=function>addstr2buff</a>                                      lobject.c
+   457 :    <a href="../h_src/57903496.htm" class="macro">addsize</a>(<a href="../h_src/57903224.htm" class="localvar">buff</a>, <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/57902952.htm" class="localvar">slen</a>));
+<a href="../h_aa/57904176.htm" class=function>clearbuff</a>                                        lobject.c
+   429 :    <a href="../h_src/57905196.htm" class="function">pushstr</a>(<a href="../h_src/57904040.htm" class="localvar">buff</a>, <a href="../h_src/57904040.htm" class="localvar">buff</a>-&gt;<a href="../h_src/57905332.htm" class="variable">space</a>, <a href="../h_src/57904040.htm" class="localvar">buff</a>-&gt;<a href="../h_src/57905400.htm" class="variable">blen</a>);  <a  class="comments">/* push buffer contents */</a>
+<a href="../h_aa/57903904.htm" class=function>getbuff</a>                                          lobject.c
+   440 :    if (<a href="../h_src/57903632.htm" class="localvar">sz</a> &gt; <a href="../h_src/57905808.htm" class="macro">BUFVFS</a> - <a href="../h_src/57903768.htm" class="localvar">buff</a>-&gt;<a href="../h_src/57905400.htm" class="variable">blen</a>)  <a  class="comments">/* not enough space? */</a>
+   442 :    return <a href="../h_src/57903768.htm" class="localvar">buff</a>-&gt;<a href="../h_src/57905332.htm" class="variable">space</a> + <a href="../h_src/57903768.htm" class="localvar">buff</a>-&gt;<a href="../h_src/57905400.htm" class="variable">blen</a>;
+<a href="../h_aa/57501452.htm" class=function>luaO_pushvfstring</a>                                lobject.c
+   522 :    <a href="../h_src/57903496.htm" class="macro">addsize</a>(&amp;<a href="../h_src/57901524.htm" class="localvar">buff</a>, <a href="../h_src/57899756.htm" class="localvar">len</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable blen</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

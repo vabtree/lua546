@@ -1,0 +1,197 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>LUA_TFUNCTION</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57443232.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57443232.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57443232.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57443232.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/143305132.htm" class=function>add_value</a>                                        lstrlib.c
+   910 :    case <a href="../h_src/57443232.htm" class="macro">LUA_TFUNCTION</a>: {  <a  class="comments">/* call the function */</a>
+<a href="../h_aa/57713112.htm" class=function>aux_upvalue</a>                                      lapi.c
+  1360 :    case <a href="../h_src/57513352.htm" class="macro">LUA_VCCL</a>: {  <a  class="comments">/* C closure */</a>
+  1361 :    <a href="../h_src/57508728.htm" class="type">CClosure</a> *<a href="../h_src/57712364.htm" class="localvar">f</a> = <a href="../h_src/57511992.htm" class="macro">clCvalue</a>(<a href="../h_src/57712976.htm" class="localvar">fi</a>);
+  1368 :    case <a href="../h_src/57513624.htm" class="macro">LUA_VLCL</a>: {  <a  class="comments">/* Lua closure */</a>
+  1369 :    <a href="../h_src/57507980.htm" class="type">LClosure</a> *<a href="../h_src/57712228.htm" class="localvar">f</a> = <a href="../h_src/57512264.htm" class="macro">clLvalue</a>(<a href="../h_src/57712976.htm" class="localvar">fi</a>);
+<a href="../h_aa/57747764.htm" class=function>auxgetinfo</a>                                       ldebug.c
+   342 :    if (<a href="../h_src/57758916.htm" class="macro">noLuaClosure</a>(<a href="../h_src/57747220.htm" class="localvar">f</a>)) {
+<a href="../h_aa/143273580.htm" class=function>auxupvalue</a>                                       ldblib.c
+   261 :    <a href="../h_src/57419772.htm" class="function">luaL_checktype</a>(<a href="../h_src/143273444.htm" class="localvar">L</a>, 1, <a href="../h_src/57443232.htm" class="macro">LUA_TFUNCTION</a>);  <a  class="comments">/* closure */</a>
+<a href="../h_aa/143272356.htm" class=function>checkupval</a>                                       ldblib.c
+   288 :    <a href="../h_src/57419772.htm" class="function">luaL_checktype</a>(<a href="../h_src/143272220.htm" class="localvar">L</a>, <a href="../h_src/143272084.htm" class="localvar">argf</a>, <a href="../h_src/57443232.htm" class="macro">LUA_TFUNCTION</a>);  <a  class="comments">/* closure */</a>
+<a href="../h_aa/57749668.htm" class=function>collectvalidlines</a>                                ldebug.c
+   291 :    if (<a href="../h_src/57758916.htm" class="macro">noLuaClosure</a>(<a href="../h_src/57749396.htm" class="localvar">f</a>)) {
+<a href="../h_aa/143403296.htm" class=function>combine</a>                                          luac.c
+   146 :    return <a href="../h_src/143403432.htm" class="macro">toproto</a>(<a href="../h_src/143403160.htm" class="localvar">L</a>,-1);
+   152 :    <a href="../h_src/143402888.htm" class="localvar">f</a>=<a href="../h_src/143403432.htm" class="macro">toproto</a>(<a href="../h_src/143403160.htm" class="localvar">L</a>,-1);
+   155 :    <a href="../h_src/143402888.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a>[<a href="../h_src/143402752.htm" class="localvar">i</a>]=<a href="../h_src/143403432.htm" class="macro">toproto</a>(<a href="../h_src/143403160.htm" class="localvar">L</a>,<a href="../h_src/143402752.htm" class="localvar">i</a>-<a href="../h_src/143403024.htm" class="localvar">n</a>-1);
+<a href="../h_aa/57758644.htm" class=function>currentpc</a>                                        ldebug.c
+    43 :    return <a href="../h_src/57636776.htm" class="macro">pcRel</a>(<a href="../h_src/57758508.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57507708.htm" class="variable">l</a>.<a href="../h_src/57651124.htm" class="variable">savedpc</a>, <a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57758508.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57531984.htm" class="variable">p</a>);
+<a href="../h_aa/58281756.htm" class=function>db_getinfo</a>                                       ldblib.c
+   156 :    if (<a href="../h_src/57428748.htm" class="macro">lua_isfunction</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, <a href="../h_src/143276164.htm" class="localvar">arg</a> + 1)) {  <a  class="comments">/* info about a function? */</a>
+<a href="../h_aa/143275756.htm" class=function>db_getlocal</a>                                      ldblib.c
+   207 :    if (<a href="../h_src/57428748.htm" class="macro">lua_isfunction</a>(<a href="../h_src/143275620.htm" class="localvar">L</a>, <a href="../h_src/143275484.htm" class="localvar">arg</a> + 1)) {  <a  class="comments">/* function argument? */</a>
+<a href="../h_aa/143268820.htm" class=function>db_sethook</a>                                       ldblib.c
+   375 :    <a href="../h_src/57419772.htm" class="function">luaL_checktype</a>(<a href="../h_src/143268684.htm" class="localvar">L</a>, <a href="../h_src/143268548.htm" class="localvar">arg</a>+1, <a href="../h_src/57443232.htm" class="macro">LUA_TFUNCTION</a>);
+<a href="../h_aa/58116484.htm" class=function>equalkey</a>                                         ltable.c
+   229 :    case <a href="../h_src/57513488.htm" class="macro">LUA_VLCF</a>:
+   230 :    return <a href="../h_src/57512128.htm" class="macro">fvalue</a>(<a href="../h_src/58116348.htm" class="localvar">k1</a>) == <a href="../h_src/57511856.htm" class="macro">fvalueraw</a>(<a href="../h_src/57504104.htm" class="macro">keyval</a>(<a href="../h_src/58116212.htm" class="localvar">n2</a>));
+<a href="../h_aa/143198372.htm" class=function>findloader</a>                                       loadlib.c
+   643 :    if (<a href="../h_src/57428748.htm" class="macro">lua_isfunction</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, -2))  <a  class="comments">/* did it find a loader? */</a>
+<a href="../h_aa/57754360.htm" class=function>findvararg</a>                                       ldebug.c
+   185 :    if (<a href="../h_src/57512264.htm" class="macro">clLvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57754224.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a>))-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>-&gt;<a href="../h_src/57515868.htm" class="variable">is_vararg</a>) {
+<a href="../h_aa/57966804.htm" class=function>freeobj</a>                                          lgc.c
+   778 :    case <a href="../h_src/57513624.htm" class="macro">LUA_VLCL</a>: {
+   779 :    <a href="../h_src/57507980.htm" class="type">LClosure</a> *<a href="../h_src/57966396.htm" class="localvar">cl</a> = <a href="../h_src/57639836.htm" class="macro">gco2lcl</a>(<a href="../h_src/57966532.htm" class="localvar">o</a>);
+   783 :    case <a href="../h_src/57513352.htm" class="macro">LUA_VCCL</a>: {
+   784 :    <a href="../h_src/57508728.htm" class="type">CClosure</a> *<a href="../h_src/57966260.htm" class="localvar">cl</a> = <a href="../h_src/57639700.htm" class="macro">gco2ccl</a>(<a href="../h_src/57966532.htm" class="localvar">o</a>);
+<a href="../h_aa/57750824.htm" class=function>funcinfo</a>                                         ldebug.c
+   257 :    if (<a href="../h_src/57758916.htm" class="macro">noLuaClosure</a>(<a href="../h_src/57750484.htm" class="localvar">cl</a>)) {
+<a href="../h_aa/57758780.htm" class=function>funcnamefromcall</a>                                 ldebug.c
+   649 :    return <a href="../h_src/57738244.htm" class="function">funcnamefromcode</a>(<a href="../h_src/57897268.htm" class="localvar">L</a>, <a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57897132.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>, <a href="../h_src/57758644.htm" class="function">currentpc</a>(<a href="../h_src/57897132.htm" class="localvar">ci</a>), <a href="../h_src/57896996.htm" class="localvar">name</a>);
+<a href="../h_aa/57757148.htm" class=function>getcurrentline</a>                                   ldebug.c
+    99 :    return <a href="../h_src/57635960.htm" class="function">luaG_getfuncline</a>(<a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57757012.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>, <a href="../h_src/57758644.htm" class="function">currentpc</a>(<a href="../h_src/57757012.htm" class="localvar">ci</a>));
+<a href="../h_aa/57826208.htm" class=function>getgclist</a>                                        lgc.c
+   128 :    case <a href="../h_src/57513624.htm" class="macro">LUA_VLCL</a>: return &amp;<a href="../h_src/57639836.htm" class="macro">gco2lcl</a>(<a href="../h_src/57826072.htm" class="localvar">o</a>)-&gt;<a href="../h_src/57508252.htm" class="variable">gclist</a>;
+   129 :    case <a href="../h_src/57513352.htm" class="macro">LUA_VCCL</a>: return &amp;<a href="../h_src/57639700.htm" class="macro">gco2ccl</a>(<a href="../h_src/57826072.htm" class="localvar">o</a>)-&gt;<a href="../h_src/57509000.htm" class="variable">gclist</a>;
+<a href="../h_aa/57896180.htm" class=function>getupvalname</a>                                     ldebug.c
+   682 :    <a href="../h_src/57507980.htm" class="type">LClosure</a> *<a href="../h_src/57895636.htm" class="localvar">c</a> = <a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57896044.htm" class="localvar">ci</a>);
+<a href="../h_aa/57709644.htm" class=function>getupvalref</a>                                      lapi.c
+  1421 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57709508.htm" class="localvar">L</a>, <a href="../h_src/57513080.htm" class="macro">ttisLclosure</a>(fi), &quot;Lua function expected&quot;);
+  1422 :    <a href="../h_src/57708760.htm" class="localvar">f</a> = <a href="../h_src/57512264.htm" class="macro">clLvalue</a>(<a href="../h_src/57708624.htm" class="localvar">fi</a>);
+<a href="../h_aa/143270452.htm" class=function>hookf</a>                                            ldblib.c
+   328 :    if (<a href="../h_src/57434120.htm" class="function">lua_rawget</a>(<a href="../h_src/143270316.htm" class="localvar">L</a>, -2) == <a href="../h_src/57443232.htm" class="macro">LUA_TFUNCTION</a>) {  <a  class="comments">/* is there a hook function? */</a>
+<a href="../h_aa/57610052.htm" class=function>index2value</a>                                      lapi.c
+    78 :    if (<a href="../h_src/57512808.htm" class="macro">ttisCclosure</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57609644.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a>))) {  <a  class="comments">/* C closure? */</a>
+    79 :    <a href="../h_src/57508728.htm" class="type">CClosure</a> *<a href="../h_src/57609236.htm" class="localvar">func</a> = <a href="../h_src/57511992.htm" class="macro">clCvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57609644.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a>));
+    84 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57609916.htm" class="localvar">L</a>, <a href="../h_src/57512944.htm" class="macro">ttislcf</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(ci-&gt;func.p)), &quot;caller not a C function&quot;);
+<a href="../h_aa/57439084.htm" class=function>lua_copy</a>                                         lapi.c
+   263 :    <a href="../h_src/57621340.htm" class="macro">luaC_barrier</a>(<a href="../h_src/57602504.htm" class="localvar">L</a>, <a href="../h_src/57511992.htm" class="macro">clCvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57602504.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a>)), <a href="../h_src/57602096.htm" class="localvar">fr</a>);
+<a href="../h_aa/57432556.htm" class=function>lua_dump</a>                                         lapi.c
+  1116 :    if (<a href="../h_src/57512536.htm" class="macro">isLfunction</a>(<a href="../h_src/57720388.htm" class="localvar">o</a>))
+  1117 :    <a href="../h_src/57720524.htm" class="localvar">status</a> = <a href="../h_src/57614744.htm" class="function">luaU_dump</a>(<a href="../h_src/57721068.htm" class="localvar">L</a>, <a href="../h_src/57507572.htm" class="macro">getproto</a>(<a href="../h_src/57720388.htm" class="localvar">o</a>), <a href="../h_src/57720932.htm" class="localvar">writer</a>, <a href="../h_src/57720796.htm" class="localvar">data</a>, <a href="../h_src/57720660.htm" class="localvar">strip</a>);
+<a href="../h_aa/57424600.htm" class=function>lua_getinfo</a>                                      ldebug.c
+   392 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57746812.htm" class="localvar">L</a>, <a href="../h_src/57513216.htm" class="macro">ttisfunction</a>(func), &quot;function expected&quot;);
+   399 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57513216.htm" class="macro">ttisfunction</a>(func));
+   401 :    <a href="../h_src/57746268.htm" class="localvar">cl</a> = <a href="../h_src/57512672.htm" class="macro">ttisclosure</a>(<a href="../h_src/57745996.htm" class="localvar">func</a>) ? <a href="../h_src/57512400.htm" class="macro">clvalue</a>(<a href="../h_src/57745996.htm" class="localvar">func</a>) : NULL;
+<a href="../h_aa/57424532.htm" class=function>lua_getlocal</a>                                     ldebug.c
+   224 :    if (!<a href="../h_src/57512536.htm" class="macro">isLfunction</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57752728.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1)))  <a  class="comments">/* not a Lua function? */</a>
+   227 :    <a href="../h_src/57752320.htm" class="localvar">name</a> = <a href="../h_src/57630180.htm" class="function">luaF_getlocalname</a>(<a href="../h_src/57512264.htm" class="macro">clLvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57752728.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1))-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>, <a href="../h_src/57752456.htm" class="localvar">n</a>, 0);
+<a href="../h_aa/57438744.htm" class=function>lua_iscfunction</a>                                  lapi.c
+   299 :    return (<a href="../h_src/57512944.htm" class="macro">ttislcf</a>(<a href="../h_src/57600056.htm" class="localvar">o</a>) || (<a href="../h_src/57512808.htm" class="macro">ttisCclosure</a>(<a href="../h_src/57600056.htm" class="localvar">o</a>)));
+<a href="../h_aa/57432624.htm" class=function>lua_load</a>                                         lapi.c
+  1096 :    <a href="../h_src/57507980.htm" class="type">LClosure</a> *<a href="../h_src/57721612.htm" class="localvar">f</a> = <a href="../h_src/57512264.htm" class="macro">clLvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57722564.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1));  <a  class="comments">/* get new function */</a>
+<a href="../h_aa/57432828.htm" class=function>lua_pcallk</a>                                       lapi.c
+  1058 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57724060.htm" class="localvar">L</a>, <a href="../h_src/57513216.htm" class="macro">ttisfunction</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(o)), &quot;error handler must be a function&quot;);
+<a href="../h_aa/57434664.htm" class=function>lua_pushcclosure</a>                                 lapi.c
+   582 :    <a href="../h_src/57511448.htm" class="macro">setfvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57586524.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>), <a href="../h_src/57586388.htm" class="localvar">fn</a>);
+   597 :    <a href="../h_src/57511312.htm" class="macro">setclCvalue</a>(<a href="../h_src/57586524.htm" class="localvar">L</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57586524.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>), <a href="../h_src/57585980.htm" class="localvar">cl</a>);
+<a href="../h_aa/57438064.htm" class=function>lua_tocfunction</a>                                  lapi.c
+   440 :    if (<a href="../h_src/57512944.htm" class="macro">ttislcf</a>(<a href="../h_src/57592100.htm" class="localvar">o</a>)) return <a href="../h_src/57512128.htm" class="macro">fvalue</a>(<a href="../h_src/57592100.htm" class="localvar">o</a>);
+   441 :    else if (<a href="../h_src/57512808.htm" class="macro">ttisCclosure</a>(<a href="../h_src/57592100.htm" class="localvar">o</a>))
+   442 :    return <a href="../h_src/57511992.htm" class="macro">clCvalue</a>(<a href="../h_src/57592100.htm" class="localvar">o</a>)-&gt;<a href="../h_src/57508932.htm" class="variable">f</a>;
+<a href="../h_aa/57437860.htm" class=function>lua_topointer</a>                                    lapi.c
+   478 :    case <a href="../h_src/57513488.htm" class="macro">LUA_VLCF</a>: return <a href="../h_src/57547488.htm" class="macro">cast_voidp</a>(<a href="../h_src/57546400.htm" class="macro">cast_sizet</a>(<a href="../h_src/57512128.htm" class="macro">fvalue</a>(<a href="../h_src/57590536.htm" class="localvar">o</a>)));
+<a href="../h_aa/57424260.htm" class=function>lua_upvalueid</a>                                    lapi.c
+  1434 :    case <a href="../h_src/57513624.htm" class="macro">LUA_VLCL</a>: {  <a  class="comments">/* lua closure */</a>
+  1437 :    case <a href="../h_src/57513352.htm" class="macro">LUA_VCCL</a>: {  <a  class="comments">/* C closure */</a>
+  1438 :    <a href="../h_src/57508728.htm" class="type">CClosure</a> *<a href="../h_src/57707944.htm" class="localvar">f</a> = <a href="../h_src/57511992.htm" class="macro">clCvalue</a>(<a href="../h_src/57708080.htm" class="localvar">fi</a>);
+  1443 :    case <a href="../h_src/57513488.htm" class="macro">LUA_VLCF</a>:
+<a href="../h_aa/58291140.htm" class=function>luaB_cocreate</a>                                    lcorolib.c
+    97 :    <a href="../h_src/57419772.htm" class="function">luaL_checktype</a>(<a href="../h_src/58291004.htm" class="localvar">L</a>, 1, <a href="../h_src/57443232.htm" class="macro">LUA_TFUNCTION</a>);
+<a href="../h_aa/58298892.htm" class=function>luaB_load</a>                                        lbaselib.c
+   399 :    <a href="../h_src/57419772.htm" class="function">luaL_checktype</a>(<a href="../h_src/58298756.htm" class="localvar">L</a>, 1, <a href="../h_src/57443232.htm" class="macro">LUA_TFUNCTION</a>);
+<a href="../h_aa/58294948.htm" class=function>luaB_xpcall</a>                                      lbaselib.c
+   490 :    <a href="../h_src/57419772.htm" class="function">luaL_checktype</a>(<a href="../h_src/58294812.htm" class="localvar">L</a>, 2, <a href="../h_src/57443232.htm" class="macro">LUA_TFUNCTION</a>);  <a  class="comments">/* check error function */</a>
+<a href="../h_aa/57633444.htm" class=function>luaD_hookcall</a>                                    ldo.c
+   374 :    <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57874012.htm" class="localvar">p</a> = <a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57874284.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>;
+<a href="../h_aa/57633308.htm" class=function>luaD_precall</a>                                     ldo.c
+   591 :    case <a href="../h_src/57513352.htm" class="macro">LUA_VCCL</a>:  <a  class="comments">/* C closure */</a>
+   592 :    <a href="../h_src/57868300.htm" class="function">precallC</a>(<a href="../h_src/57865444.htm" class="localvar">L</a>, <a href="../h_src/57865308.htm" class="localvar">func</a>, <a href="../h_src/57865172.htm" class="localvar">nresults</a>, <a href="../h_src/57511992.htm" class="macro">clCvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57865308.htm" class="localvar">func</a>))-&gt;<a href="../h_src/57508932.htm" class="variable">f</a>);
+   594 :    case <a href="../h_src/57513488.htm" class="macro">LUA_VLCF</a>:  <a  class="comments">/* light C function */</a>
+   595 :    <a href="../h_src/57868300.htm" class="function">precallC</a>(<a href="../h_src/57865444.htm" class="localvar">L</a>, <a href="../h_src/57865308.htm" class="localvar">func</a>, <a href="../h_src/57865172.htm" class="localvar">nresults</a>, <a href="../h_src/57512128.htm" class="macro">fvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57865308.htm" class="localvar">func</a>)));
+   597 :    case <a href="../h_src/57513624.htm" class="macro">LUA_VLCL</a>: {  <a  class="comments">/* Lua function */</a>
+   599 :    <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57864900.htm" class="localvar">p</a> = <a href="../h_src/57512264.htm" class="macro">clLvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57865308.htm" class="localvar">func</a>))-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>;
+<a href="../h_aa/57633376.htm" class=function>luaD_pretailcall</a>                                 ldo.c
+   547 :    case <a href="../h_src/57513352.htm" class="macro">LUA_VCCL</a>:  <a  class="comments">/* C closure */</a>
+   548 :    return <a href="../h_src/57868300.htm" class="function">precallC</a>(<a href="../h_src/57867076.htm" class="localvar">L</a>, <a href="../h_src/57866804.htm" class="localvar">func</a>, <a href="../h_src/57445612.htm" class="macro">LUA_MULTRET</a>, <a href="../h_src/57511992.htm" class="macro">clCvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57866804.htm" class="localvar">func</a>))-&gt;<a href="../h_src/57508932.htm" class="variable">f</a>);
+   549 :    case <a href="../h_src/57513488.htm" class="macro">LUA_VLCF</a>:  <a  class="comments">/* light C function */</a>
+   550 :    return <a href="../h_src/57868300.htm" class="function">precallC</a>(<a href="../h_src/57867076.htm" class="localvar">L</a>, <a href="../h_src/57866804.htm" class="localvar">func</a>, <a href="../h_src/57445612.htm" class="macro">LUA_MULTRET</a>, <a href="../h_src/57512128.htm" class="macro">fvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57866804.htm" class="localvar">func</a>)));
+   551 :    case <a href="../h_src/57513624.htm" class="macro">LUA_VLCL</a>: {  <a  class="comments">/* Lua function */</a>
+   552 :    <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57866396.htm" class="localvar">p</a> = <a href="../h_src/57512264.htm" class="macro">clLvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57866804.htm" class="localvar">func</a>))-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>;
+<a href="../h_aa/57630860.htm" class=function>luaF_newCclosure</a>                                 lfunc.c
+    28 :    <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57839876.htm" class="localvar">o</a> = <a href="../h_src/57620592.htm" class="function">luaC_newobj</a>(<a href="../h_src/57840148.htm" class="localvar">L</a>, <a href="../h_src/57513352.htm" class="macro">LUA_VCCL</a>, <a href="../h_src/57632084.htm" class="macro">sizeCclosure</a>(<a href="../h_src/57840012.htm" class="localvar">nupvals</a>));
+    29 :    <a href="../h_src/57508728.htm" class="type">CClosure</a> *<a href="../h_src/57839740.htm" class="localvar">c</a> = <a href="../h_src/57639700.htm" class="macro">gco2ccl</a>(<a href="../h_src/57839876.htm" class="localvar">o</a>);
+<a href="../h_aa/57630724.htm" class=function>luaF_newLclosure</a>                                 lfunc.c
+    36 :    <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57839332.htm" class="localvar">o</a> = <a href="../h_src/57620592.htm" class="function">luaC_newobj</a>(<a href="../h_src/57839604.htm" class="localvar">L</a>, <a href="../h_src/57513624.htm" class="macro">LUA_VLCL</a>, <a href="../h_src/57631948.htm" class="macro">sizeLclosure</a>(<a href="../h_src/57839468.htm" class="localvar">nupvals</a>));
+    37 :    <a href="../h_src/57507980.htm" class="type">LClosure</a> *<a href="../h_src/57839196.htm" class="localvar">c</a> = <a href="../h_src/57639836.htm" class="macro">gco2lcl</a>(<a href="../h_src/57839332.htm" class="localvar">o</a>);
+<a href="../h_aa/57635144.htm" class=function>luaG_errormsg</a>                                    ldebug.c
+   812 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57513216.htm" class="macro">ttisfunction</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(errfunc)));
+<a href="../h_aa/57635892.htm" class=function>luaG_findlocal</a>                                   ldebug.c
+   203 :    <a href="../h_src/57753000.htm" class="localvar">name</a> = <a href="../h_src/57630180.htm" class="function">luaF_getlocalname</a>(<a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57753544.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>, <a href="../h_src/57753408.htm" class="localvar">n</a>, <a href="../h_src/57758644.htm" class="function">currentpc</a>(<a href="../h_src/57753544.htm" class="localvar">ci</a>));
+<a href="../h_aa/57635280.htm" class=function>luaG_runerror</a>                                    ldebug.c
+   831 :    <a href="../h_src/57635212.htm" class="function">luaG_addinfo</a>(<a href="../h_src/57887748.htm" class="localvar">L</a>, <a href="../h_src/57887204.htm" class="localvar">msg</a>, <a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57887340.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57531984.htm" class="variable">p</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>, <a href="../h_src/57757148.htm" class="function">getcurrentline</a>(<a href="../h_src/57887340.htm" class="localvar">ci</a>));
+<a href="../h_aa/57635076.htm" class=function>luaG_traceexec</a>                                   ldebug.c
+   883 :    const <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57885164.htm" class="localvar">p</a> = <a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57885436.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>;
+<a href="../h_aa/57614812.htm" class=function>luaU_undump</a>                                      lundump.c
+   326 :    <a href="../h_src/57511584.htm" class="macro">setclLvalue2s</a>(<a href="../h_src/58062968.htm" class="localvar">L</a>, <a href="../h_src/58062968.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/58062424.htm" class="localvar">cl</a>);
+<a href="../h_aa/57611752.htm" class=function>luaV_equalobj</a>                                    lvm.c
+   586 :    case <a href="../h_src/57513488.htm" class="macro">LUA_VLCF</a>: return <a href="../h_src/57512128.htm" class="macro">fvalue</a>(<a href="../h_src/58204720.htm" class="localvar">t1</a>) == <a href="../h_src/57512128.htm" class="macro">fvalue</a>(<a href="../h_src/58204584.htm" class="localvar">t2</a>);
+<a href="../h_aa/57610936.htm" class=function>luaV_execute</a>                                     lvm.c
+  1158 :    <a href="../h_src/58187924.htm" class="localvar">cl</a> = <a href="../h_src/57512264.htm" class="macro">clLvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58188060.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a>));
+<a href="../h_aa/57611140.htm" class=function>luaV_finishget</a>                                   lvm.c
+   308 :    if (<a href="../h_src/57513216.htm" class="macro">ttisfunction</a>(<a href="../h_src/58213356.htm" class="localvar">tm</a>)) {  <a  class="comments">/* is metamethod a function? */</a>
+<a href="../h_aa/57611072.htm" class=function>luaV_finishset</a>                                   lvm.c
+   353 :    if (<a href="../h_src/57513216.htm" class="macro">ttisfunction</a>(<a href="../h_src/58212132.htm" class="localvar">tm</a>)) {
+<a href="../h_aa/57674420.htm" class=function>luaY_parser</a>                                      lparser.c
+  1947 :    <a href="../h_src/57511584.htm" class="macro">setclLvalue2s</a>(<a href="../h_src/57987108.htm" class="localvar">L</a>, <a href="../h_src/57987108.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57986020.htm" class="localvar">cl</a>);  <a  class="comments">/* anchor it (to avoid being collected) */</a>
+<a href="../h_aa/58118660.htm" class=function>mainpositionTV</a>                                   ltable.c
+   177 :    case <a href="../h_src/57513488.htm" class="macro">LUA_VLCF</a>: {
+   178 :    <a href="../h_src/57441736.htm" class="type">lua_CFunction</a> <a href="../h_src/58117572.htm" class="localvar">f</a> = <a href="../h_src/57512128.htm" class="macro">fvalue</a>(<a href="../h_src/58118388.htm" class="localvar">key</a>);
+<a href="../h_aa/57971156.htm" class=function>propagatemark</a>                                    lgc.c
+   665 :    case <a href="../h_src/57513624.htm" class="macro">LUA_VLCL</a>: return <a href="../h_src/57972516.htm" class="function">traverseLclosure</a>(<a href="../h_src/57971020.htm" class="localvar">g</a>, <a href="../h_src/57639836.htm" class="macro">gco2lcl</a>(<a href="../h_src/57970884.htm" class="localvar">o</a>));
+   666 :    case <a href="../h_src/57513352.htm" class="macro">LUA_VCCL</a>: return <a href="../h_src/57973060.htm" class="function">traverseCclosure</a>(<a href="../h_src/57971020.htm" class="localvar">g</a>, <a href="../h_src/57639700.htm" class="macro">gco2ccl</a>(<a href="../h_src/57970884.htm" class="localvar">o</a>));
+<a href="../h_aa/58198124.htm" class=function>pushclosure</a>                                      lvm.c
+   795 :    <a href="../h_src/57511584.htm" class="macro">setclLvalue2s</a>(<a href="../h_src/58197988.htm" class="localvar">L</a>, <a href="../h_src/58197444.htm" class="localvar">ra</a>, <a href="../h_src/58196900.htm" class="localvar">ncl</a>);  <a  class="comments">/* anchor new closure in stack */</a>
+<a href="../h_aa/57826752.htm" class=function>reallymarkobject</a>                                 lgc.c
+   322 :    case <a href="../h_src/57513624.htm" class="macro">LUA_VLCL</a>: case <a href="../h_src/57513352.htm" class="macro">LUA_VCCL</a>: case <a href="../h_src/57507436.htm" class="macro">LUA_VTABLE</a>:
+<a href="../h_aa/57873876.htm" class=function>rethook</a>                                          ldo.c
+   393 :    <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57872924.htm" class="localvar">p</a> = <a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57873604.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>;
+   403 :    <a href="../h_src/57873740.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641468.htm" class="variable">oldpc</a> = <a href="../h_src/57636776.htm" class="macro">pcRel</a>(<a href="../h_src/57873604.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650852.htm" class="variable">l</a>.<a href="../h_src/57651124.htm" class="variable">savedpc</a>, <a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57873604.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>);  <a  class="comments">/* set 'oldpc' */</a>
+<a href="../h_aa/143419276.htm" class=function>sort</a>                                             ltablib.c
+   404 :    <a href="../h_src/57419772.htm" class="function">luaL_checktype</a>(<a href="../h_src/143419140.htm" class="localvar">L</a>, 2, <a href="../h_src/57443232.htm" class="macro">LUA_TFUNCTION</a>);  <a  class="comments">/* must be a function */</a>
+<a href="../h_aa/143333012.htm" class=function>str_dump</a>                                         lstrlib.c
+   236 :    <a href="../h_src/57419772.htm" class="function">luaL_checktype</a>(<a href="../h_src/143332876.htm" class="localvar">L</a>, 1, <a href="../h_src/57443232.htm" class="macro">LUA_TFUNCTION</a>);
+<a href="../h_aa/143304044.htm" class=function>str_gsub</a>                                         lstrlib.c
+   955 :    <a href="../h_src/143303092.htm" class="localvar">tr</a> == <a href="../h_src/57443232.htm" class="macro">LUA_TFUNCTION</a> || tr == <a href="../h_src/57443368.htm" class="macro">LUA_TTABLE</a>, 3,
+<a href="../h_aa/57894820.htm" class=function>varinfo</a>                                          ldebug.c
+   715 :    <a href="../h_src/57894140.htm" class="localvar">kind</a> = <a href="../h_src/57745588.htm" class="function">getobjname</a>(<a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57894412.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>, <a href="../h_src/57758644.htm" class="function">currentpc</a>(<a href="../h_src/57894412.htm" class="localvar">ci</a>), <a href="../h_src/57894004.htm" class="localvar">reg</a>, &amp;<a href="../h_src/57894276.htm" class="localvar">name</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use LUA_TFUNCTION</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

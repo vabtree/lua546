@@ -1,0 +1,47 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>UTF8BUFFSZ</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57502064.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57502064.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57502064.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57502064.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57501452.htm" class=function>luaO_pushvfstring</a>                                lobject.c
+   526 :    char <a href="../h_src/57899620.htm" class="localvar">bf</a>[<a href="../h_src/57502064.htm" class="macro">UTF8BUFFSZ</a>];
+   528 :    <a href="../h_src/57903360.htm" class="function">addstr2buff</a>(&amp;<a href="../h_src/57901524.htm" class="localvar">buff</a>, <a href="../h_src/57899620.htm" class="localvar">bf</a> + <a href="../h_src/57502064.htm" class="macro">UTF8BUFFSZ</a> - <a href="../h_src/57899484.htm" class="localvar">len</a>, <a href="../h_src/57899484.htm" class="localvar">len</a>);
+<a href="../h_aa/57501928.htm" class=function>luaO_utf8esc</a>                                     lobject.c
+   327 :    <a href="../h_src/57907984.htm" class="localvar">buff</a>[<a href="../h_src/57502064.htm" class="macro">UTF8BUFFSZ</a> - 1] = <a href="../h_src/57546672.htm" class="macro">cast_char</a>(<a href="../h_src/57907848.htm" class="localvar">x</a>);
+   331 :    <a href="../h_src/57907984.htm" class="localvar">buff</a>[<a href="../h_src/57502064.htm" class="macro">UTF8BUFFSZ</a> - (<a href="../h_src/57907712.htm" class="localvar">n</a>++)] = <a href="../h_src/57546672.htm" class="macro">cast_char</a>(0x80 | (<a href="../h_src/57907848.htm" class="localvar">x</a> &amp; 0x3f));
+   335 :    <a href="../h_src/57907984.htm" class="localvar">buff</a>[<a href="../h_src/57502064.htm" class="macro">UTF8BUFFSZ</a> - <a href="../h_src/57907712.htm" class="localvar">n</a>] = <a href="../h_src/57546672.htm" class="macro">cast_char</a>((~<a href="../h_src/57907576.htm" class="localvar">mfb</a> &lt;&lt; 1) | <a href="../h_src/57907848.htm" class="localvar">x</a>);  <a  class="comments">/* add first byte */</a>
+<a href="../h_aa/57929744.htm" class=function>utf8esc</a>                                          llex.c
+   362 :    char <a href="../h_src/57929472.htm" class="localvar">buff</a>[<a href="../h_src/57502064.htm" class="macro">UTF8BUFFSZ</a>];
+   365 :    <a href="../h_src/57939740.htm" class="function">save</a>(<a href="../h_src/57929608.htm" class="localvar">ls</a>, <a href="../h_src/57929472.htm" class="localvar">buff</a>[<a href="../h_src/57502064.htm" class="macro">UTF8BUFFSZ</a> - <a href="../h_src/57929336.htm" class="localvar">n</a>]);
+</pre>
+<h4><a class="legend">Table lists functions that directly use UTF8BUFFSZ</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

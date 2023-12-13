@@ -1,0 +1,50 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>key</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58099348.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/58099348.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/58099348.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/58099348.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57616716.htm" class=function>luaH_newkey</a>                                      ltable.c
+   675 :    <a href="../h_src/58099348.htm" class="localvar">key</a> = &amp;<a href="../h_src/58098940.htm" class="localvar">aux</a>;  <a  class="comments">/* insert it as an integer */</a>
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57616716.htm" class=function>luaH_newkey</a>                                      ltable.c
+   668 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57531168.htm" class="macro">ttisnil</a>(<a href="../h_src/58099348.htm" class="localvar">key</a>)))
+   670 :    else if (<a href="../h_src/57526680.htm" class="macro">ttisfloat</a>(<a href="../h_src/58099348.htm" class="localvar">key</a>)) {
+   671 :    <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/58098804.htm" class="localvar">f</a> = <a href="../h_src/57526272.htm" class="macro">fltvalue</a>(<a href="../h_src/58099348.htm" class="localvar">key</a>);
+   682 :    <a href="../h_src/58099076.htm" class="localvar">mp</a> = <a href="../h_src/58118660.htm" class="function">mainpositionTV</a>(<a href="../h_src/58099484.htm" class="localvar">t</a>, <a href="../h_src/58099348.htm" class="localvar">key</a>);
+   687 :    <a href="../h_src/58101796.htm" class="function">rehash</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, <a href="../h_src/58099484.htm" class="localvar">t</a>, <a href="../h_src/58099348.htm" class="localvar">key</a>);  <a  class="comments">/* grow table */</a>
+   689 :    <a href="../h_src/57616648.htm" class="function">luaH_set</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, <a href="../h_src/58099484.htm" class="localvar">t</a>, <a href="../h_src/58099348.htm" class="localvar">key</a>, <a href="../h_src/58099212.htm" class="localvar">value</a>);  <a  class="comments">/* insert key into grown table */</a>
+   715 :    <a href="../h_src/57505940.htm" class="macro">setnodekey</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, <a href="../h_src/58099076.htm" class="localvar">mp</a>, <a href="../h_src/58099348.htm" class="localvar">key</a>);
+   716 :    <a href="../h_src/57621068.htm" class="macro">luaC_barrierback</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, <a href="../h_src/57638884.htm" class="macro">obj2gco</a>(<a href="../h_src/58099484.htm" class="localvar">t</a>), <a href="../h_src/58099348.htm" class="localvar">key</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable key</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

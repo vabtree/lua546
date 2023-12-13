@@ -1,0 +1,54 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">global_State::</a>weak</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57644936.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57644936.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57644936.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57644936.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57644936.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57819204.htm" class=function>cleargraylists</a>                                   lgc.c
+   396 :    <a href="../h_src/57819068.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644936.htm" class="variable">weak</a> = <a href="../h_src/57819068.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644800.htm" class="variable">allweak</a> = <a href="../h_src/57819068.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644868.htm" class="variable">ephemeron</a> = NULL;
+<a href="../h_aa/57952660.htm" class=function>correctgraylists</a>                                 lgc.c
+  1205 :    *<a href="../h_src/57952388.htm" class="localvar">list</a> = <a href="../h_src/57952524.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644936.htm" class="variable">weak</a>; <a href="../h_src/57952524.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644936.htm" class="variable">weak</a> = NULL;
+<a href="../h_aa/57439900.htm" class=function>lua_newstate</a>                                     lstate.c
+   395 :    <a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644936.htm" class="variable">weak</a> = <a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644868.htm" class="variable">ephemeron</a> = <a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644800.htm" class="variable">allweak</a> = NULL;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57826616.htm" class=function>atomic</a>                                           lgc.c
+  1545 :    <a href="../h_src/57968572.htm" class="function">clearbyvalues</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>, <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644936.htm" class="variable">weak</a>, NULL);
+  1547 :    <a href="../h_src/57945044.htm" class="localvar">origweak</a> = <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644936.htm" class="variable">weak</a>; <a href="../h_src/57944908.htm" class="localvar">origall</a> = <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644800.htm" class="variable">allweak</a>;
+  1557 :    <a href="../h_src/57968572.htm" class="function">clearbyvalues</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>, <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644936.htm" class="variable">weak</a>, <a href="../h_src/57945044.htm" class="localvar">origweak</a>);
+<a href="../h_aa/57952660.htm" class=function>correctgraylists</a>                                 lgc.c
+  1205 :    *<a href="../h_src/57952388.htm" class="localvar">list</a> = <a href="../h_src/57952524.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644936.htm" class="variable">weak</a>; <a href="../h_src/57952524.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644936.htm" class="variable">weak</a> = NULL;
+<a href="../h_aa/57818252.htm" class=function>traverseweakvalue</a>                                lgc.c
+   462 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57817980.htm" class="localvar">h</a>, <a href="../h_src/57818116.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644936.htm" class="variable">weak</a>);  <a  class="comments">/* has to be cleared later */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable weak</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

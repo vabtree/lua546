@@ -1,0 +1,48 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>L</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57606040.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57606040.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57606040.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57606040.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57439288.htm" class=function>lua_settop</a>                                       lapi.c
+   186 :    <a href="../h_src/57605768.htm" class="localvar">ci</a> = <a href="../h_src/57606040.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>;
+   189 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57606040.htm" class="localvar">L</a>, idx &lt;= ci-&gt;top.p - (func + 1), &quot;new top too large&quot;);
+   190 :    <a href="../h_src/57605360.htm" class="localvar">diff</a> = ((<a href="../h_src/57605632.htm" class="localvar">func</a> + 1) + <a href="../h_src/57605904.htm" class="localvar">idx</a>) - <a href="../h_src/57606040.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>;
+   192 :    <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57606040.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>++));  <a  class="comments">/* clear new slots */</a>
+   195 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57606040.htm" class="localvar">L</a>, -(idx+1) &lt;= (L-&gt;top.p - (func + 1)), &quot;invalid new top&quot;);
+   198 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57606040.htm" class="localvar">L</a>, L-&gt;tbclist.p &lt; L-&gt;top.p, &quot;previous pop of an unclosed slot&quot;);
+   199 :    <a href="../h_src/57605496.htm" class="localvar">newtop</a> = <a href="../h_src/57606040.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> + <a href="../h_src/57605360.htm" class="localvar">diff</a>;
+   200 :    if (<a href="../h_src/57605360.htm" class="localvar">diff</a> &lt; 0 &amp;&amp; <a href="../h_src/57606040.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642148.htm" class="variable">tbclist</a>.<a href="../h_src/57531984.htm" class="variable">p</a> &gt;= <a href="../h_src/57605496.htm" class="localvar">newtop</a>) {
+   202 :    <a href="../h_src/57605496.htm" class="localvar">newtop</a> = <a href="../h_src/57630384.htm" class="function">luaF_close</a>(<a href="../h_src/57606040.htm" class="localvar">L</a>, <a href="../h_src/57605496.htm" class="localvar">newtop</a>, <a href="../h_src/57631132.htm" class="macro">CLOSEKTOP</a>, 0);
+   204 :    <a href="../h_src/57606040.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57605496.htm" class="localvar">newtop</a>;  <a  class="comments">/* correct top only after closing any upvalue */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable L</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,86 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lua_getfield</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57434256.htm" class="function" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57434256.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57434256.htm" class="function" target="_self">Flow Chart</a></li>
+<li><a href="../h_src/57434256.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57434256.htm" class="function" target="_self">Called By</a></li>
+<li><a href="../h_rx/57434256.htm" class="function" target="_self">Call Tree</a></li>
+<li><a href="../h_ro/57434256.htm" class="function" target="_self">Calls and Uses</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/143208980.htm" class=function>addtoclib</a>                                        loadlib.c
+   350 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143208844.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/143215848.htm" class="variable">CLIBS</a>);
+<a href="../h_aa/143209524.htm" class=function>checkclib</a>                                        loadlib.c
+   337 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143209388.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/143215848.htm" class="variable">CLIBS</a>);
+   338 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143209388.htm" class="localvar">L</a>, -1, <a href="../h_src/143209252.htm" class="localvar">path</a>);
+<a href="../h_aa/143267732.htm" class=function>db_gethook</a>                                       ldblib.c
+   408 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143267596.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/58286720.htm" class="variable">HOOKKEY</a>);
+<a href="../h_aa/143202996.htm" class=function>findfile</a>                                         loadlib.c
+   526 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143202860.htm" class="localvar">L</a>, <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(1), <a href="../h_src/143202588.htm" class="localvar">pname</a>);
+<a href="../h_aa/143198372.htm" class=function>findloader</a>                                       loadlib.c
+   628 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(1), &quot;searchers&quot;)
+<a href="../h_aa/143253112.htm" class=function>g_iofile</a>                                         liolib.c
+   330 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143252976.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/143252840.htm" class="localvar">f</a>);
+<a href="../h_aa/143352120.htm" class=function>getboolfield</a>                                     loslib.c
+   245 :    <a href="../h_src/143351712.htm" class="localvar">res</a> = (<a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143351984.htm" class="localvar">L</a>, -1, <a href="../h_src/143351848.htm" class="localvar">key</a>) == <a href="../h_src/57444048.htm" class="macro">LUA_TNIL</a>) ? -1 : <a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/143351984.htm" class="localvar">L</a>, -1);
+<a href="../h_aa/143351576.htm" class=function>getfield</a>                                         loslib.c
+   253 :    int <a href="../h_src/143350760.htm" class="localvar">t</a> = <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143351440.htm" class="localvar">L</a>, -1, <a href="../h_src/143351304.htm" class="localvar">key</a>);  <a  class="comments">/* get field and its type */</a>
+<a href="../h_aa/143253588.htm" class=function>getiofile</a>                                        liolib.c
+   310 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143253520.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/143253384.htm" class="localvar">findex</a>);
+<a href="../h_aa/143270452.htm" class=function>hookf</a>                                            ldblib.c
+   326 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143270316.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/58286720.htm" class="variable">HOOKKEY</a>);
+<a href="../h_aa/143258416.htm" class=function>io_close</a>                                         liolib.c
+   230 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143258280.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/143261340.htm" class="macro">IO_OUTPUT</a>);  <a  class="comments">/* use default output */</a>
+<a href="../h_aa/143250800.htm" class=function>io_lines</a>                                         liolib.c
+   390 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143250664.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/143261476.htm" class="macro">IO_INPUT</a>);  <a  class="comments">/* get default input */</a>
+<a href="../h_aa/143197692.htm" class=function>ll_require</a>                                       loadlib.c
+   660 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143197556.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/57421540.htm" class="macro">LUA_LOADED_TABLE</a>);
+   661 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143197556.htm" class="localvar">L</a>, 2, <a href="../h_src/143197420.htm" class="localvar">name</a>);  <a  class="comments">/* LOADED[name] */</a>
+   677 :    if (<a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143197556.htm" class="localvar">L</a>, 2, <a href="../h_src/143197420.htm" class="localvar">name</a>) == <a href="../h_src/57444048.htm" class="macro">LUA_TNIL</a>) {   <a  class="comments">/* module set no value? */</a>
+<a href="../h_aa/57417732.htm" class=function>luaL_getsubtable</a>                                 lauxlib.c
+   955 :    if (<a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/58319224.htm" class="localvar">L</a>, <a href="../h_src/58319088.htm" class="localvar">idx</a>, <a href="../h_src/58318952.htm" class="localvar">fname</a>) == <a href="../h_src/57443368.htm" class="macro">LUA_TTABLE</a>)
+<a href="../h_aa/57419636.htm" class=function>luaL_newmetatable</a>                                lauxlib.c
+   312 :    if (<a href="../h_src/57416304.htm" class="macro">luaL_getmetatable</a>(<a href="../h_src/58342684.htm" class="localvar">L</a>, <a href="../h_src/58342548.htm" class="localvar">tname</a>) != <a href="../h_src/57444048.htm" class="macro">LUA_TNIL</a>)  <a  class="comments">/* name already in use? */</a>
+<a href="../h_aa/57417596.htm" class=function>luaL_requiref</a>                                    lauxlib.c
+   977 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/58318816.htm" class="localvar">L</a>, -1, <a href="../h_src/58318680.htm" class="localvar">modname</a>);  <a  class="comments">/* LOADED[modname] */</a>
+<a href="../h_aa/57419568.htm" class=function>luaL_setmetatable</a>                                lauxlib.c
+   325 :    <a href="../h_src/57416304.htm" class="macro">luaL_getmetatable</a>(<a href="../h_src/58342412.htm" class="localvar">L</a>, <a href="../h_src/58342276.htm" class="localvar">tname</a>);
+<a href="../h_aa/57419500.htm" class=function>luaL_testudata</a>                                   lauxlib.c
+   334 :    <a href="../h_src/57416304.htm" class="macro">luaL_getmetatable</a>(<a href="../h_src/58342140.htm" class="localvar">L</a>, <a href="../h_src/58341868.htm" class="localvar">tname</a>);  <a  class="comments">/* get correct metatable */</a>
+<a href="../h_aa/143211292.htm" class=function>noenv</a>                                            loadlib.c
+   287 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143211156.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, &quot;LUA_NOENV&quot;);
+<a href="../h_aa/58349892.htm" class=function>pushglobalfuncname</a>                               lauxlib.c
+    82 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/58349756.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/57421540.htm" class="macro">LUA_LOADED_TABLE</a>);
+<a href="../h_aa/143198780.htm" class=function>searcher_preload</a>                                 loadlib.c
+   612 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143198644.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, <a href="../h_src/57421404.htm" class="macro">LUA_PRELOAD_TABLE</a>);
+   613 :    if (<a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143198644.htm" class="localvar">L</a>, -1, <a href="../h_src/143198508.htm" class="localvar">name</a>) == <a href="../h_src/57444048.htm" class="macro">LUA_TNIL</a>) {  <a  class="comments">/* not found? */</a>
+</pre>
+<h4><a class="legend">Table lists functions that directly use lua_getfield</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,47 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>h</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57977140.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57977140.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57977140.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57977140.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57817436.htm" class=function>traverseephemeron</a>                                lgc.c
+   485 :    unsigned int <a href="../h_src/57976324.htm" class="localvar">asize</a> = <a href="../h_src/57616172.htm" class="function">luaH_realasize</a>(<a href="../h_src/57977140.htm" class="localvar">h</a>);
+   486 :    unsigned int <a href="../h_src/57976188.htm" class="localvar">nsize</a> = <a href="../h_src/57502200.htm" class="macro">sizenode</a>(<a href="../h_src/57977140.htm" class="localvar">h</a>);
+   489 :    if (<a href="../h_src/57827704.htm" class="macro">valiswhite</a>(&amp;<a href="../h_src/57977140.htm" class="localvar">h</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/57976460.htm" class="localvar">i</a>])) {
+   491 :    <a href="../h_src/57826752.htm" class="function">reallymarkobject</a>(<a href="../h_src/57977276.htm" class="localvar">g</a>, <a href="../h_src/57527496.htm" class="macro">gcvalue</a>(&amp;<a href="../h_src/57977140.htm" class="localvar">h</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/57976460.htm" class="localvar">i</a>]));
+   497 :    <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/57976052.htm" class="localvar">n</a> = <a href="../h_src/57977004.htm" class="localvar">inv</a> ? <a href="../h_src/57618008.htm" class="macro">gnode</a>(<a href="../h_src/57977140.htm" class="localvar">h</a>, <a href="../h_src/57976188.htm" class="localvar">nsize</a> - 1 - <a href="../h_src/57976460.htm" class="localvar">i</a>) : <a href="../h_src/57618008.htm" class="macro">gnode</a>(<a href="../h_src/57977140.htm" class="localvar">h</a>, <a href="../h_src/57976460.htm" class="localvar">i</a>);
+   512 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57977140.htm" class="localvar">h</a>, <a href="../h_src/57977276.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a>);  <a  class="comments">/* must retraverse it in atomic phase */</a>
+   514 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57977140.htm" class="localvar">h</a>, <a href="../h_src/57977276.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644868.htm" class="variable">ephemeron</a>);  <a  class="comments">/* have to propagate again */</a>
+   516 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57977140.htm" class="localvar">h</a>, <a href="../h_src/57977276.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644800.htm" class="variable">allweak</a>);  <a  class="comments">/* may have to clean white keys */</a>
+   518 :    <a href="../h_src/57818660.htm" class="function">genlink</a>(<a href="../h_src/57977276.htm" class="localvar">g</a>, <a href="../h_src/57638884.htm" class="macro">obj2gco</a>(<a href="../h_src/57977140.htm" class="localvar">h</a>));  <a  class="comments">/* check whether collector still needs to see it */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable h</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

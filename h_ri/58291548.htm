@@ -1,0 +1,46 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>co</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58291548.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/58291548.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/58291548.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/58291548.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/58291820.htm" class=function>luaB_auxwrap</a>                                     lcorolib.c
+    74 :    <a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58291548.htm" class="localvar">co</a> = <a href="../h_src/57437928.htm" class="function">lua_tothread</a>(<a href="../h_src/58291684.htm" class="localvar">L</a>, <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(1));
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/58291820.htm" class=function>luaB_auxwrap</a>                                     lcorolib.c
+    75 :    int <a href="../h_src/58291412.htm" class="localvar">r</a> = <a href="../h_src/58293180.htm" class="function">auxresume</a>(<a href="../h_src/58291684.htm" class="localvar">L</a>, <a href="../h_src/58291548.htm" class="localvar">co</a>, <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/58291684.htm" class="localvar">L</a>));
+    77 :    int <a href="../h_src/58291276.htm" class="localvar">stat</a> = <a href="../h_src/57432352.htm" class="function">lua_status</a>(<a href="../h_src/58291548.htm" class="localvar">co</a>);
+    79 :    <a href="../h_src/58291276.htm" class="localvar">stat</a> = <a href="../h_src/57439696.htm" class="function">lua_closethread</a>(<a href="../h_src/58291548.htm" class="localvar">co</a>, <a href="../h_src/58291684.htm" class="localvar">L</a>);  <a  class="comments">/* close its tbc variables */</a>
+    81 :    <a href="../h_src/57438948.htm" class="function">lua_xmove</a>(<a href="../h_src/58291548.htm" class="localvar">co</a>, <a href="../h_src/58291684.htm" class="localvar">L</a>, 1);  <a  class="comments">/* move error message to the caller */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable co</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

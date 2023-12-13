@@ -1,0 +1,48 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>source</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57897988.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57897988.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57897988.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57897988.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57501316.htm" class=function>luaO_chunkid</a>                                     lobject.c
+   569 :    if (*<a href="../h_src/57897988.htm" class="localvar">source</a> == '=') {  <a  class="comments">/* 'literal' source */</a>
+   571 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/57898124.htm" class="localvar">out</a>, <a href="../h_src/57897988.htm" class="localvar">source</a> + 1, <a href="../h_src/57897852.htm" class="localvar">srclen</a> * sizeof(char));
+   573 :    <a href="../h_src/57898260.htm" class="macro">addstr</a>(<a href="../h_src/57898124.htm" class="localvar">out</a>, <a href="../h_src/57897988.htm" class="localvar">source</a> + 1, <a href="../h_src/57897716.htm" class="localvar">bufflen</a> - 1);
+   577 :    else if (*<a href="../h_src/57897988.htm" class="localvar">source</a> == '@') {  <a  class="comments">/* file name */</a>
+   579 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/57898124.htm" class="localvar">out</a>, <a href="../h_src/57897988.htm" class="localvar">source</a> + 1, <a href="../h_src/57897852.htm" class="localvar">srclen</a> * sizeof(char));
+   583 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/57898124.htm" class="localvar">out</a>, <a href="../h_src/57897988.htm" class="localvar">source</a> + 1 + <a href="../h_src/57897852.htm" class="localvar">srclen</a> - <a href="../h_src/57897716.htm" class="localvar">bufflen</a>, <a href="../h_src/57897716.htm" class="localvar">bufflen</a> * sizeof(char));
+   587 :    const char *<a href="../h_src/57897580.htm" class="localvar">nl</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57897988.htm" class="localvar">source</a>, '\n');  <a  class="comments">/* find first new line (if any) */</a>
+   591 :    <a href="../h_src/57898260.htm" class="macro">addstr</a>(<a href="../h_src/57898124.htm" class="localvar">out</a>, <a href="../h_src/57897988.htm" class="localvar">source</a>, <a href="../h_src/57897852.htm" class="localvar">srclen</a>);  <a  class="comments">/* keep it */</a>
+   594 :    if (<a href="../h_src/57897580.htm" class="localvar">nl</a> != NULL) <a href="../h_src/57897852.htm" class="localvar">srclen</a> = <a href="../h_src/57897580.htm" class="localvar">nl</a> - <a href="../h_src/57897988.htm" class="localvar">source</a>;  <a  class="comments">/* stop at first newline */</a>
+   596 :    <a href="../h_src/57898260.htm" class="macro">addstr</a>(<a href="../h_src/57898124.htm" class="localvar">out</a>, <a href="../h_src/57897988.htm" class="localvar">source</a>, <a href="../h_src/57897852.htm" class="localvar">srclen</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable source</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

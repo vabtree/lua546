@@ -1,0 +1,57 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>mp</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58099076.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/58099076.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/58099076.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/58099076.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57616716.htm" class=function>luaH_newkey</a>                                      ltable.c
+   682 :    <a href="../h_src/58099076.htm" class="localvar">mp</a> = <a href="../h_src/58118660.htm" class="function">mainpositionTV</a>(<a href="../h_src/58099484.htm" class="localvar">t</a>, <a href="../h_src/58099348.htm" class="localvar">key</a>);
+   712 :    <a href="../h_src/58099076.htm" class="localvar">mp</a> = <a href="../h_src/58098260.htm" class="localvar">f</a>;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57616716.htm" class=function>luaH_newkey</a>                                      ltable.c
+   683 :    if (!<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>)) || <a href="../h_src/57617464.htm" class="macro">isdummy</a>(<a href="../h_src/58099484.htm" class="localvar">t</a>)) {  <a  class="comments">/* main position is taken? */</a>
+   693 :    <a href="../h_src/58098396.htm" class="localvar">othern</a> = <a href="../h_src/58117300.htm" class="function">mainpositionfromnode</a>(<a href="../h_src/58099484.htm" class="localvar">t</a>, <a href="../h_src/58099076.htm" class="localvar">mp</a>);
+   694 :    if (<a href="../h_src/58098396.htm" class="localvar">othern</a> != <a href="../h_src/58099076.htm" class="localvar">mp</a>) {  <a  class="comments">/* is colliding node out of its main position? */</a>
+   696 :    while (<a href="../h_src/58098396.htm" class="localvar">othern</a> + <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58098396.htm" class="localvar">othern</a>) != <a href="../h_src/58099076.htm" class="localvar">mp</a>)  <a  class="comments">/* find previous */</a>
+   699 :    *<a href="../h_src/58098260.htm" class="localvar">f</a> = *<a href="../h_src/58099076.htm" class="localvar">mp</a>;  <a  class="comments">/* copy colliding node into free pos. (mp-&gt;next also goes) */</a>
+   700 :    if (<a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>) != 0) {
+   701 :    <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58098260.htm" class="localvar">f</a>) += <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a> - <a href="../h_src/58098260.htm" class="localvar">f</a>);  <a  class="comments">/* correct 'next' */</a><a href="../h_src/57506280.htm" class="variable">next</a>' */
+   702 :    <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>) = 0;  <a  class="comments">/* now 'mp' is free */</a>
+   704 :    <a href="../h_src/57530216.htm" class="macro">setempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>));
+   708 :    if (<a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>) != 0)
+   709 :    <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58098260.htm" class="localvar">f</a>) = <a href="../h_src/57547216.htm" class="macro">cast_int</a>((<a href="../h_src/58099076.htm" class="localvar">mp</a> + <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>)) - <a href="../h_src/58098260.htm" class="localvar">f</a>);  <a  class="comments">/* chain new position */</a>
+   711 :    <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>) = <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/58098260.htm" class="localvar">f</a> - <a href="../h_src/58099076.htm" class="localvar">mp</a>);
+   715 :    <a href="../h_src/57505940.htm" class="macro">setnodekey</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, <a href="../h_src/58099076.htm" class="localvar">mp</a>, <a href="../h_src/58099348.htm" class="localvar">key</a>);
+   718 :    <a href="../h_src/57533004.htm" class="macro">setobj2t</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, <a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>), <a href="../h_src/58099212.htm" class="localvar">value</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable mp</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,55 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">Table::</a>gclist</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57504376.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57504376.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57504376.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57504376.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57504376.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57969388.htm" class=function>clearbykeys</a>                                      lgc.c
+   724 :    for (; <a href="../h_src/57969116.htm" class="localvar">l</a>; <a href="../h_src/57969116.htm" class="localvar">l</a> = <a href="../h_src/57639428.htm" class="macro">gco2t</a>(<a href="../h_src/57969116.htm" class="localvar">l</a>)-&gt;<a href="../h_src/57504376.htm" class="variable">gclist</a>) {
+<a href="../h_aa/57968572.htm" class=function>clearbyvalues</a>                                    lgc.c
+   743 :    for (; <a href="../h_src/57968300.htm" class="localvar">l</a> != <a href="../h_src/57968164.htm" class="localvar">f</a>; <a href="../h_src/57968300.htm" class="localvar">l</a> = <a href="../h_src/57639428.htm" class="macro">gco2t</a>(<a href="../h_src/57968300.htm" class="localvar">l</a>)-&gt;<a href="../h_src/57504376.htm" class="variable">gclist</a>) {
+<a href="../h_aa/57970340.htm" class=function>convergeephemerons</a>                               lgc.c
+   699 :    <a href="../h_src/57969660.htm" class="localvar">next</a> = <a href="../h_src/57969524.htm" class="localvar">h</a>-&gt;<a href="../h_src/57504376.htm" class="variable">gclist</a>;  <a  class="comments">/* list is rebuilt during loop */</a>
+<a href="../h_aa/57826208.htm" class=function>getgclist</a>                                        lgc.c
+   127 :    case <a href="../h_src/57507436.htm" class="macro">LUA_VTABLE</a>: return &amp;<a href="../h_src/57639428.htm" class="macro">gco2t</a>(<a href="../h_src/57826072.htm" class="localvar">o</a>)-&gt;<a href="../h_src/57504376.htm" class="variable">gclist</a>;
+<a href="../h_aa/57817436.htm" class=function>traverseephemeron</a>                                lgc.c
+   512 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57977140.htm" class="localvar">h</a>, <a href="../h_src/57977276.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a>);  <a  class="comments">/* must retraverse it in atomic phase */</a>
+   514 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57977140.htm" class="localvar">h</a>, <a href="../h_src/57977276.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644868.htm" class="variable">ephemeron</a>);  <a  class="comments">/* have to propagate again */</a>
+   516 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57977140.htm" class="localvar">h</a>, <a href="../h_src/57977276.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644800.htm" class="variable">allweak</a>);  <a  class="comments">/* may have to clean white keys */</a>
+<a href="../h_aa/57974964.htm" class=function>traversetable</a>                                    lgc.c
+   555 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57974692.htm" class="localvar">h</a>, <a href="../h_src/57974828.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644800.htm" class="variable">allweak</a>);  <a  class="comments">/* nothing to traverse now */</a>
+<a href="../h_aa/57818252.htm" class=function>traverseweakvalue</a>                                lgc.c
+   462 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57817980.htm" class="localvar">h</a>, <a href="../h_src/57818116.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644936.htm" class="variable">weak</a>);  <a  class="comments">/* has to be cleared later */</a>
+   464 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57817980.htm" class="localvar">h</a>, <a href="../h_src/57818116.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a>);  <a  class="comments">/* must retraverse it in atomic phase */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable gclist</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

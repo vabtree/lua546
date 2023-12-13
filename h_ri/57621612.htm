@@ -1,0 +1,75 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaC_checkGC</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57621612.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57621612.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57621612.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57621612.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/58024712.htm" class=function>close_func</a>                                       lparser.c
+   773 :    <a href="../h_src/57621612.htm" class="macro">luaC_checkGC</a>(<a href="../h_src/58024440.htm" class="localvar">L</a>);
+<a href="../h_aa/57430244.htm" class=function>lua_concat</a>                                       lapi.c
+  1294 :    <a href="../h_src/57621612.htm" class="macro">luaC_checkGC</a>(<a href="../h_src/57716580.htm" class="localvar">L</a>);
+<a href="../h_aa/57433916.htm" class=function>lua_createtable</a>                                  lapi.c
+   770 :    <a href="../h_src/57621612.htm" class="macro">luaC_checkGC</a>(<a href="../h_src/57736708.htm" class="localvar">L</a>);
+<a href="../h_aa/57430448.htm" class=function>lua_gc</a>                                           lapi.c
+  1176 :    <a href="../h_src/57621612.htm" class="macro">luaC_checkGC</a>(<a href="../h_src/57720116.htm" class="localvar">L</a>);
+<a href="../h_aa/57439764.htm" class=function>lua_newthread</a>                                    lstate.c
+   291 :    <a href="../h_src/57621612.htm" class="macro">luaC_checkGC</a>(<a href="../h_src/58136748.htm" class="localvar">L</a>);
+<a href="../h_aa/57433848.htm" class=function>lua_newuserdatauv</a>                                lapi.c
+  1350 :    <a href="../h_src/57621612.htm" class="macro">luaC_checkGC</a>(<a href="../h_src/57713928.htm" class="localvar">L</a>);
+<a href="../h_aa/57434664.htm" class=function>lua_pushcclosure</a>                                 lapi.c
+   599 :    <a href="../h_src/57621612.htm" class="macro">luaC_checkGC</a>(<a href="../h_src/57586524.htm" class="localvar">L</a>);
+<a href="../h_aa/57434732.htm" class=function>lua_pushfstring</a>                                  lapi.c
+   573 :    <a href="../h_src/57621612.htm" class="macro">luaC_checkGC</a>(<a href="../h_src/57587340.htm" class="localvar">L</a>);
+<a href="../h_aa/57435072.htm" class=function>lua_pushlstring</a>                                  lapi.c
+   532 :    <a href="../h_src/57621612.htm" class="macro">luaC_checkGC</a>(<a href="../h_src/57589380.htm" class="localvar">L</a>);
+<a href="../h_aa/57435004.htm" class=function>lua_pushstring</a>                                   lapi.c
+   549 :    <a href="../h_src/57621612.htm" class="macro">luaC_checkGC</a>(<a href="../h_src/57588564.htm" class="localvar">L</a>);
+<a href="../h_aa/57434936.htm" class=function>lua_pushvfstring</a>                                 lapi.c
+   560 :    <a href="../h_src/57621612.htm" class="macro">luaC_checkGC</a>(<a href="../h_src/57587884.htm" class="localvar">L</a>);
+<a href="../h_aa/57438200.htm" class=function>lua_tolstring</a>                                    lapi.c
+   416 :    <a href="../h_src/57621612.htm" class="macro">luaC_checkGC</a>(<a href="../h_src/57593460.htm" class="localvar">L</a>);
+<a href="../h_aa/57633308.htm" class=function>luaD_precall</a>                                     ldo.c
+   603 :    <a href="../h_src/57633988.htm" class="macro">checkstackGCp</a>(<a href="../h_src/57865444.htm" class="localvar">L</a>, <a href="../h_src/57864492.htm" class="localvar">fsize</a>, <a href="../h_src/57865308.htm" class="localvar">func</a>);
+<a href="../h_aa/57633376.htm" class=function>luaD_pretailcall</a>                                 ldo.c
+   556 :    <a href="../h_src/57633988.htm" class="macro">checkstackGCp</a>(<a href="../h_src/57867076.htm" class="localvar">L</a>, <a href="../h_src/57866260.htm" class="localvar">fsize</a> - <a href="../h_src/57866532.htm" class="localvar">delta</a>, <a href="../h_src/57866804.htm" class="localvar">func</a>);
+<a href="../h_aa/57633104.htm" class=function>luaD_tryfuncTM</a>                                   ldo.c
+   415 :    <a href="../h_src/57633988.htm" class="macro">checkstackGCp</a>(<a href="../h_src/57872788.htm" class="localvar">L</a>, 1, <a href="../h_src/57872652.htm" class="localvar">func</a>);  <a  class="comments">/* space for metamethod */</a>
+<a href="../h_aa/57635280.htm" class=function>luaG_runerror</a>                                    ldebug.c
+   826 :    <a href="../h_src/57621612.htm" class="macro">luaC_checkGC</a>(<a href="../h_src/57887748.htm" class="localvar">L</a>);  <a  class="comments">/* error message uses memory */</a>
+<a href="../h_aa/57497304.htm" class=function>luaT_getvarargs</a>                                  ltm.c
+   263 :    <a href="../h_src/57633988.htm" class="macro">checkstackGCp</a>(<a href="../h_src/58077112.htm" class="localvar">L</a>, <a href="../h_src/58076432.htm" class="localvar">nextra</a>, <a href="../h_src/58076840.htm" class="localvar">where</a>);  <a  class="comments">/* ensure stack space */</a><a href="../h_src/57642284.htm" class="variable">stack</a> space */
+<a href="../h_aa/57699852.htm" class=function>luaX_newstring</a>                                   llex.c
+   145 :    <a href="../h_src/57621612.htm" class="macro">luaC_checkGC</a>(<a href="../h_src/57936612.htm" class="localvar">L</a>);
+<a href="../h_aa/57868300.htm" class=function>precallC</a>                                         ldo.c
+   520 :    <a href="../h_src/57633988.htm" class="macro">checkstackGCp</a>(<a href="../h_src/57868164.htm" class="localvar">L</a>, <a href="../h_src/57442688.htm" class="macro">LUA_MINSTACK</a>, <a href="../h_src/57868028.htm" class="localvar">func</a>);  <a  class="comments">/* ensure minimum stack size */</a><a href="../h_src/57642284.htm" class="variable">stack</a> size */
+</pre>
+<h4><a class="legend">Table lists functions that directly use luaC_checkGC</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

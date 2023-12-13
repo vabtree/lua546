@@ -1,0 +1,74 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>F2Ieq</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57613520.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57613520.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57613520.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57613520.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57613520.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57787612.htm" class=function>isSCnumber</a>                                       lcode.c
+  1259 :    else if (<a href="../h_src/57787476.htm" class="localvar">e</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a> == <a href="../h_src/57682376.htm" class="variable">VKFLT</a> &amp;&amp; <a href="../h_src/57611208.htm" class="function">luaV_flttointeger</a>(<a href="../h_src/57787476.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680540.htm" class="variable">nval</a>, &amp;<a href="../h_src/57787068.htm" class="localvar">i</a>, <a href="../h_src/57613520.htm" class="variable">F2Ieq</a>))
+<a href="../h_aa/57438336.htm" class=function>lua_tointegerx</a>                                   lapi.c
+   392 :    int <a href="../h_src/57594004.htm" class="localvar">isnum</a> = <a href="../h_src/57612840.htm" class="macro">tointeger</a>(<a href="../h_src/57594208.htm" class="localvar">o</a>, &amp;<a href="../h_src/57594344.htm" class="localvar">res</a>);
+<a href="../h_aa/57635416.htm" class=function>luaG_tointerror</a>                                  ldebug.c
+   780 :    if (!<a href="../h_src/57611276.htm" class="function">luaV_tointegerns</a>(<a href="../h_src/57890332.htm" class="localvar">p1</a>, &amp;<a href="../h_src/57890060.htm" class="localvar">temp</a>, <a href="../h_src/57613656.htm" class="macro">LUA_FLOORN2I</a>))
+<a href="../h_aa/57616784.htm" class=function>luaH_get</a>                                         ltable.c
+   795 :    if (<a href="../h_src/57611208.htm" class="function">luaV_flttointeger</a>(<a href="../h_src/57526272.htm" class="macro">fltvalue</a>(<a href="../h_src/58095676.htm" class="localvar">key</a>), &amp;<a href="../h_src/58095540.htm" class="localvar">k</a>, <a href="../h_src/57613520.htm" class="variable">F2Ieq</a>)) <a  class="comments">/* integral index? */</a>
+<a href="../h_aa/57616716.htm" class=function>luaH_newkey</a>                                      ltable.c
+   673 :    if (<a href="../h_src/57611208.htm" class="function">luaV_flttointeger</a>(<a href="../h_src/58098804.htm" class="localvar">f</a>, &amp;<a href="../h_src/58098668.htm" class="localvar">k</a>, <a href="../h_src/57613520.htm" class="variable">F2Ieq</a>)) {  <a  class="comments">/* does key fit in an integer? */</a>
+<a href="../h_aa/57801076.htm" class=function>luaK_float</a>                                       lcode.c
+   682 :    if (<a href="../h_src/57611208.htm" class="function">luaV_flttointeger</a>(<a href="../h_src/57800668.htm" class="localvar">f</a>, &amp;<a href="../h_src/57800532.htm" class="localvar">fi</a>, <a href="../h_src/57613520.htm" class="variable">F2Ieq</a>) &amp;&amp; <a href="../h_src/57801756.htm" class="function">fitsBx</a>(<a href="../h_src/57800532.htm" class="localvar">fi</a>))
+<a href="../h_aa/57805224.htm" class=function>luaK_numberK</a>                                     lcode.c
+   606 :    if (!<a href="../h_src/57611208.htm" class="function">luaV_flttointeger</a>(<a href="../h_src/57804952.htm" class="localvar">r</a>, &amp;<a href="../h_src/57804680.htm" class="localvar">ik</a>, <a href="../h_src/57613520.htm" class="variable">F2Ieq</a>))  <a  class="comments">/* not an integral value? */</a>
+<a href="../h_aa/57501792.htm" class=function>luaO_rawarith</a>                                    lobject.c
+    96 :    if (<a href="../h_src/57612704.htm" class="macro">tointegerns</a>(<a href="../h_src/57917232.htm" class="localvar">p1</a>, &amp;<a href="../h_src/57916824.htm" class="localvar">i1</a>) &amp;&amp; <a href="../h_src/57612704.htm" class="macro">tointegerns</a>(<a href="../h_src/57917096.htm" class="localvar">p2</a>, &amp;<a href="../h_src/57916688.htm" class="localvar">i2</a>)) {
+<a href="../h_aa/57611752.htm" class=function>luaV_equalobj</a>                                    lvm.c
+   575 :    return (<a href="../h_src/57611276.htm" class="function">luaV_tointegerns</a>(<a href="../h_src/58204720.htm" class="localvar">t1</a>, &amp;<a href="../h_src/58204312.htm" class="localvar">i1</a>, <a href="../h_src/57613520.htm" class="variable">F2Ieq</a>) &amp;&amp;
+   576 :    <a href="../h_src/57611276.htm" class="function">luaV_tointegerns</a>(<a href="../h_src/58204584.htm" class="localvar">t2</a>, &amp;<a href="../h_src/58204176.htm" class="localvar">i2</a>, <a href="../h_src/57613520.htm" class="variable">F2Ieq</a>) &amp;&amp;
+<a href="../h_aa/57610936.htm" class=function>luaV_execute</a>                                     lvm.c
+  1431 :    <a href="../h_src/58192004.htm" class="macro">op_bitwiseK</a>(L, <a href="../h_src/58193908.htm" class="macro">l_band</a>);
+  1435 :    <a href="../h_src/58192004.htm" class="macro">op_bitwiseK</a>(L, <a href="../h_src/58193772.htm" class="macro">l_bor</a>);
+  1439 :    <a href="../h_src/58192004.htm" class="macro">op_bitwiseK</a>(L, <a href="../h_src/58193636.htm" class="macro">l_bxor</a>);
+  1447 :    if (<a href="../h_src/57612704.htm" class="macro">tointegerns</a>(<a href="../h_src/58160996.htm" class="localvar">rb</a>, &amp;<a href="../h_src/58160724.htm" class="localvar">ib</a>)) {
+  1457 :    if (<a href="../h_src/57612704.htm" class="macro">tointegerns</a>(<a href="../h_src/58160316.htm" class="localvar">rb</a>, &amp;<a href="../h_src/58160044.htm" class="localvar">ib</a>)) {
+  1493 :    <a href="../h_src/58191868.htm" class="macro">op_bitwise</a>(L, <a href="../h_src/58193908.htm" class="macro">l_band</a>);
+  1497 :    <a href="../h_src/58191868.htm" class="macro">op_bitwise</a>(L, <a href="../h_src/58193772.htm" class="macro">l_bor</a>);
+  1501 :    <a href="../h_src/58191868.htm" class="macro">op_bitwise</a>(L, <a href="../h_src/58193636.htm" class="macro">l_bxor</a>);
+  1505 :    <a href="../h_src/58191868.htm" class="macro">op_bitwise</a>(L, <a href="../h_src/57611888.htm" class="macro">luaV_shiftr</a>);
+  1509 :    <a href="../h_src/58191868.htm" class="macro">op_bitwise</a>(L, <a href="../h_src/57610596.htm" class="function">luaV_shiftl</a>);
+  1561 :    if (<a href="../h_src/57612704.htm" class="macro">tointegerns</a>(<a href="../h_src/58144676.htm" class="localvar">rb</a>, &amp;<a href="../h_src/58144540.htm" class="localvar">ib</a>)) {
+<a href="../h_aa/57611208.htm" class=function>luaV_flttointeger</a>                                lvm.c
+   124 :    if (<a href="../h_src/58059908.htm" class="localvar">mode</a> == <a href="../h_src/57613520.htm" class="variable">F2Ieq</a>) return 0;  <a  class="comments">/* fails if mode demands integral value */</a>
+<a href="../h_aa/57786524.htm" class=function>validop</a>                                          lcode.c
+  1319 :    return (<a href="../h_src/57611276.htm" class="function">luaV_tointegerns</a>(<a href="../h_src/57786252.htm" class="localvar">v1</a>, &amp;<a href="../h_src/57785980.htm" class="localvar">i</a>, <a href="../h_src/57613656.htm" class="macro">LUA_FLOORN2I</a>) &amp;&amp;
+  1320 :    <a href="../h_src/57611276.htm" class="function">luaV_tointegerns</a>(<a href="../h_src/57786116.htm" class="localvar">v2</a>, &amp;<a href="../h_src/57785980.htm" class="localvar">i</a>, <a href="../h_src/57613656.htm" class="macro">LUA_FLOORN2I</a>));
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable F2Ieq</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

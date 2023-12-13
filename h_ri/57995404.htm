@@ -1,0 +1,53 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>ls</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57995404.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57995404.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57995404.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57995404.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57995540.htm" class=function>test_then_block</a>                                  lparser.c
+  1641 :    <a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57994996.htm" class="localvar">fs</a> = <a href="../h_src/57995404.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>;
+  1644 :    <a href="../h_src/57699784.htm" class="function">luaX_next</a>(<a href="../h_src/57995404.htm" class="localvar">ls</a>);  <a  class="comments">/* skip IF or ELSEIF */</a>
+  1645 :    <a href="../h_src/58055652.htm" class="function">expr</a>(<a href="../h_src/57995404.htm" class="localvar">ls</a>, &amp;<a href="../h_src/57994860.htm" class="localvar">v</a>);  <a  class="comments">/* read condition */</a>
+  1646 :    <a href="../h_src/58052524.htm" class="function">checknext</a>(<a href="../h_src/57995404.htm" class="localvar">ls</a>, <a href="../h_src/57704068.htm" class="variable">TK_THEN</a>);
+  1647 :    if (<a href="../h_src/57995404.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a> == <a href="../h_src/57705224.htm" class="variable">TK_BREAK</a>) {  <a  class="comments">/* 'if x then break' ? */</a>
+  1648 :    int <a href="../h_src/57994588.htm" class="localvar">line</a> = <a href="../h_src/57995404.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701552.htm" class="variable">linenumber</a>;
+  1649 :    <a href="../h_src/57669864.htm" class="function">luaK_goiffalse</a>(<a href="../h_src/57995404.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>, &amp;<a href="../h_src/57994860.htm" class="localvar">v</a>);  <a  class="comments">/* will jump if condition is true */</a>
+  1650 :    <a href="../h_src/57699784.htm" class="function">luaX_next</a>(<a href="../h_src/57995404.htm" class="localvar">ls</a>);  <a  class="comments">/* skip 'break' */</a>
+  1652 :    <a href="../h_src/58032192.htm" class="function">newgotoentry</a>(<a href="../h_src/57995404.htm" class="localvar">ls</a>, <a href="../h_src/57619572.htm" class="macro">luaS_newliteral</a>(<a href="../h_src/57995404.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, &quot;break&quot;), <a href="../h_src/57994588.htm" class="localvar">line</a>, <a href="../h_src/57994860.htm" class="localvar">v</a>.<a href="../h_src/57679520.htm" class="variable">t</a>);
+  1653 :    while (<a href="../h_src/58053340.htm" class="function">testnext</a>(<a href="../h_src/57995404.htm" class="localvar">ls</a>, ';')) {}  <a  class="comments">/* skip semicolons */</a>
+  1654 :    if (<a href="../h_src/58024032.htm" class="function">block_follow</a>(<a href="../h_src/57995404.htm" class="localvar">ls</a>, 0)) {  <a  class="comments">/* jump is the entire block? */</a>
+  1662 :    <a href="../h_src/57669932.htm" class="function">luaK_goiftrue</a>(<a href="../h_src/57995404.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>, &amp;<a href="../h_src/57994860.htm" class="localvar">v</a>);  <a  class="comments">/* skip over block if condition is false */</a>
+  1666 :    <a href="../h_src/58023624.htm" class="function">statlist</a>(<a href="../h_src/57995404.htm" class="localvar">ls</a>);  <a  class="comments">/* 'then' part */</a>
+  1668 :    if (<a href="../h_src/57995404.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a> == <a href="../h_src/57705088.htm" class="variable">TK_ELSE</a> ||
+  1669 :    <a href="../h_src/57995404.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a> == <a href="../h_src/57705020.htm" class="variable">TK_ELSEIF</a>)  <a  class="comments">/* followed by 'else'/'elseif'? */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable ls</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

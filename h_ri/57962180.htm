@@ -1,0 +1,50 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>L</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57962180.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57962180.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57962180.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57962180.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57962316.htm" class=function>GCTM</a>                                             lgc.c
+   906 :    <a href="../h_src/57643100.htm" class="type">global_State</a> *<a href="../h_src/57962044.htm" class="localvar">g</a> = <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57962180.htm" class="localvar">L</a>);
+   911 :    <a href="../h_src/57961908.htm" class="localvar">tm</a> = <a href="../h_src/57498052.htm" class="function">luaT_gettmbyobj</a>(<a href="../h_src/57962180.htm" class="localvar">L</a>, &amp;<a href="../h_src/57961772.htm" class="localvar">v</a>, <a href="../h_src/57500772.htm" class="variable">TM_GC</a>);
+   914 :    <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57961228.htm" class="localvar">oldah</a> = <a href="../h_src/57962180.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642760.htm" class="variable">allowhook</a>;
+   917 :    <a href="../h_src/57962180.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642760.htm" class="variable">allowhook</a> = 0;  <a  class="comments">/* stop debug hooks during GC metamethod */</a>
+   918 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/57962180.htm" class="localvar">L</a>, <a href="../h_src/57962180.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>++, <a href="../h_src/57961908.htm" class="localvar">tm</a>);  <a  class="comments">/* push finalizer... */</a>
+   919 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/57962180.htm" class="localvar">L</a>, <a href="../h_src/57962180.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>++, &amp;<a href="../h_src/57961772.htm" class="localvar">v</a>);  <a  class="comments">/* ... and its argument */</a>
+   920 :    <a href="../h_src/57962180.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> |= <a href="../h_src/57648404.htm" class="macro">CIST_FIN</a>;  <a  class="comments">/* will run a finalizer */</a>
+   921 :    <a href="../h_src/57961364.htm" class="localvar">status</a> = <a href="../h_src/57632968.htm" class="function">luaD_pcall</a>(<a href="../h_src/57962180.htm" class="localvar">L</a>, <a href="../h_src/57962724.htm" class="function">dothecall</a>, NULL, <a href="../h_src/57634396.htm" class="macro">savestack</a>(<a href="../h_src/57962180.htm" class="localvar">L</a>, <a href="../h_src/57962180.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 2), 0);
+   922 :    <a href="../h_src/57962180.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp;= ~<a href="../h_src/57648404.htm" class="macro">CIST_FIN</a>;  <a  class="comments">/* not running a finalizer anymore */</a>
+   923 :    <a href="../h_src/57962180.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642760.htm" class="variable">allowhook</a> = <a href="../h_src/57961228.htm" class="localvar">oldah</a>;  <a  class="comments">/* restore hooks */</a>
+   926 :    <a href="../h_src/57638068.htm" class="function">luaE_warnerror</a>(<a href="../h_src/57962180.htm" class="localvar">L</a>, &quot;__gc&quot;);
+   927 :    <a href="../h_src/57962180.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>--;  <a  class="comments">/* pops error object */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable L</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

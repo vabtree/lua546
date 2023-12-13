@@ -1,0 +1,52 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>ls</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58010840.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/58010840.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/58010840.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/58010840.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/58010976.htm" class=function>subexpr</a>                                          lparser.c
+  1263 :    <a href="../h_src/58035932.htm" class="macro">enterlevel</a>(<a href="../h_src/58010840.htm" class="localvar">ls</a>);
+  1264 :    <a href="../h_src/58010296.htm" class="localvar">uop</a> = <a href="../h_src/58012132.htm" class="function">getunopr</a>(<a href="../h_src/58010840.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a>);
+  1266 :    int <a href="../h_src/58010160.htm" class="localvar">line</a> = <a href="../h_src/58010840.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701552.htm" class="variable">linenumber</a>;
+  1267 :    <a href="../h_src/57699784.htm" class="function">luaX_next</a>(<a href="../h_src/58010840.htm" class="localvar">ls</a>);  <a  class="comments">/* skip operator */</a>
+  1268 :    <a href="../h_src/58010976.htm" class="function">subexpr</a>(<a href="../h_src/58010840.htm" class="localvar">ls</a>, <a href="../h_src/58010704.htm" class="localvar">v</a>, <a href="../h_src/58011112.htm" class="macro">UNARY_PRIORITY</a>);
+  1269 :    <a href="../h_src/57669184.htm" class="function">luaK_prefix</a>(<a href="../h_src/58010840.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>, <a href="../h_src/58010296.htm" class="localvar">uop</a>, <a href="../h_src/58010704.htm" class="localvar">v</a>, <a href="../h_src/58010160.htm" class="localvar">line</a>);
+  1271 :    else <a href="../h_src/58012676.htm" class="function">simpleexp</a>(<a href="../h_src/58010840.htm" class="localvar">ls</a>, <a href="../h_src/58010704.htm" class="localvar">v</a>);
+  1273 :    <a href="../h_src/58010432.htm" class="localvar">op</a> = <a href="../h_src/58011860.htm" class="function">getbinopr</a>(<a href="../h_src/58010840.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701960.htm" class="variable">token</a>);
+  1277 :    int <a href="../h_src/58009752.htm" class="localvar">line</a> = <a href="../h_src/58010840.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701552.htm" class="variable">linenumber</a>;
+  1278 :    <a href="../h_src/57699784.htm" class="function">luaX_next</a>(<a href="../h_src/58010840.htm" class="localvar">ls</a>);  <a  class="comments">/* skip operator */</a>
+  1279 :    <a href="../h_src/57669116.htm" class="function">luaK_infix</a>(<a href="../h_src/58010840.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>, <a href="../h_src/58010432.htm" class="localvar">op</a>, <a href="../h_src/58010704.htm" class="localvar">v</a>);
+  1281 :    <a href="../h_src/58009888.htm" class="localvar">nextop</a> = <a href="../h_src/58010976.htm" class="function">subexpr</a>(<a href="../h_src/58010840.htm" class="localvar">ls</a>, &amp;<a href="../h_src/58010024.htm" class="localvar">v2</a>, <a href="../h_src/58011180.htm" class="variable">priority</a>[<a href="../h_src/58010432.htm" class="localvar">op</a>].<a href="../h_src/58011452.htm" class="variable">right</a>);
+  1282 :    <a href="../h_src/57669048.htm" class="function">luaK_posfix</a>(<a href="../h_src/58010840.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>, <a href="../h_src/58010432.htm" class="localvar">op</a>, <a href="../h_src/58010704.htm" class="localvar">v</a>, &amp;<a href="../h_src/58010024.htm" class="localvar">v2</a>, <a href="../h_src/58009752.htm" class="localvar">line</a>);
+  1285 :    <a href="../h_src/58035796.htm" class="macro">leavelevel</a>(<a href="../h_src/58010840.htm" class="localvar">ls</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable ls</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

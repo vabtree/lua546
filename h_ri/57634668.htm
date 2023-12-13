@@ -1,0 +1,55 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaD_checkstackaux</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57634668.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57634668.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57634668.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57634668.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57864220.htm" class=function>ccall</a>                                            ldo.c
+   632 :    <a href="../h_src/57634124.htm" class="macro">checkstackp</a>(<a href="../h_src/57864084.htm" class="localvar">L</a>, 0, <a href="../h_src/57863948.htm" class="localvar">func</a>);  <a  class="comments">/* free any use of EXTRA_STACK */</a>
+<a href="../h_aa/57633512.htm" class=function>luaD_hook</a>                                        ldo.c
+   347 :    <a href="../h_src/57634532.htm" class="macro">luaD_checkstack</a>(<a href="../h_src/57875916.htm" class="localvar">L</a>, <a href="../h_src/57442688.htm" class="macro">LUA_MINSTACK</a>);  <a  class="comments">/* ensure minimum stack size */</a>
+<a href="../h_aa/57632628.htm" class=function>luaD_inctop</a>                                      ldo.c
+   316 :    <a href="../h_src/57634532.htm" class="macro">luaD_checkstack</a>(<a href="../h_src/57876052.htm" class="localvar">L</a>, 1);
+<a href="../h_aa/57633308.htm" class=function>luaD_precall</a>                                     ldo.c
+   603 :    <a href="../h_src/57633988.htm" class="macro">checkstackGCp</a>(<a href="../h_src/57865444.htm" class="localvar">L</a>, <a href="../h_src/57864492.htm" class="localvar">fsize</a>, <a href="../h_src/57865308.htm" class="localvar">func</a>);
+<a href="../h_aa/57633376.htm" class=function>luaD_pretailcall</a>                                 ldo.c
+   556 :    <a href="../h_src/57633988.htm" class="macro">checkstackGCp</a>(<a href="../h_src/57867076.htm" class="localvar">L</a>, <a href="../h_src/57866260.htm" class="localvar">fsize</a> - <a href="../h_src/57866532.htm" class="localvar">delta</a>, <a href="../h_src/57866804.htm" class="localvar">func</a>);
+<a href="../h_aa/57633104.htm" class=function>luaD_tryfuncTM</a>                                   ldo.c
+   415 :    <a href="../h_src/57633988.htm" class="macro">checkstackGCp</a>(<a href="../h_src/57872788.htm" class="localvar">L</a>, 1, <a href="../h_src/57872652.htm" class="localvar">func</a>);  <a  class="comments">/* space for metamethod */</a>
+<a href="../h_aa/57497372.htm" class=function>luaT_adjustvarargs</a>                               ltm.c
+   244 :    <a href="../h_src/57634532.htm" class="macro">luaD_checkstack</a>(<a href="../h_src/58078608.htm" class="localvar">L</a>, <a href="../h_src/57531984.htm" class="variable">p</a>-&gt;<a href="../h_src/57515800.htm" class="variable">maxstacksize</a> + 1);
+<a href="../h_aa/57497304.htm" class=function>luaT_getvarargs</a>                                  ltm.c
+   263 :    <a href="../h_src/57633988.htm" class="macro">checkstackGCp</a>(<a href="../h_src/58077112.htm" class="localvar">L</a>, <a href="../h_src/58076432.htm" class="localvar">nextra</a>, <a href="../h_src/58076840.htm" class="localvar">where</a>);  <a  class="comments">/* ensure stack space */</a><a href="../h_src/57642284.htm" class="variable">stack</a> space */
+<a href="../h_aa/57868300.htm" class=function>precallC</a>                                         ldo.c
+   520 :    <a href="../h_src/57633988.htm" class="macro">checkstackGCp</a>(<a href="../h_src/57868164.htm" class="localvar">L</a>, <a href="../h_src/57442688.htm" class="macro">LUA_MINSTACK</a>, <a href="../h_src/57868028.htm" class="localvar">func</a>);  <a  class="comments">/* ensure minimum stack size */</a><a href="../h_src/57642284.htm" class="variable">stack</a> size */
+</pre>
+<h4><a class="legend">Table lists functions that directly use luaD_checkstackaux</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

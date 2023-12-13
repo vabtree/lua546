@@ -1,0 +1,629 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lua_assert</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57548848.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57548848.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57548848.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57548848.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57808488.htm" class=function>addk</a>                                             lcode.c
+   565 :    <a href="../h_src/57533684.htm" class="macro">setobj</a>(<a href="../h_src/57807808.htm" class="localvar">L</a>, &amp;<a href="../h_src/57807672.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515052.htm" class="variable">k</a>[<a href="../h_src/57807400.htm" class="localvar">k</a>], <a href="../h_src/57808080.htm" class="localvar">v</a>);
+<a href="../h_aa/57826616.htm" class=function>atomic</a>                                           lgc.c
+  1529 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(g-&gt;ephemeron == NULL &amp;&amp; g-&gt;weak == NULL);
+  1530 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!<a href="../h_src/57626372.htm" class="macro">iswhite</a>(g-&gt;mainthread));
+  1561 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(g-&gt;gray == NULL);
+<a href="../h_aa/57729772.htm" class=function>aux_rawset</a>                                       lapi.c
+   899 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57729636.htm" class="localvar">L</a>, n);
+<a href="../h_aa/57584212.htm" class=function>auxgetstr</a>                                        lapi.c
+   643 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/57584076.htm" class="localvar">L</a>, <a href="../h_src/57584076.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57583668.htm" class="localvar">slot</a>);
+   644 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57584076.htm" class="localvar">L</a>);
+   648 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57584076.htm" class="localvar">L</a>);
+<a href="../h_aa/57733988.htm" class=function>auxsetstr</a>                                        lapi.c
+   832 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57733852.htm" class="localvar">L</a>, 1);
+   834 :    <a href="../h_src/57612024.htm" class="macro">luaV_finishfastset</a>(<a href="../h_src/57733852.htm" class="localvar">L</a>, <a href="../h_src/57733716.htm" class="localvar">t</a>, <a href="../h_src/57733444.htm" class="localvar">slot</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57733852.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1));
+   839 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57733852.htm" class="localvar">L</a>);
+<a href="../h_aa/57784620.htm" class=function>binopr2op</a>                                        lcode.c
+  1358 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(baser &lt;= opr &amp;&amp;
+<a href="../h_aa/57783804.htm" class=function>binopr2TM</a>                                        lcode.c
+  1378 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(OPR_ADD &lt;= opr &amp;&amp; opr &lt;= OPR_SHR);
+<a href="../h_aa/57836884.htm" class=function>callclosemethod</a>                                  lfunc.c
+   110 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/57836748.htm" class="localvar">L</a>, <a href="../h_src/57836204.htm" class="localvar">top</a>, <a href="../h_src/57836068.htm" class="localvar">tm</a>);  <a  class="comments">/* will call metamethod... */</a>
+   111 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/57836748.htm" class="localvar">L</a>, <a href="../h_src/57836204.htm" class="localvar">top</a> + 1, <a href="../h_src/57836612.htm" class="localvar">obj</a>);  <a  class="comments">/* with 'self' as the 1st argument */</a>
+   112 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/57836748.htm" class="localvar">L</a>, <a href="../h_src/57836204.htm" class="localvar">top</a> + 2, <a href="../h_src/57836476.htm" class="localvar">err</a>);  <a  class="comments">/* and error msg. as 2nd argument */</a>
+<a href="../h_aa/57934300.htm" class=function>check_next2</a>                                      llex.c
+   205 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(set[2] == '\0');
+<a href="../h_aa/57824984.htm" class=function>clearkey</a>                                         lgc.c
+   172 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(n)));
+<a href="../h_aa/58024712.htm" class=function>close_func</a>                                       lparser.c
+   762 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(fs-&gt;bl == NULL);
+<a href="../h_aa/58137292.htm" class=function>close_state</a>                                      lstate.c
+   281 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57638748.htm" class="macro">gettotalbytes</a>(g) == sizeof(LG));
+<a href="../h_aa/57781084.htm" class=function>codebinexpval</a>                                    lcode.c
+  1426 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>((VNIL &lt;= e1-&gt;k &amp;&amp; e1-&gt;k &lt;= VKSTR) ||
+  1428 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(OP_ADD &lt;= op &amp;&amp; op &lt;= OP_SHR);
+<a href="../h_aa/57779996.htm" class=function>codebini</a>                                         lcode.c
+  1440 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(e2-&gt;k == VKINT);
+<a href="../h_aa/57767756.htm" class=function>codeconcat</a>                                       lcode.c
+  1686 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(e1-&gt;u.info + 1 == <a href="../h_src/57694072.htm" class="macro">GETARG_A</a>(*ie2));
+<a href="../h_aa/57770476.htm" class=function>codeeq</a>                                           lcode.c
+  1587 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(e1-&gt;k == VK || e1-&gt;k == VKINT || e1-&gt;k == VKFLT);
+<a href="../h_aa/57812432.htm" class=function>codeextraarg</a>                                     lcode.c
+   441 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(a &lt;= <a href="../h_src/57696248.htm" class="macro">MAXARG_Ax</a>);
+<a href="../h_aa/57789244.htm" class=function>codenot</a>                                          lcode.c
+  1208 :    default: <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(0);  <a  class="comments">/* cannot happen */</a>
+<a href="../h_aa/57668436.htm" class=function>codesJ</a>                                           lcode.c
+   431 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57684416.htm" class="macro">getOpMode</a>(o) == isJ);
+   432 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(j &lt;= <a href="../h_src/57696112.htm" class="macro">MAXARG_sJ</a> &amp;&amp; (k &amp; ~1) == 0);
+<a href="../h_aa/57749668.htm" class=function>collectvalidlines</a>                                ldebug.c
+   293 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57749532.htm" class="localvar">L</a>);
+   302 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57749532.htm" class="localvar">L</a>);
+   307 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57694752.htm" class="macro">GET_OPCODE</a>(p-&gt;code[0]) == OP_VARARGPREP);
+<a href="../h_aa/58110636.htm" class=function>computesizes</a>                                     ltable.c
+   407 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>((optimal == 0 || optimal / 2 &lt; na) &amp;&amp; na &lt;= optimal);
+<a href="../h_aa/57800396.htm" class=function>const2exp</a>                                        lcode.c
+   712 :    default: <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(0);
+<a href="../h_aa/57667348.htm" class=function>const2val</a>                                        lcode.c
+    75 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(e-&gt;k == VCONST);
+<a href="../h_aa/58018932.htm" class=function>constructor</a>                                      lparser.c
+   940 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(cc.v.k == VVOID || cc.tostore &gt; 0);
+<a href="../h_aa/57953204.htm" class=function>correctgraylist</a>                                  lgc.c
+  1177 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57626100.htm" class="macro">isgray</a>(curr));
+  1183 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57626100.htm" class="macro">isgray</a>(curr));
+  1187 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57623652.htm" class="macro">isold</a>(curr));  <a  class="comments">/* young objects should be white here */</a>
+<a href="../h_aa/57758644.htm" class=function>currentpc</a>                                        ldebug.c
+    42 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57647452.htm" class="macro">isLua</a>(ci));
+<a href="../h_aa/57798492.htm" class=function>discharge2reg</a>                                    lcode.c
+   866 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(e-&gt;k == VJMP);
+<a href="../h_aa/57844976.htm" class=function>dumpConstants</a>                                    ldump.c
+   132 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(tt == <a href="../h_src/57531576.htm" class="macro">LUA_VNIL</a> || tt == <a href="../h_src/57530080.htm" class="macro">LUA_VFALSE</a> || tt == <a href="../h_src/57529944.htm" class="macro">LUA_VTRUE</a>);
+<a href="../h_aa/58028792.htm" class=function>enterblock</a>                                       lparser.c
+   651 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(fs-&gt;freereg == luaY_nvarstack(fs));
+<a href="../h_aa/57826480.htm" class=function>entersweep</a>                                       lgc.c
+  1487 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(g-&gt;sweepgc == NULL);
+<a href="../h_aa/58001320.htm" class=function>exp1</a>                                             lparser.c
+  1521 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(e.k == VNONRELOC);
+<a href="../h_aa/57852456.htm" class=function>f_parser</a>                                         ldo.c
+  1000 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(cl-&gt;nupvalues == cl-&gt;p-&gt;sizeupvalues);
+<a href="../h_aa/57861772.htm" class=function>finishCcall</a>                                      ldo.c
+   711 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57637524.htm" class="macro">hastocloseCfunc</a>(ci-&gt;nresults));
+   718 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(ci-&gt;u.c.k != NULL &amp;&amp; <a href="../h_src/57653776.htm" class="macro">yieldable</a>(L));
+   725 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57861636.htm" class="localvar">L</a>, n);
+<a href="../h_aa/57579860.htm" class=function>finishrawget</a>                                     lapi.c
+   718 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/57579724.htm" class="localvar">L</a>, <a href="../h_src/57579724.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57532732.htm" class="variable">val</a>);
+   719 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57579724.htm" class="localvar">L</a>);
+<a href="../h_aa/57664084.htm" class=function>fixjump</a>                                          lcode.c
+   170 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(dest != <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>);
+   173 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57694752.htm" class="macro">GET_OPCODE</a>(*jmp) == OP_JMP);
+<a href="../h_aa/58215124.htm" class=function>floatforloop</a>                                     lvm.c
+   273 :    <a href="../h_src/57525592.htm" class="macro">chgfltvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58214988.htm" class="localvar">ra</a>), <a href="../h_src/58214580.htm" class="localvar">idx</a>);  <a  class="comments">/* update internal index */</a>
+<a href="../h_aa/57966804.htm" class=function>freeobj</a>                                          lgc.c
+   810 :    default: <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(0);
+<a href="../h_aa/57810664.htm" class=function>freereg</a>                                          lcode.c
+   494 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(reg == fs-&gt;freereg);
+<a href="../h_aa/57979900.htm" class=function>freestack</a>                                        lstate.c
+   208 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(L-&gt;nci == 0);
+<a href="../h_aa/57941508.htm" class=function>fullinc</a>                                          lgc.c
+  1715 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(g-&gt;GCestimate == <a href="../h_src/57638748.htm" class="macro">gettotalbytes</a>(g));
+<a href="../h_aa/58015260.htm" class=function>funcargs</a>                                         lparser.c
+  1055 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(f-&gt;k == VNONRELOC);
+<a href="../h_aa/57962316.htm" class=function>GCTM</a>                                             lgc.c
+   909 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!g-&gt;gcemergency);
+   918 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/57962180.htm" class="localvar">L</a>, <a href="../h_src/57962180.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>++, <a href="../h_src/57961908.htm" class="localvar">tm</a>);  <a  class="comments">/* push finalizer... */</a>
+   919 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/57962180.htm" class="localvar">L</a>, <a href="../h_src/57962180.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>++, &amp;<a href="../h_src/57961772.htm" class="localvar">v</a>);  <a  class="comments">/* ... and its argument */</a>
+<a href="../h_aa/57818660.htm" class=function>genlink</a>                                          lgc.c
+   431 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57626236.htm" class="macro">isblack</a>(o));
+<a href="../h_aa/57947492.htm" class=function>genstep</a>                                          lgc.c
+  1451 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(g-&gt;lastatomic == 0);
+  1464 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57622428.htm" class="macro">isdecGCmodegen</a>(g));
+<a href="../h_aa/57758372.htm" class=function>getbaseline</a>                                      ldebug.c
+    68 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(i &lt; 0 ||
+<a href="../h_aa/57903904.htm" class=function>getbuff</a>                                          lobject.c
+   439 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(buff-&gt;blen &lt;= <a href="../h_src/57905808.htm" class="macro">BUFVFS</a>); <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(sz &lt;= <a href="../h_src/57905808.htm" class="macro">BUFVFS</a>);
+<a href="../h_aa/57826208.htm" class=function>getgclist</a>                                        lgc.c
+   134 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(u-&gt;nuvalue &gt; 0);
+   137 :    default: <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(0); return 0;
+<a href="../h_aa/57579180.htm" class=function>gettable</a>                                         lapi.c
+   727 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57579044.htm" class="localvar">L</a>, <a href="../h_src/57507300.htm" class="macro">ttistable</a>(t), &quot;table expected&quot;);
+<a href="../h_aa/57709644.htm" class=function>getupvalref</a>                                      lapi.c
+  1421 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57709508.htm" class="localvar">L</a>, <a href="../h_src/57513080.htm" class="macro">ttisLclosure</a>(fi), &quot;Lua function expected&quot;);
+<a href="../h_aa/57935796.htm" class=function>inclinenumber</a>                                    llex.c
+   158 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57940216.htm" class="macro">currIsNewline</a>(ls));
+<a href="../h_aa/57609100.htm" class=function>index2stack</a>                                      lapi.c
+    99 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57608964.htm" class="localvar">L</a>, o &lt; L-&gt;top.p, &quot;invalid index&quot;);
+   103 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57608964.htm" class="localvar">L</a>, idx != 0 &amp;&amp; -idx &lt;= L-&gt;top.p - (ci-&gt;func.p + 1),
+   105 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57608964.htm" class="localvar">L</a>, !<a href="../h_src/57610324.htm" class="macro">ispseudo</a>(idx), &quot;invalid index&quot;);
+<a href="../h_aa/57610052.htm" class=function>index2value</a>                                      lapi.c
+    64 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57609916.htm" class="localvar">L</a>, idx &lt;= ci-&gt;top.p - (ci-&gt;func.p + 1), &quot;unacceptable index&quot;);
+    69 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57609916.htm" class="localvar">L</a>, idx != 0 &amp;&amp; -idx &lt;= L-&gt;top.p - (ci-&gt;func.p + 1),
+    77 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57609916.htm" class="localvar">L</a>, idx &lt;= <a href="../h_src/57631676.htm" class="macro">MAXUPVAL</a> + 1, &quot;upvalue index too large&quot;);
+    84 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57609916.htm" class="localvar">L</a>, <a href="../h_src/57512944.htm" class="macro">ttislcf</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(ci-&gt;func.p)), &quot;caller not a C function&quot;);
+<a href="../h_aa/57919000.htm" class=function>intarith</a>                                         lobject.c
+    68 :    default: <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(0); return 0;
+<a href="../h_aa/58125188.htm" class=function>internshrstr</a>                                     lstring.c
+   194 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(str != NULL);  <a  class="comments">/* otherwise 'memcmp'/'memcpy' are undefined */</a>
+<a href="../h_aa/58119408.htm" class=function>l_hashfloat</a>                                      ltable.c
+   136 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57538784.htm" class="macro">luai_numisnan</a>(n) || <a href="../h_src/57449148.htm" class="macro">l_mathop</a>(fabs)(n) == <a href="../h_src/57547352.htm" class="macro">cast_num</a>(HUGE_VAL));
+<a href="../h_aa/58060996.htm" class=function>l_strton</a>                                         lvm.c
+    91 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(obj != result);
+<a href="../h_aa/58027704.htm" class=function>leaveblock</a>                                       lparser.c
+   678 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(bl-&gt;nactvar == fs-&gt;nactvar);  <a  class="comments">/* back to level on entry */</a>
+<a href="../h_aa/58207440.htm" class=function>LEnum</a>                                            lvm.c
+   499 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57526816.htm" class="macro">ttisnumber</a>(l) &amp;&amp; <a href="../h_src/57526816.htm" class="macro">ttisnumber</a>(r));
+<a href="../h_aa/58205808.htm" class=function>lessequalothers</a>                                  lvm.c
+   543 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!<a href="../h_src/57526816.htm" class="macro">ttisnumber</a>(l) || !<a href="../h_src/57526816.htm" class="macro">ttisnumber</a>(r));
+<a href="../h_aa/58206760.htm" class=function>lessthanothers</a>                                   lvm.c
+   521 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!<a href="../h_src/57526816.htm" class="macro">ttisnumber</a>(l) || !<a href="../h_src/57526816.htm" class="macro">ttisnumber</a>(r));
+<a href="../h_aa/57825664.htm" class=function>linkgclist_</a>                                      lgc.c
+   149 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!<a href="../h_src/57626100.htm" class="macro">isgray</a>(o));  <a  class="comments">/* cannot be in a gray list */</a>
+<a href="../h_aa/58068680.htm" class=function>loadConstants</a>                                    lundump.c
+   185 :    default: <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(0);
+<a href="../h_aa/58046540.htm" class=function>localdebuginfo</a>                                   lparser.c
+   257 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(idx &lt; fs-&gt;ndebugvars);
+<a href="../h_aa/58208120.htm" class=function>LTnum</a>                                            lvm.c
+   477 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57526816.htm" class="macro">ttisnumber</a>(l) &amp;&amp; <a href="../h_src/57526816.htm" class="macro">ttisnumber</a>(r));
+<a href="../h_aa/57435888.htm" class=function>lua_arith</a>                                        lapi.c
+   338 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57597472.htm" class="localvar">L</a>, 2);  <a  class="comments">/* all other operations expect two operands */</a>
+   340 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57597472.htm" class="localvar">L</a>, 1);
+   341 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/57597472.htm" class="localvar">L</a>, <a href="../h_src/57597472.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57597472.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1);
+   342 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57597472.htm" class="localvar">L</a>);
+<a href="../h_aa/57433032.htm" class=function>lua_callk</a>                                        lapi.c
+  1008 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57725828.htm" class="localvar">L</a>, k == NULL || !<a href="../h_src/57647452.htm" class="macro">isLua</a>(L-&gt;ci),
+  1010 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57725828.htm" class="localvar">L</a>, nargs+1);
+  1011 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57725828.htm" class="localvar">L</a>, L-&gt;status == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>, &quot;cannot do calls on non-normal thread&quot;);
+  1012 :    <a href="../h_src/57725964.htm" class="macro">checkresults</a>(<a href="../h_src/57725828.htm" class="localvar">L</a>, nargs, nresults);
+<a href="../h_aa/57439016.htm" class=function>lua_checkstack</a>                                   lapi.c
+   116 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57608420.htm" class="localvar">L</a>, n &gt;= 0, &quot;negative 'n'&quot;);
+<a href="../h_aa/57429768.htm" class=function>lua_closeslot</a>                                    lapi.c
+   213 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57605224.htm" class="localvar">L</a>, <a href="../h_src/57637524.htm" class="macro">hastocloseCfunc</a>(L-&gt;ci-&gt;nresults) &amp;&amp; L-&gt;tbclist.p == level,
+<a href="../h_aa/57435344.htm" class=function>lua_compare</a>                                      lapi.c
+   363 :    default: <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57596928.htm" class="localvar">L</a>, 0, &quot;invalid option&quot;);
+<a href="../h_aa/57430244.htm" class=function>lua_concat</a>                                       lapi.c
+  1287 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57716580.htm" class="localvar">L</a>, n);
+  1292 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57716580.htm" class="localvar">L</a>);
+<a href="../h_aa/57439084.htm" class=function>lua_copy</a>                                         lapi.c
+   260 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57602504.htm" class="localvar">L</a>, <a href="../h_src/57610460.htm" class="macro">isvalid</a>(L, to), &quot;invalid index&quot;);
+   261 :    <a href="../h_src/57533684.htm" class="macro">setobj</a>(<a href="../h_src/57602504.htm" class="localvar">L</a>, <a href="../h_src/57601960.htm" class="localvar">to</a>, <a href="../h_src/57602096.htm" class="localvar">fr</a>);
+<a href="../h_aa/57433916.htm" class=function>lua_createtable</a>                                  lapi.c
+   767 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57736708.htm" class="localvar">L</a>);
+<a href="../h_aa/57432556.htm" class=function>lua_dump</a>                                         lapi.c
+  1114 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57721068.htm" class="localvar">L</a>, 1);
+<a href="../h_aa/57430380.htm" class=function>lua_error</a>                                        lapi.c
+  1242 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57717940.htm" class="localvar">L</a>, 1);
+<a href="../h_aa/57434188.htm" class=function>lua_geti</a>                                         lapi.c
+   701 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/57581084.htm" class="localvar">L</a>, <a href="../h_src/57581084.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57580540.htm" class="localvar">slot</a>);
+   708 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57581084.htm" class="localvar">L</a>);
+<a href="../h_aa/57424600.htm" class=function>lua_getinfo</a>                                      ldebug.c
+   392 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57746812.htm" class="localvar">L</a>, <a href="../h_src/57513216.htm" class="macro">ttisfunction</a>(func), &quot;function expected&quot;);
+   399 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57513216.htm" class="macro">ttisfunction</a>(func));
+   404 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/57746812.htm" class="localvar">L</a>, <a href="../h_src/57746812.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57745996.htm" class="localvar">func</a>);
+   405 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57746812.htm" class="localvar">L</a>);
+<a href="../h_aa/57433712.htm" class=function>lua_getiuservalue</a>                                lapi.c
+   807 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57734940.htm" class="localvar">L</a>, <a href="../h_src/57521716.htm" class="macro">ttisfulluserdata</a>(o), &quot;full userdata expected&quot;);
+   813 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/57734940.htm" class="localvar">L</a>, <a href="../h_src/57734940.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, &amp;<a href="../h_src/57521444.htm" class="macro">uvalue</a>(<a href="../h_src/57734532.htm" class="localvar">o</a>)-&gt;<a href="../h_src/57519336.htm" class="variable">uv</a>[<a href="../h_src/57734668.htm" class="localvar">n</a> - 1].uv);
+   816 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57734940.htm" class="localvar">L</a>);
+<a href="../h_aa/57424532.htm" class=function>lua_getlocal</a>                                     ldebug.c
+   233 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/57752728.htm" class="localvar">L</a>, <a href="../h_src/57752728.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57752184.htm" class="localvar">pos</a>);
+   234 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57752728.htm" class="localvar">L</a>);
+<a href="../h_aa/57433780.htm" class=function>lua_getmetatable</a>                                 lapi.c
+   794 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57735892.htm" class="localvar">L</a>);
+<a href="../h_aa/57434324.htm" class=function>lua_gettable</a>                                     lapi.c
+   680 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/57582308.htm" class="localvar">L</a>, <a href="../h_src/57582308.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1, <a href="../h_src/57582036.htm" class="localvar">slot</a>);
+<a href="../h_aa/57424396.htm" class=function>lua_getupvalue</a>                                   lapi.c
+  1390 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/57711820.htm" class="localvar">L</a>, <a href="../h_src/57711820.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57711276.htm" class="localvar">val</a>);
+  1391 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57711820.htm" class="localvar">L</a>);
+<a href="../h_aa/57430176.htm" class=function>lua_len</a>                                          lapi.c
+  1304 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57716036.htm" class="localvar">L</a>);
+<a href="../h_aa/57432624.htm" class=function>lua_load</a>                                         lapi.c
+  1101 :    <a href="../h_src/57533684.htm" class="macro">setobj</a>(<a href="../h_src/57722564.htm" class="localvar">L</a>, <a href="../h_src/57721612.htm" class="localvar">f</a>-&gt;<a href="../h_src/57508048.htm" class="variable">upvals</a>[0]-&gt;<a href="../h_src/57510564.htm" class="variable">v</a>.<a href="../h_src/57510768.htm" class="variable">p</a>, <a href="../h_src/57721476.htm" class="localvar">gt</a>);
+<a href="../h_aa/57439764.htm" class=function>lua_newthread</a>                                    lstate.c
+   297 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/58136748.htm" class="localvar">L</a>);
+<a href="../h_aa/57433848.htm" class=function>lua_newuserdatauv</a>                                lapi.c
+  1346 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57713928.htm" class="localvar">L</a>, 0 &lt;= nuvalue &amp;&amp; nuvalue &lt; USHRT_MAX, &quot;invalid value&quot;);
+  1349 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57713928.htm" class="localvar">L</a>);
+<a href="../h_aa/57430312.htm" class=function>lua_next</a>                                         lapi.c
+  1257 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57717668.htm" class="localvar">L</a>, 1);
+  1261 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57717668.htm" class="localvar">L</a>);
+<a href="../h_aa/57432828.htm" class=function>lua_pcallk</a>                                       lapi.c
+  1049 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57724060.htm" class="localvar">L</a>, k == NULL || !<a href="../h_src/57647452.htm" class="macro">isLua</a>(L-&gt;ci),
+  1051 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57724060.htm" class="localvar">L</a>, nargs+1);
+  1052 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57724060.htm" class="localvar">L</a>, L-&gt;status == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>, &quot;cannot do calls on non-normal thread&quot;);
+  1053 :    <a href="../h_src/57725964.htm" class="macro">checkresults</a>(<a href="../h_src/57724060.htm" class="localvar">L</a>, nargs, nresults);
+  1058 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57724060.htm" class="localvar">L</a>, <a href="../h_src/57513216.htm" class="macro">ttisfunction</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(o)), &quot;error handler must be a function&quot;);
+<a href="../h_aa/57434596.htm" class=function>lua_pushboolean</a>                                  lapi.c
+   611 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57585300.htm" class="localvar">L</a>);
+<a href="../h_aa/57434664.htm" class=function>lua_pushcclosure</a>                                 lapi.c
+   583 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57586524.htm" class="localvar">L</a>);
+   587 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57586524.htm" class="localvar">L</a>, n);
+   588 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57586524.htm" class="localvar">L</a>, n &lt;= <a href="../h_src/57631676.htm" class="macro">MAXUPVAL</a>, &quot;upvalue index too large&quot;);
+   593 :    <a href="../h_src/57533140.htm" class="macro">setobj2n</a>(L, &amp;<a href="../h_src/57585980.htm" class="localvar">cl</a>-&gt;<a href="../h_src/57508796.htm" class="variable">upvalue</a>[n], <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57586524.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> + <a href="../h_src/57586252.htm" class="localvar">n</a>));
+   595 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57626372.htm" class="macro">iswhite</a>(cl));
+   598 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57586524.htm" class="localvar">L</a>);
+<a href="../h_aa/57435140.htm" class=function>lua_pushinteger</a>                                  lapi.c
+   516 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57589788.htm" class="localvar">L</a>);
+<a href="../h_aa/57434528.htm" class=function>lua_pushlightuserdata</a>                            lapi.c
+   619 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57585028.htm" class="localvar">L</a>);
+<a href="../h_aa/57435072.htm" class=function>lua_pushlstring</a>                                  lapi.c
+   531 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57589380.htm" class="localvar">L</a>);
+<a href="../h_aa/57435276.htm" class=function>lua_pushnil</a>                                      lapi.c
+   500 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57590332.htm" class="localvar">L</a>);
+<a href="../h_aa/57435208.htm" class=function>lua_pushnumber</a>                                   lapi.c
+   508 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57590196.htm" class="localvar">L</a>);
+<a href="../h_aa/57435004.htm" class=function>lua_pushstring</a>                                   lapi.c
+   548 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57588564.htm" class="localvar">L</a>);
+<a href="../h_aa/57434460.htm" class=function>lua_pushthread</a>                                   lapi.c
+   627 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57584620.htm" class="localvar">L</a>);
+<a href="../h_aa/57439220.htm" class=function>lua_pushvalue</a>                                    lapi.c
+   272 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/57601552.htm" class="localvar">L</a>, <a href="../h_src/57601552.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57610052.htm" class="function">index2value</a>(<a href="../h_src/57601552.htm" class="localvar">L</a>, <a href="../h_src/57601416.htm" class="localvar">idx</a>));
+   273 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57601552.htm" class="localvar">L</a>);
+<a href="../h_aa/57434120.htm" class=function>lua_rawget</a>                                       lapi.c
+   736 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57578636.htm" class="localvar">L</a>, 1);
+<a href="../h_aa/57433304.htm" class=function>lua_rawseti</a>                                      lapi.c
+   924 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57728004.htm" class="localvar">L</a>, 1);
+<a href="../h_aa/57432420.htm" class=function>lua_resume</a>                                       ldo.c
+   848 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57857964.htm" class="localvar">L</a>, (L-&gt;status == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) ? nargs + 1 : nargs);
+   853 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(status == L-&gt;status);  <a  class="comments">/* normal end or yield */</a>
+<a href="../h_aa/57439152.htm" class=function>lua_rotate</a>                                       lapi.c
+   246 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57603320.htm" class="localvar">L</a>, (n &gt;= 0 ? n : -n) &lt;= (t - p + 1), &quot;invalid 'n'&quot;);
+<a href="../h_aa/57433440.htm" class=function>lua_seti</a>                                         lapi.c
+   881 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57730996.htm" class="localvar">L</a>, 1);
+   884 :    <a href="../h_src/57612024.htm" class="macro">luaV_finishfastset</a>(<a href="../h_src/57730996.htm" class="localvar">L</a>, <a href="../h_src/57730588.htm" class="localvar">t</a>, <a href="../h_src/57730452.htm" class="localvar">slot</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57730996.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1));
+<a href="../h_aa/57433100.htm" class=function>lua_setiuservalue</a>                                lapi.c
+   977 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57726916.htm" class="localvar">L</a>, 1);
+   979 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57726916.htm" class="localvar">L</a>, <a href="../h_src/57521716.htm" class="macro">ttisfulluserdata</a>(o), &quot;full userdata expected&quot;);
+   983 :    <a href="../h_src/57533684.htm" class="macro">setobj</a>(<a href="../h_src/57726916.htm" class="localvar">L</a>, &amp;<a href="../h_src/57521444.htm" class="macro">uvalue</a>(<a href="../h_src/57726508.htm" class="localvar">o</a>)-&gt;<a href="../h_src/57519336.htm" class="variable">uv</a>[<a href="../h_src/57726644.htm" class="localvar">n</a> - 1].uv, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57726916.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1));
+<a href="../h_aa/57424464.htm" class=function>lua_setlocal</a>                                     ldebug.c
+   248 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/57751776.htm" class="localvar">L</a>, <a href="../h_src/57751368.htm" class="localvar">pos</a>, <a href="../h_src/57751776.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1);
+<a href="../h_aa/57433168.htm" class=function>lua_setmetatable</a>                                 lapi.c
+   937 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57727460.htm" class="localvar">L</a>, 1);
+   942 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57727460.htm" class="localvar">L</a>, <a href="../h_src/57507300.htm" class="macro">ttistable</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(L-&gt;top.p - 1)), &quot;table expected&quot;);
+<a href="../h_aa/57433576.htm" class=function>lua_settable</a>                                     lapi.c
+   859 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57732220.htm" class="localvar">L</a>, 2);
+   862 :    <a href="../h_src/57612024.htm" class="macro">luaV_finishfastset</a>(<a href="../h_src/57732220.htm" class="localvar">L</a>, <a href="../h_src/57731948.htm" class="localvar">t</a>, <a href="../h_src/57731812.htm" class="localvar">slot</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57732220.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1));
+<a href="../h_aa/57439288.htm" class=function>lua_settop</a>                                       lapi.c
+   189 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57606040.htm" class="localvar">L</a>, idx &lt;= ci-&gt;top.p - (func + 1), &quot;new top too large&quot;);
+   195 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57606040.htm" class="localvar">L</a>, -(idx+1) &lt;= (L-&gt;top.p - (func + 1)), &quot;invalid new top&quot;);
+   198 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57606040.htm" class="localvar">L</a>, L-&gt;tbclist.p &lt; L-&gt;top.p, &quot;previous pop of an unclosed slot&quot;);
+   201 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57637524.htm" class="macro">hastocloseCfunc</a>(ci-&gt;nresults));
+<a href="../h_aa/57424328.htm" class=function>lua_setupvalue</a>                                   lapi.c
+  1405 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57710868.htm" class="localvar">L</a>, 1);
+  1409 :    <a href="../h_src/57533684.htm" class="macro">setobj</a>(<a href="../h_src/57710868.htm" class="localvar">L</a>, <a href="../h_src/57710324.htm" class="localvar">val</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57710868.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>));
+<a href="../h_aa/57430108.htm" class=function>lua_stringtonumber</a>                               lapi.c
+   374 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57595976.htm" class="localvar">L</a>);
+<a href="../h_aa/57429836.htm" class=function>lua_toclose</a>                                      lapi.c
+  1276 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57717124.htm" class="localvar">L</a>, L-&gt;tbclist.p &lt; o, &quot;given index below or equal a marked one&quot;);
+  1280 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57637524.htm" class="macro">hastocloseCfunc</a>(L-&gt;ci-&gt;nresults));
+<a href="../h_aa/57438472.htm" class=function>lua_typename</a>                                     lapi.c
+   292 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57600600.htm" class="localvar">L</a>, <a href="../h_src/57444184.htm" class="macro">LUA_TNONE</a> &lt;= t &amp;&amp; t &lt; <a href="../h_src/57442824.htm" class="macro">LUA_NUMTYPES</a>, &quot;invalid type&quot;);
+<a href="../h_aa/57424260.htm" class=function>lua_upvalueid</a>                                    lapi.c
+  1446 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57708488.htm" class="localvar">L</a>, 0, &quot;function expected&quot;);
+<a href="../h_aa/57424192.htm" class=function>lua_upvaluejoin</a>                                  lapi.c
+  1458 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57707808.htm" class="localvar">L</a>, *up1 != NULL &amp;&amp; *up2 != NULL, &quot;invalid upvalue index&quot;);
+<a href="../h_aa/57438948.htm" class=function>lua_xmove</a>                                        lapi.c
+   132 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57607876.htm" class="localvar">from</a>, n);
+   133 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57607876.htm" class="localvar">from</a>, <a href="../h_src/57641196.htm" class="macro">G</a>(from) == <a href="../h_src/57641196.htm" class="macro">G</a>(to), &quot;moving among independent states&quot;);
+   134 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57607876.htm" class="localvar">from</a>, to-&gt;ci-&gt;top.p - to-&gt;top.p &gt;= n, &quot;stack overflow&quot;);
+   137 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/57607740.htm" class="localvar">to</a>, <a href="../h_src/57607740.htm" class="localvar">to</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57607876.htm" class="localvar">from</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> + <a href="../h_src/57607468.htm" class="localvar">i</a>);
+<a href="../h_aa/57432488.htm" class=function>lua_yieldk</a>                                       ldo.c
+   877 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57857148.htm" class="localvar">L</a>, nresults);
+   887 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!<a href="../h_src/57647316.htm" class="macro">isLuacode</a>(ci));
+   888 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57857148.htm" class="localvar">L</a>, nresults == 0, &quot;hooks cannot yield values&quot;);
+   889 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57857148.htm" class="localvar">L</a>, k == NULL, &quot;hooks cannot continue after yielding&quot;);
+   896 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(ci-&gt;callstatus &amp; <a href="../h_src/57648948.htm" class="macro">CIST_HOOKED</a>);  <a  class="comments">/* must be inside a hook */</a>
+<a href="../h_aa/57620456.htm" class=function>luaC_barrier_</a>                                    lgc.c
+   210 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57626236.htm" class="macro">isblack</a>(o) &amp;&amp; <a href="../h_src/57626372.htm" class="macro">iswhite</a>(v) &amp;&amp; !<a href="../h_src/57625556.htm" class="macro">isdead</a>(g, v) &amp;&amp; !<a href="../h_src/57625556.htm" class="macro">isdead</a>(g, o));
+   214 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!<a href="../h_src/57623652.htm" class="macro">isold</a>(v));  <a  class="comments">/* white object could not be old */</a>
+   219 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57628548.htm" class="macro">issweepphase</a>(g));
+<a href="../h_aa/57620388.htm" class=function>luaC_barrierback_</a>                                lgc.c
+   232 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57626236.htm" class="macro">isblack</a>(o) &amp;&amp; !<a href="../h_src/57625556.htm" class="macro">isdead</a>(g, o));
+   233 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>((g-&gt;gckind == <a href="../h_src/57652144.htm" class="macro">KGC_GEN</a>) == (<a href="../h_src/57623652.htm" class="macro">isold</a>(o) &amp;&amp; <a href="../h_src/57623924.htm" class="macro">getage</a>(o) != <a href="../h_src/57624332.htm" class="macro">G_TOUCHED1</a>));
+<a href="../h_aa/57620932.htm" class=function>luaC_fix</a>                                         lgc.c
+   245 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(g-&gt;allgc == o);  <a  class="comments">/* object must be 1st in 'allgc' list! */</a>
+<a href="../h_aa/57620864.htm" class=function>luaC_freeallobjects</a>                              lgc.c
+  1514 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(g-&gt;finobj == NULL);
+  1517 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(g-&gt;finobj == NULL);  <a  class="comments">/* no new finalizers */</a>
+  1519 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(g-&gt;strt.nuse == 0);
+<a href="../h_aa/57620660.htm" class=function>luaC_fullgc</a>                                      lgc.c
+  1728 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!g-&gt;gcemergency);
+<a href="../h_aa/57632764.htm" class=function>luaD_growstack</a>                                   ldo.c
+   248 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57652416.htm" class="macro">stacksize</a>(L) == <a href="../h_src/57879180.htm" class="macro">ERRORSTACKSIZE</a>);
+<a href="../h_aa/57633512.htm" class=function>luaD_hook</a>                                        ldo.c
+   355 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!L-&gt;allowhook);
+<a href="../h_aa/57632900.htm" class=function>luaD_poscall</a>                                     ldo.c
+   492 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!(ci-&gt;callstatus &amp;
+<a href="../h_aa/57633308.htm" class=function>luaD_precall</a>                                     ldo.c
+   608 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(ci-&gt;top.p &lt;= L-&gt;stack_last.p);
+<a href="../h_aa/57633376.htm" class=function>luaD_pretailcall</a>                                 ldo.c
+   559 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/57867076.htm" class="localvar">L</a>, <a href="../h_src/57866940.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a> + <a href="../h_src/57865988.htm" class="localvar">i</a>, <a href="../h_src/57866804.htm" class="localvar">func</a> + <a href="../h_src/57865988.htm" class="localvar">i</a>);
+   564 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(ci-&gt;top.p &lt;= L-&gt;stack_last.p);
+<a href="../h_aa/57632832.htm" class=function>luaD_reallocstack</a>                                ldo.c
+   217 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(newsize &lt;= <a href="../h_src/57447652.htm" class="macro">LUAI_MAXSTACK</a> || newsize == <a href="../h_src/57879180.htm" class="macro">ERRORSTACKSIZE</a>);
+<a href="../h_aa/57633648.htm" class=function>luaD_seterrorobj</a>                                 ldo.c
+   106 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57884144.htm" class="macro">errorstatus</a>(errcode));  <a  class="comments">/* real error */</a>
+   107 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/57883056.htm" class="localvar">L</a>, <a href="../h_src/57882784.htm" class="localvar">oldtop</a>, <a href="../h_src/57883056.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1);  <a  class="comments">/* error message on current top */</a>
+<a href="../h_aa/57632560.htm" class=function>luaD_throw</a>                                       ldo.c
+   124 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/57881832.htm" class="localvar">L</a>, <a href="../h_src/57881492.htm" class="localvar">g</a>-&gt;<a href="../h_src/57643848.htm" class="variable">mainthread</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>++, <a href="../h_src/57881832.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1);  <a  class="comments">/* copy error obj. */</a>
+<a href="../h_aa/57633104.htm" class=function>luaD_tryfuncTM</a>                                   ldo.c
+   420 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/57872788.htm" class="localvar">L</a>, <a href="../h_src/57872380.htm" class="localvar">p</a>, <a href="../h_src/57872380.htm" class="localvar">p</a>-1);
+   422 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/57872788.htm" class="localvar">L</a>, <a href="../h_src/57872652.htm" class="localvar">func</a>, <a href="../h_src/57872516.htm" class="localvar">tm</a>);  <a  class="comments">/* metamethod is the new function to be called */</a>
+<a href="../h_aa/57638476.htm" class=function>luaE_extendCI</a>                                    lstate.c
+   107 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(L-&gt;ci-&gt;next == NULL);
+   109 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(L-&gt;ci-&gt;next == NULL);
+<a href="../h_aa/57638544.htm" class=function>luaE_freethread</a>                                  lstate.c
+   316 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(L1-&gt;openupval == NULL);
+<a href="../h_aa/57638612.htm" class=function>luaE_setdebt</a>                                     lstate.c
+    91 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(tb &gt; 0);
+<a href="../h_aa/57630452.htm" class=function>luaF_closeupval</a>                                  lfunc.c
+   198 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57631404.htm" class="macro">uplevel</a>(uv) &lt; L-&gt;top.p);
+   200 :    <a href="../h_src/57533684.htm" class="macro">setobj</a>(<a href="../h_src/57832804.htm" class="localvar">L</a>, <a href="../h_src/57832260.htm" class="localvar">slot</a>, <a href="../h_src/57832532.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57510564.htm" class="variable">v</a>.<a href="../h_src/57510768.htm" class="variable">p</a>);  <a  class="comments">/* move value to upvalue slot */</a>
+<a href="../h_aa/57630588.htm" class=function>luaF_findupval</a>                                   lfunc.c
+    90 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57631812.htm" class="macro">isintwups</a>(L) || L-&gt;openupval == NULL);
+    92 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!<a href="../h_src/57625556.htm" class="macro">isdead</a>(<a href="../h_src/57641196.htm" class="macro">G</a>(L), p));
+<a href="../h_aa/57630520.htm" class=function>luaF_newtbcupval</a>                                 lfunc.c
+   169 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(level &gt; L-&gt;tbclist.p);
+<a href="../h_aa/57630316.htm" class=function>luaF_unlinkupval</a>                                 lfunc.c
+   183 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57631540.htm" class="macro">upisopen</a>(uv));
+<a href="../h_aa/57635144.htm" class=function>luaG_errormsg</a>                                    ldebug.c
+   812 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57513216.htm" class="macro">ttisfunction</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(errfunc)));
+   813 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/57888564.htm" class="localvar">L</a>, <a href="../h_src/57888564.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57888564.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1);  <a  class="comments">/* move argument */</a>
+   814 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/57888564.htm" class="localvar">L</a>, <a href="../h_src/57888564.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1, <a href="../h_src/57888428.htm" class="localvar">errfunc</a>);  <a  class="comments">/* push function */</a>
+<a href="../h_aa/57635960.htm" class=function>luaG_getfuncline</a>                                 ldebug.c
+    90 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(f-&gt;lineinfo[basepc] != <a href="../h_src/57636368.htm" class="macro">ABSLINEINFO</a>);
+<a href="../h_aa/57635280.htm" class=function>luaG_runerror</a>                                    ldebug.c
+   832 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/57887748.htm" class="localvar">L</a>, <a href="../h_src/57887748.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 2, <a href="../h_src/57887748.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1);  <a  class="comments">/* remove 'msg' */</a>
+<a href="../h_aa/57616580.htm" class=function>luaH_finishset</a>                                   ltable.c
+   816 :    <a href="../h_src/57533004.htm" class="macro">setobj2t</a>(<a href="../h_src/58095404.htm" class="localvar">L</a>, <a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57535384.htm" class="type">TValue</a> *, <a href="../h_src/58094996.htm" class="localvar">slot</a>), <a href="../h_src/58094860.htm" class="localvar">value</a>);
+<a href="../h_aa/57592440.htm" class=function>luaH_getn</a>                                        ltable.c
+   962 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(limit == luaH_realasize(t) &amp;&amp;
+<a href="../h_aa/57616920.htm" class=function>luaH_getshortstr</a>                                 ltable.c
+   760 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(key-&gt;tt == <a href="../h_src/57525184.htm" class="macro">LUA_VSHRSTR</a>);
+<a href="../h_aa/57616716.htm" class=function>luaH_newkey</a>                                      ltable.c
+   692 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!<a href="../h_src/57617464.htm" class="macro">isdummy</a>(t));
+   710 :    else <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57617736.htm" class="macro">gnext</a>(f) == 0);
+   717 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(mp)));
+   718 :    <a href="../h_src/57533004.htm" class="macro">setobj2t</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, <a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>), <a href="../h_src/58099212.htm" class="localvar">value</a>);
+<a href="../h_aa/57616240.htm" class=function>luaH_next</a>                                        ltable.c
+   355 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58112812.htm" class="localvar">L</a>, <a href="../h_src/58112540.htm" class="localvar">key</a> + 1, &amp;<a href="../h_src/58112676.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58112268.htm" class="localvar">i</a>]);
+   363 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58112812.htm" class="localvar">L</a>, <a href="../h_src/58112540.htm" class="localvar">key</a> + 1, <a href="../h_src/57617872.htm" class="macro">gval</a><a href="../h_src/57532732.htm" class="variable">val</a>(<a href="../h_src/58111724.htm" class="localvar">n</a>));
+<a href="../h_aa/57616172.htm" class=function>luaH_realasize</a>                                   ltable.c
+   267 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57549528.htm" class="macro">ispow2</a>(size) &amp;&amp; size/2 &lt; t-&gt;alimit &amp;&amp; t-&gt;alimit &lt; size);
+<a href="../h_aa/57616988.htm" class=function>luaH_setint</a>                                      ltable.c
+   838 :    <a href="../h_src/57533004.htm" class="macro">setobj2t</a>(<a href="../h_src/58093772.htm" class="localvar">L</a>, <a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57535384.htm" class="type">TValue</a> *, <a href="../h_src/58093228.htm" class="localvar">p</a>), <a href="../h_src/58093364.htm" class="localvar">value</a>);
+<a href="../h_aa/57983912.htm" class=function>luai_makeseed</a>                                    lstate.c
+    78 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(p == sizeof(buff));
+<a href="../h_aa/57671088.htm" class=function>luaK_codeABCk</a>                                    lcode.c
+   398 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57684416.htm" class="macro">getOpMode</a>(o) == iABC);
+   399 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(a &lt;= <a href="../h_src/57695840.htm" class="macro">MAXARG_A</a> &amp;&amp; b &lt;= <a href="../h_src/57695704.htm" class="macro">MAXARG_B</a> &amp;&amp;
+<a href="../h_aa/57671224.htm" class=function>luaK_codeABx</a>                                     lcode.c
+   409 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57684416.htm" class="macro">getOpMode</a>(o) == iABx);
+   410 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(a &lt;= <a href="../h_src/57695840.htm" class="macro">MAXARG_A</a> &amp;&amp; bc &lt;= <a href="../h_src/57696520.htm" class="macro">MAXARG_Bx</a>);
+<a href="../h_aa/57671156.htm" class=function>luaK_codeAsBx</a>                                    lcode.c
+   420 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57684416.htm" class="macro">getOpMode</a>(o) == iAsBx);
+   421 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(a &lt;= <a href="../h_src/57695840.htm" class="macro">MAXARG_A</a> &amp;&amp; b &lt;= <a href="../h_src/57696520.htm" class="macro">MAXARG_Bx</a>);
+<a href="../h_aa/57670884.htm" class=function>luaK_exp2const</a>                                   lcode.c
+   102 :    <a href="../h_src/57533684.htm" class="macro">setobj</a>(<a href="../h_src/57666940.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/57666668.htm" class="localvar">v</a>, <a href="../h_src/57667348.htm" class="function">const2val</a>(<a href="../h_src/57666940.htm" class="localvar">fs</a>, <a href="../h_src/57666804.htm" class="localvar">e</a>));
+<a href="../h_aa/57668844.htm" class=function>luaK_finish</a>                                      lcode.c
+  1848 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(i == 0 || <a href="../h_src/57683600.htm" class="macro">isOT</a>(*(pc - 1)) == <a href="../h_src/57683464.htm" class="macro">isIT</a>(*pc));
+<a href="../h_aa/57670000.htm" class=function>luaK_indexed</a>                                     lcode.c
+  1281 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!<a href="../h_src/57668572.htm" class="macro">hasjumps</a>(t) &amp;&amp;
+<a href="../h_aa/57669116.htm" class=function>luaK_infix</a>                                       lcode.c
+  1673 :    default: <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(0);
+<a href="../h_aa/57805224.htm" class=function>luaK_numberK</a>                                     lcode.c
+   615 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!luaV_flttointeger(k, &amp;ik, F2Ieq) ||
+<a href="../h_aa/57669456.htm" class=function>luaK_patchlist</a>                                   lcode.c
+   307 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(target &lt;= fs-&gt;pc);
+<a href="../h_aa/57669048.htm" class=function>luaK_posfix</a>                                      lcode.c
+  1709 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(e1-&gt;t == <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>);  <a  class="comments">/* list closed by 'luaK_infix' */</a>
+  1715 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(e1-&gt;f == <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>);  <a  class="comments">/* list closed by 'luaK_infix' */</a>
+  1774 :    default: <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(0);
+<a href="../h_aa/57669184.htm" class=function>luaK_prefix</a>                                      lcode.c
+  1624 :    default: <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(0);
+<a href="../h_aa/57668912.htm" class=function>luaK_setlist</a>                                     lcode.c
+  1808 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(tostore != 0 &amp;&amp; tostore &lt;= <a href="../h_src/57683192.htm" class="macro">LFIELDS_PER_FLUSH</a>);
+<a href="../h_aa/57669660.htm" class=function>luaK_setoneret</a>                                   lcode.c
+   757 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57693392.htm" class="macro">GETARG_C</a>(<a href="../h_src/57671700.htm" class="macro">getinstruction</a>(fs, e)) == 2);
+<a href="../h_aa/57669728.htm" class=function>luaK_setreturns</a>                                  lcode.c
+   726 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(e-&gt;k == VVARARG);
+<a href="../h_aa/57669796.htm" class=function>luaK_storevar</a>                                    lcode.c
+  1076 :    default: <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(0);  <a  class="comments">/* invalid var kind to store */</a>
+<a href="../h_aa/57656632.htm" class=function>luaM_free_</a>                                       lmem.c
+   152 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>((osize == 0) == (block == NULL));
+<a href="../h_aa/57656564.htm" class=function>luaM_growaux_</a>                                    lmem.c
+   113 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(nelems + 1 &lt;= size &amp;&amp; size &lt;= limit);
+<a href="../h_aa/57656768.htm" class=function>luaM_realloc_</a>                                    lmem.c
+   179 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>((osize == 0) == (block == NULL));
+   186 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>((nsize == 0) == (newblock == NULL));
+<a href="../h_aa/57656496.htm" class=function>luaM_shrinkvector_</a>                               lmem.c
+   133 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(newsize &lt;= oldsize);
+<a href="../h_aa/57501452.htm" class=function>luaO_pushvfstring</a>                                lobject.c
+   544 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(buff.pushed == 1);
+<a href="../h_aa/57501928.htm" class=function>luaO_utf8esc</a>                                     lobject.c
+   325 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(x &lt;= 0x7FFFFFFFu);
+<a href="../h_aa/57619028.htm" class=function>luaS_eqlngstr</a>                                    lstring.c
+    36 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(a-&gt;tt == <a href="../h_src/57525048.htm" class="macro">LUA_VLNGSTR</a> &amp;&amp; b-&gt;tt == <a href="../h_src/57525048.htm" class="macro">LUA_VLNGSTR</a>);
+<a href="../h_aa/57619096.htm" class=function>luaS_hashlongstr</a>                                 lstring.c
+    52 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(ts-&gt;tt == <a href="../h_src/57525048.htm" class="macro">LUA_VLNGSTR</a>);
+<a href="../h_aa/57497372.htm" class=function>luaT_adjustvarargs</a>                               ltm.c
+   246 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/58078608.htm" class="localvar">L</a>, <a href="../h_src/58078608.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>++, <a href="../h_src/58078336.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a>);
+   249 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/58078608.htm" class="localvar">L</a>, <a href="../h_src/58078608.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>++, <a href="../h_src/58078336.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a> + <a href="../h_src/58078064.htm" class="localvar">i</a>);
+   254 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(L-&gt;top.p &lt;= ci-&gt;top.p &amp;&amp; ci-&gt;top.p &lt;= L-&gt;stack_last.p);
+<a href="../h_aa/57497916.htm" class=function>luaT_callTM</a>                                      ltm.c
+   106 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58088264.htm" class="localvar">L</a>, <a href="../h_src/58087584.htm" class="localvar">func</a>, <a href="../h_src/58088128.htm" class="localvar">f</a>);  <a  class="comments">/* push function (assume EXTRA_STACK) */</a>
+   107 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58088264.htm" class="localvar">L</a>, <a href="../h_src/58087584.htm" class="localvar">func</a> + 1, <a href="../h_src/58087992.htm" class="localvar">p1</a>);  <a  class="comments">/* 1st argument */</a>
+   108 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58088264.htm" class="localvar">L</a>, <a href="../h_src/58087584.htm" class="localvar">func</a> + 2, <a href="../h_src/58087856.htm" class="localvar">p2</a>);  <a  class="comments">/* 2nd argument */</a>
+   109 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58088264.htm" class="localvar">L</a>, <a href="../h_src/58087584.htm" class="localvar">func</a> + 3, <a href="../h_src/58087720.htm" class="localvar">p3</a>);  <a  class="comments">/* 3rd argument */</a>
+<a href="../h_aa/57497848.htm" class=function>luaT_callTMres</a>                                   ltm.c
+   123 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58086360.htm" class="localvar">L</a>, <a href="../h_src/58085544.htm" class="localvar">func</a>, <a href="../h_src/58086224.htm" class="localvar">f</a>);  <a  class="comments">/* push function (assume EXTRA_STACK) */</a>
+   124 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58086360.htm" class="localvar">L</a>, <a href="../h_src/58085544.htm" class="localvar">func</a> + 1, <a href="../h_src/58086088.htm" class="localvar">p1</a>);  <a  class="comments">/* 1st argument */</a>
+   125 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58086360.htm" class="localvar">L</a>, <a href="../h_src/58085544.htm" class="localvar">func</a> + 2, <a href="../h_src/58085952.htm" class="localvar">p2</a>);  <a  class="comments">/* 2nd argument */</a>
+   133 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/58086360.htm" class="localvar">L</a>, <a href="../h_src/58085816.htm" class="localvar">res</a>, --<a href="../h_src/58086360.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>);  <a  class="comments">/* move result to its place */</a>
+<a href="../h_aa/57498120.htm" class=function>luaT_gettm</a>                                       ltm.c
+    62 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(event &lt;= TM_EQ);
+<a href="../h_aa/57497304.htm" class=function>luaT_getvarargs</a>                                  ltm.c
+   267 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/58077112.htm" class="localvar">L</a>, <a href="../h_src/58076840.htm" class="localvar">where</a> + <a href="../h_src/58076568.htm" class="localvar">i</a>, <a href="../h_src/58076976.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - <a href="../h_src/58076432.htm" class="localvar">nextra</a> + <a href="../h_src/58076568.htm" class="localvar">i</a>);
+<a href="../h_aa/57614812.htm" class=function>luaU_undump</a>                                      lundump.c
+   331 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(cl-&gt;nupvalues == cl-&gt;p-&gt;sizeupvalues);
+<a href="../h_aa/57610868.htm" class=function>luaV_concat</a>                                      lvm.c
+   650 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/58202952.htm" class="localvar">L</a>, <a href="../h_src/58202680.htm" class="localvar">top</a> - 2, <a href="../h_src/58202680.htm" class="localvar">top</a> - 1);  <a  class="comments">/* result is second op. */</a>
+<a href="../h_aa/57610936.htm" class=function>luaV_execute</a>                                     lvm.c
+  1179 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(base == ci-&gt;func.p + 1);
+  1180 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(base &lt;= L-&gt;top.p &amp;&amp; L-&gt;top.p &lt;= L-&gt;stack_last.p);
+  1182 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57683464.htm" class="macro">isIT</a>(i) || (<a href="../h_src/57547624.htm" class="macro">cast_void</a>(L-&gt;top.p = base), 1));
+  1186 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58186428.htm" class="localvar">ra</a>, <a href="../h_src/58191324.htm" class="macro">RB</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>));
+  1204 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58185204.htm" class="localvar">ra</a>, <a href="../h_src/58185068.htm" class="localvar">rb</a>);
+  1211 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58184660.htm" class="localvar">ra</a>, <a href="../h_src/58184524.htm" class="localvar">rb</a>);
+  1241 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58183436.htm" class="localvar">ra</a>, <a href="../h_src/58187924.htm" class="localvar">cl</a>-&gt;<a href="../h_src/57508048.htm" class="variable">upvals</a>[<a href="../h_src/58183300.htm" class="localvar">b</a>]-&gt;<a href="../h_src/57510564.htm" class="variable">v</a>.<a href="../h_src/57510768.htm" class="variable">p</a>);
+  1247 :    <a href="../h_src/57533684.htm" class="macro">setobj</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58182756.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57510564.htm" class="variable">v</a>.<a href="../h_src/57510768.htm" class="variable">p</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58182892.htm" class="localvar">ra</a>));
+  1258 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58182348.htm" class="localvar">ra</a>, <a href="../h_src/58182212.htm" class="localvar">slot</a>);
+  1273 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58181396.htm" class="localvar">ra</a>, <a href="../h_src/58181260.htm" class="localvar">slot</a>);
+  1285 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58180444.htm" class="localvar">ra</a>, <a href="../h_src/58180308.htm" class="localvar">slot</a>);
+  1301 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58179356.htm" class="localvar">ra</a>, <a href="../h_src/58179220.htm" class="localvar">slot</a>);
+  1314 :    <a href="../h_src/57612024.htm" class="macro">luaV_finishfastset</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58178268.htm" class="localvar">upval</a>, <a href="../h_src/58178404.htm" class="localvar">slot</a>, <a href="../h_src/58177996.htm" class="localvar">rc</a>);
+  1329 :    <a href="../h_src/57612024.htm" class="macro">luaV_finishfastset</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58177452.htm" class="localvar">ra</a>), <a href="../h_src/58177316.htm" class="localvar">slot</a>, <a href="../h_src/58177044.htm" class="localvar">rc</a>);
+  1341 :    <a href="../h_src/57612024.htm" class="macro">luaV_finishfastset</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58176500.htm" class="localvar">ra</a>), <a href="../h_src/58176364.htm" class="localvar">slot</a>, <a href="../h_src/58176092.htm" class="localvar">rc</a>);
+  1357 :    <a href="../h_src/57612024.htm" class="macro">luaV_finishfastset</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58175412.htm" class="localvar">ra</a>), <a href="../h_src/58175276.htm" class="localvar">slot</a>, <a href="../h_src/58175004.htm" class="localvar">rc</a>);
+  1370 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>((!<a href="../h_src/57692984.htm" class="macro">TESTARG_k</a>(i)) == (<a href="../h_src/57692304.htm" class="macro">GETARG_Ax</a>(*pc) == 0));
+  1388 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58173644.htm" class="localvar">ra</a> + 1, <a href="../h_src/58173372.htm" class="localvar">rb</a>);
+  1390 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58173644.htm" class="localvar">ra</a>, <a href="../h_src/58173508.htm" class="localvar">slot</a>);
+  1401 :    <a href="../h_src/58192140.htm" class="macro">op_arithK</a>(L, <a href="../h_src/58194316.htm" class="macro">l_addi</a>, <a href="../h_src/57540008.htm" class="macro">luai_numadd</a>);
+  1405 :    <a href="../h_src/58192140.htm" class="macro">op_arithK</a>(L, <a href="../h_src/58194180.htm" class="macro">l_subi</a>, <a href="../h_src/57539872.htm" class="macro">luai_numsub</a>);
+  1409 :    <a href="../h_src/58192140.htm" class="macro">op_arithK</a>(L, <a href="../h_src/58194044.htm" class="macro">l_muli</a>, <a href="../h_src/57539736.htm" class="macro">luai_nummul</a>);
+  1414 :    <a href="../h_src/58192140.htm" class="macro">op_arithK</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/57610732.htm" class="function">luaV_mod</a>, <a href="../h_src/57610664.htm" class="function">luaV_modf</a>);
+  1418 :    <a href="../h_src/58192548.htm" class="macro">op_arithfK</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/57540280.htm" class="macro">luai_numpow</a>);
+  1422 :    <a href="../h_src/58192548.htm" class="macro">op_arithfK</a>(L, <a href="../h_src/57540824.htm" class="macro">luai_numdiv</a>);
+  1427 :    <a href="../h_src/58192140.htm" class="macro">op_arithK</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/57610800.htm" class="function">luaV_idiv</a>, <a href="../h_src/57541096.htm" class="macro">luai_numidiv</a>);
+  1518 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(OP_ADD &lt;= <a href="../h_src/57694752.htm" class="macro">GET_OPCODE</a>(pi) &amp;&amp; <a href="../h_src/57694752.htm" class="macro">GET_OPCODE</a>(pi) &lt;= OP_SHR);
+  1670 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58359820.htm" class="localvar">ra</a>, <a href="../h_src/58359684.htm" class="localvar">rb</a>);
+  1706 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(L-&gt;tbclist.p &lt; base);  <a  class="comments">/* no pending tbc variables */</a>
+  1707 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(base == ci-&gt;func.p + 1);
+  1772 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58187652.htm" class="localvar">base</a> - 1, <a href="../h_src/58356964.htm" class="localvar">ra</a>);  <a  class="comments">/* at least this result */</a>
+  1793 :    <a href="../h_src/57525320.htm" class="macro">chgivalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58356556.htm" class="localvar">ra</a> + 1), <a href="../h_src/58356420.htm" class="localvar">count</a> - 1);  <a  class="comments">/* update counter */</a>
+  1795 :    <a href="../h_src/57525320.htm" class="macro">chgivalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58356556.htm" class="localvar">ra</a>), <a href="../h_src/58356148.htm" class="localvar">idx</a>);  <a  class="comments">/* update internal index */</a>
+  1818 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57694752.htm" class="macro">GET_OPCODE</a>(i) == OP_TFORCALL &amp;&amp; ra == <a href="../h_src/58191460.htm" class="macro">RA</a>(i));
+  1835 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57694752.htm" class="macro">GET_OPCODE</a>(i) == OP_TFORLOOP &amp;&amp; ra == <a href="../h_src/58191460.htm" class="macro">RA</a>(i));
+  1842 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58355196.htm" class="localvar">ra</a> + 2, <a href="../h_src/58355196.htm" class="localvar">ra</a> + 4);  <a  class="comments">/* save control variable */</a>
+  1865 :    <a href="../h_src/57533004.htm" class="macro">setobj2t</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, &amp;<a href="../h_src/58354380.htm" class="localvar">h</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58354516.htm" class="localvar">last</a> - 1], <a href="../h_src/58354244.htm" class="localvar">val</a>);
+  1894 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(0);
+<a href="../h_aa/57611140.htm" class=function>luaV_finishget</a>                                   lvm.c
+   293 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!<a href="../h_src/57507300.htm" class="macro">ttistable</a>(t));
+   300 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57530488.htm" class="macro">isempty</a>(slot));
+   314 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58214172.htm" class="localvar">L</a>, <a href="../h_src/57532732.htm" class="variable">val</a>, <a href="../h_src/58213628.htm" class="localvar">slot</a>);  <a  class="comments">/* done */</a>
+<a href="../h_aa/57611004.htm" class=function>luaV_finishOp</a>                                    lvm.c
+   816 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/58196492.htm" class="localvar">L</a>, <a href="../h_src/58196220.htm" class="localvar">base</a> + <a href="../h_src/57694072.htm" class="macro">GETARG_A</a>(*(<a href="../h_src/58196356.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650852.htm" class="variable">l</a>.<a href="../h_src/57651124.htm" class="variable">savedpc</a> - 2)), --<a href="../h_src/58196492.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>);
+   822 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/58196492.htm" class="localvar">L</a>, <a href="../h_src/58196220.htm" class="localvar">base</a> + <a href="../h_src/57694072.htm" class="macro">GETARG_A</a>(<a href="../h_src/58196084.htm" class="localvar">inst</a>), --<a href="../h_src/58196492.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>);
+   837 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57694752.htm" class="macro">GET_OPCODE</a>(*ci-&gt;u.l.savedpc) == OP_JMP);
+   846 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/58196492.htm" class="localvar">L</a>, <a href="../h_src/58195132.htm" class="localvar">top</a> - 2, <a href="../h_src/58195132.htm" class="localvar">top</a>);  <a  class="comments">/* put TM result in proper position */</a>
+   866 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(op == OP_TFORCALL || op == OP_CALL ||
+<a href="../h_aa/57611072.htm" class=function>luaV_finishset</a>                                   lvm.c
+   337 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57530488.htm" class="macro">isempty</a>(slot));  <a  class="comments">/* slot must be empty */</a>
+   359 :    <a href="../h_src/57612024.htm" class="macro">luaV_finishfastset</a>(<a href="../h_src/58212948.htm" class="localvar">L</a>, <a href="../h_src/58212812.htm" class="localvar">t</a>, <a href="../h_src/58212404.htm" class="localvar">slot</a>, <a href="../h_src/58212540.htm" class="localvar">val</a>);
+<a href="../h_aa/57699716.htm" class=function>luaX_lookahead</a>                                   llex.c
+   577 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(ls-&gt;lookahead.token == TK_EOS);
+<a href="../h_aa/57674420.htm" class=function>luaY_parser</a>                                      lparser.c
+  1961 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!funcstate.prev &amp;&amp; funcstate.nups == 1 &amp;&amp; !lexstate.fs);
+  1963 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(dyd-&gt;actvar.n == 0 &amp;&amp; dyd-&gt;gt.n == 0 &amp;&amp; dyd-&gt;label.n == 0);
+<a href="../h_aa/57952252.htm" class=function>markold</a>                                          lgc.c
+  1223 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!<a href="../h_src/57626372.htm" class="macro">iswhite</a>(p));
+<a href="../h_aa/57871564.htm" class=function>moveresults</a>                                      ldo.c
+   444 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/57871428.htm" class="localvar">L</a>, <a href="../h_src/57871292.htm" class="localvar">res</a>, <a href="../h_src/57871428.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - <a href="../h_src/57871156.htm" class="localvar">nres</a>);  <a  class="comments">/* move it to proper place */</a>
+   472 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/57871428.htm" class="localvar">L</a>, <a href="../h_src/57871292.htm" class="localvar">res</a> + <a href="../h_src/57870748.htm" class="localvar">i</a>, <a href="../h_src/57870884.htm" class="localvar">firstresult</a> + <a href="../h_src/57870748.htm" class="localvar">i</a>);
+<a href="../h_aa/57791284.htm" class=function>negatecondition</a>                                  lcode.c
+  1103 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57684144.htm" class="macro">testTMode</a>(<a href="../h_src/57694752.htm" class="macro">GET_OPCODE</a>(*pc)) &amp;&amp; <a href="../h_src/57694752.htm" class="macro">GET_OPCODE</a>(*pc) != OP_TESTSET &amp;&amp;
+<a href="../h_aa/58041372.htm" class=function>newupvalue</a>                                       lparser.c
+   371 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/58056468.htm" class="macro">eqstr</a>(name, getlocalvardesc(prev, v-&gt;u.var.vidx)-&gt;vd.name));
+   377 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/58056468.htm" class="macro">eqstr</a>(name, prev-&gt;f-&gt;upvalues[v-&gt;u.info].name));
+<a href="../h_aa/57918320.htm" class=function>numarith</a>                                         lobject.c
+    84 :    default: <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(0); return 0;
+<a href="../h_aa/57831852.htm" class=function>poptbclist</a>                                       lfunc.c
+   215 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(tbc-&gt;tbclist.delta &gt; 0);  <a  class="comments">/* first element cannot be dummy */</a>
+<a href="../h_aa/57868300.htm" class=function>precallC</a>                                         ldo.c
+   523 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(ci-&gt;top.p &lt;= L-&gt;stack_last.p);
+   531 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57868164.htm" class="localvar">L</a>, n);
+<a href="../h_aa/57971156.htm" class=function>propagatemark</a>                                    lgc.c
+   669 :    default: <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(0); return 0;
+<a href="../h_aa/57933892.htm" class=function>read_numeral</a>                                     llex.c
+   231 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57760276.htm" class="macro">lisdigit</a>(ls-&gt;current));
+   252 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57526680.htm" class="macro">ttisfloat</a>(&amp;obj));
+<a href="../h_aa/57826752.htm" class=function>reallymarkobject</a>                                 lgc.c
+   327 :    default: <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(0); break;
+<a href="../h_aa/57820088.htm" class=function>remarkupvals</a>                                     lgc.c
+   377 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!<a href="../h_src/57623652.htm" class="macro">isold</a>(thread) || thread-&gt;openupval == NULL);
+   381 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57623924.htm" class="macro">getage</a>(uv) &lt;= <a href="../h_src/57623924.htm" class="macro">getage</a>(thread));
+   384 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57631540.htm" class="macro">upisopen</a>(uv) &amp;&amp; <a href="../h_src/57626100.htm" class="macro">isgray</a>(uv));
+<a href="../h_aa/57816376.htm" class=function>removelastlineinfo</a>                               lcode.c
+   361 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(f-&gt;abslineinfo[fs-&gt;nabslineinfo - 1].pc == pc);
+<a href="../h_aa/57859324.htm" class=function>resume</a>                                           ldo.c
+   792 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(L-&gt;status == <a href="../h_src/57445068.htm" class="macro">LUA_YIELD</a>);
+   803 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57859188.htm" class="localvar">L</a>, n);
+<a href="../h_aa/57860140.htm" class=function>resume_error</a>                                     ldo.c
+   772 :    <a href="../h_src/57637932.htm" class="macro">api_incr_top</a>(<a href="../h_src/57860004.htm" class="localvar">L</a>);
+<a href="../h_aa/57988876.htm" class=function>retstat</a>                                          lparser.c
+  1827 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57694072.htm" class="macro">GETARG_A</a>(<a href="../h_src/57671700.htm" class="macro">getinstruction</a>(fs,&amp;e)) == luaY_nvarstack(fs));
+  1836 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(nret == fs-&gt;freereg - first);
+<a href="../h_aa/57604816.htm" class=function>reverse</a>                                          lapi.c
+   230 :    <a href="../h_src/57533684.htm" class="macro">setobj</a>(<a href="../h_src/57604680.htm" class="localvar">L</a>, &amp;<a href="../h_src/57604272.htm" class="localvar">temp</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57604544.htm" class="localvar">from</a>));
+   231 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/57604680.htm" class="localvar">L</a>, <a href="../h_src/57604544.htm" class="localvar">from</a>, <a href="../h_src/57604408.htm" class="localvar">to</a>);
+   232 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/57604680.htm" class="localvar">L</a>, <a href="../h_src/57604408.htm" class="localvar">to</a>, &amp;<a href="../h_src/57604272.htm" class="localvar">temp</a>);
+<a href="../h_aa/57959052.htm" class=function>separatetobefnz</a>                                  lgc.c
+   977 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57625964.htm" class="macro">tofinalize</a>(curr));
+<a href="../h_aa/57956740.htm" class=function>setpause</a>                                         lgc.c
+  1061 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(estimate &gt; 0);
+<a href="../h_aa/57943684.htm" class=function>singlestep</a>                                       lgc.c
+  1586 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!g-&gt;gcstopem);  <a  class="comments">/* collector is not reentrant */</a>
+  1639 :    default: <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(0); return 0;
+<a href="../h_aa/58037836.htm" class=function>singlevar</a>                                        lparser.c
+   470 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(var-&gt;k != VVOID);  <a  class="comments">/* this one must exist */</a>
+<a href="../h_aa/57933008.htm" class=function>skip_sep</a>                                         llex.c
+   268 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(s == '[' || s == ']');
+<a href="../h_aa/58034980.htm" class=function>solvegoto</a>                                        lparser.c
+   531 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/58056468.htm" class="macro">eqstr</a>(gt-&gt;name, label-&gt;name));
+<a href="../h_aa/57877276.htm" class=function>stackinuse</a>                                       ldo.c
+   283 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(lim &lt;= L-&gt;stack_last.p + <a href="../h_src/57652688.htm" class="macro">EXTRA_STACK</a>);
+<a href="../h_aa/58055788.htm" class=function>statement</a>                                        lparser.c
+  1911 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(ls-&gt;fs-&gt;f-&gt;maxstacksize &gt;= ls-&gt;fs-&gt;freereg &amp;&amp;
+<a href="../h_aa/57799444.htm" class=function>str2K</a>                                            lcode.c
+   738 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(e-&gt;k == VKSTR);
+<a href="../h_aa/57955924.htm" class=function>sweep2old</a>                                        lgc.c
+  1082 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57625556.htm" class="macro">isdead</a>(g, curr));
+<a href="../h_aa/57955108.htm" class=function>sweepgen</a>                                         lgc.c
+  1128 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!<a href="../h_src/57623652.htm" class="macro">isold</a>(curr) &amp;&amp; <a href="../h_src/57625556.htm" class="macro">isdead</a>(g, curr));
+<a href="../h_aa/57907304.htm" class=function>tostringbuff</a>                                     lobject.c
+   357 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57526816.htm" class="macro">ttisnumber</a>(obj));
+<a href="../h_aa/57975916.htm" class=function>traversestrongtable</a>                              lgc.c
+   533 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!<a href="../h_src/57503968.htm" class="macro">keyisnil</a>(n));
+<a href="../h_aa/57971836.htm" class=function>traversethread</a>                                   lgc.c
+   634 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(g-&gt;gcstate == <a href="../h_src/57629500.htm" class="macro">GCSatomic</a> ||
+<a href="../h_aa/57818252.htm" class=function>traverseweakvalue</a>                                lgc.c
+   455 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!<a href="../h_src/57503968.htm" class="macro">keyisnil</a>(n));
+<a href="../h_aa/57963132.htm" class=function>udata2finalize</a>                                   lgc.c
+   886 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57625964.htm" class="macro">tofinalize</a>(o));
+<a href="../h_aa/57951164.htm" class=function>youngcollection</a>                                  lgc.c
+  1252 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(g-&gt;gcstate == <a href="../h_src/57629772.htm" class="macro">GCSpropagate</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use lua_assert</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

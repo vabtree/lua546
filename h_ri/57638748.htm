@@ -1,0 +1,59 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>gettotalbytes</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57638748.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57638748.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57638748.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57638748.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57950484.htm" class=function>atomic2gen</a>                                       lgc.c
+  1307 :    <a href="../h_src/57950212.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646500.htm" class="variable">GCestimate</a> = <a href="../h_src/57638748.htm" class="macro">gettotalbytes</a>(<a href="../h_src/57950212.htm" class="localvar">g</a>);  <a  class="comments">/* base for memory control */</a>
+<a href="../h_aa/58137292.htm" class=function>close_state</a>                                      lstate.c
+   281 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57638748.htm" class="macro">gettotalbytes</a>(g) == sizeof(LG));
+<a href="../h_aa/57941508.htm" class=function>fullinc</a>                                          lgc.c
+  1715 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(g-&gt;GCestimate == <a href="../h_src/57638748.htm" class="macro">gettotalbytes</a>(g));
+<a href="../h_aa/57947492.htm" class=function>genstep</a>                                          lgc.c
+  1446 :    if (<a href="../h_src/57947220.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646568.htm" class="variable">GCdebt</a> &gt; 0 &amp;&amp; <a href="../h_src/57638748.htm" class="macro">gettotalbytes</a>(<a href="../h_src/57947220.htm" class="localvar">g</a>) &gt; <a href="../h_src/57947084.htm" class="localvar">majorbase</a> + <a href="../h_src/57946948.htm" class="localvar">majorinc</a>) {
+  1448 :    if (<a href="../h_src/57638748.htm" class="macro">gettotalbytes</a>(<a href="../h_src/57947220.htm" class="localvar">g</a>) &lt; <a href="../h_src/57947084.htm" class="localvar">majorbase</a> + (<a href="../h_src/57946948.htm" class="localvar">majorinc</a> / 2)) {
+<a href="../h_aa/57430448.htm" class=function>lua_gc</a>                                           lapi.c
+  1157 :    <a href="../h_src/57719572.htm" class="localvar">res</a> = <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/57638748.htm" class="macro">gettotalbytes</a>(<a href="../h_src/57719436.htm" class="localvar">g</a>) &gt;&gt; 10);
+  1161 :    <a href="../h_src/57719572.htm" class="localvar">res</a> = <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/57638748.htm" class="macro">gettotalbytes</a>(<a href="../h_src/57719436.htm" class="localvar">g</a>) &amp; 0x3ff);
+<a href="../h_aa/57638612.htm" class=function>luaE_setdebt</a>                                     lstate.c
+    90 :    <a href="../h_src/57550548.htm" class="type">l_mem</a> <a href="../h_src/57982484.htm" class="localvar">tb</a> = <a href="../h_src/57638748.htm" class="macro">gettotalbytes</a>(<a href="../h_src/57982756.htm" class="localvar">g</a>);
+<a href="../h_aa/57950076.htm" class=function>setminordebt</a>                                     lgc.c
+  1317 :    <a href="../h_src/57638612.htm" class="function">luaE_setdebt</a>(<a href="../h_src/57949940.htm" class="localvar">g</a>, -(<a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57550548.htm" class="type">l_mem</a>, (<a href="../h_src/57638748.htm" class="macro">gettotalbytes</a>(<a href="../h_src/57949940.htm" class="localvar">g</a>) / 100)) * <a href="../h_src/57949940.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645820.htm" class="variable">genminormul</a>));
+<a href="../h_aa/57956740.htm" class=function>setpause</a>                                         lgc.c
+  1065 :    <a href="../h_src/57956332.htm" class="localvar">debt</a> = <a href="../h_src/57638748.htm" class="macro">gettotalbytes</a>(<a href="../h_src/57956604.htm" class="localvar">g</a>) - <a href="../h_src/57956468.htm" class="localvar">threshold</a>;
+<a href="../h_aa/57943684.htm" class=function>singlestep</a>                                       lgc.c
+  1607 :    <a href="../h_src/57943412.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646500.htm" class="variable">GCestimate</a> = <a href="../h_src/57638748.htm" class="macro">gettotalbytes</a>(<a href="../h_src/57943412.htm" class="localvar">g</a>);  <a  class="comments">/* first estimate */</a>;
+<a href="../h_aa/57948172.htm" class=function>stepgenfull</a>                                      lgc.c
+  1412 :    <a href="../h_src/57947900.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646500.htm" class="variable">GCestimate</a> = <a href="../h_src/57638748.htm" class="macro">gettotalbytes</a>(<a href="../h_src/57947900.htm" class="localvar">g</a>);  <a  class="comments">/* first estimate */</a>;
+</pre>
+<h4><a class="legend">Table lists functions that directly use gettotalbytes</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

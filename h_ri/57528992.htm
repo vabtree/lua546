@@ -1,0 +1,62 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>LUA_VTHREAD</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57528992.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57528992.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57528992.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57528992.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57953204.htm" class=function>correctgraylist</a>                                  lgc.c
+  1182 :    else if (<a href="../h_src/57952932.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528108.htm" class="variable">tt</a> == <a href="../h_src/57528992.htm" class="macro">LUA_VTHREAD</a>) {
+<a href="../h_aa/57966804.htm" class=function>freeobj</a>                                          lgc.c
+   791 :    case <a href="../h_src/57528992.htm" class="macro">LUA_VTHREAD</a>:
+   792 :    <a href="../h_src/57638544.htm" class="function">luaE_freethread</a>(<a href="../h_src/57966668.htm" class="localvar">L</a>, <a href="../h_src/57639156.htm" class="macro">gco2th</a>(<a href="../h_src/57966532.htm" class="localvar">o</a>));
+<a href="../h_aa/57826208.htm" class=function>getgclist</a>                                        lgc.c
+   130 :    case <a href="../h_src/57528992.htm" class="macro">LUA_VTHREAD</a>: return &amp;<a href="../h_src/57639156.htm" class="macro">gco2th</a>(<a href="../h_src/57826072.htm" class="localvar">o</a>)-&gt;<a href="../h_src/57642080.htm" class="variable">gclist</a>;
+<a href="../h_aa/57979628.htm" class=function>init_registry</a>                                    lstate.c
+   222 :    <a href="../h_src/57528584.htm" class="macro">setthvalue</a>(<a href="../h_src/57979492.htm" class="localvar">L</a>, &amp;<a href="../h_src/57979220.htm" class="localvar">registry</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/57442552.htm" class="macro">LUA_RIDX_MAINTHREAD</a> - 1], <a href="../h_src/57979492.htm" class="localvar">L</a>);
+<a href="../h_aa/57439900.htm" class=function>lua_newstate</a>                                     lstate.c
+   368 :    <a href="../h_src/58134164.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642964.htm" class="variable">tt</a> = <a href="../h_src/57528992.htm" class="macro">LUA_VTHREAD</a>;
+<a href="../h_aa/57439764.htm" class=function>lua_newthread</a>                                    lstate.c
+   294 :    <a href="../h_src/58136340.htm" class="localvar">L1</a> = <a href="../h_src/57639156.htm" class="macro">gco2th</a>(<a href="../h_src/58136476.htm" class="localvar">o</a>);
+   296 :    <a href="../h_src/57528448.htm" class="macro">setthvalue2s</a>(<a href="../h_src/58136748.htm" class="localvar">L</a>, <a href="../h_src/58136748.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/58136340.htm" class="localvar">L1</a>);
+<a href="../h_aa/57434460.htm" class=function>lua_pushthread</a>                                   lapi.c
+   626 :    <a href="../h_src/57528584.htm" class="macro">setthvalue</a>(<a href="../h_src/57584620.htm" class="localvar">L</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57584620.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>), <a href="../h_src/57584620.htm" class="localvar">L</a>);
+<a href="../h_aa/57437928.htm" class=function>lua_tothread</a>                                     lapi.c
+   464 :    return (!<a href="../h_src/57528856.htm" class="macro">ttisthread</a>(<a href="../h_src/57590944.htm" class="localvar">o</a>)) ? NULL : <a href="../h_src/57528720.htm" class="macro">thvalue</a>(<a href="../h_src/57590944.htm" class="localvar">o</a>);
+<a href="../h_aa/57971156.htm" class=function>propagatemark</a>                                    lgc.c
+   668 :    case <a href="../h_src/57528992.htm" class="macro">LUA_VTHREAD</a>: return <a href="../h_src/57971836.htm" class="function">traversethread</a>(<a href="../h_src/57971020.htm" class="localvar">g</a>, <a href="../h_src/57639156.htm" class="macro">gco2th</a>(<a href="../h_src/57970884.htm" class="localvar">o</a>));
+<a href="../h_aa/57826752.htm" class=function>reallymarkobject</a>                                 lgc.c
+   323 :    case <a href="../h_src/57528992.htm" class="macro">LUA_VTHREAD</a>: case <a href="../h_src/57517636.htm" class="macro">LUA_VPROTO</a>: {
+<a href="../h_aa/57955924.htm" class=function>sweep2old</a>                                        lgc.c
+  1088 :    if (<a href="../h_src/57955516.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528108.htm" class="variable">tt</a> == <a href="../h_src/57528992.htm" class="macro">LUA_VTHREAD</a>) {  <a  class="comments">/* threads must be watched */</a>
+  1089 :    <a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57955244.htm" class="localvar">th</a> = <a href="../h_src/57639156.htm" class="macro">gco2th</a>(<a href="../h_src/57955516.htm" class="localvar">curr</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use LUA_VTHREAD</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

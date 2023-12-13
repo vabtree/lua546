@@ -1,0 +1,57 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lua_getstack</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57424668.htm" class="function" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57424668.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57424668.htm" class="function" target="_self">Flow Chart</a></li>
+<li><a href="../h_src/57424668.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57424668.htm" class="function" target="_self">Called By</a></li>
+<li><a href="../h_rx/57424668.htm" class="function" target="_self">Call Tree</a></li>
+<li><a href="../h_ro/57424668.htm" class="function" target="_self">Calls and Uses</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/58289576.htm" class=function>auxstatus</a>                                        lcorolib.c
+   135 :    if (<a href="../h_src/57424668.htm" class="function">lua_getstack</a>(<a href="../h_src/58289304.htm" class="localvar">co</a>, 0, &amp;<a href="../h_src/58289168.htm" class="localvar">ar</a>))  <a  class="comments">/* does it have frames? */</a>
+<a href="../h_aa/58281756.htm" class=function>db_getinfo</a>                                       ldblib.c
+   162 :    if (!<a href="../h_src/57424668.htm" class="function">lua_getstack</a>(<a href="../h_src/143276028.htm" class="localvar">L1</a>, (int)<a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, <a href="../h_src/143276164.htm" class="localvar">arg</a> + 1), &amp;<a href="../h_src/58281484.htm" class="localvar">ar</a>)) {
+<a href="../h_aa/143275756.htm" class=function>db_getlocal</a>                                      ldblib.c
+   216 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(!<a href="../h_src/57424668.htm" class="function">lua_getstack</a>(<a href="../h_src/143275348.htm" class="localvar">L1</a>, <a href="../h_src/143274804.htm" class="localvar">level</a>, &amp;<a href="../h_src/143275076.htm" class="localvar">ar</a>)))  <a  class="comments">/* out of range? */</a>
+<a href="../h_aa/143274668.htm" class=function>db_setlocal</a>                                      ldblib.c
+   241 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(!<a href="../h_src/57424668.htm" class="function">lua_getstack</a>(<a href="../h_src/143274124.htm" class="localvar">L1</a>, <a href="../h_src/143273852.htm" class="localvar">level</a>, &amp;<a href="../h_src/143273988.htm" class="localvar">ar</a>)))  <a  class="comments">/* out of range? */</a>
+<a href="../h_aa/58348736.htm" class=function>lastlevel</a>                                        lauxlib.c
+   120 :    while (<a href="../h_src/57424668.htm" class="function">lua_getstack</a>(<a href="../h_src/58348600.htm" class="localvar">L</a>, <a href="../h_src/58348192.htm" class="localvar">le</a>, &amp;<a href="../h_src/58348464.htm" class="localvar">ar</a>)) { <a href="../h_src/58348328.htm" class="localvar">li</a> = <a href="../h_src/58348192.htm" class="localvar">le</a>; <a href="../h_src/58348192.htm" class="localvar">le</a> *= 2; }
+   124 :    if (<a href="../h_src/57424668.htm" class="function">lua_getstack</a>(<a href="../h_src/58348600.htm" class="localvar">L</a>, <a href="../h_src/58348056.htm" class="localvar">m</a>, &amp;<a href="../h_src/58348464.htm" class="localvar">ar</a>)) <a href="../h_src/58348328.htm" class="localvar">li</a> = <a href="../h_src/58348056.htm" class="localvar">m</a> + 1;
+<a href="../h_aa/57420384.htm" class=function>luaL_argerror</a>                                    lauxlib.c
+   177 :    if (!<a href="../h_src/57424668.htm" class="function">lua_getstack</a>(<a href="../h_src/58346696.htm" class="localvar">L</a>, 0, &amp;<a href="../h_src/58346288.htm" class="localvar">ar</a>))  <a  class="comments">/* no stack frame? */</a>
+<a href="../h_aa/57417664.htm" class=function>luaL_traceback</a>                                   lauxlib.c
+   143 :    while (<a href="../h_src/57424668.htm" class="function">lua_getstack</a>(<a href="../h_src/58347784.htm" class="localvar">L1</a>, <a href="../h_src/58347512.htm" class="localvar">level</a>++, &amp;<a href="../h_src/58347240.htm" class="localvar">ar</a>)) {
+<a href="../h_aa/57419364.htm" class=function>luaL_where</a>                                       lauxlib.c
+   218 :    if (<a href="../h_src/57424668.htm" class="function">lua_getstack</a>(<a href="../h_src/58344928.htm" class="localvar">L</a>, <a href="../h_src/58344792.htm" class="localvar">level</a>, &amp;<a href="../h_src/58344656.htm" class="localvar">ar</a>)) {  <a  class="comments">/* check function at level */</a>
+</pre>
+<h4><a class="legend">Table lists functions that directly use lua_getstack</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

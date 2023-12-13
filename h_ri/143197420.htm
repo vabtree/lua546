@@ -1,0 +1,47 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>name</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143197420.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/143197420.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/143197420.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/143197420.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/143197692.htm" class=function>ll_require</a>                                       loadlib.c
+   658 :    const char *<a href="../h_src/143197420.htm" class="localvar">name</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143197556.htm" class="localvar">L</a>, 1);
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/143197692.htm" class=function>ll_require</a>                                       loadlib.c
+   661 :    <a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143197556.htm" class="localvar">L</a>, 2, <a href="../h_src/143197420.htm" class="localvar">name</a>);  <a  class="comments">/* LOADED[name] */</a>
+   666 :    <a href="../h_src/143198372.htm" class="function">findloader</a>(<a href="../h_src/143197556.htm" class="localvar">L</a>, <a href="../h_src/143197420.htm" class="localvar">name</a>);
+   674 :    <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/143197556.htm" class="localvar">L</a>, 2, <a href="../h_src/143197420.htm" class="localvar">name</a>);  <a  class="comments">/* LOADED[name] = returned value */</a>
+   677 :    if (<a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143197556.htm" class="localvar">L</a>, 2, <a href="../h_src/143197420.htm" class="localvar">name</a>) == <a href="../h_src/57444048.htm" class="macro">LUA_TNIL</a>) {   <a  class="comments">/* module set no value? */</a>
+   680 :    <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/143197556.htm" class="localvar">L</a>, 2, <a href="../h_src/143197420.htm" class="localvar">name</a>);  <a  class="comments">/* LOADED[name] = true */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable name</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

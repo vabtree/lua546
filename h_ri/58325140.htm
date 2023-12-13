@@ -1,0 +1,58 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lf</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58325140.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/58325140.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/58325140.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/58325140.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57418548.htm" class=function>luaL_loadfilex</a>                                   lauxlib.c
+   786 :    <a href="../h_src/58325140.htm" class="localvar">lf</a>.f = stdin;
+   790 :    <a href="../h_src/58325140.htm" class="localvar">lf</a>.f = <a href="../h_aa/58324460.htm" class="libfunc">fopen</a>(<a href="../h_src/58325412.htm" class="localvar">filename</a>, &quot;r&quot;);
+   793 :    <a href="../h_src/58325140.htm" class="localvar">lf</a>.n = 0;
+   795 :    <a href="../h_src/58325140.htm" class="localvar">lf</a>.<a href="../h_src/58327520.htm" class="variable">buff</a>[<a href="../h_src/58325140.htm" class="localvar">lf</a>.n++] = '\n';  <a  class="comments">/* add newline to correct line numbers */</a>
+   797 :    <a href="../h_src/58325140.htm" class="localvar">lf</a>.n = 0;  <a  class="comments">/* remove possible newline */</a>
+   799 :    <a href="../h_src/58325140.htm" class="localvar">lf</a>.f = <a href="../h_aa/58324324.htm" class="libfunc">freopen</a>(<a href="../h_src/58325412.htm" class="localvar">filename</a>, &quot;rb&quot;, <a href="../h_src/58325140.htm" class="localvar">lf</a>.f);  <a  class="comments">/* reopen in binary mode */</a>
+   805 :    <a href="../h_src/58325140.htm" class="localvar">lf</a>.<a href="../h_src/58327520.htm" class="variable">buff</a>[<a href="../h_src/58325140.htm" class="localvar">lf</a>.n++] = <a href="../h_src/58324732.htm" class="localvar">c</a>;  <a  class="comments">/* 'c' is the first character of the stream */</a>
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57418548.htm" class=function>luaL_loadfilex</a>                                   lauxlib.c
+   791 :    if (<a href="../h_src/58325140.htm" class="localvar">lf</a>.f == NULL) return <a href="../h_src/58326500.htm" class="function">errfile</a>(<a href="../h_src/58325548.htm" class="localvar">L</a>, &quot;open&quot;, <a href="../h_src/58324596.htm" class="localvar">fnameindex</a>);
+   794 :    if (<a href="../h_aa/58324392.htm" class="libfunc">skipcomment</a>(<a href="../h_src/58325140.htm" class="localvar">lf</a>.f, &amp;<a href="../h_src/58324732.htm" class="localvar">c</a>))  <a  class="comments">/* read initial portion */</a>
+   795 :    <a href="../h_src/58325140.htm" class="localvar">lf</a>.<a href="../h_src/58327520.htm" class="variable">buff</a>[<a href="../h_src/58325140.htm" class="localvar">lf</a>.n++] = '\n';  <a  class="comments">/* add newline to correct line numbers */</a>
+   799 :    <a href="../h_src/58325140.htm" class="localvar">lf</a>.f = <a href="../h_aa/58324324.htm" class="libfunc">freopen</a>(<a href="../h_src/58325412.htm" class="localvar">filename</a>, &quot;rb&quot;, <a href="../h_src/58325140.htm" class="localvar">lf</a>.f);  <a  class="comments">/* reopen in binary mode */</a>
+   800 :    if (<a href="../h_src/58325140.htm" class="localvar">lf</a>.f == NULL) return <a href="../h_src/58326500.htm" class="function">errfile</a>(<a href="../h_src/58325548.htm" class="localvar">L</a>, &quot;reopen&quot;, <a href="../h_src/58324596.htm" class="localvar">fnameindex</a>);
+   801 :    <a href="../h_aa/58324392.htm" class="libfunc">skipcomment</a>(<a href="../h_src/58325140.htm" class="localvar">lf</a>.f, &amp;<a href="../h_src/58324732.htm" class="localvar">c</a>);  <a  class="comments">/* re-read initial portion */</a>
+   805 :    <a href="../h_src/58325140.htm" class="localvar">lf</a>.<a href="../h_src/58327520.htm" class="variable">buff</a>[<a href="../h_src/58325140.htm" class="localvar">lf</a>.n++] = <a href="../h_src/58324732.htm" class="localvar">c</a>;  <a  class="comments">/* 'c' is the first character of the stream */</a>
+   806 :    <a href="../h_src/58325004.htm" class="localvar">status</a> = <a href="../h_src/57432624.htm" class="function">lua_load</a>(<a href="../h_src/58325548.htm" class="localvar">L</a>, <a href="../h_src/58327384.htm" class="function">getF</a>, &amp;<a href="../h_src/58325140.htm" class="localvar">lf</a>, <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/58325548.htm" class="localvar">L</a>, -1), <a href="../h_src/58325276.htm" class="localvar">mode</a>);
+   807 :    <a href="../h_src/58324868.htm" class="localvar">readstatus</a> = <a href="../h_aa/58324256.htm" class="libfunc">ferror</a>(<a href="../h_src/58325140.htm" class="localvar">lf</a>.f);
+   808 :    if (<a href="../h_src/58325412.htm" class="localvar">filename</a>) <a href="../h_aa/58324188.htm" class="libfunc">fclose</a>(<a href="../h_src/58325140.htm" class="localvar">lf</a>.f);  <a  class="comments">/* close file (even in case of errors) */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable lf</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,56 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>g</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57950892.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57950892.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57950892.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57950892.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57951164.htm" class=function>youngcollection</a>                                  lgc.c
+  1253 :    if (<a href="../h_src/57950892.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644392.htm" class="variable">firstold1</a>) {  <a  class="comments">/* are there regular OLD1 objects? */</a>
+  1254 :    <a href="../h_src/57952252.htm" class="function">markold</a>(<a href="../h_src/57950892.htm" class="localvar">g</a>, <a href="../h_src/57950892.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644392.htm" class="variable">firstold1</a>, <a href="../h_src/57950892.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644460.htm" class="variable">reallyold</a>);  <a  class="comments">/* mark them */</a>
+  1255 :    <a href="../h_src/57950892.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644392.htm" class="variable">firstold1</a> = NULL;  <a  class="comments">/* no more OLD1 objects (for now) */</a>
+  1257 :    <a href="../h_src/57952252.htm" class="function">markold</a>(<a href="../h_src/57950892.htm" class="localvar">g</a>, <a href="../h_src/57950892.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645140.htm" class="variable">finobj</a>, <a href="../h_src/57950892.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644188.htm" class="variable">finobjrold</a>);
+  1258 :    <a href="../h_src/57952252.htm" class="function">markold</a>(<a href="../h_src/57950892.htm" class="localvar">g</a>, <a href="../h_src/57950892.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644732.htm" class="variable">tobefnz</a>, NULL);
+  1262 :    <a href="../h_src/57950892.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646024.htm" class="variable">gcstate</a> = <a href="../h_src/57629364.htm" class="macro">GCSswpallgc</a>;
+  1263 :    <a href="../h_src/57950756.htm" class="localvar">psurvival</a> = <a href="../h_src/57955108.htm" class="function">sweepgen</a>(<a href="../h_src/57951028.htm" class="localvar">L</a>, <a href="../h_src/57950892.htm" class="localvar">g</a>, &amp;<a href="../h_src/57950892.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645344.htm" class="variable">allgc</a>, <a href="../h_src/57950892.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644596.htm" class="variable">survival</a>, &amp;<a href="../h_src/57950892.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644392.htm" class="variable">firstold1</a>);
+  1265 :    <a href="../h_src/57955108.htm" class="function">sweepgen</a>(<a href="../h_src/57951028.htm" class="localvar">L</a>, <a href="../h_src/57950892.htm" class="localvar">g</a>, <a href="../h_src/57950756.htm" class="localvar">psurvival</a>, <a href="../h_src/57950892.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644528.htm" class="variable">old1</a>, &amp;<a href="../h_src/57950892.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644392.htm" class="variable">firstold1</a>);
+  1266 :    <a href="../h_src/57950892.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644460.htm" class="variable">reallyold</a> = <a href="../h_src/57950892.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644528.htm" class="variable">old1</a>;
+  1267 :    <a href="../h_src/57950892.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644528.htm" class="variable">old1</a> = *<a href="../h_src/57950756.htm" class="localvar">psurvival</a>;  <a  class="comments">/* 'survival' survivals are old now */</a>
+  1268 :    <a href="../h_src/57950892.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644596.htm" class="variable">survival</a> = <a href="../h_src/57950892.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645344.htm" class="variable">allgc</a>;  <a  class="comments">/* all news are survivals */</a>
+  1272 :    <a href="../h_src/57950756.htm" class="localvar">psurvival</a> = <a href="../h_src/57955108.htm" class="function">sweepgen</a>(<a href="../h_src/57951028.htm" class="localvar">L</a>, <a href="../h_src/57950892.htm" class="localvar">g</a>, &amp;<a href="../h_src/57950892.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645140.htm" class="variable">finobj</a>, <a href="../h_src/57950892.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644324.htm" class="variable">finobjsur</a>, &amp;<a href="../h_src/57950620.htm" class="localvar">dummy</a>);
+  1274 :    <a href="../h_src/57955108.htm" class="function">sweepgen</a>(<a href="../h_src/57951028.htm" class="localvar">L</a>, <a href="../h_src/57950892.htm" class="localvar">g</a>, <a href="../h_src/57950756.htm" class="localvar">psurvival</a>, <a href="../h_src/57950892.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644256.htm" class="variable">finobjold1</a>, &amp;<a href="../h_src/57950620.htm" class="localvar">dummy</a>);
+  1275 :    <a href="../h_src/57950892.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644188.htm" class="variable">finobjrold</a> = <a href="../h_src/57950892.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644256.htm" class="variable">finobjold1</a>;
+  1276 :    <a href="../h_src/57950892.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644256.htm" class="variable">finobjold1</a> = *<a href="../h_src/57950756.htm" class="localvar">psurvival</a>;  <a  class="comments">/* 'survival' survivals are old now */</a>
+  1277 :    <a href="../h_src/57950892.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644324.htm" class="variable">finobjsur</a> = <a href="../h_src/57950892.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645140.htm" class="variable">finobj</a>;  <a  class="comments">/* all news are survivals */</a>
+  1279 :    <a href="../h_src/57955108.htm" class="function">sweepgen</a>(<a href="../h_src/57951028.htm" class="localvar">L</a>, <a href="../h_src/57950892.htm" class="localvar">g</a>, &amp;<a href="../h_src/57950892.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644732.htm" class="variable">tobefnz</a>, NULL, &amp;<a href="../h_src/57950620.htm" class="localvar">dummy</a>);
+  1280 :    <a href="../h_src/57951572.htm" class="function">finishgencycle</a>(<a href="../h_src/57951028.htm" class="localvar">L</a>, <a href="../h_src/57950892.htm" class="localvar">g</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable g</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,55 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>SIZE_Ax</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57698152.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57698152.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57698152.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57698152.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57699512.htm" class=file>lopcodes.h</a>
+    80 :    #if <a href="../h_src/57696656.htm" class="macro">L_INTHASBITS</a>(<a href="../h_src/57698152.htm" class="macro">SIZE_Ax</a>)
+<a href="../h_aa/57808488.htm" class=function>addk</a>                                             lcode.c
+   563 :    <a href="../h_src/57494924.htm" class="macro">luaM_growvector</a>(<a href="../h_src/57807808.htm" class="localvar">L</a>, <a href="../h_src/57807672.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515052.htm" class="variable">k</a>, <a href="../h_src/57807400.htm" class="localvar">k</a>, <a href="../h_src/57807672.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515664.htm" class="variable">sizek</a>, <a href="../h_src/57535384.htm" class="type">TValue</a>, <a href="../h_src/57696248.htm" class="macro">MAXARG_Ax</a>, &quot;constants&quot;);
+<a href="../h_aa/57812432.htm" class=function>codeextraarg</a>                                     lcode.c
+   441 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(a &lt;= <a href="../h_src/57696248.htm" class="macro">MAXARG_Ax</a>);
+<a href="../h_aa/57745588.htm" class=function>getobjname</a>                                       ldebug.c
+   570 :    : <a href="../h_src/57692304.htm" class="macro">GETARG_Ax</a>(<a href="../h_src/57739876.htm" class="localvar">p</a>-&gt;<a href="../h_src/57514916.htm" class="variable">code</a>[<a href="../h_src/57739332.htm" class="localvar">pc</a> + 1]);
+<a href="../h_aa/57610936.htm" class=function>luaV_execute</a>                                     lvm.c
+  1210 :    <a href="../h_src/58184524.htm" class="localvar">rb</a> = <a href="../h_src/58187788.htm" class="localvar">k</a> + <a href="../h_src/57692304.htm" class="macro">GETARG_Ax</a>(*<a href="../h_src/58187516.htm" class="localvar">pc</a>); <a href="../h_src/58187516.htm" class="localvar">pc</a>++;
+  1370 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>((!<a href="../h_src/57692984.htm" class="macro">TESTARG_k</a>(i)) == (<a href="../h_src/57692304.htm" class="macro">GETARG_Ax</a>(*pc) == 0));
+  1372 :    <a href="../h_src/58174188.htm" class="localvar">c</a> += <a href="../h_src/57692304.htm" class="macro">GETARG_Ax</a>(*<a href="../h_src/58187516.htm" class="localvar">pc</a>) * (<a href="../h_src/57695568.htm" class="macro">MAXARG_C</a> + 1);  <a  class="comments">/* add it to size */</a>
+  1858 :    <a href="../h_src/58354516.htm" class="localvar">last</a> += <a href="../h_src/57692304.htm" class="macro">GETARG_Ax</a>(*<a href="../h_src/58187516.htm" class="localvar">pc</a>) * (<a href="../h_src/57695568.htm" class="macro">MAXARG_C</a> + 1);
+<a href="../h_aa/143397312.htm" class=function>PrintCode</a>                                        luac.c
+   345 :    int <a href="../h_src/143395952.htm" class="localvar">ax</a>=<a href="../h_src/57692304.htm" class="macro">GETARG_Ax</a>(<a href="../h_src/143396632.htm" class="localvar">i</a>);
+   372 :    <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a>); <a href="../h_src/143398536.htm" class="function">PrintConstant</a>(<a href="../h_src/143397176.htm" class="localvar">f</a>,<a href="../h_src/143397720.htm" class="macro">EXTRAARG</a>);
+   431 :    <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a> &quot;%d&quot;,<a href="../h_src/143396088.htm" class="localvar">c</a>+<a href="../h_src/143397584.htm" class="macro">EXTRAARGC</a>);
+   636 :    if (<a href="../h_src/143395272.htm" class="localvar">isk</a>) <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a> &quot;%d&quot;,<a href="../h_src/143396088.htm" class="localvar">c</a>+<a href="../h_src/143397584.htm" class="macro">EXTRAARGC</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use SIZE_Ax</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

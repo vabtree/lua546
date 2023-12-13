@@ -1,0 +1,52 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>fs</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57998668.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57998668.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57998668.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57998668.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57999960.htm" class=function>forbody</a>                                          lparser.c
+  1549 :    <a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57998668.htm" class="localvar">fs</a> = <a href="../h_src/57999824.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57999960.htm" class=function>forbody</a>                                          lparser.c
+  1552 :    <a href="../h_src/57998532.htm" class="localvar">prep</a> = <a href="../h_src/57671224.htm" class="function">luaK_codeABx</a>(<a href="../h_src/57998668.htm" class="localvar">fs</a>, <a href="../h_src/57999076.htm" class="localvar">forprep</a>[<a href="../h_src/57999280.htm" class="localvar">isgen</a>], <a href="../h_src/57999688.htm" class="localvar">base</a>, 0);
+  1553 :    <a href="../h_src/58028792.htm" class="function">enterblock</a>(<a href="../h_src/57998668.htm" class="localvar">fs</a>, &amp;<a href="../h_src/57998804.htm" class="localvar">bl</a>, 0);  <a  class="comments">/* scope for declared variables */</a>
+  1555 :    <a href="../h_src/57670680.htm" class="function">luaK_reserveregs</a>(<a href="../h_src/57998668.htm" class="localvar">fs</a>, <a href="../h_src/57999416.htm" class="localvar">nvars</a>);
+  1557 :    <a href="../h_src/58027704.htm" class="function">leaveblock</a>(<a href="../h_src/57998668.htm" class="localvar">fs</a>);  <a  class="comments">/* end of scope for declared variables */</a>
+  1558 :    <a href="../h_src/58000912.htm" class="function">fixforjump</a>(<a href="../h_src/57998668.htm" class="localvar">fs</a>, <a href="../h_src/57998532.htm" class="localvar">prep</a>, <a href="../h_src/57669252.htm" class="function">luaK_getlabel</a>(<a href="../h_src/57998668.htm" class="localvar">fs</a>), 0);
+  1560 :    <a href="../h_src/57672380.htm" class="macro">luaK_codeABC</a>(<a href="../h_src/57998668.htm" class="localvar">fs</a>, <a href="../h_src/57685368.htm" class="variable">OP_TFORCALL</a>, <a href="../h_src/57999688.htm" class="localvar">base</a>, 0, <a href="../h_src/57999416.htm" class="localvar">nvars</a>);
+  1561 :    <a href="../h_src/57670816.htm" class="function">luaK_fixline</a>(<a href="../h_src/57998668.htm" class="localvar">fs</a>, <a href="../h_src/57999552.htm" class="localvar">line</a>);
+  1563 :    <a href="../h_src/57998396.htm" class="localvar">endfor</a> = <a href="../h_src/57671224.htm" class="function">luaK_codeABx</a>(<a href="../h_src/57998668.htm" class="localvar">fs</a>, <a href="../h_src/57998940.htm" class="localvar">forloop</a>[<a href="../h_src/57999280.htm" class="localvar">isgen</a>], <a href="../h_src/57999688.htm" class="localvar">base</a>, 0);
+  1564 :    <a href="../h_src/58000912.htm" class="function">fixforjump</a>(<a href="../h_src/57998668.htm" class="localvar">fs</a>, <a href="../h_src/57998396.htm" class="localvar">endfor</a>, <a href="../h_src/57998532.htm" class="localvar">prep</a> + 1, 1);
+  1565 :    <a href="../h_src/57670816.htm" class="function">luaK_fixline</a>(<a href="../h_src/57998668.htm" class="localvar">fs</a>, <a href="../h_src/57999552.htm" class="localvar">line</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable fs</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

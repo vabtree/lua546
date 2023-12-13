@@ -1,0 +1,87 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">FuncState::</a>ls</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57675780.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57675780.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57675780.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57675780.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57675780.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/58025392.htm" class=function>open_func</a>                                        lparser.c
+   732 :    <a href="../h_src/58025120.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a> = <a href="../h_src/58025256.htm" class="localvar">ls</a>;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57808488.htm" class=function>addk</a>                                             lcode.c
+   545 :    <a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57807808.htm" class="localvar">L</a> = <a href="../h_src/57808352.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>;
+   547 :    const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57807536.htm" class="localvar">idx</a> = <a href="../h_src/57616784.htm" class="function">luaH_get</a>(<a href="../h_src/57808352.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700668.htm" class="variable">h</a>, <a href="../h_src/57808216.htm" class="localvar">key</a>);  <a  class="comments">/* query scanner table */</a>
+   562 :    <a href="../h_src/57616580.htm" class="function">luaH_finishset</a>(<a href="../h_src/57807808.htm" class="localvar">L</a>, <a href="../h_src/57808352.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700668.htm" class="variable">h</a>, <a href="../h_src/57808216.htm" class="localvar">key</a>, <a href="../h_src/57807536.htm" class="localvar">idx</a>, &amp;<a href="../h_src/57807944.htm" class="localvar">val</a>);
+<a href="../h_aa/58041916.htm" class=function>allocupvalue</a>                                     lparser.c
+   356 :    <a href="../h_src/57494924.htm" class="macro">luaM_growvector</a>(<a href="../h_src/58041780.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/58041644.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>, <a href="../h_src/58041780.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674828.htm" class="variable">nups</a>, <a href="../h_src/58041644.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>,
+<a href="../h_aa/57667348.htm" class=function>const2val</a>                                        lcode.c
+    76 :    return &amp;<a href="../h_src/57667212.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700328.htm" class="variable">dyd</a>-&gt;<a href="../h_src/57676460.htm" class="variable">actvar</a>.<a href="../h_src/57676732.htm" class="variable">arr</a>[<a href="../h_src/57667076.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a>].<a href="../h_src/57678024.htm" class="variable">k</a>;
+<a href="../h_aa/57785844.htm" class=function>constfolding</a>                                     lcode.c
+  1338 :    <a href="../h_src/57501792.htm" class="function">luaO_rawarith</a>(<a href="../h_src/57785708.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/57785572.htm" class="localvar">op</a>, &amp;<a href="../h_src/57785164.htm" class="localvar">v1</a>, &amp;<a href="../h_src/57785028.htm" class="localvar">v2</a>, &amp;<a href="../h_src/57784892.htm" class="localvar">res</a>);  <a  class="comments">/* does operation */</a>
+<a href="../h_aa/58028792.htm" class=function>enterblock</a>                                       lparser.c
+   645 :    <a href="../h_src/58028520.htm" class="localvar">bl</a>-&gt;<a href="../h_src/58056264.htm" class="variable">firstlabel</a> = <a href="../h_src/58028656.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700328.htm" class="variable">dyd</a>-&gt;<a href="../h_src/57676324.htm" class="variable">label</a>.<a href="../h_src/57677072.htm" class="variable">n</a>;
+   646 :    <a href="../h_src/58028520.htm" class="localvar">bl</a>-&gt;<a href="../h_src/58056196.htm" class="variable">firstgoto</a> = <a href="../h_src/58028656.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700328.htm" class="variable">dyd</a>-&gt;<a href="../h_src/57676392.htm" class="variable">gt</a>.<a href="../h_src/57677072.htm" class="variable">n</a>;
+<a href="../h_aa/58055108.htm" class=function>errorlimit</a>                                       lparser.c
+    75 :    <a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58054564.htm" class="localvar">L</a> = <a href="../h_src/58054972.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>;
+    83 :    <a href="../h_src/57699648.htm" class="function">luaX_syntaxerror</a>(<a href="../h_src/58054972.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>, <a href="../h_src/58054428.htm" class="localvar">msg</a>);
+<a href="../h_aa/58000912.htm" class=function>fixforjump</a>                                       lparser.c
+  1536 :    <a href="../h_src/57699648.htm" class="function">luaX_syntaxerror</a>(<a href="../h_src/58000776.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>, &quot;control structure too long&quot;);
+<a href="../h_aa/57664084.htm" class=function>fixjump</a>                                          lcode.c
+   172 :    <a href="../h_src/57699648.htm" class="function">luaX_syntaxerror</a>(<a href="../h_src/57663948.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>, &quot;control structure too long&quot;);
+<a href="../h_aa/58047628.htm" class=function>getlocalvardesc</a>                                  lparser.c
+   220 :    return &amp;<a href="../h_src/58047492.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700328.htm" class="variable">dyd</a>-&gt;<a href="../h_src/57676460.htm" class="variable">actvar</a>.<a href="../h_src/57676732.htm" class="variable">arr</a>[<a href="../h_src/58047492.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675100.htm" class="variable">firstlocal</a> + <a href="../h_src/58047356.htm" class="localvar">vidx</a>];
+<a href="../h_aa/58027704.htm" class=function>leaveblock</a>                                       lparser.c
+   674 :    <a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/58027296.htm" class="localvar">ls</a> = <a href="../h_src/58027568.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>;
+<a href="../h_aa/57670612.htm" class=function>luaK_checkstack</a>                                  lcode.c
+   470 :    <a href="../h_src/57699648.htm" class="function">luaX_syntaxerror</a>(<a href="../h_src/57811344.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>,
+<a href="../h_aa/57671292.htm" class=function>luaK_code</a>                                        lcode.c
+   385 :    <a href="../h_src/57494924.htm" class="macro">luaM_growvector</a>(<a href="../h_src/57815560.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/57815288.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514916.htm" class="variable">code</a>, <a href="../h_src/57815560.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675508.htm" class="variable">pc</a>, <a href="../h_src/57815288.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515596.htm" class="variable">sizecode</a>, <a href="../h_src/57545108.htm" class="type">Instruction</a>,
+   388 :    <a href="../h_src/57817260.htm" class="function">savelineinfo</a>(<a href="../h_src/57815560.htm" class="localvar">fs</a>, <a href="../h_src/57815288.htm" class="localvar">f</a>, <a href="../h_src/57815560.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57701484.htm" class="variable">lastline</a>);
+<a href="../h_aa/57670884.htm" class=function>luaK_exp2const</a>                                   lcode.c
+    98 :    <a href="../h_src/57524232.htm" class="macro">setsvalue</a>(<a href="../h_src/57666940.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/57666668.htm" class="localvar">v</a>, <a href="../h_src/57666804.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680472.htm" class="variable">strval</a>);
+   102 :    <a href="../h_src/57533684.htm" class="macro">setobj</a>(<a href="../h_src/57666940.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/57666668.htm" class="localvar">v</a>, <a href="../h_src/57667348.htm" class="function">const2val</a>(<a href="../h_src/57666940.htm" class="localvar">fs</a>, <a href="../h_src/57666804.htm" class="localvar">e</a>));
+<a href="../h_aa/58029608.htm" class=function>movegotosout</a>                                     lparser.c
+   630 :    <a href="../h_src/57676936.htm" class="type">Labellist</a> *<a href="../h_src/58029064.htm" class="localvar">gl</a> = &amp;<a href="../h_src/58029472.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700328.htm" class="variable">dyd</a>-&gt;<a href="../h_src/57676392.htm" class="variable">gt</a>;
+<a href="../h_aa/58041372.htm" class=function>newupvalue</a>                                       lparser.c
+   380 :    <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/58041236.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/58041236.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57676052.htm" class="variable">f</a>, <a href="../h_src/58041100.htm" class="localvar">name</a>);
+<a href="../h_aa/57802844.htm" class=function>nilK</a>                                             lcode.c
+   649 :    <a href="../h_src/57507028.htm" class="macro">sethvalue</a>(<a href="../h_src/57802708.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, &amp;<a href="../h_src/57802572.htm" class="localvar">k</a>, <a href="../h_src/57802708.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700668.htm" class="variable">h</a>);
+<a href="../h_aa/58043140.htm" class=function>removevars</a>                                       lparser.c
+   329 :    <a href="../h_src/58043004.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700328.htm" class="variable">dyd</a>-&gt;<a href="../h_src/57676460.htm" class="variable">actvar</a>.<a href="../h_src/57676664.htm" class="variable">n</a> -= (<a href="../h_src/58043004.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674896.htm" class="variable">nactvar</a> - <a href="../h_src/58042868.htm" class="localvar">tolevel</a>);
+<a href="../h_aa/57817260.htm" class=function>savelineinfo</a>                                     lcode.c
+   333 :    <a href="../h_src/57494924.htm" class="macro">luaM_growvector</a>(<a href="../h_src/57817124.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/57816988.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514168.htm" class="variable">abslineinfo</a>, <a href="../h_src/57817124.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675168.htm" class="variable">nabslineinfo</a>,
+   340 :    <a href="../h_src/57494924.htm" class="macro">luaM_growvector</a>(<a href="../h_src/57817124.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/57816988.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514304.htm" class="variable">lineinfo</a>, <a href="../h_src/57816580.htm" class="localvar">pc</a>, <a href="../h_src/57816988.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515528.htm" class="variable">sizelineinfo</a>, <a href="../h_src/57550412.htm" class="type">ls_byte</a>,
+<a href="../h_aa/57806720.htm" class=function>stringK</a>                                          lcode.c
+   577 :    <a href="../h_src/57524232.htm" class="macro">setsvalue</a>(<a href="../h_src/57806584.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, &amp;<a href="../h_src/57806312.htm" class="localvar">o</a>, <a href="../h_src/57806448.htm" class="localvar">s</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable ls</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

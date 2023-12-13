@@ -1,0 +1,100 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>cast_sizet</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57546400.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57546400.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57546400.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57546400.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57808488.htm" class=function>addk</a>                                             lcode.c
+   563 :    <a href="../h_src/57494924.htm" class="macro">luaM_growvector</a>(<a href="../h_src/57807808.htm" class="localvar">L</a>, <a href="../h_src/57807672.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515052.htm" class="variable">k</a>, <a href="../h_src/57807400.htm" class="localvar">k</a>, <a href="../h_src/57807672.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515664.htm" class="variable">sizek</a>, <a href="../h_src/57535384.htm" class="type">TValue</a>, <a href="../h_src/57696248.htm" class="macro">MAXARG_Ax</a>, &quot;constants&quot;);
+<a href="../h_aa/58026888.htm" class=function>addprototype</a>                                     lparser.c
+   705 :    <a href="../h_src/57494924.htm" class="macro">luaM_growvector</a>(<a href="../h_src/58026480.htm" class="localvar">L</a>, <a href="../h_src/58026208.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a>, <a href="../h_src/58026344.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675236.htm" class="variable">np</a>, <a href="../h_src/58026208.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515460.htm" class="variable">sizep</a>, <a href="../h_src/57513828.htm" class="type">Proto</a> *, <a href="../h_src/57696520.htm" class="macro">MAXARG_Bx</a>, &quot;functions&quot;);
+<a href="../h_aa/58041916.htm" class=function>allocupvalue</a>                                     lparser.c
+   358 :    while (<a href="../h_src/58041508.htm" class="localvar">oldsize</a> &lt; <a href="../h_src/58041644.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>)
+<a href="../h_aa/58114036.htm" class=function>arrayindex</a>                                       ltable.c
+   319 :    if (<a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/58113900.htm" class="localvar">k</a>) - 1u &lt; <a href="../h_src/58121448.htm" class="macro">MAXASIZE</a>)  <a  class="comments">/* 'k' in [1, MAXASIZE]? */</a>
+<a href="../h_aa/57969388.htm" class=function>clearbykeys</a>                                      lgc.c
+   726 :    <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/57968844.htm" class="localvar">limit</a> = <a href="../h_src/57826344.htm" class="macro">gnodelast</a>(<a href="../h_src/57968980.htm" class="localvar">h</a>);
+<a href="../h_aa/57968572.htm" class=function>clearbyvalues</a>                                    lgc.c
+   745 :    <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/57967892.htm" class="localvar">n</a>, *<a href="../h_src/57967756.htm" class="localvar">limit</a> = <a href="../h_src/57826344.htm" class="macro">gnodelast</a>(<a href="../h_src/57968028.htm" class="localvar">h</a>);
+<a href="../h_aa/58111044.htm" class=function>freehash</a>                                         ltable.c
+   373 :    <a href="../h_src/57495604.htm" class="macro">luaM_freearray</a>(<a href="../h_src/58110908.htm" class="localvar">L</a>, <a href="../h_src/58110772.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504580.htm" class="variable">node</a>, <a href="../h_src/57546400.htm" class="macro">cast_sizet</a>(<a href="../h_src/57502200.htm" class="macro">sizenode</a>(<a href="../h_src/58110772.htm" class="localvar">t</a>)));
+<a href="../h_aa/58125596.htm" class=function>growstrtab</a>                                       lstring.c
+   180 :    if (<a href="../h_src/58125324.htm" class="localvar">tb</a>-&gt;<a href="../h_src/57651668.htm" class="variable">size</a> &lt;= <a href="../h_src/58131988.htm" class="macro">MAXSTRTB</a> / 2)  <a  class="comments">/* can grow string table? */</a>
+<a href="../h_aa/58069360.htm" class=function>loadCode</a>                                         lundump.c
+   146 :    <a href="../h_src/58069088.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514916.htm" class="variable">code</a> = <a href="../h_src/57495196.htm" class="macro">luaM_newvectorchecked</a>(<a href="../h_src/58069224.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, <a href="../h_src/58068952.htm" class="localvar">n</a>, <a href="../h_src/57545108.htm" class="type">Instruction</a>);
+<a href="../h_aa/58068680.htm" class=function>loadConstants</a>                                    lundump.c
+   158 :    <a href="../h_src/58068408.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515052.htm" class="variable">k</a> = <a href="../h_src/57495196.htm" class="macro">luaM_newvectorchecked</a>(<a href="../h_src/58068544.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, <a href="../h_src/58068136.htm" class="localvar">n</a>, <a href="../h_src/57535384.htm" class="type">TValue</a>);
+<a href="../h_aa/58065824.htm" class=function>loadDebug</a>                                        lundump.c
+   230 :    <a href="../h_src/58065552.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514304.htm" class="variable">lineinfo</a> = <a href="../h_src/57495196.htm" class="macro">luaM_newvectorchecked</a>(<a href="../h_src/58065688.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, <a href="../h_src/58065280.htm" class="localvar">n</a>, <a href="../h_src/57550412.htm" class="type">ls_byte</a>);
+   234 :    <a href="../h_src/58065552.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514168.htm" class="variable">abslineinfo</a> = <a href="../h_src/57495196.htm" class="macro">luaM_newvectorchecked</a>(<a href="../h_src/58065688.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, <a href="../h_src/58065280.htm" class="localvar">n</a>, <a href="../h_src/57516344.htm" class="type">AbsLineInfo</a>);
+   241 :    <a href="../h_src/58065552.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514032.htm" class="variable">locvars</a> = <a href="../h_src/57495196.htm" class="macro">luaM_newvectorchecked</a>(<a href="../h_src/58065688.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, <a href="../h_src/58065280.htm" class="localvar">n</a>, <a href="../h_src/57516684.htm" class="type">LocVar</a>);
+<a href="../h_aa/58067184.htm" class=function>loadProtos</a>                                       lundump.c
+   194 :    <a href="../h_src/58066912.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a> = <a href="../h_src/57495196.htm" class="macro">luaM_newvectorchecked</a>(<a href="../h_src/58067048.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, <a href="../h_src/58066640.htm" class="localvar">n</a>, <a href="../h_src/57513828.htm" class="type">Proto</a> *);
+<a href="../h_aa/58066504.htm" class=function>loadUpvalues</a>                                     lundump.c
+   215 :    <a href="../h_src/58066232.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a> = <a href="../h_src/57495196.htm" class="macro">luaM_newvectorchecked</a>(<a href="../h_src/58066368.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, <a href="../h_src/58065960.htm" class="localvar">n</a>, <a href="../h_src/57517092.htm" class="type">Upvaldesc</a>);
+<a href="../h_aa/57437860.htm" class=function>lua_topointer</a>                                    lapi.c
+   478 :    case <a href="../h_src/57513488.htm" class="macro">LUA_VLCF</a>: return <a href="../h_src/57547488.htm" class="macro">cast_voidp</a>(<a href="../h_src/57546400.htm" class="macro">cast_sizet</a>(<a href="../h_src/57512128.htm" class="macro">fvalue</a>(<a href="../h_src/57590536.htm" class="localvar">o</a>)));
+<a href="../h_aa/57632832.htm" class=function>luaD_reallocstack</a>                                ldo.c
+   220 :    <a href="../h_src/57878364.htm" class="localvar">newstack</a> = <a href="../h_src/57657244.htm" class="macro">luaM_reallocvector</a>(<a href="../h_src/57879044.htm" class="localvar">L</a>, <a href="../h_src/57879044.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642284.htm" class="variable">stack</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57878636.htm" class="localvar">oldsize</a> + <a href="../h_src/57652688.htm" class="macro">EXTRA_STACK</a>,
+<a href="../h_aa/57616444.htm" class=function>luaH_resize</a>                                      ltable.c
+   573 :    <a href="../h_src/58102476.htm" class="localvar">newarray</a> = <a href="../h_src/57657244.htm" class="macro">luaM_reallocvector</a>(<a href="../h_src/58103428.htm" class="localvar">L</a>, <a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>, <a href="../h_src/58102612.htm" class="localvar">oldasize</a>, <a href="../h_src/58103156.htm" class="localvar">newasize</a>, <a href="../h_src/57535384.htm" class="type">TValue</a>);
+<a href="../h_aa/57983912.htm" class=function>luai_makeseed</a>                                    lstate.c
+    75 :    <a href="../h_src/57984048.htm" class="macro">addbuff</a>(<a href="../h_src/57983640.htm" class="localvar">buff</a>, <a href="../h_src/57983300.htm" class="localvar">p</a>, <a href="../h_src/57983776.htm" class="localvar">L</a>);  <a  class="comments">/* heap variable */</a>
+    76 :    <a href="../h_src/57984048.htm" class="macro">addbuff</a>(<a href="../h_src/57983640.htm" class="localvar">buff</a>, <a href="../h_src/57983300.htm" class="localvar">p</a>, &amp;<a href="../h_src/57983436.htm" class="localvar">h</a>);  <a  class="comments">/* local variable */</a>
+    77 :    <a href="../h_src/57984048.htm" class="macro">addbuff</a>(<a href="../h_src/57983640.htm" class="localvar">buff</a>, <a href="../h_src/57983300.htm" class="localvar">p</a>, &amp;<a href="../h_src/57439900.htm" class="function">lua_newstate</a><a href="../h_src/57982892.htm" class="localvar">t</a>a<a href="../h_src/57982892.htm" class="localvar">t</a>e);  <a  class="comments">/* public function */</a>
+<a href="../h_aa/57671292.htm" class=function>luaK_code</a>                                        lcode.c
+   385 :    <a href="../h_src/57494924.htm" class="macro">luaM_growvector</a>(<a href="../h_src/57815560.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/57815288.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514916.htm" class="variable">code</a>, <a href="../h_src/57815560.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675508.htm" class="variable">pc</a>, <a href="../h_src/57815288.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515596.htm" class="variable">sizecode</a>, <a href="../h_src/57545108.htm" class="type">Instruction</a>,
+<a href="../h_aa/57656564.htm" class=function>luaM_growaux_</a>                                    lmem.c
+   115 :    <a href="../h_src/57924780.htm" class="localvar">newblock</a> = <a href="../h_src/57656700.htm" class="function">luaM_saferealloc_</a>(<a href="../h_src/57925732.htm" class="localvar">L</a>, <a href="../h_src/57925596.htm" class="localvar">block</a>, <a href="../h_src/57546400.htm" class="macro">cast_sizet</a>(*<a href="../h_src/57925324.htm" class="localvar">psize</a>) * <a href="../h_src/57925188.htm" class="localvar">size_elems</a>,
+   116 :    <a href="../h_src/57546400.htm" class="macro">cast_sizet</a>(<a href="../h_src/57924644.htm" class="localvar">size</a>) * <a href="../h_src/57925188.htm" class="localvar">size_elems</a>);
+<a href="../h_aa/57656496.htm" class=function>luaM_shrinkvector_</a>                               lmem.c
+   131 :    <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/57923692.htm" class="localvar">oldsize</a> = <a href="../h_src/57546400.htm" class="macro">cast_sizet</a>((*<a href="../h_src/57924236.htm" class="localvar">size</a>) * <a href="../h_src/57923964.htm" class="localvar">size_elem</a>);
+   132 :    <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/57923556.htm" class="localvar">newsize</a> = <a href="../h_src/57546400.htm" class="macro">cast_sizet</a>(<a href="../h_src/57924100.htm" class="localvar">final_n</a> * <a href="../h_src/57923964.htm" class="localvar">size_elem</a>);
+<a href="../h_aa/57618960.htm" class=function>luaS_resize</a>                                      lstring.c
+    91 :    <a href="../h_src/58128860.htm" class="localvar">newvect</a> = <a href="../h_src/57657244.htm" class="macro">luaM_reallocvector</a>(<a href="../h_src/58129472.htm" class="localvar">L</a>, <a href="../h_src/58129132.htm" class="localvar">tb</a>-&gt;<a href="../h_src/57651804.htm" class="variable">hash</a>, <a href="../h_src/58128996.htm" class="localvar">osize</a>, <a href="../h_src/58129336.htm" class="localvar">nsize</a>, <a href="../h_src/57522736.htm" class="type">TString</a>*);
+<a href="../h_aa/58048716.htm" class=function>new_localvar</a>                                     lparser.c
+   201 :    <a href="../h_src/58048036.htm" class="localvar">dyd</a>-&gt;<a href="../h_src/57676460.htm" class="variable">actvar</a>.<a href="../h_src/57676596.htm" class="variable">size</a>, <a href="../h_src/57677956.htm" class="type">Vardesc</a>, USHRT_MAX, &quot;local variables&quot;);
+<a href="../h_aa/58033144.htm" class=function>newlabelentry</a>                                    lparser.c
+   565 :    <a href="../h_src/58032872.htm" class="localvar">l</a>-&gt;<a href="../h_src/57677140.htm" class="variable">arr</a>[<a href="../h_src/58032328.htm" class="localvar">n</a>].<a href="../h_src/57677752.htm" class="variable">name</a> = <a href="../h_src/58032736.htm" class="localvar">name</a>;
+<a href="../h_aa/58049532.htm" class=function>registerlocalvar</a>                                 lparser.c
+   180 :    while (<a href="../h_src/58048852.htm" class="localvar">oldsize</a> &lt; <a href="../h_src/58048988.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515392.htm" class="variable">sizelocvars</a>)
+<a href="../h_aa/57817260.htm" class=function>savelineinfo</a>                                     lcode.c
+   334 :    <a href="../h_src/57816988.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515324.htm" class="variable">sizeabslineinfo</a>, <a href="../h_src/57516344.htm" class="type">AbsLineInfo</a>, <a href="../h_src/57549800.htm" class="macro">MAX_INT</a>, &quot;lines&quot;);
+   340 :    <a href="../h_src/57494924.htm" class="macro">luaM_growvector</a>(<a href="../h_src/57817124.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/57816988.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514304.htm" class="variable">lineinfo</a>, <a href="../h_src/57816580.htm" class="localvar">pc</a>, <a href="../h_src/57816988.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515528.htm" class="variable">sizelineinfo</a>, <a href="../h_src/57550412.htm" class="type">ls_byte</a>,
+<a href="../h_aa/58106556.htm" class=function>setnodevector</a>                                    ltable.c
+   489 :    if (<a href="../h_src/58105876.htm" class="localvar">lsize</a> &gt; <a href="../h_src/58121312.htm" class="macro">MAXHBITS</a> || (1u &lt;&lt; <a href="../h_src/58105876.htm" class="localvar">lsize</a>) &gt; <a href="../h_src/58121176.htm" class="macro">MAXHSIZE</a>)
+<a href="../h_aa/57975916.htm" class=function>traversestrongtable</a>                              lgc.c
+   524 :    <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/57975508.htm" class="localvar">n</a>, *<a href="../h_src/57975372.htm" class="localvar">limit</a> = <a href="../h_src/57826344.htm" class="macro">gnodelast</a>(<a href="../h_src/57975644.htm" class="localvar">h</a>);
+<a href="../h_aa/57818252.htm" class=function>traverseweakvalue</a>                                lgc.c
+   447 :    <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/57817844.htm" class="localvar">n</a>, *<a href="../h_src/57817708.htm" class="localvar">limit</a> = <a href="../h_src/57826344.htm" class="macro">gnodelast</a>(<a href="../h_src/57817980.htm" class="localvar">h</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use cast_sizet</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

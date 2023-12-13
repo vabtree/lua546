@@ -1,0 +1,60 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">CallInfo::</a>next</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57651328.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57651328.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57651328.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57651328.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57651328.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57638476.htm" class=function>luaE_extendCI</a>                                    lstate.c
+   110 :    <a href="../h_src/57982076.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57651328.htm" class="variable">next</a> = <a href="../h_src/57981940.htm" class="localvar">ci</a>;
+   112 :    <a href="../h_src/57981940.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651328.htm" class="variable">next</a> = NULL;
+<a href="../h_aa/57638408.htm" class=function>luaE_freeCI</a>                                      lstate.c
+   125 :    <a href="../h_src/57981668.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651328.htm" class="variable">next</a> = NULL;
+<a href="../h_aa/57638340.htm" class=function>luaE_shrinkCI</a>                                    lstate.c
+   145 :    <a href="../h_src/57981260.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651328.htm" class="variable">next</a> = <a href="../h_src/57980988.htm" class="localvar">next2</a>;  <a  class="comments">/* remove next from the list */</a>
+<a href="../h_aa/57980580.htm" class=function>stack_init</a>                                       lstate.c
+   191 :    <a href="../h_src/57980036.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651328.htm" class="variable">next</a> = <a href="../h_src/57980036.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651396.htm" class="variable">previous</a> = NULL;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57638408.htm" class=function>luaE_freeCI</a>                                      lstate.c
+   124 :    <a href="../h_src/57537764.htm" class="type">CallInfo</a> *<a href="../h_src/57981532.htm" class="localvar">next</a> = <a href="../h_src/57981668.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651328.htm" class="variable">next</a>;
+   127 :    <a href="../h_src/57981532.htm" class="localvar">next</a> = <a href="../h_src/57981668.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651328.htm" class="variable">next</a>;
+<a href="../h_aa/57638340.htm" class=function>luaE_shrinkCI</a>                                    lstate.c
+   139 :    <a href="../h_src/57537764.htm" class="type">CallInfo</a> *<a href="../h_src/57981260.htm" class="localvar">ci</a> = <a href="../h_src/57981396.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57651328.htm" class="variable">next</a>;  <a  class="comments">/* first free CallInfo */</a>
+   143 :    while ((<a href="../h_src/57981124.htm" class="localvar">next</a> = <a href="../h_src/57981260.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651328.htm" class="variable">next</a>) != NULL) {  <a  class="comments">/* two extra elements? */</a>
+   144 :    <a href="../h_src/57537764.htm" class="type">CallInfo</a> *<a href="../h_src/57980988.htm" class="localvar">next2</a> = <a href="../h_src/57981124.htm" class="localvar">next</a>-&gt;<a href="../h_src/57651328.htm" class="variable">next</a>;  <a  class="comments">/* next's next */</a>
+<a href="../h_aa/57635892.htm" class=function>luaG_findlocal</a>                                   ldebug.c
+   206 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57752864.htm" class="localvar">limit</a> = (<a href="../h_src/57753544.htm" class="localvar">ci</a> == <a href="../h_src/57753680.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>) ? <a href="../h_src/57753680.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> : <a href="../h_src/57753544.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651328.htm" class="variable">next</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a>;
+<a href="../h_aa/57869252.htm" class=function>prepCallInfo</a>                                     ldo.c
+   504 :    <a href="../h_src/57537764.htm" class="type">CallInfo</a> *<a href="../h_src/57868436.htm" class="localvar">ci</a> = <a href="../h_src/57869116.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a> = <a href="../h_src/57869388.htm" class="macro">next_ci</a>(<a href="../h_src/57869116.htm" class="localvar">L</a>);  <a  class="comments">/* new frame */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable next</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

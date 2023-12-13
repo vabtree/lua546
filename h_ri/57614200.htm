@@ -1,0 +1,48 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>cvt2str</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57614200.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57614200.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57614200.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57614200.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57438812.htm" class=function>lua_isstring</a>                                     lapi.c
+   318 :    return (<a href="../h_src/57524912.htm" class="macro">ttisstring</a>(<a href="../h_src/57598696.htm" class="localvar">o</a>) || <a href="../h_src/57614200.htm" class="macro">cvt2str</a>(<a href="../h_src/57598696.htm" class="localvar">o</a>));
+<a href="../h_aa/57438200.htm" class=function>lua_tolstring</a>                                    lapi.c
+   410 :    if (!<a href="../h_src/57614200.htm" class="macro">cvt2str</a>(<a href="../h_src/57593052.htm" class="localvar">o</a>)) {  <a  class="comments">/* not convertible? */</a>
+<a href="../h_aa/57635552.htm" class=function>luaG_concaterror</a>                                 ldebug.c
+   762 :    if (<a href="../h_src/57524912.htm" class="macro">ttisstring</a>(<a href="../h_src/57891284.htm" class="localvar">p1</a>) || <a href="../h_src/57614200.htm" class="macro">cvt2str</a>(<a href="../h_src/57891284.htm" class="localvar">p1</a>)) <a href="../h_src/57891284.htm" class="localvar">p1</a> = <a href="../h_src/57891148.htm" class="localvar">p2</a>;
+<a href="../h_aa/57610868.htm" class=function>luaV_concat</a>                                      lvm.c
+   644 :    if (!(<a href="../h_src/57524912.htm" class="macro">ttisstring</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58202680.htm" class="localvar">top</a> - 2)) || <a href="../h_src/57614200.htm" class="macro">cvt2str</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58202680.htm" class="localvar">top</a> - 2))) ||
+   645 :    !<a href="../h_src/58204040.htm" class="macro">tostring</a>(<a href="../h_src/58202952.htm" class="localvar">L</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58202680.htm" class="localvar">top</a> - 1)))
+   648 :    <a href="../h_src/57547624.htm" class="macro">cast_void</a>(<a href="../h_src/58204040.htm" class="macro">tostring</a>(<a href="../h_src/58202952.htm" class="localvar">L</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58202680.htm" class="localvar">top</a> - 2)));  <a  class="comments">/* result is first operand */</a>
+   657 :    for (<a href="../h_src/58202544.htm" class="localvar">n</a> = 1; <a href="../h_src/58202544.htm" class="localvar">n</a> &lt; <a href="../h_src/58202816.htm" class="localvar">total</a> &amp;&amp; <a href="../h_src/58204040.htm" class="macro">tostring</a>(<a href="../h_src/58202952.htm" class="localvar">L</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58202680.htm" class="localvar">top</a> - <a href="../h_src/58202544.htm" class="localvar">n</a> - 1)); <a href="../h_src/58202544.htm" class="localvar">n</a>++) {
+</pre>
+<h4><a class="legend">Table lists functions that directly use cvt2str</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

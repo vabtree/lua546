@@ -1,0 +1,58 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>Upvaldesc</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57517092.htm" class="type" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57517092.htm" class="type" target="_self">Usage</a></li>
+<li><a href="../h_src/57517092.htm" class="type" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57517092.htm" class="type" target="_self">Used By</a></li>
+<li><a href="../h_rx/57517092.htm" class="type" target="_self">Cross Reference</a></li>
+<li><a href="../h_ro/57517092.htm" class="type" target="_self">Built From</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Used In</h4>
+<pre><a href="../h_aa/58041916.htm" class=function>allocupvalue</a>                                     lparser.c
+   352 :    static <a href="../h_src/57517092.htm" class="type">Upvaldesc</a> *<a href="../h_src/58041916.htm" class="function">allocupvalue</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/58041780.htm" class="localvar">fs</a>) {
+   357 :    <a href="../h_src/57517092.htm" class="type">Upvaldesc</a>, <a href="../h_src/57631676.htm" class="macro">MAXUPVAL</a>, &quot;upvalues&quot;);
+<a href="../h_aa/58024712.htm" class=function>close_func</a>                                       lparser.c
+   771 :    <a href="../h_src/57657108.htm" class="macro">luaM_shrinkvector</a>(<a href="../h_src/58024440.htm" class="localvar">L</a>, <a href="../h_src/58024168.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>, <a href="../h_src/58024168.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>, <a href="../h_src/58024304.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674828.htm" class="variable">nups</a>, <a href="../h_src/57517092.htm" class="type">Upvaldesc</a>);
+<a href="../h_aa/57987244.htm" class=variable>env</a>                                              lparser.c
+  1926 :    <a href="../h_src/57517092.htm" class="type">Upvaldesc</a> *<a href="../h_src/57987244.htm" class="localvar">env</a>;
+<a href="../h_aa/58066504.htm" class=function>loadUpvalues</a>                                     lundump.c
+   215 :    <a href="../h_src/58066232.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a> = <a href="../h_src/57495196.htm" class="macro">luaM_newvectorchecked</a>(<a href="../h_src/58066368.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, <a href="../h_src/58065960.htm" class="localvar">n</a>, <a href="../h_src/57517092.htm" class="type">Upvaldesc</a>);
+<a href="../h_aa/58040828.htm" class=variable>up</a>                                               lparser.c
+   365 :    <a href="../h_src/57517092.htm" class="type">Upvaldesc</a> *<a href="../h_src/58040828.htm" class="localvar">up</a> = <a href="../h_src/58041916.htm" class="function">allocupvalue</a>(<a href="../h_src/58041236.htm" class="localvar">fs</a>);
+<a href="../h_aa/58042052.htm" class=variable>up</a>                                               lparser.c
+   344 :    <a href="../h_src/57517092.htm" class="type">Upvaldesc</a> *<a href="../h_src/58042052.htm" class="localvar">up</a> = <a href="../h_src/58042460.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57676052.htm" class="variable">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>;
+<a href="../h_aa/58044500.htm" class=variable>up</a>                                               lparser.c
+   292 :    <a href="../h_src/57517092.htm" class="type">Upvaldesc</a> *<a href="../h_src/58044500.htm" class="localvar">up</a> = &amp;<a href="../h_src/58044908.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57676052.htm" class="variable">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/58045044.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a>];
+<a href="../h_aa/57514440.htm" class=variable>Proto::upvalues</a>                                  lobject.h
+   569 :    <a href="../h_src/57517092.htm" class="type">Upvaldesc</a> *<a href="../h_src/57514440.htm" class="variable">upvalues</a>;  <a  class="comments">/* upvalue information */</a>
+<a href="../h_aa/58197172.htm" class=variable>uv</a>                                               lvm.c
+   791 :    <a href="../h_src/57517092.htm" class="type">Upvaldesc</a> *<a href="../h_src/58197172.htm" class="localvar">uv</a> = <a href="../h_src/58197852.htm" class="localvar">p</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>;
+</pre>
+<h4><a class="legend">Table lists all symbols that directly use type Upvaldesc</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,49 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>fs</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57988604.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57988604.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57988604.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57988604.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57988876.htm" class=function>retstat</a>                                          lparser.c
+  1815 :    <a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57988604.htm" class="localvar">fs</a> = <a href="../h_src/57988740.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57988876.htm" class=function>retstat</a>                                          lparser.c
+  1818 :    int <a href="../h_src/57988196.htm" class="localvar">first</a> = <a href="../h_src/57674488.htm" class="function">luaY_nvarstack</a>(<a href="../h_src/57988604.htm" class="localvar">fs</a>);  <a  class="comments">/* first slot to be returned */</a>
+  1824 :    <a href="../h_src/57671564.htm" class="macro">luaK_setmultret</a>(<a href="../h_src/57988604.htm" class="localvar">fs</a>, &amp;<a href="../h_src/57988468.htm" class="localvar">e</a>);
+  1825 :    if (<a href="../h_src/57988468.htm" class="localvar">e</a>.<a href="../h_src/57680744.htm" class="variable">k</a> == <a href="../h_src/57681492.htm" class="variable">VCALL</a> &amp;&amp; <a href="../h_src/57988332.htm" class="localvar">nret</a> == 1 &amp;&amp; !<a href="../h_src/57988604.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675576.htm" class="variable">bl</a>-&gt;<a href="../h_src/58055924.htm" class="variable">insidetbc</a>) {  <a  class="comments">/* tail call? */</a>
+  1826 :    <a href="../h_src/57694616.htm" class="macro">SET_OPCODE</a>(<a href="../h_src/57671700.htm" class="macro">getinstruction</a>(<a href="../h_src/57988604.htm" class="localvar">fs</a>,&amp;<a href="../h_src/57988468.htm" class="localvar">e</a>), <a href="../h_src/57685844.htm" class="variable">OP_TAILCALL</a>);
+  1833 :    <a href="../h_src/57988196.htm" class="localvar">first</a> = <a href="../h_src/57670408.htm" class="function">luaK_exp2anyreg</a>(<a href="../h_src/57988604.htm" class="localvar">fs</a>, &amp;<a href="../h_src/57988468.htm" class="localvar">e</a>);  <a  class="comments">/* can use original slot */</a>
+  1835 :    <a href="../h_src/57670272.htm" class="function">luaK_exp2nextreg</a>(<a href="../h_src/57988604.htm" class="localvar">fs</a>, &amp;<a href="../h_src/57988468.htm" class="localvar">e</a>);
+  1840 :    <a href="../h_src/57669524.htm" class="function">luaK_ret</a>(<a href="../h_src/57988604.htm" class="localvar">fs</a>, <a href="../h_src/57988196.htm" class="localvar">first</a>, <a href="../h_src/57988332.htm" class="localvar">nret</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable fs</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

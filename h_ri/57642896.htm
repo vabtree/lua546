@@ -1,0 +1,50 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">lua_State::</a>marked</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57642896.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57642896.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57642896.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57642896.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57642896.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57439900.htm" class=function>lua_newstate</a>                                     lstate.c
+   370 :    <a href="../h_src/58134164.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642896.htm" class="variable">marked</a> = <a href="../h_src/57625148.htm" class="macro">luaC_white</a>(<a href="../h_src/58134028.htm" class="localvar">g</a>);
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57826616.htm" class=function>atomic</a>                                           lgc.c
+  1532 :    <a href="../h_src/57827024.htm" class="macro">markobject</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>, <a href="../h_src/57945452.htm" class="localvar">L</a>);  <a  class="comments">/* mark running thread */</a>
+<a href="../h_aa/57820088.htm" class=function>remarkupvals</a>                                     lgc.c
+   373 :    if (!<a href="../h_src/57626372.htm" class="macro">iswhite</a>(<a href="../h_src/57819816.htm" class="localvar">thread</a>) &amp;&amp; <a href="../h_src/57819816.htm" class="localvar">thread</a>-&gt;<a href="../h_src/57642216.htm" class="variable">openupval</a> != NULL)
+<a href="../h_aa/57818932.htm" class=function>restartcollection</a>                                lgc.c
+   405 :    <a href="../h_src/57827024.htm" class="macro">markobject</a>(<a href="../h_src/57818796.htm" class="localvar">g</a>, <a href="../h_src/57818796.htm" class="localvar">g</a>-&gt;<a href="../h_src/57643848.htm" class="variable">mainthread</a>);
+<a href="../h_aa/57971836.htm" class=function>traversethread</a>                                   lgc.c
+   630 :    if (<a href="../h_src/57623652.htm" class="macro">isold</a>(<a href="../h_src/57971564.htm" class="localvar">th</a>) || <a href="../h_src/57971700.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646024.htm" class="variable">gcstate</a> == <a href="../h_src/57629772.htm" class="macro">GCSpropagate</a>)
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable marked</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

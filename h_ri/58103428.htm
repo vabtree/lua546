@@ -1,0 +1,45 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>L</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58103428.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/58103428.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/58103428.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/58103428.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57616444.htm" class=function>luaH_resize</a>                                      ltable.c
+   560 :    <a href="../h_src/58106556.htm" class="function">setnodevector</a>(<a href="../h_src/58103428.htm" class="localvar">L</a>, &amp;<a href="../h_src/58102748.htm" class="localvar">newt</a>, <a href="../h_src/58103020.htm" class="localvar">nhsize</a>);
+   567 :    <a href="../h_src/57616988.htm" class="function">luaH_setint</a>(<a href="../h_src/58103428.htm" class="localvar">L</a>, <a href="../h_src/58103292.htm" class="localvar">t</a>, <a href="../h_src/58102884.htm" class="localvar">i</a> + 1, &amp;<a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58102884.htm" class="localvar">i</a>]);
+   573 :    <a href="../h_src/58102476.htm" class="localvar">newarray</a> = <a href="../h_src/57657244.htm" class="macro">luaM_reallocvector</a>(<a href="../h_src/58103428.htm" class="localvar">L</a>, <a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>, <a href="../h_src/58102612.htm" class="localvar">oldasize</a>, <a href="../h_src/58103156.htm" class="localvar">newasize</a>, <a href="../h_src/57535384.htm" class="type">TValue</a>);
+   575 :    <a href="../h_src/58111044.htm" class="function">freehash</a>(<a href="../h_src/58103428.htm" class="localvar">L</a>, &amp;<a href="../h_src/58102748.htm" class="localvar">newt</a>);  <a  class="comments">/* release new hash part */</a>
+   576 :    <a href="../h_src/57496556.htm" class="macro">luaM_error</a>(<a href="../h_src/58103428.htm" class="localvar">L</a>);  <a  class="comments">/* raise error (with array unchanged) */</a>
+   585 :    <a href="../h_src/58105604.htm" class="function">reinsert</a>(<a href="../h_src/58103428.htm" class="localvar">L</a>, &amp;<a href="../h_src/58102748.htm" class="localvar">newt</a>, <a href="../h_src/58103292.htm" class="localvar">t</a>);  <a  class="comments">/* 'newt' now has the old hash */</a>
+   586 :    <a href="../h_src/58111044.htm" class="function">freehash</a>(<a href="../h_src/58103428.htm" class="localvar">L</a>, &amp;<a href="../h_src/58102748.htm" class="localvar">newt</a>);  <a  class="comments">/* free old hash part */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable L</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

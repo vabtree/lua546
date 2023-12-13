@@ -1,0 +1,62 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">Proto::</a>sizep</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57515460.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57515460.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57515460.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57515460.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57515460.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/58067184.htm" class=function>loadProtos</a>                                       lundump.c
+   195 :    <a href="../h_src/58066912.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515460.htm" class="variable">sizep</a> = <a href="../h_src/58066640.htm" class="localvar">n</a>;
+<a href="../h_aa/57630996.htm" class=function>luaF_newproto</a>                                    lfunc.c
+   246 :    <a href="../h_src/57830356.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515460.htm" class="variable">sizep</a> = 0;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/58026888.htm" class=function>addprototype</a>                                     lparser.c
+   703 :    if (<a href="../h_src/58026344.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675236.htm" class="variable">np</a> &gt;= <a href="../h_src/58026208.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515460.htm" class="variable">sizep</a>) {
+   704 :    int <a href="../h_src/58026072.htm" class="localvar">oldsize</a> = <a href="../h_src/58026208.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515460.htm" class="variable">sizep</a>;
+   705 :    <a href="../h_src/57494924.htm" class="macro">luaM_growvector</a>(<a href="../h_src/58026480.htm" class="localvar">L</a>, <a href="../h_src/58026208.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a>, <a href="../h_src/58026344.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675236.htm" class="variable">np</a>, <a href="../h_src/58026208.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515460.htm" class="variable">sizep</a>, <a href="../h_src/57513828.htm" class="type">Proto</a> *, <a href="../h_src/57696520.htm" class="macro">MAXARG_Bx</a>, &quot;functions&quot;);
+   706 :    while (<a href="../h_src/58026072.htm" class="localvar">oldsize</a> &lt; <a href="../h_src/58026208.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515460.htm" class="variable">sizep</a>)
+<a href="../h_aa/58024712.htm" class=function>close_func</a>                                       lparser.c
+   769 :    <a href="../h_src/57657108.htm" class="macro">luaM_shrinkvector</a>(<a href="../h_src/58024440.htm" class="localvar">L</a>, <a href="../h_src/58024168.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a>, <a href="../h_src/58024168.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515460.htm" class="variable">sizep</a>, <a href="../h_src/58024304.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675236.htm" class="variable">np</a>, <a href="../h_src/57513828.htm" class="type">Proto</a> *);
+<a href="../h_aa/57844024.htm" class=function>dumpProtos</a>                                       ldump.c
+   140 :    int <a href="../h_src/57843480.htm" class="localvar">n</a> = <a href="../h_src/57843752.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515460.htm" class="variable">sizep</a>;
+<a href="../h_aa/57630248.htm" class=function>luaF_freeproto</a>                                   lfunc.c
+   269 :    <a href="../h_src/57495604.htm" class="macro">luaM_freearray</a>(<a href="../h_src/57830220.htm" class="localvar">L</a>, <a href="../h_src/57830084.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a>, <a href="../h_src/57830084.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515460.htm" class="variable">sizep</a>);
+<a href="../h_aa/143406832.htm" class=function>PrintFunction</a>                                    luac.c
+   718 :    int <a href="../h_src/143393504.htm" class="localvar">i</a>,<a href="../h_src/143393368.htm" class="localvar">n</a>=<a href="../h_src/143393776.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515460.htm" class="variable">sizep</a>;
+<a href="../h_aa/143394728.htm" class=function>PrintHeader</a>                                      luac.c
+   685 :    <a href="../h_src/143394864.htm" class="macro">S</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515392.htm" class="variable">sizelocvars</a>),<a href="../h_src/143394864.htm" class="macro">S</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515664.htm" class="variable">sizek</a>),<a href="../h_src/143394864.htm" class="macro">S</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515460.htm" class="variable">sizep</a>));
+<a href="../h_aa/57973604.htm" class=function>traverseproto</a>                                    lgc.c
+   585 :    for (<a href="../h_src/57973196.htm" class="localvar">i</a> = 0; <a href="../h_src/57973196.htm" class="localvar">i</a> &lt; <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515460.htm" class="variable">sizep</a>; <a href="../h_src/57973196.htm" class="localvar">i</a>++)  <a  class="comments">/* mark nested protos */</a>
+   589 :    return 1 + <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515664.htm" class="variable">sizek</a> + <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a> + <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515460.htm" class="variable">sizep</a> + <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515392.htm" class="variable">sizelocvars</a>;
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable sizep</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

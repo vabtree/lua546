@@ -1,0 +1,46 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>getgcparam</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57622972.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57622972.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57622972.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57622972.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57947492.htm" class=function>genstep</a>                                          lgc.c
+  1445 :    <a href="../h_src/57550616.htm" class="type">lu_mem</a> <a href="../h_src/57946948.htm" class="localvar">majorinc</a> = (<a href="../h_src/57947084.htm" class="localvar">majorbase</a> / 100) * <a href="../h_src/57622972.htm" class="macro">getgcparam</a>(<a href="../h_src/57947220.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645752.htm" class="variable">genmajormul</a>);
+<a href="../h_aa/57942732.htm" class=function>incstep</a>                                          lgc.c
+  1666 :    int <a href="../h_src/57942324.htm" class="localvar">stepmul</a> = (<a href="../h_src/57622972.htm" class="macro">getgcparam</a>(<a href="../h_src/57942460.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645480.htm" class="variable">gcstepmul</a>) | 1);  <a  class="comments">/* avoid division by 0 */</a>
+<a href="../h_aa/57430448.htm" class=function>lua_gc</a>                                           lapi.c
+  1185 :    <a href="../h_src/57719572.htm" class="localvar">res</a> = <a href="../h_src/57622972.htm" class="macro">getgcparam</a>(<a href="../h_src/57719436.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645548.htm" class="variable">gcpause</a>);
+  1191 :    <a href="../h_src/57719572.htm" class="localvar">res</a> = <a href="../h_src/57622972.htm" class="macro">getgcparam</a>(<a href="../h_src/57719436.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645480.htm" class="variable">gcstepmul</a>);
+<a href="../h_aa/57956740.htm" class=function>setpause</a>                                         lgc.c
+  1059 :    int <a href="../h_src/57956196.htm" class="localvar">pause</a> = <a href="../h_src/57622972.htm" class="macro">getgcparam</a>(<a href="../h_src/57956604.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645548.htm" class="variable">gcpause</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use getgcparam</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

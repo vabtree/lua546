@@ -1,0 +1,62 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">global_State::</a>nilvalue</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57646228.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57646228.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57646228.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57646228.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57646228.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57978268.htm" class=function>f_luaopen</a>                                        lstate.c
+   240 :    <a href="../h_src/57530896.htm" class="macro">setnilvalue</a>(&amp;<a href="../h_src/57977860.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646228.htm" class="variable">nilvalue</a>);  <a  class="comments">/* now state is complete */</a>
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/58137292.htm" class=function>close_state</a>                                      lstate.c
+   271 :    if (!<a href="../h_src/57641060.htm" class="macro">completestate</a>(<a href="../h_src/58137020.htm" class="localvar">g</a>))  <a  class="comments">/* closing a partially built state? */</a>
+<a href="../h_aa/57610052.htm" class=function>index2value</a>                                      lapi.c
+    65 :    if (<a href="../h_src/57609508.htm" class="localvar">o</a> &gt;= <a href="../h_src/57609916.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>) return &amp;<a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57609916.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57646228.htm" class="variable">nilvalue</a>;
+    81 :    : &amp;<a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57609916.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57646228.htm" class="variable">nilvalue</a>;
+    85 :    return &amp;<a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57609916.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57646228.htm" class="variable">nilvalue</a>;  <a  class="comments">/* no upvalues */</a>
+<a href="../h_aa/57435344.htm" class=function>lua_compare</a>                                      lapi.c
+   358 :    if (<a href="../h_src/57610460.htm" class="macro">isvalid</a>(<a href="../h_src/57596928.htm" class="localvar">L</a>, <a href="../h_src/57596384.htm" class="localvar">o1</a>) &amp;&amp; <a href="../h_src/57610460.htm" class="macro">isvalid</a>(<a href="../h_src/57596928.htm" class="localvar">L</a>, <a href="../h_src/57596248.htm" class="localvar">o2</a>)) {
+<a href="../h_aa/57439900.htm" class=function>lua_newstate</a>                                     lstate.c
+   400 :    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(&amp;<a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646228.htm" class="variable">nilvalue</a>, 0);  <a  class="comments">/* to signal that state is not yet built */</a>
+<a href="../h_aa/57435412.htm" class=function>lua_rawequal</a>                                     lapi.c
+   331 :    return (<a href="../h_src/57610460.htm" class="macro">isvalid</a>(<a href="../h_src/57598152.htm" class="localvar">L</a>, <a href="../h_src/57597744.htm" class="localvar">o1</a>) &amp;&amp; <a href="../h_src/57610460.htm" class="macro">isvalid</a>(<a href="../h_src/57598152.htm" class="localvar">L</a>, <a href="../h_src/57597608.htm" class="localvar">o2</a>)) ? <a href="../h_src/57612432.htm" class="macro">luaV_rawequalobj</a>(<a href="../h_src/57597744.htm" class="localvar">o1</a>, <a href="../h_src/57597608.htm" class="localvar">o2</a>) : 0;
+<a href="../h_aa/57438540.htm" class=function>lua_type</a>                                         lapi.c
+   286 :    return (<a href="../h_src/57610460.htm" class="macro">isvalid</a>(<a href="../h_src/57601008.htm" class="localvar">L</a>, <a href="../h_src/57600736.htm" class="localvar">o</a>) ? <a href="../h_src/57534500.htm" class="macro">ttype</a>(<a href="../h_src/57600736.htm" class="localvar">o</a>) : <a href="../h_src/57444184.htm" class="macro">LUA_TNONE</a>);
+<a href="../h_aa/57498052.htm" class=function>luaT_gettmbyobj</a>                                  ltm.c
+    83 :    return (<a href="../h_src/58088944.htm" class="localvar">mt</a> ? <a href="../h_src/57616920.htm" class="function">luaH_getshortstr</a>(<a href="../h_src/58088944.htm" class="localvar">mt</a>, <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/58089352.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57643644.htm" class="variable">tmname</a>[<a href="../h_src/58089080.htm" class="localvar">event</a>]) : &amp;<a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/58089352.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57646228.htm" class="variable">nilvalue</a>);
+<a href="../h_aa/57834300.htm" class=function>prepcallclosemth</a>                                 lfunc.c
+   147 :    <a href="../h_src/57833484.htm" class="localvar">errobj</a> = &amp;<a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57834164.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57646228.htm" class="variable">nilvalue</a>;  <a  class="comments">/* error object is nil */</a>
+<a href="../h_aa/57922740.htm" class=function>tryagain</a>                                         lmem.c
+   165 :    if (<a href="../h_src/57926276.htm" class="macro">cantryagain</a>(<a href="../h_src/57922060.htm" class="localvar">g</a>)) {
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable nilvalue</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

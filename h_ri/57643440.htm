@@ -1,0 +1,50 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">global_State::</a>mt</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57643440.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57643440.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57643440.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57643440.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57643440.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57439900.htm" class=function>lua_newstate</a>                                     lstate.c
+   406 :    for (<a href="../h_src/58134300.htm" class="localvar">i</a>=0; <a href="../h_src/58134300.htm" class="localvar">i</a> &lt; <a href="../h_src/57426028.htm" class="macro">LUA_NUMTAGS</a>; <a href="../h_src/58134300.htm" class="localvar">i</a>++) <a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57643440.htm" class="variable">mt</a>[<a href="../h_src/58134300.htm" class="localvar">i</a>] = NULL;
+<a href="../h_aa/57433168.htm" class=function>lua_setmetatable</a>                                 lapi.c
+   963 :    <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57727460.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57643440.htm" class="variable">mt</a>[<a href="../h_src/57534500.htm" class="macro">ttype</a>(<a href="../h_src/57727188.htm" class="localvar">obj</a>)] = <a href="../h_src/57727052.htm" class="localvar">mt</a>;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57433780.htm" class=function>lua_getmetatable</a>                                 lapi.c
+   789 :    <a href="../h_src/57735484.htm" class="localvar">mt</a> = <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57735892.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57643440.htm" class="variable">mt</a>[<a href="../h_src/57534500.htm" class="macro">ttype</a>(<a href="../h_src/57735620.htm" class="localvar">obj</a>)];
+<a href="../h_aa/57498052.htm" class=function>luaT_gettmbyobj</a>                                  ltm.c
+    81 :    <a href="../h_src/58088944.htm" class="localvar">mt</a> = <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/58089352.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57643440.htm" class="variable">mt</a>[<a href="../h_src/57534500.htm" class="macro">ttype</a>(<a href="../h_src/58089216.htm" class="localvar">o</a>)];
+<a href="../h_aa/57821040.htm" class=function>markmt</a>                                           lgc.c
+   338 :    <a href="../h_src/57826888.htm" class="macro">markobjectN</a>(<a href="../h_src/57820904.htm" class="localvar">g</a>, <a href="../h_src/57820904.htm" class="localvar">g</a>-&gt;<a href="../h_src/57643440.htm" class="variable">mt</a>[<a href="../h_src/57820768.htm" class="localvar">i</a>]);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable mt</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

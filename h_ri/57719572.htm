@@ -1,0 +1,52 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>res</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57719572.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57719572.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57719572.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57719572.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57430448.htm" class=function>lua_gc</a>                                           lapi.c
+  1135 :    int <a href="../h_src/57719572.htm" class="localvar">res</a> = 0;
+  1157 :    <a href="../h_src/57719572.htm" class="localvar">res</a> = <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/57638748.htm" class="macro">gettotalbytes</a>(<a href="../h_src/57719436.htm" class="localvar">g</a>) &gt;&gt; 10);
+  1161 :    <a href="../h_src/57719572.htm" class="localvar">res</a> = <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/57638748.htm" class="macro">gettotalbytes</a>(<a href="../h_src/57719436.htm" class="localvar">g</a>) &amp; 0x3ff);
+  1180 :    <a href="../h_src/57719572.htm" class="localvar">res</a> = 1;  <a  class="comments">/* signal it */</a>
+  1185 :    <a href="../h_src/57719572.htm" class="localvar">res</a> = <a href="../h_src/57622972.htm" class="macro">getgcparam</a>(<a href="../h_src/57719436.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645548.htm" class="variable">gcpause</a>);
+  1191 :    <a href="../h_src/57719572.htm" class="localvar">res</a> = <a href="../h_src/57622972.htm" class="macro">getgcparam</a>(<a href="../h_src/57719436.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645480.htm" class="variable">gcstepmul</a>);
+  1196 :    <a href="../h_src/57719572.htm" class="localvar">res</a> = <a href="../h_src/57621884.htm" class="macro">gcrunning</a>(<a href="../h_src/57719436.htm" class="localvar">g</a>);
+  1202 :    <a href="../h_src/57719572.htm" class="localvar">res</a> = <a href="../h_src/57622428.htm" class="macro">isdecGCmodegen</a>(<a href="../h_src/57719436.htm" class="localvar">g</a>) ? <a href="../h_src/57430720.htm" class="macro">LUA_GCGEN</a> : <a href="../h_src/57430584.htm" class="macro">LUA_GCINC</a>;
+  1214 :    <a href="../h_src/57719572.htm" class="localvar">res</a> = <a href="../h_src/57622428.htm" class="macro">isdecGCmodegen</a>(<a href="../h_src/57719436.htm" class="localvar">g</a>) ? <a href="../h_src/57430720.htm" class="macro">LUA_GCGEN</a> : <a href="../h_src/57430584.htm" class="macro">LUA_GCINC</a>;
+  1224 :    default: <a href="../h_src/57719572.htm" class="localvar">res</a> = -1;  <a  class="comments">/* invalid option */</a>
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57430448.htm" class=function>lua_gc</a>                                           lapi.c
+  1228 :    return <a href="../h_src/57719572.htm" class="localvar">res</a>;
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable res</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,56 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>progname</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57572920.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57572920.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57572920.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57572920.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57572920.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57461796.htm" class=file>lua.c</a>
+    37 :    static const char *<a href="../h_src/57572920.htm" class="variable">progname</a> = <a href="../h_src/57573532.htm" class="macro">LUA_PROGNAME</a>;
+<a href="../h_aa/57563604.htm" class=function>collectargs</a>                                      lua.c
+   282 :    <a href="../h_src/57572920.htm" class="variable">progname</a> = <a href="../h_src/57563468.htm" class="localvar">argv</a>[0];  <a  class="comments">/* save it */</a>
+<a href="../h_aa/57554560.htm" class=function>doREPL</a>                                           lua.c
+   597 :    <a href="../h_src/57572920.htm" class="variable">progname</a> = NULL;  <a  class="comments">/* no 'progname' on errors in interactive mode */</a>
+   607 :    <a href="../h_src/57572920.htm" class="variable">progname</a> = <a href="../h_src/57554152.htm" class="localvar">oldprogname</a>;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57554560.htm" class=function>doREPL</a>                                           lua.c
+   596 :    const char *<a href="../h_src/57554152.htm" class="localvar">oldprogname</a> = <a href="../h_src/57572920.htm" class="variable">progname</a>;
+<a href="../h_aa/57554968.htm" class=function>l_print</a>                                          lua.c
+   584 :    <a href="../h_src/57571288.htm" class="function">l_message</a>(<a href="../h_src/57572920.htm" class="variable">progname</a>, <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/57554832.htm" class="localvar">L</a>, &quot;error calling 'print' (%s)&quot;,
+<a href="../h_aa/57571696.htm" class=function>print_usage</a>                                      lua.c
+    84 :    <a href="../h_src/57411884.htm" class="macro">lua_writestringerror</a>(&quot;%s: &quot;, <a href="../h_src/57572920.htm" class="variable">progname</a>);
+   102 :    <a href="../h_src/57572920.htm" class="variable">progname</a>);
+<a href="../h_aa/57570880.htm" class=function>report</a>                                           lua.c
+   124 :    <a href="../h_src/57571288.htm" class="function">l_message</a>(<a href="../h_src/57572920.htm" class="variable">progname</a>, <a href="../h_src/57570472.htm" class="localvar">msg</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable progname</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

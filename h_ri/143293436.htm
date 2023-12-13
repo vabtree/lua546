@@ -1,0 +1,53 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>spec</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143293436.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/143293436.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/143293436.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/143293436.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/143294116.htm" class=function>checkformat</a>                                      lstrlib.c
+  1227 :    const char *<a href="../h_src/143293436.htm" class="localvar">spec</a> = <a href="../h_src/143293844.htm" class="localvar">form</a> + 1;  <a  class="comments">/* skip '%' */</a>
+  1228 :    <a href="../h_src/143293436.htm" class="localvar">spec</a> += <a href="../h_aa/57906692.htm" class="libfunc">strspn</a>(<a href="../h_src/143293436.htm" class="localvar">spec</a>, <a href="../h_src/143293708.htm" class="localvar">flags</a>);  <a  class="comments">/* skip flags */</a>
+  1230 :    <a href="../h_src/143293436.htm" class="localvar">spec</a> = <a href="../h_src/143294388.htm" class="function">get2digits</a>(<a href="../h_src/143293436.htm" class="localvar">spec</a>);  <a  class="comments">/* skip width */</a>
+  1232 :    <a href="../h_src/143293436.htm" class="localvar">spec</a>++;
+  1233 :    <a href="../h_src/143293436.htm" class="localvar">spec</a> = <a href="../h_src/143294388.htm" class="function">get2digits</a>(<a href="../h_src/143293436.htm" class="localvar">spec</a>);  <a  class="comments">/* skip precision */</a>
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/143294116.htm" class=function>checkformat</a>                                      lstrlib.c
+  1228 :    <a href="../h_src/143293436.htm" class="localvar">spec</a> += <a href="../h_aa/57906692.htm" class="libfunc">strspn</a>(<a href="../h_src/143293436.htm" class="localvar">spec</a>, <a href="../h_src/143293708.htm" class="localvar">flags</a>);  <a  class="comments">/* skip flags */</a>
+  1229 :    if (*<a href="../h_src/143293436.htm" class="localvar">spec</a> != '0') {  <a  class="comments">/* a width cannot start with '0' */</a>
+  1230 :    <a href="../h_src/143293436.htm" class="localvar">spec</a> = <a href="../h_src/143294388.htm" class="function">get2digits</a>(<a href="../h_src/143293436.htm" class="localvar">spec</a>);  <a  class="comments">/* skip width */</a>
+  1231 :    if (*<a href="../h_src/143293436.htm" class="localvar">spec</a> == '.' &amp;&amp; <a href="../h_src/143293572.htm" class="localvar">precision</a>) {
+  1232 :    <a href="../h_src/143293436.htm" class="localvar">spec</a>++;
+  1233 :    <a href="../h_src/143293436.htm" class="localvar">spec</a> = <a href="../h_src/143294388.htm" class="function">get2digits</a>(<a href="../h_src/143293436.htm" class="localvar">spec</a>);  <a  class="comments">/* skip precision */</a>
+  1236 :    if (!<a href="../h_aa/143324716.htm" class="libfunc">isalpha</a>(<a href="../h_src/143343552.htm" class="macro">uchar</a>(*<a href="../h_src/143293436.htm" class="localvar">spec</a>)))  <a  class="comments">/* did not go to the end? */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable spec</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

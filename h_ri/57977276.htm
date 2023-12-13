@@ -1,0 +1,46 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>g</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57977276.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57977276.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57977276.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57977276.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57817436.htm" class=function>traverseephemeron</a>                                lgc.c
+   491 :    <a href="../h_src/57826752.htm" class="function">reallymarkobject</a>(<a href="../h_src/57977276.htm" class="localvar">g</a>, <a href="../h_src/57527496.htm" class="macro">gcvalue</a>(&amp;<a href="../h_src/57977140.htm" class="localvar">h</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/57976460.htm" class="localvar">i</a>]));
+   500 :    else if (<a href="../h_src/57824712.htm" class="function">iscleared</a>(<a href="../h_src/57977276.htm" class="localvar">g</a>, <a href="../h_src/57502880.htm" class="macro">gckeyN</a>(<a href="../h_src/57976052.htm" class="localvar">n</a>))) {  <a  class="comments">/* key is not marked (yet)? */</a>
+   507 :    <a href="../h_src/57826752.htm" class="function">reallymarkobject</a>(<a href="../h_src/57977276.htm" class="localvar">g</a>, <a href="../h_src/57527496.htm" class="macro">gcvalue</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/57976052.htm" class="localvar">n</a>)));  <a  class="comments">/* mark it now */</a>
+   511 :    if (<a href="../h_src/57977276.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646024.htm" class="variable">gcstate</a> == <a href="../h_src/57629772.htm" class="macro">GCSpropagate</a>)
+   512 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57977140.htm" class="localvar">h</a>, <a href="../h_src/57977276.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a>);  <a  class="comments">/* must retraverse it in atomic phase */</a>
+   514 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57977140.htm" class="localvar">h</a>, <a href="../h_src/57977276.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644868.htm" class="variable">ephemeron</a>);  <a  class="comments">/* have to propagate again */</a>
+   516 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57977140.htm" class="localvar">h</a>, <a href="../h_src/57977276.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644800.htm" class="variable">allweak</a>);  <a  class="comments">/* may have to clean white keys */</a>
+   518 :    <a href="../h_src/57818660.htm" class="function">genlink</a>(<a href="../h_src/57977276.htm" class="localvar">g</a>, <a href="../h_src/57638884.htm" class="macro">obj2gco</a>(<a href="../h_src/57977140.htm" class="localvar">h</a>));  <a  class="comments">/* check whether collector still needs to see it */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable g</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

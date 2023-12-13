@@ -1,0 +1,62 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">Table::</a>metatable</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57504444.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57504444.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57504444.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57504444.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57504444.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57433168.htm" class=function>lua_setmetatable</a>                                 lapi.c
+   947 :    <a href="../h_src/57507164.htm" class="macro">hvalue</a>(<a href="../h_src/57727188.htm" class="localvar">obj</a>)-&gt;<a href="../h_src/57504444.htm" class="variable">metatable</a> = <a href="../h_src/57727052.htm" class="localvar">mt</a>;
+<a href="../h_aa/57616512.htm" class=function>luaH_new</a>                                         ltable.c
+   629 :    <a href="../h_src/58100300.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504444.htm" class="variable">metatable</a> = NULL;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57433780.htm" class=function>lua_getmetatable</a>                                 lapi.c
+   783 :    <a href="../h_src/57735484.htm" class="localvar">mt</a> = <a href="../h_src/57507164.htm" class="macro">hvalue</a>(<a href="../h_src/57735620.htm" class="localvar">obj</a>)-&gt;<a href="../h_src/57504444.htm" class="variable">metatable</a>;
+<a href="../h_aa/57498052.htm" class=function>luaT_gettmbyobj</a>                                  ltm.c
+    75 :    <a href="../h_src/58088944.htm" class="localvar">mt</a> = <a href="../h_src/57507164.htm" class="macro">hvalue</a>(<a href="../h_src/58089216.htm" class="localvar">o</a>)-&gt;<a href="../h_src/57504444.htm" class="variable">metatable</a>;
+<a href="../h_aa/57498188.htm" class=function>luaT_objtypename</a>                                 ltm.c
+    93 :    if ((<a href="../h_src/57507300.htm" class="macro">ttistable</a>(<a href="../h_src/58088672.htm" class="localvar">o</a>) &amp;&amp; (<a href="../h_src/58088536.htm" class="localvar">mt</a> = <a href="../h_src/57507164.htm" class="macro">hvalue</a>(<a href="../h_src/58088672.htm" class="localvar">o</a>)-&gt;<a href="../h_src/57504444.htm" class="variable">metatable</a>) != NULL) ||
+<a href="../h_aa/57611752.htm" class=function>luaV_equalobj</a>                                    lvm.c
+   600 :    <a href="../h_src/58204448.htm" class="localvar">tm</a> = <a href="../h_src/57498528.htm" class="macro">fasttm</a>(<a href="../h_src/58204856.htm" class="localvar">L</a>, <a href="../h_src/57507164.htm" class="macro">hvalue</a>(<a href="../h_src/58204720.htm" class="localvar">t1</a>)-&gt;<a href="../h_src/57504444.htm" class="variable">metatable</a>, <a href="../h_src/57500568.htm" class="variable">TM_EQ</a>);
+   602 :    <a href="../h_src/58204448.htm" class="localvar">tm</a> = <a href="../h_src/57498528.htm" class="macro">fasttm</a>(<a href="../h_src/58204856.htm" class="localvar">L</a>, <a href="../h_src/57507164.htm" class="macro">hvalue</a>(<a href="../h_src/58204584.htm" class="localvar">t2</a>)-&gt;<a href="../h_src/57504444.htm" class="variable">metatable</a>, <a href="../h_src/57500568.htm" class="variable">TM_EQ</a>);
+<a href="../h_aa/57611140.htm" class=function>luaV_finishget</a>                                   lvm.c
+   301 :    <a href="../h_src/58213356.htm" class="localvar">tm</a> = <a href="../h_src/57498528.htm" class="macro">fasttm</a>(<a href="../h_src/58214172.htm" class="localvar">L</a>, <a href="../h_src/57507164.htm" class="macro">hvalue</a>(<a href="../h_src/58214036.htm" class="localvar">t</a>)-&gt;<a href="../h_src/57504444.htm" class="variable">metatable</a>, <a href="../h_src/57500908.htm" class="variable">TM_INDEX</a>);  <a  class="comments">/* table's metamethod */</a>
+<a href="../h_aa/57611072.htm" class=function>luaV_finishset</a>                                   lvm.c
+   338 :    <a href="../h_src/58212132.htm" class="localvar">tm</a> = <a href="../h_src/57498528.htm" class="macro">fasttm</a>(<a href="../h_src/58212948.htm" class="localvar">L</a>, <a href="../h_src/58211996.htm" class="localvar">h</a>-&gt;<a href="../h_src/57504444.htm" class="variable">metatable</a>, <a href="../h_src/57500840.htm" class="variable">TM_NEWINDEX</a>);  <a  class="comments">/* get metamethod */</a>
+<a href="../h_aa/57610528.htm" class=function>luaV_objlen</a>                                      lvm.c
+   690 :    <a href="../h_src/58200912.htm" class="localvar">tm</a> = <a href="../h_src/57498528.htm" class="macro">fasttm</a>(<a href="../h_src/58201320.htm" class="localvar">L</a>, <a href="../h_src/58200776.htm" class="localvar">h</a>-&gt;<a href="../h_src/57504444.htm" class="variable">metatable</a>, <a href="../h_src/57500636.htm" class="variable">TM_LEN</a>);
+<a href="../h_aa/57974964.htm" class=function>traversetable</a>                                    lgc.c
+   544 :    const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57974284.htm" class="localvar">mode</a> = <a href="../h_src/57498664.htm" class="macro">gfasttm</a>(<a href="../h_src/57974828.htm" class="localvar">g</a>, <a href="../h_src/57974692.htm" class="localvar">h</a>-&gt;<a href="../h_src/57504444.htm" class="variable">metatable</a>, <a href="../h_src/57500704.htm" class="variable">TM_MODE</a>);
+   545 :    <a href="../h_src/57826888.htm" class="macro">markobjectN</a>(<a href="../h_src/57974828.htm" class="localvar">g</a>, <a href="../h_src/57974692.htm" class="localvar">h</a>-&gt;<a href="../h_src/57504444.htm" class="variable">metatable</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable metatable</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

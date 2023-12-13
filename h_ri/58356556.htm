@@ -1,0 +1,50 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>ra</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58356556.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/58356556.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/58356556.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/58356556.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57610936.htm" class=function>luaV_execute</a>                                     lvm.c
+  1787 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58356556.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57610936.htm" class=function>luaV_execute</a>                                     lvm.c
+  1788 :    if (<a href="../h_src/57526544.htm" class="macro">ttisinteger</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58356556.htm" class="localvar">ra</a> + 2))) {  <a  class="comments">/* integer loop? */</a>
+  1789 :    <a href="../h_src/57438132.htm" class="function">lua_Unsigned</a> <a href="../h_src/58356420.htm" class="localvar">count</a> = <a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58356556.htm" class="localvar">ra</a> + 1)));
+  1791 :    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/58356284.htm" class="localvar">step</a> = <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58356556.htm" class="localvar">ra</a> + 2));
+  1792 :    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/58356148.htm" class="localvar">idx</a> = <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58356556.htm" class="localvar">ra</a>));  <a  class="comments">/* internal index */</a>
+  1793 :    <a href="../h_src/57525320.htm" class="macro">chgivalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58356556.htm" class="localvar">ra</a> + 1), <a href="../h_src/58356420.htm" class="localvar">count</a> - 1);  <a  class="comments">/* update counter */</a>
+  1795 :    <a href="../h_src/57525320.htm" class="macro">chgivalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58356556.htm" class="localvar">ra</a>), <a href="../h_src/58356148.htm" class="localvar">idx</a>);  <a  class="comments">/* update internal index */</a>
+  1796 :    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58356556.htm" class="localvar">ra</a> + 3), <a href="../h_src/58356148.htm" class="localvar">idx</a>);  <a  class="comments">/* and control variable */</a>
+  1800 :    else if (<a href="../h_src/58215124.htm" class="function">floatforloop</a>(<a href="../h_src/58356556.htm" class="localvar">ra</a>))  <a  class="comments">/* float loop */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable ra</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,54 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>L</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57553880.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57553880.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57553880.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57553880.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57554016.htm" class=function>pmain</a>                                            lua.c
+   618 :    int <a href="../h_src/57553744.htm" class="localvar">argc</a> = (int)<a href="../h_src/57429428.htm" class="macro">lua_tointeger</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>, 1);
+   619 :    char **<a href="../h_src/57553608.htm" class="localvar">argv</a> = (char **)<a href="../h_src/57437996.htm" class="function">lua_touserdata</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>, 2);
+   623 :    <a href="../h_src/57420724.htm" class="macro">luaL_checkversion</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>);  <a  class="comments">/* check that interpreter has correct version */</a>
+   631 :    <a href="../h_src/57434596.htm" class="function">lua_pushboolean</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>, 1);  <a  class="comments">/* signal for libraries to ignore env. vars. */</a>
+   632 :    <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>, <a href="../h_src/57445476.htm" class="macro">LUA_REGISTRYINDEX</a>, &quot;LUA_NOENV&quot;);
+   634 :    <a href="../h_src/57573736.htm" class="function">luaL_openlibs</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>);  <a  class="comments">/* open standard libraries */</a>
+   635 :    <a href="../h_src/57568840.htm" class="function">createargtable</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>, <a href="../h_src/57553608.htm" class="localvar">argv</a>, <a href="../h_src/57553744.htm" class="localvar">argc</a>, <a href="../h_src/57553472.htm" class="localvar">script</a>);  <a  class="comments">/* create table 'arg' */</a>
+   636 :    <a href="../h_src/57430448.htm" class="function">lua_gc</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>, <a href="../h_src/57431808.htm" class="macro">LUA_GCRESTART</a>);  <a  class="comments">/* start GC... */</a>
+   637 :    <a href="../h_src/57430448.htm" class="function">lua_gc</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>, <a href="../h_src/57430720.htm" class="macro">LUA_GCGEN</a>, 0, 0);  <a  class="comments">/* ...in generational mode */</a>
+   639 :    if (<a href="../h_src/57561836.htm" class="function">handle_luainit</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>) != <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>)  <a  class="comments">/* run LUA_INIT */</a>
+   642 :    if (!<a href="../h_src/57562924.htm" class="function">runargs</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>, <a href="../h_src/57553608.htm" class="localvar">argv</a>, <a href="../h_src/57553200.htm" class="localvar">optlim</a>))  <a  class="comments">/* execute arguments -e and -l */</a>
+   645 :    if (<a href="../h_src/57565168.htm" class="function">handle_script</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>, <a href="../h_src/57553608.htm" class="localvar">argv</a> + <a href="../h_src/57553472.htm" class="localvar">script</a>) != <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>)
+   649 :    <a href="../h_src/57554560.htm" class="function">doREPL</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>);  <a  class="comments">/* do read-eval-print loop */</a>
+   653 :    <a href="../h_src/57554560.htm" class="function">doREPL</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>);  <a  class="comments">/* do read-eval-print loop */</a>
+   655 :    else <a href="../h_src/57567412.htm" class="function">dofile</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>, NULL);  <a  class="comments">/* executes stdin as a file */</a>
+   657 :    <a href="../h_src/57434596.htm" class="function">lua_pushboolean</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>, 1);  <a  class="comments">/* signal no errors */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable L</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

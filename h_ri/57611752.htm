@@ -1,0 +1,49 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaV_equalobj</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57611752.htm" class="function" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57611752.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57611752.htm" class="function" target="_self">Flow Chart</a></li>
+<li><a href="../h_src/57611752.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57611752.htm" class="function" target="_self">Called By</a></li>
+<li><a href="../h_rx/57611752.htm" class="function" target="_self">Call Tree</a></li>
+<li><a href="../h_ro/57611752.htm" class="function" target="_self">Calls and Uses</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57808488.htm" class=function>addk</a>                                             lcode.c
+   553 :    <a href="../h_src/57612432.htm" class="macro">luaV_rawequalobj</a>(&amp;<a href="../h_src/57807672.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515052.htm" class="variable">k</a>[<a href="../h_src/57807400.htm" class="localvar">k</a>], <a href="../h_src/57808080.htm" class="localvar">v</a>))
+<a href="../h_aa/57435344.htm" class=function>lua_compare</a>                                      lapi.c
+   360 :    case <a href="../h_src/57435820.htm" class="macro">LUA_OPEQ</a>: <a href="../h_src/57596112.htm" class="localvar">i</a> = <a href="../h_src/57611752.htm" class="function">luaV_equalobj</a>(<a href="../h_src/57596928.htm" class="localvar">L</a>, <a href="../h_src/57596384.htm" class="localvar">o1</a>, <a href="../h_src/57596248.htm" class="localvar">o2</a>); break;
+<a href="../h_aa/57435412.htm" class=function>lua_rawequal</a>                                     lapi.c
+   331 :    return (<a href="../h_src/57610460.htm" class="macro">isvalid</a>(<a href="../h_src/57598152.htm" class="localvar">L</a>, <a href="../h_src/57597744.htm" class="localvar">o1</a>) &amp;&amp; <a href="../h_src/57610460.htm" class="macro">isvalid</a>(<a href="../h_src/57598152.htm" class="localvar">L</a>, <a href="../h_src/57597608.htm" class="localvar">o2</a>)) ? <a href="../h_src/57612432.htm" class="macro">luaV_rawequalobj</a>(<a href="../h_src/57597744.htm" class="localvar">o1</a>, <a href="../h_src/57597608.htm" class="localvar">o2</a>) : 0;
+<a href="../h_aa/57610936.htm" class=function>luaV_execute</a>                                     lvm.c
+  1609 :    <a href="../h_src/58189284.htm" class="macro">Protect</a>(<a href="../h_src/58143180.htm" class="localvar">cond</a> = <a href="../h_src/57611752.htm" class="function">luaV_equalobj</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58143316.htm" class="localvar">ra</a>), <a href="../h_src/58143044.htm" class="localvar">rb</a>));
+  1625 :    int <a href="../h_src/58140868.htm" class="localvar">cond</a> = <a href="../h_src/57612432.htm" class="macro">luaV_rawequalobj</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58141140.htm" class="localvar">ra</a>), <a href="../h_src/58141004.htm" class="localvar">rb</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use luaV_equalobj</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

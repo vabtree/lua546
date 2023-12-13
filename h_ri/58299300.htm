@@ -1,0 +1,47 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>L</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58299300.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/58299300.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/58299300.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/58299300.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/58299436.htm" class=function>generic_reader</a>                                   lbaselib.c
+   372 :    <a href="../h_src/57419840.htm" class="function">luaL_checkstack</a>(<a href="../h_src/58299300.htm" class="localvar">L</a>, 2, &quot;too many nested functions&quot;);
+   373 :    <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/58299300.htm" class="localvar">L</a>, 1);  <a  class="comments">/* get function */</a>
+   374 :    <a href="../h_src/57432964.htm" class="macro">lua_call</a>(<a href="../h_src/58299300.htm" class="localvar">L</a>, 0, 1);  <a  class="comments">/* call it */</a>
+   375 :    if (<a href="../h_src/57428340.htm" class="macro">lua_isnil</a>(<a href="../h_src/58299300.htm" class="localvar">L</a>, -1)) {
+   376 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/58299300.htm" class="localvar">L</a>, 1);  <a  class="comments">/* pop result */</a>
+   380 :    else if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(!<a href="../h_src/57438812.htm" class="function">lua_isstring</a>(<a href="../h_src/58299300.htm" class="localvar">L</a>, -1)))
+   381 :    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/58299300.htm" class="localvar">L</a>, &quot;reader function must return a string&quot;);
+   382 :    <a href="../h_src/57426980.htm" class="macro">lua_replace</a>(<a href="../h_src/58299300.htm" class="localvar">L</a>, <a href="../h_src/58299572.htm" class="macro">RESERVEDSLOT</a>);  <a  class="comments">/* save string in reserved slot */</a>
+   383 :    return <a href="../h_src/57438200.htm" class="function">lua_tolstring</a>(<a href="../h_src/58299300.htm" class="localvar">L</a>, <a href="../h_src/58299572.htm" class="macro">RESERVEDSLOT</a>, <a href="../h_src/58299028.htm" class="localvar">size</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable L</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

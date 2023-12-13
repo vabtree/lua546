@@ -1,0 +1,49 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>n</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143246380.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/143246380.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/143246380.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/143246380.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/143251888.htm" class=function>io_readline</a>                                      liolib.c
+   632 :    int <a href="../h_src/143246380.htm" class="localvar">n</a> = (int)<a href="../h_src/57429428.htm" class="macro">lua_tointeger</a>(<a href="../h_src/143246788.htm" class="localvar">L</a>, <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(2));
+   639 :    <a href="../h_src/143246380.htm" class="localvar">n</a> = <a href="../h_aa/143247128.htm" class="libfunc">g_read</a>(<a href="../h_src/143246788.htm" class="localvar">L</a>, <a href="../h_src/143246652.htm" class="localvar">p</a>-&gt;f, 2);  <a  class="comments">/* 'n' is number of results */</a>
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/143251888.htm" class=function>io_readline</a>                                      liolib.c
+   636 :    <a href="../h_src/57419840.htm" class="function">luaL_checkstack</a>(<a href="../h_src/143246788.htm" class="localvar">L</a>, <a href="../h_src/143246380.htm" class="localvar">n</a>, &quot;too many arguments&quot;);
+   637 :    for (<a href="../h_src/143246516.htm" class="localvar">i</a> = 1; <a href="../h_src/143246516.htm" class="localvar">i</a> &lt;= <a href="../h_src/143246380.htm" class="localvar">n</a>; <a href="../h_src/143246516.htm" class="localvar">i</a>++)  <a  class="comments">/* push arguments to 'g_read' */</a>
+   641 :    if (<a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/143246788.htm" class="localvar">L</a>, -<a href="../h_src/143246380.htm" class="localvar">n</a>))  <a  class="comments">/* read at least one value? */</a>
+   642 :    return <a href="../h_src/143246380.htm" class="localvar">n</a>;  <a  class="comments">/* return them */</a>
+   644 :    if (<a href="../h_src/143246380.htm" class="localvar">n</a> &gt; 1) {  <a  class="comments">/* is there error information? */</a>
+   646 :    return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143246788.htm" class="localvar">L</a>, &quot;%s&quot;, <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143246788.htm" class="localvar">L</a>, -<a href="../h_src/143246380.htm" class="localvar">n</a> + 1));
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable n</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

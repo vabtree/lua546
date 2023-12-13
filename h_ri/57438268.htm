@@ -1,0 +1,74 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lua_toboolean</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57438268.htm" class="function" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57438268.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57438268.htm" class="function" target="_self">Flow Chart</a></li>
+<li><a href="../h_src/57438268.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57438268.htm" class="function" target="_self">Called By</a></li>
+<li><a href="../h_rx/57438268.htm" class="function" target="_self">Call Tree</a></li>
+<li><a href="../h_ro/57438268.htm" class="function" target="_self">Calls and Uses</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/143305132.htm" class=function>add_value</a>                                        lstrlib.c
+   927 :    if (!<a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/143304316.htm" class="localvar">L</a>, -1)) {  <a  class="comments">/* nil or false? */</a>
+<a href="../h_aa/143414584.htm" class=function>codepoint</a>                                        lutf8lib.c
+   131 :    int <a href="../h_src/143413768.htm" class="localvar">lax</a> = <a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/143414448.htm" class="localvar">L</a>, 4);
+<a href="../h_aa/143352120.htm" class=function>getboolfield</a>                                     loslib.c
+   245 :    <a href="../h_src/143351712.htm" class="localvar">res</a> = (<a href="../h_src/57434256.htm" class="function">lua_getfield</a>(<a href="../h_src/143351984.htm" class="localvar">L</a>, -1, <a href="../h_src/143351848.htm" class="localvar">key</a>) == <a href="../h_src/57444048.htm" class="macro">LUA_TNIL</a>) ? -1 : <a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/143351984.htm" class="localvar">L</a>, -1);
+<a href="../h_aa/143251888.htm" class=function>io_readline</a>                                      liolib.c
+   641 :    if (<a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/143246788.htm" class="localvar">L</a>, -<a href="../h_src/143246380.htm" class="localvar">n</a>))  <a  class="comments">/* read at least one value? */</a>
+   648 :    if (<a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/143246788.htm" class="localvar">L</a>, <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(3))) {  <a  class="comments">/* generator created file? */</a>
+<a href="../h_aa/143409552.htm" class=function>iter_codes</a>                                       lutf8lib.c
+   259 :    int <a href="../h_src/143409280.htm" class="localvar">lax</a> = <a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/143409416.htm" class="localvar">L</a>, 2);
+<a href="../h_aa/143197692.htm" class=function>ll_require</a>                                       loadlib.c
+   662 :    if (<a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/143197556.htm" class="localvar">L</a>, -1))  <a  class="comments">/* is it there? */</a>
+<a href="../h_aa/58296716.htm" class=function>luaB_assert</a>                                      lbaselib.c
+   426 :    if (<a href="../h_src/57551704.htm" class="macro">l_likely</a>(<a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/58296580.htm" class="localvar">L</a>, 1)))  <a  class="comments">/* condition is true? */</a>
+<a href="../h_aa/57417596.htm" class=function>luaL_requiref</a>                                    lauxlib.c
+   978 :    if (!<a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/58318816.htm" class="localvar">L</a>, -1)) {  <a  class="comments">/* package not already loaded? */</a>
+<a href="../h_aa/57420452.htm" class=function>luaL_tolstring</a>                                   lauxlib.c
+   908 :    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, (<a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, <a href="../h_src/58320312.htm" class="localvar">idx</a>) ? &quot;true&quot; : &quot;false&quot;));
+<a href="../h_aa/57552928.htm" class=function>main</a>                                             lua.c
+   674 :    <a href="../h_src/57552452.htm" class="localvar">result</a> = <a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/57552316.htm" class="localvar">L</a>, -1);  <a  class="comments">/* get result */</a>
+<a href="../h_aa/143211292.htm" class=function>noenv</a>                                            loadlib.c
+   288 :    <a href="../h_src/143211020.htm" class="localvar">b</a> = <a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/143211156.htm" class="localvar">L</a>, -1);
+<a href="../h_aa/143344844.htm" class=function>os_exit</a>                                          loslib.c
+   395 :    <a href="../h_src/143344572.htm" class="localvar">status</a> = (<a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/143344708.htm" class="localvar">L</a>, 1) ? EXIT_SUCCESS : EXIT_FAILURE);
+   398 :    if (<a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/143344708.htm" class="localvar">L</a>, 2))
+<a href="../h_aa/143422540.htm" class=function>sort_comp</a>                                        ltablib.c
+   284 :    <a href="../h_src/143421996.htm" class="localvar">res</a> = <a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/143422404.htm" class="localvar">L</a>, -1);  <a  class="comments">/* get result */</a>
+<a href="../h_aa/143333012.htm" class=function>str_dump</a>                                         lstrlib.c
+   235 :    int <a href="../h_src/143332604.htm" class="localvar">strip</a> = <a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/143332876.htm" class="localvar">L</a>, 2);
+<a href="../h_aa/143311252.htm" class=function>str_find_aux</a>                                     lstrlib.c
+   783 :    if (<a href="../h_src/143310980.htm" class="localvar">find</a> &amp;&amp; (<a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/143311116.htm" class="localvar">L</a>, 4) || <a href="../h_src/143313020.htm" class="function">nospecials</a>(<a href="../h_src/143310436.htm" class="localvar">p</a>, <a href="../h_src/143310708.htm" class="localvar">lp</a>))) {
+<a href="../h_aa/143415808.htm" class=function>utflen</a>                                           lutf8lib.c
+   102 :    int <a href="../h_src/143414856.htm" class="localvar">lax</a> = <a href="../h_src/57438268.htm" class="function">lua_toboolean</a>(<a href="../h_src/143415672.htm" class="localvar">L</a>, 4);
+</pre>
+<h4><a class="legend">Table lists functions that directly use lua_toboolean</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

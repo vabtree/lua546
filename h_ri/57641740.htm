@@ -1,0 +1,53 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">lua_State::</a>base_ci</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57641740.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57641740.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57641740.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57641740.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57641740.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/58137292.htm" class=function>close_state</a>                                      lstate.c
+   274 :    <a href="../h_src/58137156.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a> = &amp;<a href="../h_src/58137156.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641740.htm" class="variable">base_ci</a>;  <a  class="comments">/* unwind CallInfo list */</a>
+<a href="../h_aa/57979900.htm" class=function>freestack</a>                                        lstate.c
+   206 :    <a href="../h_src/57979764.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a> = &amp;<a href="../h_src/57979764.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641740.htm" class="variable">base_ci</a>;  <a  class="comments">/* free the entire 'ci' list */</a>
+<a href="../h_aa/57424668.htm" class=function>lua_getstack</a>                                     ldebug.c
+   165 :    for (<a href="../h_src/57755040.htm" class="localvar">ci</a> = <a href="../h_src/57755584.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>; <a href="../h_src/57755448.htm" class="localvar">level</a> &gt; 0 &amp;&amp; <a href="../h_src/57755040.htm" class="localvar">ci</a> != &amp;<a href="../h_src/57755584.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641740.htm" class="variable">base_ci</a>; <a href="../h_src/57755040.htm" class="localvar">ci</a> = <a href="../h_src/57755040.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651396.htm" class="variable">previous</a>)
+   167 :    if (<a href="../h_src/57755448.htm" class="localvar">level</a> == 0 &amp;&amp; <a href="../h_src/57755040.htm" class="localvar">ci</a> != &amp;<a href="../h_src/57755584.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641740.htm" class="variable">base_ci</a>) {  <a  class="comments">/* level found? */</a>
+<a href="../h_aa/57432420.htm" class=function>lua_resume</a>                                       ldo.c
+   836 :    if (<a href="../h_src/57857964.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a> != &amp;<a href="../h_src/57857964.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641740.htm" class="variable">base_ci</a>)  <a  class="comments">/* not in base level? */</a>
+<a href="../h_aa/57638000.htm" class=function>luaE_resetthread</a>                                 lstate.c
+   324 :    <a href="../h_src/57537764.htm" class="type">CallInfo</a> *<a href="../h_src/58135252.htm" class="localvar">ci</a> = <a href="../h_src/58135524.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a> = &amp;<a href="../h_src/58135524.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641740.htm" class="variable">base_ci</a>;  <a  class="comments">/* unwind CallInfo list */</a>
+<a href="../h_aa/57980580.htm" class=function>stack_init</a>                                       lstate.c
+   190 :    <a href="../h_src/57980036.htm" class="localvar">ci</a> = &amp;<a href="../h_src/57980444.htm" class="localvar">L1</a>-&gt;<a href="../h_src/57641740.htm" class="variable">base_ci</a>;
+<a href="../h_aa/57861092.htm" class=function>unroll</a>                                           ldo.c
+   739 :    while ((<a href="../h_src/57860684.htm" class="localvar">ci</a> = <a href="../h_src/57860956.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>) != &amp;<a href="../h_src/57860956.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641740.htm" class="variable">base_ci</a>) {  <a  class="comments">/* something in the stack */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable base_ci</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

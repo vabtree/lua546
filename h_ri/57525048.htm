@@ -1,0 +1,67 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>LUA_VLNGSTR</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57525048.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57525048.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57525048.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57525048.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57800396.htm" class=function>const2exp</a>                                        lcode.c
+   709 :    case <a href="../h_src/57525184.htm" class="macro">LUA_VSHRSTR</a>:  case <a href="../h_src/57525048.htm" class="macro">LUA_VLNGSTR</a>:
+<a href="../h_aa/57844976.htm" class=function>dumpConstants</a>                                    ldump.c
+   128 :    case <a href="../h_src/57525048.htm" class="macro">LUA_VLNGSTR</a>:
+<a href="../h_aa/58116484.htm" class=function>equalkey</a>                                         ltable.c
+   231 :    case <a href="../h_src/57527632.htm" class="macro">ctb</a>(<a href="../h_src/57525048.htm" class="macro">LUA_VLNGSTR</a>):
+<a href="../h_aa/57966804.htm" class=function>freeobj</a>                                          lgc.c
+   805 :    case <a href="../h_src/57525048.htm" class="macro">LUA_VLNGSTR</a>: {
+<a href="../h_aa/58068680.htm" class=function>loadConstants</a>                                    lundump.c
+   182 :    case <a href="../h_src/57525048.htm" class="macro">LUA_VLNGSTR</a>:
+<a href="../h_aa/57592916.htm" class=function>lua_rawlen</a>                                       lapi.c
+   430 :    case <a href="../h_src/57525048.htm" class="macro">LUA_VLNGSTR</a>: return <a href="../h_src/57524368.htm" class="macro">tsvalue</a>(<a href="../h_src/57592576.htm" class="localvar">o</a>)-&gt;<a href="../h_src/57522872.htm" class="variable">u</a>.<a href="../h_src/57523212.htm" class="variable">lnglen</a>;
+<a href="../h_aa/57618416.htm" class=function>luaS_createlngstrobj</a>                             lstring.c
+   158 :    <a href="../h_src/57522736.htm" class="type">TString</a> *<a href="../h_src/58126276.htm" class="localvar">ts</a> = <a href="../h_src/58127636.htm" class="function">createstrobj</a>(<a href="../h_src/58126548.htm" class="localvar">L</a>, <a href="../h_src/58126412.htm" class="localvar">l</a>, <a href="../h_src/57525048.htm" class="macro">LUA_VLNGSTR</a>, <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/58126548.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57646160.htm" class="variable">seed</a>);
+<a href="../h_aa/57619028.htm" class=function>luaS_eqlngstr</a>                                    lstring.c
+    36 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(a-&gt;tt == <a href="../h_src/57525048.htm" class="macro">LUA_VLNGSTR</a> &amp;&amp; b-&gt;tt == <a href="../h_src/57525048.htm" class="macro">LUA_VLNGSTR</a>);
+<a href="../h_aa/57619096.htm" class=function>luaS_hashlongstr</a>                                 lstring.c
+    52 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(ts-&gt;tt == <a href="../h_src/57525048.htm" class="macro">LUA_VLNGSTR</a>);
+<a href="../h_aa/57611752.htm" class=function>luaV_equalobj</a>                                    lvm.c
+   588 :    case <a href="../h_src/57525048.htm" class="macro">LUA_VLNGSTR</a>: return <a href="../h_src/57619028.htm" class="function">luaS_eqlngstr</a>(<a href="../h_src/57524368.htm" class="macro">tsvalue</a>(<a href="../h_src/58204720.htm" class="localvar">t1</a>), <a href="../h_src/57524368.htm" class="macro">tsvalue</a>(<a href="../h_src/58204584.htm" class="localvar">t2</a>));
+<a href="../h_aa/57610528.htm" class=function>luaV_objlen</a>                                      lvm.c
+   699 :    case <a href="../h_src/57525048.htm" class="macro">LUA_VLNGSTR</a>: {
+<a href="../h_aa/58118660.htm" class=function>mainpositionTV</a>                                   ltable.c
+   165 :    case <a href="../h_src/57525048.htm" class="macro">LUA_VLNGSTR</a>: {
+<a href="../h_aa/143398536.htm" class=function>PrintConstant</a>                                    luac.c
+   320 :    case <a href="../h_src/57525048.htm" class="macro">LUA_VLNGSTR</a>:
+<a href="../h_aa/143399080.htm" class=function>PrintType</a>                                        luac.c
+   284 :    case <a href="../h_src/57525048.htm" class="macro">LUA_VLNGSTR</a>:
+<a href="../h_aa/57826752.htm" class=function>reallymarkobject</a>                                 lgc.c
+   300 :    case <a href="../h_src/57525048.htm" class="macro">LUA_VLNGSTR</a>: {
+</pre>
+<h4><a class="legend">Table lists functions that directly use LUA_VLNGSTR</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

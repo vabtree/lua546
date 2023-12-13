@@ -1,0 +1,65 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">global_State::</a>gcstp</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57645684.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57645684.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57645684.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57645684.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57645684.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57978268.htm" class=function>f_luaopen</a>                                        lstate.c
+   239 :    <a href="../h_src/57977860.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645684.htm" class="variable">gcstp</a> = 0;  <a  class="comments">/* allow gc */</a>
+<a href="../h_aa/57962316.htm" class=function>GCTM</a>                                             lgc.c
+   916 :    <a href="../h_src/57962044.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645684.htm" class="variable">gcstp</a> |= <a href="../h_src/57622156.htm" class="macro">GCSTPGC</a>;  <a  class="comments">/* avoid GC steps */</a>
+   924 :    <a href="../h_src/57962044.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645684.htm" class="variable">gcstp</a> = <a href="../h_src/57961092.htm" class="localvar">oldgcstp</a>;  <a  class="comments">/* restore state */</a>
+<a href="../h_aa/57430448.htm" class=function>lua_gc</a>                                           lapi.c
+  1143 :    <a href="../h_src/57719436.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645684.htm" class="variable">gcstp</a> = <a href="../h_src/57622292.htm" class="macro">GCSTPUSR</a>;  <a  class="comments">/* stopped by the user */</a>
+  1148 :    <a href="../h_src/57719436.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645684.htm" class="variable">gcstp</a> = 0;  <a  class="comments">/* (GCSTPGC must be already zero here) */</a>
+  1168 :    <a href="../h_src/57719436.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645684.htm" class="variable">gcstp</a> = 0;  <a  class="comments">/* allow GC to run (GCSTPGC must be zero here) */</a>
+  1178 :    <a href="../h_src/57719436.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645684.htm" class="variable">gcstp</a> = <a href="../h_src/57719028.htm" class="localvar">oldstp</a>;  <a  class="comments">/* restore previous state */</a>
+<a href="../h_aa/57439900.htm" class=function>lua_newstate</a>                                     lstate.c
+   381 :    <a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645684.htm" class="variable">gcstp</a> = <a href="../h_src/57622156.htm" class="macro">GCSTPGC</a>;  <a  class="comments">/* no GC while building state */</a>
+<a href="../h_aa/57620864.htm" class=function>luaC_freeallobjects</a>                              lgc.c
+  1511 :    <a href="../h_src/57945588.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645684.htm" class="variable">gcstp</a> = <a href="../h_src/57622020.htm" class="macro">GCSTPCLS</a>;  <a  class="comments">/* no extra finalizers after here */</a>
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57962316.htm" class=function>GCTM</a>                                             lgc.c
+   915 :    int <a href="../h_src/57961092.htm" class="localvar">oldgcstp</a>  = <a href="../h_src/57962044.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645684.htm" class="variable">gcstp</a>;
+   916 :    <a href="../h_src/57962044.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645684.htm" class="variable">gcstp</a> |= <a href="../h_src/57622156.htm" class="macro">GCSTPGC</a>;  <a  class="comments">/* avoid GC steps */</a>
+<a href="../h_aa/57430448.htm" class=function>lua_gc</a>                                           lapi.c
+  1137 :    if (<a href="../h_src/57719436.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645684.htm" class="variable">gcstp</a> &amp; <a href="../h_src/57622156.htm" class="macro">GCSTPGC</a>)  <a  class="comments">/* internal stop? */</a>
+  1167 :    <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57719028.htm" class="localvar">oldstp</a> = <a href="../h_src/57719436.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645684.htm" class="variable">gcstp</a>;
+  1196 :    <a href="../h_src/57719572.htm" class="localvar">res</a> = <a href="../h_src/57621884.htm" class="macro">gcrunning</a>(<a href="../h_src/57719436.htm" class="localvar">g</a>);
+<a href="../h_aa/57620320.htm" class=function>luaC_checkfinalizer</a>                              lgc.c
+  1021 :    (<a href="../h_src/57957012.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645684.htm" class="variable">gcstp</a> &amp; <a href="../h_src/57622020.htm" class="macro">GCSTPCLS</a>))                   <a  class="comments">/* or closing state? */</a>
+<a href="../h_aa/57620796.htm" class=function>luaC_step</a>                                        lgc.c
+  1690 :    if (!<a href="../h_src/57621884.htm" class="macro">gcrunning</a>(<a href="../h_src/57941644.htm" class="localvar">g</a>))  <a  class="comments">/* not running? */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable gcstp</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

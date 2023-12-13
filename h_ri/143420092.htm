@@ -1,0 +1,59 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>L</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143420092.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/143420092.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/143420092.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/143420092.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/143420228.htm" class=function>auxsort</a>                                          ltablib.c
+   351 :    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419956.htm" class="localvar">lo</a>);
+   352 :    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419820.htm" class="localvar">up</a>);
+   353 :    if (<a href="../h_src/143422540.htm" class="function">sort_comp</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, -1, -2))  <a  class="comments">/* a[up] &lt; a[lo]? */</a>
+   354 :    <a href="../h_src/143423084.htm" class="function">set2</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, <a href="../h_src/143419956.htm" class="localvar">lo</a>, <a href="../h_src/143419820.htm" class="localvar">up</a>);  <a  class="comments">/* swap a[lo] - a[up] */</a>
+   356 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 2);  <a  class="comments">/* remove both values */</a>
+   363 :    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419548.htm" class="localvar">p</a>);
+   364 :    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419956.htm" class="localvar">lo</a>);
+   365 :    if (<a href="../h_src/143422540.htm" class="function">sort_comp</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, -2, -1))  <a  class="comments">/* a[p] &lt; a[lo]? */</a>
+   366 :    <a href="../h_src/143423084.htm" class="function">set2</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, <a href="../h_src/143419548.htm" class="localvar">p</a>, <a href="../h_src/143419956.htm" class="localvar">lo</a>);  <a  class="comments">/* swap a[p] - a[lo] */</a>
+   368 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove a[lo] */</a>
+   369 :    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419820.htm" class="localvar">up</a>);
+   370 :    if (<a href="../h_src/143422540.htm" class="function">sort_comp</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, -1, -2))  <a  class="comments">/* a[up] &lt; a[p]? */</a>
+   371 :    <a href="../h_src/143423084.htm" class="function">set2</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, <a href="../h_src/143419548.htm" class="localvar">p</a>, <a href="../h_src/143419820.htm" class="localvar">up</a>);  <a  class="comments">/* swap a[up] - a[p] */</a>
+   373 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 2);
+   377 :    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419548.htm" class="localvar">p</a>);  <a  class="comments">/* get middle element (Pivot) */</a>
+   378 :    <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, -1);  <a  class="comments">/* push Pivot */</a>
+   379 :    <a href="../h_src/57434188.htm" class="function">lua_geti</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1, <a href="../h_src/143419820.htm" class="localvar">up</a> - 1);  <a  class="comments">/* push a[up - 1] */</a>
+   380 :    <a href="../h_src/143423084.htm" class="function">set2</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, <a href="../h_src/143419548.htm" class="localvar">p</a>, <a href="../h_src/143419820.htm" class="localvar">up</a> - 1);  <a  class="comments">/* swap Pivot (a[p]) with a[up - 1] */</a>
+   381 :    <a href="../h_src/143419548.htm" class="localvar">p</a> = <a href="../h_src/143421860.htm" class="function">partition</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, <a href="../h_src/143419956.htm" class="localvar">lo</a>, <a href="../h_src/143419820.htm" class="localvar">up</a>);
+   384 :    <a href="../h_src/143420228.htm" class="function">auxsort</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, <a href="../h_src/143419956.htm" class="localvar">lo</a>, <a href="../h_src/143419548.htm" class="localvar">p</a> - 1, <a href="../h_src/143419684.htm" class="localvar">rnd</a>);  <a  class="comments">/* call recursively for lower interval */</a>
+   389 :    <a href="../h_src/143420228.htm" class="function">auxsort</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, <a href="../h_src/143419548.htm" class="localvar">p</a> + 1, <a href="../h_src/143419820.htm" class="localvar">up</a>, <a href="../h_src/143419684.htm" class="localvar">rnd</a>);  <a  class="comments">/* call recursively for upper interval */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable L</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

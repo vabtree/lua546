@@ -1,0 +1,48 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>LUAI_MAXCCALLS</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57543680.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57543680.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57543680.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57543680.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57864220.htm" class=function>ccall</a>                                            ldo.c
+   631 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57653640.htm" class="macro">getCcalls</a>(<a href="../h_src/57864084.htm" class="localvar">L</a>) &gt;= <a href="../h_src/57543680.htm" class="macro">LUAI_MAXCCALLS</a>)) {
+<a href="../h_aa/57432420.htm" class=function>lua_resume</a>                                       ldo.c
+   844 :    if (<a href="../h_src/57653640.htm" class="macro">getCcalls</a>(<a href="../h_src/57857964.htm" class="localvar">L</a>) &gt;= <a href="../h_src/57543680.htm" class="macro">LUAI_MAXCCALLS</a>)
+<a href="../h_aa/57423852.htm" class=function>lua_setcstacklimit</a>                               lstate.c
+   101 :    return <a href="../h_src/57543680.htm" class="macro">LUAI_MAXCCALLS</a>;  <a  class="comments">/* warning?? */</a>
+<a href="../h_aa/57638272.htm" class=function>luaE_checkcstack</a>                                 lstate.c
+   166 :    if (<a href="../h_src/57653640.htm" class="macro">getCcalls</a>(<a href="../h_src/57980852.htm" class="localvar">L</a>) == <a href="../h_src/57543680.htm" class="macro">LUAI_MAXCCALLS</a>)
+   168 :    else if (<a href="../h_src/57653640.htm" class="macro">getCcalls</a>(<a href="../h_src/57980852.htm" class="localvar">L</a>) &gt;= (<a href="../h_src/57543680.htm" class="macro">LUAI_MAXCCALLS</a> / 10 * 11))
+<a href="../h_aa/57638204.htm" class=function>luaE_incCstack</a>                                   lstate.c
+   175 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57653640.htm" class="macro">getCcalls</a>(<a href="../h_src/57980716.htm" class="localvar">L</a>) &gt;= <a href="../h_src/57543680.htm" class="macro">LUAI_MAXCCALLS</a>))
+</pre>
+<h4><a class="legend">Table lists functions that directly use LUAI_MAXCCALLS</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

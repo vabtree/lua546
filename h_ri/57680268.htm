@@ -1,0 +1,60 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">ind::</a>idx</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57680268.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57680268.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57680268.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57680268.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57680268.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/58008392.htm" class=function>check_conflict</a>                                   lparser.c
+  1353 :    <a href="../h_src/58008120.htm" class="localvar">lh</a>-&gt;<a href="../h_src/58008460.htm" class="variable">v</a>.<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680268.htm" class="variable">idx</a> = <a href="../h_src/58007712.htm" class="localvar">extra</a>;  <a  class="comments">/* previous assignment will use safe copy */</a>
+<a href="../h_aa/57670000.htm" class=function>luaK_indexed</a>                                     lcode.c
+  1287 :    <a href="../h_src/57786796.htm" class="localvar">t</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680268.htm" class="variable">idx</a> = <a href="../h_src/57786660.htm" class="localvar">k</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a>;  <a  class="comments">/* literal string */</a>
+  1294 :    <a href="../h_src/57786796.htm" class="localvar">t</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680268.htm" class="variable">idx</a> = <a href="../h_src/57786660.htm" class="localvar">k</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a>;  <a  class="comments">/* literal string */</a>
+  1298 :    <a href="../h_src/57786796.htm" class="localvar">t</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680268.htm" class="variable">idx</a> = <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/57786660.htm" class="localvar">k</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680608.htm" class="variable">ival</a>);  <a  class="comments">/* int. constant in proper range */</a>
+  1302 :    <a href="../h_src/57786796.htm" class="localvar">t</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680268.htm" class="variable">idx</a> = <a href="../h_src/57670408.htm" class="function">luaK_exp2anyreg</a>(<a href="../h_src/57786932.htm" class="localvar">fs</a>, <a href="../h_src/57786660.htm" class="localvar">k</a>);  <a  class="comments">/* register */</a>
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/58008392.htm" class=function>check_conflict</a>                                   lparser.c
+  1351 :    <a href="../h_src/58008120.htm" class="localvar">lh</a>-&gt;<a href="../h_src/58008460.htm" class="variable">v</a>.<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680268.htm" class="variable">idx</a> == <a href="../h_src/58007984.htm" class="localvar">v</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57679724.htm" class="variable">var</a>.<a href="../h_src/57679928.htm" class="variable">ridx</a>) {
+<a href="../h_aa/57670476.htm" class=function>luaK_dischargevars</a>                               lcode.c
+   789 :    <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a> = <a href="../h_src/57672380.htm" class="macro">luaK_codeABC</a>(<a href="../h_src/57798764.htm" class="localvar">fs</a>, <a href="../h_src/57689788.htm" class="variable">OP_GETTABUP</a>, 0, <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680200.htm" class="variable">t</a>, <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680268.htm" class="variable">idx</a>);
+   795 :    <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a> = <a href="../h_src/57672380.htm" class="macro">luaK_codeABC</a>(<a href="../h_src/57798764.htm" class="localvar">fs</a>, <a href="../h_src/57689652.htm" class="variable">OP_GETI</a>, 0, <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680200.htm" class="variable">t</a>, <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680268.htm" class="variable">idx</a>);
+   801 :    <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a> = <a href="../h_src/57672380.htm" class="macro">luaK_codeABC</a>(<a href="../h_src/57798764.htm" class="localvar">fs</a>, <a href="../h_src/57689584.htm" class="variable">OP_GETFIELD</a>, 0, <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680200.htm" class="variable">t</a>, <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680268.htm" class="variable">idx</a>);
+   806 :    <a href="../h_src/57810256.htm" class="function">freeregs</a>(<a href="../h_src/57798764.htm" class="localvar">fs</a>, <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680200.htm" class="variable">t</a>, <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680268.htm" class="variable">idx</a>);
+   807 :    <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a> = <a href="../h_src/57672380.htm" class="macro">luaK_codeABC</a>(<a href="../h_src/57798764.htm" class="localvar">fs</a>, <a href="../h_src/57689720.htm" class="variable">OP_GETTABLE</a>, 0, <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680200.htm" class="variable">t</a>, <a href="../h_src/57798628.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680268.htm" class="variable">idx</a>);
+<a href="../h_aa/57669796.htm" class=function>luaK_storevar</a>                                    lcode.c
+  1061 :    <a href="../h_src/57793324.htm" class="function">codeABRK</a>(<a href="../h_src/57792372.htm" class="localvar">fs</a>, <a href="../h_src/57689516.htm" class="variable">OP_SETTABUP</a>, <a href="../h_src/57792236.htm" class="localvar">var</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680200.htm" class="variable">t</a>, <a href="../h_src/57792236.htm" class="localvar">var</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680268.htm" class="variable">idx</a>, <a href="../h_src/57792100.htm" class="localvar">ex</a>);
+  1065 :    <a href="../h_src/57793324.htm" class="function">codeABRK</a>(<a href="../h_src/57792372.htm" class="localvar">fs</a>, <a href="../h_src/57689380.htm" class="variable">OP_SETI</a>, <a href="../h_src/57792236.htm" class="localvar">var</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680200.htm" class="variable">t</a>, <a href="../h_src/57792236.htm" class="localvar">var</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680268.htm" class="variable">idx</a>, <a href="../h_src/57792100.htm" class="localvar">ex</a>);
+  1069 :    <a href="../h_src/57793324.htm" class="function">codeABRK</a>(<a href="../h_src/57792372.htm" class="localvar">fs</a>, <a href="../h_src/57689312.htm" class="variable">OP_SETFIELD</a>, <a href="../h_src/57792236.htm" class="localvar">var</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680200.htm" class="variable">t</a>, <a href="../h_src/57792236.htm" class="localvar">var</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680268.htm" class="variable">idx</a>, <a href="../h_src/57792100.htm" class="localvar">ex</a>);
+  1073 :    <a href="../h_src/57793324.htm" class="function">codeABRK</a>(<a href="../h_src/57792372.htm" class="localvar">fs</a>, <a href="../h_src/57689448.htm" class="variable">OP_SETTABLE</a>, <a href="../h_src/57792236.htm" class="localvar">var</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680200.htm" class="variable">t</a>, <a href="../h_src/57792236.htm" class="localvar">var</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680268.htm" class="variable">idx</a>, <a href="../h_src/57792100.htm" class="localvar">ex</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable idx</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

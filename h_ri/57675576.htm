@@ -1,0 +1,61 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">FuncState::</a>bl</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57675576.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57675576.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57675576.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57675576.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57675576.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/58028792.htm" class=function>enterblock</a>                                       lparser.c
+   650 :    <a href="../h_src/58028656.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675576.htm" class="variable">bl</a> = <a href="../h_src/58028520.htm" class="localvar">bl</a>;
+<a href="../h_aa/58027704.htm" class=function>leaveblock</a>                                       lparser.c
+   685 :    <a href="../h_src/58027568.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675576.htm" class="variable">bl</a> = <a href="../h_src/58027432.htm" class="localvar">bl</a>-&gt;<a href="../h_src/58056332.htm" class="variable">previous</a>;  <a  class="comments">/* current block now is previous one */</a>
+<a href="../h_aa/58025392.htm" class=function>open_func</a>                                        lparser.c
+   748 :    <a href="../h_src/58025120.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675576.htm" class="variable">bl</a> = NULL;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/58030696.htm" class=function>createlabel</a>                                      lparser.c
+   615 :    <a href="../h_src/58029880.htm" class="localvar">ll</a>-&gt;<a href="../h_src/57677140.htm" class="variable">arr</a>[<a href="../h_src/58029744.htm" class="localvar">l</a>].<a href="../h_src/57677548.htm" class="variable">nactvar</a> = <a href="../h_src/58030016.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675576.htm" class="variable">bl</a>-&gt;<a href="../h_src/58056128.htm" class="variable">nactvar</a>;
+<a href="../h_aa/58028792.htm" class=function>enterblock</a>                                       lparser.c
+   648 :    <a href="../h_src/58028520.htm" class="localvar">bl</a>-&gt;<a href="../h_src/58055924.htm" class="variable">insidetbc</a> = (<a href="../h_src/58028656.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675576.htm" class="variable">bl</a> != NULL &amp;&amp; <a href="../h_src/58028656.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675576.htm" class="variable">bl</a>-&gt;<a href="../h_src/58055924.htm" class="variable">insidetbc</a>);
+   649 :    <a href="../h_src/58028520.htm" class="localvar">bl</a>-&gt;<a href="../h_src/58056332.htm" class="variable">previous</a> = <a href="../h_src/58028656.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675576.htm" class="variable">bl</a>;
+<a href="../h_aa/58027704.htm" class=function>leaveblock</a>                                       lparser.c
+   673 :    <a href="../h_src/58055856.htm" class="type">BlockCnt</a> *<a href="../h_src/58027432.htm" class="localvar">bl</a> = <a href="../h_src/58027568.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675576.htm" class="variable">bl</a>;
+<a href="../h_aa/58039196.htm" class=function>marktobeclosed</a>                                   lparser.c
+   423 :    <a href="../h_src/58055856.htm" class="type">BlockCnt</a> *<a href="../h_src/58038924.htm" class="localvar">bl</a> = <a href="../h_src/58039060.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675576.htm" class="variable">bl</a>;
+<a href="../h_aa/58039740.htm" class=function>markupval</a>                                        lparser.c
+   411 :    <a href="../h_src/58055856.htm" class="type">BlockCnt</a> *<a href="../h_src/58039332.htm" class="localvar">bl</a> = <a href="../h_src/58039604.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675576.htm" class="variable">bl</a>;
+<a href="../h_aa/57988876.htm" class=function>retstat</a>                                          lparser.c
+  1825 :    if (<a href="../h_src/57988468.htm" class="localvar">e</a>.<a href="../h_src/57680744.htm" class="variable">k</a> == <a href="../h_src/57681492.htm" class="variable">VCALL</a> &amp;&amp; <a href="../h_src/57988332.htm" class="localvar">nret</a> == 1 &amp;&amp; !<a href="../h_src/57988604.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675576.htm" class="variable">bl</a>-&gt;<a href="../h_src/58055924.htm" class="variable">insidetbc</a>) {  <a  class="comments">/* tail call? */</a>
+<a href="../h_aa/58031512.htm" class=function>solvegotos</a>                                       lparser.c
+   587 :    int <a href="../h_src/58030968.htm" class="localvar">i</a> = <a href="../h_src/58031376.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>-&gt;<a href="../h_src/57675576.htm" class="variable">bl</a>-&gt;<a href="../h_src/58056196.htm" class="variable">firstgoto</a>;
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable bl</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

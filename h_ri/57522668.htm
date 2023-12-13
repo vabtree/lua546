@@ -1,0 +1,120 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>getstr</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57522668.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57522668.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57522668.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57522668.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57713112.htm" class=function>aux_upvalue</a>                                      lapi.c
+  1377 :    return (<a href="../h_src/57712092.htm" class="localvar">name</a> == NULL) ? &quot;(no name)&quot; : <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/57712092.htm" class="localvar">name</a>);
+<a href="../h_aa/58045316.htm" class=function>check_readonly</a>                                   lparser.c
+   302 :    &quot;attempt to assign to const variable '%s'&quot;, <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58044772.htm" class="localvar">varname</a>));
+<a href="../h_aa/58004720.htm" class=function>checkrepeated</a>                                    lparser.c
+  1452 :    <a href="../h_src/58004176.htm" class="localvar">msg</a> = <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/58004584.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/58004176.htm" class="localvar">msg</a>, <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58004448.htm" class="localvar">name</a>), <a href="../h_src/58004312.htm" class="localvar">lb</a>-&gt;<a href="../h_src/57677616.htm" class="variable">line</a>);
+<a href="../h_aa/58203768.htm" class=function>copy2buff</a>                                        lvm.c
+   628 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/58203360.htm" class="localvar">buff</a> + <a href="../h_src/58203224.htm" class="localvar">tl</a>, <a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58203632.htm" class="localvar">top</a> - <a href="../h_src/58203496.htm" class="localvar">n</a>)), <a href="../h_src/58203088.htm" class="localvar">l</a> * sizeof(char));
+<a href="../h_aa/58127636.htm" class=function>createstrobj</a>                                     lstring.c
+   152 :    <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58126956.htm" class="localvar">ts</a>)[<a href="../h_src/58127364.htm" class="localvar">l</a>] = '\0';  <a  class="comments">/* ending 0 */</a>
+<a href="../h_aa/57846200.htm" class=function>dumpString</a>                                       ldump.c
+    97 :    const char *<a href="../h_src/57845656.htm" class="localvar">str</a> = <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/57845928.htm" class="localvar">s</a>);
+<a href="../h_aa/57750824.htm" class=function>funcinfo</a>                                         ldebug.c
+   267 :    <a href="../h_src/57750688.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423512.htm" class="variable">source</a> = <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/57750348.htm" class="localvar">p</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>);
+<a href="../h_aa/57738244.htm" class=function>funcnamefromcode</a>                                 ldebug.c
+   630 :    *<a href="../h_src/57737700.htm" class="localvar">name</a> = <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57738108.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57643644.htm" class="variable">tmname</a>[<a href="../h_src/57737564.htm" class="localvar">tm</a>]) + 2;
+<a href="../h_aa/57993092.htm" class=function>getlocalattribute</a>                                lparser.c
+  1704 :    const char *<a href="../h_src/57992820.htm" class="localvar">attr</a> = <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58051300.htm" class="function">str_checkname</a>(<a href="../h_src/57992956.htm" class="localvar">ls</a>));
+<a href="../h_aa/57745588.htm" class=function>getobjname</a>                                       ldebug.c
+   572 :    *<a href="../h_src/57739468.htm" class="localvar">name</a> = <a href="../h_src/57522532.htm" class="macro">svalue</a>(&amp;<a href="../h_src/57739876.htm" class="localvar">p</a>-&gt;<a href="../h_src/57515052.htm" class="variable">k</a>[<a href="../h_src/57738380.htm" class="localvar">b</a>]);
+<a href="../h_aa/58125188.htm" class=function>internshrstr</a>                                     lstring.c
+   196 :    if (<a href="../h_src/58124780.htm" class="localvar">l</a> == <a href="../h_src/58124644.htm" class="localvar">ts</a>-&gt;<a href="../h_src/57523416.htm" class="variable">shrlen</a> &amp;&amp; (<a href="../h_aa/58131444.htm" class="libfunc">memcmp</a>(<a href="../h_src/58124916.htm" class="localvar">str</a>, <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58124644.htm" class="localvar">ts</a>), <a href="../h_src/58124780.htm" class="localvar">l</a> * sizeof(char)) == 0)) {
+   209 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58124644.htm" class="localvar">ts</a>), <a href="../h_src/58124916.htm" class="localvar">str</a>, <a href="../h_src/58124780.htm" class="localvar">l</a> * sizeof(char));
+<a href="../h_aa/58035660.htm" class=function>jumpscopeerror</a>                                   lparser.c
+   515 :    const char *<a href="../h_src/58035252.htm" class="localvar">varname</a> = <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58047628.htm" class="function">getlocalvardesc</a>(<a href="../h_src/58035524.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>, <a href="../h_src/58035388.htm" class="localvar">gt</a>-&gt;<a href="../h_src/57677548.htm" class="variable">nactvar</a>)-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678228.htm" class="variable">name</a>);
+   517 :    <a href="../h_src/58035116.htm" class="localvar">msg</a> = <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/58035524.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/58035116.htm" class="localvar">msg</a>, <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58035388.htm" class="localvar">gt</a>-&gt;<a href="../h_src/57677752.htm" class="variable">name</a>), <a href="../h_src/58035388.htm" class="localvar">gt</a>-&gt;<a href="../h_src/57677616.htm" class="variable">line</a>, <a href="../h_src/58035252.htm" class="localvar">varname</a>);
+<a href="../h_aa/57745452.htm" class=function>kname</a>                                            ldebug.c
+   429 :    *<a href="../h_src/57745044.htm" class="localvar">name</a> = (<a href="../h_src/57524912.htm" class="macro">ttisstring</a>(<a href="../h_src/57744908.htm" class="localvar">kvalue</a>)) ? <a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/57744908.htm" class="localvar">kvalue</a>) : &quot;?&quot;;
+<a href="../h_aa/58211588.htm" class=function>l_strcmp</a>                                         lvm.c
+   376 :    const char *<a href="../h_src/58211180.htm" class="localvar">l</a> = <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58211452.htm" class="localvar">ls</a>);
+   378 :    const char *<a href="../h_src/58210908.htm" class="localvar">r</a> = <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58211316.htm" class="localvar">rs</a>);
+<a href="../h_aa/58060996.htm" class=function>l_strton</a>                                         lvm.c
+    95 :    return (<a href="../h_src/57501656.htm" class="function">luaO_str2num</a>(<a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/58060860.htm" class="localvar">obj</a>), <a href="../h_src/58060724.htm" class="localvar">result</a>) == <a href="../h_src/57522260.htm" class="macro">vslen</a>(<a href="../h_src/58060860.htm" class="localvar">obj</a>) + 1);
+<a href="../h_aa/58071128.htm" class=function>loadStringN</a>                                      lundump.c
+   125 :    <a href="../h_src/58074392.htm" class="macro">loadVector</a>(<a href="../h_src/58070992.htm" class="localvar">S</a>, <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58070584.htm" class="localvar">ts</a>), <a href="../h_src/58070448.htm" class="localvar">size</a>);  <a  class="comments">/* load directly in final place */</a>
+<a href="../h_aa/57435072.htm" class=function>lua_pushlstring</a>                                  lapi.c
+   534 :    return <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/57588972.htm" class="localvar">ts</a>);
+<a href="../h_aa/57435004.htm" class=function>lua_pushstring</a>                                   lapi.c
+   546 :    <a href="../h_src/57588428.htm" class="localvar">s</a> = <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/57588292.htm" class="localvar">ts</a>);  <a  class="comments">/* internal copy's address */</a>
+<a href="../h_aa/57438200.htm" class=function>lua_tolstring</a>                                    lapi.c
+   422 :    return <a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/57593052.htm" class="localvar">o</a>);
+<a href="../h_aa/57638068.htm" class=function>luaE_warnerror</a>                                   lstate.c
+   436 :    ? <a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/58132600.htm" class="localvar">errobj</a>)
+<a href="../h_aa/57630180.htm" class=function>luaF_getlocalname</a>                                lfunc.c
+   289 :    return <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/57829948.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514032.htm" class="variable">locvars</a>[<a href="../h_src/57829540.htm" class="localvar">i</a>].<a href="../h_src/57516888.htm" class="variable">varname</a>);
+<a href="../h_aa/57635212.htm" class=function>luaG_addinfo</a>                                     ldebug.c
+   801 :    <a href="../h_src/57501316.htm" class="function">luaO_chunkid</a>(<a href="../h_src/57888700.htm" class="localvar">buff</a>, <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/57888972.htm" class="localvar">src</a>), <a href="../h_src/57522396.htm" class="macro">tsslen</a>(<a href="../h_src/57888972.htm" class="localvar">src</a>));
+<a href="../h_aa/57501452.htm" class=function>luaO_pushvfstring</a>                                lobject.c
+   545 :    return <a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57901932.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1));
+<a href="../h_aa/57619028.htm" class=function>luaS_eqlngstr</a>                                    lstring.c
+    39 :    (<a href="../h_aa/58131444.htm" class="libfunc">memcmp</a>(<a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58131852.htm" class="localvar">a</a>), <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58131716.htm" class="localvar">b</a>), <a href="../h_src/58131580.htm" class="localvar">len</a>) == 0));  <a  class="comments">/* equal contents */</a><a href="../h_src/57522804.htm" class="variable">contents</a> */
+<a href="../h_aa/57619096.htm" class=function>luaS_hashlongstr</a>                                 lstring.c
+    55 :    <a href="../h_src/58130832.htm" class="localvar">ts</a>-&gt;<a href="../h_src/57523348.htm" class="variable">hash</a> = <a href="../h_src/57619164.htm" class="function">luaS_hash</a>(<a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58130832.htm" class="localvar">ts</a>), <a href="../h_src/58130696.htm" class="localvar">len</a>, <a href="../h_src/58130832.htm" class="localvar">ts</a>-&gt;<a href="../h_src/57523348.htm" class="variable">hash</a>);
+<a href="../h_aa/57618484.htm" class=function>luaS_new</a>                                         lstring.c
+   246 :    if (<a href="../h_aa/57564488.htm" class="libfunc">strcmp</a>(<a href="../h_src/58123284.htm" class="localvar">str</a>, <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58122876.htm" class="localvar">p</a>[<a href="../h_src/58123012.htm" class="localvar">j</a>])) == 0)  <a  class="comments">/* hit? */</a>
+<a href="../h_aa/57618552.htm" class=function>luaS_newlstr</a>                                     lstring.c
+   229 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58123556.htm" class="localvar">ts</a>), <a href="../h_src/58123828.htm" class="localvar">str</a>, <a href="../h_src/58123692.htm" class="localvar">l</a> * sizeof(char));
+<a href="../h_aa/57498188.htm" class=function>luaT_objtypename</a>                                 ltm.c
+    97 :    return <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/57524368.htm" class="macro">tsvalue</a>(<a href="../h_src/58088400.htm" class="localvar">name</a>));  <a  class="comments">/* use it as type name */</a>
+<a href="../h_aa/57610868.htm" class=function>luaV_concat</a>                                      lvm.c
+   672 :    <a href="../h_src/58203768.htm" class="function">copy2buff</a>(<a href="../h_src/58202680.htm" class="localvar">top</a>, <a href="../h_src/58202544.htm" class="localvar">n</a>, <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58202000.htm" class="localvar">ts</a>));
+<a href="../h_aa/143397312.htm" class=function>PrintCode</a>                                        luac.c
+   389 :    <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a> &quot;%s&quot;,<a href="../h_src/143400372.htm" class="macro">UPVALNAME</a>(<a href="../h_src/143396224.htm" class="localvar">b</a>));
+   393 :    <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a> &quot;%s&quot;,<a href="../h_src/143400372.htm" class="macro">UPVALNAME</a>(<a href="../h_src/143396224.htm" class="localvar">b</a>));
+   397 :    <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a> &quot;%s&quot;,<a href="../h_src/143400372.htm" class="macro">UPVALNAME</a>(<a href="../h_src/143396224.htm" class="localvar">b</a>));
+   412 :    <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a> &quot;%s&quot;,<a href="../h_src/143400372.htm" class="macro">UPVALNAME</a>(<a href="../h_src/143396360.htm" class="localvar">a</a>));
+   524 :    <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a> &quot;%s&quot;,<a href="../h_src/143400100.htm" class="macro">eventname</a>(<a href="../h_src/143396088.htm" class="localvar">c</a>));
+   528 :    <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a> &quot;%s&quot;,<a href="../h_src/143400100.htm" class="macro">eventname</a>(<a href="../h_src/143396088.htm" class="localvar">c</a>));
+   533 :    <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a> &quot;%s &quot;,<a href="../h_src/143400100.htm" class="macro">eventname</a>(<a href="../h_src/143396088.htm" class="localvar">c</a>)); <a href="../h_src/143398536.htm" class="function">PrintConstant</a>(<a href="../h_src/143397176.htm" class="localvar">f</a>,<a href="../h_src/143396224.htm" class="localvar">b</a>);
+<a href="../h_aa/143394320.htm" class=function>PrintDebug</a>                                       luac.c
+   705 :    <a href="../h_src/143394048.htm" class="localvar">i</a>,<a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/143394184.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514032.htm" class="variable">locvars</a>[<a href="../h_src/143394048.htm" class="localvar">i</a>].<a href="../h_src/57516888.htm" class="variable">varname</a>),<a href="../h_src/143394184.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514032.htm" class="variable">locvars</a>[<a href="../h_src/143394048.htm" class="localvar">i</a>].<a href="../h_src/57516820.htm" class="variable">startpc</a>+1,<a href="../h_src/143394184.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514032.htm" class="variable">locvars</a>[<a href="../h_src/143394048.htm" class="localvar">i</a>].<a href="../h_src/57516752.htm" class="variable">endpc</a>+1);
+   712 :    <a href="../h_src/143394048.htm" class="localvar">i</a>,<a href="../h_src/143400372.htm" class="macro">UPVALNAME</a>(<a href="../h_src/143394048.htm" class="localvar">i</a>),<a href="../h_src/143394184.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/143394048.htm" class="localvar">i</a>].<a href="../h_src/57517296.htm" class="variable">instack</a>,<a href="../h_src/143394184.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/143394048.htm" class="localvar">i</a>].<a href="../h_src/57517228.htm" class="variable">idx</a>);
+<a href="../h_aa/143394728.htm" class=function>PrintHeader</a>                                      luac.c
+   670 :    const char* <a href="../h_src/143394456.htm" class="localvar">s</a>=<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a> ? <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>) : &quot;=?&quot;;
+<a href="../h_aa/143399964.htm" class=function>PrintString</a>                                      luac.c
+   222 :    const char* <a href="../h_src/143399692.htm" class="localvar">s</a>=<a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/143399828.htm" class="localvar">ts</a>);
+<a href="../h_aa/57974964.htm" class=function>traversetable</a>                                    lgc.c
+   547 :    (<a href="../h_src/57547624.htm" class="macro">cast_void</a>(<a href="../h_src/57974556.htm" class="localvar">weakkey</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/57974284.htm" class="localvar">mode</a>), 'k')),
+   548 :    <a href="../h_src/57547624.htm" class="macro">cast_void</a>(<a href="../h_src/57974420.htm" class="localvar">weakvalue</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/57974284.htm" class="localvar">mode</a>), 'v')),
+<a href="../h_aa/58028248.htm" class=function>undefgoto</a>                                        lparser.c
+   666 :    <a href="../h_src/58027840.htm" class="localvar">msg</a> = <a href="../h_src/57501384.htm" class="function">luaO_pushfstring</a>(<a href="../h_src/58028112.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/58027840.htm" class="localvar">msg</a>, <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/58027976.htm" class="localvar">gt</a>-&gt;<a href="../h_src/57677752.htm" class="variable">name</a>), <a href="../h_src/58027976.htm" class="localvar">gt</a>-&gt;<a href="../h_src/57677616.htm" class="variable">line</a>);
+<a href="../h_aa/57754904.htm" class=function>upvalname</a>                                        ldebug.c
+   180 :    else return <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/57754496.htm" class="localvar">s</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use getstr</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

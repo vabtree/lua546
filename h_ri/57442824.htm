@@ -1,0 +1,77 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>LUA_NUMTYPES</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57442824.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57442824.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57442824.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57442824.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57538104.htm" class=file>lstate.h</a>
+   299 :    struct <a href="../h_src/57519812.htm" class="class">Table</a> *<a href="../h_src/57643440.htm" class="variable">mt</a>[<a href="../h_src/57442824.htm" class="macro">LUA_NUMTYPES</a>];  <a  class="comments">/* metatables for basic types */</a>
+<a href="../h_aa/58090712.htm" class=file>ltm.c</a>
+    30 :    <a href="../h_src/57453636.htm" class="macro">LUAI_DDEF</a> const char *const <a href="../h_src/57498256.htm" class="variable">luaT_typenames_</a>[<a href="../h_src/57536948.htm" class="macro">LUA_TOTALTYPES</a>] = {
+<a href="../h_aa/57501248.htm" class=file>ltm.h</a>
+    72 :    <a href="../h_src/57453772.htm" class="macro">LUAI_DDEC</a>(const char *const <a href="../h_src/57498256.htm" class="variable">luaT_typenames_</a>[<a href="../h_src/57536948.htm" class="macro">LUA_TOTALTYPES</a>];)
+<a href="../h_aa/57824984.htm" class=function>clearkey</a>                                         lgc.c
+   174 :    <a href="../h_src/57502744.htm" class="macro">setdeadkey</a>(<a href="../h_src/57824848.htm" class="localvar">n</a>);  <a  class="comments">/* unused key; remove it */</a>
+<a href="../h_aa/58116484.htm" class=function>equalkey</a>                                         ltable.c
+   218 :    !(<a href="../h_src/58116076.htm" class="localvar">deadok</a> &amp;&amp; <a href="../h_src/57502608.htm" class="macro">keyisdead</a>(<a href="../h_src/58116212.htm" class="localvar">n2</a>) &amp;&amp; <a href="../h_src/57527768.htm" class="macro">iscollectable</a>(<a href="../h_src/58116348.htm" class="localvar">k1</a>)))
+<a href="../h_aa/57966804.htm" class=function>freeobj</a>                                          lgc.c
+   772 :    case <a href="../h_src/57517636.htm" class="macro">LUA_VPROTO</a>:
+   773 :    <a href="../h_src/57630248.htm" class="function">luaF_freeproto</a>(<a href="../h_src/57966668.htm" class="localvar">L</a>, <a href="../h_src/57639292.htm" class="macro">gco2p</a>(<a href="../h_src/57966532.htm" class="localvar">o</a>));
+   775 :    case <a href="../h_src/57513760.htm" class="macro">LUA_VUPVAL</a>:
+   776 :    <a href="../h_src/57967212.htm" class="function">freeupval</a>(<a href="../h_src/57966668.htm" class="localvar">L</a>, <a href="../h_src/57639020.htm" class="macro">gco2upv</a>(<a href="../h_src/57966532.htm" class="localvar">o</a>));
+<a href="../h_aa/57826208.htm" class=function>getgclist</a>                                        lgc.c
+   131 :    case <a href="../h_src/57517636.htm" class="macro">LUA_VPROTO</a>: return &amp;<a href="../h_src/57639292.htm" class="macro">gco2p</a>(<a href="../h_src/57826072.htm" class="localvar">o</a>)-&gt;<a href="../h_src/57513896.htm" class="variable">gclist</a>;
+<a href="../h_aa/57439900.htm" class=function>lua_newstate</a>                                     lstate.c
+   406 :    for (<a href="../h_src/58134300.htm" class="localvar">i</a>=0; <a href="../h_src/58134300.htm" class="localvar">i</a> &lt; <a href="../h_src/57426028.htm" class="macro">LUA_NUMTAGS</a>; <a href="../h_src/58134300.htm" class="localvar">i</a>++) <a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57643440.htm" class="variable">mt</a>[<a href="../h_src/58134300.htm" class="localvar">i</a>] = NULL;
+<a href="../h_aa/57438472.htm" class=function>lua_typename</a>                                     lapi.c
+   292 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57600600.htm" class="localvar">L</a>, <a href="../h_src/57444184.htm" class="macro">LUA_TNONE</a> &lt;= t &amp;&amp; t &lt; <a href="../h_src/57442824.htm" class="macro">LUA_NUMTYPES</a>, &quot;invalid type&quot;);
+<a href="../h_aa/57630656.htm" class=function>luaF_initupvals</a>                                  lfunc.c
+    51 :    <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57838652.htm" class="localvar">o</a> = <a href="../h_src/57620592.htm" class="function">luaC_newobj</a>(<a href="../h_src/57839060.htm" class="localvar">L</a>, <a href="../h_src/57513760.htm" class="macro">LUA_VUPVAL</a>, sizeof(<a href="../h_src/57509612.htm" class="type">UpVal</a>));
+    52 :    <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57838516.htm" class="localvar">uv</a> = <a href="../h_src/57639020.htm" class="macro">gco2upv</a>(<a href="../h_src/57838652.htm" class="localvar">o</a>);
+<a href="../h_aa/57630996.htm" class=function>luaF_newproto</a>                                    lfunc.c
+   241 :    <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57830492.htm" class="localvar">o</a> = <a href="../h_src/57620592.htm" class="function">luaC_newobj</a>(<a href="../h_src/57830628.htm" class="localvar">L</a>, <a href="../h_src/57517636.htm" class="macro">LUA_VPROTO</a>, sizeof(<a href="../h_src/57513828.htm" class="type">Proto</a>));
+   242 :    <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57830356.htm" class="localvar">f</a> = <a href="../h_src/57639292.htm" class="macro">gco2p</a>(<a href="../h_src/57830492.htm" class="localvar">o</a>);
+<a href="../h_aa/57821040.htm" class=function>markmt</a>                                           lgc.c
+   337 :    for (<a href="../h_src/57820768.htm" class="localvar">i</a>=0; <a href="../h_src/57820768.htm" class="localvar">i</a> &lt; <a href="../h_src/57426028.htm" class="macro">LUA_NUMTAGS</a>; <a href="../h_src/57820768.htm" class="localvar">i</a>++)
+<a href="../h_aa/57838380.htm" class=function>newupval</a>                                         lfunc.c
+    66 :    <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57837836.htm" class="localvar">o</a> = <a href="../h_src/57620592.htm" class="function">luaC_newobj</a>(<a href="../h_src/57838244.htm" class="localvar">L</a>, <a href="../h_src/57513760.htm" class="macro">LUA_VUPVAL</a>, sizeof(<a href="../h_src/57509612.htm" class="type">UpVal</a>));
+    67 :    <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57837700.htm" class="localvar">uv</a> = <a href="../h_src/57639020.htm" class="macro">gco2upv</a>(<a href="../h_src/57837836.htm" class="localvar">o</a>);
+<a href="../h_aa/57971156.htm" class=function>propagatemark</a>                                    lgc.c
+   667 :    case <a href="../h_src/57517636.htm" class="macro">LUA_VPROTO</a>: return <a href="../h_src/57973604.htm" class="function">traverseproto</a>(<a href="../h_src/57971020.htm" class="localvar">g</a>, <a href="../h_src/57639292.htm" class="macro">gco2p</a>(<a href="../h_src/57970884.htm" class="localvar">o</a>));
+<a href="../h_aa/57826752.htm" class=function>reallymarkobject</a>                                 lgc.c
+   304 :    case <a href="../h_src/57513760.htm" class="macro">LUA_VUPVAL</a>: {
+   305 :    <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57821312.htm" class="localvar">uv</a> = <a href="../h_src/57639020.htm" class="macro">gco2upv</a>(<a href="../h_src/57821448.htm" class="localvar">o</a>);
+   323 :    case <a href="../h_src/57528992.htm" class="macro">LUA_VTHREAD</a>: case <a href="../h_src/57517636.htm" class="macro">LUA_VPROTO</a>: {
+<a href="../h_aa/57955924.htm" class=function>sweep2old</a>                                        lgc.c
+  1092 :    else if (<a href="../h_src/57955516.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528108.htm" class="variable">tt</a> == <a href="../h_src/57513760.htm" class="macro">LUA_VUPVAL</a> &amp;&amp; <a href="../h_src/57631540.htm" class="macro">upisopen</a>(<a href="../h_src/57639020.htm" class="macro">gco2upv</a>(<a href="../h_src/57955516.htm" class="localvar">curr</a>)))
+</pre>
+<h4><a class="legend">Table lists functions that directly use LUA_NUMTYPES</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

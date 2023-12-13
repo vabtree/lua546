@@ -1,0 +1,50 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>b</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57557416.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57557416.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57557416.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57557416.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57557960.htm" class=function>pushline</a>                                         lua.c
+   498 :    char *<a href="../h_src/57557416.htm" class="localvar">b</a> = <a href="../h_src/57557552.htm" class="localvar">buffer</a>;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57557960.htm" class=function>pushline</a>                                         lua.c
+   501 :    int <a href="../h_src/57556872.htm" class="localvar">readstatus</a> = <a href="../h_src/57559864.htm" class="macro">lua_readline</a>(<a href="../h_src/57557824.htm" class="localvar">L</a>, <a href="../h_src/57557416.htm" class="localvar">b</a>, <a href="../h_src/57557144.htm" class="localvar">prmt</a>);
+   505 :    <a href="../h_src/57557280.htm" class="localvar">l</a> = <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/57557416.htm" class="localvar">b</a>);
+   506 :    if (<a href="../h_src/57557280.htm" class="localvar">l</a> &gt; 0 &amp;&amp; <a href="../h_src/57557416.htm" class="localvar">b</a>[<a href="../h_src/57557280.htm" class="localvar">l</a>-1] == '\n')  <a  class="comments">/* line ends with newline? */</a>
+   507 :    <a href="../h_src/57557416.htm" class="localvar">b</a>[--<a href="../h_src/57557280.htm" class="localvar">l</a>] = '\0';  <a  class="comments">/* remove it */</a>
+   508 :    if (<a href="../h_src/57557688.htm" class="localvar">firstline</a> &amp;&amp; <a href="../h_src/57557416.htm" class="localvar">b</a>[0] == '=')  <a  class="comments">/* for compatibility with 5.2, ... */</a>
+   509 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/57557824.htm" class="localvar">L</a>, &quot;return %s&quot;, <a href="../h_src/57557416.htm" class="localvar">b</a> + 1);  <a  class="comments">/* change '=' to 'return' */</a>
+   511 :    <a href="../h_src/57435072.htm" class="function">lua_pushlstring</a>(<a href="../h_src/57557824.htm" class="localvar">L</a>, <a href="../h_src/57557416.htm" class="localvar">b</a>, <a href="../h_src/57557280.htm" class="localvar">l</a>);
+   512 :    <a href="../h_src/57559592.htm" class="macro">lua_freeline</a>(<a href="../h_src/57557824.htm" class="localvar">L</a>, <a href="../h_src/57557416.htm" class="localvar">b</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable b</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

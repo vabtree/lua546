@@ -1,0 +1,54 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>n</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143411456.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/143411456.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/143411456.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/143411456.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/143412000.htm" class=function>byteoffset</a>                                       lutf8lib.c
+   190 :    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143411456.htm" class="localvar">n</a>  = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143411864.htm" class="localvar">L</a>, 2);
+   207 :    <a href="../h_src/143411456.htm" class="localvar">n</a>++;
+   211 :    <a href="../h_src/143411456.htm" class="localvar">n</a>--;  <a  class="comments">/* do not move for 1st character */</a>
+   216 :    <a href="../h_src/143411456.htm" class="localvar">n</a>--;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/143412000.htm" class=function>byteoffset</a>                                       lutf8lib.c
+   191 :    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143411320.htm" class="localvar">posi</a> = (<a href="../h_src/143411456.htm" class="localvar">n</a> &gt;= 0) ? 1 : <a href="../h_src/143411728.htm" class="localvar">len</a> + 1;
+   195 :    if (<a href="../h_src/143411456.htm" class="localvar">n</a> == 0) {
+   202 :    if (<a href="../h_src/143411456.htm" class="localvar">n</a> &lt; 0) {
+   203 :    while (<a href="../h_src/143411456.htm" class="localvar">n</a> &lt; 0 &amp;&amp; <a href="../h_src/143411320.htm" class="localvar">posi</a> &gt; 0) {  <a  class="comments">/* move back */</a>
+   207 :    <a href="../h_src/143411456.htm" class="localvar">n</a>++;
+   211 :    <a href="../h_src/143411456.htm" class="localvar">n</a>--;  <a  class="comments">/* do not move for 1st character */</a>
+   212 :    while (<a href="../h_src/143411456.htm" class="localvar">n</a> &gt; 0 &amp;&amp; <a href="../h_src/143411320.htm" class="localvar">posi</a> &lt; (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)<a href="../h_src/143411728.htm" class="localvar">len</a>) {
+   216 :    <a href="../h_src/143411456.htm" class="localvar">n</a>--;
+   220 :    if (<a href="../h_src/143411456.htm" class="localvar">n</a> == 0)  <a  class="comments">/* did it find given character? */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable n</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

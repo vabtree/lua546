@@ -1,0 +1,74 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">Mbuffer::</a>n</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57655680.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57655680.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57655680.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57655680.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57655680.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57927976.htm" class=function>llex</a>                                             llex.c
+   446 :    <a href="../h_src/57654796.htm" class="macro">luaZ_resetbuffer</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>);
+   464 :    <a href="../h_src/57654796.htm" class="macro">luaZ_resetbuffer</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>);  <a  class="comments">/* 'skip_sep' may dirty the buffer */</a>
+   467 :    <a href="../h_src/57654796.htm" class="macro">luaZ_resetbuffer</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>);  <a  class="comments">/* previous call may dirty the buff. */</a>
+<a href="../h_aa/57932464.htm" class=function>read_long_string</a>                                 llex.c
+   304 :    if (!<a href="../h_src/57932192.htm" class="localvar">seminfo</a>) <a href="../h_src/57654796.htm" class="macro">luaZ_resetbuffer</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>);  <a  class="comments">/* avoid wasting space */</a>
+<a href="../h_aa/57928656.htm" class=function>read_string</a>                                      llex.c
+   412 :    <a href="../h_src/57654932.htm" class="macro">luaZ_buffremove</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>, 1);  <a  class="comments">/* remove '\\' */</a>
+   430 :    <a href="../h_src/57654932.htm" class="macro">luaZ_buffremove</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>, 1);  <a  class="comments">/* remove '\\' */</a>
+<a href="../h_aa/57929200.htm" class=function>readdecesc</a>                                       llex.c
+   377 :    <a href="../h_src/57654932.htm" class="macro">luaZ_buffremove</a>(<a href="../h_src/57929064.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>, <a href="../h_src/57928928.htm" class="localvar">i</a>);  <a  class="comments">/* remove read digits from buffer */</a>
+<a href="../h_aa/57930696.htm" class=function>readhexaesc</a>                                      llex.c
+   338 :    <a href="../h_src/57654932.htm" class="macro">luaZ_buffremove</a>(<a href="../h_src/57930560.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>, 2);  <a  class="comments">/* remove saved chars from buffer */</a>
+<a href="../h_aa/57930288.htm" class=function>readutf8esc</a>                                      llex.c
+   356 :    <a href="../h_src/57654932.htm" class="macro">luaZ_buffremove</a>(<a href="../h_src/57930152.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>, <a href="../h_src/57929880.htm" class="localvar">i</a>);  <a  class="comments">/* remove saved chars from buffer */</a>
+<a href="../h_aa/57939740.htm" class=function>save</a>                                             llex.c
+    66 :    <a href="../h_src/57939332.htm" class="localvar">b</a>-&gt;<a href="../h_src/57655748.htm" class="variable">buffer</a>[<a href="../h_src/57655068.htm" class="macro">luaZ_bufflen</a>(<a href="../h_src/57939332.htm" class="localvar">b</a>)++] = <a href="../h_src/57546672.htm" class="macro">cast_char</a>(<a href="../h_src/57939468.htm" class="localvar">c</a>);
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57927976.htm" class=function>llex</a>                                             llex.c
+   546 :    <a href="../h_src/57655068.htm" class="macro">luaZ_bufflen</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>));
+<a href="../h_aa/57932464.htm" class=function>read_long_string</a>                                 llex.c
+   315 :    <a href="../h_src/57655068.htm" class="macro">luaZ_bufflen</a>(<a href="../h_src/57932328.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>) - 2 * <a href="../h_src/57932056.htm" class="localvar">sep</a>);
+<a href="../h_aa/57928656.htm" class=function>read_string</a>                                      llex.c
+   412 :    <a href="../h_src/57654932.htm" class="macro">luaZ_buffremove</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>, 1);  <a  class="comments">/* remove '\\' */</a>
+   430 :    <a href="../h_src/57654932.htm" class="macro">luaZ_buffremove</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>, 1);  <a  class="comments">/* remove '\\' */</a>
+   441 :    <a href="../h_src/57655068.htm" class="macro">luaZ_bufflen</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>) - 2);
+<a href="../h_aa/57929200.htm" class=function>readdecesc</a>                                       llex.c
+   377 :    <a href="../h_src/57654932.htm" class="macro">luaZ_buffremove</a>(<a href="../h_src/57929064.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>, <a href="../h_src/57928928.htm" class="localvar">i</a>);  <a  class="comments">/* remove read digits from buffer */</a>
+<a href="../h_aa/57930696.htm" class=function>readhexaesc</a>                                      llex.c
+   338 :    <a href="../h_src/57654932.htm" class="macro">luaZ_buffremove</a>(<a href="../h_src/57930560.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>, 2);  <a  class="comments">/* remove saved chars from buffer */</a>
+<a href="../h_aa/57930288.htm" class=function>readutf8esc</a>                                      llex.c
+   356 :    <a href="../h_src/57654932.htm" class="macro">luaZ_buffremove</a>(<a href="../h_src/57930152.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>, <a href="../h_src/57929880.htm" class="localvar">i</a>);  <a  class="comments">/* remove saved chars from buffer */</a>
+<a href="../h_aa/57939740.htm" class=function>save</a>                                             llex.c
+    59 :    if (<a href="../h_src/57655068.htm" class="macro">luaZ_bufflen</a>(<a href="../h_src/57939332.htm" class="localvar">b</a>) + 1 &gt; <a href="../h_src/57655204.htm" class="macro">luaZ_sizebuffer</a>(<a href="../h_src/57939332.htm" class="localvar">b</a>)) {
+    66 :    <a href="../h_src/57939332.htm" class="localvar">b</a>-&gt;<a href="../h_src/57655748.htm" class="variable">buffer</a>[<a href="../h_src/57655068.htm" class="macro">luaZ_bufflen</a>(<a href="../h_src/57939332.htm" class="localvar">b</a>)++] = <a href="../h_src/57546672.htm" class="macro">cast_char</a>(<a href="../h_src/57939468.htm" class="localvar">c</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable n</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,58 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>ci_func</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57636640.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57636640.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57636640.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57636640.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57758644.htm" class=function>currentpc</a>                                        ldebug.c
+    43 :    return <a href="../h_src/57636776.htm" class="macro">pcRel</a>(<a href="../h_src/57758508.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57507708.htm" class="variable">l</a>.<a href="../h_src/57651124.htm" class="variable">savedpc</a>, <a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57758508.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57531984.htm" class="variable">p</a>);
+<a href="../h_aa/57758780.htm" class=function>funcnamefromcall</a>                                 ldebug.c
+   649 :    return <a href="../h_src/57738244.htm" class="function">funcnamefromcode</a>(<a href="../h_src/57897268.htm" class="localvar">L</a>, <a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57897132.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>, <a href="../h_src/57758644.htm" class="function">currentpc</a>(<a href="../h_src/57897132.htm" class="localvar">ci</a>), <a href="../h_src/57896996.htm" class="localvar">name</a>);
+<a href="../h_aa/57757148.htm" class=function>getcurrentline</a>                                   ldebug.c
+    99 :    return <a href="../h_src/57635960.htm" class="function">luaG_getfuncline</a>(<a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57757012.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>, <a href="../h_src/57758644.htm" class="function">currentpc</a>(<a href="../h_src/57757012.htm" class="localvar">ci</a>));
+<a href="../h_aa/57896180.htm" class=function>getupvalname</a>                                     ldebug.c
+   682 :    <a href="../h_src/57507980.htm" class="type">LClosure</a> *<a href="../h_src/57895636.htm" class="localvar">c</a> = <a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57896044.htm" class="localvar">ci</a>);
+<a href="../h_aa/57633444.htm" class=function>luaD_hookcall</a>                                    ldo.c
+   374 :    <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57874012.htm" class="localvar">p</a> = <a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57874284.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>;
+<a href="../h_aa/57635892.htm" class=function>luaG_findlocal</a>                                   ldebug.c
+   203 :    <a href="../h_src/57753000.htm" class="localvar">name</a> = <a href="../h_src/57630180.htm" class="function">luaF_getlocalname</a>(<a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57753544.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>, <a href="../h_src/57753408.htm" class="localvar">n</a>, <a href="../h_src/57758644.htm" class="function">currentpc</a>(<a href="../h_src/57753544.htm" class="localvar">ci</a>));
+<a href="../h_aa/57635280.htm" class=function>luaG_runerror</a>                                    ldebug.c
+   831 :    <a href="../h_src/57635212.htm" class="function">luaG_addinfo</a>(<a href="../h_src/57887748.htm" class="localvar">L</a>, <a href="../h_src/57887204.htm" class="localvar">msg</a>, <a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57887340.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57531984.htm" class="variable">p</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>, <a href="../h_src/57757148.htm" class="function">getcurrentline</a>(<a href="../h_src/57887340.htm" class="localvar">ci</a>));
+<a href="../h_aa/57635076.htm" class=function>luaG_traceexec</a>                                   ldebug.c
+   883 :    const <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57885164.htm" class="localvar">p</a> = <a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57885436.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>;
+<a href="../h_aa/57873876.htm" class=function>rethook</a>                                          ldo.c
+   393 :    <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57872924.htm" class="localvar">p</a> = <a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57873604.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>;
+   403 :    <a href="../h_src/57873740.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641468.htm" class="variable">oldpc</a> = <a href="../h_src/57636776.htm" class="macro">pcRel</a>(<a href="../h_src/57873604.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650852.htm" class="variable">l</a>.<a href="../h_src/57651124.htm" class="variable">savedpc</a>, <a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57873604.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>);  <a  class="comments">/* set 'oldpc' */</a>
+<a href="../h_aa/57894820.htm" class=function>varinfo</a>                                          ldebug.c
+   715 :    <a href="../h_src/57894140.htm" class="localvar">kind</a> = <a href="../h_src/57745588.htm" class="function">getobjname</a>(<a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57894412.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>, <a href="../h_src/57758644.htm" class="function">currentpc</a>(<a href="../h_src/57894412.htm" class="localvar">ci</a>), <a href="../h_src/57894004.htm" class="localvar">reg</a>, &amp;<a href="../h_src/57894276.htm" class="localvar">name</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use ci_func</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,53 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>KGC_GEN</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57652144.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57652144.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57652144.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57652144.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57950484.htm" class=function>atomic2gen</a>                                       lgc.c
+  1305 :    <a href="../h_src/57950212.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645956.htm" class="variable">gckind</a> = <a href="../h_src/57652144.htm" class="macro">KGC_GEN</a>;
+<a href="../h_aa/57947492.htm" class=function>genstep</a>                                          lgc.c
+  1464 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57622428.htm" class="macro">isdecGCmodegen</a>(g));
+<a href="../h_aa/57430448.htm" class=function>lua_gc</a>                                           lapi.c
+  1202 :    <a href="../h_src/57719572.htm" class="localvar">res</a> = <a href="../h_src/57622428.htm" class="macro">isdecGCmodegen</a>(<a href="../h_src/57719436.htm" class="localvar">g</a>) ? <a href="../h_src/57430720.htm" class="macro">LUA_GCGEN</a> : <a href="../h_src/57430584.htm" class="macro">LUA_GCINC</a>;
+  1207 :    <a href="../h_src/57620252.htm" class="function">luaC_changemode</a>(<a href="../h_src/57720116.htm" class="localvar">L</a>, <a href="../h_src/57652144.htm" class="macro">KGC_GEN</a>);
+  1214 :    <a href="../h_src/57719572.htm" class="localvar">res</a> = <a href="../h_src/57622428.htm" class="macro">isdecGCmodegen</a>(<a href="../h_src/57719436.htm" class="localvar">g</a>) ? <a href="../h_src/57430720.htm" class="macro">LUA_GCGEN</a> : <a href="../h_src/57430584.htm" class="macro">LUA_GCINC</a>;
+<a href="../h_aa/57620388.htm" class=function>luaC_barrierback_</a>                                lgc.c
+   233 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>((g-&gt;gckind == <a href="../h_src/57652144.htm" class="macro">KGC_GEN</a>) == (<a href="../h_src/57623652.htm" class="macro">isold</a>(o) &amp;&amp; <a href="../h_src/57623924.htm" class="macro">getage</a>(o) != <a href="../h_src/57624332.htm" class="macro">G_TOUCHED1</a>));
+<a href="../h_aa/57620252.htm" class=function>luaC_changemode</a>                                  lgc.c
+  1361 :    if (<a href="../h_src/57948852.htm" class="localvar">newmode</a> == <a href="../h_src/57652144.htm" class="macro">KGC_GEN</a>)  <a  class="comments">/* entering generational mode? */</a>
+<a href="../h_aa/57620796.htm" class=function>luaC_step</a>                                        lgc.c
+  1693 :    if(<a href="../h_src/57622428.htm" class="macro">isdecGCmodegen</a>(<a href="../h_src/57941644.htm" class="localvar">g</a>))
+<a href="../h_aa/57948172.htm" class=function>stepgenfull</a>                                      lgc.c
+  1403 :    if (<a href="../h_src/57947900.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645956.htm" class="variable">gckind</a> == <a href="../h_src/57652144.htm" class="macro">KGC_GEN</a>)  <a  class="comments">/* still in generational mode? */</a>
+</pre>
+<h4><a class="legend">Table lists functions that directly use KGC_GEN</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

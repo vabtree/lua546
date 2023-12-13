@@ -1,0 +1,47 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>LUA_MASKLINE</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57424940.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57424940.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57424940.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57424940.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57572172.htm" class=function>laction</a>                                          lua.c
+    77 :    int <a href="../h_src/57571900.htm" class="localvar">flag</a> = <a href="../h_src/57425212.htm" class="macro">LUA_MASKCALL</a> | <a href="../h_src/57425076.htm" class="macro">LUA_MASKRET</a> | <a href="../h_src/57424940.htm" class="macro">LUA_MASKLINE</a> | <a href="../h_src/57424804.htm" class="macro">LUA_MASKCOUNT</a>;
+<a href="../h_aa/57635076.htm" class=function>luaG_traceexec</a>                                   ldebug.c
+   885 :    if (!(<a href="../h_src/57885300.htm" class="localvar">mask</a> &amp; (<a href="../h_src/57424940.htm" class="macro">LUA_MASKLINE</a> | <a href="../h_src/57424804.htm" class="macro">LUA_MASKCOUNT</a>))) {  <a  class="comments">/* no hooks? */</a>
+   894 :    else if (!(<a href="../h_src/57885300.htm" class="localvar">mask</a> &amp; <a href="../h_src/57424940.htm" class="macro">LUA_MASKLINE</a>))
+   904 :    if (<a href="../h_src/57885300.htm" class="localvar">mask</a> &amp; <a href="../h_src/57424940.htm" class="macro">LUA_MASKLINE</a>) {
+<a href="../h_aa/143269908.htm" class=function>makemask</a>                                         ldblib.c
+   346 :    if (<a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143269772.htm" class="localvar">smask</a>, 'l')) <a href="../h_src/143269500.htm" class="localvar">mask</a> |= <a href="../h_src/57424940.htm" class="macro">LUA_MASKLINE</a>;
+<a href="../h_aa/143269364.htm" class=function>unmakemask</a>                                       ldblib.c
+   359 :    if (<a href="../h_src/143269228.htm" class="localvar">mask</a> &amp; <a href="../h_src/57424940.htm" class="macro">LUA_MASKLINE</a>) <a href="../h_src/143269092.htm" class="localvar">smask</a>[<a href="../h_src/143268956.htm" class="localvar">i</a>++] = 'l';
+</pre>
+<h4><a class="legend">Table lists functions that directly use LUA_MASKLINE</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

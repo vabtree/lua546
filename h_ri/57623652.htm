@@ -1,0 +1,51 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>isold</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57623652.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57623652.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57623652.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57623652.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57953204.htm" class=function>correctgraylist</a>                                  lgc.c
+  1187 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57623652.htm" class="macro">isold</a>(curr));  <a  class="comments">/* young objects should be white here */</a>
+<a href="../h_aa/57620456.htm" class=function>luaC_barrier_</a>                                    lgc.c
+   213 :    if (<a href="../h_src/57623652.htm" class="macro">isold</a>(<a href="../h_src/57824168.htm" class="localvar">o</a>)) {
+   214 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!<a href="../h_src/57623652.htm" class="macro">isold</a>(v));  <a  class="comments">/* white object could not be old */</a>
+<a href="../h_aa/57620388.htm" class=function>luaC_barrierback_</a>                                lgc.c
+   233 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>((g-&gt;gckind == <a href="../h_src/57652144.htm" class="macro">KGC_GEN</a>) == (<a href="../h_src/57623652.htm" class="macro">isold</a>(o) &amp;&amp; <a href="../h_src/57623924.htm" class="macro">getage</a>(o) != <a href="../h_src/57624332.htm" class="macro">G_TOUCHED1</a>));
+   238 :    if (<a href="../h_src/57623652.htm" class="macro">isold</a>(<a href="../h_src/57823624.htm" class="localvar">o</a>))  <a  class="comments">/* generational mode? */</a>
+<a href="../h_aa/57820088.htm" class=function>remarkupvals</a>                                     lgc.c
+   377 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!<a href="../h_src/57623652.htm" class="macro">isold</a>(thread) || thread-&gt;openupval == NULL);
+<a href="../h_aa/57955108.htm" class=function>sweepgen</a>                                         lgc.c
+  1128 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!<a href="../h_src/57623652.htm" class="macro">isold</a>(curr) &amp;&amp; <a href="../h_src/57625556.htm" class="macro">isdead</a>(g, curr));
+<a href="../h_aa/57971836.htm" class=function>traversethread</a>                                   lgc.c
+   630 :    if (<a href="../h_src/57623652.htm" class="macro">isold</a>(<a href="../h_src/57971564.htm" class="localvar">th</a>) || <a href="../h_src/57971700.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646024.htm" class="variable">gcstate</a> == <a href="../h_src/57629772.htm" class="macro">GCSpropagate</a>)
+</pre>
+<h4><a class="legend">Table lists functions that directly use isold</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

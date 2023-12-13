@@ -1,0 +1,45 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>L</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57554832.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57554832.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57554832.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57554832.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57554968.htm" class=function>l_print</a>                                          lua.c
+   578 :    int <a href="../h_src/57554696.htm" class="localvar">n</a> = <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/57554832.htm" class="localvar">L</a>);
+   580 :    <a href="../h_src/57419840.htm" class="function">luaL_checkstack</a>(<a href="../h_src/57554832.htm" class="localvar">L</a>, <a href="../h_src/57442688.htm" class="macro">LUA_MINSTACK</a>, &quot;too many results to print&quot;);
+   581 :    <a href="../h_src/57434392.htm" class="function">lua_getglobal</a>(<a href="../h_src/57554832.htm" class="localvar">L</a>, &quot;print&quot;);
+   582 :    <a href="../h_src/57427252.htm" class="macro">lua_insert</a>(<a href="../h_src/57554832.htm" class="localvar">L</a>, 1);
+   583 :    if (<a href="../h_src/57432760.htm" class="macro">lua_pcall</a>(<a href="../h_src/57554832.htm" class="localvar">L</a>, <a href="../h_src/57554696.htm" class="localvar">n</a>, 0, 0) != <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>)
+   584 :    <a href="../h_src/57571288.htm" class="function">l_message</a>(<a href="../h_src/57572920.htm" class="variable">progname</a>, <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/57554832.htm" class="localvar">L</a>, &quot;error calling 'print' (%s)&quot;,
+   585 :    <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/57554832.htm" class="localvar">L</a>, -1)));
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable L</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

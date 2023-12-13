@@ -1,0 +1,57 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>LUA_RIDX_GLOBALS</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57442416.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57442416.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57442416.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57442416.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57979628.htm" class=function>init_registry</a>                                    lstate.c
+   220 :    <a href="../h_src/57616444.htm" class="function">luaH_resize</a>(<a href="../h_src/57979492.htm" class="localvar">L</a>, <a href="../h_src/57979220.htm" class="localvar">registry</a>, <a href="../h_src/57442280.htm" class="macro">LUA_RIDX_LAST</a>, 0);
+   224 :    <a href="../h_src/57507028.htm" class="macro">sethvalue</a>(<a href="../h_src/57979492.htm" class="localvar">L</a>, &amp;<a href="../h_src/57979220.htm" class="localvar">registry</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/57442416.htm" class="macro">LUA_RIDX_GLOBALS</a> - 1], <a href="../h_src/57616512.htm" class="function">luaH_new</a>(<a href="../h_src/57979492.htm" class="localvar">L</a>));
+<a href="../h_aa/57434392.htm" class=function>lua_getglobal</a>                                    lapi.c
+   669 :    <a href="../h_src/57641196.htm" class="macro">G</a> = <a href="../h_src/57582852.htm" class="macro">getGtable</a>(<a href="../h_src/57582716.htm" class="localvar">L</a>);
+<a href="../h_aa/57432624.htm" class=function>lua_load</a>                                         lapi.c
+  1099 :    const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57721476.htm" class="localvar">gt</a> = <a href="../h_src/57582852.htm" class="macro">getGtable</a>(<a href="../h_src/57722564.htm" class="localvar">L</a>);
+<a href="../h_aa/57433644.htm" class=function>lua_setglobal</a>                                    lapi.c
+   850 :    <a href="../h_src/57641196.htm" class="macro">G</a> = <a href="../h_src/57582852.htm" class="macro">getGtable</a>(<a href="../h_src/57732628.htm" class="localvar">L</a>);
+<a href="../h_aa/57418684.htm" class=function>luaL_ref</a>                                         lauxlib.c
+   668 :    if (<a href="../h_src/57434052.htm" class="function">lua_rawgeti</a>(<a href="../h_src/58328540.htm" class="localvar">L</a>, <a href="../h_src/58328404.htm" class="localvar">t</a>, <a href="../h_src/58328676.htm" class="macro">freelist</a>) == <a href="../h_src/57444048.htm" class="macro">LUA_TNIL</a>) {  <a  class="comments">/* first access? */</a>
+   671 :    <a href="../h_src/57433304.htm" class="function">lua_rawseti</a>(<a href="../h_src/58328540.htm" class="localvar">L</a>, <a href="../h_src/58328404.htm" class="localvar">t</a>, <a href="../h_src/58328676.htm" class="macro">freelist</a>);  <a  class="comments">/* ref = t[freelist] = 0 */</a>
+   680 :    <a href="../h_src/57433304.htm" class="function">lua_rawseti</a>(<a href="../h_src/58328540.htm" class="localvar">L</a>, <a href="../h_src/58328404.htm" class="localvar">t</a>, <a href="../h_src/58328676.htm" class="macro">freelist</a>);  <a  class="comments">/* (t[freelist] = t[ref]) */</a>
+<a href="../h_aa/57418616.htm" class=function>luaL_unref</a>                                       lauxlib.c
+   692 :    <a href="../h_src/57434052.htm" class="function">lua_rawgeti</a>(<a href="../h_src/58328132.htm" class="localvar">L</a>, <a href="../h_src/58327996.htm" class="localvar">t</a>, <a href="../h_src/58328676.htm" class="macro">freelist</a>);
+   696 :    <a href="../h_src/57433304.htm" class="function">lua_rawseti</a>(<a href="../h_src/58328132.htm" class="localvar">L</a>, <a href="../h_src/58327996.htm" class="localvar">t</a>, <a href="../h_src/58328676.htm" class="macro">freelist</a>);  <a  class="comments">/* t[freelist] = ref */</a>
+<a href="../h_aa/57410456.htm" class=function>luaopen_base</a>                                     lbaselib.c
+   539 :    <a href="../h_src/57427524.htm" class="macro">lua_pushglobaltable</a>(<a href="../h_src/58294064.htm" class="localvar">L</a>);
+<a href="../h_aa/57573804.htm" class=function>luaopen_package</a>                                  loadlib.c
+   761 :    <a href="../h_src/57427524.htm" class="macro">lua_pushglobaltable</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use LUA_RIDX_GLOBALS</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

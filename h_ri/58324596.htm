@@ -1,0 +1,47 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>fnameindex</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58324596.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/58324596.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/58324596.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/58324596.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57418548.htm" class=function>luaL_loadfilex</a>                                   lauxlib.c
+   783 :    int <a href="../h_src/58324596.htm" class="localvar">fnameindex</a> = <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/58325548.htm" class="localvar">L</a>) + 1;  <a  class="comments">/* index of filename on the stack */</a>
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57418548.htm" class=function>luaL_loadfilex</a>                                   lauxlib.c
+   791 :    if (<a href="../h_src/58325140.htm" class="localvar">lf</a>.f == NULL) return <a href="../h_src/58326500.htm" class="function">errfile</a>(<a href="../h_src/58325548.htm" class="localvar">L</a>, &quot;open&quot;, <a href="../h_src/58324596.htm" class="localvar">fnameindex</a>);
+   800 :    if (<a href="../h_src/58325140.htm" class="localvar">lf</a>.f == NULL) return <a href="../h_src/58326500.htm" class="function">errfile</a>(<a href="../h_src/58325548.htm" class="localvar">L</a>, &quot;reopen&quot;, <a href="../h_src/58324596.htm" class="localvar">fnameindex</a>);
+   810 :    <a href="../h_src/57439288.htm" class="function">lua_settop</a>(<a href="../h_src/58325548.htm" class="localvar">L</a>, <a href="../h_src/58324596.htm" class="localvar">fnameindex</a>);  <a  class="comments">/* ignore results from 'lua_load' */</a>
+   811 :    return <a href="../h_src/58326500.htm" class="function">errfile</a>(<a href="../h_src/58325548.htm" class="localvar">L</a>, &quot;read&quot;, <a href="../h_src/58324596.htm" class="localvar">fnameindex</a>);
+   813 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/58325548.htm" class="localvar">L</a>, <a href="../h_src/58324596.htm" class="localvar">fnameindex</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable fnameindex</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

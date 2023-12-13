@@ -1,0 +1,75 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>gnode</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57618008.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57618008.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57618008.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57618008.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57969388.htm" class=function>clearbykeys</a>                                      lgc.c
+   726 :    <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/57968844.htm" class="localvar">limit</a> = <a href="../h_src/57826344.htm" class="macro">gnodelast</a>(<a href="../h_src/57968980.htm" class="localvar">h</a>);
+   728 :    for (<a href="../h_src/57968708.htm" class="localvar">n</a> = <a href="../h_src/57618008.htm" class="macro">gnode</a>(<a href="../h_src/57968980.htm" class="localvar">h</a>, 0); <a href="../h_src/57968708.htm" class="localvar">n</a> &lt; <a href="../h_src/57968844.htm" class="localvar">limit</a>; <a href="../h_src/57968708.htm" class="localvar">n</a>++) {
+<a href="../h_aa/57968572.htm" class=function>clearbyvalues</a>                                    lgc.c
+   745 :    <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/57967892.htm" class="localvar">n</a>, *<a href="../h_src/57967756.htm" class="localvar">limit</a> = <a href="../h_src/57826344.htm" class="macro">gnodelast</a>(<a href="../h_src/57968028.htm" class="localvar">h</a>);
+   753 :    for (<a href="../h_src/57967892.htm" class="localvar">n</a> = <a href="../h_src/57618008.htm" class="macro">gnode</a>(<a href="../h_src/57968028.htm" class="localvar">h</a>, 0); <a href="../h_src/57967892.htm" class="localvar">n</a> &lt; <a href="../h_src/57967756.htm" class="localvar">limit</a>; <a href="../h_src/57967892.htm" class="localvar">n</a>++) {
+<a href="../h_aa/58113764.htm" class=function>findindex</a>                                        ltable.c
+   342 :    <a href="../h_src/58113084.htm" class="localvar">i</a> = <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/57617192.htm" class="macro">nodefromval</a>(<a href="../h_src/58112948.htm" class="localvar">n</a>) - <a href="../h_src/57618008.htm" class="macro">gnode</a>(<a href="../h_src/58113492.htm" class="localvar">t</a>, 0));  <a  class="comments">/* key index in hash table */</a>
+<a href="../h_aa/58120088.htm" class=function>hashint</a>                                          ltable.c
+   111 :    return <a href="../h_src/58120904.htm" class="macro">hashmod</a>(<a href="../h_src/58119952.htm" class="localvar">t</a>, <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/58119680.htm" class="localvar">ui</a>));
+   113 :    return <a href="../h_src/58120904.htm" class="macro">hashmod</a>(<a href="../h_src/58119952.htm" class="localvar">t</a>, <a href="../h_src/58119680.htm" class="localvar">ui</a>);
+<a href="../h_aa/57616920.htm" class=function>luaH_getshortstr</a>                                 ltable.c
+   759 :    <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/58096764.htm" class="localvar">n</a> = <a href="../h_src/58120768.htm" class="macro">hashstr</a>(<a href="../h_src/58097036.htm" class="localvar">t</a>, <a href="../h_src/58096900.htm" class="localvar">key</a>);
+<a href="../h_aa/57616240.htm" class=function>luaH_next</a>                                        ltable.c
+   360 :    if (!<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/57618008.htm" class="macro">gnode</a>(<a href="../h_src/58112676.htm" class="localvar">t</a>, <a href="../h_src/58112268.htm" class="localvar">i</a>)))) {  <a  class="comments">/* a non-empty entry? */</a>
+   361 :    <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/58111724.htm" class="localvar">n</a> = <a href="../h_src/57618008.htm" class="macro">gnode</a>(<a href="../h_src/58112676.htm" class="localvar">t</a>, <a href="../h_src/58112268.htm" class="localvar">i</a>);
+<a href="../h_aa/58118660.htm" class=function>mainpositionTV</a>                                   ltable.c
+   159 :    return <a href="../h_src/58120904.htm" class="macro">hashmod</a>(<a href="../h_src/58118524.htm" class="localvar">t</a>, <a href="../h_src/58119408.htm" class="function">l_hashfloat</a>(<a href="../h_src/58118116.htm" class="localvar">n</a>));
+   163 :    return <a href="../h_src/58120768.htm" class="macro">hashstr</a>(<a href="../h_src/58118524.htm" class="localvar">t</a>, <a href="../h_src/58117980.htm" class="localvar">ts</a>);
+   167 :    return <a href="../h_src/58121040.htm" class="macro">hashpow2</a>(<a href="../h_src/58118524.htm" class="localvar">t</a>, <a href="../h_src/57619096.htm" class="function">luaS_hashlongstr</a>(<a href="../h_src/58117844.htm" class="localvar">ts</a>));
+   170 :    return <a href="../h_src/58120632.htm" class="macro">hashboolean</a>(<a href="../h_src/58118524.htm" class="localvar">t</a>, 0);
+   172 :    return <a href="../h_src/58120632.htm" class="macro">hashboolean</a>(<a href="../h_src/58118524.htm" class="localvar">t</a>, 1);
+   175 :    return <a href="../h_src/58120496.htm" class="macro">hashpointer</a>(<a href="../h_src/58118524.htm" class="localvar">t</a>, <a href="../h_src/58117708.htm" class="localvar">p</a>);
+   179 :    return <a href="../h_src/58120496.htm" class="macro">hashpointer</a>(<a href="../h_src/58118524.htm" class="localvar">t</a>, <a href="../h_src/58117572.htm" class="localvar">f</a>);
+   183 :    return <a href="../h_src/58120496.htm" class="macro">hashpointer</a>(<a href="../h_src/58118524.htm" class="localvar">t</a>, <a href="../h_src/58117436.htm" class="localvar">o</a>);
+<a href="../h_aa/58105604.htm" class=function>reinsert</a>                                         ltable.c
+   512 :    <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/58104788.htm" class="localvar">old</a> = <a href="../h_src/57618008.htm" class="macro">gnode</a>(<a href="../h_src/58105332.htm" class="localvar">ot</a>, <a href="../h_src/58105060.htm" class="localvar">j</a>);
+<a href="../h_aa/58106556.htm" class=function>setnodevector</a>                                    ltable.c
+   494 :    <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/58105740.htm" class="localvar">n</a> = <a href="../h_src/57618008.htm" class="macro">gnode</a>(<a href="../h_src/58106284.htm" class="localvar">t</a>, <a href="../h_src/58106012.htm" class="localvar">i</a>);
+   500 :    <a href="../h_src/58106284.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504512.htm" class="variable">lastfree</a> = <a href="../h_src/57618008.htm" class="macro">gnode</a>(<a href="../h_src/58106284.htm" class="localvar">t</a>, <a href="../h_src/58106148.htm" class="localvar">size</a>);  <a  class="comments">/* all positions are free */</a>
+<a href="../h_aa/57817436.htm" class=function>traverseephemeron</a>                                lgc.c
+   497 :    <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/57976052.htm" class="localvar">n</a> = <a href="../h_src/57977004.htm" class="localvar">inv</a> ? <a href="../h_src/57618008.htm" class="macro">gnode</a>(<a href="../h_src/57977140.htm" class="localvar">h</a>, <a href="../h_src/57976188.htm" class="localvar">nsize</a> - 1 - <a href="../h_src/57976460.htm" class="localvar">i</a>) : <a href="../h_src/57618008.htm" class="macro">gnode</a>(<a href="../h_src/57977140.htm" class="localvar">h</a>, <a href="../h_src/57976460.htm" class="localvar">i</a>);
+<a href="../h_aa/57975916.htm" class=function>traversestrongtable</a>                              lgc.c
+   524 :    <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/57975508.htm" class="localvar">n</a>, *<a href="../h_src/57975372.htm" class="localvar">limit</a> = <a href="../h_src/57826344.htm" class="macro">gnodelast</a>(<a href="../h_src/57975644.htm" class="localvar">h</a>);
+   529 :    for (<a href="../h_src/57975508.htm" class="localvar">n</a> = <a href="../h_src/57618008.htm" class="macro">gnode</a>(<a href="../h_src/57975644.htm" class="localvar">h</a>, 0); <a href="../h_src/57975508.htm" class="localvar">n</a> &lt; <a href="../h_src/57975372.htm" class="localvar">limit</a>; <a href="../h_src/57975508.htm" class="localvar">n</a>++) {  <a  class="comments">/* traverse hash part */</a>
+<a href="../h_aa/57818252.htm" class=function>traverseweakvalue</a>                                lgc.c
+   447 :    <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/57817844.htm" class="localvar">n</a>, *<a href="../h_src/57817708.htm" class="localvar">limit</a> = <a href="../h_src/57826344.htm" class="macro">gnodelast</a>(<a href="../h_src/57817980.htm" class="localvar">h</a>);
+   451 :    for (<a href="../h_src/57817844.htm" class="localvar">n</a> = <a href="../h_src/57618008.htm" class="macro">gnode</a>(<a href="../h_src/57817980.htm" class="localvar">h</a>, 0); <a href="../h_src/57817844.htm" class="localvar">n</a> &lt; <a href="../h_src/57817708.htm" class="localvar">limit</a>; <a href="../h_src/57817844.htm" class="localvar">n</a>++) {  <a  class="comments">/* traverse hash part */</a>
+</pre>
+<h4><a class="legend">Table lists functions that directly use gnode</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

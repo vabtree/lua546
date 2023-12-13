@@ -1,0 +1,49 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaP_opmodes</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57684484.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57684484.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57684484.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57684484.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57684484.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57897444.htm" class=file>lopcodes.c</a>
+    18 :    <a href="../h_src/57453636.htm" class="macro">LUAI_DDEF</a> const <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57684484.htm" class="variable">luaP_opmodes</a>[<a href="../h_src/57684688.htm" class="macro">NUM_OPCODES</a>] = {
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57742732.htm" class=function>findsetreg</a>                                       ldebug.c
+   469 :    if (<a href="../h_src/57683736.htm" class="macro">testMMMode</a>(<a href="../h_src/57694752.htm" class="macro">GET_OPCODE</a>(<a href="../h_src/57742596.htm" class="localvar">p</a>-&gt;<a href="../h_src/57514916.htm" class="variable">code</a>[<a href="../h_src/57742460.htm" class="localvar">lastpc</a>])))
+   501 :    <a href="../h_src/57741372.htm" class="localvar">change</a> = (<a href="../h_src/57684280.htm" class="macro">testAMode</a>(<a href="../h_src/57741644.htm" class="localvar">op</a>) &amp;&amp; <a href="../h_src/57742324.htm" class="localvar">reg</a> == <a href="../h_src/57741508.htm" class="localvar">a</a>);
+<a href="../h_aa/57660820.htm" class=function>getjumpcontrol</a>                                   lcode.c
+   245 :    if (<a href="../h_src/57660548.htm" class="localvar">pc</a> &gt;= 1 &amp;&amp; <a href="../h_src/57684144.htm" class="macro">testTMode</a>(<a href="../h_src/57694752.htm" class="macro">GET_OPCODE</a>(*(<a href="../h_src/57660412.htm" class="localvar">pi</a>-1))))
+<a href="../h_aa/57635076.htm" class=function>luaG_traceexec</a>                                   ldebug.c
+   900 :    if (!<a href="../h_src/57683464.htm" class="macro">isIT</a>(*(<a href="../h_src/57885436.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650852.htm" class="variable">l</a>.<a href="../h_src/57651124.htm" class="variable">savedpc</a> - 1)))  <a  class="comments">/* top not being used? */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable luaP_opmodes</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

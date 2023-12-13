@@ -1,0 +1,63 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>fprintf</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57571424.htm" class="libfunc" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57571424.htm" class="libfunc" target="_self">Calling Hierarchy</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57571424.htm" class="libfunc" target="_self">Called By</a></li>
+<li><a href="../h_rx/57571424.htm" class="libfunc" target="_self">Call Tree</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/143405540.htm" class=function>cannot</a>                                           luac.c
+    50 :    <a href="../h_aa/57571424.htm" class="libfunc">fprintf</a>(stderr,&quot;%s: cannot %s %s: %s\n&quot;,<a href="../h_src/143405948.htm" class="variable">progname</a>,<a href="../h_src/143405404.htm" class="localvar">what</a>,<a href="../h_src/143406016.htm" class="variable">output</a>,<a href="../h_aa/58343432.htm" class="libfunc">strerror</a>(errno));
+<a href="../h_aa/143266780.htm" class=function>db_debug</a>                                         ldblib.c
+   423 :    <a href="../h_src/57411884.htm" class="macro">lua_writestringerror</a>(&quot;%s&quot;, &quot;lua_debug&gt; &quot;);
+   429 :    <a href="../h_src/57411884.htm" class="macro">lua_writestringerror</a>(&quot;%s\n&quot;, <a href="../h_src/57420452.htm" class="function">luaL_tolstring</a>(<a href="../h_src/143266644.htm" class="localvar">L</a>, -1, NULL));
+<a href="../h_aa/143405812.htm" class=function>fatal</a>                                            luac.c
+    44 :    <a href="../h_aa/57571424.htm" class="libfunc">fprintf</a>(stderr,&quot;%s: %s\n&quot;,<a href="../h_src/143405948.htm" class="variable">progname</a>,<a href="../h_src/143405676.htm" class="localvar">message</a>);
+<a href="../h_aa/57571288.htm" class=function>l_message</a>                                        lua.c
+   111 :    if (<a href="../h_src/57571152.htm" class="localvar">pname</a>) <a href="../h_src/57411884.htm" class="macro">lua_writestringerror</a>(&quot;%s: &quot;, <a href="../h_src/57571152.htm" class="localvar">pname</a>);
+   112 :    <a href="../h_src/57411884.htm" class="macro">lua_writestringerror</a>(&quot;%s\n&quot;, <a href="../h_src/57571016.htm" class="localvar">msg</a>);
+<a href="../h_aa/58315892.htm" class=function>panic</a>                                            lauxlib.c
+  1031 :    <a href="../h_src/57411884.htm" class="macro">lua_writestringerror</a>(&quot;PANIC: unprotected error in call to Lua API (%s)\n&quot;,
+<a href="../h_aa/57571696.htm" class=function>print_usage</a>                                      lua.c
+    84 :    <a href="../h_src/57411884.htm" class="macro">lua_writestringerror</a>(&quot;%s: &quot;, <a href="../h_src/57572920.htm" class="variable">progname</a>);
+    86 :    <a href="../h_src/57411884.htm" class="macro">lua_writestringerror</a>(&quot;'%s' needs argument\n&quot;, <a href="../h_src/57571560.htm" class="localvar">badoption</a>);
+    88 :    <a href="../h_src/57411884.htm" class="macro">lua_writestringerror</a>(&quot;unrecognized option '%s'\n&quot;, <a href="../h_src/57571560.htm" class="localvar">badoption</a>);
+    89 :    <a href="../h_src/57411884.htm" class="macro">lua_writestringerror</a>(
+<a href="../h_aa/143405268.htm" class=function>usage</a>                                            luac.c
+    57 :    <a href="../h_aa/57571424.htm" class="libfunc">fprintf</a>(stderr,&quot;%s: unrecognized option '%s'\n&quot;,<a href="../h_src/143405948.htm" class="variable">progname</a>,<a href="../h_src/143405132.htm" class="localvar">message</a>);
+    59 :    <a href="../h_aa/57571424.htm" class="libfunc">fprintf</a>(stderr,&quot;%s: %s\n&quot;,<a href="../h_src/143405948.htm" class="variable">progname</a>,<a href="../h_src/143405132.htm" class="localvar">message</a>);
+    60 :    <a href="../h_aa/57571424.htm" class="libfunc">fprintf</a>(stderr,
+<a href="../h_aa/58315212.htm" class=function>warnfcont</a>                                        lauxlib.c
+  1076 :    <a href="../h_src/57411884.htm" class="macro">lua_writestringerror</a>(&quot;%s&quot;, <a href="../h_src/58313988.htm" class="localvar">message</a>);  <a  class="comments">/* write message */</a>
+  1080 :    <a href="../h_src/57411884.htm" class="macro">lua_writestringerror</a>(&quot;%s&quot;, &quot;\n&quot;);  <a  class="comments">/* finish message with end-of-line */</a>
+<a href="../h_aa/58315348.htm" class=function>warnfon</a>                                          lauxlib.c
+  1089 :    <a href="../h_src/57411884.htm" class="macro">lua_writestringerror</a>(&quot;%s&quot;, &quot;Lua warning: &quot;);  <a  class="comments">/* start a new warning */</a>
+</pre>
+<h4><a class="legend">Table lists functions that directly use fprintf</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

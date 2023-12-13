@@ -1,0 +1,59 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>linkgclist_</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57825664.htm" class="function" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57825664.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57825664.htm" class="function" target="_self">Flow Chart</a></li>
+<li><a href="../h_src/57825664.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57825664.htm" class="function" target="_self">Called By</a></li>
+<li><a href="../h_rx/57825664.htm" class="function" target="_self">Call Tree</a></li>
+<li><a href="../h_ro/57825664.htm" class="function" target="_self">Calls and Uses</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57818660.htm" class=function>genlink</a>                                          lgc.c
+   433 :    <a href="../h_src/57825120.htm" class="macro">linkobjgclist</a>(<a href="../h_src/57818388.htm" class="localvar">o</a>, <a href="../h_src/57818524.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a>);  <a  class="comments">/* link it back in 'grayagain' */</a>
+<a href="../h_aa/57620388.htm" class=function>luaC_barrierback_</a>                                lgc.c
+   237 :    <a href="../h_src/57825120.htm" class="macro">linkobjgclist</a>(<a href="../h_src/57823624.htm" class="localvar">o</a>, <a href="../h_src/57823488.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a>);
+<a href="../h_aa/57826752.htm" class=function>reallymarkobject</a>                                 lgc.c
+   324 :    <a href="../h_src/57825120.htm" class="macro">linkobjgclist</a>(<a href="../h_src/57821448.htm" class="localvar">o</a>, <a href="../h_src/57821584.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645072.htm" class="variable">gray</a>);  <a  class="comments">/* to be visited later */</a>
+<a href="../h_aa/57955924.htm" class=function>sweep2old</a>                                        lgc.c
+  1090 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57955244.htm" class="localvar">th</a>, <a href="../h_src/57955380.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a>);  <a  class="comments">/* insert into 'grayagain' list */</a>
+<a href="../h_aa/57817436.htm" class=function>traverseephemeron</a>                                lgc.c
+   512 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57977140.htm" class="localvar">h</a>, <a href="../h_src/57977276.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a>);  <a  class="comments">/* must retraverse it in atomic phase */</a>
+   514 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57977140.htm" class="localvar">h</a>, <a href="../h_src/57977276.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644868.htm" class="variable">ephemeron</a>);  <a  class="comments">/* have to propagate again */</a>
+   516 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57977140.htm" class="localvar">h</a>, <a href="../h_src/57977276.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644800.htm" class="variable">allweak</a>);  <a  class="comments">/* may have to clean white keys */</a>
+<a href="../h_aa/57974964.htm" class=function>traversetable</a>                                    lgc.c
+   555 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57974692.htm" class="localvar">h</a>, <a href="../h_src/57974828.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644800.htm" class="variable">allweak</a>);  <a  class="comments">/* nothing to traverse now */</a>
+<a href="../h_aa/57971836.htm" class=function>traversethread</a>                                   lgc.c
+   631 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57971564.htm" class="localvar">th</a>, <a href="../h_src/57971700.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a>);  <a  class="comments">/* insert into 'grayagain' list */</a>
+<a href="../h_aa/57818252.htm" class=function>traverseweakvalue</a>                                lgc.c
+   462 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57817980.htm" class="localvar">h</a>, <a href="../h_src/57818116.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644936.htm" class="variable">weak</a>);  <a  class="comments">/* has to be cleared later */</a>
+   464 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57817980.htm" class="localvar">h</a>, <a href="../h_src/57818116.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a>);  <a  class="comments">/* must retraverse it in atomic phase */</a>
+</pre>
+<h4><a class="legend">Table lists functions that directly use linkgclist_</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

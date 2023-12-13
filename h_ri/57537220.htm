@@ -1,0 +1,53 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>LUA_TPROTO</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57537220.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57537220.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57537220.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57537220.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/58090712.htm" class=file>ltm.c</a>
+    30 :    <a href="../h_src/57453636.htm" class="macro">LUAI_DDEF</a> const char *const <a href="../h_src/57498256.htm" class="variable">luaT_typenames_</a>[<a href="../h_src/57536948.htm" class="macro">LUA_TOTALTYPES</a>] = {
+<a href="../h_aa/57501248.htm" class=file>ltm.h</a>
+    72 :    <a href="../h_src/57453772.htm" class="macro">LUAI_DDEC</a>(const char *const <a href="../h_src/57498256.htm" class="variable">luaT_typenames_</a>[<a href="../h_src/57536948.htm" class="macro">LUA_TOTALTYPES</a>];)
+<a href="../h_aa/57966804.htm" class=function>freeobj</a>                                          lgc.c
+   772 :    case <a href="../h_src/57517636.htm" class="macro">LUA_VPROTO</a>:
+   773 :    <a href="../h_src/57630248.htm" class="function">luaF_freeproto</a>(<a href="../h_src/57966668.htm" class="localvar">L</a>, <a href="../h_src/57639292.htm" class="macro">gco2p</a>(<a href="../h_src/57966532.htm" class="localvar">o</a>));
+<a href="../h_aa/57826208.htm" class=function>getgclist</a>                                        lgc.c
+   131 :    case <a href="../h_src/57517636.htm" class="macro">LUA_VPROTO</a>: return &amp;<a href="../h_src/57639292.htm" class="macro">gco2p</a>(<a href="../h_src/57826072.htm" class="localvar">o</a>)-&gt;<a href="../h_src/57513896.htm" class="variable">gclist</a>;
+<a href="../h_aa/57630996.htm" class=function>luaF_newproto</a>                                    lfunc.c
+   241 :    <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57830492.htm" class="localvar">o</a> = <a href="../h_src/57620592.htm" class="function">luaC_newobj</a>(<a href="../h_src/57830628.htm" class="localvar">L</a>, <a href="../h_src/57517636.htm" class="macro">LUA_VPROTO</a>, sizeof(<a href="../h_src/57513828.htm" class="type">Proto</a>));
+   242 :    <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/57830356.htm" class="localvar">f</a> = <a href="../h_src/57639292.htm" class="macro">gco2p</a>(<a href="../h_src/57830492.htm" class="localvar">o</a>);
+<a href="../h_aa/57971156.htm" class=function>propagatemark</a>                                    lgc.c
+   667 :    case <a href="../h_src/57517636.htm" class="macro">LUA_VPROTO</a>: return <a href="../h_src/57973604.htm" class="function">traverseproto</a>(<a href="../h_src/57971020.htm" class="localvar">g</a>, <a href="../h_src/57639292.htm" class="macro">gco2p</a>(<a href="../h_src/57970884.htm" class="localvar">o</a>));
+<a href="../h_aa/57826752.htm" class=function>reallymarkobject</a>                                 lgc.c
+   323 :    case <a href="../h_src/57528992.htm" class="macro">LUA_VTHREAD</a>: case <a href="../h_src/57517636.htm" class="macro">LUA_VPROTO</a>: {
+</pre>
+<h4><a class="legend">Table lists functions that directly use LUA_TPROTO</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

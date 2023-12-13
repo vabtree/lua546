@@ -1,0 +1,63 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">TString::</a>marked</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57523552.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57523552.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57523552.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57523552.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57523552.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/58125188.htm" class=function>internshrstr</a>                                     lstring.c
+   199 :    <a href="../h_src/57625420.htm" class="macro">changewhite</a>(<a href="../h_src/58124644.htm" class="localvar">ts</a>);  <a  class="comments">/* resurrect it */</a>
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/58125188.htm" class=function>internshrstr</a>                                     lstring.c
+   198 :    if (<a href="../h_src/57625556.htm" class="macro">isdead</a>(<a href="../h_src/58124508.htm" class="localvar">g</a>, <a href="../h_src/58124644.htm" class="localvar">ts</a>))  <a  class="comments">/* dead (but not collected yet)? */</a>
+   199 :    <a href="../h_src/57625420.htm" class="macro">changewhite</a>(<a href="../h_src/58124644.htm" class="localvar">ts</a>);  <a  class="comments">/* resurrect it */</a>
+<a href="../h_aa/58071128.htm" class=function>loadStringN</a>                                      lundump.c
+   128 :    <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/58070720.htm" class="localvar">L</a>, <a href="../h_src/58070856.htm" class="localvar">p</a>, <a href="../h_src/58070584.htm" class="localvar">ts</a>);
+<a href="../h_aa/57618892.htm" class=function>luaS_clearcache</a>                                  lstring.c
+   114 :    if (<a href="../h_src/57626372.htm" class="macro">iswhite</a>(<a href="../h_src/58128724.htm" class="localvar">g</a>-&gt;<a href="../h_src/57643304.htm" class="variable">strcache</a>[<a href="../h_src/58128588.htm" class="localvar">i</a>][<a href="../h_src/58128452.htm" class="localvar">j</a>]))  <a  class="comments">/* will entry be collected? */</a>
+<a href="../h_aa/57674420.htm" class=function>luaY_parser</a>                                      lparser.c
+  1955 :    <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/57987108.htm" class="localvar">L</a>, <a href="../h_src/57986156.htm" class="localvar">funcstate</a>.<a href="../h_src/57676052.htm" class="variable">f</a>, <a href="../h_src/57986156.htm" class="localvar">funcstate</a>.<a href="../h_src/57676052.htm" class="variable">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>);
+<a href="../h_aa/57987788.htm" class=function>mainfunc</a>                                         lparser.c
+  1934 :    <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/57987652.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/57987516.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57676052.htm" class="variable">f</a>, <a href="../h_src/57987244.htm" class="localvar">env</a>-&gt;<a href="../h_src/57517364.htm" class="variable">name</a>);
+<a href="../h_aa/58041372.htm" class=function>newupvalue</a>                                       lparser.c
+   380 :    <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/58041236.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/58041236.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57676052.htm" class="variable">f</a>, <a href="../h_src/58041100.htm" class="localvar">name</a>);
+<a href="../h_aa/58025392.htm" class=function>open_func</a>                                        lparser.c
+   750 :    <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/58025256.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/58024848.htm" class="localvar">f</a>, <a href="../h_src/58024848.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>);
+<a href="../h_aa/58049532.htm" class=function>registerlocalvar</a>                                 lparser.c
+   184 :    <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/58049396.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/58048988.htm" class="localvar">f</a>, <a href="../h_src/58049124.htm" class="localvar">varname</a>);
+<a href="../h_aa/57973604.htm" class=function>traverseproto</a>                                    lgc.c
+   580 :    <a href="../h_src/57826888.htm" class="macro">markobjectN</a>(<a href="../h_src/57973468.htm" class="localvar">g</a>, <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>);
+   584 :    <a href="../h_src/57826888.htm" class="macro">markobjectN</a>(<a href="../h_src/57973468.htm" class="localvar">g</a>, <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/57973196.htm" class="localvar">i</a>].<a href="../h_src/57517364.htm" class="variable">name</a>);
+   588 :    <a href="../h_src/57826888.htm" class="macro">markobjectN</a>(<a href="../h_src/57973468.htm" class="localvar">g</a>, <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514032.htm" class="variable">locvars</a>[<a href="../h_src/57973196.htm" class="localvar">i</a>].<a href="../h_src/57516888.htm" class="variable">varname</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable marked</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,51 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">TString::</a>extra</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57523484.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57523484.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57523484.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57523484.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57523484.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/58127636.htm" class=function>createstrobj</a>                                     lstring.c
+   151 :    <a href="../h_src/58126956.htm" class="localvar">ts</a>-&gt;<a href="../h_src/57523484.htm" class="variable">extra</a> = 0;
+<a href="../h_aa/57619096.htm" class=function>luaS_hashlongstr</a>                                 lstring.c
+    56 :    <a href="../h_src/58130832.htm" class="localvar">ts</a>-&gt;<a href="../h_src/57523484.htm" class="variable">extra</a> = 1;  <a  class="comments">/* now it has its hash */</a>
+<a href="../h_aa/57700056.htm" class=function>luaX_init</a>                                        llex.c
+    77 :    <a href="../h_src/57938652.htm" class="localvar">ts</a>-&gt;<a href="../h_src/57523484.htm" class="variable">extra</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/57938924.htm" class="localvar">i</a>+1);  <a  class="comments">/* reserved word */</a>
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57927976.htm" class=function>llex</a>                                             llex.c
+   548 :    if (<a href="../h_src/57619436.htm" class="macro">isreserved</a>(<a href="../h_src/57927296.htm" class="localvar">ts</a>))  <a  class="comments">/* reserved word? */</a>
+   549 :    return <a href="../h_src/57927296.htm" class="localvar">ts</a>-&gt;<a href="../h_src/57523484.htm" class="variable">extra</a> - 1 + <a href="../h_src/57705700.htm" class="macro">FIRST_RESERVED</a>;
+<a href="../h_aa/57619096.htm" class=function>luaS_hashlongstr</a>                                 lstring.c
+    53 :    if (<a href="../h_src/58130832.htm" class="localvar">ts</a>-&gt;<a href="../h_src/57523484.htm" class="variable">extra</a> == 0) {  <a  class="comments">/* no hash? */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable extra</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,80 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>CIST_C</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57649220.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57649220.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57649220.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57649220.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57747764.htm" class=function>auxgetinfo</a>                                       ldebug.c
+   337 :    <a href="../h_src/57747356.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423376.htm" class="variable">currentline</a> = (<a href="../h_src/57747084.htm" class="localvar">ci</a> &amp;&amp; <a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57747084.htm" class="localvar">ci</a>)) ? <a href="../h_src/57757148.htm" class="function">getcurrentline</a>(<a href="../h_src/57747084.htm" class="localvar">ci</a>) : -1;
+<a href="../h_aa/57879724.htm" class=function>correctstack</a>                                     ldo.c
+   192 :    if (<a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57879452.htm" class="localvar">ci</a>))
+<a href="../h_aa/57758644.htm" class=function>currentpc</a>                                        ldebug.c
+    42 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57647452.htm" class="macro">isLua</a>(ci));
+<a href="../h_aa/57758780.htm" class=function>funcnamefromcall</a>                                 ldebug.c
+   648 :    else if (<a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57897132.htm" class="localvar">ci</a>))
+<a href="../h_aa/57433032.htm" class=function>lua_callk</a>                                        lapi.c
+  1008 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57725828.htm" class="localvar">L</a>, k == NULL || !<a href="../h_src/57647452.htm" class="macro">isLua</a>(L-&gt;ci),
+<a href="../h_aa/57432828.htm" class=function>lua_pcallk</a>                                       lapi.c
+  1049 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57724060.htm" class="localvar">L</a>, k == NULL || !<a href="../h_src/57647452.htm" class="macro">isLua</a>(L-&gt;ci),
+<a href="../h_aa/57432488.htm" class=function>lua_yieldk</a>                                       ldo.c
+   886 :    if (<a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57856604.htm" class="localvar">ci</a>)) {  <a  class="comments">/* inside a hook? */</a>
+   887 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(!<a href="../h_src/57647316.htm" class="macro">isLuacode</a>(ci));
+<a href="../h_aa/57633512.htm" class=function>luaD_hook</a>                                        ldo.c
+   345 :    if (<a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57874964.htm" class="localvar">ci</a>) &amp;&amp; <a href="../h_src/57875916.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> &lt; <a href="../h_src/57874964.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651464.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>)
+<a href="../h_aa/57638000.htm" class=function>luaE_resetthread</a>                                 lstate.c
+   327 :    <a href="../h_src/58135252.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> = <a href="../h_src/57649220.htm" class="macro">CIST_C</a>;
+<a href="../h_aa/57635892.htm" class=function>luaG_findlocal</a>                                   ldebug.c
+   199 :    if (<a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57753544.htm" class="localvar">ci</a>)) {
+   209 :    <a href="../h_src/57753000.htm" class="localvar">name</a> = <a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57753544.htm" class="localvar">ci</a>) ? &quot;(temporary)&quot; : &quot;(C temporary)&quot;;
+<a href="../h_aa/57635280.htm" class=function>luaG_runerror</a>                                    ldebug.c
+   830 :    if (<a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57887340.htm" class="localvar">ci</a>)) {  <a  class="comments">/* if Lua function, add source:line information */</a>
+<a href="../h_aa/57497916.htm" class=function>luaT_callTM</a>                                      ltm.c
+   112 :    if (<a href="../h_src/57647316.htm" class="macro">isLuacode</a>(<a href="../h_src/58088264.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>))
+<a href="../h_aa/57497848.htm" class=function>luaT_callTMres</a>                                   ltm.c
+   128 :    if (<a href="../h_src/57647316.htm" class="macro">isLuacode</a>(<a href="../h_src/58086360.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>))
+<a href="../h_aa/57868300.htm" class=function>precallC</a>                                         ldo.c
+   521 :    <a href="../h_src/57868164.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a> = <a href="../h_src/57867484.htm" class="localvar">ci</a> = <a href="../h_src/57869252.htm" class="function">prepCallInfo</a>(<a href="../h_src/57868164.htm" class="localvar">L</a>, <a href="../h_src/57868028.htm" class="localvar">func</a>, <a href="../h_src/57867892.htm" class="localvar">nresults</a>, <a href="../h_src/57649220.htm" class="macro">CIST_C</a>,
+<a href="../h_aa/57859324.htm" class=function>resume</a>                                           ldo.c
+   794 :    if (<a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57858644.htm" class="localvar">ci</a>)) {  <a  class="comments">/* yielded inside a hook? */</a>
+<a href="../h_aa/57873876.htm" class=function>rethook</a>                                          ldo.c
+   392 :    if (<a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57873604.htm" class="localvar">ci</a>)) {
+   402 :    if (<a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57873604.htm" class="localvar">ci</a> = <a href="../h_src/57873604.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651396.htm" class="variable">previous</a>))
+<a href="../h_aa/57756876.htm" class=function>settraps</a>                                         ldebug.c
+   116 :    if (<a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57756740.htm" class="localvar">ci</a>))
+<a href="../h_aa/57980580.htm" class=function>stack_init</a>                                       lstate.c
+   192 :    <a href="../h_src/57980036.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> = <a href="../h_src/57649220.htm" class="macro">CIST_C</a>;
+<a href="../h_aa/57861092.htm" class=function>unroll</a>                                           ldo.c
+   740 :    if (!<a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57860684.htm" class="localvar">ci</a>))  <a  class="comments">/* C function? */</a>
+<a href="../h_aa/57894820.htm" class=function>varinfo</a>                                          ldebug.c
+   710 :    if (<a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57894412.htm" class="localvar">ci</a>)) {
+</pre>
+<h4><a class="legend">Table lists functions that directly use CIST_C</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

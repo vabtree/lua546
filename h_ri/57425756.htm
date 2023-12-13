@@ -1,0 +1,46 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>LUA_HOOKRET</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57425756.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57425756.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57425756.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57425756.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57572172.htm" class=function>laction</a>                                          lua.c
+    77 :    int <a href="../h_src/57571900.htm" class="localvar">flag</a> = <a href="../h_src/57425212.htm" class="macro">LUA_MASKCALL</a> | <a href="../h_src/57425076.htm" class="macro">LUA_MASKRET</a> | <a href="../h_src/57424940.htm" class="macro">LUA_MASKLINE</a> | <a href="../h_src/57424804.htm" class="macro">LUA_MASKCOUNT</a>;
+<a href="../h_aa/143269908.htm" class=function>makemask</a>                                         ldblib.c
+   345 :    if (<a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143269772.htm" class="localvar">smask</a>, 'r')) <a href="../h_src/143269500.htm" class="localvar">mask</a> |= <a href="../h_src/57425076.htm" class="macro">LUA_MASKRET</a>;
+<a href="../h_aa/57873876.htm" class=function>rethook</a>                                          ldo.c
+   388 :    if (<a href="../h_src/57873740.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641264.htm" class="variable">hookmask</a> &amp; <a href="../h_src/57425076.htm" class="macro">LUA_MASKRET</a>) {  <a  class="comments">/* is return hook on? */</a>
+   399 :    <a href="../h_src/57633512.htm" class="function">luaD_hook</a>(<a href="../h_src/57873740.htm" class="localvar">L</a>, <a href="../h_src/57425756.htm" class="macro">LUA_HOOKRET</a>, -1, <a href="../h_src/57873060.htm" class="localvar">ftransfer</a>, <a href="../h_src/57873468.htm" class="localvar">nres</a>);  <a  class="comments">/* call it */</a>
+<a href="../h_aa/143269364.htm" class=function>unmakemask</a>                                       ldblib.c
+   358 :    if (<a href="../h_src/143269228.htm" class="localvar">mask</a> &amp; <a href="../h_src/57425076.htm" class="macro">LUA_MASKRET</a>) <a href="../h_src/143269092.htm" class="localvar">smask</a>[<a href="../h_src/143268956.htm" class="localvar">i</a>++] = 'r';
+</pre>
+<h4><a class="legend">Table lists functions that directly use LUA_HOOKRET</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

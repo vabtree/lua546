@@ -1,0 +1,55 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lua_rawgeti</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57434052.htm" class="function" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57434052.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57434052.htm" class="function" target="_self">Flow Chart</a></li>
+<li><a href="../h_src/57434052.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57434052.htm" class="function" target="_self">Called By</a></li>
+<li><a href="../h_rx/57434052.htm" class="function" target="_self">Call Tree</a></li>
+<li><a href="../h_ro/57434052.htm" class="function" target="_self">Calls and Uses</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/143198372.htm" class=function>findloader</a>                                       loadlib.c
+   635 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57434052.htm" class="function">lua_rawgeti</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, 3, <a href="../h_src/143197964.htm" class="localvar">i</a>) == <a href="../h_src/57444048.htm" class="macro">LUA_TNIL</a>)) {  <a  class="comments">/* no more searchers? */</a>
+<a href="../h_aa/143208436.htm" class=function>gctm</a>                                             loadlib.c
+   366 :    <a href="../h_src/57434052.htm" class="function">lua_rawgeti</a>(<a href="../h_src/143208300.htm" class="localvar">L</a>, 1, <a href="../h_src/143208164.htm" class="localvar">n</a>);  <a  class="comments">/* get handle CLIBS[n] */</a>
+<a href="../h_aa/57418684.htm" class=function>luaL_ref</a>                                         lauxlib.c
+   668 :    if (<a href="../h_src/57434052.htm" class="function">lua_rawgeti</a>(<a href="../h_src/58328540.htm" class="localvar">L</a>, <a href="../h_src/58328404.htm" class="localvar">t</a>, <a href="../h_src/58328676.htm" class="macro">freelist</a>) == <a href="../h_src/57444048.htm" class="macro">LUA_TNIL</a>) {  <a  class="comments">/* first access? */</a>
+   679 :    <a href="../h_src/57434052.htm" class="function">lua_rawgeti</a>(<a href="../h_src/58328540.htm" class="localvar">L</a>, <a href="../h_src/58328404.htm" class="localvar">t</a>, <a href="../h_src/58328268.htm" class="localvar">ref</a>);  <a  class="comments">/* remove it from list */</a>
+<a href="../h_aa/57418616.htm" class=function>luaL_unref</a>                                       lauxlib.c
+   692 :    <a href="../h_src/57434052.htm" class="function">lua_rawgeti</a>(<a href="../h_src/58328132.htm" class="localvar">L</a>, <a href="../h_src/58327996.htm" class="localvar">t</a>, <a href="../h_src/58328676.htm" class="macro">freelist</a>);
+<a href="../h_aa/57410456.htm" class=function>luaopen_base</a>                                     lbaselib.c
+   539 :    <a href="../h_src/57427524.htm" class="macro">lua_pushglobaltable</a>(<a href="../h_src/58294064.htm" class="localvar">L</a>);
+<a href="../h_aa/57573804.htm" class=function>luaopen_package</a>                                  loadlib.c
+   761 :    <a href="../h_src/57427524.htm" class="macro">lua_pushglobaltable</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>);
+<a href="../h_aa/57565712.htm" class=function>pushargs</a>                                         lua.c
+   242 :    <a href="../h_src/57434052.htm" class="function">lua_rawgeti</a>(<a href="../h_src/57565576.htm" class="localvar">L</a>, -<a href="../h_src/57565440.htm" class="localvar">i</a>, <a href="../h_src/57565440.htm" class="localvar">i</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use lua_rawgeti</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

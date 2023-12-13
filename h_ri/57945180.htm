@@ -1,0 +1,55 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>work</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57945180.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57945180.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57945180.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57945180.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57826616.htm" class=function>atomic</a>                                           lgc.c
+  1525 :    <a href="../h_src/57550616.htm" class="type">lu_mem</a> <a href="../h_src/57945180.htm" class="localvar">work</a> = 0;
+  1536 :    <a href="../h_src/57945180.htm" class="localvar">work</a> += <a href="../h_src/57970748.htm" class="function">propagateall</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>);  <a  class="comments">/* empties 'gray' list */</a>
+  1538 :    <a href="../h_src/57945180.htm" class="localvar">work</a> += <a href="../h_src/57820088.htm" class="function">remarkupvals</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>);
+  1539 :    <a href="../h_src/57945180.htm" class="localvar">work</a> += <a href="../h_src/57970748.htm" class="function">propagateall</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>);  <a  class="comments">/* propagate changes */</a>
+  1541 :    <a href="../h_src/57945180.htm" class="localvar">work</a> += <a href="../h_src/57970748.htm" class="function">propagateall</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>);  <a  class="comments">/* traverse 'grayagain' list */</a>
+  1549 :    <a href="../h_src/57945180.htm" class="localvar">work</a> += <a href="../h_src/57820632.htm" class="function">markbeingfnz</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>);  <a  class="comments">/* mark objects that will be finalized */</a>
+  1550 :    <a href="../h_src/57945180.htm" class="localvar">work</a> += <a href="../h_src/57970748.htm" class="function">propagateall</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>);  <a  class="comments">/* remark, to propagate 'resurrection' */</a>
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57826616.htm" class=function>atomic</a>                                           lgc.c
+  1536 :    <a href="../h_src/57945180.htm" class="localvar">work</a> += <a href="../h_src/57970748.htm" class="function">propagateall</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>);  <a  class="comments">/* empties 'gray' list */</a>
+  1538 :    <a href="../h_src/57945180.htm" class="localvar">work</a> += <a href="../h_src/57820088.htm" class="function">remarkupvals</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>);
+  1539 :    <a href="../h_src/57945180.htm" class="localvar">work</a> += <a href="../h_src/57970748.htm" class="function">propagateall</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>);  <a  class="comments">/* propagate changes */</a>
+  1541 :    <a href="../h_src/57945180.htm" class="localvar">work</a> += <a href="../h_src/57970748.htm" class="function">propagateall</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>);  <a  class="comments">/* traverse 'grayagain' list */</a>
+  1549 :    <a href="../h_src/57945180.htm" class="localvar">work</a> += <a href="../h_src/57820632.htm" class="function">markbeingfnz</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>);  <a  class="comments">/* mark objects that will be finalized */</a>
+  1550 :    <a href="../h_src/57945180.htm" class="localvar">work</a> += <a href="../h_src/57970748.htm" class="function">propagateall</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>);  <a  class="comments">/* remark, to propagate 'resurrection' */</a>
+  1562 :    return <a href="../h_src/57945180.htm" class="localvar">work</a>;  <a  class="comments">/* estimate of slots marked by 'atomic' */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable work</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

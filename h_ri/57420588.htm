@@ -1,0 +1,54 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaL_getmetafield</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57420588.htm" class="function" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57420588.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57420588.htm" class="function" target="_self">Flow Chart</a></li>
+<li><a href="../h_src/57420588.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57420588.htm" class="function" target="_self">Called By</a></li>
+<li><a href="../h_rx/57420588.htm" class="function" target="_self">Call Tree</a></li>
+<li><a href="../h_ro/57420588.htm" class="function" target="_self">Calls and Uses</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/58308004.htm" class=function>luaB_getmetatable</a>                                lbaselib.c
+   132 :    <a href="../h_src/57420588.htm" class="function">luaL_getmetafield</a>(<a href="../h_src/58307868.htm" class="localvar">L</a>, 1, &quot;__metatable&quot;);
+<a href="../h_aa/58301884.htm" class=function>luaB_pairs</a>                                       lbaselib.c
+   286 :    if (<a href="../h_src/57420588.htm" class="function">luaL_getmetafield</a>(<a href="../h_src/58301748.htm" class="localvar">L</a>, 1, &quot;__pairs&quot;) == <a href="../h_src/57444048.htm" class="macro">LUA_TNIL</a>) {  <a  class="comments">/* no metamethod? */</a>
+<a href="../h_aa/58307732.htm" class=function>luaB_setmetatable</a>                                lbaselib.c
+   141 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57420588.htm" class="function">luaL_getmetafield</a>(<a href="../h_src/58307596.htm" class="localvar">L</a>, 1, &quot;__metatable&quot;) != <a href="../h_src/57444048.htm" class="macro">LUA_TNIL</a>))
+<a href="../h_aa/57420520.htm" class=function>luaL_callmeta</a>                                    lauxlib.c
+   869 :    if (<a href="../h_src/57420588.htm" class="function">luaL_getmetafield</a>(<a href="../h_src/58321400.htm" class="localvar">L</a>, <a href="../h_src/58321264.htm" class="localvar">obj</a>, <a href="../h_src/58321128.htm" class="localvar">event</a>) == <a href="../h_src/57444048.htm" class="macro">LUA_TNIL</a>)  <a  class="comments">/* no metafield? */</a>
+<a href="../h_aa/57420452.htm" class=function>luaL_tolstring</a>                                   lauxlib.c
+   914 :    int <a href="../h_src/58320040.htm" class="localvar">tt</a> = <a href="../h_src/57420588.htm" class="function">luaL_getmetafield</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, <a href="../h_src/58320312.htm" class="localvar">idx</a>, &quot;__name&quot;);  <a  class="comments">/* try name */</a>
+<a href="../h_aa/57420316.htm" class=function>luaL_typeerror</a>                                   lauxlib.c
+   196 :    if (<a href="../h_src/57420588.htm" class="function">luaL_getmetafield</a>(<a href="../h_src/58346152.htm" class="localvar">L</a>, <a href="../h_src/58346016.htm" class="localvar">arg</a>, &quot;__name&quot;) == <a href="../h_src/57443504.htm" class="macro">LUA_TSTRING</a>)
+<a href="../h_aa/143331788.htm" class=function>trymt</a>                                            lstrlib.c
+   280 :    !<a href="../h_src/57420588.htm" class="function">luaL_getmetafield</a>(<a href="../h_src/143331652.htm" class="localvar">L</a>, 2, <a href="../h_src/143331516.htm" class="localvar">mtname</a>)))
+</pre>
+<h4><a class="legend">Table lists functions that directly use luaL_getmetafield</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

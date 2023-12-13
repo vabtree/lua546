@@ -1,0 +1,47 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>LUA_OPADD</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57437792.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57437792.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57437792.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57437792.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/143330836.htm" class=function>arith_add</a>                                        lstrlib.c
+   298 :    return <a href="../h_src/143331380.htm" class="function">arith</a>(<a href="../h_src/143330700.htm" class="localvar">L</a>, <a href="../h_src/57437792.htm" class="macro">LUA_OPADD</a>, &quot;__add&quot;);
+<a href="../h_aa/57919000.htm" class=function>intarith</a>                                         lobject.c
+    56 :    case <a href="../h_src/57437792.htm" class="macro">LUA_OPADD</a>: return <a href="../h_src/57612568.htm" class="macro">intop</a>(+, <a href="../h_src/57918592.htm" class="localvar">v1</a>, <a href="../h_src/57918456.htm" class="localvar">v2</a>);
+<a href="../h_aa/57669048.htm" class=function>luaK_posfix</a>                                      lcode.c
+  1705 :    if (<a href="../h_src/57672516.htm" class="macro">foldbinop</a>(<a href="../h_src/57766668.htm" class="localvar">opr</a>) &amp;&amp; <a href="../h_src/57785844.htm" class="function">constfolding</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57766668.htm" class="localvar">opr</a> + <a href="../h_src/57437792.htm" class="macro">LUA_OPADD</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>))
+<a href="../h_aa/57501724.htm" class=function>luaO_arith</a>                                       lobject.c
+   130 :    <a href="../h_src/57497780.htm" class="function">luaT_trybinTM</a>(<a href="../h_src/57915464.htm" class="localvar">L</a>, <a href="../h_src/57915192.htm" class="localvar">p1</a>, <a href="../h_src/57915056.htm" class="localvar">p2</a>, <a href="../h_src/57914920.htm" class="localvar">res</a>, <a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57499004.htm" class="type">TMS</a>, (<a href="../h_src/57915328.htm" class="localvar">op</a> - <a href="../h_src/57437792.htm" class="macro">LUA_OPADD</a>) + <a href="../h_src/57500500.htm" class="variable">TM_ADD</a>));
+<a href="../h_aa/57918320.htm" class=function>numarith</a>                                         lobject.c
+    76 :    case <a href="../h_src/57437792.htm" class="macro">LUA_OPADD</a>: return <a href="../h_src/57540008.htm" class="macro">luai_numadd</a>(L, <a href="../h_src/57917912.htm" class="localvar">v1</a>, <a href="../h_src/57917776.htm" class="localvar">v2</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use LUA_OPADD</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,76 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">global_State::</a>mainthread</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57643848.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57643848.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57643848.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57643848.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57643848.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57439900.htm" class=function>lua_newstate</a>                                     lstate.c
+   379 :    <a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57643848.htm" class="variable">mainthread</a> = <a href="../h_src/58134164.htm" class="localvar">L</a>;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57826616.htm" class=function>atomic</a>                                           lgc.c
+  1534 :    <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>, &amp;<a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646296.htm" class="variable">l_registry</a>);
+<a href="../h_aa/57439832.htm" class=function>lua_close</a>                                        lstate.c
+   418 :    <a href="../h_src/58133552.htm" class="localvar">L</a> = <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/58133552.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57643848.htm" class="variable">mainthread</a>;  <a  class="comments">/* only the main thread can be closed */</a>
+<a href="../h_aa/57439764.htm" class=function>lua_newthread</a>                                    lstate.c
+   304 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/57429700.htm" class="macro">lua_getextraspace</a>(<a href="../h_src/58136340.htm" class="localvar">L1</a>), <a href="../h_src/57429700.htm" class="macro">lua_getextraspace</a>(<a href="../h_src/58136612.htm" class="localvar">g</a>-&gt;<a href="../h_src/57643848.htm" class="variable">mainthread</a>),
+<a href="../h_aa/57434460.htm" class=function>lua_pushthread</a>                                   lapi.c
+   629 :    return (<a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57584620.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57643848.htm" class="variable">mainthread</a> == <a href="../h_src/57584620.htm" class="localvar">L</a>);
+<a href="../h_aa/57432488.htm" class=function>lua_yieldk</a>                                       ldo.c
+   879 :    if (<a href="../h_src/57857148.htm" class="localvar">L</a> != <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57857148.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57643848.htm" class="variable">mainthread</a>)
+<a href="../h_aa/57620864.htm" class=function>luaC_freeallobjects</a>                              lgc.c
+  1516 :    <a href="../h_src/57946404.htm" class="function">deletelist</a>(<a href="../h_src/57945724.htm" class="localvar">L</a>, <a href="../h_src/57945588.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645344.htm" class="variable">allgc</a>, <a href="../h_src/57638884.htm" class="macro">obj2gco</a>(<a href="../h_src/57945588.htm" class="localvar">g</a>-&gt;<a href="../h_src/57643848.htm" class="variable">mainthread</a>));
+<a href="../h_aa/57632560.htm" class=function>luaD_throw</a>                                       ldo.c
+   123 :    if (<a href="../h_src/57881492.htm" class="localvar">g</a>-&gt;<a href="../h_src/57643848.htm" class="variable">mainthread</a>-&gt;<a href="../h_src/57641808.htm" class="variable">errorJmp</a>) {  <a  class="comments">/* main thread has a handler? */</a>
+   124 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/57881832.htm" class="localvar">L</a>, <a href="../h_src/57881492.htm" class="localvar">g</a>-&gt;<a href="../h_src/57643848.htm" class="variable">mainthread</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>++, <a href="../h_src/57881832.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1);  <a  class="comments">/* copy error obj. */</a>
+   125 :    <a href="../h_src/57632560.htm" class="function">luaD_throw</a>(<a href="../h_src/57881492.htm" class="localvar">g</a>-&gt;<a href="../h_src/57643848.htm" class="variable">mainthread</a>, <a href="../h_src/57881696.htm" class="localvar">errcode</a>);  <a  class="comments">/* re-throw in main thread */</a>
+<a href="../h_aa/57826752.htm" class=function>reallymarkobject</a>                                 lgc.c
+   310 :    <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57821584.htm" class="localvar">g</a>, <a href="../h_src/57821312.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57510564.htm" class="variable">v</a>.<a href="../h_src/57510768.htm" class="variable">p</a>);  <a  class="comments">/* mark its content */</a>
+<a href="../h_aa/57820088.htm" class=function>remarkupvals</a>                                     lgc.c
+   385 :    <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57819952.htm" class="localvar">g</a>, <a href="../h_src/57819340.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57510564.htm" class="variable">v</a>.<a href="../h_src/57510768.htm" class="variable">p</a>);  <a  class="comments">/* mark its value */</a>
+<a href="../h_aa/57818932.htm" class=function>restartcollection</a>                                lgc.c
+   405 :    <a href="../h_src/57827024.htm" class="macro">markobject</a>(<a href="../h_src/57818796.htm" class="localvar">g</a>, <a href="../h_src/57818796.htm" class="localvar">g</a>-&gt;<a href="../h_src/57643848.htm" class="variable">mainthread</a>);
+   406 :    <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57818796.htm" class="localvar">g</a>, &amp;<a href="../h_src/57818796.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646296.htm" class="variable">l_registry</a>);
+<a href="../h_aa/57973060.htm" class=function>traverseCclosure</a>                                 lgc.c
+   596 :    <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57972924.htm" class="localvar">g</a>, &amp;<a href="../h_src/57972788.htm" class="localvar">cl</a>-&gt;<a href="../h_src/57508796.htm" class="variable">upvalue</a>[<a href="../h_src/57972652.htm" class="localvar">i</a>]);
+<a href="../h_aa/57973604.htm" class=function>traverseproto</a>                                    lgc.c
+   582 :    <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57973468.htm" class="localvar">g</a>, &amp;<a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515052.htm" class="variable">k</a>[<a href="../h_src/57973196.htm" class="localvar">i</a>]);
+<a href="../h_aa/57975916.htm" class=function>traversestrongtable</a>                              lgc.c
+   528 :    <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57975780.htm" class="localvar">g</a>, &amp;<a href="../h_src/57975644.htm" class="localvar">h</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/57975236.htm" class="localvar">i</a>]);
+   535 :    <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57975780.htm" class="localvar">g</a>, <a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/57975508.htm" class="localvar">n</a>));
+<a href="../h_aa/57971836.htm" class=function>traversethread</a>                                   lgc.c
+   637 :    <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57971700.htm" class="localvar">g</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57971292.htm" class="localvar">o</a>));
+<a href="../h_aa/57974148.htm" class=function>traverseudata</a>                                    lgc.c
+   567 :    <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57974012.htm" class="localvar">g</a>, &amp;<a href="../h_src/57973876.htm" class="localvar">u</a>-&gt;<a href="../h_src/57519336.htm" class="variable">uv</a>[<a href="../h_src/57973740.htm" class="localvar">i</a>].<a href="../h_src/57520764.htm" class="variable">uv</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable mainthread</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

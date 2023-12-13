@@ -1,0 +1,52 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>path</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143209932.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/143209932.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/143209932.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/143209932.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/143210884.htm" class=function>setpath</a>                                          loadlib.c
+   302 :    const char *<a href="../h_src/143209932.htm" class="localvar">path</a> = <a href="../h_aa/57561428.htm" class="libfunc">getenv</a>(<a href="../h_src/143210068.htm" class="localvar">nver</a>);  <a  class="comments">/* try versioned name */</a>
+   304 :    <a href="../h_src/143209932.htm" class="localvar">path</a> = <a href="../h_aa/57561428.htm" class="libfunc">getenv</a>(<a href="../h_src/143210476.htm" class="localvar">envname</a>);  <a  class="comments">/* try unversioned name */</a>
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/143210884.htm" class=function>setpath</a>                                          loadlib.c
+   303 :    if (<a href="../h_src/143209932.htm" class="localvar">path</a> == NULL)  <a  class="comments">/* no versioned environment variable? */</a>
+   305 :    if (<a href="../h_src/143209932.htm" class="localvar">path</a> == NULL || <a href="../h_src/143211292.htm" class="function">noenv</a>(<a href="../h_src/143210748.htm" class="localvar">L</a>))  <a  class="comments">/* no environment variable? */</a>
+   307 :    else if ((<a href="../h_src/143210204.htm" class="localvar">dftmark</a> = <a href="../h_aa/58317456.htm" class="libfunc">strstr</a>(<a href="../h_src/143209932.htm" class="localvar">path</a>, <a href="../h_src/57456628.htm" class="macro">LUA_PATH_SEP</a> <a href="../h_src/57456628.htm" class="macro">LUA_PATH_SEP</a>)) == NULL)
+   308 :    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/143210748.htm" class="localvar">L</a>, <a href="../h_src/143209932.htm" class="localvar">path</a>);  <a  class="comments">/* nothing to change */</a>
+   310 :    <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/143209796.htm" class="localvar">len</a> = <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/143209932.htm" class="localvar">path</a>);
+   313 :    if (<a href="../h_src/143209932.htm" class="localvar">path</a> &lt; <a href="../h_src/143210204.htm" class="localvar">dftmark</a>) {  <a  class="comments">/* is there a prefix before ';;'? */</a>
+   314 :    <a href="../h_src/57413516.htm" class="function">luaL_addlstring</a>(&amp;<a href="../h_src/143209660.htm" class="localvar">b</a>, <a href="../h_src/143209932.htm" class="localvar">path</a>, <a href="../h_src/143210204.htm" class="localvar">dftmark</a> - <a href="../h_src/143209932.htm" class="localvar">path</a>);  <a  class="comments">/* add it */</a>
+   318 :    if (<a href="../h_src/143210204.htm" class="localvar">dftmark</a> &lt; <a href="../h_src/143209932.htm" class="localvar">path</a> + <a href="../h_src/143209796.htm" class="localvar">len</a> - 2) {  <a  class="comments">/* is there a suffix after ';;'? */</a>
+   320 :    <a href="../h_src/57413516.htm" class="function">luaL_addlstring</a>(&amp;<a href="../h_src/143209660.htm" class="localvar">b</a>, <a href="../h_src/143210204.htm" class="localvar">dftmark</a> + 2, (<a href="../h_src/143209932.htm" class="localvar">path</a> + <a href="../h_src/143209796.htm" class="localvar">len</a> - 2) - <a href="../h_src/143210204.htm" class="localvar">dftmark</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable path</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

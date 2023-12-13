@@ -1,0 +1,53 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>ci</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57874964.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57874964.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57874964.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57874964.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57633512.htm" class=function>luaD_hook</a>                                        ldo.c
+   333 :    <a href="../h_src/57537764.htm" class="type">CallInfo</a> *<a href="../h_src/57874964.htm" class="localvar">ci</a> = <a href="../h_src/57875916.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57633512.htm" class=function>luaD_hook</a>                                        ldo.c
+   335 :    <a href="../h_aa/57441872.htm" class="type">ptrdiff_t</a> <a href="../h_src/57874692.htm" class="localvar">ci_top</a> = <a href="../h_src/57634396.htm" class="macro">savestack</a>(<a href="../h_src/57875916.htm" class="localvar">L</a>, <a href="../h_src/57874964.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651464.htm" class="variable">top</a><a href="../h_src/57531984.htm" class="variable">p</a>.<a href="../h_src/57531984.htm" class="variable">p</a>);  <a  class="comments">/* idem for 'ci-&gt;top' */</a>
+   339 :    <a href="../h_src/57874556.htm" class="localvar">ar</a>.<a href="../h_src/57422424.htm" class="variable">i_ci</a> = <a href="../h_src/57874964.htm" class="localvar">ci</a>;
+   342 :    <a href="../h_src/57874964.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649560.htm" class="variable">u2</a>.<a href="../h_src/57649696.htm" class="variable">transferinfo</a>.<a href="../h_src/57649900.htm" class="variable">ftransfer</a> = <a href="../h_src/57875508.htm" class="localvar">ftransfer</a>;
+   343 :    <a href="../h_src/57874964.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649560.htm" class="variable">u2</a>.<a href="../h_src/57649696.htm" class="variable">transferinfo</a>.<a href="../h_src/57649832.htm" class="variable">ntransfer</a> = <a href="../h_src/57875372.htm" class="localvar">ntransfer</a>;
+   345 :    if (<a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57874964.htm" class="localvar">ci</a>) &amp;&amp; <a href="../h_src/57875916.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> &lt; <a href="../h_src/57874964.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651464.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>)
+   346 :    <a href="../h_src/57875916.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57874964.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651464.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>;  <a  class="comments">/* protect entire activation register */</a>
+   348 :    if (<a href="../h_src/57874964.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651464.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> &lt; <a href="../h_src/57875916.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> + <a href="../h_src/57442688.htm" class="macro">LUA_MINSTACK</a>)
+   349 :    <a href="../h_src/57874964.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651464.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57875916.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> + <a href="../h_src/57442688.htm" class="macro">LUA_MINSTACK</a>;
+   351 :    <a href="../h_src/57874964.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> |= <a href="../h_src/57875100.htm" class="localvar">mask</a>;
+   357 :    <a href="../h_src/57874964.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651464.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57875916.htm" class="localvar">L</a>, <a href="../h_src/57874692.htm" class="localvar">ci_top</a>);
+   359 :    <a href="../h_src/57874964.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp;= ~<a href="../h_src/57875100.htm" class="localvar">mask</a>;
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable ci</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

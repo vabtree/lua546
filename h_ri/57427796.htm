@@ -1,0 +1,63 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lua_isnoneornil</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57427796.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57427796.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57427796.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57427796.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/143268820.htm" class=function>db_sethook</a>                                       ldblib.c
+   369 :    if (<a href="../h_src/57427796.htm" class="macro">lua_isnoneornil</a>(<a href="../h_src/143268684.htm" class="localvar">L</a>, <a href="../h_src/143268548.htm" class="localvar">arg</a>+1)) {  <a  class="comments">/* no hook? */</a>
+<a href="../h_aa/143266372.htm" class=function>db_traceback</a>                                     ldblib.c
+   439 :    if (<a href="../h_src/143265828.htm" class="localvar">msg</a> == NULL &amp;&amp; !<a href="../h_src/57427796.htm" class="macro">lua_isnoneornil</a>(<a href="../h_src/143266236.htm" class="localvar">L</a>, <a href="../h_src/143266100.htm" class="localvar">arg</a> + 1))  <a  class="comments">/* non-string 'msg'? */</a>
+<a href="../h_aa/143253112.htm" class=function>g_iofile</a>                                         liolib.c
+   319 :    if (!<a href="../h_src/57427796.htm" class="macro">lua_isnoneornil</a>(<a href="../h_src/143252976.htm" class="localvar">L</a>, 1)) {
+<a href="../h_aa/58309500.htm" class=function>luaB_tonumber</a>                                    lbaselib.c
+    82 :    if (<a href="../h_src/57427796.htm" class="macro">lua_isnoneornil</a>(<a href="../h_src/58309364.htm" class="localvar">L</a>, 2)) {  <a  class="comments">/* standard conversion? */</a>
+<a href="../h_aa/57419908.htm" class=function>luaL_optinteger</a>                                  lauxlib.c
+   454 :    return <a href="../h_src/57416168.htm" class="macro">luaL_opt</a>(<a href="../h_src/58336156.htm" class="localvar">L</a>, <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>, <a href="../h_src/58336020.htm" class="localvar">arg</a>, <a href="../h_src/58335884.htm" class="localvar">def</a>);
+<a href="../h_aa/57420180.htm" class=function>luaL_optlstring</a>                                  lauxlib.c
+   411 :    if (<a href="../h_src/57427796.htm" class="macro">lua_isnoneornil</a>(<a href="../h_src/58338604.htm" class="localvar">L</a>, <a href="../h_src/58338468.htm" class="localvar">arg</a>)) {
+<a href="../h_aa/57420044.htm" class=function>luaL_optnumber</a>                                   lauxlib.c
+   430 :    return <a href="../h_src/57416168.htm" class="macro">luaL_opt</a>(<a href="../h_src/58337516.htm" class="localvar">L</a>, <a href="../h_src/57420112.htm" class="function">luaL_checknumber</a>, <a href="../h_src/58337380.htm" class="localvar">arg</a>, <a href="../h_src/58337244.htm" class="localvar">def</a>);
+<a href="../h_aa/143234548.htm" class=function>math_log</a>                                         lmathlib.c
+   172 :    if (<a href="../h_src/57427796.htm" class="macro">lua_isnoneornil</a>(<a href="../h_src/143234412.htm" class="localvar">L</a>, 2))
+<a href="../h_aa/143348856.htm" class=function>os_date</a>                                          loslib.c
+   305 :    <a href="../h_src/143349536.htm" class="function">time_t</a> <a href="../h_src/143348244.htm" class="localvar">t</a> = <a href="../h_src/57416168.htm" class="macro">luaL_opt</a>(<a href="../h_src/143348720.htm" class="localvar">L</a>, <a href="../h_aa/143348312.htm" class="libfunc">l_checktime</a>, 2, <a href="../h_aa/57983504.htm" class="libfunc">time</a>(NULL));
+<a href="../h_aa/143346952.htm" class=function>os_time</a>                                          loslib.c
+   346 :    if (<a href="../h_src/57427796.htm" class="macro">lua_isnoneornil</a>(<a href="../h_src/143346816.htm" class="localvar">L</a>, 1))  <a  class="comments">/* called without args? */</a>
+<a href="../h_aa/143419276.htm" class=function>sort</a>                                             ltablib.c
+   403 :    if (!<a href="../h_src/57427796.htm" class="macro">lua_isnoneornil</a>(<a href="../h_src/143419140.htm" class="localvar">L</a>, 2))  <a  class="comments">/* is there a 2nd argument? */</a>
+<a href="../h_aa/143428184.htm" class=function>tmove</a>                                            ltablib.c
+   119 :    int <a href="../h_src/143427504.htm" class="localvar">tt</a> = !<a href="../h_src/57427796.htm" class="macro">lua_isnoneornil</a>(<a href="../h_src/143428048.htm" class="localvar">L</a>, 5) ? 5 : 1;  <a  class="comments">/* destination table */</a>
+<a href="../h_aa/143425056.htm" class=function>tunpack</a>                                          ltablib.c
+   197 :    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143424512.htm" class="localvar">e</a> = <a href="../h_src/57416168.htm" class="macro">luaL_opt</a>(<a href="../h_src/143424920.htm" class="localvar">L</a>, <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>, 3, <a href="../h_src/57418140.htm" class="function">luaL_len</a>(<a href="../h_src/143424920.htm" class="localvar">L</a>, 1));
+</pre>
+<h4><a class="legend">Table lists functions that directly use lua_isnoneornil</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

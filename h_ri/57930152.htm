@@ -1,0 +1,47 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>ls</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57930152.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57930152.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57930152.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57930152.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57930288.htm" class=function>readutf8esc</a>                                      llex.c
+   346 :    <a href="../h_src/57940012.htm" class="macro">save_and_next</a>(<a href="../h_src/57930152.htm" class="localvar">ls</a>);  <a  class="comments">/* skip 'u' */</a>
+   347 :    <a href="../h_src/57931512.htm" class="function">esccheck</a>(<a href="../h_src/57930152.htm" class="localvar">ls</a>, <a href="../h_src/57930152.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a> == '{', &quot;missing '{'&quot;);
+   348 :    <a href="../h_src/57930016.htm" class="localvar">r</a> = <a href="../h_src/57930968.htm" class="function">gethexa</a>(<a href="../h_src/57930152.htm" class="localvar">ls</a>);  <a  class="comments">/* must have at least one digit */</a>
+   349 :    while (<a href="../h_src/57547624.htm" class="macro">cast_void</a>(<a href="../h_src/57940012.htm" class="macro">save_and_next</a>(<a href="../h_src/57930152.htm" class="localvar">ls</a>)), <a href="../h_src/57759868.htm" class="macro">lisxdigit</a>(<a href="../h_src/57930152.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>)) {
+   351 :    <a href="../h_src/57931512.htm" class="function">esccheck</a>(<a href="../h_src/57930152.htm" class="localvar">ls</a>, <a href="../h_src/57930016.htm" class="localvar">r</a> &lt;= (0x7FFFFFFFu &gt;&gt; 4), &quot;UTF-8 value too large&quot;);
+   352 :    <a href="../h_src/57930016.htm" class="localvar">r</a> = (<a href="../h_src/57930016.htm" class="localvar">r</a> &lt;&lt; 4) + <a href="../h_src/57501588.htm" class="function">luaO_hexavalue</a>(<a href="../h_src/57930152.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>);
+   354 :    <a href="../h_src/57931512.htm" class="function">esccheck</a>(<a href="../h_src/57930152.htm" class="localvar">ls</a>, <a href="../h_src/57930152.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a> == '}', &quot;missing '}'&quot;);
+   355 :    <a href="../h_src/57940352.htm" class="macro">next</a>(<a href="../h_src/57930152.htm" class="localvar">ls</a>);  <a  class="comments">/* skip '}' */</a>
+   356 :    <a href="../h_src/57654932.htm" class="macro">luaZ_buffremove</a>(<a href="../h_src/57930152.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700736.htm" class="variable">buff</a>, <a href="../h_src/57929880.htm" class="localvar">i</a>);  <a  class="comments">/* remove saved chars from buffer */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable ls</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

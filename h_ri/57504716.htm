@@ -1,0 +1,92 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">Table::</a>array</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57504716.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57504716.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57504716.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57504716.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57504716.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57616512.htm" class=function>luaH_new</a>                                         ltable.c
+   631 :    <a href="../h_src/58100300.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a> = NULL;
+<a href="../h_aa/57616444.htm" class=function>luaH_resize</a>                                      ltable.c
+   580 :    <a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a> = <a href="../h_src/58102476.htm" class="localvar">newarray</a>;  <a  class="comments">/* set new array part */</a>
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57968572.htm" class=function>clearbyvalues</a>                                    lgc.c
+   749 :    <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57967348.htm" class="localvar">o</a> = &amp;<a href="../h_src/57968028.htm" class="localvar">h</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/57967620.htm" class="localvar">i</a>];
+<a href="../h_aa/57979628.htm" class=function>init_registry</a>                                    lstate.c
+   222 :    <a href="../h_src/57528584.htm" class="macro">setthvalue</a>(<a href="../h_src/57979492.htm" class="localvar">L</a>, &amp;<a href="../h_src/57979220.htm" class="localvar">registry</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/57442552.htm" class="macro">LUA_RIDX_MAINTHREAD</a> - 1], <a href="../h_src/57979492.htm" class="localvar">L</a>);
+   224 :    <a href="../h_src/57507028.htm" class="macro">sethvalue</a>(<a href="../h_src/57979492.htm" class="localvar">L</a>, &amp;<a href="../h_src/57979220.htm" class="localvar">registry</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/57442416.htm" class="macro">LUA_RIDX_GLOBALS</a> - 1], <a href="../h_src/57616512.htm" class="function">luaH_new</a>(<a href="../h_src/57979492.htm" class="localvar">L</a>));
+<a href="../h_aa/57434392.htm" class=function>lua_getglobal</a>                                    lapi.c
+   669 :    <a href="../h_src/57641196.htm" class="macro">G</a> = <a href="../h_src/57582852.htm" class="macro">getGtable</a>(<a href="../h_src/57582716.htm" class="localvar">L</a>);
+<a href="../h_aa/57434188.htm" class=function>lua_geti</a>                                         lapi.c
+   700 :    if (<a href="../h_src/57612160.htm" class="macro">luaV_fastgeti</a>(L, <a href="../h_src/57580676.htm" class="localvar">t</a>, <a href="../h_src/57580812.htm" class="localvar">n</a>, <a href="../h_src/57580540.htm" class="localvar">slot</a>)) {
+<a href="../h_aa/57432624.htm" class=function>lua_load</a>                                         lapi.c
+  1099 :    const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57721476.htm" class="localvar">gt</a> = <a href="../h_src/57582852.htm" class="macro">getGtable</a>(<a href="../h_src/57722564.htm" class="localvar">L</a>);
+<a href="../h_aa/57433644.htm" class=function>lua_setglobal</a>                                    lapi.c
+   850 :    <a href="../h_src/57641196.htm" class="macro">G</a> = <a href="../h_src/57582852.htm" class="macro">getGtable</a>(<a href="../h_src/57732628.htm" class="localvar">L</a>);
+<a href="../h_aa/57433440.htm" class=function>lua_seti</a>                                         lapi.c
+   883 :    if (<a href="../h_src/57612160.htm" class="macro">luaV_fastgeti</a>(L, <a href="../h_src/57730588.htm" class="localvar">t</a>, <a href="../h_src/57730724.htm" class="localvar">n</a>, <a href="../h_src/57730452.htm" class="localvar">slot</a>)) {
+<a href="../h_aa/57616308.htm" class=function>luaH_free</a>                                        ltable.c
+   640 :    <a href="../h_src/57495604.htm" class="macro">luaM_freearray</a>(<a href="../h_src/58100164.htm" class="localvar">L</a>, <a href="../h_src/58100028.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>, <a href="../h_src/57616172.htm" class="function">luaH_realasize</a>(<a href="../h_src/58100028.htm" class="localvar">t</a>));
+<a href="../h_aa/57617056.htm" class=function>luaH_getint</a>                                      ltable.c
+   732 :    return &amp;<a href="../h_src/58097580.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58097444.htm" class="localvar">key</a> - 1];
+   737 :    return &amp;<a href="../h_src/58097580.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58097444.htm" class="localvar">key</a> - 1];
+<a href="../h_aa/57592440.htm" class=function>luaH_getn</a>                                        ltable.c
+   925 :    if (<a href="../h_src/58091188.htm" class="localvar">limit</a> &gt; 0 &amp;&amp; <a href="../h_src/57530488.htm" class="macro">isempty</a>(&amp;<a href="../h_src/58091324.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58091188.htm" class="localvar">limit</a> - 1])) {  <a  class="comments">/* (1)? */</a>
+   927 :    if (<a href="../h_src/58091188.htm" class="localvar">limit</a> &gt;= 2 &amp;&amp; !<a href="../h_src/57530488.htm" class="macro">isempty</a>(&amp;<a href="../h_src/58091324.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58091188.htm" class="localvar">limit</a> - 2])) {
+   936 :    unsigned int <a href="../h_src/58091052.htm" class="localvar">boundary</a> = <a href="../h_src/58092004.htm" class="function">binsearch</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>, 0, <a href="../h_src/58091188.htm" class="localvar">limit</a>);
+   948 :    if (<a href="../h_src/57530488.htm" class="macro">isempty</a>(&amp;<a href="../h_src/58091324.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58091188.htm" class="localvar">limit</a>]))  <a  class="comments">/* 'limit + 1' is empty? */</a>
+   952 :    if (<a href="../h_src/57530488.htm" class="macro">isempty</a>(&amp;<a href="../h_src/58091324.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58091188.htm" class="localvar">limit</a> - 1])) {  <a  class="comments">/* empty? */</a>
+   955 :    unsigned int <a href="../h_src/58090916.htm" class="localvar">boundary</a> = <a href="../h_src/58092004.htm" class="function">binsearch</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>, <a href="../h_src/58091324.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a>, <a href="../h_src/58091188.htm" class="localvar">limit</a>);
+<a href="../h_aa/57616240.htm" class=function>luaH_next</a>                                        ltable.c
+   353 :    if (!<a href="../h_src/57530488.htm" class="macro">isempty</a>(&amp;<a href="../h_src/58112676.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58112268.htm" class="localvar">i</a>])) {  <a  class="comments">/* a non-empty entry? */</a>
+   355 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58112812.htm" class="localvar">L</a>, <a href="../h_src/58112540.htm" class="localvar">key</a> + 1, &amp;<a href="../h_src/58112676.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58112268.htm" class="localvar">i</a>]);
+<a href="../h_aa/57616444.htm" class=function>luaH_resize</a>                                      ltable.c
+   566 :    if (!<a href="../h_src/57530488.htm" class="macro">isempty</a>(&amp;<a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58102884.htm" class="localvar">i</a>]))
+   567 :    <a href="../h_src/57616988.htm" class="function">luaH_setint</a>(<a href="../h_src/58103428.htm" class="localvar">L</a>, <a href="../h_src/58103292.htm" class="localvar">t</a>, <a href="../h_src/58102884.htm" class="localvar">i</a> + 1, &amp;<a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58102884.htm" class="localvar">i</a>]);
+   573 :    <a href="../h_src/58102476.htm" class="localvar">newarray</a> = <a href="../h_src/57657244.htm" class="macro">luaM_reallocvector</a>(<a href="../h_src/58103428.htm" class="localvar">L</a>, <a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>, <a href="../h_src/58102612.htm" class="localvar">oldasize</a>, <a href="../h_src/58103156.htm" class="localvar">newasize</a>, <a href="../h_src/57535384.htm" class="type">TValue</a>);
+   583 :    <a href="../h_src/57530216.htm" class="macro">setempty</a>(&amp;<a href="../h_src/58103292.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58102884.htm" class="localvar">i</a>]);
+<a href="../h_aa/57610936.htm" class=function>luaV_execute</a>                                     lvm.c
+  1271 :    ? (<a href="../h_src/57547624.htm" class="macro">cast_void</a>(<a href="../h_src/58180852.htm" class="localvar">n</a> = <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58180988.htm" class="localvar">rc</a>)), <a href="../h_src/57612160.htm" class="macro">luaV_fastgeti</a>(L, <a href="../h_src/58181124.htm" class="localvar">rb</a>, <a href="../h_src/58180852.htm" class="localvar">n</a>, <a href="../h_src/58181260.htm" class="localvar">slot</a>))
+  1284 :    if (<a href="../h_src/57612160.htm" class="macro">luaV_fastgeti</a>(L, <a href="../h_src/58180172.htm" class="localvar">rb</a>, <a href="../h_src/58180036.htm" class="localvar">c</a>, <a href="../h_src/58180308.htm" class="localvar">slot</a>)) {
+  1327 :    ? (<a href="../h_src/57547624.htm" class="macro">cast_void</a>(<a href="../h_src/58176908.htm" class="localvar">n</a> = <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58177180.htm" class="localvar">rb</a>)), <a href="../h_src/57612160.htm" class="macro">luaV_fastgeti</a>(L, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58177452.htm" class="localvar">ra</a>), <a href="../h_src/58176908.htm" class="localvar">n</a>, <a href="../h_src/58177316.htm" class="localvar">slot</a>))
+  1340 :    if (<a href="../h_src/57612160.htm" class="macro">luaV_fastgeti</a>(L, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58176500.htm" class="localvar">ra</a>), <a href="../h_src/58176228.htm" class="localvar">c</a>, <a href="../h_src/58176364.htm" class="localvar">slot</a>)) {
+  1865 :    <a href="../h_src/57533004.htm" class="macro">setobj2t</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, &amp;<a href="../h_src/58354380.htm" class="localvar">h</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58354516.htm" class="localvar">last</a> - 1], <a href="../h_src/58354244.htm" class="localvar">val</a>);
+<a href="../h_aa/58109004.htm" class=function>numusearray</a>                                      ltable.c
+   446 :    if (!<a href="../h_src/57530488.htm" class="macro">isempty</a>(&amp;<a href="../h_src/58108868.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/58108188.htm" class="localvar">i</a>-1]))
+<a href="../h_aa/57817436.htm" class=function>traverseephemeron</a>                                lgc.c
+   489 :    if (<a href="../h_src/57827704.htm" class="macro">valiswhite</a>(&amp;<a href="../h_src/57977140.htm" class="localvar">h</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/57976460.htm" class="localvar">i</a>])) {
+   491 :    <a href="../h_src/57826752.htm" class="function">reallymarkobject</a>(<a href="../h_src/57977276.htm" class="localvar">g</a>, <a href="../h_src/57527496.htm" class="macro">gcvalue</a>(&amp;<a href="../h_src/57977140.htm" class="localvar">h</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/57976460.htm" class="localvar">i</a>]));
+<a href="../h_aa/57975916.htm" class=function>traversestrongtable</a>                              lgc.c
+   528 :    <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57975780.htm" class="localvar">g</a>, &amp;<a href="../h_src/57975644.htm" class="localvar">h</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/57975236.htm" class="localvar">i</a>]);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable array</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,44 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lblevel</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58005264.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/58005264.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/58005264.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/58005264.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/58006080.htm" class=function>gotostat</a>                                         lparser.c
+  1426 :    int <a href="../h_src/58005264.htm" class="localvar">lblevel</a> = <a href="../h_src/58047220.htm" class="function">reglevel</a>(<a href="../h_src/58005808.htm" class="localvar">fs</a>, <a href="../h_src/58005400.htm" class="localvar">lb</a>-&gt;<a href="../h_src/57677548.htm" class="variable">nactvar</a>);  <a  class="comments">/* label level */</a>
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/58006080.htm" class=function>gotostat</a>                                         lparser.c
+  1427 :    if (<a href="../h_src/57674488.htm" class="function">luaY_nvarstack</a>(<a href="../h_src/58005808.htm" class="localvar">fs</a>) &gt; <a href="../h_src/58005264.htm" class="localvar">lblevel</a>)  <a  class="comments">/* leaving the scope of a variable? */</a>
+  1428 :    <a href="../h_src/57672380.htm" class="macro">luaK_codeABC</a>(<a href="../h_src/58005808.htm" class="localvar">fs</a>, <a href="../h_src/57686864.htm" class="variable">OP_CLOSE</a>, <a href="../h_src/58005264.htm" class="localvar">lblevel</a>, 0, 0);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable lblevel</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

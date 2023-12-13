@@ -1,0 +1,61 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">lua_State::</a>status</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57642828.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57642828.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57642828.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57642828.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57642828.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57432420.htm" class=function>lua_resume</a>                                       ldo.c
+   855 :    <a href="../h_src/57857964.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642828.htm" class="variable">status</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/57857420.htm" class="localvar">status</a>);  <a  class="comments">/* mark thread as 'dead' */</a>
+<a href="../h_aa/57432488.htm" class=function>lua_yieldk</a>                                       ldo.c
+   884 :    <a href="../h_src/57857148.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642828.htm" class="variable">status</a> = <a href="../h_src/57445068.htm" class="macro">LUA_YIELD</a>;
+<a href="../h_aa/57638000.htm" class=function>luaE_resetthread</a>                                 lstate.c
+   330 :    <a href="../h_src/58135524.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642828.htm" class="variable">status</a> = <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>;  <a  class="comments">/* so it can run __close metamethods */</a>
+<a href="../h_aa/57977724.htm" class=function>preinit_thread</a>                                   lstate.c
+   263 :    <a href="../h_src/57977588.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642828.htm" class="variable">status</a> = <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>;
+<a href="../h_aa/57859324.htm" class=function>resume</a>                                           ldo.c
+   793 :    <a href="../h_src/57859188.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642828.htm" class="variable">status</a> = <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>;  <a  class="comments">/* mark that it is running (again) */</a>
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57439696.htm" class=function>lua_closethread</a>                                  lstate.c
+   346 :    <a href="../h_src/58134844.htm" class="localvar">status</a> = <a href="../h_src/57638000.htm" class="function">luaE_resetthread</a>(<a href="../h_src/58135116.htm" class="localvar">L</a>, <a href="../h_src/58135116.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642828.htm" class="variable">status</a>);
+<a href="../h_aa/57432420.htm" class=function>lua_resume</a>                                       ldo.c
+   835 :    if (<a href="../h_src/57857964.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642828.htm" class="variable">status</a> == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) {  <a  class="comments">/* may be starting a coroutine */</a>
+   841 :    else if (<a href="../h_src/57857964.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642828.htm" class="variable">status</a> != <a href="../h_src/57445068.htm" class="macro">LUA_YIELD</a>)  <a  class="comments">/* ended with errors? */</a>
+<a href="../h_aa/57432352.htm" class=function>lua_status</a>                                       lapi.c
+  1126 :    return <a href="../h_src/57720252.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642828.htm" class="variable">status</a>;
+<a href="../h_aa/57635076.htm" class=function>luaG_traceexec</a>                                   ldebug.c
+   915 :    if (<a href="../h_src/57885708.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642828.htm" class="variable">status</a> == <a href="../h_src/57445068.htm" class="macro">LUA_YIELD</a>) {  <a  class="comments">/* did hook yield? */</a>
+<a href="../h_aa/57859324.htm" class=function>resume</a>                                           ldo.c
+   789 :    if (<a href="../h_src/57859188.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642828.htm" class="variable">status</a> == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>)  <a  class="comments">/* starting a coroutine? */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable status</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

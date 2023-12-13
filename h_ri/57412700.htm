@@ -1,0 +1,69 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">luaL_Stream::</a>closef</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57412700.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57412700.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57412700.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57412700.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57412700.htm" class="variable" target="_self">Cross Reference</a></li>
+<li><a href="../h_ro/57412700.htm" class="variable" target="_self">Calls</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/143258824.htm" class=variable>cf</a>                                               liolib.c
+   216 :    volatile <a href="../h_src/57441736.htm" class="type">lua_CFunction</a> <a href="../h_src/143258824.htm" class="localvar">cf</a> = <a href="../h_src/143258960.htm" class="localvar">p</a>-&gt;<a href="../h_src/57412700.htm" class="variable">closef</a>;
+</pre>
+<h4>Set By</h4>
+<pre><a href="../h_aa/143259232.htm" class=function>aux_close</a>                                        liolib.c
+   217 :    <a href="../h_src/143258960.htm" class="localvar">p</a>-&gt;<a href="../h_src/57412700.htm" class="variable">closef</a> = NULL;  <a  class="comments">/* mark stream as closed */</a>
+<a href="../h_aa/143242368.htm" class=function>io_noclose</a>                                       liolib.c
+   799 :    <a href="../h_src/143242096.htm" class="localvar">p</a>-&gt;<a href="../h_src/57412700.htm" class="variable">closef</a> = &amp;<a href="../h_src/143242368.htm" class="function">io_noclose</a>;  <a  class="comments">/* keep file opened */</a>
+<a href="../h_aa/143254812.htm" class=function>io_popen</a>                                         liolib.c
+   296 :    <a href="../h_src/143254268.htm" class="localvar">p</a>-&gt;<a href="../h_src/57412700.htm" class="variable">closef</a> = &amp;<a href="../h_src/143255288.htm" class="function">io_pclose</a>;
+<a href="../h_aa/143257192.htm" class=function>newfile</a>                                          liolib.c
+   256 :    <a href="../h_src/143256920.htm" class="localvar">p</a>-&gt;<a href="../h_src/57412700.htm" class="variable">closef</a> = &amp;<a href="../h_src/143257736.htm" class="function">io_fclose</a>;
+<a href="../h_aa/143259640.htm" class=function>newprefile</a>                                       liolib.c
+   203 :    <a href="../h_src/143259368.htm" class="localvar">p</a>-&gt;<a href="../h_src/57412700.htm" class="variable">closef</a> = NULL;  <a  class="comments">/* mark file handle as 'closed' */</a>
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/143259232.htm" class=function>aux_close</a>                                        liolib.c
+   216 :    volatile <a href="../h_src/57441736.htm" class="type">lua_CFunction</a> <a href="../h_src/143258824.htm" class="localvar">cf</a> = <a href="../h_src/143258960.htm" class="localvar">p</a>-&gt;<a href="../h_src/57412700.htm" class="variable">closef</a>;
+<a href="../h_aa/143258144.htm" class=function>f_gc</a>                                             liolib.c
+   237 :    if (!<a href="../h_src/143261000.htm" class="macro">isclosed</a>(<a href="../h_src/143257872.htm" class="localvar">p</a>) &amp;&amp; <a href="../h_src/143257872.htm" class="localvar">p</a>-&gt;f != NULL)
+<a href="../h_aa/143260388.htm" class=function>f_tostring</a>                                       liolib.c
+   179 :    if (<a href="../h_src/143261000.htm" class="macro">isclosed</a>(<a href="../h_src/143260116.htm" class="localvar">p</a>))
+<a href="../h_aa/143253588.htm" class=function>getiofile</a>                                        liolib.c
+   312 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/143261000.htm" class="macro">isclosed</a>(<a href="../h_src/143253248.htm" class="localvar">p</a>)))
+<a href="../h_aa/143251888.htm" class=function>io_readline</a>                                      liolib.c
+   633 :    if (<a href="../h_src/143261000.htm" class="macro">isclosed</a>(<a href="../h_src/143246652.htm" class="localvar">p</a>))  <a  class="comments">/* file is already closed? */</a>
+<a href="../h_aa/143260864.htm" class=function>io_type</a>                                          liolib.c
+   169 :    else if (<a href="../h_src/143261000.htm" class="macro">isclosed</a>(<a href="../h_src/143260524.htm" class="localvar">p</a>))
+<a href="../h_aa/143259980.htm" class=function>tofile</a>                                           liolib.c
+   189 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/143261000.htm" class="macro">isclosed</a>(<a href="../h_src/143259776.htm" class="localvar">p</a>)))
+</pre>
+<h4><a class="legend">Table lists all functions directly calling function pointer closef</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

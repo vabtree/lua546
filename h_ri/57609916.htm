@@ -1,0 +1,48 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>L</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57609916.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57609916.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57609916.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57609916.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57610052.htm" class=function>index2value</a>                                      lapi.c
+    61 :    <a href="../h_src/57537764.htm" class="type">CallInfo</a> *<a href="../h_src/57609644.htm" class="localvar">ci</a> = <a href="../h_src/57609916.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>;
+    64 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57609916.htm" class="localvar">L</a>, idx &lt;= ci-&gt;top.p - (ci-&gt;func.p + 1), &quot;unacceptable index&quot;);
+    65 :    if (<a href="../h_src/57609508.htm" class="localvar">o</a> &gt;= <a href="../h_src/57609916.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>) return &amp;<a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57609916.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57646228.htm" class="variable">nilvalue</a>;
+    69 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57609916.htm" class="localvar">L</a>, idx != 0 &amp;&amp; -idx &lt;= L-&gt;top.p - (ci-&gt;func.p + 1),
+    71 :    return <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57609916.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> + <a href="../h_src/57609780.htm" class="localvar">idx</a>);
+    74 :    return &amp;<a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57609916.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57646296.htm" class="variable">l_registry</a>;
+    77 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57609916.htm" class="localvar">L</a>, idx &lt;= <a href="../h_src/57631676.htm" class="macro">MAXUPVAL</a> + 1, &quot;upvalue index too large&quot;);
+    81 :    : &amp;<a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57609916.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57646228.htm" class="variable">nilvalue</a>;
+    84 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57609916.htm" class="localvar">L</a>, <a href="../h_src/57512944.htm" class="macro">ttislcf</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(ci-&gt;func.p)), &quot;caller not a C function&quot;);
+    85 :    return &amp;<a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57609916.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57646228.htm" class="variable">nilvalue</a>;  <a  class="comments">/* no upvalues */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable L</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

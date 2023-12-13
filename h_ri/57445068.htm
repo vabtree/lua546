@@ -1,0 +1,68 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>LUA_YIELD</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57445068.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57445068.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57445068.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57445068.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/58293180.htm" class=function>auxresume</a>                                        lcorolib.c
+    40 :    if (<a href="../h_src/57551704.htm" class="macro">l_likely</a>(<a href="../h_src/58292636.htm" class="localvar">status</a> == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a> || status == <a href="../h_src/57445068.htm" class="macro">LUA_YIELD</a>)) {
+<a href="../h_aa/58289576.htm" class=function>auxstatus</a>                                        lcorolib.c
+   131 :    case <a href="../h_src/57445068.htm" class="macro">LUA_YIELD</a>:
+<a href="../h_aa/57861772.htm" class=function>finishCcall</a>                                      ldo.c
+   716 :    int <a href="../h_src/57861228.htm" class="localvar">status</a> = <a href="../h_src/57445068.htm" class="macro">LUA_YIELD</a>;  <a  class="comments">/* default if there were no errors */</a>
+<a href="../h_aa/58295900.htm" class=function>finishpcall</a>                                      lbaselib.c
+   462 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/58295628.htm" class="localvar">status</a> != <a href="../h_src/57445204.htm" class="macro">LUA_OK</a> &amp;&amp; status != <a href="../h_src/57445068.htm" class="macro">LUA_YIELD</a>)) {  <a  class="comments">/* error? */</a>
+<a href="../h_aa/57862452.htm" class=function>finishpcallk</a>                                     ldo.c
+   678 :    <a href="../h_src/57862044.htm" class="localvar">status</a> = <a href="../h_src/57445068.htm" class="macro">LUA_YIELD</a>;  <a  class="comments">/* was interrupted by an yield */</a>
+<a href="../h_aa/57432420.htm" class=function>lua_resume</a>                                       ldo.c
+   841 :    else if (<a href="../h_src/57857964.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642828.htm" class="variable">status</a> != <a href="../h_src/57445068.htm" class="macro">LUA_YIELD</a>)  <a  class="comments">/* ended with errors? */</a>
+   852 :    if (<a href="../h_src/57551704.htm" class="macro">l_likely</a>(!<a href="../h_src/57884144.htm" class="macro">errorstatus</a>(<a href="../h_src/57857420.htm" class="localvar">status</a>)))
+   859 :    *<a href="../h_src/57857556.htm" class="localvar">nresults</a> = (<a href="../h_src/57857420.htm" class="localvar">status</a> == <a href="../h_src/57445068.htm" class="macro">LUA_YIELD</a>) ? <a href="../h_src/57857964.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57649560.htm" class="variable">u2</a>.<a href="../h_src/57650104.htm" class="variable">nyield</a>
+<a href="../h_aa/57432488.htm" class=function>lua_yieldk</a>                                       ldo.c
+   884 :    <a href="../h_src/57857148.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642828.htm" class="variable">status</a> = <a href="../h_src/57445068.htm" class="macro">LUA_YIELD</a>;
+   894 :    <a href="../h_src/57632560.htm" class="function">luaD_throw</a>(<a href="../h_src/57857148.htm" class="localvar">L</a>, <a href="../h_src/57445068.htm" class="macro">LUA_YIELD</a>);
+<a href="../h_aa/58291820.htm" class=function>luaB_auxwrap</a>                                     lcorolib.c
+    78 :    if (<a href="../h_src/58291276.htm" class="localvar">stat</a> != <a href="../h_src/57445204.htm" class="macro">LUA_OK</a> &amp;&amp; <a href="../h_src/58291276.htm" class="localvar">stat</a> != <a href="../h_src/57445068.htm" class="macro">LUA_YIELD</a>) {  <a  class="comments">/* error in the coroutine? */</a>
+<a href="../h_aa/57633648.htm" class=function>luaD_seterrorobj</a>                                 ldo.c
+   106 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57884144.htm" class="macro">errorstatus</a>(errcode));  <a  class="comments">/* real error */</a>
+<a href="../h_aa/57638000.htm" class=function>luaE_resetthread</a>                                 lstate.c
+   328 :    if (<a href="../h_src/58135388.htm" class="localvar">status</a> == <a href="../h_src/57445068.htm" class="macro">LUA_YIELD</a>)
+<a href="../h_aa/57635076.htm" class=function>luaG_traceexec</a>                                   ldebug.c
+   915 :    if (<a href="../h_src/57885708.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642828.htm" class="variable">status</a> == <a href="../h_src/57445068.htm" class="macro">LUA_YIELD</a>) {  <a  class="comments">/* did hook yield? */</a>
+   920 :    <a href="../h_src/57632560.htm" class="function">luaD_throw</a>(<a href="../h_src/57885708.htm" class="localvar">L</a>, <a href="../h_src/57445068.htm" class="macro">LUA_YIELD</a>);
+<a href="../h_aa/57858508.htm" class=function>precover</a>                                         ldo.c
+   822 :    while (<a href="../h_src/57884144.htm" class="macro">errorstatus</a>(<a href="../h_src/57858236.htm" class="localvar">status</a>) &amp;&amp; (<a href="../h_src/57858100.htm" class="localvar">ci</a> = <a href="../h_src/57860548.htm" class="function">findpcall</a>(<a href="../h_src/57858372.htm" class="localvar">L</a>)) != NULL) {
+<a href="../h_aa/57859324.htm" class=function>resume</a>                                           ldo.c
+   792 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(L-&gt;status == <a href="../h_src/57445068.htm" class="macro">LUA_YIELD</a>);
+   801 :    <a href="../h_src/57858916.htm" class="localvar">n</a> = (*<a href="../h_src/57858644.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650444.htm" class="variable">c</a>.<a href="../h_src/57650716.htm" class="variable">k</a>)(<a href="../h_src/57859188.htm" class="localvar">L</a>, <a href="../h_src/57445068.htm" class="macro">LUA_YIELD</a>, <a href="../h_src/57858644.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650444.htm" class="variable">c</a>.<a href="../h_src/57650580.htm" class="variable">ctx</a>); <a  class="comments">/* call continuation */</a>
+</pre>
+<h4><a class="legend">Table lists functions that directly use LUA_YIELD</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

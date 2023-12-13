@@ -1,0 +1,64 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">lua_State::</a>allowhook</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57642760.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57642760.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57642760.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57642760.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57642760.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57862452.htm" class=function>finishpcallk</a>                                     ldo.c
+   681 :    <a href="../h_src/57862316.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642760.htm" class="variable">allowhook</a> = <a href="../h_src/57647044.htm" class="macro">getoah</a>(<a href="../h_src/57862180.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a>);  <a  class="comments">/* restore 'allowhook' */</a>
+<a href="../h_aa/57962316.htm" class=function>GCTM</a>                                             lgc.c
+   917 :    <a href="../h_src/57962180.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642760.htm" class="variable">allowhook</a> = 0;  <a  class="comments">/* stop debug hooks during GC metamethod */</a>
+   923 :    <a href="../h_src/57962180.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642760.htm" class="variable">allowhook</a> = <a href="../h_src/57961228.htm" class="localvar">oldah</a>;  <a  class="comments">/* restore hooks */</a>
+<a href="../h_aa/57633036.htm" class=function>luaD_closeprotected</a>                              ldo.c
+   935 :    <a href="../h_src/57855516.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642760.htm" class="variable">allowhook</a> = <a href="../h_src/57854972.htm" class="localvar">old_allowhooks</a>;
+<a href="../h_aa/57633512.htm" class=function>luaD_hook</a>                                        ldo.c
+   350 :    <a href="../h_src/57875916.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642760.htm" class="variable">allowhook</a> = 0;  <a  class="comments">/* cannot call hooks inside a hook */</a>
+   356 :    <a href="../h_src/57875916.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642760.htm" class="variable">allowhook</a> = 1;
+<a href="../h_aa/57632968.htm" class=function>luaD_pcall</a>                                       ldo.c
+   956 :    <a href="../h_src/57854700.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642760.htm" class="variable">allowhook</a> = <a href="../h_src/57853748.htm" class="localvar">old_allowhooks</a>;
+<a href="../h_aa/57977724.htm" class=function>preinit_thread</a>                                   lstate.c
+   260 :    <a href="../h_src/57977588.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642760.htm" class="variable">allowhook</a> = 1;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57962316.htm" class=function>GCTM</a>                                             lgc.c
+   914 :    <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57961228.htm" class="localvar">oldah</a> = <a href="../h_src/57962180.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642760.htm" class="variable">allowhook</a>;
+<a href="../h_aa/57432828.htm" class=function>lua_pcallk</a>                                       lapi.c
+  1074 :    <a href="../h_src/57647180.htm" class="macro">setoah</a>(<a href="../h_src/57722700.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a>, <a href="../h_src/57724060.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642760.htm" class="variable">allowhook</a>);  <a  class="comments">/* save value of 'allowhook' */</a>
+<a href="../h_aa/57633036.htm" class=function>luaD_closeprotected</a>                              ldo.c
+   926 :    <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57854972.htm" class="localvar">old_allowhooks</a> = <a href="../h_src/57855516.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642760.htm" class="variable">allowhook</a>;
+<a href="../h_aa/57633512.htm" class=function>luaD_hook</a>                                        ldo.c
+   331 :    if (<a href="../h_src/57875236.htm" class="localvar">hook</a> &amp;&amp; <a href="../h_src/57875916.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642760.htm" class="variable">allowhook</a>) {  <a  class="comments">/* make sure there is a hook */</a>
+<a href="../h_aa/57632968.htm" class=function>luaD_pcall</a>                                       ldo.c
+   950 :    <a href="../h_src/57550480.htm" class="type">lu_byte</a> <a href="../h_src/57853748.htm" class="localvar">old_allowhooks</a> = <a href="../h_src/57854700.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642760.htm" class="variable">allowhook</a>;
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable allowhook</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

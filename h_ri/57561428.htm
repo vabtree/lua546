@@ -1,0 +1,45 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>getenv</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57561428.htm" class="libfunc" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57561428.htm" class="libfunc" target="_self">Calling Hierarchy</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57561428.htm" class="libfunc" target="_self">Called By</a></li>
+<li><a href="../h_rx/57561428.htm" class="libfunc" target="_self">Call Tree</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57561836.htm" class=function>handle_luainit</a>                                   lua.c
+   367 :    const char *<a href="../h_src/57561360.htm" class="localvar">init</a> = <a href="../h_aa/57561428.htm" class="libfunc">getenv</a>(<a href="../h_src/57561564.htm" class="localvar">name</a> + 1);
+   370 :    <a href="../h_src/57561360.htm" class="localvar">init</a> = <a href="../h_aa/57561428.htm" class="libfunc">getenv</a>(<a href="../h_src/57561564.htm" class="localvar">name</a> + 1);  <a  class="comments">/* try alternative name */</a>
+<a href="../h_aa/143354636.htm" class=function>os_getenv</a>                                        loslib.c
+   181 :    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/143354500.htm" class="localvar">L</a>, <a href="../h_aa/57561428.htm" class="libfunc">getenv</a>(<a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143354500.htm" class="localvar">L</a>, 1)));  <a  class="comments">/* if NULL push nil */</a>
+<a href="../h_aa/143210884.htm" class=function>setpath</a>                                          loadlib.c
+   302 :    const char *<a href="../h_src/143209932.htm" class="localvar">path</a> = <a href="../h_aa/57561428.htm" class="libfunc">getenv</a>(<a href="../h_src/143210068.htm" class="localvar">nver</a>);  <a  class="comments">/* try versioned name */</a>
+   304 :    <a href="../h_src/143209932.htm" class="localvar">path</a> = <a href="../h_aa/57561428.htm" class="libfunc">getenv</a>(<a href="../h_src/143210476.htm" class="localvar">envname</a>);  <a  class="comments">/* try unversioned name */</a>
+</pre>
+<h4><a class="legend">Table lists functions that directly use getenv</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

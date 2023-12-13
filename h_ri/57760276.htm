@@ -1,0 +1,52 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lisdigit</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57760276.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57760276.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57760276.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57760276.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57909888.htm" class=function>l_str2int</a>                                        lobject.c
+   291 :    for (; <a href="../h_src/57760276.htm" class="macro">lisdigit</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57909752.htm" class="localvar">s</a>)); <a href="../h_src/57909752.htm" class="localvar">s</a>++) {
+<a href="../h_aa/57927976.htm" class=function>llex</a>                                             llex.c
+   529 :    else if (!<a href="../h_src/57760276.htm" class="macro">lisdigit</a>(<a href="../h_src/57927840.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>)) return '.';
+<a href="../h_aa/57914104.htm" class=function>lua_strx2number</a>                                  lobject.c
+   202 :    if (!<a href="../h_src/57760276.htm" class="macro">lisdigit</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57913968.htm" class="localvar">s</a>)))
+   204 :    while (<a href="../h_src/57760276.htm" class="macro">lisdigit</a>(<a href="../h_src/57546808.htm" class="macro">cast_uchar</a>(*<a href="../h_src/57913968.htm" class="localvar">s</a>)))  <a  class="comments">/* read exponent */</a>
+<a href="../h_aa/57501588.htm" class=function>luaO_hexavalue</a>                                   lobject.c
+   136 :    if (<a href="../h_src/57760276.htm" class="macro">lisdigit</a>(<a href="../h_src/57914784.htm" class="localvar">c</a>)) return <a href="../h_src/57914784.htm" class="localvar">c</a> - '0';
+<a href="../h_aa/57933892.htm" class=function>read_numeral</a>                                     llex.c
+   231 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57760276.htm" class="macro">lisdigit</a>(ls-&gt;current));
+<a href="../h_aa/57928656.htm" class=function>read_string</a>                                      llex.c
+   421 :    <a href="../h_src/57931512.htm" class="function">esccheck</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>, <a href="../h_src/57760276.htm" class="macro">lisdigit</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>), &quot;invalid escape sequence&quot;);
+<a href="../h_aa/57929200.htm" class=function>readdecesc</a>                                       llex.c
+   372 :    for (<a href="../h_src/57928928.htm" class="localvar">i</a> = 0; <a href="../h_src/57928928.htm" class="localvar">i</a> &lt; 3 &amp;&amp; <a href="../h_src/57760276.htm" class="macro">lisdigit</a>(<a href="../h_src/57929064.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>); <a href="../h_src/57928928.htm" class="localvar">i</a>++) {  <a  class="comments">/* read up to 3 digits */</a>
+</pre>
+<h4><a class="legend">Table lists functions that directly use lisdigit</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

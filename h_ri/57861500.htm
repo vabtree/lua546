@@ -1,0 +1,44 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>ci</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57861500.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57861500.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57861500.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57861500.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57861772.htm" class=function>finishCcall</a>                                      ldo.c
+   710 :    if (<a href="../h_src/57861500.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp; <a href="../h_src/57648132.htm" class="macro">CIST_CLSRET</a>) {  <a  class="comments">/* was returning? */</a>
+   712 :    <a href="../h_src/57861364.htm" class="localvar">n</a> = <a href="../h_src/57861500.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649560.htm" class="variable">u2</a>.<a href="../h_src/57650036.htm" class="variable">nres</a>;  <a  class="comments">/* just redo 'luaD_poscall' */</a>
+   719 :    if (<a href="../h_src/57861500.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp; <a href="../h_src/57648812.htm" class="macro">CIST_YPCALL</a>)   <a  class="comments">/* was inside a 'lua_pcallk'? */</a>
+   720 :    <a href="../h_src/57861228.htm" class="localvar">status</a> = <a href="../h_src/57862452.htm" class="function">finishpcallk</a>(<a href="../h_src/57861636.htm" class="localvar">L</a>, <a href="../h_src/57861500.htm" class="localvar">ci</a>);  <a  class="comments">/* finish it */</a>
+   723 :    <a href="../h_src/57861364.htm" class="localvar">n</a> = (*<a href="../h_src/57861500.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650444.htm" class="variable">c</a>.<a href="../h_src/57650716.htm" class="variable">k</a>)(<a href="../h_src/57861636.htm" class="localvar">L</a>, <a href="../h_src/57861228.htm" class="localvar">status</a>, <a href="../h_src/57861500.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650444.htm" class="variable">c</a>.<a href="../h_src/57650580.htm" class="variable">ctx</a>);  <a  class="comments">/* call continuation */</a>
+   727 :    <a href="../h_src/57632900.htm" class="function">luaD_poscall</a>(<a href="../h_src/57861636.htm" class="localvar">L</a>, <a href="../h_src/57861500.htm" class="localvar">ci</a>, <a href="../h_src/57861364.htm" class="localvar">n</a>);  <a  class="comments">/* finish 'luaD_call' */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable ci</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,117 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lua_tolstring</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57438200.htm" class="function" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57438200.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57438200.htm" class="function" target="_self">Flow Chart</a></li>
+<li><a href="../h_src/57438200.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57438200.htm" class="function" target="_self">Called By</a></li>
+<li><a href="../h_rx/57438200.htm" class="function" target="_self">Call Tree</a></li>
+<li><a href="../h_ro/57438200.htm" class="function" target="_self">Calls and Uses</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/143306628.htm" class=function>add_s</a>                                            lstrlib.c
+   875 :    const char *<a href="../h_src/143305676.htm" class="localvar">news</a> = <a href="../h_src/57438200.htm" class="function">lua_tolstring</a>(<a href="../h_src/143305812.htm" class="localvar">L</a>, 3, &amp;<a href="../h_src/143305948.htm" class="localvar">l</a>);
+<a href="../h_aa/143295748.htm" class=function>addliteral</a>                                       lstrlib.c
+  1179 :    const char *<a href="../h_src/143295068.htm" class="localvar">s</a> = <a href="../h_src/57438200.htm" class="function">lua_tolstring</a>(<a href="../h_src/143295612.htm" class="localvar">L</a>, <a href="../h_src/143295340.htm" class="localvar">arg</a>, &amp;<a href="../h_src/143295204.htm" class="localvar">len</a>);
+<a href="../h_aa/57556736.htm" class=function>addreturn</a>                                        lua.c
+   522 :    const char *<a href="../h_src/57556464.htm" class="localvar">line</a> = <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/57556600.htm" class="localvar">L</a>, -1);  <a  class="comments">/* original line */</a>
+<a href="../h_aa/143202180.htm" class=function>checkload</a>                                        loadlib.c
+   541 :    <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143202044.htm" class="localvar">L</a>, 1), <a href="../h_src/143201772.htm" class="localvar">filename</a>, <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143202044.htm" class="localvar">L</a>, -1));
+<a href="../h_aa/143403296.htm" class=function>combine</a>                                          luac.c
+   151 :    if (<a href="../h_src/57432624.htm" class="function">lua_load</a>(<a href="../h_src/143403160.htm" class="localvar">L</a>,<a href="../h_src/143403976.htm" class="function">reader</a>,&amp;<a href="../h_src/143402752.htm" class="localvar">i</a>,&quot;=(&quot; <a href="../h_src/143406560.htm" class="macro">PROGNAME</a> &quot;)&quot;,NULL)!=<a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) <a href="../h_src/143405812.htm" class="function">fatal</a>(<a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143403160.htm" class="localvar">L</a>,-1));
+<a href="../h_aa/143266372.htm" class=function>db_traceback</a>                                     ldblib.c
+   438 :    const char *<a href="../h_src/143265828.htm" class="localvar">msg</a> = <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143266236.htm" class="localvar">L</a>, <a href="../h_src/143266100.htm" class="localvar">arg</a> + 1);
+<a href="../h_aa/58326500.htm" class=function>errfile</a>                                          lauxlib.c
+   736 :    const char *<a href="../h_src/58325820.htm" class="localvar">filename</a> = <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/58326364.htm" class="localvar">L</a>, <a href="../h_src/58326092.htm" class="localvar">fnameindex</a>) + 1;
+<a href="../h_aa/143202996.htm" class=function>findfile</a>                                         loadlib.c
+   527 :    <a href="../h_src/143202316.htm" class="localvar">path</a> = <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143202860.htm" class="localvar">L</a>, -1);
+<a href="../h_aa/143198372.htm" class=function>findloader</a>                                       loadlib.c
+   639 :    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, &quot;module '%s' not found:%s&quot;, <a href="../h_src/143198100.htm" class="localvar">name</a>, <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, -1));
+<a href="../h_aa/143253112.htm" class=function>g_iofile</a>                                         liolib.c
+   320 :    const char *<a href="../h_src/143252568.htm" class="localvar">filename</a> = <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143252976.htm" class="localvar">L</a>, 1);
+<a href="../h_aa/58299436.htm" class=function>generic_reader</a>                                   lbaselib.c
+   383 :    return <a href="../h_src/57438200.htm" class="function">lua_tolstring</a>(<a href="../h_src/58299300.htm" class="localvar">L</a>, <a href="../h_src/58299572.htm" class="macro">RESERVEDSLOT</a>, <a href="../h_src/58299028.htm" class="localvar">size</a>);
+<a href="../h_aa/57558640.htm" class=function>incomplete</a>                                       lua.c
+   483 :    const char *<a href="../h_src/57558096.htm" class="localvar">msg</a> = <a href="../h_src/57438200.htm" class="function">lua_tolstring</a>(<a href="../h_src/57558504.htm" class="localvar">L</a>, -1, &amp;<a href="../h_src/57558232.htm" class="localvar">lmsg</a>);
+<a href="../h_aa/143251888.htm" class=function>io_readline</a>                                      liolib.c
+   646 :    return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143246788.htm" class="localvar">L</a>, &quot;%s&quot;, <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143246788.htm" class="localvar">L</a>, -<a href="../h_src/143246380.htm" class="localvar">n</a> + 1));
+<a href="../h_aa/57554968.htm" class=function>l_print</a>                                          lua.c
+   585 :    <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/57554832.htm" class="localvar">L</a>, -1)));
+<a href="../h_aa/58298892.htm" class=function>luaB_load</a>                                        lbaselib.c
+   390 :    const char *<a href="../h_src/58298348.htm" class="localvar">s</a> = <a href="../h_src/57438200.htm" class="function">lua_tolstring</a>(<a href="../h_src/58298756.htm" class="localvar">L</a>, 1, &amp;<a href="../h_src/58298484.htm" class="localvar">l</a>);
+<a href="../h_aa/58296444.htm" class=function>luaB_select</a>                                      lbaselib.c
+   440 :    if (<a href="../h_src/57438540.htm" class="function">lua_type</a>(<a href="../h_src/58296308.htm" class="localvar">L</a>, 1) == <a href="../h_src/57443504.htm" class="macro">LUA_TSTRING</a> &amp;&amp; *<a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/58296308.htm" class="localvar">L</a>, 1) == '#') {
+<a href="../h_aa/58309500.htm" class=function>luaB_tonumber</a>                                    lbaselib.c
+    89 :    const char *<a href="../h_src/58309092.htm" class="localvar">s</a> = <a href="../h_src/57438200.htm" class="function">lua_tolstring</a>(<a href="../h_src/58309364.htm" class="localvar">L</a>, 1, &amp;<a href="../h_src/58309228.htm" class="localvar">l</a>);
+   102 :    <a href="../h_src/58308820.htm" class="localvar">s</a> = <a href="../h_src/57438200.htm" class="function">lua_tolstring</a>(<a href="../h_src/58309364.htm" class="localvar">L</a>, 1, &amp;<a href="../h_src/58308956.htm" class="localvar">l</a>);
+<a href="../h_aa/58311336.htm" class=function>luaB_warn</a>                                        lbaselib.c
+    52 :    <a href="../h_src/57432012.htm" class="function">lua_warning</a>(<a href="../h_src/58311200.htm" class="localvar">L</a>, <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/58311200.htm" class="localvar">L</a>, <a href="../h_src/58310928.htm" class="localvar">i</a>), 1);
+    53 :    <a href="../h_src/57432012.htm" class="function">lua_warning</a>(<a href="../h_src/58311200.htm" class="localvar">L</a>, <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/58311200.htm" class="localvar">L</a>, <a href="../h_src/58311064.htm" class="localvar">n</a>), 0);  <a  class="comments">/* close warning */</a>
+<a href="../h_aa/57413380.htm" class=function>luaL_addvalue</a>                                    lauxlib.c
+   622 :    const char *<a href="../h_src/58329628.htm" class="localvar">s</a> = <a href="../h_src/57438200.htm" class="function">lua_tolstring</a>(<a href="../h_src/58329900.htm" class="localvar">L</a>, -1, &amp;<a href="../h_src/58329764.htm" class="localvar">len</a>);
+<a href="../h_aa/57420384.htm" class=function>luaL_argerror</a>                                    lauxlib.c
+   187 :    <a href="../h_src/58346288.htm" class="localvar">ar</a>.<a href="../h_src/57423716.htm" class="variable">name</a> = (<a href="../h_src/58349892.htm" class="function">pushglobalfuncname</a>(<a href="../h_src/58346696.htm" class="localvar">L</a>, &amp;<a href="../h_src/58346288.htm" class="localvar">ar</a>)) ? <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/58346696.htm" class="localvar">L</a>, -1) : &quot;?&quot;;
+<a href="../h_aa/57420248.htm" class=function>luaL_checklstring</a>                                lauxlib.c
+   403 :    const char *<a href="../h_src/58338740.htm" class="localvar">s</a> = <a href="../h_src/57438200.htm" class="function">lua_tolstring</a>(<a href="../h_src/58339148.htm" class="localvar">L</a>, <a href="../h_src/58339012.htm" class="localvar">arg</a>, <a href="../h_src/58338876.htm" class="localvar">len</a>);
+<a href="../h_aa/57417936.htm" class=function>luaL_gsub</a>                                        lauxlib.c
+  1013 :    return <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/58317388.htm" class="localvar">L</a>, -1);
+<a href="../h_aa/57418548.htm" class=function>luaL_loadfilex</a>                                   lauxlib.c
+   806 :    <a href="../h_src/58325004.htm" class="localvar">status</a> = <a href="../h_src/57432624.htm" class="function">lua_load</a>(<a href="../h_src/58325548.htm" class="localvar">L</a>, <a href="../h_src/58327384.htm" class="function">getF</a>, &amp;<a href="../h_src/58325140.htm" class="localvar">lf</a>, <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/58325548.htm" class="localvar">L</a>, -1), <a href="../h_src/58325276.htm" class="localvar">mode</a>);
+<a href="../h_aa/57420452.htm" class=function>luaL_tolstring</a>                                   lauxlib.c
+   915 :    const char *<a href="../h_src/58319904.htm" class="localvar">kind</a> = (<a href="../h_src/58320040.htm" class="localvar">tt</a> == <a href="../h_src/57443504.htm" class="macro">LUA_TSTRING</a>) ? <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, -1) :
+   924 :    return <a href="../h_src/57438200.htm" class="function">lua_tolstring</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, -1, <a href="../h_src/58320176.htm" class="localvar">len</a>);
+<a href="../h_aa/57420316.htm" class=function>luaL_typeerror</a>                                   lauxlib.c
+   197 :    <a href="../h_src/58345608.htm" class="localvar">typearg</a> = <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/58346152.htm" class="localvar">L</a>, -1);  <a  class="comments">/* use the given type name */</a>
+<a href="../h_aa/143400984.htm" class=function>main</a>                                             luac.c
+   207 :    if (<a href="../h_src/57432760.htm" class="macro">lua_pcall</a>(<a href="../h_src/143400644.htm" class="localvar">L</a>,2,0,0)!=<a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) <a href="../h_src/143405812.htm" class="function">fatal</a>(<a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143400644.htm" class="localvar">L</a>,-1));
+<a href="../h_aa/57570336.htm" class=function>msghandler</a>                                       lua.c
+   135 :    const char *<a href="../h_src/57570064.htm" class="localvar">msg</a> = <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/57570200.htm" class="localvar">L</a>, 1);
+<a href="../h_aa/57556056.htm" class=function>multiline</a>                                        lua.c
+   542 :    const char *<a href="../h_src/57555648.htm" class="localvar">line</a> = <a href="../h_src/57438200.htm" class="function">lua_tolstring</a>(<a href="../h_src/57555920.htm" class="localvar">L</a>, 1, &amp;<a href="../h_src/57555784.htm" class="localvar">len</a>);  <a  class="comments">/* get what it has */</a>
+<a href="../h_aa/58315892.htm" class=function>panic</a>                                            lauxlib.c
+  1029 :    const char *<a href="../h_src/58315620.htm" class="localvar">msg</a> = <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/58315756.htm" class="localvar">L</a>, -1);
+<a href="../h_aa/143401936.htm" class=function>pmain</a>                                            luac.c
+   179 :    if (<a href="../h_src/57418480.htm" class="macro">luaL_loadfile</a>(<a href="../h_src/143401800.htm" class="localvar">L</a>,<a href="../h_src/143401120.htm" class="localvar">filename</a>)!=<a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) <a href="../h_src/143405812.htm" class="function">fatal</a>(<a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143401800.htm" class="localvar">L</a>,-1));
+<a href="../h_aa/58349144.htm" class=function>pushfuncname</a>                                     lauxlib.c
+   102 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58349008.htm" class="localvar">L</a>, &quot;function '%s'&quot;, <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/58349008.htm" class="localvar">L</a>, -1));
+<a href="../h_aa/58349892.htm" class=function>pushglobalfuncname</a>                               lauxlib.c
+    84 :    const char *<a href="../h_src/58349348.htm" class="localvar">name</a> = <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/58349756.htm" class="localvar">L</a>, -1);
+<a href="../h_aa/57570880.htm" class=function>report</a>                                           lua.c
+   123 :    const char *<a href="../h_src/57570472.htm" class="localvar">msg</a> = <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/57570744.htm" class="localvar">L</a>, -1);
+<a href="../h_aa/143199596.htm" class=function>searcher_Croot</a>                                   loadlib.c
+   595 :    <a href="../h_src/143199324.htm" class="localvar">filename</a> = <a href="../h_src/143202996.htm" class="function">findfile</a>(<a href="../h_src/143199460.htm" class="localvar">L</a>, <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143199460.htm" class="localvar">L</a>, -1), &quot;cpath&quot;, <a href="../h_src/143216528.htm" class="macro">LUA_CSUBSEP</a>);
+<a href="../h_aa/143204764.htm" class=function>searchpath</a>                                       loadlib.c
+   503 :    <a href="../h_src/143205308.htm" class="function">pusherrornotfound</a>(<a href="../h_src/143204628.htm" class="localvar">L</a>, <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143204628.htm" class="localvar">L</a>, -1));  <a  class="comments">/* create error message */</a>
+<a href="../h_aa/143214624.htm" class=function>setprogdir</a>                                       loadlib.c
+   186 :    <a href="../h_src/57417936.htm" class="function">luaL_gsub</a>(<a href="../h_src/143214488.htm" class="localvar">L</a>, <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143214488.htm" class="localvar">L</a>, -1), <a href="../h_src/57456356.htm" class="macro">LUA_EXEC_DIR</a>, <a href="../h_src/143214352.htm" class="localvar">buff</a>);
+<a href="../h_aa/143332468.htm" class=function>tonum</a>                                            lstrlib.c
+   271 :    const char *<a href="../h_src/143331924.htm" class="localvar">s</a> = <a href="../h_src/57438200.htm" class="function">lua_tolstring</a>(<a href="../h_src/143332332.htm" class="localvar">L</a>, <a href="../h_src/143332196.htm" class="localvar">arg</a>, &amp;<a href="../h_src/143332060.htm" class="localvar">len</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use lua_tolstring</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

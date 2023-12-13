@@ -1,0 +1,43 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>L</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143197012.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/143197012.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/143197012.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/143197012.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/143197148.htm" class=function>createsearcherstable</a>                             loadlib.c
+   720 :    <a href="../h_src/57433916.htm" class="function">lua_createtable</a>(<a href="../h_src/143197012.htm" class="localvar">L</a>, sizeof(<a href="../h_src/143196808.htm" class="localvar">searchers</a>)/sizeof(<a href="../h_src/143196808.htm" class="localvar">searchers</a>[0]) - 1, 0);
+   723 :    <a href="../h_src/57439220.htm" class="function">lua_pushvalue</a>(<a href="../h_src/143197012.htm" class="localvar">L</a>, -2);  <a  class="comments">/* set 'package' as upvalue for all searchers */</a>
+   724 :    <a href="../h_src/57434664.htm" class="function">lua_pushcclosure</a>(<a href="../h_src/143197012.htm" class="localvar">L</a>, <a href="../h_src/143196808.htm" class="localvar">searchers</a>[<a href="../h_src/143196672.htm" class="localvar">i</a>], 1);
+   725 :    <a href="../h_src/57433304.htm" class="function">lua_rawseti</a>(<a href="../h_src/143197012.htm" class="localvar">L</a>, -2, <a href="../h_src/143196672.htm" class="localvar">i</a>+1);
+   727 :    <a href="../h_src/57433508.htm" class="function">lua_setfield</a>(<a href="../h_src/143197012.htm" class="localvar">L</a>, -2, &quot;searchers&quot;);  <a  class="comments">/* put it in field 'searchers' */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable L</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

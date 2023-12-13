@@ -1,0 +1,71 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lua_remove</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57427116.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57427116.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57427116.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57427116.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57556736.htm" class=function>addreturn</a>                                        lua.c
+   526 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/57556600.htm" class="localvar">L</a>, -2);  <a  class="comments">/* remove modified line */</a>
+<a href="../h_aa/143267732.htm" class=function>db_gethook</a>                                       ldblib.c
+   412 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/143267596.htm" class="localvar">L</a>, -2);  <a  class="comments">/* remove hook table */</a>
+<a href="../h_aa/57569928.htm" class=function>docall</a>                                           lua.c
+   162 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/57569792.htm" class="localvar">L</a>, <a href="../h_src/57569248.htm" class="localvar">base</a>);  <a  class="comments">/* remove message handler from the stack */</a>
+<a href="../h_aa/58326500.htm" class=function>errfile</a>                                          lauxlib.c
+   738 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/58326364.htm" class="localvar">L</a>, <a href="../h_src/58326092.htm" class="localvar">fnameindex</a>);
+<a href="../h_aa/57559456.htm" class=function>get_prompt</a>                                       lua.c
+   465 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/57559320.htm" class="localvar">L</a>, -2);  <a  class="comments">/* remove original value */</a>
+<a href="../h_aa/57555376.htm" class=function>loadline</a>                                         lua.c
+   568 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/57555240.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove line from the stack */</a>
+<a href="../h_aa/58296716.htm" class=function>luaB_assert</a>                                      lbaselib.c
+   430 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/58296580.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove it */</a>
+<a href="../h_aa/57420588.htm" class=function>luaL_getmetafield</a>                                lauxlib.c
+   861 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/58321944.htm" class="localvar">L</a>, -2);  <a  class="comments">/* remove only metatable */</a>
+<a href="../h_aa/57418548.htm" class=function>luaL_loadfilex</a>                                   lauxlib.c
+   813 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/58325548.htm" class="localvar">L</a>, <a href="../h_src/58324596.htm" class="localvar">fnameindex</a>);
+<a href="../h_aa/57413312.htm" class=function>luaL_pushresult</a>                                  lauxlib.c
+   600 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/58330444.htm" class="localvar">L</a>, -2);  <a  class="comments">/* remove box or placeholder from the stack */</a>
+<a href="../h_aa/57417596.htm" class=function>luaL_requiref</a>                                    lauxlib.c
+   986 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/58318816.htm" class="localvar">L</a>, -2);  <a  class="comments">/* remove LOADED table */</a>
+<a href="../h_aa/57420452.htm" class=function>luaL_tolstring</a>                                   lauxlib.c
+   919 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, -2);  <a  class="comments">/* remove '__name' */</a>
+<a href="../h_aa/58332620.htm" class=function>prepbuffsize</a>                                     lauxlib.c
+   559 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/58332076.htm" class="localvar">L</a>, <a href="../h_src/58332212.htm" class="localvar">boxidx</a>);  <a  class="comments">/* remove placeholder */</a>
+<a href="../h_aa/57565712.htm" class=function>pushargs</a>                                         lua.c
+   243 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/57565576.htm" class="localvar">L</a>, -<a href="../h_src/57565440.htm" class="localvar">i</a>);  <a  class="comments">/* remove table from the stack */</a>
+<a href="../h_aa/58349144.htm" class=function>pushfuncname</a>                                     lauxlib.c
+   103 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/58349008.htm" class="localvar">L</a>, -2);  <a  class="comments">/* remove name */</a>
+<a href="../h_aa/58349892.htm" class=function>pushglobalfuncname</a>                               lauxlib.c
+    87 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/58349756.htm" class="localvar">L</a>, -2);  <a  class="comments">/* remove original name */</a>
+<a href="../h_aa/143214624.htm" class=function>setprogdir</a>                                       loadlib.c
+   187 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/143214488.htm" class="localvar">L</a>, -2);  <a  class="comments">/* remove original string */</a>
+</pre>
+<h4><a class="legend">Table lists functions that directly use lua_remove</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

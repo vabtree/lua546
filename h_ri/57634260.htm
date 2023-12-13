@@ -1,0 +1,72 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>restorestack</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57634260.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57634260.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57634260.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57634260.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57864220.htm" class=function>ccall</a>                                            ldo.c
+   632 :    <a href="../h_src/57634124.htm" class="macro">checkstackp</a>(<a href="../h_src/57864084.htm" class="localvar">L</a>, 0, <a href="../h_src/57863948.htm" class="localvar">func</a>);  <a  class="comments">/* free any use of EXTRA_STACK */</a>
+<a href="../h_aa/57879724.htm" class=function>correctstack</a>                                     ldo.c
+   185 :    <a href="../h_src/57879588.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57879588.htm" class="localvar">L</a>, <a href="../h_src/57879588.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531916.htm" class="variable">offset</a>);
+   186 :    <a href="../h_src/57879588.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642148.htm" class="variable">tbclist</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57879588.htm" class="localvar">L</a>, <a href="../h_src/57879588.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642148.htm" class="variable">tbclist</a>.<a href="../h_src/57531916.htm" class="variable">offset</a>);
+   188 :    <a href="../h_src/57879316.htm" class="localvar">up</a>-&gt;<a href="../h_src/57510564.htm" class="variable">v</a>.<a href="../h_src/57510768.htm" class="variable">p</a> = <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57879588.htm" class="localvar">L</a>, <a href="../h_src/57879316.htm" class="localvar">up</a>-&gt;<a href="../h_src/57510564.htm" class="variable">v</a>.<a href="../h_src/57510700.htm" class="variable">offset</a>));
+   190 :    <a href="../h_src/57879452.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651464.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57879588.htm" class="localvar">L</a>, <a href="../h_src/57879452.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651464.htm" class="variable">top</a><a href="../h_src/57531984.htm" class="variable">p</a>.<a href="../h_src/57531916.htm" class="variable">offset</a>);
+   191 :    <a href="../h_src/57879452.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57879588.htm" class="localvar">L</a>, <a href="../h_src/57879452.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531916.htm" class="variable">offset</a>);
+<a href="../h_aa/57862452.htm" class=function>finishpcallk</a>                                     ldo.c
+   680 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57861908.htm" class="localvar">func</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57862316.htm" class="localvar">L</a>, <a href="../h_src/57862180.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649560.htm" class="variable">u2</a>.<a href="../h_src/57650172.htm" class="variable">funcidx</a>);
+<a href="../h_aa/57633036.htm" class=function>luaD_closeprotected</a>                              ldo.c
+   929 :    <a href="../h_src/57854836.htm" class="localvar">pcl</a>.<a href="../h_src/57856332.htm" class="variable">level</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57855516.htm" class="localvar">L</a>, <a href="../h_src/57855380.htm" class="localvar">level</a>); <a href="../h_src/57854836.htm" class="localvar">pcl</a>.<a href="../h_src/57856264.htm" class="variable">status</a> = <a href="../h_src/57855244.htm" class="localvar">status</a>;
+<a href="../h_aa/57633512.htm" class=function>luaD_hook</a>                                        ldo.c
+   357 :    <a href="../h_src/57874964.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651464.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57875916.htm" class="localvar">L</a>, <a href="../h_src/57874692.htm" class="localvar">ci_top</a>);
+   358 :    <a href="../h_src/57875916.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57875916.htm" class="localvar">L</a>, <a href="../h_src/57874828.htm" class="localvar">top</a>);
+<a href="../h_aa/57632968.htm" class=function>luaD_pcall</a>                                       ldo.c
+   958 :    <a href="../h_src/57633648.htm" class="function">luaD_seterrorobj</a>(<a href="../h_src/57854700.htm" class="localvar">L</a>, <a href="../h_src/57854020.htm" class="localvar">status</a>, <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57854700.htm" class="localvar">L</a>, <a href="../h_src/57854292.htm" class="localvar">old_top</a><a href="../h_src/57531984.htm" class="variable">p</a>));
+<a href="../h_aa/57633308.htm" class=function>luaD_precall</a>                                     ldo.c
+   603 :    <a href="../h_src/57633988.htm" class="macro">checkstackGCp</a>(<a href="../h_src/57865444.htm" class="localvar">L</a>, <a href="../h_src/57864492.htm" class="localvar">fsize</a>, <a href="../h_src/57865308.htm" class="localvar">func</a>);
+<a href="../h_aa/57633376.htm" class=function>luaD_pretailcall</a>                                 ldo.c
+   556 :    <a href="../h_src/57633988.htm" class="macro">checkstackGCp</a>(<a href="../h_src/57867076.htm" class="localvar">L</a>, <a href="../h_src/57866260.htm" class="localvar">fsize</a> - <a href="../h_src/57866532.htm" class="localvar">delta</a>, <a href="../h_src/57866804.htm" class="localvar">func</a>);
+<a href="../h_aa/57633104.htm" class=function>luaD_tryfuncTM</a>                                   ldo.c
+   415 :    <a href="../h_src/57633988.htm" class="macro">checkstackGCp</a>(<a href="../h_src/57872788.htm" class="localvar">L</a>, 1, <a href="../h_src/57872652.htm" class="localvar">func</a>);  <a  class="comments">/* space for metamethod */</a>
+<a href="../h_aa/57630384.htm" class=function>luaF_close</a>                                       lfunc.c
+   234 :    <a href="../h_src/57831308.htm" class="localvar">level</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57831444.htm" class="localvar">L</a>, <a href="../h_src/57830900.htm" class="localvar">levelrel</a>);
+<a href="../h_aa/57635144.htm" class=function>luaG_errormsg</a>                                    ldebug.c
+   811 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57888428.htm" class="localvar">errfunc</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57888564.htm" class="localvar">L</a>, <a href="../h_src/57888564.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641604.htm" class="variable">errfunc</a>);
+<a href="../h_aa/57497848.htm" class=function>luaT_callTMres</a>                                   ltm.c
+   132 :    <a href="../h_src/58085816.htm" class="localvar">res</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/58086360.htm" class="localvar">L</a>, <a href="../h_src/58085680.htm" class="localvar">result</a>);
+<a href="../h_aa/57497304.htm" class=function>luaT_getvarargs</a>                                  ltm.c
+   263 :    <a href="../h_src/57633988.htm" class="macro">checkstackGCp</a>(<a href="../h_src/58077112.htm" class="localvar">L</a>, <a href="../h_src/58076432.htm" class="localvar">nextra</a>, <a href="../h_src/58076840.htm" class="localvar">where</a>);  <a  class="comments">/* ensure stack space */</a><a href="../h_src/57642284.htm" class="variable">stack</a> space */
+<a href="../h_aa/57871564.htm" class=function>moveresults</a>                                      ldo.c
+   459 :    <a href="../h_src/57871292.htm" class="localvar">res</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57871428.htm" class="localvar">L</a>, <a href="../h_src/57870340.htm" class="localvar">savedres</a>);  <a  class="comments">/* hook can move stack */</a><a href="../h_src/57642284.htm" class="variable">stack</a> */
+<a href="../h_aa/57868300.htm" class=function>precallC</a>                                         ldo.c
+   520 :    <a href="../h_src/57633988.htm" class="macro">checkstackGCp</a>(<a href="../h_src/57868164.htm" class="localvar">L</a>, <a href="../h_src/57442688.htm" class="macro">LUA_MINSTACK</a>, <a href="../h_src/57868028.htm" class="localvar">func</a>);  <a  class="comments">/* ensure minimum stack size */</a><a href="../h_src/57642284.htm" class="variable">stack</a> size */
+</pre>
+<h4><a class="legend">Table lists functions that directly use restorestack</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,48 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>CIST_YPCALL</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57648812.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57648812.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57648812.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57648812.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57860548.htm" class=function>findpcall</a>                                        ldo.c
+   757 :    if (<a href="../h_src/57860276.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp; <a href="../h_src/57648812.htm" class="macro">CIST_YPCALL</a>)
+<a href="../h_aa/57861772.htm" class=function>finishCcall</a>                                      ldo.c
+   719 :    if (<a href="../h_src/57861500.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp; <a href="../h_src/57648812.htm" class="macro">CIST_YPCALL</a>)   <a  class="comments">/* was inside a 'lua_pcallk'? */</a>
+<a href="../h_aa/57862452.htm" class=function>finishpcallk</a>                                     ldo.c
+   687 :    <a href="../h_src/57862180.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp;= ~<a href="../h_src/57648812.htm" class="macro">CIST_YPCALL</a>;
+<a href="../h_aa/57432828.htm" class=function>lua_pcallk</a>                                       lapi.c
+  1075 :    <a href="../h_src/57722700.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> |= <a href="../h_src/57648812.htm" class="macro">CIST_YPCALL</a>;  <a  class="comments">/* function can do error recovery */</a>
+  1077 :    <a href="../h_src/57722700.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp;= ~<a href="../h_src/57648812.htm" class="macro">CIST_YPCALL</a>;
+<a href="../h_aa/57632900.htm" class=function>luaD_poscall</a>                                     ldo.c
+   493 :    (<a href="../h_src/57648948.htm" class="macro">CIST_HOOKED</a> | <a href="../h_src/57648812.htm" class="macro">CIST_YPCALL</a> | <a href="../h_src/57648404.htm" class="macro">CIST_FIN</a> | <a href="../h_src/57648268.htm" class="macro">CIST_TRAN</a> | <a href="../h_src/57648132.htm" class="macro">CIST_CLSRET</a>)));
+</pre>
+<h4><a class="legend">Table lists functions that directly use CIST_YPCALL</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

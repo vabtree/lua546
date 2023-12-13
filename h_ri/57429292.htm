@@ -1,0 +1,163 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lua_pop</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57429292.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57429292.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57429292.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57429292.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/143264808.htm" class=file>liolib.c</a>
+   609 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(L, 1);  <a  class="comments">/* remove last result */</a>
+<a href="../h_aa/143305132.htm" class=function>add_value</a>                                        lstrlib.c
+   928 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143304316.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove value */</a>
+<a href="../h_aa/57556736.htm" class=function>addreturn</a>                                        lua.c
+   526 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/57556600.htm" class="localvar">L</a>, -2);  <a  class="comments">/* remove modified line */</a>
+   531 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/57556600.htm" class="localvar">L</a>, 2);  <a  class="comments">/* pop result from 'luaL_loadbuffer' and modified line */</a>
+<a href="../h_aa/143208980.htm" class=function>addtoclib</a>                                        loadlib.c
+   355 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143208844.htm" class="localvar">L</a>, 1);  <a  class="comments">/* pop CLIBS table */</a>
+<a href="../h_aa/58293180.htm" class=function>auxresume</a>                                        lcorolib.c
+    42 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/58292908.htm" class="localvar">co</a>, <a href="../h_src/58292500.htm" class="localvar">nres</a>);  <a  class="comments">/* remove results anyway */</a>
+<a href="../h_aa/143420228.htm" class=function>auxsort</a>                                          ltablib.c
+   356 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 2);  <a  class="comments">/* remove both values */</a>
+   368 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove a[lo] */</a>
+   373 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143420092.htm" class="localvar">L</a>, 2);
+<a href="../h_aa/143209524.htm" class=function>checkclib</a>                                        loadlib.c
+   340 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143209388.htm" class="localvar">L</a>, 2);  <a  class="comments">/* pop CLIBS table and 'plib' */</a>
+<a href="../h_aa/143430088.htm" class=function>checktab</a>                                         ltablib.c
+    53 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143429952.htm" class="localvar">L</a>, <a href="../h_src/143429544.htm" class="localvar">n</a>);  <a  class="comments">/* pop metatable and tested metamethods */</a>
+<a href="../h_aa/143242640.htm" class=function>createmeta</a>                                       liolib.c
+   790 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143242504.htm" class="localvar">L</a>, 1);  <a  class="comments">/* pop metatable */</a>
+<a href="../h_aa/143432060.htm" class=function>createmetatable</a>                                  lstrlib.c
+  1859 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143431924.htm" class="localvar">L</a>, 1);  <a  class="comments">/* pop dummy string */</a>
+  1862 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143431924.htm" class="localvar">L</a>, 1);  <a  class="comments">/* pop metatable */</a>
+<a href="../h_aa/143267732.htm" class=function>db_gethook</a>                                       ldblib.c
+   412 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/143267596.htm" class="localvar">L</a>, -2);  <a  class="comments">/* remove hook table */</a>
+<a href="../h_aa/143274668.htm" class=function>db_setlocal</a>                                      ldblib.c
+   249 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143274124.htm" class="localvar">L1</a>, 1);  <a  class="comments">/* pop value (if not popped by 'lua_setlocal') */</a>
+<a href="../h_aa/57569928.htm" class=function>docall</a>                                           lua.c
+   162 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/57569792.htm" class="localvar">L</a>, <a href="../h_src/57569248.htm" class="localvar">base</a>);  <a  class="comments">/* remove message handler from the stack */</a>
+<a href="../h_aa/58326500.htm" class=function>errfile</a>                                          lauxlib.c
+   738 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/58326364.htm" class="localvar">L</a>, <a href="../h_src/58326092.htm" class="localvar">fnameindex</a>);
+<a href="../h_aa/58350436.htm" class=function>findfield</a>                                        lauxlib.c
+    59 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/58350300.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove value (but keep name) */</a>
+    65 :    <a href="../h_src/57426980.htm" class="macro">lua_replace</a>(<a href="../h_src/58350300.htm" class="localvar">L</a>, -3);  <a  class="comments">/* (in the slot occupied by table) */</a>
+    70 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/58350300.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove value */</a>
+<a href="../h_aa/143198372.htm" class=function>findloader</a>                                       loadlib.c
+   636 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove nil */</a>
+   646 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove extra return */</a>
+   650 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143198236.htm" class="localvar">L</a>, 2);  <a  class="comments">/* remove both returns */</a>
+<a href="../h_aa/143208436.htm" class=function>gctm</a>                                             loadlib.c
+   368 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143208300.htm" class="localvar">L</a>, 1);  <a  class="comments">/* pop handle */</a>
+<a href="../h_aa/58299436.htm" class=function>generic_reader</a>                                   lbaselib.c
+   376 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/58299300.htm" class="localvar">L</a>, 1);  <a  class="comments">/* pop result */</a>
+   382 :    <a href="../h_src/57426980.htm" class="macro">lua_replace</a>(<a href="../h_src/58299300.htm" class="localvar">L</a>, <a href="../h_src/58299572.htm" class="macro">RESERVEDSLOT</a>);  <a  class="comments">/* save string in reserved slot */</a>
+<a href="../h_aa/57559456.htm" class=function>get_prompt</a>                                       lua.c
+   465 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/57559320.htm" class="localvar">L</a>, -2);  <a  class="comments">/* remove original value */</a>
+<a href="../h_aa/143352120.htm" class=function>getboolfield</a>                                     loslib.c
+   246 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143351984.htm" class="localvar">L</a>, 1);
+<a href="../h_aa/143351576.htm" class=function>getfield</a>                                         loslib.c
+   267 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143351440.htm" class="localvar">L</a>, 1);
+<a href="../h_aa/57558640.htm" class=function>incomplete</a>                                       lua.c
+   485 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/57558504.htm" class="localvar">L</a>, 1);
+<a href="../h_aa/143250800.htm" class=function>io_lines</a>                                         liolib.c
+   391 :    <a href="../h_src/57426980.htm" class="macro">lua_replace</a>(<a href="../h_src/143250664.htm" class="localvar">L</a>, 1);  <a  class="comments">/* put it at index 1 */</a>
+   398 :    <a href="../h_src/57426980.htm" class="macro">lua_replace</a>(<a href="../h_src/143250664.htm" class="localvar">L</a>, 1);  <a  class="comments">/* put file at index 1 */</a>
+<a href="../h_aa/143197692.htm" class=function>ll_require</a>                                       loadlib.c
+   665 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143197556.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove 'getfield' result */</a>
+   676 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143197556.htm" class="localvar">L</a>, 1);  <a  class="comments">/* pop nil */</a>
+<a href="../h_aa/58300932.htm" class=function>load_aux</a>                                         lbaselib.c
+   328 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/58300796.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove 'env' if not used by previous call */</a>
+<a href="../h_aa/57555376.htm" class=function>loadline</a>                                         lua.c
+   568 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/57555240.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove line from the stack */</a>
+<a href="../h_aa/58296716.htm" class=function>luaB_assert</a>                                      lbaselib.c
+   430 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/58296580.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove it */</a>
+<a href="../h_aa/58312152.htm" class=function>luaB_print</a>                                       lbaselib.c
+    33 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/58312016.htm" class="localvar">L</a>, 1);  <a  class="comments">/* pop result */</a>
+<a href="../h_aa/57413380.htm" class=function>luaL_addvalue</a>                                    lauxlib.c
+   626 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/58329900.htm" class="localvar">L</a>, 1);  <a  class="comments">/* pop string */</a>
+<a href="../h_aa/57420588.htm" class=function>luaL_getmetafield</a>                                lauxlib.c
+   859 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/58321944.htm" class="localvar">L</a>, 2);  <a  class="comments">/* remove metatable and metafield */</a>
+   861 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/58321944.htm" class="localvar">L</a>, -2);  <a  class="comments">/* remove only metatable */</a>
+<a href="../h_aa/57417732.htm" class=function>luaL_getsubtable</a>                                 lauxlib.c
+   958 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/58319224.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove previous result */</a>
+<a href="../h_aa/57418140.htm" class=function>luaL_len</a>                                         lauxlib.c
+   884 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/58320992.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove object */</a>
+<a href="../h_aa/57418548.htm" class=function>luaL_loadfilex</a>                                   lauxlib.c
+   813 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/58325548.htm" class="localvar">L</a>, <a href="../h_src/58324596.htm" class="localvar">fnameindex</a>);
+<a href="../h_aa/57419636.htm" class=function>luaL_newmetatable</a>                                lauxlib.c
+   314 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/58342684.htm" class="localvar">L</a>, 1);
+<a href="../h_aa/57573736.htm" class=function>luaL_openlibs</a>                                    linit.c
+    62 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143408260.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove lib */</a>
+<a href="../h_aa/57413312.htm" class=function>luaL_pushresult</a>                                  lauxlib.c
+   600 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/58330444.htm" class="localvar">L</a>, -2);  <a  class="comments">/* remove box or placeholder from the stack */</a>
+<a href="../h_aa/57418684.htm" class=function>luaL_ref</a>                                         lauxlib.c
+   664 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/58328540.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove from stack */</a>
+   677 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/58328540.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove element from stack */</a>
+<a href="../h_aa/57417596.htm" class=function>luaL_requiref</a>                                    lauxlib.c
+   979 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/58318816.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove field */</a>
+   986 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/58318816.htm" class="localvar">L</a>, -2);  <a  class="comments">/* remove LOADED table */</a>
+<a href="../h_aa/57417868.htm" class=function>luaL_setfuncs</a>                                    lauxlib.c
+   946 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/58319768.htm" class="localvar">L</a>, <a href="../h_src/58319496.htm" class="localvar">nup</a>);  <a  class="comments">/* remove upvalues */</a>
+<a href="../h_aa/57419500.htm" class=function>luaL_testudata</a>                                   lauxlib.c
+   337 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/58342140.htm" class="localvar">L</a>, 2);  <a  class="comments">/* remove both metatables */</a>
+<a href="../h_aa/57420452.htm" class=function>luaL_tolstring</a>                                   lauxlib.c
+   919 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/58320448.htm" class="localvar">L</a>, -2);  <a  class="comments">/* remove '__name' */</a>
+<a href="../h_aa/57573804.htm" class=function>luaopen_package</a>                                  loadlib.c
+   764 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>, 1);  <a  class="comments">/* pop global table */</a>
+<a href="../h_aa/143211292.htm" class=function>noenv</a>                                            loadlib.c
+   289 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143211156.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove value */</a>
+<a href="../h_aa/143421860.htm" class=function>partition</a>                                        ltablib.c
+   307 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143421724.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove a[i] */</a>
+   314 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143421724.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove a[j] */</a>
+   319 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143421724.htm" class="localvar">L</a>, 1);  <a  class="comments">/* pop a[j] */</a>
+<a href="../h_aa/58332620.htm" class=function>prepbuffsize</a>                                     lauxlib.c
+   559 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/58332076.htm" class="localvar">L</a>, <a href="../h_src/58332212.htm" class="localvar">boxidx</a>);  <a  class="comments">/* remove placeholder */</a>
+<a href="../h_aa/57565712.htm" class=function>pushargs</a>                                         lua.c
+   243 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/57565576.htm" class="localvar">L</a>, -<a href="../h_src/57565440.htm" class="localvar">i</a>);  <a  class="comments">/* remove table from the stack */</a>
+<a href="../h_aa/58349144.htm" class=function>pushfuncname</a>                                     lauxlib.c
+   103 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/58349008.htm" class="localvar">L</a>, -2);  <a  class="comments">/* remove name */</a>
+<a href="../h_aa/58349892.htm" class=function>pushglobalfuncname</a>                               lauxlib.c
+    87 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/58349756.htm" class="localvar">L</a>, -2);  <a  class="comments">/* remove original name */</a>
+<a href="../h_aa/57557960.htm" class=function>pushline</a>                                         lua.c
+   504 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/57557824.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove prompt */</a>
+<a href="../h_aa/57570880.htm" class=function>report</a>                                           lua.c
+   125 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/57570744.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove message */</a>
+<a href="../h_aa/143210884.htm" class=function>setpath</a>                                          loadlib.c
+   326 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143210748.htm" class="localvar">L</a>, 1);  <a  class="comments">/* pop versioned variable name ('nver') */</a>
+<a href="../h_aa/143214624.htm" class=function>setprogdir</a>                                       loadlib.c
+   187 :    <a href="../h_src/57427116.htm" class="macro">lua_remove</a>(<a href="../h_src/143214488.htm" class="localvar">L</a>, -2);  <a  class="comments">/* remove original string */</a>
+<a href="../h_aa/143220676.htm" class=function>setrandfunc</a>                                      lmathlib.c
+   645 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143220540.htm" class="localvar">L</a>, 2);  <a  class="comments">/* remove pushed seeds */</a>
+<a href="../h_aa/143422540.htm" class=function>sort_comp</a>                                        ltablib.c
+   285 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143422404.htm" class="localvar">L</a>, 1);          <a  class="comments">/* pop result */</a>
+<a href="../h_aa/143291804.htm" class=function>str_format</a>                                       lstrlib.c
+  1363 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, 1);  <a  class="comments">/* remove result from 'luaL_tolstring' */</a>
+</pre>
+<h4><a class="legend">Table lists functions that directly use lua_pop</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

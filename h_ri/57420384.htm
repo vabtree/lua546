@@ -1,0 +1,122 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaL_argerror</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57420384.htm" class="function" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57420384.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57420384.htm" class="function" target="_self">Flow Chart</a></li>
+<li><a href="../h_src/57420384.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57420384.htm" class="function" target="_self">Called By</a></li>
+<li><a href="../h_rx/57420384.htm" class="function" target="_self">Call Tree</a></li>
+<li><a href="../h_ro/57420384.htm" class="function" target="_self">Calls and Uses</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/143295748.htm" class=function>addliteral</a>                                       lstrlib.c
+  1204 :    <a href="../h_src/57420384.htm" class="function">luaL_argerror</a>(<a href="../h_src/143295612.htm" class="localvar">L</a>, <a href="../h_src/143295340.htm" class="localvar">arg</a>, &quot;value has no literal form&quot;);
+<a href="../h_aa/143251616.htm" class=function>aux_lines</a>                                        liolib.c
+   365 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143251480.htm" class="localvar">L</a>, <a href="../h_src/143251208.htm" class="localvar">n</a> &lt;= <a href="../h_src/143251752.htm" class="macro">MAXARGLINE</a>, <a href="../h_src/143251752.htm" class="macro">MAXARGLINE</a> + 2, &quot;too many arguments&quot;);
+<a href="../h_aa/143412000.htm" class=function>byteoffset</a>                                       lutf8lib.c
+   193 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143411864.htm" class="localvar">L</a>, 1 &lt;= <a href="../h_src/143411320.htm" class="localvar">posi</a> &amp;&amp; --<a href="../h_src/143411320.htm" class="localvar">posi</a> &lt;= (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)<a href="../h_src/143411728.htm" class="localvar">len</a>, 3,
+<a href="../h_aa/143350488.htm" class=function>checkoption</a>                                      loslib.c
+   285 :    <a href="../h_src/57420384.htm" class="function">luaL_argerror</a>(<a href="../h_src/143350352.htm" class="localvar">L</a>, 1,
+<a href="../h_aa/143272356.htm" class=function>checkupval</a>                                       ldblib.c
+   291 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143272220.htm" class="localvar">L</a>, <a href="../h_src/143271676.htm" class="localvar">id</a> != NULL, <a href="../h_src/143271948.htm" class="localvar">argnup</a>, &quot;invalid upvalue index&quot;);
+<a href="../h_aa/143414584.htm" class=function>codepoint</a>                                        lutf8lib.c
+   134 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143414448.htm" class="localvar">L</a>, <a href="../h_src/143414040.htm" class="localvar">posi</a> &gt;= 1, 2, &quot;out of bounds&quot;);
+   135 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143414448.htm" class="localvar">L</a>, <a href="../h_src/143413904.htm" class="localvar">pose</a> &lt;= (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)<a href="../h_src/143414312.htm" class="localvar">len</a>, 3, &quot;out of bounds&quot;);
+<a href="../h_aa/58281756.htm" class=function>db_getinfo</a>                                       ldblib.c
+   155 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, <a href="../h_src/143275892.htm" class="localvar">options</a>[0] != '&gt;', <a href="../h_src/143276164.htm" class="localvar">arg</a> + 2, &quot;invalid option '&gt;'&quot;);
+   168 :    return <a href="../h_src/57420384.htm" class="function">luaL_argerror</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, <a href="../h_src/143276164.htm" class="localvar">arg</a>+2, &quot;invalid option&quot;);
+<a href="../h_aa/143275756.htm" class=function>db_getlocal</a>                                      ldblib.c
+   217 :    return <a href="../h_src/57420384.htm" class="function">luaL_argerror</a>(<a href="../h_src/143275620.htm" class="localvar">L</a>, <a href="../h_src/143275484.htm" class="localvar">arg</a>+1, &quot;level out of range&quot;);
+<a href="../h_aa/143274668.htm" class=function>db_setlocal</a>                                      ldblib.c
+   242 :    return <a href="../h_src/57420384.htm" class="function">luaL_argerror</a>(<a href="../h_src/143274532.htm" class="localvar">L</a>, <a href="../h_src/143274396.htm" class="localvar">arg</a>+1, &quot;level out of range&quot;);
+<a href="../h_aa/143270996.htm" class=function>db_upvaluejoin</a>                                   ldblib.c
+   312 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143270860.htm" class="localvar">L</a>, !<a href="../h_src/57438744.htm" class="function">lua_iscfunction</a>(<a href="../h_src/143270860.htm" class="localvar">L</a>, 1), 1, &quot;Lua function expected&quot;);
+   313 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143270860.htm" class="localvar">L</a>, !<a href="../h_src/57438744.htm" class="function">lua_iscfunction</a>(<a href="../h_src/143270860.htm" class="localvar">L</a>, 3), 3, &quot;Lua function expected&quot;);
+<a href="../h_aa/143245496.htm" class=function>f_seek</a>                                           liolib.c
+   704 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143245360.htm" class="localvar">L</a>, (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)<a href="../h_src/143244680.htm" class="localvar">offset</a> == <a href="../h_src/143244816.htm" class="localvar">p3</a>, 3,
+<a href="../h_aa/143283304.htm" class=function>getdetails</a>                                       lstrlib.c
+  1547 :    <a href="../h_src/57420384.htm" class="function">luaL_argerror</a>(<a href="../h_src/143283168.htm" class="localvar">h</a>-&gt;<a href="../h_src/143288064.htm" class="variable">L</a>, 1, &quot;invalid next option for option 'X'&quot;);
+  1555 :    <a href="../h_src/57420384.htm" class="function">luaL_argerror</a>(<a href="../h_src/143283168.htm" class="localvar">h</a>-&gt;<a href="../h_src/143288064.htm" class="variable">L</a>, 1, &quot;format asks for alignment not power of 2&quot;);
+<a href="../h_aa/58337108.htm" class=function>interror</a>                                         lauxlib.c
+   436 :    <a href="../h_src/57420384.htm" class="function">luaL_argerror</a>(<a href="../h_src/58336972.htm" class="localvar">L</a>, <a href="../h_src/58336836.htm" class="localvar">arg</a>, &quot;number has no integer representation&quot;);
+<a href="../h_aa/143256104.htm" class=function>io_open</a>                                          liolib.c
+   274 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143255968.htm" class="localvar">L</a>, <a href="../h_src/143264060.htm" class="function">l_checkmode</a>(<a href="../h_src/143255424.htm" class="localvar">md</a>), 2, &quot;invalid mode&quot;);
+<a href="../h_aa/143254812.htm" class=function>io_popen</a>                                         liolib.c
+   294 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143254676.htm" class="localvar">L</a>, <a href="../h_src/143263244.htm" class="macro">l_checkmodep</a>(<a href="../h_src/143254404.htm" class="localvar">mode</a>), 2, &quot;invalid mode&quot;);
+<a href="../h_aa/143409552.htm" class=function>iter_codes</a>                                       lutf8lib.c
+   261 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143409416.htm" class="localvar">L</a>, !<a href="../h_src/143417712.htm" class="macro">iscontp</a>(<a href="../h_src/143409144.htm" class="localvar">s</a>), 1, <a href="../h_src/143418052.htm" class="macro">MSGInvalid</a>);
+<a href="../h_aa/58296444.htm" class=function>luaB_select</a>                                      lbaselib.c
+   448 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/58296308.htm" class="localvar">L</a>, 1 &lt;= <a href="../h_src/58296036.htm" class="localvar">i</a>, 1, &quot;index out of range&quot;);
+<a href="../h_aa/58309500.htm" class=function>luaB_tonumber</a>                                    lbaselib.c
+   103 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/58309364.htm" class="localvar">L</a>, 2 &lt;= <a href="../h_src/58308548.htm" class="localvar">base</a> &amp;&amp; <a href="../h_src/58308548.htm" class="localvar">base</a> &lt;= 36, 2, &quot;base out of range&quot;);
+<a href="../h_aa/58303108.htm" class=function>luaB_type</a>                                        lbaselib.c
+   261 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/58302972.htm" class="localvar">L</a>, <a href="../h_src/58302836.htm" class="localvar">t</a> != <a href="../h_src/57444184.htm" class="macro">LUA_TNONE</a>, 1, &quot;value expected&quot;);
+<a href="../h_aa/57419704.htm" class=function>luaL_checkany</a>                                    lauxlib.c
+   398 :    <a href="../h_src/57420384.htm" class="function">luaL_argerror</a>(<a href="../h_src/58339420.htm" class="localvar">L</a>, <a href="../h_src/58339284.htm" class="localvar">arg</a>, &quot;value expected&quot;);
+<a href="../h_aa/57419228.htm" class=function>luaL_checkoption</a>                                 lauxlib.c
+   368 :    return <a href="../h_src/57420384.htm" class="function">luaL_argerror</a>(<a href="../h_src/58341052.htm" class="localvar">L</a>, <a href="../h_src/58340916.htm" class="localvar">arg</a>,
+<a href="../h_aa/57420316.htm" class=function>luaL_typeerror</a>                                   lauxlib.c
+   203 :    return <a href="../h_src/57420384.htm" class="function">luaL_argerror</a>(<a href="../h_src/58346152.htm" class="localvar">L</a>, <a href="../h_src/58346016.htm" class="localvar">arg</a>, <a href="../h_src/58345744.htm" class="localvar">msg</a>);
+<a href="../h_aa/143232168.htm" class=function>math_max</a>                                         lmathlib.c
+   224 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143232032.htm" class="localvar">L</a>, <a href="../h_src/143231896.htm" class="localvar">n</a> &gt;= 1, 1, &quot;value expected&quot;);
+<a href="../h_aa/143232848.htm" class=function>math_min</a>                                         lmathlib.c
+   210 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143232712.htm" class="localvar">L</a>, <a href="../h_src/143232576.htm" class="localvar">n</a> &gt;= 1, 1, &quot;value expected&quot;);
+<a href="../h_aa/143223940.htm" class=function>math_random</a>                                      lmathlib.c
+   584 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143223804.htm" class="localvar">L</a>, <a href="../h_src/143223668.htm" class="localvar">low</a> &lt;= <a href="../h_src/143223532.htm" class="localvar">up</a>, 1, &quot;interval is empty&quot;);
+<a href="../h_aa/143413224.htm" class=function>pushutfchar</a>                                      lutf8lib.c
+   157 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143413088.htm" class="localvar">L</a>, <a href="../h_src/143412816.htm" class="localvar">code</a> &lt;= <a href="../h_src/143418188.htm" class="macro">MAXUTF</a>, <a href="../h_src/143412952.htm" class="localvar">arg</a>, &quot;value out of range&quot;);
+<a href="../h_aa/143419276.htm" class=function>sort</a>                                             ltablib.c
+   402 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143419140.htm" class="localvar">L</a>, <a href="../h_src/143419004.htm" class="localvar">n</a> &lt; INT_MAX, 1, &quot;array too big&quot;);
+<a href="../h_aa/143335188.htm" class=function>str_char</a>                                         lstrlib.c
+   202 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143335052.htm" class="localvar">L</a>, <a href="../h_src/143334372.htm" class="localvar">c</a> &lt;= (<a href="../h_src/57438132.htm" class="function">lua_Unsigned</a>)UCHAR_MAX, <a href="../h_src/143334780.htm" class="localvar">i</a>, &quot;value out of range&quot;);
+<a href="../h_aa/143291804.htm" class=function>str_format</a>                                       lstrlib.c
+  1293 :    return <a href="../h_src/57420384.htm" class="function">luaL_argerror</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143291396.htm" class="localvar">arg</a>, &quot;no value&quot;);
+  1355 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143289628.htm" class="localvar">l</a> == <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/143289492.htm" class="localvar">s</a>), <a href="../h_src/143291396.htm" class="localvar">arg</a>, &quot;string contains zeros&quot;);
+<a href="../h_aa/143280448.htm" class=function>str_pack</a>                                         lstrlib.c
+  1622 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143280312.htm" class="localvar">L</a>, -<a href="../h_src/143438928.htm" class="localvar">lim</a> &lt;= <a href="../h_src/143439064.htm" class="localvar">n</a> &amp;&amp; <a href="../h_src/143439064.htm" class="localvar">n</a> &lt; <a href="../h_src/143438928.htm" class="localvar">lim</a>, <a href="../h_src/143279768.htm" class="localvar">arg</a>, &quot;integer overflow&quot;);
+  1662 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143280312.htm" class="localvar">L</a>, <a href="../h_src/143437840.htm" class="localvar">len</a> &lt;= (<a href="../h_aa/57441192.htm" class="type">size_t</a>)<a href="../h_src/143279496.htm" class="localvar">size</a>, <a href="../h_src/143279768.htm" class="localvar">arg</a>,
+  1673 :    <a href="../h_src/143437568.htm" class="localvar">len</a> &lt; ((<a href="../h_aa/57441192.htm" class="type">size_t</a>)1 &lt;&lt; (<a href="../h_src/143279496.htm" class="localvar">size</a> * <a href="../h_src/143288948.htm" class="macro">NB</a>)),
+  1683 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143280312.htm" class="localvar">L</a>, <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/143437160.htm" class="localvar">s</a>) == <a href="../h_src/143437296.htm" class="localvar">len</a>, <a href="../h_src/143279768.htm" class="localvar">arg</a>, &quot;string contains zeros&quot;);
+<a href="../h_aa/143437024.htm" class=function>str_packsize</a>                                     lstrlib.c
+  1708 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143436888.htm" class="localvar">L</a>, <a href="../h_src/143436072.htm" class="localvar">opt</a> != <a href="../h_src/143287384.htm" class="variable">Kstring</a> &amp;&amp; <a href="../h_src/143436072.htm" class="localvar">opt</a> != <a href="../h_src/143287316.htm" class="variable">Kzstr</a>, 1,
+  1711 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143436888.htm" class="localvar">L</a>, <a href="../h_src/143436480.htm" class="localvar">totalsize</a> &lt;= <a href="../h_src/143343280.htm" class="macro">MAXSIZE</a> - <a href="../h_src/143436344.htm" class="localvar">size</a>, 1,
+<a href="../h_aa/143434440.htm" class=function>str_unpack</a>                                       lstrlib.c
+  1761 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143434304.htm" class="localvar">L</a>, <a href="../h_src/143433624.htm" class="localvar">pos</a> &lt;= <a href="../h_src/143433896.htm" class="localvar">ld</a>, 3, &quot;initial position out of string&quot;);
+  1766 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143434304.htm" class="localvar">L</a>, (<a href="../h_aa/57441192.htm" class="type">size_t</a>)<a href="../h_src/143433216.htm" class="localvar">ntoalign</a> + <a href="../h_src/143433352.htm" class="localvar">size</a> &lt;= <a href="../h_src/143433896.htm" class="localvar">ld</a> - <a href="../h_src/143433624.htm" class="localvar">pos</a>, 2,
+  1804 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143434304.htm" class="localvar">L</a>, <a href="../h_src/143432400.htm" class="localvar">len</a> &lt;= <a href="../h_src/143433896.htm" class="localvar">ld</a> - <a href="../h_src/143433624.htm" class="localvar">pos</a> - <a href="../h_src/143433352.htm" class="localvar">size</a>, 2, &quot;data string too short&quot;);
+  1811 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143434304.htm" class="localvar">L</a>, <a href="../h_src/143433624.htm" class="localvar">pos</a> + <a href="../h_src/143432264.htm" class="localvar">len</a> &lt; <a href="../h_src/143433896.htm" class="localvar">ld</a>, 2,
+<a href="../h_aa/143428184.htm" class=function>tmove</a>                                            ltablib.c
+   124 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143428048.htm" class="localvar">L</a>, <a href="../h_src/143427912.htm" class="localvar">f</a> &gt; 0 || <a href="../h_src/143427776.htm" class="localvar">e</a> &lt; <a href="../h_src/57450100.htm" class="macro">LUA_MAXINTEGER</a> + f, 3,
+   127 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143428048.htm" class="localvar">L</a>, <a href="../h_src/143427640.htm" class="localvar">t</a> &lt;= <a href="../h_src/57450100.htm" class="macro">LUA_MAXINTEGER</a> - <a href="../h_src/143427368.htm" class="localvar">n</a> + 1, 4,
+<a href="../h_aa/143415808.htm" class=function>utflen</a>                                           lutf8lib.c
+   103 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143415672.htm" class="localvar">L</a>, 1 &lt;= <a href="../h_src/143415128.htm" class="localvar">posi</a> &amp;&amp; --<a href="../h_src/143415128.htm" class="localvar">posi</a> &lt;= (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)<a href="../h_src/143415400.htm" class="localvar">len</a>, 2,
+   105 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143415672.htm" class="localvar">L</a>, --<a href="../h_src/143414992.htm" class="localvar">posj</a> &lt; (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)<a href="../h_src/143415400.htm" class="localvar">len</a>, 3,
+</pre>
+<h4><a class="legend">Table lists functions that directly use luaL_argerror</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

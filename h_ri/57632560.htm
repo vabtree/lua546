@@ -1,0 +1,70 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaD_throw</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57632560.htm" class="function" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57632560.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57632560.htm" class="function" target="_self">Flow Chart</a></li>
+<li><a href="../h_src/57632560.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57632560.htm" class="function" target="_self">Called By</a></li>
+<li><a href="../h_rx/57632560.htm" class="function" target="_self">Call Tree</a></li>
+<li><a href="../h_ro/57632560.htm" class="function" target="_self">Calls and Uses</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57853000.htm" class=function>checkmode</a>                                        ldo.c
+   983 :    <a href="../h_src/57632560.htm" class="function">luaD_throw</a>(<a href="../h_src/57852864.htm" class="localvar">L</a>, <a href="../h_src/57444796.htm" class="macro">LUA_ERRSYNTAX</a>);
+<a href="../h_aa/58074868.htm" class=function>error</a>                                            lundump.c
+    42 :    <a href="../h_src/57632560.htm" class="function">luaD_throw</a>(<a href="../h_src/58074664.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, <a href="../h_src/57444796.htm" class="macro">LUA_ERRSYNTAX</a>);
+<a href="../h_aa/58125596.htm" class=function>growstrtab</a>                                       lstring.c
+   178 :    <a href="../h_src/57496556.htm" class="macro">luaM_error</a>(<a href="../h_src/58125460.htm" class="localvar">L</a>);  <a  class="comments">/* cannot even create a message... */</a>
+<a href="../h_aa/57939876.htm" class=function>lexerror</a>                                         llex.c
+   115 :    <a href="../h_src/57632560.htm" class="function">luaD_throw</a>(<a href="../h_src/57937700.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/57444796.htm" class="macro">LUA_ERRSYNTAX</a>);
+<a href="../h_aa/57430380.htm" class=function>lua_error</a>                                        lapi.c
+  1245 :    <a href="../h_src/57496556.htm" class="macro">luaM_error</a>(<a href="../h_src/57717940.htm" class="localvar">L</a>);  <a  class="comments">/* raise a memory error */</a>
+<a href="../h_aa/57432488.htm" class=function>lua_yieldk</a>                                       ldo.c
+   894 :    <a href="../h_src/57632560.htm" class="function">luaD_throw</a>(<a href="../h_src/57857148.htm" class="localvar">L</a>, <a href="../h_src/57445068.htm" class="macro">LUA_YIELD</a>);
+<a href="../h_aa/57632764.htm" class=function>luaD_growstack</a>                                   ldo.c
+   250 :    <a href="../h_src/57632560.htm" class="function">luaD_throw</a>(<a href="../h_src/57878092.htm" class="localvar">L</a>, <a href="../h_src/57444524.htm" class="macro">LUA_ERRERR</a>);  <a  class="comments">/* error inside message handler */</a>
+<a href="../h_aa/57632832.htm" class=function>luaD_reallocstack</a>                                ldo.c
+   226 :    <a href="../h_src/57496556.htm" class="macro">luaM_error</a>(<a href="../h_src/57879044.htm" class="localvar">L</a>);
+<a href="../h_aa/57632560.htm" class=function>luaD_throw</a>                                       ldo.c
+   125 :    <a href="../h_src/57632560.htm" class="function">luaD_throw</a>(<a href="../h_src/57881492.htm" class="localvar">g</a>-&gt;<a href="../h_src/57643848.htm" class="variable">mainthread</a>, <a href="../h_src/57881696.htm" class="localvar">errcode</a>);  <a  class="comments">/* re-throw in main thread */</a>
+<a href="../h_aa/57638272.htm" class=function>luaE_checkcstack</a>                                 lstate.c
+   169 :    <a href="../h_src/57632560.htm" class="function">luaD_throw</a>(<a href="../h_src/57980852.htm" class="localvar">L</a>, <a href="../h_src/57444524.htm" class="macro">LUA_ERRERR</a>);  <a  class="comments">/* error while handling stack error */</a>
+<a href="../h_aa/57635144.htm" class=function>luaG_errormsg</a>                                    ldebug.c
+   818 :    <a href="../h_src/57632560.htm" class="function">luaD_throw</a>(<a href="../h_src/57888564.htm" class="localvar">L</a>, <a href="../h_src/57444932.htm" class="macro">LUA_ERRRUN</a>);
+<a href="../h_aa/57635076.htm" class=function>luaG_traceexec</a>                                   ldebug.c
+   920 :    <a href="../h_src/57632560.htm" class="function">luaD_throw</a>(<a href="../h_src/57885708.htm" class="localvar">L</a>, <a href="../h_src/57445068.htm" class="macro">LUA_YIELD</a>);
+<a href="../h_aa/57616444.htm" class=function>luaH_resize</a>                                      ltable.c
+   576 :    <a href="../h_src/57496556.htm" class="macro">luaM_error</a>(<a href="../h_src/58103428.htm" class="localvar">L</a>);  <a  class="comments">/* raise error (with array unchanged) */</a>
+<a href="../h_aa/57656428.htm" class=function>luaM_malloc_</a>                                     lmem.c
+   210 :    <a href="../h_src/57496556.htm" class="macro">luaM_error</a>(<a href="../h_src/57920428.htm" class="localvar">L</a>);
+<a href="../h_aa/57656700.htm" class=function>luaM_saferealloc_</a>                                lmem.c
+   196 :    <a href="../h_src/57496556.htm" class="macro">luaM_error</a>(<a href="../h_src/57921108.htm" class="localvar">L</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use luaD_throw</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

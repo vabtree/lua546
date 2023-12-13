@@ -1,0 +1,48 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>fs</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57992004.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57992004.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57992004.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57992004.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57992276.htm" class=function>localstat</a>                                        lparser.c
+  1728 :    <a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57992004.htm" class="localvar">fs</a> = <a href="../h_src/57992140.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57992276.htm" class=function>localstat</a>                                        lparser.c
+  1738 :    <a href="../h_src/58047628.htm" class="function">getlocalvardesc</a>(<a href="../h_src/57992004.htm" class="localvar">fs</a>, <a href="../h_src/57991596.htm" class="localvar">vidx</a>)-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678432.htm" class="variable">kind</a> = <a href="../h_src/57991460.htm" class="localvar">kind</a>;
+  1742 :    <a href="../h_src/57991868.htm" class="localvar">toclose</a> = <a href="../h_src/57992004.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674896.htm" class="variable">nactvar</a> + <a href="../h_src/57991324.htm" class="localvar">nvars</a>;
+  1752 :    <a href="../h_src/57991732.htm" class="localvar">var</a> = <a href="../h_src/58047628.htm" class="function">getlocalvardesc</a>(<a href="../h_src/57992004.htm" class="localvar">fs</a>, <a href="../h_src/57991596.htm" class="localvar">vidx</a>);  <a  class="comments">/* get last variable */</a>
+  1755 :    <a href="../h_src/57670884.htm" class="function">luaK_exp2const</a>(<a href="../h_src/57992004.htm" class="localvar">fs</a>, &amp;<a href="../h_src/57991052.htm" class="localvar">e</a>, &amp;<a href="../h_src/57991732.htm" class="localvar">var</a>-&gt;<a href="../h_src/57678024.htm" class="variable">k</a>)) {  <a  class="comments">/* compile-time constant? */</a>
+  1758 :    <a href="../h_src/57992004.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674896.htm" class="variable">nactvar</a>++;  <a  class="comments">/* but count it */</a>
+  1764 :    <a href="../h_src/57992684.htm" class="function">checktoclose</a>(<a href="../h_src/57992004.htm" class="localvar">fs</a>, <a href="../h_src/57991868.htm" class="localvar">toclose</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable fs</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

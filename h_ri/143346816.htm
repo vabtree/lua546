@@ -1,0 +1,51 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>L</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143346816.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/143346816.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/143346816.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/143346816.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/143346952.htm" class=function>os_time</a>                                          loslib.c
+   346 :    if (<a href="../h_src/57427796.htm" class="macro">lua_isnoneornil</a>(<a href="../h_src/143346816.htm" class="localvar">L</a>, 1))  <a  class="comments">/* called without args? */</a>
+   350 :    <a href="../h_src/57419772.htm" class="function">luaL_checktype</a>(<a href="../h_src/143346816.htm" class="localvar">L</a>, 1, <a href="../h_src/57443368.htm" class="macro">LUA_TTABLE</a>);
+   351 :    <a href="../h_src/57439288.htm" class="function">lua_settop</a>(<a href="../h_src/143346816.htm" class="localvar">L</a>, 1);  <a  class="comments">/* make sure table is at the top */</a>
+   352 :    <a href="../h_src/143346544.htm" class="localvar">ts</a>.tm_year = <a href="../h_src/143351576.htm" class="function">getfield</a>(<a href="../h_src/143346816.htm" class="localvar">L</a>, &quot;year&quot;, -1, 1900);
+   353 :    <a href="../h_src/143346544.htm" class="localvar">ts</a>.tm_mon = <a href="../h_src/143351576.htm" class="function">getfield</a>(<a href="../h_src/143346816.htm" class="localvar">L</a>, &quot;month&quot;, -1, 1);
+   354 :    <a href="../h_src/143346544.htm" class="localvar">ts</a>.tm_mday = <a href="../h_src/143351576.htm" class="function">getfield</a>(<a href="../h_src/143346816.htm" class="localvar">L</a>, &quot;day&quot;, -1, 0);
+   355 :    <a href="../h_src/143346544.htm" class="localvar">ts</a>.tm_hour = <a href="../h_src/143351576.htm" class="function">getfield</a>(<a href="../h_src/143346816.htm" class="localvar">L</a>, &quot;hour&quot;, 12, 0);
+   356 :    <a href="../h_src/143346544.htm" class="localvar">ts</a>.tm_min = <a href="../h_src/143351576.htm" class="function">getfield</a>(<a href="../h_src/143346816.htm" class="localvar">L</a>, &quot;min&quot;, 0, 0);
+   357 :    <a href="../h_src/143346544.htm" class="localvar">ts</a>.tm_sec = <a href="../h_src/143351576.htm" class="function">getfield</a>(<a href="../h_src/143346816.htm" class="localvar">L</a>, &quot;sec&quot;, 0, 0);
+   358 :    <a href="../h_src/143346544.htm" class="localvar">ts</a>.tm_isdst = <a href="../h_src/143352120.htm" class="function">getboolfield</a>(<a href="../h_src/143346816.htm" class="localvar">L</a>, &quot;isdst&quot;);
+   360 :    <a href="../h_src/143352664.htm" class="function">setallfields</a>(<a href="../h_src/143346816.htm" class="localvar">L</a>, &amp;<a href="../h_src/143346544.htm" class="localvar">ts</a>);  <a  class="comments">/* update fields with normalized values */</a>
+   363 :    return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143346816.htm" class="localvar">L</a>,
+   365 :    <a href="../h_src/143358308.htm" class="macro">l_pushtime</a>(<a href="../h_src/143346816.htm" class="localvar">L</a>, <a href="../h_src/143346680.htm" class="localvar">t</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable L</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

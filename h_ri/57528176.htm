@@ -1,0 +1,84 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">GCObject::</a>next</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57528176.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57528176.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57528176.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57528176.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57528176.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57620320.htm" class=function>luaC_checkfinalizer</a>                              lgc.c
+  1035 :    <a href="../h_src/57957284.htm" class="localvar">o</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a> = <a href="../h_src/57957012.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645140.htm" class="variable">finobj</a>;  <a  class="comments">/* link it in 'finobj' list */</a>
+<a href="../h_aa/57620932.htm" class=function>luaC_fix</a>                                         lgc.c
+   249 :    <a href="../h_src/57823216.htm" class="localvar">o</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a> = <a href="../h_src/57823080.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644664.htm" class="variable">fixedgc</a>;  <a  class="comments">/* link it to 'fixedgc' list */</a>
+<a href="../h_aa/57620524.htm" class=function>luaC_newobjdt</a>                                    lgc.c
+   264 :    <a href="../h_src/57822128.htm" class="localvar">o</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a> = <a href="../h_src/57822400.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645344.htm" class="variable">allgc</a>;
+<a href="../h_aa/57959052.htm" class=function>separatetobefnz</a>                                  lgc.c
+   984 :    <a href="../h_src/57958644.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a> = *<a href="../h_src/57958372.htm" class="localvar">lastnext</a>;  <a  class="comments">/* link at the end of 'tobefnz' list */</a>
+<a href="../h_aa/57963132.htm" class=function>udata2finalize</a>                                   lgc.c
+   888 :    <a href="../h_src/57962860.htm" class="localvar">o</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a> = <a href="../h_src/57962996.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645344.htm" class="variable">allgc</a>;  <a  class="comments">/* return it to 'allgc' list */</a>
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57958236.htm" class=function>checkpointer</a>                                     lgc.c
+   997 :    *<a href="../h_src/57958100.htm" class="localvar">p</a> = <a href="../h_src/57957964.htm" class="localvar">o</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>;
+<a href="../h_aa/57946404.htm" class=function>deletelist</a>                                       lgc.c
+  1498 :    <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57945860.htm" class="localvar">next</a> = <a href="../h_src/57946132.htm" class="localvar">p</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>;
+<a href="../h_aa/57959324.htm" class=function>findlast</a>                                         lgc.c
+   960 :    <a href="../h_src/57959188.htm" class="localvar">p</a> = &amp;(*<a href="../h_src/57959188.htm" class="localvar">p</a>)-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>;
+<a href="../h_aa/57620320.htm" class=function>luaC_checkfinalizer</a>                              lgc.c
+  1027 :    if (<a href="../h_src/57957012.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645208.htm" class="variable">sweepgc</a> == &amp;<a href="../h_src/57957284.htm" class="localvar">o</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>)  <a  class="comments">/* should not remove 'sweepgc' object */</a>
+  1033 :    for (<a href="../h_src/57956876.htm" class="localvar">p</a> = &amp;<a href="../h_src/57957012.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645344.htm" class="variable">allgc</a>; *<a href="../h_src/57956876.htm" class="localvar">p</a> != <a href="../h_src/57957284.htm" class="localvar">o</a>; <a href="../h_src/57956876.htm" class="localvar">p</a> = &amp;(*<a href="../h_src/57956876.htm" class="localvar">p</a>)-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>) { <a  class="comments">/* empty */</a> }
+  1034 :    *<a href="../h_src/57956876.htm" class="localvar">p</a> = <a href="../h_src/57957284.htm" class="localvar">o</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>;  <a  class="comments">/* remove 'o' from 'allgc' list */</a>
+<a href="../h_aa/57620932.htm" class=function>luaC_fix</a>                                         lgc.c
+   248 :    <a href="../h_src/57823080.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645344.htm" class="variable">allgc</a> = <a href="../h_src/57823216.htm" class="localvar">o</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>;  <a  class="comments">/* remove object from 'allgc' list */</a>
+<a href="../h_aa/57820632.htm" class=function>markbeingfnz</a>                                     lgc.c
+   348 :    for (<a href="../h_src/57820360.htm" class="localvar">o</a> = <a href="../h_src/57820496.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644732.htm" class="variable">tobefnz</a>; <a href="../h_src/57820360.htm" class="localvar">o</a> != NULL; <a href="../h_src/57820360.htm" class="localvar">o</a> = <a href="../h_src/57820360.htm" class="localvar">o</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>) {
+<a href="../h_aa/57952252.htm" class=function>markold</a>                                          lgc.c
+  1221 :    for (<a href="../h_src/57951708.htm" class="localvar">p</a> = <a href="../h_src/57951980.htm" class="localvar">from</a>; <a href="../h_src/57951708.htm" class="localvar">p</a> != <a href="../h_src/57951844.htm" class="localvar">to</a>; <a href="../h_src/57951708.htm" class="localvar">p</a> = <a href="../h_src/57951708.htm" class="localvar">p</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>) {
+<a href="../h_aa/57959052.htm" class=function>separatetobefnz</a>                                  lgc.c
+   979 :    <a href="../h_src/57958508.htm" class="localvar">p</a> = &amp;<a href="../h_src/57958644.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>;  <a  class="comments">/* don't bother with it */</a>
+   982 :    <a href="../h_src/57958916.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644324.htm" class="variable">finobjsur</a> = <a href="../h_src/57958644.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>;  <a  class="comments">/* correct it */</a>
+   983 :    *<a href="../h_src/57958508.htm" class="localvar">p</a> = <a href="../h_src/57958644.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>;  <a  class="comments">/* remove 'curr' from 'finobj' list */</a>
+   986 :    <a href="../h_src/57958372.htm" class="localvar">lastnext</a> = &amp;<a href="../h_src/57958644.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>;
+<a href="../h_aa/57955924.htm" class=function>sweep2old</a>                                        lgc.c
+  1083 :    *<a href="../h_src/57955652.htm" class="localvar">p</a> = <a href="../h_src/57955516.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>;  <a  class="comments">/* remove 'curr' from list */</a>
+  1096 :    <a href="../h_src/57955652.htm" class="localvar">p</a> = &amp;<a href="../h_src/57955516.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>;  <a  class="comments">/* go to next element */</a>
+<a href="../h_aa/57955108.htm" class=function>sweepgen</a>                                         lgc.c
+  1129 :    *<a href="../h_src/57954700.htm" class="localvar">p</a> = <a href="../h_src/57954020.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>;  <a  class="comments">/* remove 'curr' from list */</a>
+  1142 :    <a href="../h_src/57954700.htm" class="localvar">p</a> = &amp;<a href="../h_src/57954020.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>;  <a  class="comments">/* go to next element */</a>
+<a href="../h_aa/57965716.htm" class=function>sweeplist</a>                                        lgc.c
+   832 :    *<a href="../h_src/57965444.htm" class="localvar">p</a> = <a href="../h_src/57964492.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>;  <a  class="comments">/* remove 'curr' from list */</a>
+   837 :    <a href="../h_src/57965444.htm" class="localvar">p</a> = &amp;<a href="../h_src/57964492.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>;  <a  class="comments">/* go to next element */</a>
+<a href="../h_aa/57963132.htm" class=function>udata2finalize</a>                                   lgc.c
+   887 :    <a href="../h_src/57962996.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644732.htm" class="variable">tobefnz</a> = <a href="../h_src/57962860.htm" class="localvar">o</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>;  <a  class="comments">/* remove it from 'tobefnz' list */</a>
+<a href="../h_aa/57953748.htm" class=function>whitelist</a>                                        lgc.c
+  1156 :    for (; <a href="../h_src/57953476.htm" class="localvar">p</a> != NULL; <a href="../h_src/57953476.htm" class="localvar">p</a> = <a href="../h_src/57953476.htm" class="localvar">p</a>-&gt;<a href="../h_src/57528176.htm" class="variable">next</a>)
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable next</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

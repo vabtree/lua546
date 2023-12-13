@@ -1,0 +1,45 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>CIST_TAIL</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57648676.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57648676.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57648676.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57648676.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57747764.htm" class=function>auxgetinfo</a>                                       ldebug.c
+   353 :    <a href="../h_src/57747356.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57422968.htm" class="variable">istailcall</a> = (<a href="../h_src/57747084.htm" class="localvar">ci</a>) ? <a href="../h_src/57747084.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp; <a href="../h_src/57648676.htm" class="macro">CIST_TAIL</a> : 0;
+<a href="../h_aa/57748308.htm" class=function>getfuncname</a>                                      ldebug.c
+   321 :    if (<a href="../h_src/57748036.htm" class="localvar">ci</a> != NULL &amp;&amp; !(<a href="../h_src/57748036.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp; <a href="../h_src/57648676.htm" class="macro">CIST_TAIL</a>))
+<a href="../h_aa/57633444.htm" class=function>luaD_hookcall</a>                                    ldo.c
+   372 :    int <a href="../h_src/57874148.htm" class="localvar">event</a> = (<a href="../h_src/57874284.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> &amp; <a href="../h_src/57648676.htm" class="macro">CIST_TAIL</a>) ? <a href="../h_src/57425348.htm" class="macro">LUA_HOOKTAILCALL</a>
+<a href="../h_aa/57633376.htm" class=function>luaD_pretailcall</a>                                 ldo.c
+   566 :    <a href="../h_src/57866940.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649424.htm" class="variable">callstatus</a> |= <a href="../h_src/57648676.htm" class="macro">CIST_TAIL</a>;
+</pre>
+<h4><a class="legend">Table lists functions that directly use CIST_TAIL</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

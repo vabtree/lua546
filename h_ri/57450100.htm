@@ -1,0 +1,61 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>LUA_MAXINTEGER</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57450100.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57450100.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57450100.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57450100.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/58062016.htm" class=file>lvm.c</a>
+    67 :    #if ((((<a href="../h_src/57450100.htm" class="macro">LUA_MAXINTEGER</a> &gt;&gt; (<a href="../h_src/58061268.htm" class="macro">NBM</a> / 4)) &gt;&gt; (<a href="../h_src/58061268.htm" class="macro">NBM</a> / 4)) &gt;&gt; (<a href="../h_src/58061268.htm" class="macro">NBM</a> / 4)) \
+<a href="../h_aa/58058684.htm" class=function>forlimit</a>                                         lvm.c
+   186 :    *<a href="../h_src/58058140.htm" class="localvar">p</a> = <a href="../h_src/57450100.htm" class="macro">LUA_MAXINTEGER</a>;  <a  class="comments">/* truncate */</a>
+<a href="../h_aa/57909888.htm" class=function>l_str2int</a>                                        lobject.c
+   293 :    if (<a href="../h_src/57909480.htm" class="localvar">a</a> &gt;= <a href="../h_src/57910160.htm" class="macro">MAXBY10</a> &amp;&amp; (<a href="../h_src/57909480.htm" class="localvar">a</a> &gt; <a href="../h_src/57910160.htm" class="macro">MAXBY10</a> || <a href="../h_src/57909072.htm" class="localvar">d</a> &gt; <a href="../h_src/57910024.htm" class="macro">MAXLASTD</a> + <a href="../h_src/57909208.htm" class="localvar">neg</a>))  <a  class="comments">/* overflow? */</a>
+<a href="../h_aa/57438132.htm" class=function>lua_Unsigned</a>                                     ltable.c
+   860 :    if (<a href="../h_src/58092412.htm" class="localvar">j</a> &lt;= <a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/57450100.htm" class="macro">LUA_MAXINTEGER</a>) / 2)
+   863 :    <a href="../h_src/58092412.htm" class="localvar">j</a> = <a href="../h_src/57450100.htm" class="macro">LUA_MAXINTEGER</a>;
+<a href="../h_aa/57574212.htm" class=function>luaopen_math</a>                                     lmathlib.c
+   757 :    <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143217412.htm" class="localvar">L</a>, <a href="../h_src/57450100.htm" class="macro">LUA_MAXINTEGER</a>);
+<a href="../h_aa/57618552.htm" class=function>luaS_newlstr</a>                                     lstring.c
+   226 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/58123692.htm" class="localvar">l</a> &gt;= (<a href="../h_src/57550208.htm" class="macro">MAX_SIZE</a> - sizeof(<a href="../h_src/57522736.htm" class="type">TString</a>))/sizeof(char)))
+<a href="../h_aa/57618620.htm" class=function>luaS_newudata</a>                                    lstring.c
+   262 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/58122604.htm" class="localvar">s</a> &gt; <a href="../h_src/57550208.htm" class="macro">MAX_SIZE</a> - <a href="../h_src/57518044.htm" class="macro">udatamemoffset</a>(<a href="../h_src/58122468.htm" class="localvar">nuvalue</a>)))
+<a href="../h_aa/57610868.htm" class=function>luaV_concat</a>                                      lvm.c
+   659 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/58201864.htm" class="localvar">l</a> &gt;= (<a href="../h_src/57550208.htm" class="macro">MAX_SIZE</a>/sizeof(char)) - <a href="../h_src/58202136.htm" class="localvar">tl</a>)) {
+<a href="../h_aa/57939740.htm" class=function>save</a>                                             llex.c
+    61 :    if (<a href="../h_src/57655204.htm" class="macro">luaZ_sizebuffer</a>(<a href="../h_src/57939332.htm" class="localvar">b</a>) &gt;= <a href="../h_src/57550208.htm" class="macro">MAX_SIZE</a>/2)
+<a href="../h_aa/143354024.htm" class=function>setfield</a>                                         loslib.c
+   210 :    #if (defined(<a href="../h_src/143358580.htm" class="macro">LUA_NUMTIME</a>) &amp;&amp; <a href="../h_src/57450100.htm" class="macro">LUA_MAXINTEGER</a> &lt;= INT_MAX)
+<a href="../h_aa/143428184.htm" class=function>tmove</a>                                            ltablib.c
+   124 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143428048.htm" class="localvar">L</a>, <a href="../h_src/143427912.htm" class="localvar">f</a> &gt; 0 || <a href="../h_src/143427776.htm" class="localvar">e</a> &lt; <a href="../h_src/57450100.htm" class="macro">LUA_MAXINTEGER</a> + f, 3,
+   127 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143428048.htm" class="localvar">L</a>, <a href="../h_src/143427640.htm" class="localvar">t</a> &lt;= <a href="../h_src/57450100.htm" class="macro">LUA_MAXINTEGER</a> - <a href="../h_src/143427368.htm" class="localvar">n</a> + 1, 4,
+</pre>
+<h4><a class="legend">Table lists functions that directly use LUA_MAXINTEGER</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

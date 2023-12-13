@@ -1,0 +1,59 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>LUA_TLIGHTUSERDATA</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57443776.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57443776.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57443776.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57443776.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/58116484.htm" class=function>equalkey</a>                                         ltable.c
+   227 :    case <a href="../h_src/57522124.htm" class="macro">LUA_VLIGHTUSERDATA</a>:
+   228 :    return <a href="../h_src/57521580.htm" class="macro">pvalue</a>(<a href="../h_src/58116348.htm" class="localvar">k1</a>) == <a href="../h_src/57521308.htm" class="macro">pvalueraw</a>(<a href="../h_src/57504104.htm" class="macro">keyval</a>(<a href="../h_src/58116212.htm" class="localvar">n2</a>));
+<a href="../h_aa/57438608.htm" class=function>lua_isuserdata</a>                                   lapi.c
+   324 :    return (<a href="../h_src/57521716.htm" class="macro">ttisfulluserdata</a>(<a href="../h_src/57598288.htm" class="localvar">o</a>) || <a href="../h_src/57521852.htm" class="macro">ttislightuserdata</a>(<a href="../h_src/57598288.htm" class="localvar">o</a>));
+<a href="../h_aa/57434528.htm" class=function>lua_pushlightuserdata</a>                            lapi.c
+   618 :    <a href="../h_src/57521172.htm" class="macro">setpvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57585028.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>), <a href="../h_src/57584892.htm" class="localvar">p</a>);
+<a href="../h_aa/57433984.htm" class=function>lua_rawgetp</a>                                      lapi.c
+   757 :    <a href="../h_src/57521172.htm" class="macro">setpvalue</a>(&amp;<a href="../h_src/57736980.htm" class="localvar">k</a>, <a href="../h_src/57547488.htm" class="macro">cast_voidp</a>(<a href="../h_src/57536200.htm" class="variable">p</a>));
+<a href="../h_aa/57433236.htm" class=function>lua_rawsetp</a>                                      lapi.c
+   916 :    <a href="../h_src/57521172.htm" class="macro">setpvalue</a>(&amp;<a href="../h_src/57728276.htm" class="localvar">k</a>, <a href="../h_src/57547488.htm" class="macro">cast_voidp</a>(<a href="../h_src/57536200.htm" class="variable">p</a>));
+<a href="../h_aa/57437860.htm" class=function>lua_topointer</a>                                    lapi.c
+   479 :    case <a href="../h_src/57521988.htm" class="macro">LUA_VUSERDATA</a>: case <a href="../h_src/57522124.htm" class="macro">LUA_VLIGHTUSERDATA</a>:
+<a href="../h_aa/57420316.htm" class=function>luaL_typeerror</a>                                   lauxlib.c
+   198 :    else if (<a href="../h_src/57438540.htm" class="function">lua_type</a>(<a href="../h_src/58346152.htm" class="localvar">L</a>, <a href="../h_src/58346016.htm" class="localvar">arg</a>) == <a href="../h_src/57443776.htm" class="macro">LUA_TLIGHTUSERDATA</a>)
+<a href="../h_aa/57611752.htm" class=function>luaV_equalobj</a>                                    lvm.c
+   585 :    case <a href="../h_src/57522124.htm" class="macro">LUA_VLIGHTUSERDATA</a>: return <a href="../h_src/57521580.htm" class="macro">pvalue</a>(<a href="../h_src/58204720.htm" class="localvar">t1</a>) == <a href="../h_src/57521580.htm" class="macro">pvalue</a>(<a href="../h_src/58204584.htm" class="localvar">t2</a>);
+<a href="../h_aa/58118660.htm" class=function>mainpositionTV</a>                                   ltable.c
+   173 :    case <a href="../h_src/57522124.htm" class="macro">LUA_VLIGHTUSERDATA</a>: {
+   174 :    void *<a href="../h_src/58117708.htm" class="localvar">p</a> = <a href="../h_src/57521580.htm" class="macro">pvalue</a>(<a href="../h_src/58118388.htm" class="localvar">key</a>);
+<a href="../h_aa/57591896.htm" class=function>touserdata</a>                                       lapi.c
+   450 :    case <a href="../h_src/57443776.htm" class="macro">LUA_TLIGHTUSERDATA</a>: return <a href="../h_src/57521580.htm" class="macro">pvalue</a>(<a href="../h_src/57591760.htm" class="localvar">o</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use LUA_TLIGHTUSERDATA</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

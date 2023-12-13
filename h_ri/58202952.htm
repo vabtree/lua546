@@ -1,0 +1,50 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>L</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58202952.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/58202952.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/58202952.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/58202952.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57610868.htm" class=function>luaV_concat</a>                                      lvm.c
+   642 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58202680.htm" class="localvar">top</a> = <a href="../h_src/58202952.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>;
+   645 :    !<a href="../h_src/58204040.htm" class="macro">tostring</a>(<a href="../h_src/58202952.htm" class="localvar">L</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58202680.htm" class="localvar">top</a> - 1)))
+   646 :    <a href="../h_src/57497712.htm" class="function">luaT_tryconcatTM</a>(<a href="../h_src/58202952.htm" class="localvar">L</a>);  <a  class="comments">/* may invalidate 'top' */</a>
+   648 :    <a href="../h_src/57547624.htm" class="macro">cast_void</a>(<a href="../h_src/58204040.htm" class="macro">tostring</a>(<a href="../h_src/58202952.htm" class="localvar">L</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58202680.htm" class="localvar">top</a> - 2)));  <a  class="comments">/* result is first operand */</a>
+   650 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/58202952.htm" class="localvar">L</a>, <a href="../h_src/58202680.htm" class="localvar">top</a> - 2, <a href="../h_src/58202680.htm" class="localvar">top</a> - 1);  <a  class="comments">/* result is second op. */</a>
+   657 :    for (<a href="../h_src/58202544.htm" class="localvar">n</a> = 1; <a href="../h_src/58202544.htm" class="localvar">n</a> &lt; <a href="../h_src/58202816.htm" class="localvar">total</a> &amp;&amp; <a href="../h_src/58204040.htm" class="macro">tostring</a>(<a href="../h_src/58202952.htm" class="localvar">L</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58202680.htm" class="localvar">top</a> - <a href="../h_src/58202544.htm" class="localvar">n</a> - 1)); <a href="../h_src/58202544.htm" class="localvar">n</a>++) {
+   660 :    <a href="../h_src/58202952.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/58202680.htm" class="localvar">top</a> - <a href="../h_src/58202816.htm" class="localvar">total</a>;  <a  class="comments">/* pop strings to avoid wasting stack */</a>
+   661 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/58202952.htm" class="localvar">L</a>, &quot;string length overflow&quot;);
+   668 :    <a href="../h_src/58202000.htm" class="localvar">ts</a> = <a href="../h_src/57618552.htm" class="function">luaS_newlstr</a>(<a href="../h_src/58202952.htm" class="localvar">L</a>, <a href="../h_src/58201728.htm" class="localvar">buff</a>, <a href="../h_src/58202136.htm" class="localvar">tl</a>);
+   671 :    <a href="../h_src/58202000.htm" class="localvar">ts</a> = <a href="../h_src/57618416.htm" class="function">luaS_createlngstrobj</a>(<a href="../h_src/58202952.htm" class="localvar">L</a>, <a href="../h_src/58202136.htm" class="localvar">tl</a>);
+   674 :    <a href="../h_src/57524096.htm" class="macro">setsvalue2s</a>(<a href="../h_src/58202952.htm" class="localvar">L</a>, <a href="../h_src/58202680.htm" class="localvar">top</a> - <a href="../h_src/58202544.htm" class="localvar">n</a>, <a href="../h_src/58202000.htm" class="localvar">ts</a>);  <a  class="comments">/* create result */</a>
+   677 :    <a href="../h_src/58202952.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> -= <a href="../h_src/58202544.htm" class="localvar">n</a> - 1;  <a  class="comments">/* popped 'n' strings and pushed one */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable L</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

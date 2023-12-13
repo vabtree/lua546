@@ -1,0 +1,53 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>fs</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58002000.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/58002000.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/58002000.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/58002000.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/58002544.htm" class=function>repeatstat</a>                                       lparser.c
+  1490 :    <a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/58002000.htm" class="localvar">fs</a> = <a href="../h_src/58002408.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/58002544.htm" class=function>repeatstat</a>                                       lparser.c
+  1491 :    int <a href="../h_src/58001864.htm" class="localvar">repeat_init</a> = <a href="../h_src/57669252.htm" class="function">luaK_getlabel</a>(<a href="../h_src/58002000.htm" class="localvar">fs</a>);
+  1493 :    <a href="../h_src/58028792.htm" class="function">enterblock</a>(<a href="../h_src/58002000.htm" class="localvar">fs</a>, &amp;<a href="../h_src/58001728.htm" class="localvar">bl1</a>, 1);  <a  class="comments">/* loop block */</a>
+  1494 :    <a href="../h_src/58028792.htm" class="function">enterblock</a>(<a href="../h_src/58002000.htm" class="localvar">fs</a>, &amp;<a href="../h_src/58001592.htm" class="localvar">bl2</a>, 0);  <a  class="comments">/* scope block */</a>
+  1499 :    <a href="../h_src/58027704.htm" class="function">leaveblock</a>(<a href="../h_src/58002000.htm" class="localvar">fs</a>);  <a  class="comments">/* finish scope */</a>
+  1501 :    int <a href="../h_src/58001456.htm" class="localvar">exit</a> = <a href="../h_src/57669592.htm" class="function">luaK_jump</a>(<a href="../h_src/58002000.htm" class="localvar">fs</a>);  <a  class="comments">/* normal exit must jump over fix */</a>
+  1502 :    <a href="../h_src/57669388.htm" class="function">luaK_patchtohere</a>(<a href="../h_src/58002000.htm" class="localvar">fs</a>, <a href="../h_src/58002136.htm" class="localvar">condexit</a>);  <a  class="comments">/* repetition must close upvalues */</a>
+  1503 :    <a href="../h_src/57672380.htm" class="macro">luaK_codeABC</a>(<a href="../h_src/58002000.htm" class="localvar">fs</a>, <a href="../h_src/57686864.htm" class="variable">OP_CLOSE</a>, <a href="../h_src/58047220.htm" class="function">reglevel</a>(<a href="../h_src/58002000.htm" class="localvar">fs</a>, <a href="../h_src/58001592.htm" class="localvar">bl2</a>.<a href="../h_src/58056128.htm" class="variable">nactvar</a>), 0, 0);
+  1504 :    <a href="../h_src/58002136.htm" class="localvar">condexit</a> = <a href="../h_src/57669592.htm" class="function">luaK_jump</a>(<a href="../h_src/58002000.htm" class="localvar">fs</a>);  <a  class="comments">/* repeat after closing upvalues */</a>
+  1505 :    <a href="../h_src/57669388.htm" class="function">luaK_patchtohere</a>(<a href="../h_src/58002000.htm" class="localvar">fs</a>, <a href="../h_src/58001456.htm" class="localvar">exit</a>);  <a  class="comments">/* normal exit comes to here */</a>
+  1507 :    <a href="../h_src/57669456.htm" class="function">luaK_patchlist</a>(<a href="../h_src/58002000.htm" class="localvar">fs</a>, <a href="../h_src/58002136.htm" class="localvar">condexit</a>, <a href="../h_src/58001864.htm" class="localvar">repeat_init</a>);  <a  class="comments">/* close the loop */</a>
+  1508 :    <a href="../h_src/58027704.htm" class="function">leaveblock</a>(<a href="../h_src/58002000.htm" class="localvar">fs</a>);  <a  class="comments">/* finish loop */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable fs</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

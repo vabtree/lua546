@@ -1,0 +1,54 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>j</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58092412.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/58092412.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/58092412.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/58092412.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57438132.htm" class=function>lua_Unsigned</a>                                     ltable.c
+   857 :    if (<a href="../h_src/58092412.htm" class="localvar">j</a> == 0) <a href="../h_src/58092412.htm" class="localvar">j</a>++;  <a  class="comments">/* the caller ensures 'j + 1' is present */</a>
+   861 :    <a href="../h_src/58092412.htm" class="localvar">j</a> *= 2;
+   863 :    <a href="../h_src/58092412.htm" class="localvar">j</a> = <a href="../h_src/57450100.htm" class="macro">LUA_MAXINTEGER</a>;
+   873 :    if (<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617056.htm" class="function">luaH_getint</a>(<a href="../h_src/58092548.htm" class="localvar">t</a>, <a href="../h_src/58092140.htm" class="localvar">m</a>))) <a href="../h_src/58092412.htm" class="localvar">j</a> = <a href="../h_src/58092140.htm" class="localvar">m</a>;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57438132.htm" class=function>lua_Unsigned</a>                                     ltable.c
+   857 :    if (<a href="../h_src/58092412.htm" class="localvar">j</a> == 0) <a href="../h_src/58092412.htm" class="localvar">j</a>++;  <a  class="comments">/* the caller ensures 'j + 1' is present */</a>
+   859 :    <a href="../h_src/58092276.htm" class="localvar">i</a> = <a href="../h_src/58092412.htm" class="localvar">j</a>;  <a  class="comments">/* 'i' is a present index */</a>
+   860 :    if (<a href="../h_src/58092412.htm" class="localvar">j</a> &lt;= <a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/57450100.htm" class="macro">LUA_MAXINTEGER</a>) / 2)
+   861 :    <a href="../h_src/58092412.htm" class="localvar">j</a> *= 2;
+   864 :    if (<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617056.htm" class="function">luaH_getint</a>(<a href="../h_src/58092548.htm" class="localvar">t</a>, <a href="../h_src/58092412.htm" class="localvar">j</a>)))  <a  class="comments">/* t[j] not present? */</a>
+   867 :    return <a href="../h_src/58092412.htm" class="localvar">j</a>;  <a  class="comments">/* well, max integer is a boundary... */</a>
+   869 :    } while (!<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617056.htm" class="function">luaH_getint</a>(<a href="../h_src/58092548.htm" class="localvar">t</a>, <a href="../h_src/58092412.htm" class="localvar">j</a>)));  <a  class="comments">/* repeat until an absent t[j] */</a>
+   871 :    while (<a href="../h_src/58092412.htm" class="localvar">j</a> - <a href="../h_src/58092276.htm" class="localvar">i</a> &gt; 1u) {  <a  class="comments">/* do a binary search between them */</a>
+   872 :    <a href="../h_src/57438132.htm" class="function">lua_Unsigned</a> <a href="../h_src/58092140.htm" class="localvar">m</a> = (<a href="../h_src/58092276.htm" class="localvar">i</a> + <a href="../h_src/58092412.htm" class="localvar">j</a>) / 2;
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable j</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

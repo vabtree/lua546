@@ -1,0 +1,49 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>L</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57725828.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57725828.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57725828.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57725828.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57433032.htm" class=function>lua_callk</a>                                        lapi.c
+  1008 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57725828.htm" class="localvar">L</a>, k == NULL || !<a href="../h_src/57647452.htm" class="macro">isLua</a>(L-&gt;ci),
+  1010 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57725828.htm" class="localvar">L</a>, nargs+1);
+  1011 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57725828.htm" class="localvar">L</a>, L-&gt;status == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>, &quot;cannot do calls on non-normal thread&quot;);
+  1012 :    <a href="../h_src/57725964.htm" class="macro">checkresults</a>(<a href="../h_src/57725828.htm" class="localvar">L</a>, nargs, nresults);
+  1013 :    <a href="../h_src/57725148.htm" class="localvar">func</a> = <a href="../h_src/57725828.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - (<a href="../h_src/57725692.htm" class="localvar">nargs</a>+1);
+  1014 :    if (<a href="../h_src/57725284.htm" class="localvar">k</a> != NULL &amp;&amp; <a href="../h_src/57653776.htm" class="macro">yieldable</a>(<a href="../h_src/57725828.htm" class="localvar">L</a>)) {  <a  class="comments">/* need to prepare continuation? */</a>
+  1015 :    <a href="../h_src/57725828.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650444.htm" class="variable">c</a>.<a href="../h_src/57650716.htm" class="variable">k</a> = <a href="../h_src/57725284.htm" class="localvar">k</a>;  <a  class="comments">/* save continuation */</a>
+  1016 :    <a href="../h_src/57725828.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57650308.htm" class="variable">u</a>.<a href="../h_src/57650444.htm" class="variable">c</a>.<a href="../h_src/57650580.htm" class="variable">ctx</a> = <a href="../h_src/57725420.htm" class="localvar">ctx</a>;  <a  class="comments">/* save context */</a>
+  1017 :    <a href="../h_src/57633240.htm" class="function">luaD_call</a>(<a href="../h_src/57725828.htm" class="localvar">L</a>, <a href="../h_src/57725148.htm" class="localvar">func</a>, <a href="../h_src/57725556.htm" class="localvar">nresults</a>);  <a  class="comments">/* do the call */</a>
+  1020 :    <a href="../h_src/57633172.htm" class="function">luaD_callnoyield</a>(<a href="../h_src/57725828.htm" class="localvar">L</a>, <a href="../h_src/57725148.htm" class="localvar">func</a>, <a href="../h_src/57725556.htm" class="localvar">nresults</a>);  <a  class="comments">/* just do the call */</a>
+  1021 :    <a href="../h_src/57637796.htm" class="macro">adjustresults</a>(<a href="../h_src/57725828.htm" class="localvar">L</a>, <a href="../h_src/57725556.htm" class="localvar">nresults</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable L</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,57 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">Udata::</a>nuvalue</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57519948.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57519948.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57519948.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57519948.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57519948.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57618620.htm" class=function>luaS_newudata</a>                                    lstring.c
+   267 :    <a href="../h_src/58122332.htm" class="localvar">u</a>-&gt;<a href="../h_src/57519948.htm" class="variable">nuvalue</a> = <a href="../h_src/58122468.htm" class="localvar">nuvalue</a>;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57966804.htm" class=function>freeobj</a>                                          lgc.c
+   796 :    <a href="../h_src/57495876.htm" class="macro">luaM_freemem</a>(<a href="../h_src/57966668.htm" class="localvar">L</a>, <a href="../h_src/57966532.htm" class="localvar">o</a>, <a href="../h_src/57517772.htm" class="macro">sizeudata</a>(<a href="../h_src/57966124.htm" class="localvar">u</a>-&gt;<a href="../h_src/57519948.htm" class="variable">nuvalue</a>, <a href="../h_src/57966124.htm" class="localvar">u</a>-&gt;<a href="../h_src/57519880.htm" class="variable">len</a>));
+<a href="../h_aa/57433712.htm" class=function>lua_getiuservalue</a>                                lapi.c
+   808 :    if (<a href="../h_src/57734668.htm" class="localvar">n</a> &lt;= 0 || <a href="../h_src/57734668.htm" class="localvar">n</a> &gt; <a href="../h_src/57521444.htm" class="macro">uvalue</a>(<a href="../h_src/57734532.htm" class="localvar">o</a>)-&gt;<a href="../h_src/57519948.htm" class="variable">nuvalue</a>) {
+<a href="../h_aa/57433848.htm" class=function>lua_newuserdatauv</a>                                lapi.c
+  1352 :    return <a href="../h_src/57517908.htm" class="macro">getudatamem</a>(<a href="../h_src/57713520.htm" class="localvar">u</a>);
+<a href="../h_aa/57433100.htm" class=function>lua_setiuservalue</a>                                lapi.c
+   980 :    if (!(<a href="../h_src/57547080.htm" class="macro">cast_uint</a>(<a href="../h_src/57726644.htm" class="localvar">n</a>) - 1u &lt; <a href="../h_src/57547080.htm" class="macro">cast_uint</a>(<a href="../h_src/57521444.htm" class="macro">uvalue</a>(<a href="../h_src/57726508.htm" class="localvar">o</a>)-&gt;<a href="../h_src/57519948.htm" class="variable">nuvalue</a>)))
+<a href="../h_aa/57826752.htm" class=function>reallymarkobject</a>                                 lgc.c
+   315 :    if (<a href="../h_src/57821176.htm" class="localvar">u</a>-&gt;<a href="../h_src/57519948.htm" class="variable">nuvalue</a> == 0) {  <a  class="comments">/* no user values? */</a>
+<a href="../h_aa/57591896.htm" class=function>touserdata</a>                                       lapi.c
+   449 :    case <a href="../h_src/57443096.htm" class="macro">LUA_TUSERDATA</a>: return <a href="../h_src/57517908.htm" class="macro">getudatamem</a>(<a href="../h_src/57521444.htm" class="macro">uvalue</a>(<a href="../h_src/57591760.htm" class="localvar">o</a>));
+<a href="../h_aa/57974148.htm" class=function>traverseudata</a>                                    lgc.c
+   566 :    for (<a href="../h_src/57973740.htm" class="localvar">i</a> = 0; <a href="../h_src/57973740.htm" class="localvar">i</a> &lt; <a href="../h_src/57973876.htm" class="localvar">u</a>-&gt;<a href="../h_src/57519948.htm" class="variable">nuvalue</a>; <a href="../h_src/57973740.htm" class="localvar">i</a>++)
+   569 :    return 1 + <a href="../h_src/57973876.htm" class="localvar">u</a>-&gt;<a href="../h_src/57519948.htm" class="variable">nuvalue</a>;
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable nuvalue</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,47 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>ispow2</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57549528.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57549528.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57549528.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57549528.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/58115532.htm" class=function>ispow2realasize</a>                                  ltable.c
+   279 :    return (!<a href="../h_src/57505532.htm" class="macro">isrealasize</a>(<a href="../h_src/58115396.htm" class="localvar">t</a>) || <a href="../h_src/57549528.htm" class="macro">ispow2</a>(<a href="../h_src/58115396.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504784.htm" class="variable">alimit</a>));
+<a href="../h_aa/57617056.htm" class=function>luaH_getint</a>                                      ltable.c
+   733 :    else if (!<a href="../h_src/58115940.htm" class="macro">limitequalsasize</a>(<a href="../h_src/58097580.htm" class="localvar">t</a>) &amp;&amp;  <a  class="comments">/* key still may be in the array part? */</a>
+<a href="../h_aa/57592440.htm" class=function>luaH_getn</a>                                        ltable.c
+   929 :    if (<a href="../h_src/58115532.htm" class="function">ispow2realasize</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>) &amp;&amp; !<a href="../h_src/57549528.htm" class="macro">ispow2</a>(<a href="../h_src/58091188.htm" class="localvar">limit</a> - 1)) {
+   946 :    if (!<a href="../h_src/58115940.htm" class="macro">limitequalsasize</a>(<a href="../h_src/58091324.htm" class="localvar">t</a>)) {  <a  class="comments">/* (2)? */</a>
+<a href="../h_aa/57616172.htm" class=function>luaH_realasize</a>                                   ltable.c
+   251 :    if (<a href="../h_src/58115940.htm" class="macro">limitequalsasize</a>(<a href="../h_src/58115804.htm" class="localvar">t</a>))
+   267 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57549528.htm" class="macro">ispow2</a>(size) &amp;&amp; size/2 &lt; t-&gt;alimit &amp;&amp; t-&gt;alimit &lt; size);
+</pre>
+<h4><a class="legend">Table lists functions that directly use ispow2</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

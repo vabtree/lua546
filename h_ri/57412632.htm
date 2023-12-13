@@ -1,0 +1,98 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaL_Stream</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57412632.htm" class="type" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57412632.htm" class="type" target="_self">Usage</a></li>
+<li><a href="../h_src/57412632.htm" class="type" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57412632.htm" class="type" target="_self">Used By</a></li>
+<li><a href="../h_rx/57412632.htm" class="type" target="_self">Cross Reference</a></li>
+<li><a href="../h_ro/57412632.htm" class="type" target="_self">Built From</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Used In</h4>
+<pre><a href="../h_aa/143259232.htm" class=function>aux_close</a>                                        liolib.c
+   215 :    <a href="../h_src/143261204.htm" class="type">LStream</a> *<a href="../h_src/143258960.htm" class="localvar">p</a> = <a href="../h_src/143261136.htm" class="macro">tolstream</a>(<a href="../h_src/143259096.htm" class="localvar">L</a>);
+<a href="../h_aa/143258144.htm" class=function>f_gc</a>                                             liolib.c
+   236 :    <a href="../h_src/143261204.htm" class="type">LStream</a> *<a href="../h_src/143257872.htm" class="localvar">p</a> = <a href="../h_src/143261136.htm" class="macro">tolstream</a>(<a href="../h_src/143258008.htm" class="localvar">L</a>);
+<a href="../h_aa/143260388.htm" class=function>f_tostring</a>                                       liolib.c
+   178 :    <a href="../h_src/143261204.htm" class="type">LStream</a> *<a href="../h_src/143260116.htm" class="localvar">p</a> = <a href="../h_src/143261136.htm" class="macro">tolstream</a>(<a href="../h_src/143260252.htm" class="localvar">L</a>);
+<a href="../h_aa/143253588.htm" class=function>getiofile</a>                                        liolib.c
+   311 :    <a href="../h_src/143253248.htm" class="localvar">p</a> = (<a href="../h_src/143261204.htm" class="type">LStream</a> *)<a href="../h_src/57437996.htm" class="function">lua_touserdata</a>(<a href="../h_src/143253520.htm" class="localvar">L</a>, -1);
+<a href="../h_aa/143257736.htm" class=function>io_fclose</a>                                        liolib.c
+   247 :    <a href="../h_src/143261204.htm" class="type">LStream</a> *<a href="../h_src/143257464.htm" class="localvar">p</a> = <a href="../h_src/143261136.htm" class="macro">tolstream</a>(<a href="../h_src/143257600.htm" class="localvar">L</a>);
+<a href="../h_aa/143242368.htm" class=function>io_noclose</a>                                       liolib.c
+   798 :    <a href="../h_src/143261204.htm" class="type">LStream</a> *<a href="../h_src/143242096.htm" class="localvar">p</a> = <a href="../h_src/143261136.htm" class="macro">tolstream</a>(<a href="../h_src/143242232.htm" class="localvar">L</a>);
+<a href="../h_aa/143255288.htm" class=function>io_pclose</a>                                        liolib.c
+   284 :    <a href="../h_src/143261204.htm" class="type">LStream</a> *<a href="../h_src/143255016.htm" class="localvar">p</a> = <a href="../h_src/143261136.htm" class="macro">tolstream</a>(<a href="../h_src/143255152.htm" class="localvar">L</a>);
+<a href="../h_aa/143251888.htm" class=function>io_readline</a>                                      liolib.c
+   630 :    <a href="../h_src/143261204.htm" class="type">LStream</a> *<a href="../h_src/143246652.htm" class="localvar">p</a> = (<a href="../h_src/143261204.htm" class="type">LStream</a> *)<a href="../h_src/57437996.htm" class="function">lua_touserdata</a>(<a href="../h_src/143246788.htm" class="localvar">L</a>, <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(1));
+<a href="../h_aa/143260864.htm" class=function>io_type</a>                                          liolib.c
+   166 :    <a href="../h_src/143260524.htm" class="localvar">p</a> = (<a href="../h_src/143261204.htm" class="type">LStream</a> *)<a href="../h_src/57419500.htm" class="function">luaL_testudata</a>(<a href="../h_src/143260728.htm" class="localvar">L</a>, 1, <a href="../h_src/57412972.htm" class="macro">LUA_FILEHANDLE</a>);
+<a href="../h_aa/143261204.htm" class=type>LStream</a>                                          liolib.c
+   155 :    typedef <a href="../h_src/57412632.htm" class="type">luaL_Stream</a> <a href="../h_src/143261204.htm" class="type">LStream</a>;
+<a href="../h_aa/143257192.htm" class=function>newfile</a>                                          liolib.c
+   253 :    static <a href="../h_src/143261204.htm" class="type">LStream</a> *<a href="../h_src/143257192.htm" class="function">newfile</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143257056.htm" class="localvar">L</a>) {
+<a href="../h_aa/143259640.htm" class=function>newprefile</a>                                       liolib.c
+   201 :    static <a href="../h_src/143261204.htm" class="type">LStream</a> *<a href="../h_src/143259640.htm" class="function">newprefile</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143259504.htm" class="localvar">L</a>) {
+   202 :    <a href="../h_src/143261204.htm" class="type">LStream</a> *<a href="../h_src/143259368.htm" class="localvar">p</a> = (<a href="../h_src/143261204.htm" class="type">LStream</a> *)<a href="../h_src/57433848.htm" class="function">lua_newuserdatauv</a>(<a href="../h_src/143259504.htm" class="localvar">L</a>, sizeof(<a href="../h_src/143261204.htm" class="type">LStream</a>), 0);
+<a href="../h_aa/143242096.htm" class=variable>p</a>                                                liolib.c
+   798 :    <a href="../h_src/143261204.htm" class="type">LStream</a> *<a href="../h_src/143242096.htm" class="localvar">p</a> = <a href="../h_src/143261136.htm" class="macro">tolstream</a>(<a href="../h_src/143242232.htm" class="localvar">L</a>);
+<a href="../h_aa/143246652.htm" class=variable>p</a>                                                liolib.c
+   630 :    <a href="../h_src/143261204.htm" class="type">LStream</a> *<a href="../h_src/143246652.htm" class="localvar">p</a> = (<a href="../h_src/143261204.htm" class="type">LStream</a> *)<a href="../h_src/57437996.htm" class="function">lua_touserdata</a>(<a href="../h_src/143246788.htm" class="localvar">L</a>, <a href="../h_src/57445340.htm" class="macro">lua_upvalueindex</a>(1));
+<a href="../h_aa/143253248.htm" class=variable>p</a>                                                liolib.c
+   309 :    <a href="../h_src/143261204.htm" class="type">LStream</a> *<a href="../h_src/143253248.htm" class="localvar">p</a>;
+<a href="../h_aa/143253792.htm" class=variable>p</a>                                                liolib.c
+   302 :    <a href="../h_src/143261204.htm" class="type">LStream</a> *<a href="../h_src/143253792.htm" class="localvar">p</a> = <a href="../h_src/143257192.htm" class="function">newfile</a>(<a href="../h_src/143253928.htm" class="localvar">L</a>);
+<a href="../h_aa/143254268.htm" class=variable>p</a>                                                liolib.c
+   293 :    <a href="../h_src/143261204.htm" class="type">LStream</a> *<a href="../h_src/143254268.htm" class="localvar">p</a> = <a href="../h_src/143259640.htm" class="function">newprefile</a>(<a href="../h_src/143254676.htm" class="localvar">L</a>);
+<a href="../h_aa/143255016.htm" class=variable>p</a>                                                liolib.c
+   284 :    <a href="../h_src/143261204.htm" class="type">LStream</a> *<a href="../h_src/143255016.htm" class="localvar">p</a> = <a href="../h_src/143261136.htm" class="macro">tolstream</a>(<a href="../h_src/143255152.htm" class="localvar">L</a>);
+<a href="../h_aa/143255560.htm" class=variable>p</a>                                                liolib.c
+   272 :    <a href="../h_src/143261204.htm" class="type">LStream</a> *<a href="../h_src/143255560.htm" class="localvar">p</a> = <a href="../h_src/143257192.htm" class="function">newfile</a>(<a href="../h_src/143255968.htm" class="localvar">L</a>);
+<a href="../h_aa/143256240.htm" class=variable>p</a>                                                liolib.c
+   262 :    <a href="../h_src/143261204.htm" class="type">LStream</a> *<a href="../h_src/143256240.htm" class="localvar">p</a> = <a href="../h_src/143257192.htm" class="function">newfile</a>(<a href="../h_src/143256648.htm" class="localvar">L</a>);
+<a href="../h_aa/143256920.htm" class=variable>p</a>                                                liolib.c
+   254 :    <a href="../h_src/143261204.htm" class="type">LStream</a> *<a href="../h_src/143256920.htm" class="localvar">p</a> = <a href="../h_src/143259640.htm" class="function">newprefile</a>(<a href="../h_src/143257056.htm" class="localvar">L</a>);
+<a href="../h_aa/143257464.htm" class=variable>p</a>                                                liolib.c
+   247 :    <a href="../h_src/143261204.htm" class="type">LStream</a> *<a href="../h_src/143257464.htm" class="localvar">p</a> = <a href="../h_src/143261136.htm" class="macro">tolstream</a>(<a href="../h_src/143257600.htm" class="localvar">L</a>);
+<a href="../h_aa/143257872.htm" class=variable>p</a>                                                liolib.c
+   236 :    <a href="../h_src/143261204.htm" class="type">LStream</a> *<a href="../h_src/143257872.htm" class="localvar">p</a> = <a href="../h_src/143261136.htm" class="macro">tolstream</a>(<a href="../h_src/143258008.htm" class="localvar">L</a>);
+<a href="../h_aa/143258960.htm" class=variable>p</a>                                                liolib.c
+   215 :    <a href="../h_src/143261204.htm" class="type">LStream</a> *<a href="../h_src/143258960.htm" class="localvar">p</a> = <a href="../h_src/143261136.htm" class="macro">tolstream</a>(<a href="../h_src/143259096.htm" class="localvar">L</a>);
+<a href="../h_aa/143259368.htm" class=variable>p</a>                                                liolib.c
+   202 :    <a href="../h_src/143261204.htm" class="type">LStream</a> *<a href="../h_src/143259368.htm" class="localvar">p</a> = (<a href="../h_src/143261204.htm" class="type">LStream</a> *)<a href="../h_src/57433848.htm" class="function">lua_newuserdatauv</a>(<a href="../h_src/143259504.htm" class="localvar">L</a>, sizeof(<a href="../h_src/143261204.htm" class="type">LStream</a>), 0);
+<a href="../h_aa/143259776.htm" class=variable>p</a>                                                liolib.c
+   188 :    <a href="../h_src/143261204.htm" class="type">LStream</a> *<a href="../h_src/143259776.htm" class="localvar">p</a> = <a href="../h_src/143261136.htm" class="macro">tolstream</a>(<a href="../h_src/143259912.htm" class="localvar">L</a>);
+<a href="../h_aa/143260116.htm" class=variable>p</a>                                                liolib.c
+   178 :    <a href="../h_src/143261204.htm" class="type">LStream</a> *<a href="../h_src/143260116.htm" class="localvar">p</a> = <a href="../h_src/143261136.htm" class="macro">tolstream</a>(<a href="../h_src/143260252.htm" class="localvar">L</a>);
+<a href="../h_aa/143260524.htm" class=variable>p</a>                                                liolib.c
+   164 :    <a href="../h_src/143261204.htm" class="type">LStream</a> *<a href="../h_src/143260524.htm" class="localvar">p</a>;
+<a href="../h_aa/143259980.htm" class=function>tofile</a>                                           liolib.c
+   188 :    <a href="../h_src/143261204.htm" class="type">LStream</a> *<a href="../h_src/143259776.htm" class="localvar">p</a> = <a href="../h_src/143261136.htm" class="macro">tolstream</a>(<a href="../h_src/143259912.htm" class="localvar">L</a>);
+</pre>
+<h4><a class="legend">Table lists all symbols that directly use type luaL_Stream</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

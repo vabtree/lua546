@@ -1,0 +1,52 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>opr</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57766668.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57766668.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57766668.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57766668.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57669048.htm" class=function>luaK_posfix</a>                                      lcode.c
+  1768 :    <a href="../h_src/57766668.htm" class="localvar">opr</a> = <a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57672584.htm" class="type">BinOpr</a>, (<a href="../h_src/57766668.htm" class="localvar">opr</a> - <a href="../h_src/57673060.htm" class="variable">OPR_GT</a>) + <a href="../h_src/57673264.htm" class="variable">OPR_LT</a>);
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57669048.htm" class=function>luaK_posfix</a>                                      lcode.c
+  1705 :    if (<a href="../h_src/57672516.htm" class="macro">foldbinop</a>(<a href="../h_src/57766668.htm" class="localvar">opr</a>) &amp;&amp; <a href="../h_src/57785844.htm" class="function">constfolding</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57766668.htm" class="localvar">opr</a> + <a href="../h_src/57437792.htm" class="macro">LUA_OPADD</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>))
+  1707 :    switch (<a href="../h_src/57766668.htm" class="localvar">opr</a>) {
+  1726 :    <a href="../h_src/57773740.htm" class="function">codecommutative</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57766668.htm" class="localvar">opr</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>, <a href="../h_src/57766260.htm" class="localvar">line</a>);
+  1735 :    <a href="../h_src/57774692.htm" class="function">codearith</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57766668.htm" class="localvar">opr</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>, 0, <a href="../h_src/57766260.htm" class="localvar">line</a>);
+  1739 :    <a href="../h_src/57772788.htm" class="function">codebitwise</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57766668.htm" class="localvar">opr</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>, <a href="../h_src/57766260.htm" class="localvar">line</a>);
+  1751 :    <a href="../h_src/57781084.htm" class="function">codebinexpval</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57766668.htm" class="localvar">opr</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>, <a href="../h_src/57766260.htm" class="localvar">line</a>);
+  1758 :    <a href="../h_src/57781084.htm" class="function">codebinexpval</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57766668.htm" class="localvar">opr</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>, <a href="../h_src/57766260.htm" class="localvar">line</a>);
+  1762 :    <a href="../h_src/57770476.htm" class="function">codeeq</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57766668.htm" class="localvar">opr</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>);
+  1768 :    <a href="../h_src/57766668.htm" class="localvar">opr</a> = <a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57672584.htm" class="type">BinOpr</a>, (<a href="../h_src/57766668.htm" class="localvar">opr</a> - <a href="../h_src/57673060.htm" class="variable">OPR_GT</a>) + <a href="../h_src/57673264.htm" class="variable">OPR_LT</a>);
+  1771 :    <a href="../h_src/57771836.htm" class="function">codeorder</a>(<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57766668.htm" class="localvar">opr</a>, <a href="../h_src/57766532.htm" class="localvar">e1</a>, <a href="../h_src/57766396.htm" class="localvar">e2</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable opr</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

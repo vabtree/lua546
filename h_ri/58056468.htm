@@ -1,0 +1,52 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>eqstr</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58056468.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/58056468.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/58056468.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/58056468.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/58033960.htm" class=function>findlabel</a>                                        lparser.c
+   550 :    if (<a href="../h_src/58056468.htm" class="macro">eqstr</a>(<a href="../h_src/58033280.htm" class="localvar">lb</a>-&gt;<a href="../h_src/57677752.htm" class="variable">name</a>, <a href="../h_src/58033688.htm" class="localvar">name</a>))  <a  class="comments">/* correct label? */</a>
+<a href="../h_aa/58041372.htm" class=function>newupvalue</a>                                       lparser.c
+   371 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/58056468.htm" class="macro">eqstr</a>(name, getlocalvardesc(prev, v-&gt;u.var.vidx)-&gt;vd.name));
+   377 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/58056468.htm" class="macro">eqstr</a>(name, prev-&gt;f-&gt;upvalues[v-&gt;u.info].name));
+<a href="../h_aa/58042596.htm" class=function>searchupvalue</a>                                    lparser.c
+   346 :    if (<a href="../h_src/58056468.htm" class="macro">eqstr</a>(<a href="../h_src/58042052.htm" class="localvar">up</a>[<a href="../h_src/58042188.htm" class="localvar">i</a>].<a href="../h_src/57517364.htm" class="variable">name</a>, <a href="../h_src/58042324.htm" class="localvar">name</a>)) return <a href="../h_src/58042188.htm" class="localvar">i</a>;
+<a href="../h_aa/58040556.htm" class=function>searchvar</a>                                        lparser.c
+   394 :    if (<a href="../h_src/58056468.htm" class="macro">eqstr</a>(<a href="../h_src/58040284.htm" class="localvar">n</a>, <a href="../h_src/58039876.htm" class="localvar">vd</a>-&gt;<a href="../h_src/57678092.htm" class="variable">vd</a>.<a href="../h_src/57678228.htm" class="variable">name</a>)) {  <a  class="comments">/* found? */</a>
+<a href="../h_aa/58034980.htm" class=function>solvegoto</a>                                        lparser.c
+   531 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/58056468.htm" class="macro">eqstr</a>(gt-&gt;name, label-&gt;name));
+<a href="../h_aa/58031512.htm" class=function>solvegotos</a>                                       lparser.c
+   590 :    if (<a href="../h_src/58056468.htm" class="macro">eqstr</a>(<a href="../h_src/58031104.htm" class="localvar">gl</a>-&gt;<a href="../h_src/57677140.htm" class="variable">arr</a>[<a href="../h_src/58030968.htm" class="localvar">i</a>].<a href="../h_src/57677752.htm" class="variable">name</a>, <a href="../h_src/58031240.htm" class="localvar">lb</a>-&gt;<a href="../h_src/57677752.htm" class="variable">name</a>)) {
+<a href="../h_aa/58028248.htm" class=function>undefgoto</a>                                        lparser.c
+   660 :    if (<a href="../h_src/58056468.htm" class="macro">eqstr</a>(<a href="../h_src/58027976.htm" class="localvar">gt</a>-&gt;<a href="../h_src/57677752.htm" class="variable">name</a>, <a href="../h_src/57619572.htm" class="macro">luaS_newliteral</a>(<a href="../h_src/58028112.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, &quot;break&quot;))) {
+</pre>
+<h4><a class="legend">Table lists functions that directly use eqstr</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

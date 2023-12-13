@@ -1,0 +1,96 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lua_assert</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57415352.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57415352.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57415352.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57415352.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/143421044.htm" class=function>choosePivot</a>                                      ltablib.c
+   337 :    <a href="../h_src/57415352.htm" class="macro">lua_assert</a>(lo + r4 &lt;= p &amp;&amp; p &lt;= up - r4);
+<a href="../h_aa/143403296.htm" class=function>combine</a>                                          luac.c
+   146 :    return <a href="../h_src/143403432.htm" class="macro">toproto</a>(<a href="../h_src/143403160.htm" class="localvar">L</a>,-1);
+   152 :    <a href="../h_src/143402888.htm" class="localvar">f</a>=<a href="../h_src/143403432.htm" class="macro">toproto</a>(<a href="../h_src/143403160.htm" class="localvar">L</a>,-1);
+   155 :    <a href="../h_src/143402888.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a>[<a href="../h_src/143402752.htm" class="localvar">i</a>]=<a href="../h_src/143403432.htm" class="macro">toproto</a>(<a href="../h_src/143403160.htm" class="localvar">L</a>,<a href="../h_src/143402752.htm" class="localvar">i</a>-<a href="../h_src/143403024.htm" class="localvar">n</a>-1);
+<a href="../h_aa/143270452.htm" class=function>hookf</a>                                            ldblib.c
+   333 :    <a href="../h_src/57415352.htm" class="macro">lua_assert</a>(lua_getinfo(L, &quot;lS&quot;, ar));
+<a href="../h_aa/143251888.htm" class=function>io_readline</a>                                      liolib.c
+   640 :    <a href="../h_src/57415352.htm" class="macro">lua_assert</a>(n &gt; 0);  <a  class="comments">/* should return at least a nil */</a>
+<a href="../h_aa/143229720.htm" class=function>Ishl</a>                                             lmathlib.c
+   391 :    <a href="../h_src/57415352.htm" class="macro">lua_assert</a>(n &gt; 0 &amp;&amp; n &lt; 32);
+<a href="../h_aa/57555376.htm" class=function>loadline</a>                                         lua.c
+   569 :    <a href="../h_src/57415352.htm" class="macro">lua_assert</a>(lua_gettop(L) == 1);
+<a href="../h_aa/143225300.htm" class=function>lua_Unsigned</a>                                     lmathlib.c
+   547 :    <a href="../h_src/57415352.htm" class="macro">lua_assert</a>((lim &amp; (lim + 1)) == 0  <a  class="comments">/* 'lim + 1' is a power of 2, */</a>
+<a href="../h_aa/58291820.htm" class=function>luaB_auxwrap</a>                                     lcorolib.c
+    80 :    <a href="../h_src/57415352.htm" class="macro">lua_assert</a>(stat != <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>);
+<a href="../h_aa/57413312.htm" class=function>luaL_pushresult</a>                                  lauxlib.c
+   596 :    <a href="../h_src/58333300.htm" class="macro">checkbufferlevel</a>(B, -1);
+<a href="../h_aa/57418684.htm" class=function>luaL_ref</a>                                         lauxlib.c
+   674 :    <a href="../h_src/57415352.htm" class="macro">lua_assert</a>(lua_isinteger(L, -1));
+<a href="../h_aa/57418616.htm" class=function>luaL_unref</a>                                       lauxlib.c
+   693 :    <a href="../h_src/57415352.htm" class="macro">lua_assert</a>(lua_isinteger(L, -1));
+<a href="../h_aa/143300780.htm" class=function>num2straux</a>                                       lstrlib.c
+  1050 :    <a href="../h_src/57415352.htm" class="macro">lua_assert</a>(n &lt; sz);
+<a href="../h_aa/58332620.htm" class=function>prepbuffsize</a>                                     lauxlib.c
+   548 :    <a href="../h_src/58333300.htm" class="macro">checkbufferlevel</a>(B, boxidx);
+<a href="../h_aa/143397312.htm" class=function>PrintCode</a>                                        luac.c
+   343 :    int <a href="../h_src/143396224.htm" class="localvar">b</a>=<a href="../h_src/57693800.htm" class="macro">GETARG_B</a>(<a href="../h_src/143396632.htm" class="localvar">i</a>);
+   344 :    int <a href="../h_src/143396088.htm" class="localvar">c</a>=<a href="../h_src/57693392.htm" class="macro">GETARG_C</a>(<a href="../h_src/143396632.htm" class="localvar">i</a>);
+   345 :    int <a href="../h_src/143395952.htm" class="localvar">ax</a>=<a href="../h_src/57692304.htm" class="macro">GETARG_Ax</a>(<a href="../h_src/143396632.htm" class="localvar">i</a>);
+   346 :    int <a href="../h_src/143395816.htm" class="localvar">bx</a>=<a href="../h_src/57692576.htm" class="macro">GETARG_Bx</a>(<a href="../h_src/143396632.htm" class="localvar">i</a>);
+   347 :    int <a href="../h_src/143395680.htm" class="localvar">sb</a>=<a href="../h_src/57693664.htm" class="macro">GETARG_sB</a>(<a href="../h_src/143396632.htm" class="localvar">i</a>);
+   348 :    int <a href="../h_src/143395544.htm" class="localvar">sc</a>=<a href="../h_src/57693256.htm" class="macro">GETARG_sC</a>(<a href="../h_src/143396632.htm" class="localvar">i</a>);
+   349 :    int <a href="../h_src/143395408.htm" class="localvar">sbx</a>=<a href="../h_src/57692032.htm" class="macro">GETARG_sBx</a>(<a href="../h_src/143396632.htm" class="localvar">i</a>);
+   350 :    int <a href="../h_src/143395272.htm" class="localvar">isk</a>=<a href="../h_src/57692848.htm" class="macro">GETARG_k</a>(<a href="../h_src/143396632.htm" class="localvar">i</a>);
+   372 :    <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a>); <a href="../h_src/143398536.htm" class="function">PrintConstant</a>(<a href="../h_src/143397176.htm" class="localvar">f</a>,<a href="../h_src/143397720.htm" class="macro">EXTRAARG</a>);
+   431 :    <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a> &quot;%d&quot;,<a href="../h_src/143396088.htm" class="localvar">c</a>+<a href="../h_src/143397584.htm" class="macro">EXTRAARGC</a>);
+   558 :    <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%d&quot;,<a href="../h_src/57691760.htm" class="macro">GETARG_sJ</a>(<a href="../h_src/143396632.htm" class="localvar">i</a>));
+   559 :    <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a> &quot;to %d&quot;,<a href="../h_src/57691760.htm" class="macro">GETARG_sJ</a>(<a href="../h_src/143396632.htm" class="localvar">i</a>)+<a href="../h_src/143396904.htm" class="localvar">pc</a>+2);
+   636 :    if (<a href="../h_src/143395272.htm" class="localvar">isk</a>) <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/143397856.htm" class="macro">COMMENT</a> &quot;%d&quot;,<a href="../h_src/143396088.htm" class="localvar">c</a>+<a href="../h_src/143397584.htm" class="macro">EXTRAARGC</a>);
+<a href="../h_aa/143398536.htm" class=function>PrintConstant</a>                                    luac.c
+   311 :    <a href="../h_aa/57906760.htm" class="libfunc">sprintf</a>(<a href="../h_src/143397992.htm" class="localvar">buff</a>,<a href="../h_src/57451460.htm" class="macro">LUA_NUMBER_FMT</a>,<a href="../h_src/57526272.htm" class="macro">fltvalue</a>(<a href="../h_src/143398128.htm" class="localvar">o</a>));
+   317 :    <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/57451052.htm" class="macro">LUA_INTEGER_FMT</a>,<a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/143398128.htm" class="localvar">o</a>));
+   321 :    <a href="../h_src/143399964.htm" class="function">PrintString</a>(<a href="../h_src/57524368.htm" class="macro">tsvalue</a>(<a href="../h_src/143398128.htm" class="localvar">o</a>));
+<a href="../h_aa/143311524.htm" class=function>reprepstate</a>                                      lstrlib.c
+   769 :    <a href="../h_src/57415352.htm" class="macro">lua_assert</a>(ms-&gt;matchdepth == <a href="../h_src/143326892.htm" class="macro">MAXCCALLS</a>);
+<a href="../h_aa/143227748.htm" class=function>rotl</a>                                             lmathlib.c
+   421 :    <a href="../h_src/57415352.htm" class="macro">lua_assert</a>(n &gt; 0 &amp;&amp; n &lt; 32);
+<a href="../h_aa/143227340.htm" class=function>rotl1</a>                                            lmathlib.c
+   428 :    <a href="../h_src/57415352.htm" class="macro">lua_assert</a>(n &gt; 32 &amp;&amp; n &lt; 64);
+<a href="../h_aa/57562924.htm" class=function>runargs</a>                                          lua.c
+   343 :    <a href="../h_src/57415352.htm" class="macro">lua_assert</a>(argv[i][0] == '-');  <a  class="comments">/* already checked */</a>
+   349 :    <a href="../h_src/57415352.htm" class="macro">lua_assert</a>(extra != NULL);
+<a href="../h_aa/143291804.htm" class=function>str_format</a>                                       lstrlib.c
+  1372 :    <a href="../h_src/57415352.htm" class="macro">lua_assert</a>(nb &lt; maxitem);
+<a href="../h_aa/143259980.htm" class=function>tofile</a>                                           liolib.c
+   191 :    <a href="../h_src/57415352.htm" class="macro">lua_assert</a>(p-&gt;f);
+</pre>
+<h4><a class="legend">Table lists functions that directly use lua_assert</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

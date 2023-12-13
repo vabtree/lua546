@@ -1,0 +1,90 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">FuncState::</a>freereg</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57674760.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57674760.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57674760.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57674760.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57674760.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/58037020.htm" class=function>adjust_assign</a>                                    lparser.c
+   500 :    <a href="../h_src/58036340.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a> += <a href="../h_src/58036204.htm" class="localvar">needed</a>;  <a  class="comments">/* remove extra values */</a>
+<a href="../h_aa/57810664.htm" class=function>freereg</a>                                          lcode.c
+   493 :    <a href="../h_src/57810528.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a>--;
+<a href="../h_aa/58015260.htm" class=function>funcargs</a>                                         lparser.c
+  1066 :    <a href="../h_src/58014716.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a> = <a href="../h_src/58014444.htm" class="localvar">base</a>+1;  <a  class="comments">/* call remove function and arguments and leaves</a>
+<a href="../h_aa/58027704.htm" class=function>leaveblock</a>                                       lparser.c
+   683 :    <a href="../h_src/58027568.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a> = <a href="../h_src/58027024.htm" class="localvar">stklevel</a>;  <a  class="comments">/* free registers */</a>
+<a href="../h_aa/57670680.htm" class=function>luaK_reserveregs</a>                                 lcode.c
+   482 :    <a href="../h_src/57810936.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a> += <a href="../h_src/57810800.htm" class="localvar">n</a>;
+<a href="../h_aa/57668912.htm" class=function>luaK_setlist</a>                                     lcode.c
+  1819 :    <a href="../h_src/57764492.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a> = <a href="../h_src/57764356.htm" class="localvar">base</a> + 1;  <a  class="comments">/* free registers with list values */</a>
+<a href="../h_aa/58025392.htm" class=function>open_func</a>                                        lparser.c
+   738 :    <a href="../h_src/58025120.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a> = 0;
+<a href="../h_aa/58021720.htm" class=function>recfield</a>                                         lparser.c
+   864 :    <a href="../h_src/58021244.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a> = <a href="../h_src/58021108.htm" class="localvar">reg</a>;  <a  class="comments">/* free registers */</a>
+<a href="../h_aa/58055788.htm" class=function>statement</a>                                        lparser.c
+  1913 :    <a href="../h_src/57988060.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a> = <a href="../h_src/57674488.htm" class="function">luaY_nvarstack</a>(<a href="../h_src/57988060.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>);  <a  class="comments">/* free registers */</a>
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/58037020.htm" class=function>adjust_assign</a>                                    lparser.c
+   495 :    <a href="../h_src/57670748.htm" class="function">luaK_nil</a>(<a href="../h_src/58036340.htm" class="localvar">fs</a>, <a href="../h_src/58036340.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a>, <a href="../h_src/58036204.htm" class="localvar">needed</a>);  <a  class="comments">/* complete with nils */</a>
+   500 :    <a href="../h_src/58036340.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a> += <a href="../h_src/58036204.htm" class="localvar">needed</a>;  <a  class="comments">/* remove extra values */</a>
+<a href="../h_aa/58008392.htm" class=function>check_conflict</a>                                   lparser.c
+  1333 :    int <a href="../h_src/58007712.htm" class="localvar">extra</a> = <a href="../h_src/58007848.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a>;  <a  class="comments">/* eventual position to save local variable */</a>
+<a href="../h_aa/58018932.htm" class=function>constructor</a>                                      lparser.c
+   935 :    <a href="../h_src/58050892.htm" class="function">init_exp</a>(<a href="../h_src/58018660.htm" class="localvar">t</a>, <a href="../h_src/57682172.htm" class="variable">VNONRELOC</a>, <a href="../h_src/58018524.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a>);  <a  class="comments">/* table will be at stack top */</a>
+<a href="../h_aa/57797812.htm" class=function>discharge2anyreg</a>                                 lcode.c
+   883 :    <a href="../h_src/57798492.htm" class="function">discharge2reg</a>(<a href="../h_src/57797676.htm" class="localvar">fs</a>, <a href="../h_src/57797540.htm" class="localvar">e</a>, <a href="../h_src/57797676.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a>-1);  <a  class="comments">/* put value there */</a>
+<a href="../h_aa/57997444.htm" class=function>forlist</a>                                          lparser.c
+  1598 :    int <a href="../h_src/57996492.htm" class="localvar">base</a> = <a href="../h_src/57997036.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a>;
+<a href="../h_aa/57998260.htm" class=function>fornum</a>                                           lparser.c
+  1572 :    int <a href="../h_src/57997580.htm" class="localvar">base</a> = <a href="../h_src/57997716.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a>;
+  1584 :    <a href="../h_src/57670544.htm" class="function">luaK_int</a>(<a href="../h_src/57997716.htm" class="localvar">fs</a>, <a href="../h_src/57997716.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a>, 1);
+<a href="../h_aa/57810664.htm" class=function>freereg</a>                                          lcode.c
+   493 :    <a href="../h_src/57810528.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a>--;
+<a href="../h_aa/58015260.htm" class=function>funcargs</a>                                         lparser.c
+  1062 :    <a href="../h_src/58014308.htm" class="localvar">nparams</a> = <a href="../h_src/58014716.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a> - (<a href="../h_src/58014444.htm" class="localvar">base</a>+1);
+<a href="../h_aa/57670612.htm" class=function>luaK_checkstack</a>                                  lcode.c
+   467 :    int <a href="../h_src/57811072.htm" class="localvar">newstack</a> = <a href="../h_src/57811344.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a> + <a href="../h_src/57811208.htm" class="localvar">n</a>;
+<a href="../h_aa/57670272.htm" class=function>luaK_exp2nextreg</a>                                 lcode.c
+   946 :    <a href="../h_src/57796316.htm" class="function">exp2reg</a>(<a href="../h_src/57795228.htm" class="localvar">fs</a>, <a href="../h_src/57795092.htm" class="localvar">e</a>, <a href="../h_src/57795228.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a> - 1);
+<a href="../h_aa/57670680.htm" class=function>luaK_reserveregs</a>                                 lcode.c
+   482 :    <a href="../h_src/57810936.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a> += <a href="../h_src/57810800.htm" class="localvar">n</a>;
+<a href="../h_aa/57670068.htm" class=function>luaK_self</a>                                        lcode.c
+  1090 :    <a href="../h_src/57791692.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a> = <a href="../h_src/57791828.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a>;  <a  class="comments">/* base register for op_self */</a>
+<a href="../h_aa/57669728.htm" class=function>luaK_setreturns</a>                                  lcode.c
+   728 :    <a href="../h_src/57693936.htm" class="macro">SETARG_A</a>(*<a href="../h_src/57799580.htm" class="localvar">pc</a>, <a href="../h_src/57799988.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a>);
+<a href="../h_aa/58021720.htm" class=function>recfield</a>                                         lparser.c
+   850 :    int <a href="../h_src/58021108.htm" class="localvar">reg</a> = <a href="../h_src/58021584.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a>;
+<a href="../h_aa/58007440.htm" class=function>restassign</a>                                       lparser.c
+  1401 :    <a href="../h_src/58050892.htm" class="function">init_exp</a>(&amp;<a href="../h_src/58006896.htm" class="localvar">e</a>, <a href="../h_src/57682172.htm" class="variable">VNONRELOC</a>, <a href="../h_src/58007304.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a>-1);  <a  class="comments">/* default assignment */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable freereg</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

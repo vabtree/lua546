@@ -1,0 +1,45 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>L</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57887748.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57887748.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57887748.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57887748.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57635280.htm" class=function>luaG_runerror</a>                                    ldebug.c
+   823 :    <a href="../h_src/57537764.htm" class="type">CallInfo</a> *<a href="../h_src/57887340.htm" class="localvar">ci</a> = <a href="../h_src/57887748.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>;
+   826 :    <a href="../h_src/57621612.htm" class="macro">luaC_checkGC</a>(<a href="../h_src/57887748.htm" class="localvar">L</a>);  <a  class="comments">/* error message uses memory */</a>
+   828 :    <a href="../h_src/57887204.htm" class="localvar">msg</a> = <a href="../h_src/57501452.htm" class="function">luaO_pushvfstring</a>(<a href="../h_src/57887748.htm" class="localvar">L</a>, <a href="../h_src/57887612.htm" class="localvar">fmt</a>, <a href="../h_src/57887068.htm" class="localvar">argp</a>);  <a  class="comments">/* format message */</a>
+   831 :    <a href="../h_src/57635212.htm" class="function">luaG_addinfo</a>(<a href="../h_src/57887748.htm" class="localvar">L</a>, <a href="../h_src/57887204.htm" class="localvar">msg</a>, <a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57887340.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57531984.htm" class="variable">p</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>, <a href="../h_src/57757148.htm" class="function">getcurrentline</a>(<a href="../h_src/57887340.htm" class="localvar">ci</a>));
+   832 :    <a href="../h_src/57533548.htm" class="macro">setobjs2s</a>(<a href="../h_src/57887748.htm" class="localvar">L</a>, <a href="../h_src/57887748.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 2, <a href="../h_src/57887748.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1);  <a  class="comments">/* remove 'msg' */</a>
+   833 :    <a href="../h_src/57887748.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>--;
+   835 :    <a href="../h_src/57635144.htm" class="function">luaG_errormsg</a>(<a href="../h_src/57887748.htm" class="localvar">L</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable L</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

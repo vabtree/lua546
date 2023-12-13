@@ -1,0 +1,47 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>e</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57794820.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57794820.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57794820.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57794820.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57670408.htm" class=function>luaK_exp2anyreg</a>                                  lcode.c
+   955 :    <a href="../h_src/57670476.htm" class="function">luaK_dischargevars</a>(<a href="../h_src/57794956.htm" class="localvar">fs</a>, <a href="../h_src/57794820.htm" class="localvar">e</a>);
+   956 :    if (<a href="../h_src/57794820.htm" class="localvar">e</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a> == <a href="../h_src/57682172.htm" class="variable">VNONRELOC</a>) {  <a  class="comments">/* expression already has a register? */</a>
+   957 :    if (!<a href="../h_src/57668572.htm" class="macro">hasjumps</a>(<a href="../h_src/57794820.htm" class="localvar">e</a>))  <a  class="comments">/* no jumps? */</a>
+   958 :    return <a href="../h_src/57794820.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a>;  <a  class="comments">/* result is already in a register */</a>
+   959 :    if (<a href="../h_src/57794820.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a> &gt;= <a href="../h_src/57674488.htm" class="function">luaY_nvarstack</a>(<a href="../h_src/57794956.htm" class="localvar">fs</a>)) {  <a  class="comments">/* reg. is not a local? */</a>
+   960 :    <a href="../h_src/57796316.htm" class="function">exp2reg</a>(<a href="../h_src/57794956.htm" class="localvar">fs</a>, <a href="../h_src/57794820.htm" class="localvar">e</a>, <a href="../h_src/57794820.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a>);  <a  class="comments">/* put final result in it */</a>
+   961 :    return <a href="../h_src/57794820.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a>;
+   967 :    <a href="../h_src/57670272.htm" class="function">luaK_exp2nextreg</a>(<a href="../h_src/57794956.htm" class="localvar">fs</a>, <a href="../h_src/57794820.htm" class="localvar">e</a>);  <a  class="comments">/* default: use next available register */</a>
+   968 :    return <a href="../h_src/57794820.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a>;
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable e</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

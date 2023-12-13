@@ -1,0 +1,56 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">stringtable::</a>nuse</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57651736.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57651736.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57651736.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57651736.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57651736.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/58125188.htm" class=function>internshrstr</a>                                     lstring.c
+   213 :    <a href="../h_src/58124372.htm" class="localvar">tb</a>-&gt;<a href="../h_src/57651736.htm" class="variable">nuse</a>++;
+<a href="../h_aa/57439900.htm" class=function>lua_newstate</a>                                     lstate.c
+   382 :    <a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646364.htm" class="variable">strt</a>.<a href="../h_src/57651668.htm" class="variable">size</a> = <a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646364.htm" class="variable">strt</a>.<a href="../h_src/57651736.htm" class="variable">nuse</a> = 0;
+<a href="../h_aa/57618756.htm" class=function>luaS_remove</a>                                      lstring.c
+   170 :    <a href="../h_src/58125868.htm" class="localvar">tb</a>-&gt;<a href="../h_src/57651736.htm" class="variable">nuse</a>--;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57963676.htm" class=function>checkSizes</a>                                       lgc.c
+   871 :    if (<a href="../h_src/57963404.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646364.htm" class="variable">strt</a>.<a href="../h_src/57651736.htm" class="variable">nuse</a> &lt; <a href="../h_src/57963404.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646364.htm" class="variable">strt</a>.<a href="../h_src/57651668.htm" class="variable">size</a> / 4) {  <a  class="comments">/* string table too big? */</a>
+<a href="../h_aa/58125596.htm" class=function>growstrtab</a>                                       lstring.c
+   175 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/58125324.htm" class="localvar">tb</a>-&gt;<a href="../h_src/57651736.htm" class="variable">nuse</a> == <a href="../h_src/57549800.htm" class="macro">MAX_INT</a>)) {  <a  class="comments">/* too many strings? */</a>
+   177 :    if (<a href="../h_src/58125324.htm" class="localvar">tb</a>-&gt;<a href="../h_src/57651736.htm" class="variable">nuse</a> == <a href="../h_src/57549800.htm" class="macro">MAX_INT</a>)  <a  class="comments">/* still too many? */</a>
+<a href="../h_aa/58125188.htm" class=function>internshrstr</a>                                     lstring.c
+   204 :    if (<a href="../h_src/58124372.htm" class="localvar">tb</a>-&gt;<a href="../h_src/57651736.htm" class="variable">nuse</a> &gt;= <a href="../h_src/58124372.htm" class="localvar">tb</a>-&gt;<a href="../h_src/57651668.htm" class="variable">size</a>) {  <a  class="comments">/* need to grow string table? */</a>
+   213 :    <a href="../h_src/58124372.htm" class="localvar">tb</a>-&gt;<a href="../h_src/57651736.htm" class="variable">nuse</a>++;
+<a href="../h_aa/57618756.htm" class=function>luaS_remove</a>                                      lstring.c
+   170 :    <a href="../h_src/58125868.htm" class="localvar">tb</a>-&gt;<a href="../h_src/57651736.htm" class="variable">nuse</a>--;
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable nuse</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

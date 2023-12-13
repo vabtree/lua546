@@ -1,0 +1,75 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">lua_State::</a>stack_last</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57642352.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57642352.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57642352.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57642352.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57642352.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57632832.htm" class=function>luaD_reallocstack</a>                                ldo.c
+   231 :    <a href="../h_src/57879044.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642352.htm" class="variable">stack_last</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57879044.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642284.htm" class="variable">stack</a>.<a href="../h_src/57531984.htm" class="variable">p</a> + <a href="../h_src/57878908.htm" class="localvar">newsize</a>;
+<a href="../h_aa/57980580.htm" class=function>stack_init</a>                                       lstate.c
+   188 :    <a href="../h_src/57980444.htm" class="localvar">L1</a>-&gt;<a href="../h_src/57642352.htm" class="variable">stack_last</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57980444.htm" class="localvar">L1</a>-&gt;<a href="../h_src/57642284.htm" class="variable">stack</a>.<a href="../h_src/57531984.htm" class="variable">p</a> + <a href="../h_src/57652552.htm" class="macro">BASIC_STACK_SIZE</a>;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57864220.htm" class=function>ccall</a>                                            ldo.c
+   632 :    <a href="../h_src/57634124.htm" class="macro">checkstackp</a>(<a href="../h_src/57864084.htm" class="localvar">L</a>, 0, <a href="../h_src/57863948.htm" class="localvar">func</a>);  <a  class="comments">/* free any use of EXTRA_STACK */</a>
+<a href="../h_aa/57979900.htm" class=function>freestack</a>                                        lstate.c
+   209 :    <a href="../h_src/57495604.htm" class="macro">luaM_freearray</a>(<a href="../h_src/57979764.htm" class="localvar">L</a>, <a href="../h_src/57979764.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642284.htm" class="variable">stack</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57652416.htm" class="macro">stacksize</a>(<a href="../h_src/57979764.htm" class="localvar">L</a>) + <a href="../h_src/57652688.htm" class="macro">EXTRA_STACK</a>);  <a  class="comments">/* free stack */</a>
+<a href="../h_aa/57439016.htm" class=function>lua_checkstack</a>                                   lapi.c
+   117 :    if (<a href="../h_src/57608420.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642352.htm" class="variable">stack_last</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - <a href="../h_src/57608420.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> &gt; <a href="../h_src/57608284.htm" class="localvar">n</a>)  <a  class="comments">/* stack large enough? */</a>
+<a href="../h_aa/57632764.htm" class=function>luaD_growstack</a>                                   ldo.c
+   243 :    int <a href="../h_src/57877684.htm" class="localvar">size</a> = <a href="../h_src/57652416.htm" class="macro">stacksize</a>(<a href="../h_src/57878092.htm" class="localvar">L</a>);
+<a href="../h_aa/57633512.htm" class=function>luaD_hook</a>                                        ldo.c
+   347 :    <a href="../h_src/57634532.htm" class="macro">luaD_checkstack</a>(<a href="../h_src/57875916.htm" class="localvar">L</a>, <a href="../h_src/57442688.htm" class="macro">LUA_MINSTACK</a>);  <a  class="comments">/* ensure minimum stack size */</a>
+<a href="../h_aa/57632628.htm" class=function>luaD_inctop</a>                                      ldo.c
+   316 :    <a href="../h_src/57634532.htm" class="macro">luaD_checkstack</a>(<a href="../h_src/57876052.htm" class="localvar">L</a>, 1);
+<a href="../h_aa/57633308.htm" class=function>luaD_precall</a>                                     ldo.c
+   603 :    <a href="../h_src/57633988.htm" class="macro">checkstackGCp</a>(<a href="../h_src/57865444.htm" class="localvar">L</a>, <a href="../h_src/57864492.htm" class="localvar">fsize</a>, <a href="../h_src/57865308.htm" class="localvar">func</a>);
+<a href="../h_aa/57633376.htm" class=function>luaD_pretailcall</a>                                 ldo.c
+   556 :    <a href="../h_src/57633988.htm" class="macro">checkstackGCp</a>(<a href="../h_src/57867076.htm" class="localvar">L</a>, <a href="../h_src/57866260.htm" class="localvar">fsize</a> - <a href="../h_src/57866532.htm" class="localvar">delta</a>, <a href="../h_src/57866804.htm" class="localvar">func</a>);
+<a href="../h_aa/57632832.htm" class=function>luaD_reallocstack</a>                                ldo.c
+   213 :    int <a href="../h_src/57878636.htm" class="localvar">oldsize</a> = <a href="../h_src/57652416.htm" class="macro">stacksize</a>(<a href="../h_src/57879044.htm" class="localvar">L</a>);
+<a href="../h_aa/57632696.htm" class=function>luaD_shrinkstack</a>                                 ldo.c
+   305 :    if (<a href="../h_src/57876460.htm" class="localvar">inuse</a> &lt;= <a href="../h_src/57447652.htm" class="macro">LUAI_MAXSTACK</a> &amp;&amp; <a href="../h_src/57652416.htm" class="macro">stacksize</a>(<a href="../h_src/57876596.htm" class="localvar">L</a>) &gt; <a href="../h_src/57876324.htm" class="localvar">max</a>) {
+<a href="../h_aa/57633104.htm" class=function>luaD_tryfuncTM</a>                                   ldo.c
+   415 :    <a href="../h_src/57633988.htm" class="macro">checkstackGCp</a>(<a href="../h_src/57872788.htm" class="localvar">L</a>, 1, <a href="../h_src/57872652.htm" class="localvar">func</a>);  <a  class="comments">/* space for metamethod */</a>
+<a href="../h_aa/57497372.htm" class=function>luaT_adjustvarargs</a>                               ltm.c
+   244 :    <a href="../h_src/57634532.htm" class="macro">luaD_checkstack</a>(<a href="../h_src/58078608.htm" class="localvar">L</a>, <a href="../h_src/57531984.htm" class="variable">p</a>-&gt;<a href="../h_src/57515800.htm" class="variable">maxstacksize</a> + 1);
+<a href="../h_aa/57497304.htm" class=function>luaT_getvarargs</a>                                  ltm.c
+   263 :    <a href="../h_src/57633988.htm" class="macro">checkstackGCp</a>(<a href="../h_src/58077112.htm" class="localvar">L</a>, <a href="../h_src/58076432.htm" class="localvar">nextra</a>, <a href="../h_src/58076840.htm" class="localvar">where</a>);  <a  class="comments">/* ensure stack space */</a><a href="../h_src/57642284.htm" class="variable">stack</a> space */
+<a href="../h_aa/57868300.htm" class=function>precallC</a>                                         ldo.c
+   520 :    <a href="../h_src/57633988.htm" class="macro">checkstackGCp</a>(<a href="../h_src/57868164.htm" class="localvar">L</a>, <a href="../h_src/57442688.htm" class="macro">LUA_MINSTACK</a>, <a href="../h_src/57868028.htm" class="localvar">func</a>);  <a  class="comments">/* ensure minimum stack size */</a><a href="../h_src/57642284.htm" class="variable">stack</a> size */
+<a href="../h_aa/57971836.htm" class=function>traversethread</a>                                   lgc.c
+   641 :    for (; <a href="../h_src/57971292.htm" class="localvar">o</a> &lt; <a href="../h_src/57971564.htm" class="localvar">th</a>-&gt;<a href="../h_src/57642352.htm" class="variable">stack_last</a>.<a href="../h_src/57531984.htm" class="variable">p</a> + <a href="../h_src/57652688.htm" class="macro">EXTRA_STACK</a>; <a href="../h_src/57971292.htm" class="localvar">o</a>++)
+   651 :    return 1 + <a href="../h_src/57652416.htm" class="macro">stacksize</a>(<a href="../h_src/57971564.htm" class="localvar">th</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable stack_last</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

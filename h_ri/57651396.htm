@@ -1,0 +1,68 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">CallInfo::</a>previous</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57651396.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57651396.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57651396.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57651396.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57651396.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57638476.htm" class=function>luaE_extendCI</a>                                    lstate.c
+   111 :    <a href="../h_src/57981940.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651396.htm" class="variable">previous</a> = <a href="../h_src/57982076.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>;
+<a href="../h_aa/57638340.htm" class=function>luaE_shrinkCI</a>                                    lstate.c
+   151 :    <a href="../h_src/57980988.htm" class="localvar">next2</a>-&gt;<a href="../h_src/57651396.htm" class="variable">previous</a> = <a href="../h_src/57981260.htm" class="localvar">ci</a>;
+<a href="../h_aa/57980580.htm" class=function>stack_init</a>                                       lstate.c
+   191 :    <a href="../h_src/57980036.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651328.htm" class="variable">next</a> = <a href="../h_src/57980036.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651396.htm" class="variable">previous</a> = NULL;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57879724.htm" class=function>correctstack</a>                                     ldo.c
+   189 :    for (<a href="../h_src/57879452.htm" class="localvar">ci</a> = <a href="../h_src/57879588.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>; <a href="../h_src/57879452.htm" class="localvar">ci</a> != NULL; <a href="../h_src/57879452.htm" class="localvar">ci</a> = <a href="../h_src/57879452.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651396.htm" class="variable">previous</a>) {
+<a href="../h_aa/57860548.htm" class=function>findpcall</a>                                        ldo.c
+   756 :    for (<a href="../h_src/57860276.htm" class="localvar">ci</a> = <a href="../h_src/57860412.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>; <a href="../h_src/57860276.htm" class="localvar">ci</a> != NULL; <a href="../h_src/57860276.htm" class="localvar">ci</a> = <a href="../h_src/57860276.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651396.htm" class="variable">previous</a>) {  <a  class="comments">/* search for a pcall */</a>
+<a href="../h_aa/57748308.htm" class=function>getfuncname</a>                                      ldebug.c
+   322 :    return <a href="../h_src/57758780.htm" class="function">funcnamefromcall</a>(<a href="../h_src/57748172.htm" class="localvar">L</a>, <a href="../h_src/57748036.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651396.htm" class="variable">previous</a>, <a href="../h_src/57747900.htm" class="localvar">name</a>);
+<a href="../h_aa/57424668.htm" class=function>lua_getstack</a>                                     ldebug.c
+   165 :    for (<a href="../h_src/57755040.htm" class="localvar">ci</a> = <a href="../h_src/57755584.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>; <a href="../h_src/57755448.htm" class="localvar">level</a> &gt; 0 &amp;&amp; <a href="../h_src/57755040.htm" class="localvar">ci</a> != &amp;<a href="../h_src/57755584.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641740.htm" class="variable">base_ci</a>; <a href="../h_src/57755040.htm" class="localvar">ci</a> = <a href="../h_src/57755040.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651396.htm" class="variable">previous</a>)
+<a href="../h_aa/57632900.htm" class=function>luaD_poscall</a>                                     ldo.c
+   494 :    <a href="../h_src/57869932.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a> = <a href="../h_src/57869796.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651396.htm" class="variable">previous</a>;  <a  class="comments">/* back to caller (after closing variables) */</a>
+<a href="../h_aa/57610936.htm" class=function>luaV_execute</a>                                     lvm.c
+  1750 :    <a href="../h_src/58188196.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a> = <a href="../h_src/58188060.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651396.htm" class="variable">previous</a>;  <a  class="comments">/* back to caller */</a>
+  1767 :    <a href="../h_src/58188196.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a> = <a href="../h_src/58188060.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651396.htm" class="variable">previous</a>;  <a  class="comments">/* back to caller */</a>
+  1782 :    <a href="../h_src/58188060.htm" class="localvar">ci</a> = <a href="../h_src/58188060.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651396.htm" class="variable">previous</a>;
+<a href="../h_aa/57880268.htm" class=function>relstack</a>                                         ldo.c
+   172 :    for (<a href="../h_src/57879996.htm" class="localvar">ci</a> = <a href="../h_src/57880132.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>; <a href="../h_src/57879996.htm" class="localvar">ci</a> != NULL; <a href="../h_src/57879996.htm" class="localvar">ci</a> = <a href="../h_src/57879996.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651396.htm" class="variable">previous</a>) {
+<a href="../h_aa/57873876.htm" class=function>rethook</a>                                          ldo.c
+   402 :    if (<a href="../h_src/57647452.htm" class="macro">isLua</a>(<a href="../h_src/57873604.htm" class="localvar">ci</a> = <a href="../h_src/57873604.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651396.htm" class="variable">previous</a>))
+<a href="../h_aa/57756876.htm" class=function>settraps</a>                                         ldebug.c
+   115 :    for (; <a href="../h_src/57756740.htm" class="localvar">ci</a> != NULL; <a href="../h_src/57756740.htm" class="localvar">ci</a> = <a href="../h_src/57756740.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651396.htm" class="variable">previous</a>)
+<a href="../h_aa/57877276.htm" class=function>stackinuse</a>                                       ldo.c
+   280 :    for (<a href="../h_src/57877004.htm" class="localvar">ci</a> = <a href="../h_src/57877140.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>; <a href="../h_src/57877004.htm" class="localvar">ci</a> != NULL; <a href="../h_src/57877004.htm" class="localvar">ci</a> = <a href="../h_src/57877004.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651396.htm" class="variable">previous</a>) {
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable previous</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

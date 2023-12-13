@@ -1,0 +1,73 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">Proto::</a>source</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57513964.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57513964.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57513964.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57513964.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57513964.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/58068816.htm" class=function>loadFunction</a>                                     lundump.c
+   259 :    <a href="../h_src/58065008.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a> = <a href="../h_src/58071128.htm" class="function">loadStringN</a>(<a href="../h_src/58065144.htm" class="localvar">S</a>, <a href="../h_src/58065008.htm" class="localvar">f</a>);
+   261 :    <a href="../h_src/58065008.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a> = <a href="../h_src/58064872.htm" class="localvar">psource</a>;  <a  class="comments">/* reuse parent's source */</a>
+<a href="../h_aa/57630996.htm" class=function>luaF_newproto</a>                                    lfunc.c
+   262 :    <a href="../h_src/57830356.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a> = NULL;
+<a href="../h_aa/57674420.htm" class=function>luaY_parser</a>                                      lparser.c
+  1954 :    <a href="../h_src/57986156.htm" class="localvar">funcstate</a>.<a href="../h_src/57676052.htm" class="variable">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a> = <a href="../h_src/57618484.htm" class="function">luaS_new</a>(<a href="../h_src/57987108.htm" class="localvar">L</a>, <a href="../h_src/57986564.htm" class="localvar">name</a>);  <a  class="comments">/* create and anchor TString */</a>
+<a href="../h_aa/58025392.htm" class=function>open_func</a>                                        lparser.c
+   749 :    <a href="../h_src/58024848.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a> = <a href="../h_src/58025256.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700260.htm" class="variable">source</a>;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57845112.htm" class=function>dumpFunction</a>                                     ldump.c
+   184 :    if (<a href="../h_src/57841984.htm" class="localvar">D</a>-&gt;<a href="../h_src/57850076.htm" class="variable">strip</a> || <a href="../h_src/57841848.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a> == <a href="../h_src/57841712.htm" class="localvar">psource</a>)
+   187 :    <a href="../h_src/57846200.htm" class="function">dumpString</a>(<a href="../h_src/57841984.htm" class="localvar">D</a>, <a href="../h_src/57841848.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>);
+<a href="../h_aa/57844024.htm" class=function>dumpProtos</a>                                       ldump.c
+   143 :    <a href="../h_src/57845112.htm" class="function">dumpFunction</a>(<a href="../h_src/57843888.htm" class="localvar">D</a>, <a href="../h_src/57843752.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a>[<a href="../h_src/57843616.htm" class="localvar">i</a>], <a href="../h_src/57843752.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>);
+<a href="../h_aa/57750824.htm" class=function>funcinfo</a>                                         ldebug.c
+   266 :    if (<a href="../h_src/57750348.htm" class="localvar">p</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>) {
+   267 :    <a href="../h_src/57750688.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423512.htm" class="variable">source</a> = <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/57750348.htm" class="localvar">p</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>);
+   268 :    <a href="../h_src/57750688.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423444.htm" class="variable">srclen</a> = <a href="../h_src/57522396.htm" class="macro">tsslen</a>(<a href="../h_src/57750348.htm" class="localvar">p</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>);
+<a href="../h_aa/58068816.htm" class=function>loadFunction</a>                                     lundump.c
+   260 :    if (<a href="../h_src/58065008.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a> == NULL)  <a  class="comments">/* no source in dump? */</a>
+<a href="../h_aa/58067184.htm" class=function>loadProtos</a>                                       lundump.c
+   201 :    <a href="../h_src/58068816.htm" class="function">loadFunction</a>(<a href="../h_src/58067048.htm" class="localvar">S</a>, <a href="../h_src/58066912.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a>[<a href="../h_src/58066776.htm" class="localvar">i</a>], <a href="../h_src/58066912.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>);
+<a href="../h_aa/57635280.htm" class=function>luaG_runerror</a>                                    ldebug.c
+   831 :    <a href="../h_src/57635212.htm" class="function">luaG_addinfo</a>(<a href="../h_src/57887748.htm" class="localvar">L</a>, <a href="../h_src/57887204.htm" class="localvar">msg</a>, <a href="../h_src/57636640.htm" class="macro">ci_func</a>(<a href="../h_src/57887340.htm" class="localvar">ci</a>)-&gt;<a href="../h_src/57531984.htm" class="variable">p</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>, <a href="../h_src/57757148.htm" class="function">getcurrentline</a>(<a href="../h_src/57887340.htm" class="localvar">ci</a>));
+<a href="../h_aa/57674420.htm" class=function>luaY_parser</a>                                      lparser.c
+  1955 :    <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/57987108.htm" class="localvar">L</a>, <a href="../h_src/57986156.htm" class="localvar">funcstate</a>.<a href="../h_src/57676052.htm" class="variable">f</a>, <a href="../h_src/57986156.htm" class="localvar">funcstate</a>.<a href="../h_src/57676052.htm" class="variable">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>);
+  1959 :    <a href="../h_src/57699988.htm" class="function">luaX_setinput</a>(<a href="../h_src/57987108.htm" class="localvar">L</a>, &amp;<a href="../h_src/57986292.htm" class="localvar">lexstate</a>, <a href="../h_src/57986972.htm" class="localvar">z</a>, <a href="../h_src/57986156.htm" class="localvar">funcstate</a>.<a href="../h_src/57676052.htm" class="variable">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>, <a href="../h_src/57986428.htm" class="localvar">firstchar</a>);
+<a href="../h_aa/58025392.htm" class=function>open_func</a>                                        lparser.c
+   750 :    <a href="../h_src/57621476.htm" class="macro">luaC_objbarrier</a>(<a href="../h_src/58025256.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/58024848.htm" class="localvar">f</a>, <a href="../h_src/58024848.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>);
+<a href="../h_aa/143394728.htm" class=function>PrintHeader</a>                                      luac.c
+   670 :    const char* <a href="../h_src/143394456.htm" class="localvar">s</a>=<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a> ? <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>) : &quot;=?&quot;;
+<a href="../h_aa/57973604.htm" class=function>traverseproto</a>                                    lgc.c
+   580 :    <a href="../h_src/57826888.htm" class="macro">markobjectN</a>(<a href="../h_src/57973468.htm" class="localvar">g</a>, <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable source</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,58 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>dumpByte</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57848784.htm" class="function" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57848784.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57848784.htm" class="function" target="_self">Flow Chart</a></li>
+<li><a href="../h_src/57848784.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57848784.htm" class="function" target="_self">Called By</a></li>
+<li><a href="../h_rx/57848784.htm" class="function" target="_self">Call Tree</a></li>
+<li><a href="../h_ro/57848784.htm" class="function" target="_self">Calls and Uses</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57844976.htm" class=function>dumpConstants</a>                                    ldump.c
+   119 :    <a href="../h_src/57848784.htm" class="function">dumpByte</a>(<a href="../h_src/57844840.htm" class="localvar">D</a>, <a href="../h_src/57844160.htm" class="localvar">tt</a>);
+<a href="../h_aa/57845112.htm" class=function>dumpFunction</a>                                     ldump.c
+   190 :    <a href="../h_src/57848784.htm" class="function">dumpByte</a>(<a href="../h_src/57841984.htm" class="localvar">D</a>, <a href="../h_src/57841848.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515936.htm" class="variable">numparams</a>);
+   191 :    <a href="../h_src/57848784.htm" class="function">dumpByte</a>(<a href="../h_src/57841984.htm" class="localvar">D</a>, <a href="../h_src/57841848.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515868.htm" class="variable">is_vararg</a>);
+   192 :    <a href="../h_src/57848784.htm" class="function">dumpByte</a>(<a href="../h_src/57841984.htm" class="localvar">D</a>, <a href="../h_src/57841848.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515800.htm" class="variable">maxstacksize</a>);
+<a href="../h_aa/57841576.htm" class=function>dumpHeader</a>                                       ldump.c
+   203 :    <a href="../h_src/57848784.htm" class="function">dumpByte</a>(<a href="../h_src/57841440.htm" class="localvar">D</a>, <a href="../h_src/57615084.htm" class="macro">LUAC_VERSION</a>);
+   204 :    <a href="../h_src/57848784.htm" class="function">dumpByte</a>(<a href="../h_src/57841440.htm" class="localvar">D</a>, <a href="../h_src/57614948.htm" class="macro">LUAC_FORMAT</a>);
+   206 :    <a href="../h_src/57848784.htm" class="function">dumpByte</a>(<a href="../h_src/57841440.htm" class="localvar">D</a>, sizeof(<a href="../h_src/57545108.htm" class="type">Instruction</a>));
+   207 :    <a href="../h_src/57848784.htm" class="function">dumpByte</a>(<a href="../h_src/57841440.htm" class="localvar">D</a>, sizeof(<a href="../h_src/57442076.htm" class="type">lua_Integer</a>));
+   208 :    <a href="../h_src/57848784.htm" class="function">dumpByte</a>(<a href="../h_src/57841440.htm" class="localvar">D</a>, sizeof(<a href="../h_src/57442144.htm" class="type">lua_Number</a>));
+<a href="../h_aa/57843344.htm" class=function>dumpUpvalues</a>                                     ldump.c
+   151 :    <a href="../h_src/57848784.htm" class="function">dumpByte</a>(<a href="../h_src/57843208.htm" class="localvar">D</a>, <a href="../h_src/57843072.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/57842936.htm" class="localvar">i</a>].<a href="../h_src/57517296.htm" class="variable">instack</a>);
+   152 :    <a href="../h_src/57848784.htm" class="function">dumpByte</a>(<a href="../h_src/57843208.htm" class="localvar">D</a>, <a href="../h_src/57843072.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/57842936.htm" class="localvar">i</a>].<a href="../h_src/57517228.htm" class="variable">idx</a>);
+   153 :    <a href="../h_src/57848784.htm" class="function">dumpByte</a>(<a href="../h_src/57843208.htm" class="localvar">D</a>, <a href="../h_src/57843072.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/57842936.htm" class="localvar">i</a>].<a href="../h_src/57517160.htm" class="variable">kind</a>);
+<a href="../h_aa/57614744.htm" class=function>luaU_dump</a>                                        ldump.c
+   226 :    <a href="../h_src/57848784.htm" class="function">dumpByte</a>(&amp;<a href="../h_src/57840624.htm" class="localvar">D</a>, <a href="../h_src/57841168.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use dumpByte</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

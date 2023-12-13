@@ -1,0 +1,82 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>strlen</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57568976.htm" class="libfunc" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57568976.htm" class="libfunc" target="_self">Calling Hierarchy</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57568976.htm" class="libfunc" target="_self">Called By</a></li>
+<li><a href="../h_rx/57568976.htm" class="libfunc" target="_self">Call Tree</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/143292620.htm" class=function>addlenmod</a>                                        lstrlib.c
+  1264 :    <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/143292212.htm" class="localvar">l</a> = <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/143292484.htm" class="localvar">form</a>);
+  1265 :    <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/143292076.htm" class="localvar">lm</a> = <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/143292348.htm" class="localvar">lenmod</a>);
+<a href="../h_aa/57556736.htm" class=function>addreturn</a>                                        lua.c
+   524 :    int <a href="../h_src/57556192.htm" class="localvar">status</a> = <a href="../h_src/57416032.htm" class="macro">luaL_loadbuffer</a>(<a href="../h_src/57556600.htm" class="localvar">L</a>, <a href="../h_src/57556328.htm" class="localvar">retline</a>, <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/57556328.htm" class="localvar">retline</a>), &quot;=stdin&quot;);
+<a href="../h_aa/58064736.htm" class=function>checkliteral</a>                                     lundump.c
+   277 :    <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58064056.htm" class="localvar">len</a> = <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/58064464.htm" class="localvar">s</a>);
+<a href="../h_aa/143266780.htm" class=function>db_debug</a>                                         ldblib.c
+   427 :    if (<a href="../h_src/57416032.htm" class="macro">luaL_loadbuffer</a>(<a href="../h_src/143266644.htm" class="localvar">L</a>, <a href="../h_src/143266508.htm" class="localvar">buffer</a>, <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/143266508.htm" class="localvar">buffer</a>), &quot;=(debug command)&quot;) ||
+<a href="../h_aa/57567004.htm" class=function>dostring</a>                                         lua.c
+   207 :    return <a href="../h_src/57567820.htm" class="function">dochunk</a>(<a href="../h_src/57566868.htm" class="localvar">L</a>, <a href="../h_src/57416032.htm" class="macro">luaL_loadbuffer</a>(<a href="../h_src/57566868.htm" class="localvar">L</a>, <a href="../h_src/57566732.htm" class="localvar">s</a>, <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/57566732.htm" class="localvar">s</a>), <a href="../h_src/57566596.htm" class="localvar">name</a>));
+<a href="../h_aa/143264060.htm" class=function>l_checkmode</a>                                      liolib.c
+    43 :    (<a href="../h_aa/57906692.htm" class="libfunc">strspn</a>(<a href="../h_src/143263924.htm" class="localvar">mode</a>, <a href="../h_src/143264196.htm" class="macro">L_MODEEXT</a>) == <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/143263924.htm" class="localvar">mode</a>)));  <a  class="comments">/* check extensions */</a>
+<a href="../h_aa/57911384.htm" class=function>l_str2d</a>                                          lobject.c
+   261 :    if (<a href="../h_src/57910364.htm" class="localvar">pdot</a> == NULL || <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/57911248.htm" class="localvar">s</a>) &gt; <a href="../h_src/57912268.htm" class="macro">L_MAXLENNUM</a>)
+<a href="../h_aa/58211588.htm" class=function>l_strcmp</a>                                         lvm.c
+   385 :    <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58210432.htm" class="localvar">len</a> = <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/58211180.htm" class="localvar">l</a>);  <a  class="comments">/* index of first '\0' in both strings */</a>
+<a href="../h_aa/57418072.htm" class=function>luaL_addgsub</a>                                     lauxlib.c
+   997 :    <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58317592.htm" class="localvar">l</a> = <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/58318000.htm" class="localvar">p</a>);
+<a href="../h_aa/57413448.htm" class=function>luaL_addstring</a>                                   lauxlib.c
+   590 :    <a href="../h_src/57413516.htm" class="function">luaL_addlstring</a>(<a href="../h_src/58330852.htm" class="localvar">B</a>, <a href="../h_src/58330716.htm" class="localvar">s</a>, <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/58330716.htm" class="localvar">s</a>));
+<a href="../h_aa/57418276.htm" class=function>luaL_loadstring</a>                                  lauxlib.c
+   844 :    return <a href="../h_src/57416032.htm" class="macro">luaL_loadbuffer</a>(<a href="../h_src/58322216.htm" class="localvar">L</a>, <a href="../h_src/58322080.htm" class="localvar">s</a>, <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/58322080.htm" class="localvar">s</a>), <a href="../h_src/58322080.htm" class="localvar">s</a>);
+<a href="../h_aa/57420180.htm" class=function>luaL_optlstring</a>                                  lauxlib.c
+   413 :    *<a href="../h_src/58338196.htm" class="localvar">len</a> = (<a href="../h_src/58338332.htm" class="localvar">def</a> ? <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/58338332.htm" class="localvar">def</a>) : 0);
+<a href="../h_aa/57501452.htm" class=function>luaO_pushvfstring</a>                                lobject.c
+   491 :    <a href="../h_src/57903360.htm" class="function">addstr2buff</a>(&amp;<a href="../h_src/57901524.htm" class="localvar">buff</a>, <a href="../h_src/57901252.htm" class="localvar">s</a>, <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/57901252.htm" class="localvar">s</a>));
+   542 :    <a href="../h_src/57903360.htm" class="function">addstr2buff</a>(&amp;<a href="../h_src/57901524.htm" class="localvar">buff</a>, <a href="../h_src/57901796.htm" class="localvar">fmt</a>, <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/57901796.htm" class="localvar">fmt</a>));  <a  class="comments">/* rest of 'fmt' */</a>
+<a href="../h_aa/57618484.htm" class=function>luaS_new</a>                                         lstring.c
+   253 :    <a href="../h_src/58122876.htm" class="localvar">p</a>[0] = <a href="../h_src/57618552.htm" class="function">luaS_newlstr</a>(<a href="../h_src/58123420.htm" class="localvar">L</a>, <a href="../h_src/58123284.htm" class="localvar">str</a>, <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/58123284.htm" class="localvar">str</a>));
+<a href="../h_aa/143313020.htm" class=function>nospecials</a>                                       lstrlib.c
+   751 :    <a href="../h_src/143312612.htm" class="localvar">upto</a> += <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/143312884.htm" class="localvar">p</a> + <a href="../h_src/143312612.htm" class="localvar">upto</a>) + 1;  <a  class="comments">/* may have more after \0 */</a>
+<a href="../h_aa/57569112.htm" class=function>print_version</a>                                    lua.c
+   168 :    <a href="../h_src/57412428.htm" class="macro">lua_writestring</a>(<a href="../h_src/57446020.htm" class="macro">LUA_COPYRIGHT</a>, <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/57446020.htm" class="macro">LUA_COPYRIGHT</a>));
+<a href="../h_aa/57557960.htm" class=function>pushline</a>                                         lua.c
+   505 :    <a href="../h_src/57557280.htm" class="localvar">l</a> = <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/57557416.htm" class="localvar">b</a>);
+<a href="../h_aa/143210884.htm" class=function>setpath</a>                                          loadlib.c
+   310 :    <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/143209796.htm" class="localvar">len</a> = <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/143209932.htm" class="localvar">path</a>);
+<a href="../h_aa/143291804.htm" class=function>str_format</a>                                       lstrlib.c
+  1338 :    <a href="../h_src/143290580.htm" class="localvar">form</a>[<a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/143290580.htm" class="localvar">form</a>) - 1] = 's';  <a  class="comments">/* format it as a string */</a>
+  1355 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143289628.htm" class="localvar">l</a> == <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/143289492.htm" class="localvar">s</a>), <a href="../h_src/143291396.htm" class="localvar">arg</a>, &quot;string contains zeros&quot;);
+<a href="../h_aa/143280448.htm" class=function>str_pack</a>                                         lstrlib.c
+  1683 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(<a href="../h_src/143280312.htm" class="localvar">L</a>, <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/143437160.htm" class="localvar">s</a>) == <a href="../h_src/143437296.htm" class="localvar">len</a>, <a href="../h_src/143279768.htm" class="localvar">arg</a>, &quot;string contains zeros&quot;);
+<a href="../h_aa/143434440.htm" class=function>str_unpack</a>                                       lstrlib.c
+  1810 :    <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/143432264.htm" class="localvar">len</a> = <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/143433760.htm" class="localvar">data</a> + <a href="../h_src/143433624.htm" class="localvar">pos</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use strlen</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,48 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>fs</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58014716.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/58014716.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/58014716.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/58014716.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/58015260.htm" class=function>funcargs</a>                                         lparser.c
+  1026 :    <a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/58014716.htm" class="localvar">fs</a> = <a href="../h_src/58015124.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701008.htm" class="variable">fs</a>;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/58015260.htm" class=function>funcargs</a>                                         lparser.c
+  1037 :    <a href="../h_src/57671564.htm" class="macro">luaK_setmultret</a>(<a href="../h_src/58014716.htm" class="localvar">fs</a>, &amp;<a href="../h_src/58014580.htm" class="localvar">args</a>);
+  1061 :    <a href="../h_src/57670272.htm" class="function">luaK_exp2nextreg</a>(<a href="../h_src/58014716.htm" class="localvar">fs</a>, &amp;<a href="../h_src/58014580.htm" class="localvar">args</a>);  <a  class="comments">/* close last argument */</a>
+  1062 :    <a href="../h_src/58014308.htm" class="localvar">nparams</a> = <a href="../h_src/58014716.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a> - (<a href="../h_src/58014444.htm" class="localvar">base</a>+1);
+  1064 :    <a href="../h_src/58050892.htm" class="function">init_exp</a>(<a href="../h_src/58014988.htm" class="localvar">f</a>, <a href="../h_src/57681492.htm" class="variable">VCALL</a>, <a href="../h_src/57672380.htm" class="macro">luaK_codeABC</a>(<a href="../h_src/58014716.htm" class="localvar">fs</a>, <a href="../h_src/57685912.htm" class="variable">OP_CALL</a>, <a href="../h_src/58014444.htm" class="localvar">base</a>, <a href="../h_src/58014308.htm" class="localvar">nparams</a>+1, 2));
+  1065 :    <a href="../h_src/57670816.htm" class="function">luaK_fixline</a>(<a href="../h_src/58014716.htm" class="localvar">fs</a>, <a href="../h_src/58014852.htm" class="localvar">line</a>);
+  1066 :    <a href="../h_src/58014716.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a> = <a href="../h_src/58014444.htm" class="localvar">base</a>+1;  <a  class="comments">/* call remove function and arguments and leaves</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable fs</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

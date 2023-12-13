@@ -1,0 +1,63 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>LUA_VLCF</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57513488.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57513488.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57513488.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57513488.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/58116484.htm" class=function>equalkey</a>                                         ltable.c
+   229 :    case <a href="../h_src/57513488.htm" class="macro">LUA_VLCF</a>:
+   230 :    return <a href="../h_src/57512128.htm" class="macro">fvalue</a>(<a href="../h_src/58116348.htm" class="localvar">k1</a>) == <a href="../h_src/57511856.htm" class="macro">fvalueraw</a>(<a href="../h_src/57504104.htm" class="macro">keyval</a>(<a href="../h_src/58116212.htm" class="localvar">n2</a>));
+<a href="../h_aa/57610052.htm" class=function>index2value</a>                                      lapi.c
+    84 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57609916.htm" class="localvar">L</a>, <a href="../h_src/57512944.htm" class="macro">ttislcf</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(ci-&gt;func.p)), &quot;caller not a C function&quot;);
+<a href="../h_aa/57438744.htm" class=function>lua_iscfunction</a>                                  lapi.c
+   299 :    return (<a href="../h_src/57512944.htm" class="macro">ttislcf</a>(<a href="../h_src/57600056.htm" class="localvar">o</a>) || (<a href="../h_src/57512808.htm" class="macro">ttisCclosure</a>(<a href="../h_src/57600056.htm" class="localvar">o</a>)));
+<a href="../h_aa/57434664.htm" class=function>lua_pushcclosure</a>                                 lapi.c
+   582 :    <a href="../h_src/57511448.htm" class="macro">setfvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57586524.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>), <a href="../h_src/57586388.htm" class="localvar">fn</a>);
+<a href="../h_aa/57438064.htm" class=function>lua_tocfunction</a>                                  lapi.c
+   440 :    if (<a href="../h_src/57512944.htm" class="macro">ttislcf</a>(<a href="../h_src/57592100.htm" class="localvar">o</a>)) return <a href="../h_src/57512128.htm" class="macro">fvalue</a>(<a href="../h_src/57592100.htm" class="localvar">o</a>);
+<a href="../h_aa/57437860.htm" class=function>lua_topointer</a>                                    lapi.c
+   478 :    case <a href="../h_src/57513488.htm" class="macro">LUA_VLCF</a>: return <a href="../h_src/57547488.htm" class="macro">cast_voidp</a>(<a href="../h_src/57546400.htm" class="macro">cast_sizet</a>(<a href="../h_src/57512128.htm" class="macro">fvalue</a>(<a href="../h_src/57590536.htm" class="localvar">o</a>)));
+<a href="../h_aa/57424260.htm" class=function>lua_upvalueid</a>                                    lapi.c
+  1443 :    case <a href="../h_src/57513488.htm" class="macro">LUA_VLCF</a>:
+<a href="../h_aa/57633308.htm" class=function>luaD_precall</a>                                     ldo.c
+   594 :    case <a href="../h_src/57513488.htm" class="macro">LUA_VLCF</a>:  <a  class="comments">/* light C function */</a>
+   595 :    <a href="../h_src/57868300.htm" class="function">precallC</a>(<a href="../h_src/57865444.htm" class="localvar">L</a>, <a href="../h_src/57865308.htm" class="localvar">func</a>, <a href="../h_src/57865172.htm" class="localvar">nresults</a>, <a href="../h_src/57512128.htm" class="macro">fvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57865308.htm" class="localvar">func</a>)));
+<a href="../h_aa/57633376.htm" class=function>luaD_pretailcall</a>                                 ldo.c
+   549 :    case <a href="../h_src/57513488.htm" class="macro">LUA_VLCF</a>:  <a  class="comments">/* light C function */</a>
+   550 :    return <a href="../h_src/57868300.htm" class="function">precallC</a>(<a href="../h_src/57867076.htm" class="localvar">L</a>, <a href="../h_src/57866804.htm" class="localvar">func</a>, <a href="../h_src/57445612.htm" class="macro">LUA_MULTRET</a>, <a href="../h_src/57512128.htm" class="macro">fvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57866804.htm" class="localvar">func</a>)));
+<a href="../h_aa/57611752.htm" class=function>luaV_equalobj</a>                                    lvm.c
+   586 :    case <a href="../h_src/57513488.htm" class="macro">LUA_VLCF</a>: return <a href="../h_src/57512128.htm" class="macro">fvalue</a>(<a href="../h_src/58204720.htm" class="localvar">t1</a>) == <a href="../h_src/57512128.htm" class="macro">fvalue</a>(<a href="../h_src/58204584.htm" class="localvar">t2</a>);
+<a href="../h_aa/58118660.htm" class=function>mainpositionTV</a>                                   ltable.c
+   177 :    case <a href="../h_src/57513488.htm" class="macro">LUA_VLCF</a>: {
+   178 :    <a href="../h_src/57441736.htm" class="type">lua_CFunction</a> <a href="../h_src/58117572.htm" class="localvar">f</a> = <a href="../h_src/57512128.htm" class="macro">fvalue</a>(<a href="../h_src/58118388.htm" class="localvar">key</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use LUA_VLCF</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,107 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>cast_byte</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57546944.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57546944.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57546944.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57546944.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57826616.htm" class=function>atomic</a>                                           lgc.c
+  1560 :    <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646092.htm" class="variable">currentwhite</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/57625828.htm" class="macro">otherwhite</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>));  <a  class="comments">/* flip current white */</a>
+<a href="../h_aa/58125188.htm" class=function>internshrstr</a>                                     lstring.c
+   210 :    <a href="../h_src/58124644.htm" class="localvar">ts</a>-&gt;<a href="../h_src/57523416.htm" class="variable">shrlen</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/58124780.htm" class="localvar">l</a>);
+<a href="../h_aa/57825664.htm" class=function>linkgclist_</a>                                      lgc.c
+   152 :    <a href="../h_src/57827976.htm" class="macro">set2gray</a>(<a href="../h_src/57825528.htm" class="localvar">o</a>);  <a  class="comments">/* now it is */</a>
+<a href="../h_aa/58073576.htm" class=function>loadByte</a>                                         lundump.c
+    65 :    return <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/58073304.htm" class="localvar">b</a>);
+<a href="../h_aa/57439900.htm" class=function>lua_newstate</a>                                     lstate.c
+   370 :    <a href="../h_src/58134164.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642896.htm" class="variable">marked</a> = <a href="../h_src/57625148.htm" class="macro">luaC_white</a>(<a href="../h_src/58134028.htm" class="localvar">g</a>);
+<a href="../h_aa/57432420.htm" class=function>lua_resume</a>                                       ldo.c
+   855 :    <a href="../h_src/57857964.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642828.htm" class="variable">status</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/57857420.htm" class="localvar">status</a>);  <a  class="comments">/* mark thread as 'dead' */</a>
+<a href="../h_aa/57424124.htm" class=function>lua_sethook</a>                                      ldebug.c
+   139 :    <a href="../h_src/57756604.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641264.htm" class="variable">hookmask</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/57756332.htm" class="localvar">mask</a>);
+<a href="../h_aa/57620456.htm" class=function>luaC_barrier_</a>                                    lgc.c
+   215 :    <a href="../h_src/57623788.htm" class="macro">setage</a>(<a href="../h_src/57824032.htm" class="localvar">v</a>, <a href="../h_src/57624740.htm" class="macro">G_OLD0</a>);  <a  class="comments">/* restore generational invariant */</a>
+   221 :    <a href="../h_src/57828112.htm" class="macro">makewhite</a>(<a href="../h_src/57823896.htm" class="localvar">g</a>, <a href="../h_src/57824168.htm" class="localvar">o</a>);  <a  class="comments">/* mark 'o' as white to avoid other barriers */</a>
+<a href="../h_aa/57620388.htm" class=function>luaC_barrierback_</a>                                lgc.c
+   235 :    <a href="../h_src/57827976.htm" class="macro">set2gray</a>(<a href="../h_src/57823624.htm" class="localvar">o</a>);  <a  class="comments">/* make it gray to become touched1 */</a>
+   239 :    <a href="../h_src/57623788.htm" class="macro">setage</a>(<a href="../h_src/57823624.htm" class="localvar">o</a>, <a href="../h_src/57624332.htm" class="macro">G_TOUCHED1</a>);  <a  class="comments">/* touched in current cycle */</a>
+<a href="../h_aa/57620320.htm" class=function>luaC_checkfinalizer</a>                              lgc.c
+  1026 :    <a href="../h_src/57828112.htm" class="macro">makewhite</a>(<a href="../h_src/57957012.htm" class="localvar">g</a>, <a href="../h_src/57957284.htm" class="localvar">o</a>);  <a  class="comments">/* &quot;sweep&quot; object 'o' */</a>
+<a href="../h_aa/57620932.htm" class=function>luaC_fix</a>                                         lgc.c
+   246 :    <a href="../h_src/57827976.htm" class="macro">set2gray</a>(<a href="../h_src/57823216.htm" class="localvar">o</a>);  <a  class="comments">/* they will be gray forever */</a>
+   247 :    <a href="../h_src/57623788.htm" class="macro">setage</a>(<a href="../h_src/57823216.htm" class="localvar">o</a>, <a href="../h_src/57624468.htm" class="macro">G_OLD</a>);  <a  class="comments">/* and old forever */</a>
+<a href="../h_aa/57620524.htm" class=function>luaC_newobjdt</a>                                    lgc.c
+   262 :    <a href="../h_src/57822128.htm" class="localvar">o</a>-&gt;<a href="../h_src/57528040.htm" class="variable">marked</a> = <a href="../h_src/57625148.htm" class="macro">luaC_white</a>(<a href="../h_src/57822400.htm" class="localvar">g</a>);
+<a href="../h_aa/57630860.htm" class=function>luaF_newCclosure</a>                                 lfunc.c
+    30 :    <a href="../h_src/57839740.htm" class="localvar">c</a>-&gt;<a href="../h_src/57509068.htm" class="variable">nupvalues</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/57840012.htm" class="localvar">nupvals</a>);
+<a href="../h_aa/57630724.htm" class=function>luaF_newLclosure</a>                                 lfunc.c
+    39 :    <a href="../h_src/57839196.htm" class="localvar">c</a>-&gt;<a href="../h_src/57508320.htm" class="variable">nupvalues</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/57839468.htm" class="localvar">nupvals</a>);
+<a href="../h_aa/57616512.htm" class=function>luaH_new</a>                                         ltable.c
+   630 :    <a href="../h_src/58100300.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504920.htm" class="variable">flags</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/57498936.htm" class="macro">maskflags</a>);  <a  class="comments">/* table has no metamethod fields */</a>
+<a href="../h_aa/57670612.htm" class=function>luaK_checkstack</a>                                  lcode.c
+   472 :    <a href="../h_src/57811344.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57676052.htm" class="variable">f</a>-&gt;<a href="../h_src/57515800.htm" class="variable">maxstacksize</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/57811072.htm" class="localvar">newstack</a>);
+<a href="../h_aa/57619164.htm" class=function>luaS_hash</a>                                        lstring.c
+    46 :    <a href="../h_src/58130968.htm" class="localvar">h</a> ^= ((<a href="../h_src/58130968.htm" class="localvar">h</a>&lt;&lt;5) + (<a href="../h_src/58130968.htm" class="localvar">h</a>&gt;&gt;2) + <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/58131376.htm" class="localvar">str</a>[<a href="../h_src/58131240.htm" class="localvar">l</a> - 1]));
+<a href="../h_aa/57498120.htm" class=function>luaT_gettm</a>                                       ltm.c
+    64 :    <a href="../h_src/58089896.htm" class="localvar">events</a>-&gt;<a href="../h_src/57504920.htm" class="variable">flags</a> |= <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(1u&lt;&lt;<a href="../h_src/58089760.htm" class="localvar">event</a>);  <a  class="comments">/* cache this fact */</a>
+<a href="../h_aa/57700056.htm" class=function>luaX_init</a>                                        llex.c
+    77 :    <a href="../h_src/57938652.htm" class="localvar">ts</a>-&gt;<a href="../h_src/57523484.htm" class="variable">extra</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/57938924.htm" class="localvar">i</a>+1);  <a  class="comments">/* reserved word */</a>
+<a href="../h_aa/58041372.htm" class=function>newupvalue</a>                                       lparser.c
+   375 :    <a href="../h_src/58040828.htm" class="localvar">up</a>-&gt;<a href="../h_src/57517228.htm" class="variable">idx</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/58040964.htm" class="localvar">v</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a>);
+<a href="../h_aa/58017572.htm" class=function>parlist</a>                                          lparser.c
+   983 :    <a href="../h_src/58017164.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515936.htm" class="variable">numparams</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/58017300.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674896.htm" class="variable">nactvar</a>);
+<a href="../h_aa/57826752.htm" class=function>reallymarkobject</a>                                 lgc.c
+   301 :    <a href="../h_src/57827840.htm" class="macro">set2black</a>(<a href="../h_src/57821448.htm" class="localvar">o</a>);  <a  class="comments">/* nothing to visit */</a>
+   307 :    <a href="../h_src/57827976.htm" class="macro">set2gray</a>(<a href="../h_src/57821312.htm" class="localvar">uv</a>);  <a  class="comments">/* open upvalues are kept gray */</a>
+   309 :    <a href="../h_src/57827840.htm" class="macro">set2black</a>(<a href="../h_src/57821312.htm" class="localvar">uv</a>);  <a  class="comments">/* closed upvalues are visited here */</a>
+   317 :    <a href="../h_src/57827840.htm" class="macro">set2black</a>(<a href="../h_src/57821176.htm" class="localvar">u</a>);  <a  class="comments">/* nothing else to mark */</a>
+<a href="../h_aa/58115260.htm" class=function>setlimittosize</a>                                   ltable.c
+   285 :    <a href="../h_src/57505396.htm" class="macro">setrealasize</a>(<a href="../h_src/58115124.htm" class="localvar">t</a>);
+<a href="../h_aa/58106556.htm" class=function>setnodevector</a>                                    ltable.c
+   499 :    <a href="../h_src/58106284.htm" class="localvar">t</a>-&gt;<a href="../h_src/57504852.htm" class="variable">lsizenode</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/58105876.htm" class="localvar">lsize</a>);
+<a href="../h_aa/57955924.htm" class=function>sweep2old</a>                                        lgc.c
+  1087 :    <a href="../h_src/57623788.htm" class="macro">setage</a>(<a href="../h_src/57955516.htm" class="localvar">curr</a>, <a href="../h_src/57624468.htm" class="macro">G_OLD</a>);
+  1093 :    <a href="../h_src/57827976.htm" class="macro">set2gray</a>(<a href="../h_src/57955516.htm" class="localvar">curr</a>);  <a  class="comments">/* open upvalues are always gray */</a>
+<a href="../h_aa/57955108.htm" class=function>sweepgen</a>                                         lgc.c
+  1124 :    int <a href="../h_src/57954156.htm" class="localvar">white</a> = <a href="../h_src/57625148.htm" class="macro">luaC_white</a>(<a href="../h_src/57954836.htm" class="localvar">g</a>);
+  1135 :    <a href="../h_src/57954020.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528040.htm" class="variable">marked</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/57953884.htm" class="localvar">marked</a> | <a href="../h_src/57624876.htm" class="macro">G_SURVIVAL</a> | <a href="../h_src/57954156.htm" class="localvar">white</a>);
+  1138 :    <a href="../h_src/57623788.htm" class="macro">setage</a>(<a href="../h_src/57954020.htm" class="localvar">curr</a>, <a href="../h_src/57954292.htm" class="localvar">nextage</a>[<a href="../h_src/57623924.htm" class="macro">getage</a>(<a href="../h_src/57954020.htm" class="localvar">curr</a>)]);
+<a href="../h_aa/57965716.htm" class=function>sweeplist</a>                                        lgc.c
+   827 :    int <a href="../h_src/57964628.htm" class="localvar">white</a> = <a href="../h_src/57625148.htm" class="macro">luaC_white</a>(<a href="../h_src/57965036.htm" class="localvar">g</a>);  <a  class="comments">/* current white */</a>
+   836 :    <a href="../h_src/57964492.htm" class="localvar">curr</a>-&gt;<a href="../h_src/57528040.htm" class="variable">marked</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>((<a href="../h_src/57964356.htm" class="localvar">marked</a> &amp; ~<a href="../h_src/57828248.htm" class="macro">maskgcbits</a>) | <a href="../h_src/57964628.htm" class="localvar">white</a>);
+<a href="../h_aa/57963132.htm" class=function>udata2finalize</a>                                   lgc.c
+   890 :    <a href="../h_src/57627460.htm" class="macro">resetbit</a>(<a href="../h_src/57962860.htm" class="localvar">o</a>-&gt;<a href="../h_src/57528040.htm" class="variable">marked</a>, <a href="../h_src/57626780.htm" class="macro">FINALIZEDBIT</a>);  <a  class="comments">/* object is &quot;normal&quot; again */</a>
+   892 :    <a href="../h_src/57828112.htm" class="macro">makewhite</a>(<a href="../h_src/57962996.htm" class="localvar">g</a>, <a href="../h_src/57962860.htm" class="localvar">o</a>);  <a  class="comments">/* &quot;sweep&quot; object */</a>
+<a href="../h_aa/57953748.htm" class=function>whitelist</a>                                        lgc.c
+  1155 :    int <a href="../h_src/57953340.htm" class="localvar">white</a> = <a href="../h_src/57625148.htm" class="macro">luaC_white</a>(<a href="../h_src/57953612.htm" class="localvar">g</a>);
+  1157 :    <a href="../h_src/57953476.htm" class="localvar">p</a>-&gt;<a href="../h_src/57528040.htm" class="variable">marked</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>((<a href="../h_src/57953476.htm" class="localvar">p</a>-&gt;<a href="../h_src/57528040.htm" class="variable">marked</a> &amp; ~<a href="../h_src/57828248.htm" class="macro">maskgcbits</a>) | <a href="../h_src/57953340.htm" class="localvar">white</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use cast_byte</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

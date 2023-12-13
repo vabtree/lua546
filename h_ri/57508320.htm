@@ -1,0 +1,53 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">LClosure::</a>nupvalues</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57508320.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57508320.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57508320.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57508320.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57508320.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57630724.htm" class=function>luaF_newLclosure</a>                                 lfunc.c
+    39 :    <a href="../h_src/57839196.htm" class="localvar">c</a>-&gt;<a href="../h_src/57508320.htm" class="variable">nupvalues</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/57839468.htm" class="localvar">nupvals</a>);
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57966804.htm" class=function>freeobj</a>                                          lgc.c
+   780 :    <a href="../h_src/57495876.htm" class="macro">luaM_freemem</a>(<a href="../h_src/57966668.htm" class="localvar">L</a>, <a href="../h_src/57966396.htm" class="localvar">cl</a>, <a href="../h_src/57631948.htm" class="macro">sizeLclosure</a>(<a href="../h_src/57966396.htm" class="localvar">cl</a>-&gt;<a href="../h_src/57508320.htm" class="variable">nupvalues</a>));
+<a href="../h_aa/57896180.htm" class=function>getupvalname</a>                                     ldebug.c
+   684 :    for (<a href="../h_src/57895500.htm" class="localvar">i</a> = 0; <a href="../h_src/57895500.htm" class="localvar">i</a> &lt; <a href="../h_src/57895636.htm" class="localvar">c</a>-&gt;<a href="../h_src/57508320.htm" class="variable">nupvalues</a>; <a href="../h_src/57895500.htm" class="localvar">i</a>++) {
+<a href="../h_aa/57432624.htm" class=function>lua_load</a>                                         lapi.c
+  1097 :    if (<a href="../h_src/57721612.htm" class="localvar">f</a>-&gt;<a href="../h_src/57508320.htm" class="variable">nupvalues</a> &gt;= 1) {  <a  class="comments">/* does it have an upvalue? */</a>
+<a href="../h_aa/57630656.htm" class=function>luaF_initupvals</a>                                  lfunc.c
+    50 :    for (<a href="../h_src/57838788.htm" class="localvar">i</a> = 0; <a href="../h_src/57838788.htm" class="localvar">i</a> &lt; <a href="../h_src/57838924.htm" class="localvar">cl</a>-&gt;<a href="../h_src/57508320.htm" class="variable">nupvalues</a>; <a href="../h_src/57838788.htm" class="localvar">i</a>++) {
+<a href="../h_aa/57972516.htm" class=function>traverseLclosure</a>                                 lgc.c
+   607 :    for (<a href="../h_src/57972108.htm" class="localvar">i</a> = 0; <a href="../h_src/57972108.htm" class="localvar">i</a> &lt; <a href="../h_src/57972244.htm" class="localvar">cl</a>-&gt;<a href="../h_src/57508320.htm" class="variable">nupvalues</a>; <a href="../h_src/57972108.htm" class="localvar">i</a>++) {  <a  class="comments">/* visit its upvalues */</a>
+   611 :    return 1 + <a href="../h_src/57972244.htm" class="localvar">cl</a>-&gt;<a href="../h_src/57508320.htm" class="variable">nupvalues</a>;
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable nupvalues</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

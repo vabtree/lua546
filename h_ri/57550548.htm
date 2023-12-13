@@ -1,0 +1,77 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>l_mem</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57550548.htm" class="type" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57550548.htm" class="type" target="_self">Usage</a></li>
+<li><a href="../h_src/57550548.htm" class="type" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57550548.htm" class="type" target="_self">Used By</a></li>
+<li><a href="../h_rx/57550548.htm" class="type" target="_self">Cross Reference</a></li>
+<li><a href="../h_ro/57550548.htm" class="type" target="_self">Built From</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Used In</h4>
+<pre><a href="../h_aa/57719164.htm" class=variable>debt</a>                                             lapi.c
+  1166 :    <a href="../h_src/57550548.htm" class="type">l_mem</a> <a href="../h_src/57719164.htm" class="localvar">debt</a> = 1;  <a  class="comments">/* =1 to signal that it did an actual step */</a>
+<a href="../h_aa/57942188.htm" class=variable>debt</a>                                             lgc.c
+  1667 :    <a href="../h_src/57550548.htm" class="type">l_mem</a> <a href="../h_src/57942188.htm" class="localvar">debt</a> = (<a href="../h_src/57942460.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646568.htm" class="variable">GCdebt</a> / <a href="../h_src/57828656.htm" class="macro">WORK2MEM</a>) * <a href="../h_src/57942324.htm" class="localvar">stepmul</a>;
+<a href="../h_aa/57956332.htm" class=variable>debt</a>                                             lgc.c
+  1058 :    <a href="../h_src/57550548.htm" class="type">l_mem</a> <a href="../h_src/57956468.htm" class="localvar">threshold</a>, <a href="../h_src/57956332.htm" class="localvar">debt</a>;
+<a href="../h_aa/57982620.htm" class=variable>debt</a>                                             lstate.c
+    89 :    void <a href="../h_src/57638612.htm" class="function">luaE_setdebt</a> (<a href="../h_src/57643100.htm" class="type">global_State</a> *<a href="../h_src/57982756.htm" class="localvar">g</a>, <a href="../h_src/57550548.htm" class="type">l_mem</a> <a href="../h_src/57982620.htm" class="localvar">debt</a>) {
+<a href="../h_aa/57956060.htm" class=variable>estimate</a>                                         lgc.c
+  1060 :    <a href="../h_src/57550548.htm" class="type">l_mem</a> <a href="../h_src/57956060.htm" class="localvar">estimate</a> = <a href="../h_src/57956604.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646500.htm" class="variable">GCestimate</a> / <a href="../h_src/57828520.htm" class="macro">PAUSEADJ</a>;  <a  class="comments">/* adjust 'estimate' */</a>
+<a href="../h_aa/57646568.htm" class=variable>global_State::GCdebt</a>                             lstate.h
+   258 :    <a href="../h_src/57550548.htm" class="type">l_mem</a> <a href="../h_src/57646568.htm" class="variable">GCdebt</a>;  <a  class="comments">/* bytes allocated not yet compensated by the collector */</a>
+<a href="../h_aa/57942732.htm" class=function>incstep</a>                                          lgc.c
+  1668 :    <a href="../h_src/57550548.htm" class="type">l_mem</a> <a href="../h_src/57942052.htm" class="localvar">stepsize</a> = (<a href="../h_src/57942460.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645412.htm" class="variable">gcstepsize</a> &lt;= <a href="../h_src/57549664.htm" class="macro">log2maxs</a>(<a href="../h_src/57550548.htm" class="type">l_mem</a>))
+  1669 :    ? ((<a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57550548.htm" class="type">l_mem</a>, 1) &lt;&lt; <a href="../h_src/57942460.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645412.htm" class="variable">gcstepsize</a>) / <a href="../h_src/57828656.htm" class="macro">WORK2MEM</a>) * <a href="../h_src/57942324.htm" class="localvar">stepmul</a>
+  1670 :    : <a href="../h_src/57549936.htm" class="macro">MAX_LMEM</a>;  <a  class="comments">/* overflow; keep maximum value */</a>
+<a href="../h_aa/57430448.htm" class=function>lua_gc</a>                                           lapi.c
+  1174 :    <a href="../h_src/57719164.htm" class="localvar">debt</a> = <a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57550548.htm" class="type">l_mem</a>, <a href="../h_src/57719300.htm" class="localvar">data</a>) * 1024 + <a href="../h_src/57719436.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646568.htm" class="variable">GCdebt</a>;
+<a href="../h_aa/57638612.htm" class=function>luaE_setdebt</a>                                     lstate.c
+    92 :    if (<a href="../h_src/57982620.htm" class="localvar">debt</a> &lt; <a href="../h_src/57982484.htm" class="localvar">tb</a> - <a href="../h_src/57549936.htm" class="macro">MAX_LMEM</a>)
+    93 :    <a href="../h_src/57982620.htm" class="localvar">debt</a> = <a href="../h_src/57982484.htm" class="localvar">tb</a> - <a href="../h_src/57549936.htm" class="macro">MAX_LMEM</a>;  <a  class="comments">/* will make 'totalbytes == MAX_LMEM' */</a>
+<a href="../h_aa/57943956.htm" class=variable>olddebt</a>                                          lgc.c
+  1569 :    <a href="../h_src/57550548.htm" class="type">l_mem</a> <a href="../h_src/57943956.htm" class="localvar">olddebt</a> = <a href="../h_src/57944364.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646568.htm" class="variable">GCdebt</a>;
+<a href="../h_aa/57963268.htm" class=variable>olddebt</a>                                          lgc.c
+   872 :    <a href="../h_src/57550548.htm" class="type">l_mem</a> <a href="../h_src/57963268.htm" class="localvar">olddebt</a> = <a href="../h_src/57963404.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646568.htm" class="variable">GCdebt</a>;
+<a href="../h_aa/57950076.htm" class=function>setminordebt</a>                                     lgc.c
+  1317 :    <a href="../h_src/57638612.htm" class="function">luaE_setdebt</a>(<a href="../h_src/57949940.htm" class="localvar">g</a>, -(<a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57550548.htm" class="type">l_mem</a>, (<a href="../h_src/57638748.htm" class="macro">gettotalbytes</a>(<a href="../h_src/57949940.htm" class="localvar">g</a>) / 100)) * <a href="../h_src/57949940.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645820.htm" class="variable">genminormul</a>));
+<a href="../h_aa/57956740.htm" class=function>setpause</a>                                         lgc.c
+  1062 :    <a href="../h_src/57956468.htm" class="localvar">threshold</a> = (<a href="../h_src/57956196.htm" class="localvar">pause</a> &lt; <a href="../h_src/57549936.htm" class="macro">MAX_LMEM</a> / <a href="../h_src/57956060.htm" class="localvar">estimate</a>)  <a  class="comments">/* overflow? */</a>
+  1064 :    : <a href="../h_src/57549936.htm" class="macro">MAX_LMEM</a>;  <a  class="comments">/* overflow; truncate to maximum */</a>
+<a href="../h_aa/57942052.htm" class=variable>stepsize</a>                                         lgc.c
+  1668 :    <a href="../h_src/57550548.htm" class="type">l_mem</a> <a href="../h_src/57942052.htm" class="localvar">stepsize</a> = (<a href="../h_src/57942460.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645412.htm" class="variable">gcstepsize</a> &lt;= <a href="../h_src/57549664.htm" class="macro">log2maxs</a>(<a href="../h_src/57550548.htm" class="type">l_mem</a>))
+<a href="../h_aa/57982484.htm" class=variable>tb</a>                                               lstate.c
+    90 :    <a href="../h_src/57550548.htm" class="type">l_mem</a> <a href="../h_src/57982484.htm" class="localvar">tb</a> = <a href="../h_src/57638748.htm" class="macro">gettotalbytes</a>(<a href="../h_src/57982756.htm" class="localvar">g</a>);
+<a href="../h_aa/57956468.htm" class=variable>threshold</a>                                        lgc.c
+  1058 :    <a href="../h_src/57550548.htm" class="type">l_mem</a> <a href="../h_src/57956468.htm" class="localvar">threshold</a>, <a href="../h_src/57956332.htm" class="localvar">debt</a>;
+<a href="../h_aa/57646636.htm" class=variable>global_State::totalbytes</a>                         lstate.h
+   257 :    <a href="../h_src/57550548.htm" class="type">l_mem</a> <a href="../h_src/57646636.htm" class="variable">totalbytes</a>;  <a  class="comments">/* number of bytes currently allocated - GCdebt */</a>
+</pre>
+<h4><a class="legend">Table lists all symbols that directly use type l_mem</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

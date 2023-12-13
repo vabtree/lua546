@@ -1,0 +1,54 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">lua_Debug::</a>name</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57423716.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57423716.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57423716.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57423716.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57423716.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57747764.htm" class=function>auxgetinfo</a>                                       ldebug.c
+   360 :    <a href="../h_src/57747356.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423716.htm" class="variable">name</a> = NULL;
+<a href="../h_aa/57420384.htm" class=function>luaL_argerror</a>                                    lauxlib.c
+   187 :    <a href="../h_src/58346288.htm" class="localvar">ar</a>.<a href="../h_src/57423716.htm" class="variable">name</a> = (<a href="../h_src/58349892.htm" class="function">pushglobalfuncname</a>(<a href="../h_src/58346696.htm" class="localvar">L</a>, &amp;<a href="../h_src/58346288.htm" class="localvar">ar</a>)) ? <a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/58346696.htm" class="localvar">L</a>, -1) : &quot;?&quot;;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57747764.htm" class=function>auxgetinfo</a>                                       ldebug.c
+   357 :    <a href="../h_src/57747356.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423648.htm" class="variable">namewhat</a> = <a href="../h_src/57748308.htm" class="function">getfuncname</a>(<a href="../h_src/57747628.htm" class="localvar">L</a>, <a href="../h_src/57747084.htm" class="localvar">ci</a>, &amp;<a href="../h_src/57747356.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423716.htm" class="variable">name</a>);
+<a href="../h_aa/58281756.htm" class=function>db_getinfo</a>                                       ldblib.c
+   186 :    <a href="../h_src/58283932.htm" class="function">settabss</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, &quot;name&quot;, <a href="../h_src/58281484.htm" class="localvar">ar</a>.<a href="../h_src/57423716.htm" class="variable">name</a>);
+<a href="../h_aa/57420384.htm" class=function>luaL_argerror</a>                                    lauxlib.c
+   184 :    <a href="../h_src/58346288.htm" class="localvar">ar</a>.<a href="../h_src/57423716.htm" class="variable">name</a>, <a href="../h_src/58346424.htm" class="localvar">extramsg</a>);
+   186 :    if (<a href="../h_src/58346288.htm" class="localvar">ar</a>.<a href="../h_src/57423716.htm" class="variable">name</a> == NULL)
+   189 :    <a href="../h_src/58346560.htm" class="localvar">arg</a>, <a href="../h_src/58346288.htm" class="localvar">ar</a>.<a href="../h_src/57423716.htm" class="variable">name</a>, <a href="../h_src/58346424.htm" class="localvar">extramsg</a>);
+<a href="../h_aa/58349144.htm" class=function>pushfuncname</a>                                     lauxlib.c
+   106 :    <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/58349008.htm" class="localvar">L</a>, &quot;%s '%s'&quot;, <a href="../h_src/58348872.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423648.htm" class="variable">namewhat</a>, <a href="../h_src/58348872.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423716.htm" class="variable">name</a>);  <a  class="comments">/* use it */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable name</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

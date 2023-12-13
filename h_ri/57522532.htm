@@ -1,0 +1,54 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>svalue</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57522532.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57522532.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57522532.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57522532.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/58203768.htm" class=function>copy2buff</a>                                        lvm.c
+   628 :    <a href="../h_aa/57902680.htm" class="libfunc">memcpy</a>(<a href="../h_src/58203360.htm" class="localvar">buff</a> + <a href="../h_src/58203224.htm" class="localvar">tl</a>, <a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58203632.htm" class="localvar">top</a> - <a href="../h_src/58203496.htm" class="localvar">n</a>)), <a href="../h_src/58203088.htm" class="localvar">l</a> * sizeof(char));
+<a href="../h_aa/57745588.htm" class=function>getobjname</a>                                       ldebug.c
+   572 :    *<a href="../h_src/57739468.htm" class="localvar">name</a> = <a href="../h_src/57522532.htm" class="macro">svalue</a>(&amp;<a href="../h_src/57739876.htm" class="localvar">p</a>-&gt;<a href="../h_src/57515052.htm" class="variable">k</a>[<a href="../h_src/57738380.htm" class="localvar">b</a>]);
+<a href="../h_aa/57745452.htm" class=function>kname</a>                                            ldebug.c
+   429 :    *<a href="../h_src/57745044.htm" class="localvar">name</a> = (<a href="../h_src/57524912.htm" class="macro">ttisstring</a>(<a href="../h_src/57744908.htm" class="localvar">kvalue</a>)) ? <a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/57744908.htm" class="localvar">kvalue</a>) : &quot;?&quot;;
+<a href="../h_aa/58060996.htm" class=function>l_strton</a>                                         lvm.c
+    95 :    return (<a href="../h_src/57501656.htm" class="function">luaO_str2num</a>(<a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/58060860.htm" class="localvar">obj</a>), <a href="../h_src/58060724.htm" class="localvar">result</a>) == <a href="../h_src/57522260.htm" class="macro">vslen</a>(<a href="../h_src/58060860.htm" class="localvar">obj</a>) + 1);
+<a href="../h_aa/57438200.htm" class=function>lua_tolstring</a>                                    lapi.c
+   422 :    return <a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/57593052.htm" class="localvar">o</a>);
+<a href="../h_aa/57638068.htm" class=function>luaE_warnerror</a>                                   lstate.c
+   436 :    ? <a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/58132600.htm" class="localvar">errobj</a>)
+<a href="../h_aa/57501452.htm" class=function>luaO_pushvfstring</a>                                lobject.c
+   545 :    return <a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57901932.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1));
+<a href="../h_aa/57974964.htm" class=function>traversetable</a>                                    lgc.c
+   547 :    (<a href="../h_src/57547624.htm" class="macro">cast_void</a>(<a href="../h_src/57974556.htm" class="localvar">weakkey</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/57974284.htm" class="localvar">mode</a>), 'k')),
+   548 :    <a href="../h_src/57547624.htm" class="macro">cast_void</a>(<a href="../h_src/57974420.htm" class="localvar">weakvalue</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/57974284.htm" class="localvar">mode</a>), 'v')),
+</pre>
+<h4><a class="legend">Table lists functions that directly use svalue</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

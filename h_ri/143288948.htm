@@ -1,0 +1,50 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>NB</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143288948.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/143288948.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/143288948.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/143288948.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/143282216.htm" class=function>packint</a>                                          lstrlib.c
+  1572 :    <a href="../h_src/143281400.htm" class="localvar">buff</a>[<a href="../h_src/143281808.htm" class="localvar">islittle</a> ? 0 : <a href="../h_src/143281672.htm" class="localvar">size</a> - 1] = (char)(<a href="../h_src/143281944.htm" class="localvar">n</a> &amp; <a href="../h_src/143288812.htm" class="macro">MC</a>);  <a  class="comments">/* first byte */</a>
+  1574 :    <a href="../h_src/143281944.htm" class="localvar">n</a> &gt;&gt;= <a href="../h_src/143288948.htm" class="macro">NB</a>;
+  1575 :    <a href="../h_src/143281400.htm" class="localvar">buff</a>[<a href="../h_src/143281808.htm" class="localvar">islittle</a> ? <a href="../h_src/143281264.htm" class="localvar">i</a> : <a href="../h_src/143281672.htm" class="localvar">size</a> - 1 - <a href="../h_src/143281264.htm" class="localvar">i</a>] = (char)(<a href="../h_src/143281944.htm" class="localvar">n</a> &amp; <a href="../h_src/143288812.htm" class="macro">MC</a>);
+  1579 :    <a href="../h_src/143281400.htm" class="localvar">buff</a>[<a href="../h_src/143281808.htm" class="localvar">islittle</a> ? <a href="../h_src/143281264.htm" class="localvar">i</a> : <a href="../h_src/143281672.htm" class="localvar">size</a> - 1 - <a href="../h_src/143281264.htm" class="localvar">i</a>] = (char)<a href="../h_src/143288812.htm" class="macro">MC</a>;
+<a href="../h_aa/143280448.htm" class=function>str_pack</a>                                         lstrlib.c
+  1621 :    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143438928.htm" class="localvar">lim</a> = (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)1 &lt;&lt; ((<a href="../h_src/143279496.htm" class="localvar">size</a> * <a href="../h_src/143288948.htm" class="macro">NB</a>) - 1);
+  1630 :    <a href="../h_src/57417256.htm" class="macro">luaL_argcheck</a>(L, (lua_Unsigned)n &lt; ((lua_Unsigned)1 &lt;&lt; (size * <a href="../h_src/143288948.htm" class="macro">NB</a>)),
+  1673 :    <a href="../h_src/143437568.htm" class="localvar">len</a> &lt; ((<a href="../h_aa/57441192.htm" class="type">size_t</a>)1 &lt;&lt; (<a href="../h_src/143279496.htm" class="localvar">size</a> * <a href="../h_src/143288948.htm" class="macro">NB</a>)),
+<a href="../h_aa/143435936.htm" class=function>unpackint</a>                                        lstrlib.c
+  1734 :    <a href="../h_src/143435120.htm" class="localvar">res</a> &lt;&lt;= <a href="../h_src/143288948.htm" class="macro">NB</a>;
+  1739 :    <a href="../h_src/57438132.htm" class="function">lua_Unsigned</a> <a href="../h_src/143434712.htm" class="localvar">mask</a> = (<a href="../h_src/57438132.htm" class="function">lua_Unsigned</a>)1 &lt;&lt; (<a href="../h_src/143435392.htm" class="localvar">size</a>*<a href="../h_src/143288948.htm" class="macro">NB</a> - 1);
+  1744 :    int <a href="../h_src/143434576.htm" class="localvar">mask</a> = (!<a href="../h_src/143435256.htm" class="localvar">issigned</a> || (<a href="../h_src/57442076.htm" class="type">lua_Integer</a>)<a href="../h_src/143435120.htm" class="localvar">res</a> &gt;= 0) ? 0 : <a href="../h_src/143288812.htm" class="macro">MC</a>;
+</pre>
+<h4><a class="legend">Table lists functions that directly use NB</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

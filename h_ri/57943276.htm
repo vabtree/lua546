@@ -1,0 +1,52 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>work</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57943276.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57943276.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57943276.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57943276.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57943684.htm" class=function>singlestep</a>                                       lgc.c
+  1592 :    <a href="../h_src/57943276.htm" class="localvar">work</a> = 1;
+  1598 :    <a href="../h_src/57943276.htm" class="localvar">work</a> = 0;
+  1601 :    <a href="../h_src/57943276.htm" class="localvar">work</a> = <a href="../h_src/57971156.htm" class="function">propagatemark</a>(<a href="../h_src/57943412.htm" class="localvar">g</a>);  <a  class="comments">/* traverse one gray object */</a>
+  1605 :    <a href="../h_src/57943276.htm" class="localvar">work</a> = <a href="../h_src/57826616.htm" class="function">atomic</a>(<a href="../h_src/57943548.htm" class="localvar">L</a>);  <a  class="comments">/* work is what was traversed by 'atomic' */</a>
+  1611 :    <a href="../h_src/57943276.htm" class="localvar">work</a> = <a href="../h_src/57944636.htm" class="function">sweepstep</a>(<a href="../h_src/57943548.htm" class="localvar">L</a>, <a href="../h_src/57943412.htm" class="localvar">g</a>, <a href="../h_src/57629228.htm" class="macro">GCSswpfinobj</a>, &amp;<a href="../h_src/57943412.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645140.htm" class="variable">finobj</a>);
+  1615 :    <a href="../h_src/57943276.htm" class="localvar">work</a> = <a href="../h_src/57944636.htm" class="function">sweepstep</a>(<a href="../h_src/57943548.htm" class="localvar">L</a>, <a href="../h_src/57943412.htm" class="localvar">g</a>, <a href="../h_src/57629092.htm" class="macro">GCSswptobefnz</a>, &amp;<a href="../h_src/57943412.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644732.htm" class="variable">tobefnz</a>);
+  1619 :    <a href="../h_src/57943276.htm" class="localvar">work</a> = <a href="../h_src/57944636.htm" class="function">sweepstep</a>(<a href="../h_src/57943548.htm" class="localvar">L</a>, <a href="../h_src/57943412.htm" class="localvar">g</a>, <a href="../h_src/57628956.htm" class="macro">GCSswpend</a>, NULL);
+  1625 :    <a href="../h_src/57943276.htm" class="localvar">work</a> = 0;
+  1631 :    <a href="../h_src/57943276.htm" class="localvar">work</a> = <a href="../h_src/57960412.htm" class="function">runafewfinalizers</a>(<a href="../h_src/57943548.htm" class="localvar">L</a>, <a href="../h_src/57828928.htm" class="macro">GCFINMAX</a>) * <a href="../h_src/57828792.htm" class="macro">GCFINALIZECOST</a>;
+  1635 :    <a href="../h_src/57943276.htm" class="localvar">work</a> = 0;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57943684.htm" class=function>singlestep</a>                                       lgc.c
+  1642 :    return <a href="../h_src/57943276.htm" class="localvar">work</a>;
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable work</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

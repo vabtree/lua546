@@ -1,0 +1,47 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>L1</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143267324.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/143267324.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/143267324.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/143267324.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/143267732.htm" class=function>db_gethook</a>                                       ldblib.c
+   397 :    <a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/143267324.htm" class="localvar">L1</a> = <a href="../h_src/58284340.htm" class="function">getthread</a>(<a href="../h_src/143267596.htm" class="localvar">L</a>, &amp;<a href="../h_src/143267460.htm" class="localvar">arg</a>);
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/143267732.htm" class=function>db_gethook</a>                                       ldblib.c
+   399 :    int <a href="../h_src/143267052.htm" class="localvar">mask</a> = <a href="../h_src/57423988.htm" class="function">lua_gethookmask</a>(<a href="../h_src/143267324.htm" class="localvar">L1</a>);
+   400 :    <a href="../h_src/57440240.htm" class="type">lua_Hook</a> <a href="../h_src/143266916.htm" class="localvar">hook</a> = <a href="../h_src/57424056.htm" class="function">lua_gethook</a>(<a href="../h_src/143267324.htm" class="localvar">L1</a>);
+   409 :    <a href="../h_src/58286652.htm" class="function">checkstack</a>(<a href="../h_src/143267596.htm" class="localvar">L</a>, <a href="../h_src/143267324.htm" class="localvar">L1</a>, 1);
+   410 :    <a href="../h_src/57434460.htm" class="function">lua_pushthread</a>(<a href="../h_src/143267324.htm" class="localvar">L1</a>); <a href="../h_src/57438948.htm" class="function">lua_xmove</a>(<a href="../h_src/143267324.htm" class="localvar">L1</a>, <a href="../h_src/143267596.htm" class="localvar">L</a>, 1);
+   415 :    <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143267596.htm" class="localvar">L</a>, <a href="../h_src/57423920.htm" class="function">lua_gethookcount</a>(<a href="../h_src/143267324.htm" class="localvar">L1</a>));  <a  class="comments">/* 3rd result = count */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable L1</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

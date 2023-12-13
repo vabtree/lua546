@@ -1,0 +1,64 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">u::</a>ival</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57680608.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57680608.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57680608.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57680608.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57680608.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57800396.htm" class=function>const2exp</a>                                        lcode.c
+   695 :    <a href="../h_src/57800124.htm" class="localvar">e</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a> = <a href="../h_src/57682308.htm" class="variable">VKINT</a>; <a href="../h_src/57800124.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680608.htm" class="variable">ival</a> = <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/57800260.htm" class="localvar">v</a>);
+<a href="../h_aa/57785844.htm" class=function>constfolding</a>                                     lcode.c
+  1341 :    <a href="../h_src/57785436.htm" class="localvar">e1</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680608.htm" class="variable">ival</a> = <a href="../h_src/57526136.htm" class="macro">ivalue</a>(&amp;<a href="../h_src/57784892.htm" class="localvar">res</a>);
+<a href="../h_aa/58012676.htm" class=function>simpleexp</a>                                        lparser.c
+  1151 :    <a href="../h_src/58012404.htm" class="localvar">v</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680608.htm" class="variable">ival</a> = <a href="../h_src/58012540.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701416.htm" class="variable">t</a>.<a href="../h_src/57701892.htm" class="variable">seminfo</a>.<a href="../h_src/57702368.htm" class="variable">i</a>;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57779996.htm" class=function>codebini</a>                                         lcode.c
+  1439 :    int <a href="../h_src/57778908.htm" class="localvar">v2</a> = <a href="../h_src/57695296.htm" class="macro">int2sC</a>(<a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/57779452.htm" class="localvar">e2</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680608.htm" class="variable">ival</a>));  <a  class="comments">/* immediate operand */</a>
+<a href="../h_aa/57798492.htm" class=function>discharge2reg</a>                                    lcode.c
+   852 :    <a href="../h_src/57670544.htm" class="function">luaK_int</a>(<a href="../h_src/57798356.htm" class="localvar">fs</a>, <a href="../h_src/57798084.htm" class="localvar">reg</a>, <a href="../h_src/57798220.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680608.htm" class="variable">ival</a>);
+<a href="../h_aa/57777412.htm" class=function>finishbinexpneg</a>                                  lcode.c
+  1465 :    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/57776460.htm" class="localvar">i2</a> = <a href="../h_src/57777004.htm" class="localvar">e2</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680608.htm" class="variable">ival</a>;
+<a href="../h_aa/57788156.htm" class=function>isCint</a>                                           lcode.c
+  1238 :    return <a href="../h_src/57671020.htm" class="function">luaK_isKint</a>(<a href="../h_src/57788020.htm" class="localvar">e</a>) &amp;&amp; (<a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/57788020.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680608.htm" class="variable">ival</a>) &lt;= <a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/57695568.htm" class="macro">MAXARG_C</a>));
+<a href="../h_aa/57787884.htm" class=function>isSCint</a>                                          lcode.c
+  1247 :    return <a href="../h_src/57671020.htm" class="function">luaK_isKint</a>(<a href="../h_src/57787748.htm" class="localvar">e</a>) &amp;&amp; <a href="../h_src/57802028.htm" class="function">fitsC</a>(<a href="../h_src/57787748.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680608.htm" class="variable">ival</a>);
+<a href="../h_aa/57787612.htm" class=function>isSCnumber</a>                                       lcode.c
+  1258 :    <a href="../h_src/57787068.htm" class="localvar">i</a> = <a href="../h_src/57787476.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680608.htm" class="variable">ival</a>;
+<a href="../h_aa/57794140.htm" class=function>luaK_exp2K</a>                                       lcode.c
+  1005 :    case <a href="../h_src/57682308.htm" class="variable">VKINT</a>: <a href="../h_src/57793732.htm" class="localvar">info</a> = <a href="../h_src/57805904.htm" class="function">luaK_intK</a>(<a href="../h_src/57794004.htm" class="localvar">fs</a>, <a href="../h_src/57793868.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680608.htm" class="variable">ival</a>); break;
+<a href="../h_aa/57670000.htm" class=function>luaK_indexed</a>                                     lcode.c
+  1298 :    <a href="../h_src/57786796.htm" class="localvar">t</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680268.htm" class="variable">idx</a> = <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/57786660.htm" class="localvar">k</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680608.htm" class="variable">ival</a>);  <a  class="comments">/* int. constant in proper range */</a>
+<a href="../h_aa/57668028.htm" class=function>tonumeral</a>                                        lcode.c
+    61 :    if (<a href="../h_src/57667756.htm" class="localvar">v</a>) <a href="../h_src/57525456.htm" class="macro">setivalue</a>(<a href="../h_src/57667756.htm" class="localvar">v</a>, <a href="../h_src/57667892.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680608.htm" class="variable">ival</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable ival</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

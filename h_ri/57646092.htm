@@ -1,0 +1,65 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">global_State::</a>currentwhite</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57646092.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57646092.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57646092.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57646092.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57646092.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57826616.htm" class=function>atomic</a>                                           lgc.c
+  1560 :    <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646092.htm" class="variable">currentwhite</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/57625828.htm" class="macro">otherwhite</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>));  <a  class="comments">/* flip current white */</a>
+<a href="../h_aa/57439900.htm" class=function>lua_newstate</a>                                     lstate.c
+   369 :    <a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646092.htm" class="variable">currentwhite</a> = <a href="../h_src/57627868.htm" class="macro">bitmask</a>(<a href="../h_src/57627188.htm" class="macro">WHITE0BIT</a>);
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57826616.htm" class=function>atomic</a>                                           lgc.c
+  1560 :    <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646092.htm" class="variable">currentwhite</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/57625828.htm" class="macro">otherwhite</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>));  <a  class="comments">/* flip current white */</a>
+<a href="../h_aa/58125188.htm" class=function>internshrstr</a>                                     lstring.c
+   198 :    if (<a href="../h_src/57625556.htm" class="macro">isdead</a>(<a href="../h_src/58124508.htm" class="localvar">g</a>, <a href="../h_src/58124644.htm" class="localvar">ts</a>))  <a  class="comments">/* dead (but not collected yet)? */</a>
+<a href="../h_aa/57439900.htm" class=function>lua_newstate</a>                                     lstate.c
+   370 :    <a href="../h_src/58134164.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642896.htm" class="variable">marked</a> = <a href="../h_src/57625148.htm" class="macro">luaC_white</a>(<a href="../h_src/58134028.htm" class="localvar">g</a>);
+<a href="../h_aa/57620456.htm" class=function>luaC_barrier_</a>                                    lgc.c
+   221 :    <a href="../h_src/57828112.htm" class="macro">makewhite</a>(<a href="../h_src/57823896.htm" class="localvar">g</a>, <a href="../h_src/57824168.htm" class="localvar">o</a>);  <a  class="comments">/* mark 'o' as white to avoid other barriers */</a>
+<a href="../h_aa/57620320.htm" class=function>luaC_checkfinalizer</a>                              lgc.c
+  1026 :    <a href="../h_src/57828112.htm" class="macro">makewhite</a>(<a href="../h_src/57957012.htm" class="localvar">g</a>, <a href="../h_src/57957284.htm" class="localvar">o</a>);  <a  class="comments">/* &quot;sweep&quot; object 'o' */</a>
+<a href="../h_aa/57620524.htm" class=function>luaC_newobjdt</a>                                    lgc.c
+   262 :    <a href="../h_src/57822128.htm" class="localvar">o</a>-&gt;<a href="../h_src/57528040.htm" class="variable">marked</a> = <a href="../h_src/57625148.htm" class="macro">luaC_white</a>(<a href="../h_src/57822400.htm" class="localvar">g</a>);
+<a href="../h_aa/57955108.htm" class=function>sweepgen</a>                                         lgc.c
+  1124 :    int <a href="../h_src/57954156.htm" class="localvar">white</a> = <a href="../h_src/57625148.htm" class="macro">luaC_white</a>(<a href="../h_src/57954836.htm" class="localvar">g</a>);
+<a href="../h_aa/57965716.htm" class=function>sweeplist</a>                                        lgc.c
+   825 :    int <a href="../h_src/57964900.htm" class="localvar">ow</a> = <a href="../h_src/57625828.htm" class="macro">otherwhite</a>(<a href="../h_src/57965036.htm" class="localvar">g</a>);
+   827 :    int <a href="../h_src/57964628.htm" class="localvar">white</a> = <a href="../h_src/57625148.htm" class="macro">luaC_white</a>(<a href="../h_src/57965036.htm" class="localvar">g</a>);  <a  class="comments">/* current white */</a>
+<a href="../h_aa/57963132.htm" class=function>udata2finalize</a>                                   lgc.c
+   892 :    <a href="../h_src/57828112.htm" class="macro">makewhite</a>(<a href="../h_src/57962996.htm" class="localvar">g</a>, <a href="../h_src/57962860.htm" class="localvar">o</a>);  <a  class="comments">/* &quot;sweep&quot; object */</a>
+<a href="../h_aa/57953748.htm" class=function>whitelist</a>                                        lgc.c
+  1155 :    int <a href="../h_src/57953340.htm" class="localvar">white</a> = <a href="../h_src/57625148.htm" class="macro">luaC_white</a>(<a href="../h_src/57953612.htm" class="localvar">g</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable currentwhite</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

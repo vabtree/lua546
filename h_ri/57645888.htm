@@ -1,0 +1,53 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">global_State::</a>gcstopem</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57645888.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57645888.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57645888.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57645888.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57645888.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57439900.htm" class=function>lua_newstate</a>                                     lstate.c
+   388 :    <a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645888.htm" class="variable">gcstopem</a> = 0;
+<a href="../h_aa/57632832.htm" class=function>luaD_reallocstack</a>                                ldo.c
+   219 :    <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57879044.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57645888.htm" class="variable">gcstopem</a> = 1;  <a  class="comments">/* stop emergency collection */</a>
+   222 :    <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57879044.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57645888.htm" class="variable">gcstopem</a> = <a href="../h_src/57878228.htm" class="localvar">oldgcstop</a>;  <a  class="comments">/* restore emergency collection */</a>
+<a href="../h_aa/57943684.htm" class=function>singlestep</a>                                       lgc.c
+  1587 :    <a href="../h_src/57943412.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645888.htm" class="variable">gcstopem</a> = 1;  <a  class="comments">/* no emergency collections while collecting */</a>
+  1630 :    <a href="../h_src/57943412.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645888.htm" class="variable">gcstopem</a> = 0;  <a  class="comments">/* ok collections during finalizers */</a>
+  1641 :    <a href="../h_src/57943412.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645888.htm" class="variable">gcstopem</a> = 0;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57632832.htm" class=function>luaD_reallocstack</a>                                ldo.c
+   216 :    int <a href="../h_src/57878228.htm" class="localvar">oldgcstop</a> = <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57879044.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57645888.htm" class="variable">gcstopem</a>;
+<a href="../h_aa/57922740.htm" class=function>tryagain</a>                                         lmem.c
+   165 :    if (<a href="../h_src/57926276.htm" class="macro">cantryagain</a>(<a href="../h_src/57922060.htm" class="localvar">g</a>)) {
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable gcstopem</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,78 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>NO_JUMP</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57674352.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57674352.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57674352.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57674352.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/58050348.htm" class=function>codestring</a>                                       lparser.c
+   160 :    <a href="../h_src/58050212.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679452.htm" class="variable">f</a> = <a href="../h_src/58050212.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679520.htm" class="variable">t</a> = <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>;
+<a href="../h_aa/57796316.htm" class=function>exp2reg</a>                                          lcode.c
+   920 :    int <a href="../h_src/57795636.htm" class="localvar">p_f</a> = <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>;  <a  class="comments">/* position of an eventual LOAD false */</a>
+   921 :    int <a href="../h_src/57795500.htm" class="localvar">p_t</a> = <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>;  <a  class="comments">/* position of an eventual LOAD true */</a>
+   923 :    int <a href="../h_src/57795364.htm" class="localvar">fj</a> = (<a href="../h_src/57796044.htm" class="localvar">e</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a> == <a href="../h_src/57681628.htm" class="variable">VJMP</a>) ? <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a> : <a href="../h_src/57669592.htm" class="function">luaK_jump</a>(<a href="../h_src/57796180.htm" class="localvar">fs</a>);
+   933 :    <a href="../h_src/57796044.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679452.htm" class="variable">f</a> = <a href="../h_src/57796044.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679520.htm" class="variable">t</a> = <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>;
+<a href="../h_aa/57664084.htm" class=function>fixjump</a>                                          lcode.c
+   170 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(dest != <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>);
+<a href="../h_aa/57664628.htm" class=function>getjump</a>                                          lcode.c
+   156 :    if (<a href="../h_src/57664220.htm" class="localvar">offset</a> == <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>)  <a  class="comments">/* point to itself represents end of list */</a>
+   157 :    return <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>;  <a  class="comments">/* end of list */</a>
+<a href="../h_aa/57994452.htm" class=function>ifstat</a>                                           lparser.c
+  1678 :    int <a href="../h_src/57993908.htm" class="localvar">escapelist</a> = <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>;  <a  class="comments">/* exit list for finished parts */</a>
+<a href="../h_aa/58050892.htm" class=function>init_exp</a>                                         lparser.c
+   153 :    <a href="../h_src/58050756.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679452.htm" class="variable">f</a> = <a href="../h_src/58050756.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679520.htm" class="variable">t</a> = <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>;
+<a href="../h_aa/58045860.htm" class=function>init_var</a>                                         lparser.c
+   267 :    <a href="../h_src/58045588.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679452.htm" class="variable">f</a> = <a href="../h_src/58045588.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679520.htm" class="variable">t</a> = <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>;
+<a href="../h_aa/57669320.htm" class=function>luaK_concat</a>                                      lcode.c
+   182 :    if (<a href="../h_src/57662996.htm" class="localvar">l2</a> == <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>) return;  <a  class="comments">/* nothing to concatenate? */</a>
+   183 :    else if (*<a href="../h_src/57663132.htm" class="localvar">l1</a> == <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>)  <a  class="comments">/* no original list? */</a>
+   188 :    while ((<a href="../h_src/57662724.htm" class="localvar">next</a> = <a href="../h_src/57664628.htm" class="function">getjump</a>(<a href="../h_src/57663268.htm" class="localvar">fs</a>, <a href="../h_src/57662860.htm" class="localvar">list</a>)) != <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>)  <a  class="comments">/* find last element */</a>
+<a href="../h_aa/57669864.htm" class=function>luaK_goiffalse</a>                                   lcode.c
+  1169 :    <a href="../h_src/57789380.htm" class="localvar">pc</a> = <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>;  <a  class="comments">/* always false; do nothing */</a>
+  1179 :    <a href="../h_src/57789516.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679452.htm" class="variable">f</a> = <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>;
+<a href="../h_aa/57669932.htm" class=function>luaK_goiftrue</a>                                    lcode.c
+  1143 :    <a href="../h_src/57789788.htm" class="localvar">pc</a> = <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>;  <a  class="comments">/* always true; do nothing */</a>
+  1153 :    <a href="../h_src/57789924.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679520.htm" class="variable">t</a> = <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>;
+<a href="../h_aa/57669592.htm" class=function>luaK_jump</a>                                        lcode.c
+   200 :    return <a href="../h_src/57668436.htm" class="function">codesJ</a>(<a href="../h_src/57662588.htm" class="localvar">fs</a>, <a href="../h_src/57686728.htm" class="variable">OP_JMP</a>, <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>, 0);
+<a href="../h_aa/57669048.htm" class=function>luaK_posfix</a>                                      lcode.c
+  1709 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(e1-&gt;t == <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>);  <a  class="comments">/* list closed by 'luaK_infix' */</a>
+  1715 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(e1-&gt;f == <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>);  <a  class="comments">/* list closed by 'luaK_infix' */</a>
+<a href="../h_aa/57669184.htm" class=function>luaK_prefix</a>                                      lcode.c
+  1613 :    static const <a href="../h_src/57679384.htm" class="type">expdesc</a> <a href="../h_src/57768572.htm" class="localvar">ef</a> = {<a href="../h_src/57682308.htm" class="variable">VKINT</a>, {0}, <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>, <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>};
+<a href="../h_aa/57796860.htm" class=function>need_value</a>                                       lcode.c
+   899 :    for (; <a href="../h_src/57796588.htm" class="localvar">list</a> != <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>; <a href="../h_src/57796588.htm" class="localvar">list</a> = <a href="../h_src/57664628.htm" class="function">getjump</a>(<a href="../h_src/57796724.htm" class="localvar">fs</a>, <a href="../h_src/57796588.htm" class="localvar">list</a>)) {
+<a href="../h_aa/57659188.htm" class=function>patchlistaux</a>                                     lcode.c
+   290 :    while (<a href="../h_src/57658916.htm" class="localvar">list</a> != <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>) {
+<a href="../h_aa/57659596.htm" class=function>removevalues</a>                                     lcode.c
+   278 :    for (; <a href="../h_src/57659324.htm" class="localvar">list</a> != <a href="../h_src/57674352.htm" class="macro">NO_JUMP</a>; <a href="../h_src/57659324.htm" class="localvar">list</a> = <a href="../h_src/57664628.htm" class="function">getjump</a>(<a href="../h_src/57659460.htm" class="localvar">fs</a>, <a href="../h_src/57659324.htm" class="localvar">list</a>))
+</pre>
+<h4><a class="legend">Table lists functions that directly use NO_JUMP</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

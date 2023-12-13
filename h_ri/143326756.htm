@@ -1,0 +1,53 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>L_ESC</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143326756.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/143326756.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/143326756.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/143326756.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/143306628.htm" class=function>add_s</a>                                            lstrlib.c
+   877 :    while ((<a href="../h_src/143305540.htm" class="localvar">p</a> = (char *)<a href="../h_aa/143315808.htm" class="libfunc">memchr</a>(<a href="../h_src/143305676.htm" class="localvar">news</a>, <a href="../h_src/143326756.htm" class="macro">L_ESC</a>, <a href="../h_src/143305948.htm" class="localvar">l</a>)) != NULL) {
+   880 :    if (*<a href="../h_src/143305540.htm" class="localvar">p</a> == <a href="../h_src/143326756.htm" class="macro">L_ESC</a>)  <a  class="comments">/* '%%' */</a>
+   893 :    <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143305812.htm" class="localvar">L</a>, &quot;invalid use of '%c' in replacement string&quot;, <a href="../h_src/143326756.htm" class="macro">L_ESC</a>);
+<a href="../h_aa/143325668.htm" class=function>classend</a>                                         lstrlib.c
+   405 :    case <a href="../h_src/143326756.htm" class="macro">L_ESC</a>: {
+   415 :    if (*(<a href="../h_src/143325396.htm" class="localvar">p</a>++) == <a href="../h_src/143326756.htm" class="macro">L_ESC</a> &amp;&amp; <a href="../h_src/143325396.htm" class="localvar">p</a> &lt; <a href="../h_src/143325532.htm" class="localvar">ms</a>-&gt;<a href="../h_src/143328048.htm" class="variable">p_end</a>)
+<a href="../h_aa/143327232.htm" class=function>match</a>                                            lstrlib.c
+   593 :    case <a href="../h_src/143326756.htm" class="macro">L_ESC</a>: {  <a  class="comments">/* escaped sequences not in the format class[*+?-]? */</a>
+<a href="../h_aa/143324240.htm" class=function>matchbracketclass</a>                                lstrlib.c
+   454 :    if (*<a href="../h_src/143323968.htm" class="localvar">p</a> == <a href="../h_src/143326756.htm" class="macro">L_ESC</a>) {
+<a href="../h_aa/143323560.htm" class=function>singlematch</a>                                      lstrlib.c
+   478 :    case <a href="../h_src/143326756.htm" class="macro">L_ESC</a>: return <a href="../h_src/143325260.htm" class="function">match_class</a>(<a href="../h_src/143322880.htm" class="localvar">c</a>, <a href="../h_src/143343552.htm" class="macro">uchar</a>(*(<a href="../h_src/143323152.htm" class="localvar">p</a>+1)));
+<a href="../h_aa/143291804.htm" class=function>str_format</a>                                       lstrlib.c
+  1283 :    if (*<a href="../h_src/143291124.htm" class="localvar">strfrmt</a> != <a href="../h_src/143326756.htm" class="macro">L_ESC</a>)
+  1285 :    else if (*++<a href="../h_src/143291124.htm" class="localvar">strfrmt</a> == <a href="../h_src/143326756.htm" class="macro">L_ESC</a>)
+</pre>
+<h4><a class="legend">Table lists functions that directly use L_ESC</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

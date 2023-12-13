@@ -1,0 +1,84 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>expkind</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57681356.htm" class="type" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57681356.htm" class="type" target="_self">Usage</a></li>
+<li><a href="../h_src/57681356.htm" class="type" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57681356.htm" class="type" target="_self">Used By</a></li>
+<li><a href="../h_rx/57681356.htm" class="type" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Used In</h4>
+<pre><a href="../h_aa/57681220.htm" class=type>expkind</a>                                          lparser.h
+    25 :    typedef enum {
+<a href="../h_aa/57680744.htm" class=variable>expdesc::k</a>                                       lparser.h
+    69 :    <a href="../h_src/57681220.htm" class="type">expkind</a> <a href="../h_src/57680744.htm" class="variable">k</a>;
+<a href="../h_aa/58050620.htm" class=variable>k</a>                                                lparser.c
+   152 :    static void <a href="../h_src/58050892.htm" class="function">init_exp</a> (<a href="../h_src/57679384.htm" class="type">expdesc</a> *<a href="../h_src/58050756.htm" class="localvar">e</a>, <a href="../h_src/57681220.htm" class="type">expkind</a> <a href="../h_src/58050620.htm" class="localvar">k</a>, int <a href="../h_src/58050484.htm" class="localvar">i</a>) {
+<a href="../h_aa/57681492.htm" class=variable>VCALL</a>                                            lparser.h
+    59 :    <a href="../h_src/57681492.htm" class="variable">VCALL</a>,  <a  class="comments">/* expression is a function call; info = instruction pc */</a>
+<a href="../h_aa/57681968.htm" class=variable>VCONST</a>                                           lparser.h
+    41 :    <a href="../h_src/57681968.htm" class="variable">VCONST</a>,  <a  class="comments">/* compile-time &lt;const&gt; variable;</a>
+<a href="../h_aa/57682512.htm" class=variable>VFALSE</a>                                           lparser.h
+    30 :    <a href="../h_src/57682512.htm" class="variable">VFALSE</a>,  <a  class="comments">/* constant false */</a>
+<a href="../h_aa/57681900.htm" class=variable>VINDEXED</a>                                         lparser.h
+    43 :    <a href="../h_src/57681900.htm" class="variable">VINDEXED</a>,  <a  class="comments">/* indexed variable;</a>
+<a href="../h_aa/57681764.htm" class=variable>VINDEXI</a>                                          lparser.h
+    49 :    <a href="../h_src/57681764.htm" class="variable">VINDEXI</a>, <a  class="comments">/* indexed variable with constant integer;</a>
+<a href="../h_aa/57681696.htm" class=variable>VINDEXSTR</a>                                        lparser.h
+    52 :    <a href="../h_src/57681696.htm" class="variable">VINDEXSTR</a>, <a  class="comments">/* indexed variable with literal string;</a>
+<a href="../h_aa/57681832.htm" class=variable>VINDEXUP</a>                                         lparser.h
+    46 :    <a href="../h_src/57681832.htm" class="variable">VINDEXUP</a>,  <a  class="comments">/* indexed upvalue;</a>
+<a href="../h_aa/57681628.htm" class=variable>VJMP</a>                                             lparser.h
+    55 :    <a href="../h_src/57681628.htm" class="variable">VJMP</a>,  <a  class="comments">/* expression is a test/comparison;</a>
+<a href="../h_aa/57682444.htm" class=variable>VK</a>                                               lparser.h
+    31 :    <a href="../h_src/57682444.htm" class="variable">VK</a>,  <a  class="comments">/* constant in 'k'; info = index of constant in 'k' */</a>
+<a href="../h_aa/57682376.htm" class=variable>VKFLT</a>                                            lparser.h
+    32 :    <a href="../h_src/57682376.htm" class="variable">VKFLT</a>,  <a  class="comments">/* floating constant; nval = numerical float value */</a>
+<a href="../h_aa/57682308.htm" class=variable>VKINT</a>                                            lparser.h
+    33 :    <a href="../h_src/57682308.htm" class="variable">VKINT</a>,  <a  class="comments">/* integer constant; ival = numerical integer value */</a>
+<a href="../h_aa/57682240.htm" class=variable>VKSTR</a>                                            lparser.h
+    34 :    <a href="../h_src/57682240.htm" class="variable">VKSTR</a>,  <a  class="comments">/* string constant; strval = TString address;</a>
+<a href="../h_aa/57682104.htm" class=variable>VLOCAL</a>                                           lparser.h
+    38 :    <a href="../h_src/57682104.htm" class="variable">VLOCAL</a>,  <a  class="comments">/* local variable; var.ridx = register index;</a>
+<a href="../h_aa/57682648.htm" class=variable>VNIL</a>                                             lparser.h
+    28 :    <a href="../h_src/57682648.htm" class="variable">VNIL</a>,  <a  class="comments">/* constant nil */</a>
+<a href="../h_aa/57682172.htm" class=variable>VNONRELOC</a>                                        lparser.h
+    36 :    <a href="../h_src/57682172.htm" class="variable">VNONRELOC</a>,  <a  class="comments">/* expression has its value in a fixed register;</a>
+<a href="../h_aa/57681560.htm" class=variable>VRELOC</a>                                           lparser.h
+    57 :    <a href="../h_src/57681560.htm" class="variable">VRELOC</a>,  <a  class="comments">/* expression can put result in any register;</a>
+<a href="../h_aa/57682580.htm" class=variable>VTRUE</a>                                            lparser.h
+    29 :    <a href="../h_src/57682580.htm" class="variable">VTRUE</a>,  <a  class="comments">/* constant true */</a>
+<a href="../h_aa/57682036.htm" class=variable>VUPVAL</a>                                           lparser.h
+    40 :    <a href="../h_src/57682036.htm" class="variable">VUPVAL</a>,  <a  class="comments">/* upvalue variable; info = index of upvalue in 'upvalues' */</a>
+<a href="../h_aa/57681424.htm" class=variable>VVARARG</a>                                          lparser.h
+    60 :    <a href="../h_src/57681424.htm" class="variable">VVARARG</a>  <a  class="comments">/* vararg expression; info = instruction pc */</a>
+<a href="../h_aa/57682716.htm" class=variable>VVOID</a>                                            lparser.h
+    26 :    <a href="../h_src/57682716.htm" class="variable">VVOID</a>,  <a  class="comments">/* when 'expdesc' describes the last expression of a list,</a>
+</pre>
+<h4><a class="legend">Table lists all symbols that directly use type expkind</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

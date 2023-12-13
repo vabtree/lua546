@@ -1,0 +1,53 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>c</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57928112.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57928112.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57928112.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57928112.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57928656.htm" class=function>read_string</a>                                      llex.c
+   397 :    case 'a': <a href="../h_src/57928112.htm" class="localvar">c</a> = '\a'; goto read_save;
+   398 :    case 'b': <a href="../h_src/57928112.htm" class="localvar">c</a> = '\b'; goto read_save;
+   399 :    case 'f': <a href="../h_src/57928112.htm" class="localvar">c</a> = '\f'; goto read_save;
+   400 :    case 'n': <a href="../h_src/57928112.htm" class="localvar">c</a> = '\n'; goto read_save;
+   401 :    case 'r': <a href="../h_src/57928112.htm" class="localvar">c</a> = '\r'; goto read_save;
+   402 :    case 't': <a href="../h_src/57928112.htm" class="localvar">c</a> = '\t'; goto read_save;
+   403 :    case 'v': <a href="../h_src/57928112.htm" class="localvar">c</a> = '\v'; goto read_save;
+   404 :    case 'x': <a href="../h_src/57928112.htm" class="localvar">c</a> = <a href="../h_src/57930696.htm" class="function">readhexaesc</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>); goto read_save;
+   407 :    <a href="../h_src/57935796.htm" class="function">inclinenumber</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>); <a href="../h_src/57928112.htm" class="localvar">c</a> = '\n'; goto only_save;
+   409 :    <a href="../h_src/57928112.htm" class="localvar">c</a> = <a href="../h_src/57928520.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>; goto read_save;
+   422 :    <a href="../h_src/57928112.htm" class="localvar">c</a> = <a href="../h_src/57929200.htm" class="function">readdecesc</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>);  <a  class="comments">/* digital escape '\ddd' */</a>
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57928656.htm" class=function>read_string</a>                                      llex.c
+   431 :    <a href="../h_src/57939740.htm" class="function">save</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>, <a href="../h_src/57928112.htm" class="localvar">c</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable c</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

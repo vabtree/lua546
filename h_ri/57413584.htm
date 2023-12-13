@@ -1,0 +1,79 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaL_prepbuffsize</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57413584.htm" class="function" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57413584.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57413584.htm" class="function" target="_self">Flow Chart</a></li>
+<li><a href="../h_src/57413584.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57413584.htm" class="function" target="_self">Called By</a></li>
+<li><a href="../h_rx/57413584.htm" class="function" target="_self">Call Tree</a></li>
+<li><a href="../h_ro/57413584.htm" class="function" target="_self">Calls and Uses</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/143264808.htm" class=file>liolib.c</a>
+   558 :    <a href="../h_src/143247808.htm" class="variable">p</a> = <a href="../h_src/57413584.htm" class="function">luaL_prepbuffsize</a>(&amp;b, n);  <a  class="comments">/* prepare buffer to read whole block */</a>
+<a href="../h_aa/143306628.htm" class=function>add_s</a>                                            lstrlib.c
+   881 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(<a href="../h_src/57415216.htm" class="variable">b</a>, *<a href="../h_src/143305540.htm" class="localvar">p</a>);
+<a href="../h_aa/143295748.htm" class=function>addliteral</a>                                       lstrlib.c
+  1184 :    char *<a href="../h_src/143294932.htm" class="localvar">buff</a> = <a href="../h_src/57413584.htm" class="function">luaL_prepbuffsize</a>(<a href="../h_src/143295476.htm" class="localvar">b</a>, <a href="../h_src/143298604.htm" class="macro">MAX_ITEM</a>);
+<a href="../h_aa/143297516.htm" class=function>addquoted</a>                                        lstrlib.c
+  1123 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(<a href="../h_src/57415216.htm" class="variable">b</a>, '&quot;');
+  1126 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(<a href="../h_src/57415216.htm" class="variable">b</a>, '\\');
+  1127 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(<a href="../h_src/57415216.htm" class="variable">b</a>, *<a href="../h_src/143297244.htm" class="localvar">s</a>);
+  1138 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(<a href="../h_src/57415216.htm" class="variable">b</a>, *<a href="../h_src/143297244.htm" class="localvar">s</a>);
+  1141 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(<a href="../h_src/57415216.htm" class="variable">b</a>, '&quot;');
+<a href="../h_aa/57417664.htm" class=function>luaL_traceback</a>                                   lauxlib.c
+   140 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/58347376.htm" class="localvar">b</a>, '\<a href="../h_src/57415080.htm" class="variable">n</a>');
+<a href="../h_aa/143348856.htm" class=function>os_date</a>                                          loslib.c
+   328 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143347428.htm" class="localvar">b</a>, *<a href="../h_src/143348448.htm" class="localvar">s</a>++);
+   331 :    char *<a href="../h_src/143347156.htm" class="localvar">buff</a> = <a href="../h_src/57413584.htm" class="function">luaL_prepbuffsize</a>(&amp;<a href="../h_src/143347428.htm" class="localvar">b</a>, <a href="../h_src/143348992.htm" class="macro">SIZETIMEFMT</a>);
+<a href="../h_aa/143282216.htm" class=function>packint</a>                                          lstrlib.c
+  1570 :    char *<a href="../h_src/143281400.htm" class="localvar">buff</a> = <a href="../h_src/57413584.htm" class="function">luaL_prepbuffsize</a>(<a href="../h_src/143282080.htm" class="localvar">b</a>, <a href="../h_src/143281672.htm" class="localvar">size</a>);
+<a href="../h_aa/143204764.htm" class=function>searchpath</a>                                       loadlib.c
+   495 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143203948.htm" class="localvar">buff</a>, '\0');
+<a href="../h_aa/143210884.htm" class=function>setpath</a>                                          loadlib.c
+   315 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143209660.htm" class="localvar">b</a>, *<a href="../h_src/57456628.htm" class="macro">LUA_PATH_SEP</a>);
+   319 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143209660.htm" class="localvar">b</a>, *<a href="../h_src/57456628.htm" class="macro">LUA_PATH_SEP</a>);
+<a href="../h_aa/143291804.htm" class=function>str_format</a>                                       lstrlib.c
+  1284 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143290716.htm" class="localvar">b</a>, *<a href="../h_src/143291124.htm" class="localvar">strfrmt</a>++);
+  1286 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143290716.htm" class="localvar">b</a>, *<a href="../h_src/143291124.htm" class="localvar">strfrmt</a>++);  <a  class="comments">/* %% */</a>
+  1290 :    char *<a href="../h_src/143290308.htm" class="localvar">buff</a> = <a href="../h_src/57413584.htm" class="function">luaL_prepbuffsize</a>(&amp;<a href="../h_src/143290716.htm" class="localvar">b</a>, <a href="../h_src/143290444.htm" class="localvar">maxitem</a>);  <a  class="comments">/* to put result */</a>
+  1324 :    <a href="../h_src/143290308.htm" class="localvar">buff</a> = <a href="../h_src/57413584.htm" class="function">luaL_prepbuffsize</a>(&amp;<a href="../h_src/143290716.htm" class="localvar">b</a>, <a href="../h_src/143290444.htm" class="localvar">maxitem</a>);
+<a href="../h_aa/143304044.htm" class=function>str_gsub</a>                                         lstrlib.c
+   971 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143302276.htm" class="localvar">b</a>, *<a href="../h_src/143303500.htm" class="localvar">src</a>++);
+<a href="../h_aa/143280448.htm" class=function>str_pack</a>                                         lstrlib.c
+  1615 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143280176.htm" class="localvar">b</a>, <a href="../h_src/143289220.htm" class="macro">LUAL_PACKPADBYTE</a>);  <a  class="comments">/* fill alignment */</a>
+  1637 :    char *<a href="../h_src/143438520.htm" class="localvar">buff</a> = <a href="../h_src/57413584.htm" class="function">luaL_prepbuffsize</a>(&amp;<a href="../h_src/143280176.htm" class="localvar">b</a>, sizeof(<a href="../h_src/143438656.htm" class="localvar">f</a>));
+  1645 :    char *<a href="../h_src/143438248.htm" class="localvar">buff</a> = <a href="../h_src/57413584.htm" class="function">luaL_prepbuffsize</a>(&amp;<a href="../h_src/143280176.htm" class="localvar">b</a>, sizeof(<a href="../h_src/143438384.htm" class="localvar">f</a>));
+  1653 :    char *<a href="../h_src/143437976.htm" class="localvar">buff</a> = <a href="../h_src/57413584.htm" class="function">luaL_prepbuffsize</a>(&amp;<a href="../h_src/143280176.htm" class="localvar">b</a>, sizeof(<a href="../h_src/143438112.htm" class="localvar">f</a>));
+  1666 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143280176.htm" class="localvar">b</a>, <a href="../h_src/143289220.htm" class="macro">LUAL_PACKPADBYTE</a>);
+  1685 :    <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143280176.htm" class="localvar">b</a>, '\0');  <a  class="comments">/* add zero at the end */</a>
+  1689 :    case <a href="../h_src/143287248.htm" class="variable">Kpadding</a>: <a href="../h_src/57414060.htm" class="macro">luaL_addchar</a>(&amp;<a href="../h_src/143280176.htm" class="localvar">b</a>, <a href="../h_src/143289220.htm" class="macro">LUAL_PACKPADBYTE</a>);  <a  class="comments">/* FALLTHROUGH */</a>
+</pre>
+<h4><a class="legend">Table lists functions that directly use luaL_prepbuffsize</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

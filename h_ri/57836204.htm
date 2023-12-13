@@ -1,0 +1,48 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>top</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57836204.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57836204.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57836204.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57836204.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57836884.htm" class=function>callclosemethod</a>                                  lfunc.c
+   108 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57836204.htm" class="localvar">top</a> = <a href="../h_src/57836748.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57836884.htm" class=function>callclosemethod</a>                                  lfunc.c
+   110 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/57836748.htm" class="localvar">L</a>, <a href="../h_src/57836204.htm" class="localvar">top</a>, <a href="../h_src/57836068.htm" class="localvar">tm</a>);  <a  class="comments">/* will call metamethod... */</a>
+   111 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/57836748.htm" class="localvar">L</a>, <a href="../h_src/57836204.htm" class="localvar">top</a> + 1, <a href="../h_src/57836612.htm" class="localvar">obj</a>);  <a  class="comments">/* with 'self' as the 1st argument */</a>
+   112 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/57836748.htm" class="localvar">L</a>, <a href="../h_src/57836204.htm" class="localvar">top</a> + 2, <a href="../h_src/57836476.htm" class="localvar">err</a>);  <a  class="comments">/* and error msg. as 2nd argument */</a>
+   113 :    <a href="../h_src/57836748.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57836204.htm" class="localvar">top</a> + 3;  <a  class="comments">/* add function and arguments */</a>
+   115 :    <a href="../h_src/57633240.htm" class="function">luaD_call</a>(<a href="../h_src/57836748.htm" class="localvar">L</a>, <a href="../h_src/57836204.htm" class="localvar">top</a>, 0);
+   117 :    <a href="../h_src/57633172.htm" class="function">luaD_callnoyield</a>(<a href="../h_src/57836748.htm" class="localvar">L</a>, <a href="../h_src/57836204.htm" class="localvar">top</a>, 0);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable top</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

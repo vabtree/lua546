@@ -1,0 +1,47 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>L</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58137156.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/58137156.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/58137156.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/58137156.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/58137292.htm" class=function>close_state</a>                                      lstate.c
+   270 :    <a href="../h_src/57643100.htm" class="type">global_State</a> *<a href="../h_src/58137020.htm" class="localvar">g</a> = <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/58137156.htm" class="localvar">L</a>);
+   272 :    <a href="../h_src/57620864.htm" class="function">luaC_freeallobjects</a>(<a href="../h_src/58137156.htm" class="localvar">L</a>);  <a  class="comments">/* just collect its objects */</a>
+   274 :    <a href="../h_src/58137156.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a> = &amp;<a href="../h_src/58137156.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641740.htm" class="variable">base_ci</a>;  <a  class="comments">/* unwind CallInfo list */</a>
+   275 :    <a href="../h_src/57633036.htm" class="function">luaD_closeprotected</a>(<a href="../h_src/58137156.htm" class="localvar">L</a>, 1, <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>);  <a  class="comments">/* close all upvalues */</a>
+   276 :    <a href="../h_src/57620864.htm" class="function">luaC_freeallobjects</a>(<a href="../h_src/58137156.htm" class="localvar">L</a>);  <a  class="comments">/* collect all objects */</a>
+   277 :    <a href="../h_src/57542456.htm" class="macro">luai_userstateclose</a>(<a href="../h_src/58137156.htm" class="localvar">L</a>);
+   279 :    <a href="../h_src/57495604.htm" class="macro">luaM_freearray</a>(<a href="../h_src/58137156.htm" class="localvar">L</a>, <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/58137156.htm" class="localvar">L</a>)-&gt;strt.<a href="../h_src/57651804.htm" class="variable">hash</a>, <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/58137156.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57646364.htm" class="variable">strt</a>.<a href="../h_src/57651668.htm" class="variable">size</a>);
+   280 :    <a href="../h_src/57979900.htm" class="function">freestack</a>(<a href="../h_src/58137156.htm" class="localvar">L</a>);
+   282 :    (*<a href="../h_src/58137020.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646772.htm" class="variable">frealloc</a>)(<a href="../h_src/58137020.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646704.htm" class="variable">ud</a>, <a href="../h_src/57984320.htm" class="macro">fromstate</a>(<a href="../h_src/58137156.htm" class="localvar">L</a>), sizeof(<a href="../h_src/57984388.htm" class="type">LG</a>), 0);  <a  class="comments">/* free main block */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable L</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

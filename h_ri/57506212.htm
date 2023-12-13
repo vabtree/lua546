@@ -1,0 +1,71 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">NodeKey::</a>key_val</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57506212.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57506212.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57506212.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57506212.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57506212.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57616716.htm" class=function>luaH_newkey</a>                                      ltable.c
+   715 :    <a href="../h_src/57505940.htm" class="macro">setnodekey</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, <a href="../h_src/58099076.htm" class="localvar">mp</a>, <a href="../h_src/58099348.htm" class="localvar">key</a>);
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57969388.htm" class=function>clearbykeys</a>                                      lgc.c
+   729 :    if (<a href="../h_src/57824712.htm" class="function">iscleared</a>(<a href="../h_src/57969252.htm" class="localvar">g</a>, <a href="../h_src/57502880.htm" class="macro">gckeyN</a>(<a href="../h_src/57968708.htm" class="localvar">n</a>)))  <a  class="comments">/* unmarked key? */</a>
+<a href="../h_aa/58116484.htm" class=function>equalkey</a>                                         ltable.c
+   224 :    return (<a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58116348.htm" class="localvar">k1</a>) == <a href="../h_src/57503696.htm" class="macro">keyival</a>(<a href="../h_src/58116212.htm" class="localvar">n2</a>));
+   226 :    return <a href="../h_src/57539464.htm" class="macro">luai_numeq</a>(<a href="../h_src/57526272.htm" class="macro">fltvalue</a>(<a href="../h_src/58116348.htm" class="localvar">k1</a>), <a href="../h_src/57526000.htm" class="macro">fltvalueraw</a>(<a href="../h_src/57504104.htm" class="macro">keyval</a>(<a href="../h_src/58116212.htm" class="localvar">n2</a>)));
+   228 :    return <a href="../h_src/57521580.htm" class="macro">pvalue</a>(<a href="../h_src/58116348.htm" class="localvar">k1</a>) == <a href="../h_src/57521308.htm" class="macro">pvalueraw</a>(<a href="../h_src/57504104.htm" class="macro">keyval</a>(<a href="../h_src/58116212.htm" class="localvar">n2</a>));
+   230 :    return <a href="../h_src/57512128.htm" class="macro">fvalue</a>(<a href="../h_src/58116348.htm" class="localvar">k1</a>) == <a href="../h_src/57511856.htm" class="macro">fvalueraw</a>(<a href="../h_src/57504104.htm" class="macro">keyval</a>(<a href="../h_src/58116212.htm" class="localvar">n2</a>));
+   232 :    return <a href="../h_src/57619028.htm" class="function">luaS_eqlngstr</a>(<a href="../h_src/57524368.htm" class="macro">tsvalue</a>(<a href="../h_src/58116348.htm" class="localvar">k1</a>), <a href="../h_src/57503424.htm" class="macro">keystrval</a>(<a href="../h_src/58116212.htm" class="localvar">n2</a>));
+   234 :    return <a href="../h_src/57527496.htm" class="macro">gcvalue</a>(<a href="../h_src/58116348.htm" class="localvar">k1</a>) == <a href="../h_src/57527360.htm" class="macro">gcvalueraw</a>(<a href="../h_src/57504104.htm" class="macro">keyval</a>(<a href="../h_src/58116212.htm" class="localvar">n2</a>));
+<a href="../h_aa/57617056.htm" class=function>luaH_getint</a>                                      ltable.c
+   742 :    if (<a href="../h_src/57503832.htm" class="macro">keyisinteger</a>(<a href="../h_src/58097308.htm" class="localvar">n</a>) &amp;&amp; <a href="../h_src/57503696.htm" class="macro">keyival</a>(<a href="../h_src/58097308.htm" class="localvar">n</a>) == <a href="../h_src/58097444.htm" class="localvar">key</a>)
+<a href="../h_aa/57616920.htm" class=function>luaH_getshortstr</a>                                 ltable.c
+   762 :    if (<a href="../h_src/57503560.htm" class="macro">keyisshrstr</a>(<a href="../h_src/58096764.htm" class="localvar">n</a>) &amp;&amp; <a href="../h_src/57619300.htm" class="macro">eqshrstr</a>(<a href="../h_src/57503424.htm" class="macro">keystrval</a>(<a href="../h_src/58096764.htm" class="localvar">n</a>), <a href="../h_src/58096900.htm" class="localvar">key</a>))
+<a href="../h_aa/57616240.htm" class=function>luaH_next</a>                                        ltable.c
+   362 :    <a href="../h_src/57505804.htm" class="macro">getnodekey</a>(<a href="../h_src/58112812.htm" class="localvar">L</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58112540.htm" class="localvar">key</a>), <a href="../h_src/58111724.htm" class="localvar">n</a>);
+<a href="../h_aa/57699852.htm" class=function>luaX_newstring</a>                                   llex.c
+   139 :    <a href="../h_src/57936476.htm" class="localvar">ts</a> = <a href="../h_src/57503424.htm" class="macro">keystrval</a>(<a href="../h_src/57617192.htm" class="macro">nodefromval</a>(<a href="../h_src/57936340.htm" class="localvar">o</a>));  <a  class="comments">/* get saved copy */</a>
+<a href="../h_aa/58117300.htm" class=function>mainpositionfromnode</a>                             ltable.c
+   191 :    <a href="../h_src/57505804.htm" class="macro">getnodekey</a>(<a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57444252.htm" class="type">lua_State</a> *, NULL), &amp;<a href="../h_src/58116892.htm" class="localvar">key</a>, <a href="../h_src/58117028.htm" class="localvar">nd</a>);
+<a href="../h_aa/58107644.htm" class=function>numusehash</a>                                       ltable.c
+   464 :    <a href="../h_src/58106964.htm" class="localvar">ause</a> += <a href="../h_src/58109548.htm" class="function">countint</a>(<a href="../h_src/57503696.htm" class="macro">keyival</a>(<a href="../h_src/58106692.htm" class="localvar">n</a>), <a href="../h_src/58107372.htm" class="localvar">nums</a>);
+<a href="../h_aa/58105604.htm" class=function>reinsert</a>                                         ltable.c
+   517 :    <a href="../h_src/57505804.htm" class="macro">getnodekey</a>(<a href="../h_src/58105468.htm" class="localvar">L</a>, &amp;<a href="../h_src/58104652.htm" class="localvar">k</a>, <a href="../h_src/58104788.htm" class="localvar">old</a>);
+<a href="../h_aa/57817436.htm" class=function>traverseephemeron</a>                                lgc.c
+   500 :    else if (<a href="../h_src/57824712.htm" class="function">iscleared</a>(<a href="../h_src/57977276.htm" class="localvar">g</a>, <a href="../h_src/57502880.htm" class="macro">gckeyN</a>(<a href="../h_src/57976052.htm" class="localvar">n</a>))) {  <a  class="comments">/* key is not marked (yet)? */</a>
+<a href="../h_aa/57975916.htm" class=function>traversestrongtable</a>                              lgc.c
+   534 :    <a href="../h_src/57827160.htm" class="macro">markkey</a>(<a href="../h_src/57975780.htm" class="localvar">g</a>, <a href="../h_src/57975508.htm" class="localvar">n</a>);
+<a href="../h_aa/57818252.htm" class=function>traverseweakvalue</a>                                lgc.c
+   456 :    <a href="../h_src/57827160.htm" class="macro">markkey</a>(<a href="../h_src/57818116.htm" class="localvar">g</a>, <a href="../h_src/57817844.htm" class="localvar">n</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable key_val</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,49 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>L</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57879044.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57879044.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57879044.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57879044.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57632832.htm" class=function>luaD_reallocstack</a>                                ldo.c
+   213 :    int <a href="../h_src/57878636.htm" class="localvar">oldsize</a> = <a href="../h_src/57652416.htm" class="macro">stacksize</a>(<a href="../h_src/57879044.htm" class="localvar">L</a>);
+   216 :    int <a href="../h_src/57878228.htm" class="localvar">oldgcstop</a> = <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57879044.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57645888.htm" class="variable">gcstopem</a>;
+   218 :    <a href="../h_src/57880268.htm" class="function">relstack</a>(<a href="../h_src/57879044.htm" class="localvar">L</a>);  <a  class="comments">/* change pointers to offsets */</a>
+   219 :    <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57879044.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57645888.htm" class="variable">gcstopem</a> = 1;  <a  class="comments">/* stop emergency collection */</a>
+   220 :    <a href="../h_src/57878364.htm" class="localvar">newstack</a> = <a href="../h_src/57657244.htm" class="macro">luaM_reallocvector</a>(<a href="../h_src/57879044.htm" class="localvar">L</a>, <a href="../h_src/57879044.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642284.htm" class="variable">stack</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57878636.htm" class="localvar">oldsize</a> + <a href="../h_src/57652688.htm" class="macro">EXTRA_STACK</a>,
+   222 :    <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57879044.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57645888.htm" class="variable">gcstopem</a> = <a href="../h_src/57878228.htm" class="localvar">oldgcstop</a>;  <a  class="comments">/* restore emergency collection */</a>
+   224 :    <a href="../h_src/57879724.htm" class="function">correctstack</a>(<a href="../h_src/57879044.htm" class="localvar">L</a>);  <a  class="comments">/* change offsets back to pointers */</a>
+   226 :    <a href="../h_src/57496556.htm" class="macro">luaM_error</a>(<a href="../h_src/57879044.htm" class="localvar">L</a>);
+   229 :    <a href="../h_src/57879044.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642284.htm" class="variable">stack</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57878364.htm" class="localvar">newstack</a>;
+   230 :    <a href="../h_src/57879724.htm" class="function">correctstack</a>(<a href="../h_src/57879044.htm" class="localvar">L</a>);  <a  class="comments">/* change offsets back to pointers */</a>
+   231 :    <a href="../h_src/57879044.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642352.htm" class="variable">stack_last</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57879044.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642284.htm" class="variable">stack</a>.<a href="../h_src/57531984.htm" class="variable">p</a> + <a href="../h_src/57878908.htm" class="localvar">newsize</a>;
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable L</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

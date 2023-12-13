@@ -1,0 +1,124 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>LUA_OK</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57445204.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57445204.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57445204.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57445204.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57556736.htm" class=function>addreturn</a>                                        lua.c
+   525 :    if (<a href="../h_src/57556192.htm" class="localvar">status</a> == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) {
+<a href="../h_aa/58293180.htm" class=function>auxresume</a>                                        lcorolib.c
+    40 :    if (<a href="../h_src/57551704.htm" class="macro">l_likely</a>(<a href="../h_src/58292636.htm" class="localvar">status</a> == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a> || status == <a href="../h_src/57445068.htm" class="macro">LUA_YIELD</a>)) {
+<a href="../h_aa/58289576.htm" class=function>auxstatus</a>                                        lcorolib.c
+   133 :    case <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>: {
+<a href="../h_aa/58137292.htm" class=function>close_state</a>                                      lstate.c
+   275 :    <a href="../h_src/57633036.htm" class="function">luaD_closeprotected</a>(<a href="../h_src/58137156.htm" class="localvar">L</a>, 1, <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>);  <a  class="comments">/* close all upvalues */</a>
+<a href="../h_aa/143403296.htm" class=function>combine</a>                                          luac.c
+   151 :    if (<a href="../h_src/57432624.htm" class="function">lua_load</a>(<a href="../h_src/143403160.htm" class="localvar">L</a>,<a href="../h_src/143403976.htm" class="function">reader</a>,&amp;<a href="../h_src/143402752.htm" class="localvar">i</a>,&quot;=(&quot; <a href="../h_src/143406560.htm" class="macro">PROGNAME</a> &quot;)&quot;,NULL)!=<a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) <a href="../h_src/143405812.htm" class="function">fatal</a>(<a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143403160.htm" class="localvar">L</a>,-1));
+<a href="../h_aa/57567820.htm" class=function>dochunk</a>                                          lua.c
+   196 :    if (<a href="../h_src/57567548.htm" class="localvar">status</a> == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) <a href="../h_src/57567548.htm" class="localvar">status</a> = <a href="../h_src/57569928.htm" class="function">docall</a>(<a href="../h_src/57567684.htm" class="localvar">L</a>, 0, 0);
+<a href="../h_aa/57566460.htm" class=function>dolibrary</a>                                        lua.c
+   226 :    if (<a href="../h_src/57566052.htm" class="localvar">status</a> == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>)
+<a href="../h_aa/57554560.htm" class=function>doREPL</a>                                           lua.c
+   600 :    if (<a href="../h_src/57554288.htm" class="localvar">status</a> == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>)
+   602 :    if (<a href="../h_src/57554288.htm" class="localvar">status</a> == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) <a href="../h_src/57554968.htm" class="function">l_print</a>(<a href="../h_src/57554424.htm" class="localvar">L</a>);
+<a href="../h_aa/58295900.htm" class=function>finishpcall</a>                                      lbaselib.c
+   462 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/58295628.htm" class="localvar">status</a> != <a href="../h_src/57445204.htm" class="macro">LUA_OK</a> &amp;&amp; status != <a href="../h_src/57445068.htm" class="macro">LUA_YIELD</a>)) {  <a  class="comments">/* error? */</a>
+<a href="../h_aa/57862452.htm" class=function>finishpcallk</a>                                     ldo.c
+   677 :    if (<a href="../h_src/57551704.htm" class="macro">l_likely</a>(<a href="../h_src/57862044.htm" class="localvar">status</a> == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>))  <a  class="comments">/* no error? */</a>
+   685 :    <a href="../h_src/57647588.htm" class="macro">setcistrecst</a>(<a href="../h_src/57862180.htm" class="localvar">ci</a>, <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>);  <a  class="comments">/* clear original status */</a>
+<a href="../h_aa/57962316.htm" class=function>GCTM</a>                                             lgc.c
+   925 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57961364.htm" class="localvar">status</a> != <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>)) {  <a  class="comments">/* error while running __gc? */</a>
+<a href="../h_aa/57561836.htm" class=function>handle_luainit</a>                                   lua.c
+   372 :    if (<a href="../h_src/57561360.htm" class="localvar">init</a> == NULL) return <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>;
+<a href="../h_aa/57565168.htm" class=function>handle_script</a>                                    lua.c
+   254 :    if (<a href="../h_src/57564760.htm" class="localvar">status</a> == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) {
+<a href="../h_aa/57554968.htm" class=function>l_print</a>                                          lua.c
+   583 :    if (<a href="../h_src/57432760.htm" class="macro">lua_pcall</a>(<a href="../h_src/57554832.htm" class="localvar">L</a>, <a href="../h_src/57554696.htm" class="localvar">n</a>, 0, 0) != <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>)
+<a href="../h_aa/58300932.htm" class=function>load_aux</a>                                         lbaselib.c
+   324 :    if (<a href="../h_src/57551704.htm" class="macro">l_likely</a>(<a href="../h_src/58300660.htm" class="localvar">status</a> == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>)) {
+<a href="../h_aa/57555376.htm" class=function>loadline</a>                                         lua.c
+   566 :    if ((<a href="../h_src/57555104.htm" class="localvar">status</a> = <a href="../h_src/57556736.htm" class="function">addreturn</a>(<a href="../h_src/57555240.htm" class="localvar">L</a>)) != <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>)  <a  class="comments">/* 'return ...' did not work? */</a>
+<a href="../h_aa/57433032.htm" class=function>lua_callk</a>                                        lapi.c
+  1011 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57725828.htm" class="localvar">L</a>, L-&gt;status == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>, &quot;cannot do calls on non-normal thread&quot;);
+<a href="../h_aa/57432624.htm" class=function>lua_load</a>                                         lapi.c
+  1095 :    if (<a href="../h_src/57721748.htm" class="localvar">status</a> == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) {  <a  class="comments">/* no errors? */</a>
+<a href="../h_aa/57439900.htm" class=function>lua_newstate</a>                                     lstate.c
+   407 :    if (<a href="../h_src/57632492.htm" class="function">luaD_rawrunprotected</a>(<a href="../h_src/58134164.htm" class="localvar">L</a>, <a href="../h_src/57978268.htm" class="function">f_luaopen</a>, NULL) != <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) {
+<a href="../h_aa/57432828.htm" class=function>lua_pcallk</a>                                       lapi.c
+  1052 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57724060.htm" class="localvar">L</a>, L-&gt;status == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>, &quot;cannot do calls on non-normal thread&quot;);
+  1079 :    <a href="../h_src/57723108.htm" class="localvar">status</a> = <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>;  <a  class="comments">/* if it is here, there were no errors */</a>
+<a href="../h_aa/57432420.htm" class=function>lua_resume</a>                                       ldo.c
+   835 :    if (<a href="../h_src/57857964.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642828.htm" class="variable">status</a> == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) {  <a  class="comments">/* may be starting a coroutine */</a>
+   848 :    <a href="../h_src/57637660.htm" class="macro">api_checknelems</a>(<a href="../h_src/57857964.htm" class="localvar">L</a>, (L-&gt;status == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) ? nargs + 1 : nargs);
+<a href="../h_aa/58291820.htm" class=function>luaB_auxwrap</a>                                     lcorolib.c
+    78 :    if (<a href="../h_src/58291276.htm" class="localvar">stat</a> != <a href="../h_src/57445204.htm" class="macro">LUA_OK</a> &amp;&amp; <a href="../h_src/58291276.htm" class="localvar">stat</a> != <a href="../h_src/57445068.htm" class="macro">LUA_YIELD</a>) {  <a  class="comments">/* error in the coroutine? */</a>
+    80 :    <a href="../h_src/57415352.htm" class="macro">lua_assert</a>(stat != <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>);
+<a href="../h_aa/58287808.htm" class=function>luaB_close</a>                                       lcorolib.c
+   176 :    if (<a href="../h_src/58287400.htm" class="localvar">status</a> == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) {
+<a href="../h_aa/58297124.htm" class=function>luaB_dofile</a>                                      lbaselib.c
+   418 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57418480.htm" class="macro">luaL_loadfile</a>(<a href="../h_src/58296988.htm" class="localvar">L</a>, <a href="../h_src/58296852.htm" class="localvar">fname</a>) != <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>))
+<a href="../h_aa/57633036.htm" class=function>luaD_closeprotected</a>                              ldo.c
+   931 :    if (<a href="../h_src/57551704.htm" class="macro">l_likely</a>(<a href="../h_src/57855244.htm" class="localvar">status</a> == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>))  <a  class="comments">/* no more errors? */</a>
+<a href="../h_aa/57632968.htm" class=function>luaD_pcall</a>                                       ldo.c
+   954 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57854020.htm" class="localvar">status</a> != <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>)) {  <a  class="comments">/* an error occurred? */</a>
+<a href="../h_aa/57632492.htm" class=function>luaD_rawrunprotected</a>                             ldo.c
+   141 :    <a href="../h_src/57880472.htm" class="localvar">lj</a>.<a href="../h_src/57883124.htm" class="variable">status</a> = <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>;
+<a href="../h_aa/57633648.htm" class=function>luaD_seterrorobj</a>                                 ldo.c
+   101 :    case <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>: {  <a  class="comments">/* special case only for closing upvalues */</a>
+<a href="../h_aa/57638000.htm" class=function>luaE_resetthread</a>                                 lstate.c
+   329 :    <a href="../h_src/58135388.htm" class="localvar">status</a> = <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>;
+   330 :    <a href="../h_src/58135524.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642828.htm" class="variable">status</a> = <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>;  <a  class="comments">/* so it can run __close metamethods */</a>
+   332 :    if (<a href="../h_src/58135388.htm" class="localvar">status</a> != <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>)  <a  class="comments">/* errors? */</a>
+<a href="../h_aa/57610936.htm" class=function>luaV_execute</a>                                     lvm.c
+  1592 :    <a href="../h_src/58189284.htm" class="macro">Protect</a>(<a href="../h_src/57630384.htm" class="function">luaF_close</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58143588.htm" class="localvar">ra</a>, <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>, 1));
+<a href="../h_aa/57552928.htm" class=function>main</a>                                             lua.c
+   677 :    return (<a href="../h_src/57552452.htm" class="localvar">result</a> &amp;&amp; <a href="../h_src/57552588.htm" class="localvar">status</a> == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) ? EXIT_SUCCESS : EXIT_FAILURE;
+<a href="../h_aa/143400984.htm" class=function>main</a>                                             luac.c
+   207 :    if (<a href="../h_src/57432760.htm" class="macro">lua_pcall</a>(<a href="../h_src/143400644.htm" class="localvar">L</a>,2,0,0)!=<a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) <a href="../h_src/143405812.htm" class="function">fatal</a>(<a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143400644.htm" class="localvar">L</a>,-1));
+<a href="../h_aa/57554016.htm" class=function>pmain</a>                                            lua.c
+   639 :    if (<a href="../h_src/57561836.htm" class="function">handle_luainit</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>) != <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>)  <a  class="comments">/* run LUA_INIT */</a>
+   645 :    if (<a href="../h_src/57565168.htm" class="function">handle_script</a>(<a href="../h_src/57553880.htm" class="localvar">L</a>, <a href="../h_src/57553608.htm" class="localvar">argv</a> + <a href="../h_src/57553472.htm" class="localvar">script</a>) != <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>)
+<a href="../h_aa/143401936.htm" class=function>pmain</a>                                            luac.c
+   179 :    if (<a href="../h_src/57418480.htm" class="macro">luaL_loadfile</a>(<a href="../h_src/143401800.htm" class="localvar">L</a>,<a href="../h_src/143401120.htm" class="localvar">filename</a>)!=<a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) <a href="../h_src/143405812.htm" class="function">fatal</a>(<a href="../h_src/57427388.htm" class="macro">lua_tostring</a>(<a href="../h_src/143401800.htm" class="localvar">L</a>,-1));
+<a href="../h_aa/57977724.htm" class=function>preinit_thread</a>                                   lstate.c
+   263 :    <a href="../h_src/57977588.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642828.htm" class="variable">status</a> = <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>;
+<a href="../h_aa/57570880.htm" class=function>report</a>                                           lua.c
+   122 :    if (<a href="../h_src/57570608.htm" class="localvar">status</a> != <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) {
+<a href="../h_aa/57859324.htm" class=function>resume</a>                                           ldo.c
+   789 :    if (<a href="../h_src/57859188.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642828.htm" class="variable">status</a> == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>)  <a  class="comments">/* starting a coroutine? */</a>
+   793 :    <a href="../h_src/57859188.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642828.htm" class="variable">status</a> = <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>;  <a  class="comments">/* mark that it is running (again) */</a>
+<a href="../h_aa/57562924.htm" class=function>runargs</a>                                          lua.c
+   353 :    if (<a href="../h_src/57562108.htm" class="localvar">status</a> != <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>) return 0;
+<a href="../h_aa/143201636.htm" class=function>searcher_Lua</a>                                     loadlib.c
+   550 :    return <a href="../h_src/143202180.htm" class="function">checkload</a>(<a href="../h_src/143201500.htm" class="localvar">L</a>, (<a href="../h_src/57418480.htm" class="macro">luaL_loadfile</a>(<a href="../h_src/143201500.htm" class="localvar">L</a>, <a href="../h_src/143201364.htm" class="localvar">filename</a>) == <a href="../h_src/57445204.htm" class="macro">LUA_OK</a>), <a href="../h_src/143201364.htm" class="localvar">filename</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use LUA_OK</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

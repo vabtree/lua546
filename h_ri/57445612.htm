@@ -1,0 +1,85 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>LUA_MULTRET</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57445612.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57445612.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57445612.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57445612.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57554560.htm" class=function>doREPL</a>                                           lua.c
+   601 :    <a href="../h_src/57554288.htm" class="localvar">status</a> = <a href="../h_src/57569928.htm" class="function">docall</a>(<a href="../h_src/57554424.htm" class="localvar">L</a>, 0, <a href="../h_src/57445612.htm" class="macro">LUA_MULTRET</a>);
+<a href="../h_aa/57861772.htm" class=function>finishCcall</a>                                      ldo.c
+   711 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57637524.htm" class="macro">hastocloseCfunc</a>(ci-&gt;nresults));
+   721 :    <a href="../h_src/57637796.htm" class="macro">adjustresults</a>(<a href="../h_src/57861636.htm" class="localvar">L</a>, <a href="../h_src/57445612.htm" class="macro">LUA_MULTRET</a>);  <a  class="comments">/* finish 'lua_callk' */</a>
+<a href="../h_aa/58015260.htm" class=function>funcargs</a>                                         lparser.c
+  1037 :    <a href="../h_src/57671564.htm" class="macro">luaK_setmultret</a>(<a href="../h_src/58014716.htm" class="localvar">fs</a>, &amp;<a href="../h_src/58014580.htm" class="localvar">args</a>);
+  1058 :    <a href="../h_src/58014308.htm" class="localvar">nparams</a> = <a href="../h_src/57445612.htm" class="macro">LUA_MULTRET</a>;  <a  class="comments">/* open call */</a>
+<a href="../h_aa/57565168.htm" class=function>handle_script</a>                                    lua.c
+   256 :    <a href="../h_src/57564760.htm" class="localvar">status</a> = <a href="../h_src/57569928.htm" class="function">docall</a>(<a href="../h_src/57565032.htm" class="localvar">L</a>, <a href="../h_src/57564420.htm" class="localvar">n</a>, <a href="../h_src/57445612.htm" class="macro">LUA_MULTRET</a>);
+<a href="../h_aa/58020156.htm" class=function>lastlistfield</a>                                    lparser.c
+   883 :    <a href="../h_src/57671564.htm" class="macro">luaK_setmultret</a>(<a href="../h_src/58020020.htm" class="localvar">fs</a>, &amp;<a href="../h_src/58019884.htm" class="localvar">cc</a>-&gt;<a href="../h_src/58022128.htm" class="variable">v</a>);
+   884 :    <a href="../h_src/57668912.htm" class="function">luaK_setlist</a>(<a href="../h_src/58020020.htm" class="localvar">fs</a>, <a href="../h_src/58019884.htm" class="localvar">cc</a>-&gt;<a href="../h_src/58022060.htm" class="variable">t</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a>, <a href="../h_src/58019884.htm" class="localvar">cc</a>-&gt;<a href="../h_src/58021924.htm" class="variable">na</a>, <a href="../h_src/57445612.htm" class="macro">LUA_MULTRET</a>);
+<a href="../h_aa/57433032.htm" class=function>lua_callk</a>                                        lapi.c
+  1012 :    <a href="../h_src/57725964.htm" class="macro">checkresults</a>(<a href="../h_src/57725828.htm" class="localvar">L</a>, nargs, nresults);
+  1021 :    <a href="../h_src/57637796.htm" class="macro">adjustresults</a>(<a href="../h_src/57725828.htm" class="localvar">L</a>, <a href="../h_src/57725556.htm" class="localvar">nresults</a>);
+<a href="../h_aa/57429768.htm" class=function>lua_closeslot</a>                                    lapi.c
+   213 :    <a href="../h_src/57548168.htm" class="macro">api_check</a>(<a href="../h_src/57605224.htm" class="localvar">L</a>, <a href="../h_src/57637524.htm" class="macro">hastocloseCfunc</a>(L-&gt;ci-&gt;nresults) &amp;&amp; L-&gt;tbclist.p == level,
+<a href="../h_aa/57432828.htm" class=function>lua_pcallk</a>                                       lapi.c
+  1053 :    <a href="../h_src/57725964.htm" class="macro">checkresults</a>(<a href="../h_src/57724060.htm" class="localvar">L</a>, nargs, nresults);
+  1081 :    <a href="../h_src/57637796.htm" class="macro">adjustresults</a>(<a href="../h_src/57724060.htm" class="localvar">L</a>, <a href="../h_src/57723788.htm" class="localvar">nresults</a>);
+<a href="../h_aa/57439288.htm" class=function>lua_settop</a>                                       lapi.c
+   201 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57637524.htm" class="macro">hastocloseCfunc</a>(ci-&gt;nresults));
+<a href="../h_aa/57429836.htm" class=function>lua_toclose</a>                                      lapi.c
+  1278 :    if (!<a href="../h_src/57637524.htm" class="macro">hastocloseCfunc</a>(<a href="../h_src/57716852.htm" class="localvar">nresults</a>))  <a  class="comments">/* function not marked yet? */</a>
+  1280 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57637524.htm" class="macro">hastocloseCfunc</a>(L-&gt;ci-&gt;nresults));
+<a href="../h_aa/58297124.htm" class=function>luaB_dofile</a>                                      lbaselib.c
+   420 :    <a href="../h_src/57433032.htm" class="function">lua_callk</a>(<a href="../h_src/58296988.htm" class="localvar">L</a>, 0, <a href="../h_src/57445612.htm" class="macro">LUA_MULTRET</a>, 0, <a href="../h_src/58297668.htm" class="function">dofilecont</a>);
+<a href="../h_aa/58295356.htm" class=function>luaB_pcall</a>                                       lbaselib.c
+   477 :    <a href="../h_src/58295084.htm" class="localvar">status</a> = <a href="../h_src/57432828.htm" class="function">lua_pcallk</a>(<a href="../h_src/58295220.htm" class="localvar">L</a>, <a href="../h_src/57439356.htm" class="function">lua_gettop</a>(<a href="../h_src/58295220.htm" class="localvar">L</a>) - 2, <a href="../h_src/57445612.htm" class="macro">LUA_MULTRET</a>, 0, 0, <a href="../h_src/58295900.htm" class="function">finishpcall</a>);
+<a href="../h_aa/58294948.htm" class=function>luaB_xpcall</a>                                      lbaselib.c
+   494 :    <a href="../h_src/58294676.htm" class="localvar">status</a> = <a href="../h_src/57432828.htm" class="function">lua_pcallk</a>(<a href="../h_src/58294812.htm" class="localvar">L</a>, <a href="../h_src/58294540.htm" class="localvar">n</a> - 2, <a href="../h_src/57445612.htm" class="macro">LUA_MULTRET</a>, 2, 2, <a href="../h_src/58295900.htm" class="function">finishpcall</a>);
+<a href="../h_aa/57632900.htm" class=function>luaD_poscall</a>                                     ldo.c
+   487 :    if (<a href="../h_src/57551568.htm" class="macro">l_unlikely</a>(<a href="../h_src/57869932.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641264.htm" class="variable">hookmask</a> &amp;&amp; !<a href="../h_src/57637524.htm" class="macro">hastocloseCfunc</a>(<a href="../h_src/57869524.htm" class="localvar">wanted</a>)))
+<a href="../h_aa/57633376.htm" class=function>luaD_pretailcall</a>                                 ldo.c
+   548 :    return <a href="../h_src/57868300.htm" class="function">precallC</a>(<a href="../h_src/57867076.htm" class="localvar">L</a>, <a href="../h_src/57866804.htm" class="localvar">func</a>, <a href="../h_src/57445612.htm" class="macro">LUA_MULTRET</a>, <a href="../h_src/57511992.htm" class="macro">clCvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57866804.htm" class="localvar">func</a>))-&gt;<a href="../h_src/57508932.htm" class="variable">f</a>);
+   550 :    return <a href="../h_src/57868300.htm" class="function">precallC</a>(<a href="../h_src/57867076.htm" class="localvar">L</a>, <a href="../h_src/57866804.htm" class="localvar">func</a>, <a href="../h_src/57445612.htm" class="macro">LUA_MULTRET</a>, <a href="../h_src/57512128.htm" class="macro">fvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57866804.htm" class="localvar">func</a>)));
+<a href="../h_aa/57668912.htm" class=function>luaK_setlist</a>                                     lcode.c
+  1809 :    if (<a href="../h_src/57764084.htm" class="localvar">tostore</a> == <a href="../h_src/57445612.htm" class="macro">LUA_MULTRET</a>)
+<a href="../h_aa/57871564.htm" class=function>moveresults</a>                                      ldo.c
+   447 :    case <a href="../h_src/57445612.htm" class="macro">LUA_MULTRET</a>:
+   451 :    if (<a href="../h_src/57637524.htm" class="macro">hastocloseCfunc</a>(<a href="../h_src/57871020.htm" class="localvar">wanted</a>)) {  <a  class="comments">/* to-be-closed variables? */</a>
+   462 :    if (<a href="../h_src/57871020.htm" class="localvar">wanted</a> == <a href="../h_src/57445612.htm" class="macro">LUA_MULTRET</a>)
+<a href="../h_aa/57859324.htm" class=function>resume</a>                                           ldo.c
+   790 :    <a href="../h_src/57864220.htm" class="function">ccall</a>(<a href="../h_src/57859188.htm" class="localvar">L</a>, <a href="../h_src/57858780.htm" class="localvar">firstArg</a> - 1, <a href="../h_src/57445612.htm" class="macro">LUA_MULTRET</a>, 0);  <a  class="comments">/* just call its body */</a>
+<a href="../h_aa/57988876.htm" class=function>retstat</a>                                          lparser.c
+  1824 :    <a href="../h_src/57671564.htm" class="macro">luaK_setmultret</a>(<a href="../h_src/57988604.htm" class="localvar">fs</a>, &amp;<a href="../h_src/57988468.htm" class="localvar">e</a>);
+  1829 :    <a href="../h_src/57988332.htm" class="localvar">nret</a> = <a href="../h_src/57445612.htm" class="macro">LUA_MULTRET</a>;  <a  class="comments">/* return all values */</a>
+</pre>
+<h4><a class="legend">Table lists functions that directly use LUA_MULTRET</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

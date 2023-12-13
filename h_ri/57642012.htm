@@ -1,0 +1,55 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">lua_State::</a>twups</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57642012.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57642012.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57642012.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57642012.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57642012.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57838380.htm" class=function>newupval</a>                                         lfunc.c
+    76 :    <a href="../h_src/57838244.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642012.htm" class="variable">twups</a> = <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57838244.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57643984.htm" class="variable">twups</a>;  <a  class="comments">/* link it to the list */</a>
+<a href="../h_aa/57977724.htm" class=function>preinit_thread</a>                                   lstate.c
+   254 :    <a href="../h_src/57977588.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642012.htm" class="variable">twups</a> = <a href="../h_src/57977588.htm" class="localvar">L</a>;  <a  class="comments">/* thread has no upvalues */</a>
+<a href="../h_aa/57820088.htm" class=function>remarkupvals</a>                                     lgc.c
+   379 :    <a href="../h_src/57819816.htm" class="localvar">thread</a>-&gt;<a href="../h_src/57642012.htm" class="variable">twups</a> = <a href="../h_src/57819816.htm" class="localvar">thread</a>;  <a  class="comments">/* mark that it is out of list */</a>
+<a href="../h_aa/57971836.htm" class=function>traversethread</a>                                   lgc.c
+   645 :    <a href="../h_src/57971564.htm" class="localvar">th</a>-&gt;<a href="../h_src/57642012.htm" class="variable">twups</a> = <a href="../h_src/57971700.htm" class="localvar">g</a>-&gt;<a href="../h_src/57643984.htm" class="variable">twups</a>;  <a  class="comments">/* link it back to the list */</a>
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57838380.htm" class=function>newupval</a>                                         lfunc.c
+    75 :    if (!<a href="../h_src/57631812.htm" class="macro">isintwups</a>(<a href="../h_src/57838244.htm" class="localvar">L</a>)) {  <a  class="comments">/* thread not in list of threads with upvalues? */</a>
+<a href="../h_aa/57820088.htm" class=function>remarkupvals</a>                                     lgc.c
+   374 :    <a href="../h_src/57819612.htm" class="localvar">p</a> = &amp;<a href="../h_src/57819816.htm" class="localvar">thread</a>-&gt;<a href="../h_src/57642012.htm" class="variable">twups</a>;  <a  class="comments">/* keep marked thread with upvalues in the list */</a>
+   378 :    *<a href="../h_src/57819612.htm" class="localvar">p</a> = <a href="../h_src/57819816.htm" class="localvar">thread</a>-&gt;<a href="../h_src/57642012.htm" class="variable">twups</a>;  <a  class="comments">/* remove thread from the list */</a>
+<a href="../h_aa/57971836.htm" class=function>traversethread</a>                                   lgc.c
+   644 :    if (!<a href="../h_src/57631812.htm" class="macro">isintwups</a>(<a href="../h_src/57971564.htm" class="localvar">th</a>) &amp;&amp; <a href="../h_src/57971564.htm" class="localvar">th</a>-&gt;<a href="../h_src/57642216.htm" class="variable">openupval</a> != NULL) {
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable twups</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

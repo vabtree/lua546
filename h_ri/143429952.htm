@@ -1,0 +1,45 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>L</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143429952.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/143429952.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/143429952.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/143429952.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/143430088.htm" class=function>checktab</a>                                         ltablib.c
+    47 :    if (<a href="../h_src/57438540.htm" class="function">lua_type</a>(<a href="../h_src/143429952.htm" class="localvar">L</a>, <a href="../h_src/143429816.htm" class="localvar">arg</a>) != <a href="../h_src/57443368.htm" class="macro">LUA_TTABLE</a>) {  <a  class="comments">/* is it not a table? */</a>
+    49 :    if (<a href="../h_src/57433780.htm" class="function">lua_getmetatable</a>(<a href="../h_src/143429952.htm" class="localvar">L</a>, <a href="../h_src/143429816.htm" class="localvar">arg</a>) &amp;&amp;  <a  class="comments">/* must have metatable */</a>
+    50 :    (!(<a href="../h_src/143429680.htm" class="localvar">what</a> &amp; <a href="../h_src/143431312.htm" class="macro">TAB_R</a>) || <a href="../h_src/143430632.htm" class="function">checkfield</a>(<a href="../h_src/143429952.htm" class="localvar">L</a>, &quot;__index&quot;, ++<a href="../h_src/143429544.htm" class="localvar">n</a>)) &amp;&amp;
+    51 :    (!(<a href="../h_src/143429680.htm" class="localvar">what</a> &amp; <a href="../h_src/143431176.htm" class="macro">TAB_W</a>) || <a href="../h_src/143430632.htm" class="function">checkfield</a>(<a href="../h_src/143429952.htm" class="localvar">L</a>, &quot;__newindex&quot;, ++<a href="../h_src/143429544.htm" class="localvar">n</a>)) &amp;&amp;
+    52 :    (!(<a href="../h_src/143429680.htm" class="localvar">what</a> &amp; <a href="../h_src/143431040.htm" class="macro">TAB_L</a>) || <a href="../h_src/143430632.htm" class="function">checkfield</a>(<a href="../h_src/143429952.htm" class="localvar">L</a>, &quot;__len&quot;, ++<a href="../h_src/143429544.htm" class="localvar">n</a>))) {
+    53 :    <a href="../h_src/57429292.htm" class="macro">lua_pop</a>(<a href="../h_src/143429952.htm" class="localvar">L</a>, <a href="../h_src/143429544.htm" class="localvar">n</a>);  <a  class="comments">/* pop metatable and tested metamethods */</a>
+    56 :    <a href="../h_src/57419772.htm" class="function">luaL_checktype</a>(<a href="../h_src/143429952.htm" class="localvar">L</a>, <a href="../h_src/143429816.htm" class="localvar">arg</a>, <a href="../h_src/57443368.htm" class="macro">LUA_TTABLE</a>);  <a  class="comments">/* force an error */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable L</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

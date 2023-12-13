@@ -1,0 +1,61 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">NodeKey::</a>next</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57506280.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57506280.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57506280.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57506280.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57506280.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57616716.htm" class=function>luaH_newkey</a>                                      ltable.c
+   698 :    <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58098396.htm" class="localvar">othern</a>) = <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/58098260.htm" class="localvar">f</a> - <a href="../h_src/58098396.htm" class="localvar">othern</a>);  <a  class="comments">/* rechain to point to 'f' */</a>
+   701 :    <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58098260.htm" class="localvar">f</a>) += <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a> - <a href="../h_src/58098260.htm" class="localvar">f</a>);  <a  class="comments">/* correct 'next' */</a><a href="../h_src/57506280.htm" class="variable">next</a>' */
+   702 :    <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>) = 0;  <a  class="comments">/* now 'mp' is free */</a>
+   709 :    <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58098260.htm" class="localvar">f</a>) = <a href="../h_src/57547216.htm" class="macro">cast_int</a>((<a href="../h_src/58099076.htm" class="localvar">mp</a> + <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>)) - <a href="../h_src/58098260.htm" class="localvar">f</a>);  <a  class="comments">/* chain new position */</a>
+   711 :    <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>) = <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/58098260.htm" class="localvar">f</a> - <a href="../h_src/58099076.htm" class="localvar">mp</a>);
+<a href="../h_aa/58106556.htm" class=function>setnodevector</a>                                    ltable.c
+   495 :    <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58105740.htm" class="localvar">n</a>) = 0;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/58114852.htm" class=function>getgeneric</a>                                       ltable.c
+   305 :    int <a href="../h_src/58114172.htm" class="localvar">nx</a> = <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58114308.htm" class="localvar">n</a>);
+<a href="../h_aa/57617056.htm" class=function>luaH_getint</a>                                      ltable.c
+   745 :    int <a href="../h_src/58097172.htm" class="localvar">nx</a> = <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58097308.htm" class="localvar">n</a>);
+<a href="../h_aa/57616920.htm" class=function>luaH_getshortstr</a>                                 ltable.c
+   765 :    int <a href="../h_src/58096628.htm" class="localvar">nx</a> = <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58096764.htm" class="localvar">n</a>);
+<a href="../h_aa/57616716.htm" class=function>luaH_newkey</a>                                      ltable.c
+   696 :    while (<a href="../h_src/58098396.htm" class="localvar">othern</a> + <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58098396.htm" class="localvar">othern</a>) != <a href="../h_src/58099076.htm" class="localvar">mp</a>)  <a  class="comments">/* find previous */</a>
+   697 :    <a href="../h_src/58098396.htm" class="localvar">othern</a> += <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58098396.htm" class="localvar">othern</a>);
+   700 :    if (<a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>) != 0) {
+   701 :    <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58098260.htm" class="localvar">f</a>) += <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a> - <a href="../h_src/58098260.htm" class="localvar">f</a>);  <a  class="comments">/* correct 'next' */</a><a href="../h_src/57506280.htm" class="variable">next</a>' */
+   708 :    if (<a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>) != 0)
+   709 :    <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58098260.htm" class="localvar">f</a>) = <a href="../h_src/57547216.htm" class="macro">cast_int</a>((<a href="../h_src/58099076.htm" class="localvar">mp</a> + <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>)) - <a href="../h_src/58098260.htm" class="localvar">f</a>);  <a  class="comments">/* chain new position */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable next</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

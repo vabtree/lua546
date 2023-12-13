@@ -1,0 +1,54 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaK_getlabel</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57669252.htm" class="function" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57669252.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57669252.htm" class="function" target="_self">Flow Chart</a></li>
+<li><a href="../h_src/57669252.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57669252.htm" class="function" target="_self">Called By</a></li>
+<li><a href="../h_rx/57669252.htm" class="function" target="_self">Call Tree</a></li>
+<li><a href="../h_ro/57669252.htm" class="function" target="_self">Calls and Uses</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57797404.htm" class=function>code_loadbool</a>                                    lcode.c
+   889 :    <a href="../h_src/57669252.htm" class="function">luaK_getlabel</a>(<a href="../h_src/57797268.htm" class="localvar">fs</a>);  <a  class="comments">/* those instructions may be jump targets */</a>
+<a href="../h_aa/58030696.htm" class=function>createlabel</a>                                      lparser.c
+   612 :    int <a href="../h_src/58029744.htm" class="localvar">l</a> = <a href="../h_src/58033144.htm" class="function">newlabelentry</a>(<a href="../h_src/58030560.htm" class="localvar">ls</a>, <a href="../h_src/58029880.htm" class="localvar">ll</a>, <a href="../h_src/58030424.htm" class="localvar">name</a>, <a href="../h_src/58030288.htm" class="localvar">line</a>, <a href="../h_src/57669252.htm" class="function">luaK_getlabel</a>(<a href="../h_src/58030016.htm" class="localvar">fs</a>));
+<a href="../h_aa/57796316.htm" class=function>exp2reg</a>                                          lcode.c
+   929 :    <a href="../h_src/57795772.htm" class="localvar">final</a> = <a href="../h_src/57669252.htm" class="function">luaK_getlabel</a>(<a href="../h_src/57796180.htm" class="localvar">fs</a>);
+<a href="../h_aa/57999960.htm" class=function>forbody</a>                                          lparser.c
+  1558 :    <a href="../h_src/58000912.htm" class="function">fixforjump</a>(<a href="../h_src/57998668.htm" class="localvar">fs</a>, <a href="../h_src/57998532.htm" class="localvar">prep</a>, <a href="../h_src/57669252.htm" class="function">luaK_getlabel</a>(<a href="../h_src/57998668.htm" class="localvar">fs</a>), 0);
+<a href="../h_aa/57669388.htm" class=function>luaK_patchtohere</a>                                 lcode.c
+   313 :    int <a href="../h_src/57657556.htm" class="localvar">hr</a> = <a href="../h_src/57669252.htm" class="function">luaK_getlabel</a>(<a href="../h_src/57657828.htm" class="localvar">fs</a>);  <a  class="comments">/* mark &quot;here&quot; as a jump target */</a>
+<a href="../h_aa/58002544.htm" class=function>repeatstat</a>                                       lparser.c
+  1491 :    int <a href="../h_src/58001864.htm" class="localvar">repeat_init</a> = <a href="../h_src/57669252.htm" class="function">luaK_getlabel</a>(<a href="../h_src/58002000.htm" class="localvar">fs</a>);
+<a href="../h_aa/58003496.htm" class=function>whilestat</a>                                        lparser.c
+  1475 :    <a href="../h_src/58002952.htm" class="localvar">whileinit</a> = <a href="../h_src/57669252.htm" class="function">luaK_getlabel</a>(<a href="../h_src/58003088.htm" class="localvar">fs</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use luaK_getlabel</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

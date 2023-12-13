@@ -1,0 +1,56 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>LUA_VERSION_MAJOR</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57446972.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57446972.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57446972.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57446972.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57552180.htm" class=file>lapi.c</a>
+    36 :    &quot;$LuaVersion: &quot; <a href="../h_src/57446020.htm" class="macro">LUA_COPYRIGHT</a> &quot; $&quot;
+<a href="../h_aa/58063240.htm" class=function>checkHeader</a>                                      lundump.c
+   295 :    if (<a href="../h_src/58073576.htm" class="function">loadByte</a>(<a href="../h_src/58063104.htm" class="localvar">S</a>) != <a href="../h_src/57615084.htm" class="macro">LUAC_VERSION</a>)
+<a href="../h_aa/143404860.htm" class=function>doargs</a>                                           luac.c
+   118 :    <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(&quot;%s\n&quot;,<a href="../h_src/57446020.htm" class="macro">LUA_COPYRIGHT</a>);
+<a href="../h_aa/57841576.htm" class=function>dumpHeader</a>                                       ldump.c
+   203 :    <a href="../h_src/57848784.htm" class="function">dumpByte</a>(<a href="../h_src/57841440.htm" class="localvar">D</a>, <a href="../h_src/57615084.htm" class="macro">LUAC_VERSION</a>);
+<a href="../h_aa/57561836.htm" class=function>handle_luainit</a>                                   lua.c
+   366 :    const char *<a href="../h_src/57561564.htm" class="localvar">name</a> = &quot;=&quot; <a href="../h_src/57573124.htm" class="macro">LUA_INITVARVERSION</a>;
+<a href="../h_aa/57410456.htm" class=function>luaopen_base</a>                                     lbaselib.c
+   545 :    <a href="../h_src/57427660.htm" class="macro">lua_pushliteral</a>(<a href="../h_src/58294064.htm" class="localvar">L</a>, <a href="../h_src/57446292.htm" class="macro">LUA_VERSION</a>);
+<a href="../h_aa/57573804.htm" class=function>luaopen_package</a>                                  loadlib.c
+   749 :    <a href="../h_src/143210884.htm" class="function">setpath</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>, &quot;path&quot;, <a href="../h_src/143211700.htm" class="macro">LUA_PATH_VAR</a>, <a href="../h_src/57455540.htm" class="macro">LUA_PATH_DEFAULT</a>);
+   750 :    <a href="../h_src/143210884.htm" class="function">setpath</a>(<a href="../h_src/143196264.htm" class="localvar">L</a>, &quot;cpath&quot;, <a href="../h_src/143211428.htm" class="macro">LUA_CPATH_VAR</a>, <a href="../h_src/57455268.htm" class="macro">LUA_CPATH_DEFAULT</a>);
+<a href="../h_aa/57569112.htm" class=function>print_version</a>                                    lua.c
+   168 :    <a href="../h_src/57412428.htm" class="macro">lua_writestring</a>(<a href="../h_src/57446020.htm" class="macro">LUA_COPYRIGHT</a>, <a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/57446020.htm" class="macro">LUA_COPYRIGHT</a>));
+<a href="../h_aa/143210884.htm" class=function>setpath</a>                                          loadlib.c
+   301 :    const char *<a href="../h_src/143210068.htm" class="localvar">nver</a> = <a href="../h_src/57434732.htm" class="function">lua_pushfstring</a>(<a href="../h_src/143210748.htm" class="localvar">L</a>, &quot;%s%s&quot;, <a href="../h_src/143210476.htm" class="localvar">envname</a>, <a href="../h_src/57410592.htm" class="macro">LUA_VERSUFFIX</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use LUA_VERSION_MAJOR</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,57 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>ttisCclosure</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57512808.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57512808.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57512808.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57512808.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57713112.htm" class=function>aux_upvalue</a>                                      lapi.c
+  1361 :    <a href="../h_src/57508728.htm" class="type">CClosure</a> *<a href="../h_src/57712364.htm" class="localvar">f</a> = <a href="../h_src/57511992.htm" class="macro">clCvalue</a>(<a href="../h_src/57712976.htm" class="localvar">fi</a>);
+<a href="../h_aa/57610052.htm" class=function>index2value</a>                                      lapi.c
+    78 :    if (<a href="../h_src/57512808.htm" class="macro">ttisCclosure</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57609644.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a>))) {  <a  class="comments">/* C closure? */</a>
+    79 :    <a href="../h_src/57508728.htm" class="type">CClosure</a> *<a href="../h_src/57609236.htm" class="localvar">func</a> = <a href="../h_src/57511992.htm" class="macro">clCvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57609644.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a>));
+<a href="../h_aa/57439084.htm" class=function>lua_copy</a>                                         lapi.c
+   263 :    <a href="../h_src/57621340.htm" class="macro">luaC_barrier</a>(<a href="../h_src/57602504.htm" class="localvar">L</a>, <a href="../h_src/57511992.htm" class="macro">clCvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57602504.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a>)), <a href="../h_src/57602096.htm" class="localvar">fr</a>);
+<a href="../h_aa/57424600.htm" class=function>lua_getinfo</a>                                      ldebug.c
+   401 :    <a href="../h_src/57746268.htm" class="localvar">cl</a> = <a href="../h_src/57512672.htm" class="macro">ttisclosure</a>(<a href="../h_src/57745996.htm" class="localvar">func</a>) ? <a href="../h_src/57512400.htm" class="macro">clvalue</a>(<a href="../h_src/57745996.htm" class="localvar">func</a>) : NULL;
+<a href="../h_aa/57438744.htm" class=function>lua_iscfunction</a>                                  lapi.c
+   299 :    return (<a href="../h_src/57512944.htm" class="macro">ttislcf</a>(<a href="../h_src/57600056.htm" class="localvar">o</a>) || (<a href="../h_src/57512808.htm" class="macro">ttisCclosure</a>(<a href="../h_src/57600056.htm" class="localvar">o</a>)));
+<a href="../h_aa/57438064.htm" class=function>lua_tocfunction</a>                                  lapi.c
+   441 :    else if (<a href="../h_src/57512808.htm" class="macro">ttisCclosure</a>(<a href="../h_src/57592100.htm" class="localvar">o</a>))
+   442 :    return <a href="../h_src/57511992.htm" class="macro">clCvalue</a>(<a href="../h_src/57592100.htm" class="localvar">o</a>)-&gt;<a href="../h_src/57508932.htm" class="variable">f</a>;
+<a href="../h_aa/57424260.htm" class=function>lua_upvalueid</a>                                    lapi.c
+  1438 :    <a href="../h_src/57508728.htm" class="type">CClosure</a> *<a href="../h_src/57707944.htm" class="localvar">f</a> = <a href="../h_src/57511992.htm" class="macro">clCvalue</a>(<a href="../h_src/57708080.htm" class="localvar">fi</a>);
+<a href="../h_aa/57633308.htm" class=function>luaD_precall</a>                                     ldo.c
+   592 :    <a href="../h_src/57868300.htm" class="function">precallC</a>(<a href="../h_src/57865444.htm" class="localvar">L</a>, <a href="../h_src/57865308.htm" class="localvar">func</a>, <a href="../h_src/57865172.htm" class="localvar">nresults</a>, <a href="../h_src/57511992.htm" class="macro">clCvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57865308.htm" class="localvar">func</a>))-&gt;<a href="../h_src/57508932.htm" class="variable">f</a>);
+<a href="../h_aa/57633376.htm" class=function>luaD_pretailcall</a>                                 ldo.c
+   548 :    return <a href="../h_src/57868300.htm" class="function">precallC</a>(<a href="../h_src/57867076.htm" class="localvar">L</a>, <a href="../h_src/57866804.htm" class="localvar">func</a>, <a href="../h_src/57445612.htm" class="macro">LUA_MULTRET</a>, <a href="../h_src/57511992.htm" class="macro">clCvalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57866804.htm" class="localvar">func</a>))-&gt;<a href="../h_src/57508932.htm" class="variable">f</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use ttisCclosure</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

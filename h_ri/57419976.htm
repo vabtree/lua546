@@ -1,0 +1,99 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaL_checkinteger</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57419976.htm" class="function" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57419976.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57419976.htm" class="function" target="_self">Flow Chart</a></li>
+<li><a href="../h_src/57419976.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57419976.htm" class="function" target="_self">Called By</a></li>
+<li><a href="../h_rx/57419976.htm" class="function" target="_self">Call Tree</a></li>
+<li><a href="../h_ro/57419976.htm" class="function" target="_self">Calls and Uses</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/143273580.htm" class=function>auxupvalue</a>                                       ldblib.c
+   260 :    int <a href="../h_src/143273036.htm" class="localvar">n</a> = (int)<a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143273444.htm" class="localvar">L</a>, 2);  <a  class="comments">/* upvalue index */</a>
+<a href="../h_aa/143412000.htm" class=function>byteoffset</a>                                       lutf8lib.c
+   190 :    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143411456.htm" class="localvar">n</a>  = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143411864.htm" class="localvar">L</a>, 2);
+<a href="../h_aa/143272356.htm" class=function>checkupval</a>                                       ldblib.c
+   287 :    int <a href="../h_src/143271540.htm" class="localvar">nup</a> = (int)<a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143272220.htm" class="localvar">L</a>, <a href="../h_src/143271948.htm" class="localvar">argnup</a>);  <a  class="comments">/* upvalue index */</a>
+<a href="../h_aa/58281756.htm" class=function>db_getinfo</a>                                       ldblib.c
+   162 :    if (!<a href="../h_src/57424668.htm" class="function">lua_getstack</a>(<a href="../h_src/143276028.htm" class="localvar">L1</a>, (int)<a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, <a href="../h_src/143276164.htm" class="localvar">arg</a> + 1), &amp;<a href="../h_src/58281484.htm" class="localvar">ar</a>)) {
+<a href="../h_aa/143275756.htm" class=function>db_getlocal</a>                                      ldblib.c
+   206 :    int <a href="../h_src/143275212.htm" class="localvar">nvar</a> = (int)<a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143275620.htm" class="localvar">L</a>, <a href="../h_src/143275484.htm" class="localvar">arg</a> + 2);  <a  class="comments">/* local-variable index */</a>
+   215 :    int <a href="../h_src/143274804.htm" class="localvar">level</a> = (int)<a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143275620.htm" class="localvar">L</a>, <a href="../h_src/143275484.htm" class="localvar">arg</a> + 1);
+<a href="../h_aa/143265556.htm" class=function>db_setcstacklimit</a>                                ldblib.c
+   450 :    int <a href="../h_src/143265284.htm" class="localvar">limit</a> = (int)<a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143265420.htm" class="localvar">L</a>, 1);
+<a href="../h_aa/143274668.htm" class=function>db_setlocal</a>                                      ldblib.c
+   239 :    int <a href="../h_src/143273852.htm" class="localvar">level</a> = (int)<a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143274532.htm" class="localvar">L</a>, <a href="../h_src/143274396.htm" class="localvar">arg</a> + 1);
+   240 :    int <a href="../h_src/143273716.htm" class="localvar">nvar</a> = (int)<a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143274532.htm" class="localvar">L</a>, <a href="../h_src/143274396.htm" class="localvar">arg</a> + 2);
+<a href="../h_aa/58301612.htm" class=function>ipairsaux</a>                                        lbaselib.c
+   303 :    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/58301340.htm" class="localvar">i</a> = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/58301476.htm" class="localvar">L</a>, 2);
+<a href="../h_aa/58296444.htm" class=function>luaB_select</a>                                      lbaselib.c
+   445 :    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/58296036.htm" class="localvar">i</a> = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/58296308.htm" class="localvar">L</a>, 1);
+<a href="../h_aa/58309500.htm" class=function>luaB_tonumber</a>                                    lbaselib.c
+   100 :    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/58308548.htm" class="localvar">base</a> = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/58309364.htm" class="localvar">L</a>, 2);
+<a href="../h_aa/57419908.htm" class=function>luaL_optinteger</a>                                  lauxlib.c
+   454 :    return <a href="../h_src/57416168.htm" class="macro">luaL_opt</a>(<a href="../h_src/58336156.htm" class="localvar">L</a>, <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>, <a href="../h_src/58336020.htm" class="localvar">arg</a>, <a href="../h_src/58335884.htm" class="localvar">def</a>);
+<a href="../h_aa/143218296.htm" class=function>math_ldexp</a>                                       lmathlib.c
+   690 :    int <a href="../h_src/143217888.htm" class="localvar">ep</a> = (int)<a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143218160.htm" class="localvar">L</a>, 2);
+<a href="../h_aa/143223940.htm" class=function>math_random</a>                                      lmathlib.c
+   569 :    <a href="../h_src/143223532.htm" class="localvar">up</a> = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143223804.htm" class="localvar">L</a>, 1);
+   577 :    <a href="../h_src/143223668.htm" class="localvar">low</a> = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143223804.htm" class="localvar">L</a>, 1);
+   578 :    <a href="../h_src/143223532.htm" class="localvar">up</a> = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143223804.htm" class="localvar">L</a>, 2);
+<a href="../h_aa/143221424.htm" class=function>math_randomseed</a>                                  lmathlib.c
+   624 :    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143221016.htm" class="localvar">n1</a> = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143221288.htm" class="localvar">L</a>, 1);
+<a href="../h_aa/143235092.htm" class=function>math_ult</a>                                         lmathlib.c
+   163 :    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143234820.htm" class="localvar">a</a> = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143234956.htm" class="localvar">L</a>, 1);
+   164 :    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143234684.htm" class="localvar">b</a> = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143234956.htm" class="localvar">L</a>, 2);
+<a href="../h_aa/143413224.htm" class=function>pushutfchar</a>                                      lutf8lib.c
+   156 :    <a href="../h_src/57438132.htm" class="function">lua_Unsigned</a> <a href="../h_src/143412816.htm" class="localvar">code</a> = (<a href="../h_src/57438132.htm" class="function">lua_Unsigned</a>)<a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143413088.htm" class="localvar">L</a>, <a href="../h_src/143412952.htm" class="localvar">arg</a>);
+<a href="../h_aa/143335188.htm" class=function>str_char</a>                                         lstrlib.c
+   201 :    <a href="../h_src/57438132.htm" class="function">lua_Unsigned</a> <a href="../h_src/143334372.htm" class="localvar">c</a> = (<a href="../h_src/57438132.htm" class="function">lua_Unsigned</a>)<a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143335052.htm" class="localvar">L</a>, <a href="../h_src/143334780.htm" class="localvar">i</a>);
+<a href="../h_aa/143291804.htm" class=function>str_format</a>                                       lstrlib.c
+  1298 :    <a href="../h_src/143290172.htm" class="localvar">nb</a> = <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143290308.htm" class="localvar">buff</a>, <a href="../h_src/143290444.htm" class="localvar">maxitem</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>, (int)<a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143291396.htm" class="localvar">arg</a>));
+  1310 :    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143290036.htm" class="localvar">n</a> = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143291396.htm" class="localvar">arg</a>);
+<a href="../h_aa/143280448.htm" class=function>str_pack</a>                                         lstrlib.c
+  1619 :    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143439064.htm" class="localvar">n</a> = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143280312.htm" class="localvar">L</a>, <a href="../h_src/143279768.htm" class="localvar">arg</a>);
+  1628 :    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143438792.htm" class="localvar">n</a> = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143280312.htm" class="localvar">L</a>, <a href="../h_src/143279768.htm" class="localvar">arg</a>);
+<a href="../h_aa/143337772.htm" class=function>str_rep</a>                                          lstrlib.c
+   153 :    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143337092.htm" class="localvar">n</a> = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143337636.htm" class="localvar">L</a>, 2);
+<a href="../h_aa/143341512.htm" class=function>str_sub</a>                                          lstrlib.c
+   103 :    <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/143340968.htm" class="localvar">start</a> = <a href="../h_src/143342736.htm" class="function">posrelatI</a>(<a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143341376.htm" class="localvar">L</a>, 2), <a href="../h_src/143341240.htm" class="localvar">l</a>);
+<a href="../h_aa/143349536.htm" class=function>time_t</a>                                           loslib.c
+   292 :    <a href="../h_src/143358444.htm" class="macro">l_timet</a> <a href="../h_src/143349128.htm" class="localvar">t</a> = <a href="../h_src/143358172.htm" class="macro">l_gettime</a>(<a href="../h_src/143349400.htm" class="localvar">L</a>, <a href="../h_src/143349264.htm" class="localvar">arg</a>);
+<a href="../h_aa/143429408.htm" class=function>tinsert</a>                                          ltablib.c
+    72 :    <a href="../h_src/143429136.htm" class="localvar">pos</a> = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143429272.htm" class="localvar">L</a>, 2);  <a  class="comments">/* 2nd argument is the position */</a>
+<a href="../h_aa/143428184.htm" class=function>tmove</a>                                            ltablib.c
+   116 :    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143427912.htm" class="localvar">f</a> = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143428048.htm" class="localvar">L</a>, 2);
+   117 :    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143427776.htm" class="localvar">e</a> = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143428048.htm" class="localvar">L</a>, 3);
+   118 :    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143427640.htm" class="localvar">t</a> = <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143428048.htm" class="localvar">L</a>, 4);
+<a href="../h_aa/143425056.htm" class=function>tunpack</a>                                          ltablib.c
+   197 :    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/143424512.htm" class="localvar">e</a> = <a href="../h_src/57416168.htm" class="macro">luaL_opt</a>(<a href="../h_src/143424920.htm" class="localvar">L</a>, <a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>, 3, <a href="../h_src/57418140.htm" class="function">luaL_len</a>(<a href="../h_src/143424920.htm" class="localvar">L</a>, 1));
+</pre>
+<h4><a class="legend">Table lists functions that directly use luaL_checkinteger</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,69 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>MASK0</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57694888.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57694888.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57694888.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57694888.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57767756.htm" class=function>codeconcat</a>                                       lcode.c
+  1688 :    <a href="../h_src/57693936.htm" class="macro">SETARG_A</a>(*<a href="../h_src/57767076.htm" class="localvar">ie2</a>, <a href="../h_src/57767484.htm" class="localvar">e1</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a>);  <a  class="comments">/* correct first element ('e1') */</a>
+  1689 :    <a href="../h_src/57693528.htm" class="macro">SETARG_B</a>(*<a href="../h_src/57767076.htm" class="localvar">ie2</a>, <a href="../h_src/57766940.htm" class="localvar">n</a> + 1);  <a  class="comments">/* will concatenate one more element */</a>
+<a href="../h_aa/57798492.htm" class=function>discharge2reg</a>                                    lcode.c
+   857 :    <a href="../h_src/57693936.htm" class="macro">SETARG_A</a>(*<a href="../h_src/57797948.htm" class="localvar">pc</a>, <a href="../h_src/57798084.htm" class="localvar">reg</a>);  <a  class="comments">/* instruction will put result in 'reg' */</a>
+<a href="../h_aa/57989556.htm" class=function>exprstat</a>                                         lparser.c
+  1808 :    <a href="../h_src/57693120.htm" class="macro">SETARG_C</a>(*<a href="../h_src/57989012.htm" class="localvar">inst</a>, 1);  <a  class="comments">/* call statement uses no results */</a>
+<a href="../h_aa/57777412.htm" class=function>finishbinexpneg</a>                                  lcode.c
+  1472 :    <a href="../h_src/57693528.htm" class="macro">SETARG_B</a>(<a href="../h_src/57777276.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57676052.htm" class="variable">f</a>-&gt;<a href="../h_src/57514916.htm" class="variable">code</a>[<a href="../h_src/57777276.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675508.htm" class="variable">pc</a> - 1], <a href="../h_src/57695296.htm" class="macro">int2sC</a>(<a href="../h_src/57776324.htm" class="localvar">v2</a>));
+<a href="../h_aa/58000912.htm" class=function>fixforjump</a>                                       lparser.c
+  1537 :    <a href="../h_src/57692440.htm" class="macro">SETARG_Bx</a>(*<a href="../h_src/58000232.htm" class="localvar">jmp</a>, <a href="../h_src/58000096.htm" class="localvar">offset</a>);
+<a href="../h_aa/57664084.htm" class=function>fixjump</a>                                          lcode.c
+   174 :    <a href="../h_src/57691624.htm" class="macro">SETARG_sJ</a>(*<a href="../h_src/57663540.htm" class="localvar">jmp</a>, <a href="../h_src/57663404.htm" class="localvar">offset</a>);
+<a href="../h_aa/57668844.htm" class=function>luaK_finish</a>                                      lcode.c
+  1854 :    <a href="../h_src/57694616.htm" class="macro">SET_OPCODE</a>(*<a href="../h_src/57762724.htm" class="localvar">pc</a>, <a href="../h_src/57685776.htm" class="variable">OP_RETURN</a>);
+  1858 :    <a href="../h_src/57692712.htm" class="macro">SETARG_k</a>(*<a href="../h_src/57762724.htm" class="localvar">pc</a>, 1);  <a  class="comments">/* signal that it needs to close */</a>
+  1860 :    <a href="../h_src/57693120.htm" class="macro">SETARG_C</a>(*<a href="../h_src/57762724.htm" class="localvar">pc</a>, <a href="../h_src/57762860.htm" class="localvar">p</a>-&gt;<a href="../h_src/57515936.htm" class="variable">numparams</a> + 1);  <a  class="comments">/* signal that it is vararg */</a>
+<a href="../h_aa/57670748.htm" class=function>luaK_nil</a>                                         lcode.c
+   141 :    <a href="../h_src/57693936.htm" class="macro">SETARG_A</a>(*<a href="../h_src/57665036.htm" class="localvar">previous</a>, <a href="../h_src/57665444.htm" class="localvar">from</a>);
+   142 :    <a href="../h_src/57693528.htm" class="macro">SETARG_B</a>(*<a href="../h_src/57665036.htm" class="localvar">previous</a>, <a href="../h_src/57665172.htm" class="localvar">l</a> - <a href="../h_src/57665444.htm" class="localvar">from</a>);
+<a href="../h_aa/57669660.htm" class=function>luaK_setoneret</a>                                   lcode.c
+   762 :    <a href="../h_src/57693120.htm" class="macro">SETARG_C</a>(<a href="../h_src/57671700.htm" class="macro">getinstruction</a>(<a href="../h_src/57799036.htm" class="localvar">fs</a>, <a href="../h_src/57798900.htm" class="localvar">e</a>), 2);
+<a href="../h_aa/57669728.htm" class=function>luaK_setreturns</a>                                  lcode.c
+   724 :    <a href="../h_src/57693120.htm" class="macro">SETARG_C</a>(*<a href="../h_src/57799580.htm" class="localvar">pc</a>, <a href="../h_src/57799716.htm" class="localvar">nresults</a> + 1);
+   727 :    <a href="../h_src/57693120.htm" class="macro">SETARG_C</a>(*<a href="../h_src/57799580.htm" class="localvar">pc</a>, <a href="../h_src/57799716.htm" class="localvar">nresults</a> + 1);
+   728 :    <a href="../h_src/57693936.htm" class="macro">SETARG_A</a>(*<a href="../h_src/57799580.htm" class="localvar">pc</a>, <a href="../h_src/57799988.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674760.htm" class="variable">freereg</a>);
+<a href="../h_aa/57791284.htm" class=function>negatecondition</a>                                  lcode.c
+  1105 :    <a href="../h_src/57692712.htm" class="macro">SETARG_k</a>(*<a href="../h_src/57790876.htm" class="localvar">pc</a>, (<a href="../h_src/57692848.htm" class="macro">GETARG_k</a>(*<a href="../h_src/57790876.htm" class="localvar">pc</a>) ^ 1));
+<a href="../h_aa/57660276.htm" class=function>patchtestreg</a>                                     lcode.c
+   264 :    <a href="../h_src/57693936.htm" class="macro">SETARG_A</a>(*<a href="../h_src/57659732.htm" class="localvar">i</a>, <a href="../h_src/57659868.htm" class="localvar">reg</a>);
+<a href="../h_aa/57988876.htm" class=function>retstat</a>                                          lparser.c
+  1826 :    <a href="../h_src/57694616.htm" class="macro">SET_OPCODE</a>(<a href="../h_src/57671700.htm" class="macro">getinstruction</a>(<a href="../h_src/57988604.htm" class="localvar">fs</a>,&amp;<a href="../h_src/57988468.htm" class="localvar">e</a>), <a href="../h_src/57685844.htm" class="variable">OP_TAILCALL</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use MASK0</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

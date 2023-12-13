@@ -1,0 +1,50 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>esccheck</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57931512.htm" class="function" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57931512.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57931512.htm" class="function" target="_self">Flow Chart</a></li>
+<li><a href="../h_src/57931512.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57931512.htm" class="function" target="_self">Called By</a></li>
+<li><a href="../h_rx/57931512.htm" class="function" target="_self">Call Tree</a></li>
+<li><a href="../h_ro/57931512.htm" class="function" target="_self">Calls and Uses</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57930968.htm" class=function>gethexa</a>                                          llex.c
+   330 :    <a href="../h_src/57931512.htm" class="function">esccheck</a> (<a href="../h_src/57930832.htm" class="localvar">ls</a>, <a href="../h_src/57759868.htm" class="macro">lisxdigit</a>(<a href="../h_src/57930832.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>), &quot;hexadecimal digit expected&quot;);
+<a href="../h_aa/57928656.htm" class=function>read_string</a>                                      llex.c
+   421 :    <a href="../h_src/57931512.htm" class="function">esccheck</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>, <a href="../h_src/57760276.htm" class="macro">lisdigit</a>(<a href="../h_src/57928520.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a>), &quot;invalid escape sequence&quot;);
+<a href="../h_aa/57929200.htm" class=function>readdecesc</a>                                       llex.c
+   376 :    <a href="../h_src/57931512.htm" class="function">esccheck</a>(<a href="../h_src/57929064.htm" class="localvar">ls</a>, <a href="../h_src/57928792.htm" class="localvar">r</a> &lt;= UCHAR_MAX, &quot;decimal escape too large&quot;);
+<a href="../h_aa/57930288.htm" class=function>readutf8esc</a>                                      llex.c
+   347 :    <a href="../h_src/57931512.htm" class="function">esccheck</a>(<a href="../h_src/57930152.htm" class="localvar">ls</a>, <a href="../h_src/57930152.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a> == '{', &quot;missing '{'&quot;);
+   351 :    <a href="../h_src/57931512.htm" class="function">esccheck</a>(<a href="../h_src/57930152.htm" class="localvar">ls</a>, <a href="../h_src/57930016.htm" class="localvar">r</a> &lt;= (0x7FFFFFFFu &gt;&gt; 4), &quot;UTF-8 value too large&quot;);
+   354 :    <a href="../h_src/57931512.htm" class="function">esccheck</a>(<a href="../h_src/57930152.htm" class="localvar">ls</a>, <a href="../h_src/57930152.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57701620.htm" class="variable">current</a> == '}', &quot;missing '}'&quot;);
+</pre>
+<h4><a class="legend">Table lists functions that directly use esccheck</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

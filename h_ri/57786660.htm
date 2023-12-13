@@ -1,0 +1,47 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>k</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57786660.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57786660.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57786660.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57786660.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57670000.htm" class=function>luaK_indexed</a>                                     lcode.c
+  1279 :    if (<a href="../h_src/57786660.htm" class="localvar">k</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a> == <a href="../h_src/57682240.htm" class="variable">VKSTR</a>)
+  1280 :    <a href="../h_src/57799444.htm" class="function">str2K</a>(<a href="../h_src/57786932.htm" class="localvar">fs</a>, <a href="../h_src/57786660.htm" class="localvar">k</a>);
+  1283 :    if (<a href="../h_src/57786796.htm" class="localvar">t</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a> == <a href="../h_src/57682036.htm" class="variable">VUPVAL</a> &amp;&amp; !<a href="../h_src/57788700.htm" class="function">isKstr</a>(<a href="../h_src/57786932.htm" class="localvar">fs</a>, <a href="../h_src/57786660.htm" class="localvar">k</a>))  <a  class="comments">/* upvalue indexed by non 'Kstr'? */</a>
+  1287 :    <a href="../h_src/57786796.htm" class="localvar">t</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680268.htm" class="variable">idx</a> = <a href="../h_src/57786660.htm" class="localvar">k</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a>;  <a  class="comments">/* literal string */</a>
+  1293 :    if (<a href="../h_src/57788700.htm" class="function">isKstr</a>(<a href="../h_src/57786932.htm" class="localvar">fs</a>, <a href="../h_src/57786660.htm" class="localvar">k</a>)) {
+  1294 :    <a href="../h_src/57786796.htm" class="localvar">t</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680268.htm" class="variable">idx</a> = <a href="../h_src/57786660.htm" class="localvar">k</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680404.htm" class="variable">info</a>;  <a  class="comments">/* literal string */</a>
+  1297 :    else if (<a href="../h_src/57788156.htm" class="function">isCint</a>(<a href="../h_src/57786660.htm" class="localvar">k</a>)) {
+  1298 :    <a href="../h_src/57786796.htm" class="localvar">t</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680268.htm" class="variable">idx</a> = <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/57786660.htm" class="localvar">k</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680608.htm" class="variable">ival</a>);  <a  class="comments">/* int. constant in proper range */</a>
+  1302 :    <a href="../h_src/57786796.htm" class="localvar">t</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680064.htm" class="variable">ind</a>.<a href="../h_src/57680268.htm" class="variable">idx</a> = <a href="../h_src/57670408.htm" class="function">luaK_exp2anyreg</a>(<a href="../h_src/57786932.htm" class="localvar">fs</a>, <a href="../h_src/57786660.htm" class="localvar">k</a>);  <a  class="comments">/* register */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable k</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

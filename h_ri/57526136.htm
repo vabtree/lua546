@@ -1,0 +1,129 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>ivalue</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57526136.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57526136.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57526136.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57526136.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57808488.htm" class=function>addk</a>                                             lcode.c
+   550 :    <a href="../h_src/57807400.htm" class="localvar">k</a> = <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/57807536.htm" class="localvar">idx</a>));
+<a href="../h_aa/57800396.htm" class=function>const2exp</a>                                        lcode.c
+   695 :    <a href="../h_src/57800124.htm" class="localvar">e</a>-&gt;<a href="../h_src/57680744.htm" class="variable">k</a> = <a href="../h_src/57682308.htm" class="variable">VKINT</a>; <a href="../h_src/57800124.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680608.htm" class="variable">ival</a> = <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/57800260.htm" class="localvar">v</a>);
+<a href="../h_aa/57785844.htm" class=function>constfolding</a>                                     lcode.c
+  1341 :    <a href="../h_src/57785436.htm" class="localvar">e1</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680608.htm" class="variable">ival</a> = <a href="../h_src/57526136.htm" class="macro">ivalue</a>(&amp;<a href="../h_src/57784892.htm" class="localvar">res</a>);
+<a href="../h_aa/57844976.htm" class=function>dumpConstants</a>                                    ldump.c
+   125 :    <a href="../h_src/57846608.htm" class="function">dumpInteger</a>(<a href="../h_src/57844840.htm" class="localvar">D</a>, <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/57844296.htm" class="localvar">o</a>));
+<a href="../h_aa/58116484.htm" class=function>equalkey</a>                                         ltable.c
+   224 :    return (<a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58116348.htm" class="localvar">k1</a>) == <a href="../h_src/57503696.htm" class="macro">keyival</a>(<a href="../h_src/58116212.htm" class="localvar">n2</a>));
+<a href="../h_aa/58113764.htm" class=function>findindex</a>                                        ltable.c
+   335 :    <a href="../h_src/58113084.htm" class="localvar">i</a> = <a href="../h_src/57526544.htm" class="macro">ttisinteger</a>(<a href="../h_src/58113356.htm" class="localvar">key</a>) ? <a href="../h_src/58114036.htm" class="function">arrayindex</a>(<a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58113356.htm" class="localvar">key</a>)) : 0;
+<a href="../h_aa/58057732.htm" class=function>forprep</a>                                          lvm.c
+   211 :    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/58216892.htm" class="localvar">init</a> = <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58217300.htm" class="localvar">pinit</a>);
+   212 :    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/58216756.htm" class="localvar">step</a> = <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58217028.htm" class="localvar">pstep</a>);
+<a href="../h_aa/58207440.htm" class=function>LEnum</a>                                            lvm.c
+   501 :    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/58207032.htm" class="localvar">li</a> = <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58207304.htm" class="localvar">l</a>);
+   503 :    return <a href="../h_src/58207032.htm" class="localvar">li</a> &lt;= <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58207168.htm" class="localvar">r</a>);  <a  class="comments">/* both are integers */</a>
+   512 :    return <a href="../h_src/58208664.htm" class="function">LEfloatint</a>(<a href="../h_src/58206896.htm" class="localvar">lf</a>, <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58207168.htm" class="localvar">r</a>));
+<a href="../h_aa/58208120.htm" class=function>LTnum</a>                                            lvm.c
+   479 :    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/58207712.htm" class="localvar">li</a> = <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58207984.htm" class="localvar">l</a>);
+   481 :    return <a href="../h_src/58207712.htm" class="localvar">li</a> &lt; <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58207848.htm" class="localvar">r</a>);  <a  class="comments">/* both are integers */</a>
+   490 :    return <a href="../h_src/58209208.htm" class="function">LTfloatint</a>(<a href="../h_src/58207576.htm" class="localvar">lf</a>, <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58207848.htm" class="localvar">r</a>));
+<a href="../h_aa/57438336.htm" class=function>lua_tointegerx</a>                                   lapi.c
+   392 :    int <a href="../h_src/57594004.htm" class="localvar">isnum</a> = <a href="../h_src/57612840.htm" class="macro">tointeger</a>(<a href="../h_src/57594208.htm" class="localvar">o</a>, &amp;<a href="../h_src/57594344.htm" class="localvar">res</a>);
+<a href="../h_aa/57616784.htm" class=function>luaH_get</a>                                         ltable.c
+   791 :    case <a href="../h_src/57527088.htm" class="macro">LUA_VNUMINT</a>: return <a href="../h_src/57617056.htm" class="function">luaH_getint</a>(<a href="../h_src/58095812.htm" class="localvar">t</a>, <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58095676.htm" class="localvar">key</a>));
+<a href="../h_aa/57501792.htm" class=function>luaO_rawarith</a>                                    lobject.c
+    96 :    if (<a href="../h_src/57612704.htm" class="macro">tointegerns</a>(<a href="../h_src/57917232.htm" class="localvar">p1</a>, &amp;<a href="../h_src/57916824.htm" class="localvar">i1</a>) &amp;&amp; <a href="../h_src/57612704.htm" class="macro">tointegerns</a>(<a href="../h_src/57917096.htm" class="localvar">p2</a>, &amp;<a href="../h_src/57916688.htm" class="localvar">i2</a>)) {
+   104 :    if (<a href="../h_src/57612976.htm" class="macro">tonumberns</a>(<a href="../h_src/57917232.htm" class="localvar">p1</a>, <a href="../h_src/57916416.htm" class="localvar">n1</a>) &amp;&amp; <a href="../h_src/57612976.htm" class="macro">tonumberns</a><a href="../h_src/57535996.htm" class="variable">n</a>umberns(<a href="../h_src/57917096.htm" class="localvar">p2</a>, <a href="../h_src/57916280.htm" class="localvar">n2</a>)) {
+   113 :    <a href="../h_src/57525456.htm" class="macro">setivalue</a>(<a href="../h_src/57916960.htm" class="localvar">res</a>, <a href="../h_src/57919000.htm" class="function">intarith</a>(<a href="../h_src/57917504.htm" class="localvar">L</a>, <a href="../h_src/57917368.htm" class="localvar">op</a>, <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/57917232.htm" class="localvar">p1</a>), <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/57917096.htm" class="localvar">p2</a>)));
+   116 :    else if (<a href="../h_src/57612976.htm" class="macro">tonumberns</a>(<a href="../h_src/57917232.htm" class="localvar">p1</a>, <a href="../h_src/57916008.htm" class="localvar">n1</a>) &amp;&amp; <a href="../h_src/57612976.htm" class="macro">tonumberns</a><a href="../h_src/57535996.htm" class="variable">n</a>umberns(<a href="../h_src/57917096.htm" class="localvar">p2</a>, <a href="../h_src/57915872.htm" class="localvar">n2</a>)) {
+<a href="../h_aa/57611752.htm" class=function>luaV_equalobj</a>                                    lvm.c
+   583 :    case <a href="../h_src/57527088.htm" class="macro">LUA_VNUMINT</a>: return (<a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58204720.htm" class="localvar">t1</a>) == <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58204584.htm" class="localvar">t2</a>));
+<a href="../h_aa/57610936.htm" class=function>luaV_execute</a>                                     lvm.c
+  1271 :    ? (<a href="../h_src/57547624.htm" class="macro">cast_void</a>(<a href="../h_src/58180852.htm" class="localvar">n</a> = <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58180988.htm" class="localvar">rc</a>)), <a href="../h_src/57612160.htm" class="macro">luaV_fastgeti</a>(L, <a href="../h_src/58181124.htm" class="localvar">rb</a>, <a href="../h_src/58180852.htm" class="localvar">n</a>, <a href="../h_src/58181260.htm" class="localvar">slot</a>))
+  1327 :    ? (<a href="../h_src/57547624.htm" class="macro">cast_void</a>(<a href="../h_src/58176908.htm" class="localvar">n</a> = <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58177180.htm" class="localvar">rb</a>)), <a href="../h_src/57612160.htm" class="macro">luaV_fastgeti</a>(L, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58177452.htm" class="localvar">ra</a>), <a href="../h_src/58176908.htm" class="localvar">n</a>, <a href="../h_src/58177316.htm" class="localvar">slot</a>))
+  1397 :    <a href="../h_src/58192956.htm" class="macro">op_arithI</a>(L, <a href="../h_src/58194316.htm" class="macro">l_addi</a>, <a href="../h_src/57540008.htm" class="macro">luai_numadd</a>);
+  1401 :    <a href="../h_src/58192140.htm" class="macro">op_arithK</a>(L, <a href="../h_src/58194316.htm" class="macro">l_addi</a>, <a href="../h_src/57540008.htm" class="macro">luai_numadd</a>);
+  1405 :    <a href="../h_src/58192140.htm" class="macro">op_arithK</a>(L, <a href="../h_src/58194180.htm" class="macro">l_subi</a>, <a href="../h_src/57539872.htm" class="macro">luai_numsub</a>);
+  1409 :    <a href="../h_src/58192140.htm" class="macro">op_arithK</a>(L, <a href="../h_src/58194044.htm" class="macro">l_muli</a>, <a href="../h_src/57539736.htm" class="macro">luai_nummul</a>);
+  1414 :    <a href="../h_src/58192140.htm" class="macro">op_arithK</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/57610732.htm" class="function">luaV_mod</a>, <a href="../h_src/57610664.htm" class="function">luaV_modf</a>);
+  1418 :    <a href="../h_src/58192548.htm" class="macro">op_arithfK</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/57540280.htm" class="macro">luai_numpow</a>);
+  1422 :    <a href="../h_src/58192548.htm" class="macro">op_arithfK</a>(L, <a href="../h_src/57540824.htm" class="macro">luai_numdiv</a>);
+  1427 :    <a href="../h_src/58192140.htm" class="macro">op_arithK</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/57610800.htm" class="function">luaV_idiv</a>, <a href="../h_src/57541096.htm" class="macro">luai_numidiv</a>);
+  1431 :    <a href="../h_src/58192004.htm" class="macro">op_bitwiseK</a>(L, <a href="../h_src/58193908.htm" class="macro">l_band</a>);
+  1435 :    <a href="../h_src/58192004.htm" class="macro">op_bitwiseK</a>(L, <a href="../h_src/58193772.htm" class="macro">l_bor</a>);
+  1439 :    <a href="../h_src/58192004.htm" class="macro">op_bitwiseK</a>(L, <a href="../h_src/58193636.htm" class="macro">l_bxor</a>);
+  1447 :    if (<a href="../h_src/57612704.htm" class="macro">tointegerns</a>(<a href="../h_src/58160996.htm" class="localvar">rb</a>, &amp;<a href="../h_src/58160724.htm" class="localvar">ib</a>)) {
+  1457 :    if (<a href="../h_src/57612704.htm" class="macro">tointegerns</a>(<a href="../h_src/58160316.htm" class="localvar">rb</a>, &amp;<a href="../h_src/58160044.htm" class="localvar">ib</a>)) {
+  1463 :    <a href="../h_src/58192276.htm" class="macro">op_arith</a>(L, <a href="../h_src/58194316.htm" class="macro">l_addi</a>, <a href="../h_src/57540008.htm" class="macro">luai_numadd</a>);
+  1467 :    <a href="../h_src/58192276.htm" class="macro">op_arith</a>(L, <a href="../h_src/58194180.htm" class="macro">l_subi</a>, <a href="../h_src/57539872.htm" class="macro">luai_numsub</a>);
+  1471 :    <a href="../h_src/58192276.htm" class="macro">op_arith</a>(L, <a href="../h_src/58194044.htm" class="macro">l_muli</a>, <a href="../h_src/57539736.htm" class="macro">luai_nummul</a>);
+  1476 :    <a href="../h_src/58192276.htm" class="macro">op_arith</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/57610732.htm" class="function">luaV_mod</a>, <a href="../h_src/57610664.htm" class="function">luaV_modf</a>);
+  1480 :    <a href="../h_src/58192684.htm" class="macro">op_arithf</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/57540280.htm" class="macro">luai_numpow</a>);
+  1484 :    <a href="../h_src/58192684.htm" class="macro">op_arithf</a>(L, <a href="../h_src/57540824.htm" class="macro">luai_numdiv</a>);
+  1489 :    <a href="../h_src/58192276.htm" class="macro">op_arith</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/57610800.htm" class="function">luaV_idiv</a>, <a href="../h_src/57541096.htm" class="macro">luai_numidiv</a>);
+  1493 :    <a href="../h_src/58191868.htm" class="macro">op_bitwise</a>(L, <a href="../h_src/58193908.htm" class="macro">l_band</a>);
+  1497 :    <a href="../h_src/58191868.htm" class="macro">op_bitwise</a>(L, <a href="../h_src/58193772.htm" class="macro">l_bor</a>);
+  1501 :    <a href="../h_src/58191868.htm" class="macro">op_bitwise</a>(L, <a href="../h_src/58193636.htm" class="macro">l_bxor</a>);
+  1505 :    <a href="../h_src/58191868.htm" class="macro">op_bitwise</a>(L, <a href="../h_src/57611888.htm" class="macro">luaV_shiftr</a>);
+  1509 :    <a href="../h_src/58191868.htm" class="macro">op_bitwise</a>(L, <a href="../h_src/57610596.htm" class="function">luaV_shiftl</a>);
+  1547 :    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/58145220.htm" class="localvar">ib</a> = <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58145492.htm" class="localvar">rb</a>);
+  1550 :    else if (<a href="../h_src/57612976.htm" class="macro">tonumberns</a>(<a href="../h_src/58145492.htm" class="localvar">rb</a>, <a href="../h_src/58145356.htm" class="localvar">nb</a>)) {
+  1561 :    if (<a href="../h_src/57612704.htm" class="macro">tointegerns</a>(<a href="../h_src/58144676.htm" class="localvar">rb</a>, &amp;<a href="../h_src/58144540.htm" class="localvar">ib</a>)) {
+  1614 :    <a href="../h_src/58191732.htm" class="macro">op_order</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58193500.htm" class="macro">l_lti</a>, <a href="../h_src/58208120.htm" class="function">LTnum</a>, <a href="../h_src/58206760.htm" class="function">lessthanothers</a>);
+  1618 :    <a href="../h_src/58191732.htm" class="macro">op_order</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58193364.htm" class="macro">l_lei</a>, <a href="../h_src/58207440.htm" class="function">LEnum</a>, <a href="../h_src/58205808.htm" class="function">lessequalothers</a>);
+  1634 :    <a href="../h_src/58140460.htm" class="localvar">cond</a> = (<a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58140596.htm" class="localvar">ra</a>)) == <a href="../h_src/58140324.htm" class="localvar">im</a>);
+  1643 :    <a href="../h_src/58191596.htm" class="macro">op_orderI</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58193500.htm" class="macro">l_lti</a>, <a href="../h_src/57539328.htm" class="macro">luai_numlt</a>, 0, <a href="../h_src/57499548.htm" class="variable">TM_LT</a>);
+  1647 :    <a href="../h_src/58191596.htm" class="macro">op_orderI</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58193364.htm" class="macro">l_lei</a>, <a href="../h_src/57539192.htm" class="macro">luai_numle</a>, 0, <a href="../h_src/57499480.htm" class="variable">TM_LE</a>);
+  1651 :    <a href="../h_src/58191596.htm" class="macro">op_orderI</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58193228.htm" class="macro">l_gti</a>, <a href="../h_src/57539056.htm" class="macro">luai_numgt</a>, 1, <a href="../h_src/57499548.htm" class="variable">TM_LT</a>);
+  1655 :    <a href="../h_src/58191596.htm" class="macro">op_orderI</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58193092.htm" class="macro">l_gei</a>, <a href="../h_src/57538920.htm" class="macro">luai_numge</a>, 1, <a href="../h_src/57499480.htm" class="variable">TM_LE</a>);
+  1789 :    <a href="../h_src/57438132.htm" class="function">lua_Unsigned</a> <a href="../h_src/58356420.htm" class="localvar">count</a> = <a href="../h_src/57546128.htm" class="macro">l_castS2U</a>(<a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58356556.htm" class="localvar">ra</a> + 1)));
+  1791 :    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/58356284.htm" class="localvar">step</a> = <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58356556.htm" class="localvar">ra</a> + 2));
+  1792 :    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/58356148.htm" class="localvar">idx</a> = <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58356556.htm" class="localvar">ra</a>));  <a  class="comments">/* internal index */</a>
+<a href="../h_aa/57611276.htm" class=function>luaV_tointegerns</a>                                 lvm.c
+   141 :    *<a href="../h_src/58059500.htm" class="localvar">p</a> = <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58059636.htm" class="localvar">obj</a>);
+<a href="../h_aa/57611548.htm" class=function>luaV_tonumber_</a>                                   lvm.c
+   106 :    *<a href="../h_src/58060452.htm" class="localvar">n</a> = <a href="../h_src/57547352.htm" class="macro">cast_num</a>(<a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58060588.htm" class="localvar">obj</a>));
+   110 :    *<a href="../h_src/58060452.htm" class="localvar">n</a> = <a href="../h_src/57526408.htm" class="macro">nvalue</a>(&amp;<a href="../h_src/58060316.htm" class="localvar">v</a>);  <a  class="comments">/* convert result of 'luaO_str2num' to a float */</a>
+<a href="../h_aa/58118660.htm" class=function>mainpositionTV</a>                                   ltable.c
+   154 :    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/58118252.htm" class="localvar">i</a> = <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58118388.htm" class="localvar">key</a>);
+<a href="../h_aa/143398536.htm" class=function>PrintConstant</a>                                    luac.c
+   317 :    <a href="../h_aa/143404180.htm" class="libfunc">printf</a>(<a href="../h_src/57451052.htm" class="macro">LUA_INTEGER_FMT</a>,<a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/143398128.htm" class="localvar">o</a>));
+<a href="../h_aa/57933892.htm" class=function>read_numeral</a>                                     llex.c
+   248 :    <a href="../h_src/57933552.htm" class="localvar">seminfo</a>-&gt;<a href="../h_src/57702368.htm" class="variable">i</a> = <a href="../h_src/57526136.htm" class="macro">ivalue</a>(&amp;<a href="../h_src/57933416.htm" class="localvar">obj</a>);
+<a href="../h_aa/58101796.htm" class=function>rehash</a>                                           ltable.c
+   611 :    <a href="../h_src/58101116.htm" class="localvar">na</a> += <a href="../h_src/58109548.htm" class="function">countint</a>(<a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/58101388.htm" class="localvar">ek</a>), <a href="../h_src/58100980.htm" class="localvar">nums</a>);
+<a href="../h_aa/57907304.htm" class=function>tostringbuff</a>                                     lobject.c
+   359 :    <a href="../h_src/57906896.htm" class="localvar">len</a> = <a href="../h_src/57450780.htm" class="macro">lua_integer2str</a>(<a href="../h_src/57907032.htm" class="localvar">buff</a>, <a href="../h_src/57907440.htm" class="macro">MAXNUMBER2STR</a>, <a href="../h_src/57526136.htm" class="macro">ivalue</a>(<a href="../h_src/57907168.htm" class="localvar">obj</a>));
+<a href="../h_aa/57786524.htm" class=function>validop</a>                                          lcode.c
+  1323 :    return (<a href="../h_src/57526408.htm" class="macro">nvalue</a>(<a href="../h_src/57786116.htm" class="localvar">v2</a>) != 0);
+</pre>
+<h4><a class="legend">Table lists functions that directly use ivalue</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

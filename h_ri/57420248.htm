@@ -1,0 +1,125 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaL_checklstring</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57420248.htm" class="function" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57420248.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57420248.htm" class="function" target="_self">Flow Chart</a></li>
+<li><a href="../h_src/57420248.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57420248.htm" class="function" target="_self">Called By</a></li>
+<li><a href="../h_rx/57420248.htm" class="function" target="_self">Call Tree</a></li>
+<li><a href="../h_ro/57420248.htm" class="function" target="_self">Calls and Uses</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/143264808.htm" class=file>liolib.c</a>
+   675 :    const char *<a href="../h_src/143246176.htm" class="variable">s</a> = <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(L, arg, &amp;l);
+<a href="../h_aa/143412000.htm" class=function>byteoffset</a>                                       lutf8lib.c
+   189 :    const char *<a href="../h_src/143411592.htm" class="localvar">s</a> = <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/143411864.htm" class="localvar">L</a>, 1, &amp;<a href="../h_src/143411728.htm" class="localvar">len</a>);
+<a href="../h_aa/143414584.htm" class=function>codepoint</a>                                        lutf8lib.c
+   128 :    const char *<a href="../h_src/143414176.htm" class="localvar">s</a> = <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/143414448.htm" class="localvar">L</a>, 1, &amp;<a href="../h_src/143414312.htm" class="localvar">len</a>);
+<a href="../h_aa/143268820.htm" class=function>db_sethook</a>                                       ldblib.c
+   374 :    const char *<a href="../h_src/143267868.htm" class="localvar">smask</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143268684.htm" class="localvar">L</a>, <a href="../h_src/143268548.htm" class="localvar">arg</a>+2);
+<a href="../h_aa/143307716.htm" class=function>gmatch</a>                                           lstrlib.c
+   856 :    const char *<a href="../h_src/143307172.htm" class="localvar">s</a> = <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/143307580.htm" class="localvar">L</a>, 1, &amp;<a href="../h_src/143307444.htm" class="localvar">ls</a>);
+   857 :    const char *<a href="../h_src/143307036.htm" class="localvar">p</a> = <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/143307580.htm" class="localvar">L</a>, 2, &amp;<a href="../h_src/143307308.htm" class="localvar">lp</a>);
+<a href="../h_aa/143250800.htm" class=function>io_lines</a>                                         liolib.c
+   396 :    const char *<a href="../h_src/143250392.htm" class="localvar">filename</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143250664.htm" class="localvar">L</a>, 1);
+<a href="../h_aa/143256104.htm" class=function>io_open</a>                                          liolib.c
+   270 :    const char *<a href="../h_src/143255832.htm" class="localvar">filename</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143255968.htm" class="localvar">L</a>, 1);
+<a href="../h_aa/143254812.htm" class=function>io_popen</a>                                         liolib.c
+   291 :    const char *<a href="../h_src/143254540.htm" class="localvar">filename</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143254676.htm" class="localvar">L</a>, 1);
+<a href="../h_aa/143411184.htm" class=function>iter_aux</a>                                         lutf8lib.c
+   230 :    const char *<a href="../h_src/143410640.htm" class="localvar">s</a> = <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/143411048.htm" class="localvar">L</a>, 1, &amp;<a href="../h_src/143410776.htm" class="localvar">len</a>);
+<a href="../h_aa/143409552.htm" class=function>iter_codes</a>                                       lutf8lib.c
+   260 :    const char *<a href="../h_src/143409144.htm" class="localvar">s</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143409416.htm" class="localvar">L</a>, 1);
+<a href="../h_aa/143206940.htm" class=function>ll_loadlib</a>                                       loadlib.c
+   412 :    const char *<a href="../h_src/143206668.htm" class="localvar">path</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143206804.htm" class="localvar">L</a>, 1);
+   413 :    const char *<a href="../h_src/143206532.htm" class="localvar">init</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143206804.htm" class="localvar">L</a>, 2);
+<a href="../h_aa/143197692.htm" class=function>ll_require</a>                                       loadlib.c
+   658 :    const char *<a href="../h_src/143197420.htm" class="localvar">name</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143197556.htm" class="localvar">L</a>, 1);
+<a href="../h_aa/143203404.htm" class=function>ll_searchpath</a>                                    loadlib.c
+   509 :    const char *<a href="../h_src/143203132.htm" class="localvar">f</a> = <a href="../h_src/143204764.htm" class="function">searchpath</a>(<a href="../h_src/143203268.htm" class="localvar">L</a>, <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143203268.htm" class="localvar">L</a>, 1),
+   510 :    <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143203268.htm" class="localvar">L</a>, 2),
+<a href="../h_aa/58311336.htm" class=function>luaB_warn</a>                                        lbaselib.c
+    48 :    <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/58311200.htm" class="localvar">L</a>, 1);  <a  class="comments">/* at least one argument */</a>
+    50 :    <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/58311200.htm" class="localvar">L</a>, <a href="../h_src/58310928.htm" class="localvar">i</a>);  <a  class="comments">/* make sure all arguments are strings */</a>
+<a href="../h_aa/57419228.htm" class=function>luaL_checkoption</a>                                 lauxlib.c
+   363 :    <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/58341052.htm" class="localvar">L</a>, <a href="../h_src/58340916.htm" class="localvar">arg</a>);
+<a href="../h_aa/57420180.htm" class=function>luaL_optlstring</a>                                  lauxlib.c
+   416 :    else return <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/58338604.htm" class="localvar">L</a>, <a href="../h_src/58338468.htm" class="localvar">arg</a>, <a href="../h_src/58338196.htm" class="localvar">len</a>);
+<a href="../h_aa/143354636.htm" class=function>os_getenv</a>                                        loslib.c
+   181 :    <a href="../h_src/57435004.htm" class="function">lua_pushstring</a>(<a href="../h_src/143354500.htm" class="localvar">L</a>, <a href="../h_aa/57561428.htm" class="libfunc">getenv</a>(<a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143354500.htm" class="localvar">L</a>, 1)));  <a  class="comments">/* if NULL push nil */</a>
+<a href="../h_aa/143356336.htm" class=function>os_remove</a>                                        loslib.c
+   157 :    const char *<a href="../h_src/143356064.htm" class="localvar">filename</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143356200.htm" class="localvar">L</a>, 1);
+<a href="../h_aa/143355860.htm" class=function>os_rename</a>                                        loslib.c
+   163 :    const char *<a href="../h_src/143355588.htm" class="localvar">fromname</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143355724.htm" class="localvar">L</a>, 1);
+   164 :    const char *<a href="../h_src/143355452.htm" class="localvar">toname</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143355724.htm" class="localvar">L</a>, 2);
+<a href="../h_aa/143200140.htm" class=function>searcher_C</a>                                       loadlib.c
+   581 :    const char *<a href="../h_src/143199868.htm" class="localvar">name</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143200004.htm" class="localvar">L</a>, 1);
+<a href="../h_aa/143199596.htm" class=function>searcher_Croot</a>                                   loadlib.c
+   590 :    const char *<a href="../h_src/143199188.htm" class="localvar">name</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143199460.htm" class="localvar">L</a>, 1);
+<a href="../h_aa/143201636.htm" class=function>searcher_Lua</a>                                     loadlib.c
+   547 :    const char *<a href="../h_src/143201228.htm" class="localvar">name</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143201500.htm" class="localvar">L</a>, 1);
+<a href="../h_aa/143198780.htm" class=function>searcher_preload</a>                                 loadlib.c
+   611 :    const char *<a href="../h_src/143198508.htm" class="localvar">name</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143198644.htm" class="localvar">L</a>, 1);
+<a href="../h_aa/143336412.htm" class=function>str_byte</a>                                         lstrlib.c
+   179 :    const char *<a href="../h_src/143336004.htm" class="localvar">s</a> = <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/143336276.htm" class="localvar">L</a>, 1, &amp;<a href="../h_src/143336140.htm" class="localvar">l</a>);
+<a href="../h_aa/143311252.htm" class=function>str_find_aux</a>                                     lstrlib.c
+   775 :    const char *<a href="../h_src/143310572.htm" class="localvar">s</a> = <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/143311116.htm" class="localvar">L</a>, 1, &amp;<a href="../h_src/143310844.htm" class="localvar">ls</a>);
+   776 :    const char *<a href="../h_src/143310436.htm" class="localvar">p</a> = <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/143311116.htm" class="localvar">L</a>, 2, &amp;<a href="../h_src/143310708.htm" class="localvar">lp</a>);
+<a href="../h_aa/143291804.htm" class=function>str_format</a>                                       lstrlib.c
+  1277 :    const char *<a href="../h_src/143291124.htm" class="localvar">strfrmt</a> = <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143291396.htm" class="localvar">arg</a>, &amp;<a href="../h_src/143291260.htm" class="localvar">sfl</a>);
+<a href="../h_aa/143304044.htm" class=function>str_gsub</a>                                         lstrlib.c
+   944 :    const char *<a href="../h_src/143303500.htm" class="localvar">src</a> = <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/143303908.htm" class="localvar">L</a>, 1, &amp;<a href="../h_src/143303772.htm" class="localvar">srcl</a>);  <a  class="comments">/* subject */</a>
+   945 :    const char *<a href="../h_src/143303364.htm" class="localvar">p</a> = <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/143303908.htm" class="localvar">L</a>, 2, &amp;<a href="../h_src/143303636.htm" class="localvar">lp</a>);  <a  class="comments">/* pattern */</a>
+<a href="../h_aa/143343144.htm" class=function>str_len</a>                                          lstrlib.c
+    57 :    <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/143343008.htm" class="localvar">L</a>, 1, &amp;<a href="../h_src/143342872.htm" class="localvar">l</a>);
+<a href="../h_aa/143339744.htm" class=function>str_lower</a>                                        lstrlib.c
+   128 :    const char *<a href="../h_src/143339064.htm" class="localvar">s</a> = <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/143339608.htm" class="localvar">L</a>, 1, &amp;<a href="../h_src/143339472.htm" class="localvar">l</a>);
+<a href="../h_aa/143280448.htm" class=function>str_pack</a>                                         lstrlib.c
+  1604 :    const char *<a href="../h_src/143279904.htm" class="localvar">fmt</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143280312.htm" class="localvar">L</a>, 1);  <a  class="comments">/* format string */</a>
+  1661 :    const char *<a href="../h_src/143437704.htm" class="localvar">s</a> = <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/143280312.htm" class="localvar">L</a>, <a href="../h_src/143279768.htm" class="localvar">arg</a>, &amp;<a href="../h_src/143437840.htm" class="localvar">len</a>);
+  1671 :    const char *<a href="../h_src/143437432.htm" class="localvar">s</a> = <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/143280312.htm" class="localvar">L</a>, <a href="../h_src/143279768.htm" class="localvar">arg</a>, &amp;<a href="../h_src/143437568.htm" class="localvar">len</a>);
+  1682 :    const char *<a href="../h_src/143437160.htm" class="localvar">s</a> = <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/143280312.htm" class="localvar">L</a>, <a href="../h_src/143279768.htm" class="localvar">arg</a>, &amp;<a href="../h_src/143437296.htm" class="localvar">len</a>);
+<a href="../h_aa/143437024.htm" class=function>str_packsize</a>                                     lstrlib.c
+  1702 :    const char *<a href="../h_src/143436616.htm" class="localvar">fmt</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143436888.htm" class="localvar">L</a>, 1);  <a  class="comments">/* format string */</a>
+<a href="../h_aa/143337772.htm" class=function>str_rep</a>                                          lstrlib.c
+   152 :    const char *<a href="../h_src/143337228.htm" class="localvar">s</a> = <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/143337636.htm" class="localvar">L</a>, 1, &amp;<a href="../h_src/143337500.htm" class="localvar">l</a>);
+<a href="../h_aa/143340696.htm" class=function>str_reverse</a>                                      lstrlib.c
+   115 :    const char *<a href="../h_src/143340016.htm" class="localvar">s</a> = <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/143340560.htm" class="localvar">L</a>, 1, &amp;<a href="../h_src/143340424.htm" class="localvar">l</a>);
+<a href="../h_aa/143341512.htm" class=function>str_sub</a>                                          lstrlib.c
+   102 :    const char *<a href="../h_src/143341104.htm" class="localvar">s</a> = <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/143341376.htm" class="localvar">L</a>, 1, &amp;<a href="../h_src/143341240.htm" class="localvar">l</a>);
+<a href="../h_aa/143434440.htm" class=function>str_unpack</a>                                       lstrlib.c
+  1756 :    const char *<a href="../h_src/143434032.htm" class="localvar">fmt</a> = <a href="../h_src/57416984.htm" class="macro">luaL_checkstring</a>(<a href="../h_src/143434304.htm" class="localvar">L</a>, 1);
+  1758 :    const char *<a href="../h_src/143433760.htm" class="localvar">data</a> = <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/143434304.htm" class="localvar">L</a>, 2, &amp;<a href="../h_src/143433896.htm" class="localvar">ld</a>);
+<a href="../h_aa/143338724.htm" class=function>str_upper</a>                                        lstrlib.c
+   141 :    const char *<a href="../h_src/143338044.htm" class="localvar">s</a> = <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/143338588.htm" class="localvar">L</a>, 1, &amp;<a href="../h_src/143338452.htm" class="localvar">l</a>);
+<a href="../h_aa/143415808.htm" class=function>utflen</a>                                           lutf8lib.c
+    99 :    const char *<a href="../h_src/143415264.htm" class="localvar">s</a> = <a href="../h_src/57420248.htm" class="function">luaL_checklstring</a>(<a href="../h_src/143415672.htm" class="localvar">L</a>, 1, &amp;<a href="../h_src/143415400.htm" class="localvar">len</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use luaL_checklstring</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

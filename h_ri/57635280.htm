@@ -1,0 +1,84 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaG_runerror</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57635280.htm" class="function" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57635280.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57635280.htm" class="function" target="_self">Flow Chart</a></li>
+<li><a href="../h_src/57635280.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57635280.htm" class="function" target="_self">Called By</a></li>
+<li><a href="../h_rx/57635280.htm" class="function" target="_self">Call Tree</a></li>
+<li><a href="../h_ro/57635280.htm" class="function" target="_self">Calls and Uses</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57835116.htm" class=function>checkclosemth</a>                                    lfunc.c
+   131 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/57834980.htm" class="localvar">L</a>, &quot;variable '%s' got a non-closable value&quot;, <a href="../h_src/57834436.htm" class="localvar">vname</a>);
+<a href="../h_aa/58113764.htm" class=function>findindex</a>                                        ltable.c
+   341 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/58113628.htm" class="localvar">L</a>, &quot;invalid key to 'next'&quot;);  <a  class="comments">/* key not found */</a>
+<a href="../h_aa/58057732.htm" class=function>forprep</a>                                          lvm.c
+   215 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/58057596.htm" class="localvar">L</a>, &quot;'for' step is zero&quot;);
+   245 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/58057596.htm" class="localvar">L</a>, &quot;'for' step is zero&quot;);
+<a href="../h_aa/57432488.htm" class=function>lua_yieldk</a>                                       ldo.c
+   880 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/57857148.htm" class="localvar">L</a>, &quot;attempt to yield across a C-call boundary&quot;);
+   882 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/57857148.htm" class="localvar">L</a>, &quot;attempt to yield from outside a coroutine&quot;);
+<a href="../h_aa/57632764.htm" class=function>luaD_growstack</a>                                   ldo.c
+   267 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/57878092.htm" class="localvar">L</a>, &quot;stack overflow&quot;);
+<a href="../h_aa/57638272.htm" class=function>luaE_checkcstack</a>                                 lstate.c
+   167 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/57980852.htm" class="localvar">L</a>, &quot;C stack overflow&quot;);
+<a href="../h_aa/57635620.htm" class=function>luaG_forerror</a>                                    ldebug.c
+   756 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/57891828.htm" class="localvar">L</a>, &quot;bad 'for' %s (number expected, got %s)&quot;,
+<a href="../h_aa/57635348.htm" class=function>luaG_ordererror</a>                                  ldebug.c
+   790 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/57889924.htm" class="localvar">L</a>, &quot;attempt to compare two %s values&quot;, <a href="../h_src/57889516.htm" class="localvar">t1</a>);
+   792 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/57889924.htm" class="localvar">L</a>, &quot;attempt to compare %s with %s&quot;, <a href="../h_src/57889516.htm" class="localvar">t1</a>, <a href="../h_src/57889380.htm" class="localvar">t2</a>);
+<a href="../h_aa/57635416.htm" class=function>luaG_tointerror</a>                                  ldebug.c
+   782 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/57890468.htm" class="localvar">L</a>, &quot;number%s has no integer representation&quot;, <a href="../h_src/57894820.htm" class="function">varinfo</a>(<a href="../h_src/57890468.htm" class="localvar">L</a>, <a href="../h_src/57890196.htm" class="localvar">p2</a>));
+<a href="../h_aa/57616716.htm" class=function>luaH_newkey</a>                                      ltable.c
+   669 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, &quot;table index is nil&quot;);
+   678 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, &quot;table index is NaN&quot;);
+<a href="../h_aa/57656564.htm" class=function>luaM_growaux_</a>                                    lmem.c
+   105 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/57925732.htm" class="localvar">L</a>, &quot;too many %s (limit is %d)&quot;, <a href="../h_src/57924916.htm" class="localvar">what</a>, <a href="../h_src/57925052.htm" class="localvar">limit</a>);
+<a href="../h_aa/57656836.htm" class=function>luaM_toobig</a>                                      lmem.c
+   143 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/57923420.htm" class="localvar">L</a>, &quot;memory allocation error: block too big&quot;);
+<a href="../h_aa/57501452.htm" class=function>luaO_pushvfstring</a>                                lobject.c
+   536 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/57901932.htm" class="localvar">L</a>, &quot;invalid option '%%%c' to 'lua_pushfstring'&quot;,
+<a href="../h_aa/57610868.htm" class=function>luaV_concat</a>                                      lvm.c
+   661 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/58202952.htm" class="localvar">L</a>, &quot;string length overflow&quot;);
+<a href="../h_aa/57611140.htm" class=function>luaV_finishget</a>                                   lvm.c
+   319 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/58214172.htm" class="localvar">L</a>, &quot;'__index' chain too long; possible loop&quot;);
+<a href="../h_aa/57611072.htm" class=function>luaV_finishset</a>                                   lvm.c
+   364 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/58212948.htm" class="localvar">L</a>, &quot;'__newindex' chain too long; possible loop&quot;);
+<a href="../h_aa/57610800.htm" class=function>luaV_idiv</a>                                        lvm.c
+   723 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/58200232.htm" class="localvar">L</a>, &quot;attempt to divide by zero&quot;);
+<a href="../h_aa/57610732.htm" class=function>luaV_mod</a>                                         lvm.c
+   743 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/58199688.htm" class="localvar">L</a>, &quot;attempt to perform 'n%%0'&quot;);
+<a href="../h_aa/58106556.htm" class=function>setnodevector</a>                                    ltable.c
+   490 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/58106420.htm" class="localvar">L</a>, &quot;table overflow&quot;);
+<a href="../h_aa/57893868.htm" class=function>typeerror</a>                                        ldebug.c
+   728 :    <a href="../h_src/57635280.htm" class="function">luaG_runerror</a>(<a href="../h_src/57893732.htm" class="localvar">L</a>, &quot;attempt to %s a %s value%s&quot;, <a href="../h_src/57893460.htm" class="localvar">op</a>, <a href="../h_src/57893188.htm" class="localvar">t</a>, <a href="../h_src/57893324.htm" class="localvar">extra</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use luaG_runerror</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

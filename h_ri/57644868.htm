@@ -1,0 +1,56 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">global_State::</a>ephemeron</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57644868.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57644868.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57644868.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57644868.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57644868.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57819204.htm" class=function>cleargraylists</a>                                   lgc.c
+   396 :    <a href="../h_src/57819068.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644936.htm" class="variable">weak</a> = <a href="../h_src/57819068.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644800.htm" class="variable">allweak</a> = <a href="../h_src/57819068.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644868.htm" class="variable">ephemeron</a> = NULL;
+<a href="../h_aa/57970340.htm" class=function>convergeephemerons</a>                               lgc.c
+   695 :    <a href="../h_src/57970204.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644868.htm" class="variable">ephemeron</a> = NULL;  <a  class="comments">/* tables may return to this list when traversed */</a>
+<a href="../h_aa/57952660.htm" class=function>correctgraylists</a>                                 lgc.c
+  1209 :    *<a href="../h_src/57952388.htm" class="localvar">list</a> = <a href="../h_src/57952524.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644868.htm" class="variable">ephemeron</a>; <a href="../h_src/57952524.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644868.htm" class="variable">ephemeron</a> = NULL;
+<a href="../h_aa/57439900.htm" class=function>lua_newstate</a>                                     lstate.c
+   395 :    <a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644936.htm" class="variable">weak</a> = <a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644868.htm" class="variable">ephemeron</a> = <a href="../h_src/58134028.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644800.htm" class="variable">allweak</a> = NULL;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57826616.htm" class=function>atomic</a>                                           lgc.c
+  1554 :    <a href="../h_src/57969388.htm" class="function">clearbykeys</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>, <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644868.htm" class="variable">ephemeron</a>);  <a  class="comments">/* clear keys from all ephemeron tables */</a>
+<a href="../h_aa/57970340.htm" class=function>convergeephemerons</a>                               lgc.c
+   694 :    <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57969660.htm" class="localvar">next</a> = <a href="../h_src/57970204.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644868.htm" class="variable">ephemeron</a>;  <a  class="comments">/* get ephemeron list */</a>
+<a href="../h_aa/57952660.htm" class=function>correctgraylists</a>                                 lgc.c
+  1209 :    *<a href="../h_src/57952388.htm" class="localvar">list</a> = <a href="../h_src/57952524.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644868.htm" class="variable">ephemeron</a>; <a href="../h_src/57952524.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644868.htm" class="variable">ephemeron</a> = NULL;
+<a href="../h_aa/57817436.htm" class=function>traverseephemeron</a>                                lgc.c
+   514 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57977140.htm" class="localvar">h</a>, <a href="../h_src/57977276.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644868.htm" class="variable">ephemeron</a>);  <a  class="comments">/* have to propagate again */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable ephemeron</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

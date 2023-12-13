@@ -1,0 +1,78 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>gval</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57617872.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57617872.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57617872.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57617872.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57969388.htm" class=function>clearbykeys</a>                                      lgc.c
+   730 :    <a href="../h_src/57530216.htm" class="macro">setempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/57968708.htm" class="localvar">n</a>));  <a  class="comments">/* remove entry */</a>
+   731 :    if (<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/57968708.htm" class="localvar">n</a>)))  <a  class="comments">/* is entry empty? */</a>
+<a href="../h_aa/57968572.htm" class=function>clearbyvalues</a>                                    lgc.c
+   754 :    if (<a href="../h_src/57824712.htm" class="function">iscleared</a>(<a href="../h_src/57968436.htm" class="localvar">g</a>, <a href="../h_src/57827432.htm" class="macro">gcvalueN</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/57967892.htm" class="localvar">n</a>))))  <a  class="comments">/* unmarked value? */</a>
+   755 :    <a href="../h_src/57530216.htm" class="macro">setempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/57967892.htm" class="localvar">n</a>));  <a  class="comments">/* remove entry */</a>
+   756 :    if (<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/57967892.htm" class="localvar">n</a>)))  <a  class="comments">/* is entry empty? */</a>
+<a href="../h_aa/57824984.htm" class=function>clearkey</a>                                         lgc.c
+   172 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(n)));
+<a href="../h_aa/58114852.htm" class=function>getgeneric</a>                                       ltable.c
+   303 :    return <a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58114308.htm" class="localvar">n</a>);  <a  class="comments">/* that's it */</a>
+<a href="../h_aa/57617056.htm" class=function>luaH_getint</a>                                      ltable.c
+   743 :    return <a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58097308.htm" class="localvar">n</a>);  <a  class="comments">/* that's it */</a>
+<a href="../h_aa/57616920.htm" class=function>luaH_getshortstr</a>                                 ltable.c
+   763 :    return <a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58096764.htm" class="localvar">n</a>);  <a  class="comments">/* that's it */</a>
+<a href="../h_aa/57616716.htm" class=function>luaH_newkey</a>                                      ltable.c
+   683 :    if (!<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>)) || <a href="../h_src/57617464.htm" class="macro">isdummy</a>(<a href="../h_src/58099484.htm" class="localvar">t</a>)) {  <a  class="comments">/* main position is taken? */</a>
+   704 :    <a href="../h_src/57530216.htm" class="macro">setempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>));
+   717 :    <a href="../h_src/57548848.htm" class="macro">lua_assert</a>(<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(mp)));
+   718 :    <a href="../h_src/57533004.htm" class="macro">setobj2t</a>(<a href="../h_src/58099620.htm" class="localvar">L</a>, <a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>), <a href="../h_src/58099212.htm" class="localvar">value</a>);
+<a href="../h_aa/57616240.htm" class=function>luaH_next</a>                                        ltable.c
+   360 :    if (!<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/57618008.htm" class="macro">gnode</a>(<a href="../h_src/58112676.htm" class="localvar">t</a>, <a href="../h_src/58112268.htm" class="localvar">i</a>)))) {  <a  class="comments">/* a non-empty entry? */</a>
+   363 :    <a href="../h_src/57533412.htm" class="macro">setobj2s</a>(<a href="../h_src/58112812.htm" class="localvar">L</a>, <a href="../h_src/58112540.htm" class="localvar">key</a> + 1, <a href="../h_src/57617872.htm" class="macro">gval</a><a href="../h_src/57532732.htm" class="variable">val</a>(<a href="../h_src/58111724.htm" class="localvar">n</a>));
+<a href="../h_aa/58107644.htm" class=function>numusehash</a>                                       ltable.c
+   462 :    if (!<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58106692.htm" class="localvar">n</a>))) {
+<a href="../h_aa/58105604.htm" class=function>reinsert</a>                                         ltable.c
+   513 :    if (!<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58104788.htm" class="localvar">old</a>))) {
+   518 :    <a href="../h_src/57616648.htm" class="function">luaH_set</a>(<a href="../h_src/58105468.htm" class="localvar">L</a>, <a href="../h_src/58105196.htm" class="localvar">t</a>, &amp;<a href="../h_src/58104652.htm" class="localvar">k</a>, <a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58104788.htm" class="localvar">old</a>));
+<a href="../h_aa/58106556.htm" class=function>setnodevector</a>                                    ltable.c
+   497 :    <a href="../h_src/57530216.htm" class="macro">setempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/58105740.htm" class="localvar">n</a>));
+<a href="../h_aa/57817436.htm" class=function>traverseephemeron</a>                                lgc.c
+   498 :    if (<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/57976052.htm" class="localvar">n</a>)))  <a  class="comments">/* entry is empty? */</a>
+   502 :    if (<a href="../h_src/57827704.htm" class="macro">valiswhite</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/57976052.htm" class="localvar">n</a>)))  <a  class="comments">/* value not marked yet? */</a><a href="../h_src/57528040.htm" class="variable">marked</a> yet? */
+   505 :    else if (<a href="../h_src/57827704.htm" class="macro">valiswhite</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/57976052.htm" class="localvar">n</a>))) {  <a  class="comments">/* value not marked yet? */</a><a href="../h_src/57528040.htm" class="variable">marked</a> yet? */
+   507 :    <a href="../h_src/57826752.htm" class="function">reallymarkobject</a>(<a href="../h_src/57977276.htm" class="localvar">g</a>, <a href="../h_src/57527496.htm" class="macro">gcvalue</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/57976052.htm" class="localvar">n</a>)));  <a  class="comments">/* mark it now */</a>
+<a href="../h_aa/57975916.htm" class=function>traversestrongtable</a>                              lgc.c
+   530 :    if (<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/57975508.htm" class="localvar">n</a>)))  <a  class="comments">/* entry is empty? */</a>
+   535 :    <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57975780.htm" class="localvar">g</a>, <a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/57975508.htm" class="localvar">n</a>));
+<a href="../h_aa/57818252.htm" class=function>traverseweakvalue</a>                                lgc.c
+   452 :    if (<a href="../h_src/57530488.htm" class="macro">isempty</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/57817844.htm" class="localvar">n</a>)))  <a  class="comments">/* entry is empty? */</a>
+   457 :    if (!<a href="../h_src/57817572.htm" class="localvar">hasclears</a> &amp;&amp; <a href="../h_src/57824712.htm" class="function">iscleared</a>(<a href="../h_src/57818116.htm" class="localvar">g</a>, <a href="../h_src/57827432.htm" class="macro">gcvalueN</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/57817844.htm" class="localvar">n</a>))))  <a  class="comments">/* a white value? */</a>
+</pre>
+<h4><a class="legend">Table lists functions that directly use gval</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

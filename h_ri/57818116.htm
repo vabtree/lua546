@@ -1,0 +1,43 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>g</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57818116.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57818116.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57818116.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57818116.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57818252.htm" class=function>traverseweakvalue</a>                                lgc.c
+   456 :    <a href="../h_src/57827160.htm" class="macro">markkey</a>(<a href="../h_src/57818116.htm" class="localvar">g</a>, <a href="../h_src/57817844.htm" class="localvar">n</a>);
+   457 :    if (!<a href="../h_src/57817572.htm" class="localvar">hasclears</a> &amp;&amp; <a href="../h_src/57824712.htm" class="function">iscleared</a>(<a href="../h_src/57818116.htm" class="localvar">g</a>, <a href="../h_src/57827432.htm" class="macro">gcvalueN</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/57817844.htm" class="localvar">n</a>))))  <a  class="comments">/* a white value? */</a>
+   461 :    if (<a href="../h_src/57818116.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646024.htm" class="variable">gcstate</a> == <a href="../h_src/57629500.htm" class="macro">GCSatomic</a> &amp;&amp; <a href="../h_src/57817572.htm" class="localvar">hasclears</a>)
+   462 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57817980.htm" class="localvar">h</a>, <a href="../h_src/57818116.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644936.htm" class="variable">weak</a>);  <a  class="comments">/* has to be cleared later */</a>
+   464 :    <a href="../h_src/57825800.htm" class="macro">linkgclist</a>(<a href="../h_src/57817980.htm" class="localvar">h</a>, <a href="../h_src/57818116.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a>);  <a  class="comments">/* must retraverse it in atomic phase */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable g</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

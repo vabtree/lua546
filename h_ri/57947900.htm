@@ -1,0 +1,46 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>g</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57947900.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57947900.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57947900.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57947900.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57948172.htm" class=function>stepgenfull</a>                                      lgc.c
+  1402 :    <a href="../h_src/57550616.htm" class="type">lu_mem</a> <a href="../h_src/57947628.htm" class="localvar">lastatomic</a> = <a href="../h_src/57947900.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646432.htm" class="variable">lastatomic</a>;  <a  class="comments">/* count from last collection */</a>
+  1403 :    if (<a href="../h_src/57947900.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645956.htm" class="variable">gckind</a> == <a href="../h_src/57652144.htm" class="macro">KGC_GEN</a>)  <a  class="comments">/* still in generational mode? */</a>
+  1404 :    <a href="../h_src/57949260.htm" class="function">enterinc</a>(<a href="../h_src/57947900.htm" class="localvar">g</a>);  <a  class="comments">/* enter incremental mode */</a>
+  1408 :    <a href="../h_src/57950484.htm" class="function">atomic2gen</a>(<a href="../h_src/57948036.htm" class="localvar">L</a>, <a href="../h_src/57947900.htm" class="localvar">g</a>);  <a  class="comments">/* return to generational mode */</a>
+  1409 :    <a href="../h_src/57950076.htm" class="function">setminordebt</a>(<a href="../h_src/57947900.htm" class="localvar">g</a>);
+  1412 :    <a href="../h_src/57947900.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646500.htm" class="variable">GCestimate</a> = <a href="../h_src/57638748.htm" class="macro">gettotalbytes</a>(<a href="../h_src/57947900.htm" class="localvar">g</a>);  <a  class="comments">/* first estimate */</a>;
+  1415 :    <a href="../h_src/57956740.htm" class="function">setpause</a>(<a href="../h_src/57947900.htm" class="localvar">g</a>);
+  1416 :    <a href="../h_src/57947900.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646432.htm" class="variable">lastatomic</a> = <a href="../h_src/57947764.htm" class="localvar">newatomic</a>;
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable g</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

@@ -1,0 +1,62 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lua_xmove</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57438948.htm" class="function" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57438948.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57438948.htm" class="function" target="_self">Flow Chart</a></li>
+<li><a href="../h_src/57438948.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57438948.htm" class="function" target="_self">Called By</a></li>
+<li><a href="../h_rx/57438948.htm" class="function" target="_self">Call Tree</a></li>
+<li><a href="../h_ro/57438948.htm" class="function" target="_self">Calls and Uses</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/58293180.htm" class=function>auxresume</a>                                        lcorolib.c
+    38 :    <a href="../h_src/57438948.htm" class="function">lua_xmove</a>(<a href="../h_src/58293044.htm" class="localvar">L</a>, <a href="../h_src/58292908.htm" class="localvar">co</a>, <a href="../h_src/58292772.htm" class="localvar">narg</a>);
+    46 :    <a href="../h_src/57438948.htm" class="function">lua_xmove</a>(<a href="../h_src/58292908.htm" class="localvar">co</a>, <a href="../h_src/58293044.htm" class="localvar">L</a>, <a href="../h_src/58292500.htm" class="localvar">nres</a>);  <a  class="comments">/* move yielded values */</a>
+    50 :    <a href="../h_src/57438948.htm" class="function">lua_xmove</a>(<a href="../h_src/58292908.htm" class="localvar">co</a>, <a href="../h_src/58293044.htm" class="localvar">L</a>, 1);  <a  class="comments">/* move error message */</a>
+<a href="../h_aa/143267732.htm" class=function>db_gethook</a>                                       ldblib.c
+   410 :    <a href="../h_src/57434460.htm" class="function">lua_pushthread</a>(<a href="../h_src/143267324.htm" class="localvar">L1</a>); <a href="../h_src/57438948.htm" class="function">lua_xmove</a>(<a href="../h_src/143267324.htm" class="localvar">L1</a>, <a href="../h_src/143267596.htm" class="localvar">L</a>, 1);
+<a href="../h_aa/58281756.htm" class=function>db_getinfo</a>                                       ldblib.c
+   159 :    <a href="../h_src/57438948.htm" class="function">lua_xmove</a>(<a href="../h_src/58281620.htm" class="localvar">L</a>, <a href="../h_src/143276028.htm" class="localvar">L1</a>, 1);
+<a href="../h_aa/143275756.htm" class=function>db_getlocal</a>                                      ldblib.c
+   221 :    <a href="../h_src/57438948.htm" class="function">lua_xmove</a>(<a href="../h_src/143275348.htm" class="localvar">L1</a>, <a href="../h_src/143275620.htm" class="localvar">L</a>, 1);  <a  class="comments">/* move local value */</a>
+<a href="../h_aa/143268820.htm" class=function>db_sethook</a>                                       ldblib.c
+   387 :    <a href="../h_src/57434460.htm" class="function">lua_pushthread</a>(<a href="../h_src/143268004.htm" class="localvar">L1</a>); <a href="../h_src/57438948.htm" class="function">lua_xmove</a>(<a href="../h_src/143268004.htm" class="localvar">L1</a>, <a href="../h_src/143268684.htm" class="localvar">L</a>, 1);  <a  class="comments">/* key (thread) */</a>
+<a href="../h_aa/143274668.htm" class=function>db_setlocal</a>                                      ldblib.c
+   246 :    <a href="../h_src/57438948.htm" class="function">lua_xmove</a>(<a href="../h_src/143274532.htm" class="localvar">L</a>, <a href="../h_src/143274124.htm" class="localvar">L1</a>, 1);
+<a href="../h_aa/58291820.htm" class=function>luaB_auxwrap</a>                                     lcorolib.c
+    81 :    <a href="../h_src/57438948.htm" class="function">lua_xmove</a>(<a href="../h_src/58291548.htm" class="localvar">co</a>, <a href="../h_src/58291684.htm" class="localvar">L</a>, 1);  <a  class="comments">/* move error message to the caller */</a>
+<a href="../h_aa/58287808.htm" class=function>luaB_close</a>                                       lcorolib.c
+   182 :    <a href="../h_src/57438948.htm" class="function">lua_xmove</a>(<a href="../h_src/58287536.htm" class="localvar">co</a>, <a href="../h_src/58287672.htm" class="localvar">L</a>, 1);  <a  class="comments">/* move error message */</a>
+<a href="../h_aa/58291140.htm" class=function>luaB_cocreate</a>                                    lcorolib.c
+   100 :    <a href="../h_src/57438948.htm" class="function">lua_xmove</a>(<a href="../h_src/58291004.htm" class="localvar">L</a>, <a href="../h_src/58290868.htm" class="localvar">NL</a>, 1);  <a  class="comments">/* move function from L to NL */</a>
+<a href="../h_aa/58282300.htm" class=function>treatstackoption</a>                                 ldblib.c
+   138 :    <a href="../h_src/57438948.htm" class="function">lua_xmove</a>(<a href="../h_src/58282028.htm" class="localvar">L1</a>, <a href="../h_src/58282164.htm" class="localvar">L</a>, 1);  <a  class="comments">/* move object to the &quot;main&quot; stack */</a>
+</pre>
+<h4><a class="legend">Table lists functions that directly use lua_xmove</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

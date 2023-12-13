@@ -1,0 +1,67 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>g</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57945316.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57945316.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57945316.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57945316.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57826616.htm" class=function>atomic</a>                                           lgc.c
+  1524 :    <a href="../h_src/57643100.htm" class="type">global_State</a> *<a href="../h_src/57945316.htm" class="localvar">g</a> = <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57945452.htm" class="localvar">L</a>);
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57826616.htm" class=function>atomic</a>                                           lgc.c
+  1527 :    <a href="../h_src/57527972.htm" class="type">GCObject</a> *<a href="../h_src/57944772.htm" class="localvar">grayagain</a> = <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a>;  <a  class="comments">/* save original list */</a>
+  1528 :    <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645004.htm" class="variable">grayagain</a> = NULL;
+  1531 :    <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646024.htm" class="variable">gcstate</a> = <a href="../h_src/57629500.htm" class="macro">GCSatomic</a>;
+  1532 :    <a href="../h_src/57827024.htm" class="macro">markobject</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>, <a href="../h_src/57945452.htm" class="localvar">L</a>);  <a  class="comments">/* mark running thread */</a>
+  1534 :    <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>, &amp;<a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646296.htm" class="variable">l_registry</a>);
+  1535 :    <a href="../h_src/57821040.htm" class="function">markmt</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>);  <a  class="comments">/* mark global metatables */</a>
+  1536 :    <a href="../h_src/57945180.htm" class="localvar">work</a> += <a href="../h_src/57970748.htm" class="function">propagateall</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>);  <a  class="comments">/* empties 'gray' list */</a>
+  1538 :    <a href="../h_src/57945180.htm" class="localvar">work</a> += <a href="../h_src/57820088.htm" class="function">remarkupvals</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>);
+  1539 :    <a href="../h_src/57945180.htm" class="localvar">work</a> += <a href="../h_src/57970748.htm" class="function">propagateall</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>);  <a  class="comments">/* propagate changes */</a>
+  1540 :    <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57645072.htm" class="variable">gray</a> = <a href="../h_src/57944772.htm" class="localvar">grayagain</a>;
+  1541 :    <a href="../h_src/57945180.htm" class="localvar">work</a> += <a href="../h_src/57970748.htm" class="function">propagateall</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>);  <a  class="comments">/* traverse 'grayagain' list */</a>
+  1542 :    <a href="../h_src/57970340.htm" class="function">convergeephemerons</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>);
+  1545 :    <a href="../h_src/57968572.htm" class="function">clearbyvalues</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>, <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644936.htm" class="variable">weak</a>, NULL);
+  1546 :    <a href="../h_src/57968572.htm" class="function">clearbyvalues</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>, <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644800.htm" class="variable">allweak</a>, NULL);
+  1547 :    <a href="../h_src/57945044.htm" class="localvar">origweak</a> = <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644936.htm" class="variable">weak</a>; <a href="../h_src/57944908.htm" class="localvar">origall</a> = <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644800.htm" class="variable">allweak</a>;
+  1548 :    <a href="../h_src/57959052.htm" class="function">separatetobefnz</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>, 0);  <a  class="comments">/* separate objects to be finalized */</a>
+  1549 :    <a href="../h_src/57945180.htm" class="localvar">work</a> += <a href="../h_src/57820632.htm" class="function">markbeingfnz</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>);  <a  class="comments">/* mark objects that will be finalized */</a>
+  1550 :    <a href="../h_src/57945180.htm" class="localvar">work</a> += <a href="../h_src/57970748.htm" class="function">propagateall</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>);  <a  class="comments">/* remark, to propagate 'resurrection' */</a>
+  1551 :    <a href="../h_src/57970340.htm" class="function">convergeephemerons</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>);
+  1554 :    <a href="../h_src/57969388.htm" class="function">clearbykeys</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>, <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644868.htm" class="variable">ephemeron</a>);  <a  class="comments">/* clear keys from all ephemeron tables */</a>
+  1555 :    <a href="../h_src/57969388.htm" class="function">clearbykeys</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>, <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644800.htm" class="variable">allweak</a>);  <a  class="comments">/* clear keys from all 'allweak' tables */</a>
+  1557 :    <a href="../h_src/57968572.htm" class="function">clearbyvalues</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>, <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644936.htm" class="variable">weak</a>, <a href="../h_src/57945044.htm" class="localvar">origweak</a>);
+  1558 :    <a href="../h_src/57968572.htm" class="function">clearbyvalues</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>, <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57644800.htm" class="variable">allweak</a>, <a href="../h_src/57944908.htm" class="localvar">origall</a>);
+  1559 :    <a href="../h_src/57618892.htm" class="function">luaS_clearcache</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>);
+  1560 :    <a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646092.htm" class="variable">currentwhite</a> = <a href="../h_src/57546944.htm" class="macro">cast_byte</a>(<a href="../h_src/57625828.htm" class="macro">otherwhite</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>));  <a  class="comments">/* flip current white */</a>
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable g</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

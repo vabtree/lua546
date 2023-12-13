@@ -1,0 +1,78 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>strchr</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57565916.htm" class="libfunc" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57565916.htm" class="libfunc" target="_self">Calling Hierarchy</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57565916.htm" class="libfunc" target="_self">Called By</a></li>
+<li><a href="../h_rx/57565916.htm" class="libfunc" target="_self">Call Tree</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57853000.htm" class=function>checkmode</a>                                        ldo.c
+   980 :    if (<a href="../h_src/57852728.htm" class="localvar">mode</a> &amp;&amp; <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57852728.htm" class="localvar">mode</a>, <a href="../h_src/57852592.htm" class="localvar">x</a>[0]) == NULL) {
+<a href="../h_aa/58281756.htm" class=function>db_getinfo</a>                                       ldblib.c
+   170 :    if (<a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143275892.htm" class="localvar">options</a>, 'S')) {
+   178 :    if (<a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143275892.htm" class="localvar">options</a>, 'l'))
+   180 :    if (<a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143275892.htm" class="localvar">options</a>, 'u')) {
+   185 :    if (<a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143275892.htm" class="localvar">options</a>, 'n')) {
+   189 :    if (<a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143275892.htm" class="localvar">options</a>, 'r')) {
+   193 :    if (<a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143275892.htm" class="localvar">options</a>, 't'))
+   195 :    if (<a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143275892.htm" class="localvar">options</a>, 'L'))
+   197 :    if (<a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143275892.htm" class="localvar">options</a>, 'f'))
+<a href="../h_aa/57566460.htm" class=function>dolibrary</a>                                        lua.c
+   216 :    char *<a href="../h_src/57565848.htm" class="localvar">modname</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57566188.htm" class="localvar">globname</a>, '=');
+<a href="../h_aa/143205988.htm" class=function>getnextfilename</a>                                  loadlib.c
+   456 :    <a href="../h_src/143205580.htm" class="localvar">sep</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143205444.htm" class="localvar">name</a>, *<a href="../h_src/57456628.htm" class="macro">LUA_PATH_SEP</a>);  <a  class="comments">/* find next separator */</a>
+<a href="../h_aa/143264060.htm" class=function>l_checkmode</a>                                      liolib.c
+    41 :    return (*<a href="../h_src/143263924.htm" class="localvar">mode</a> != '\0' &amp;&amp; <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(&quot;rwa&quot;, *(<a href="../h_src/143263924.htm" class="localvar">mode</a>++)) != NULL &amp;&amp;
+<a href="../h_aa/57911384.htm" class=function>l_str2d</a>                                          lobject.c
+   260 :    const char *<a href="../h_src/57910364.htm" class="localvar">pdot</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57911248.htm" class="localvar">s</a>, '.');
+<a href="../h_aa/143201092.htm" class=function>loadfunc</a>                                         loadlib.c
+   566 :    <a href="../h_src/143200412.htm" class="localvar">mark</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143200684.htm" class="localvar">modname</a>, *<a href="../h_src/143216800.htm" class="macro">LUA_IGMARK</a>);
+<a href="../h_aa/57424600.htm" class=function>lua_getinfo</a>                                      ldebug.c
+   403 :    if (<a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57746676.htm" class="localvar">what</a>, 'f')) {
+   407 :    if (<a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57746676.htm" class="localvar">what</a>, 'L'))
+<a href="../h_aa/57501316.htm" class=function>luaO_chunkid</a>                                     lobject.c
+   587 :    const char *<a href="../h_src/57897580.htm" class="localvar">nl</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57897988.htm" class="localvar">source</a>, '\n');  <a  class="comments">/* find first new line (if any) */</a>
+<a href="../h_aa/57501452.htm" class=function>luaO_pushvfstring</a>                                lobject.c
+   485 :    while ((<a href="../h_src/57901388.htm" class="localvar">e</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57901796.htm" class="localvar">fmt</a>, '%')) != NULL) {
+<a href="../h_aa/143269908.htm" class=function>makemask</a>                                         ldblib.c
+   344 :    if (<a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143269772.htm" class="localvar">smask</a>, 'c')) <a href="../h_src/143269500.htm" class="localvar">mask</a> |= <a href="../h_src/57425212.htm" class="macro">LUA_MASKCALL</a>;
+   345 :    if (<a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143269772.htm" class="localvar">smask</a>, 'r')) <a href="../h_src/143269500.htm" class="localvar">mask</a> |= <a href="../h_src/57425076.htm" class="macro">LUA_MASKRET</a>;
+   346 :    if (<a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143269772.htm" class="localvar">smask</a>, 'l')) <a href="../h_src/143269500.htm" class="localvar">mask</a> |= <a href="../h_src/57424940.htm" class="macro">LUA_MASKLINE</a>;
+<a href="../h_aa/143199596.htm" class=function>searcher_Croot</a>                                   loadlib.c
+   591 :    const char *<a href="../h_src/143199052.htm" class="localvar">p</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143199188.htm" class="localvar">name</a>, '.');
+<a href="../h_aa/143204764.htm" class=function>searchpath</a>                                       loadlib.c
+   490 :    if (*<a href="../h_src/143204220.htm" class="localvar">sep</a> != '\0' &amp;&amp; <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143204492.htm" class="localvar">name</a>, *<a href="../h_src/143204220.htm" class="localvar">sep</a>) != NULL)
+<a href="../h_aa/143291804.htm" class=function>str_format</a>                                       lstrlib.c
+  1357 :    if (<a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143290580.htm" class="localvar">form</a>, '.') == NULL &amp;&amp; <a href="../h_src/143289628.htm" class="localvar">l</a> &gt;= 100) {
+<a href="../h_aa/57974964.htm" class=function>traversetable</a>                                    lgc.c
+   547 :    (<a href="../h_src/57547624.htm" class="macro">cast_void</a>(<a href="../h_src/57974556.htm" class="localvar">weakkey</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/57974284.htm" class="localvar">mode</a>), 'k')),
+   548 :    <a href="../h_src/57547624.htm" class="macro">cast_void</a>(<a href="../h_src/57974420.htm" class="localvar">weakvalue</a> = <a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/57974284.htm" class="localvar">mode</a>), 'v')),
+</pre>
+<h4><a class="legend">Table lists functions that directly use strchr</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

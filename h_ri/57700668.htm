@@ -1,0 +1,52 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">LexState::</a>h</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57700668.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57700668.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57700668.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57700668.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57700668.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57674420.htm" class=function>luaY_parser</a>                                      lparser.c
+  1949 :    <a href="../h_src/57986292.htm" class="localvar">lexstate</a>.<a href="../h_src/57700668.htm" class="variable">h</a> = <a href="../h_src/57616512.htm" class="function">luaH_new</a>(<a href="../h_src/57987108.htm" class="localvar">L</a>);  <a  class="comments">/* create table for scanner */</a>
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57808488.htm" class=function>addk</a>                                             lcode.c
+   547 :    const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57807536.htm" class="localvar">idx</a> = <a href="../h_src/57616784.htm" class="function">luaH_get</a>(<a href="../h_src/57808352.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700668.htm" class="variable">h</a>, <a href="../h_src/57808216.htm" class="localvar">key</a>);  <a  class="comments">/* query scanner table */</a>
+   562 :    <a href="../h_src/57616580.htm" class="function">luaH_finishset</a>(<a href="../h_src/57807808.htm" class="localvar">L</a>, <a href="../h_src/57808352.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700668.htm" class="variable">h</a>, <a href="../h_src/57808216.htm" class="localvar">key</a>, <a href="../h_src/57807536.htm" class="localvar">idx</a>, &amp;<a href="../h_src/57807944.htm" class="localvar">val</a>);
+<a href="../h_aa/57699852.htm" class=function>luaX_newstring</a>                                   llex.c
+   137 :    const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/57936340.htm" class="localvar">o</a> = <a href="../h_src/57616852.htm" class="function">luaH_getstr</a>(<a href="../h_src/57937020.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700668.htm" class="variable">h</a>, <a href="../h_src/57936476.htm" class="localvar">ts</a>);
+   143 :    <a href="../h_src/57616580.htm" class="function">luaH_finishset</a>(<a href="../h_src/57936612.htm" class="localvar">L</a>, <a href="../h_src/57937020.htm" class="localvar">ls</a>-&gt;<a href="../h_src/57700668.htm" class="variable">h</a>, <a href="../h_src/57936204.htm" class="localvar">stv</a>, <a href="../h_src/57936340.htm" class="localvar">o</a>, <a href="../h_src/57936204.htm" class="localvar">stv</a>);  <a  class="comments">/* t[string] = string */</a>
+<a href="../h_aa/57674420.htm" class=function>luaY_parser</a>                                      lparser.c
+  1950 :    <a href="../h_src/57506892.htm" class="macro">sethvalue2s</a>(<a href="../h_src/57987108.htm" class="localvar">L</a>, <a href="../h_src/57987108.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57986292.htm" class="localvar">lexstate</a>.<a href="../h_src/57700668.htm" class="variable">h</a>);  <a  class="comments">/* anchor it */</a>
+<a href="../h_aa/57802844.htm" class=function>nilK</a>                                             lcode.c
+   649 :    <a href="../h_src/57507028.htm" class="macro">sethvalue</a>(<a href="../h_src/57802708.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, &amp;<a href="../h_src/57802572.htm" class="localvar">k</a>, <a href="../h_src/57802708.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700668.htm" class="variable">h</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable h</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

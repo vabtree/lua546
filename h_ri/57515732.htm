@@ -1,0 +1,75 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">Proto::</a>sizeupvalues</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57515732.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57515732.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57515732.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57515732.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57515732.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/58066504.htm" class=function>loadUpvalues</a>                                     lundump.c
+   216 :    <a href="../h_src/58066232.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a> = <a href="../h_src/58065960.htm" class="localvar">n</a>;
+<a href="../h_aa/57630996.htm" class=function>luaF_newproto</a>                                    lfunc.c
+   254 :    <a href="../h_src/57830356.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a> = 0;
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/58041916.htm" class=function>allocupvalue</a>                                     lparser.c
+   354 :    int <a href="../h_src/58041508.htm" class="localvar">oldsize</a> = <a href="../h_src/58041644.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>;
+   356 :    <a href="../h_src/57494924.htm" class="macro">luaM_growvector</a>(<a href="../h_src/58041780.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/58041644.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>, <a href="../h_src/58041780.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674828.htm" class="variable">nups</a>, <a href="../h_src/58041644.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>,
+   358 :    while (<a href="../h_src/58041508.htm" class="localvar">oldsize</a> &lt; <a href="../h_src/58041644.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>)
+<a href="../h_aa/57713112.htm" class=function>aux_upvalue</a>                                      lapi.c
+  1372 :    if (!(<a href="../h_src/57547080.htm" class="macro">cast_uint</a>(<a href="../h_src/57712840.htm" class="localvar">n</a>) - 1u  &lt; <a href="../h_src/57547080.htm" class="macro">cast_uint</a>(<a href="../h_src/57711956.htm" class="localvar">p</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>)))
+<a href="../h_aa/58024712.htm" class=function>close_func</a>                                       lparser.c
+   771 :    <a href="../h_src/57657108.htm" class="macro">luaM_shrinkvector</a>(<a href="../h_src/58024440.htm" class="localvar">L</a>, <a href="../h_src/58024168.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>, <a href="../h_src/58024168.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>, <a href="../h_src/58024304.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57674828.htm" class="variable">nups</a>, <a href="../h_src/57517092.htm" class="type">Upvaldesc</a>);
+<a href="../h_aa/143403296.htm" class=function>combine</a>                                          luac.c
+   156 :    if (<a href="../h_src/143402888.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a>[<a href="../h_src/143402752.htm" class="localvar">i</a>]-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>&gt;0) <a href="../h_src/143402888.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a>[<a href="../h_src/143402752.htm" class="localvar">i</a>]-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[0].<a href="../h_src/57517296.htm" class="variable">instack</a>=0;
+<a href="../h_aa/57842664.htm" class=function>dumpDebug</a>                                        ldump.c
+   176 :    <a href="../h_src/57842120.htm" class="localvar">n</a> = (<a href="../h_src/57842528.htm" class="localvar">D</a>-&gt;<a href="../h_src/57850076.htm" class="variable">strip</a>) ? 0 : <a href="../h_src/57842392.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>;
+<a href="../h_aa/57843344.htm" class=function>dumpUpvalues</a>                                     ldump.c
+   148 :    int <a href="../h_src/57842936.htm" class="localvar">i</a>, <a href="../h_src/57842800.htm" class="localvar">n</a> = <a href="../h_src/57843072.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>;
+<a href="../h_aa/57709644.htm" class=function>getupvalref</a>                                      lapi.c
+  1424 :    if (1 &lt;= <a href="../h_src/57709236.htm" class="localvar">n</a> &amp;&amp; <a href="../h_src/57709236.htm" class="localvar">n</a> &lt;= <a href="../h_src/57708760.htm" class="localvar">f</a>-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>)
+<a href="../h_aa/58065824.htm" class=function>loadDebug</a>                                        lundump.c
+   252 :    <a href="../h_src/58065280.htm" class="localvar">n</a> = <a href="../h_src/58065552.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>;  <a  class="comments">/* must be this many */</a>
+<a href="../h_aa/57630248.htm" class=function>luaF_freeproto</a>                                   lfunc.c
+   274 :    <a href="../h_src/57495604.htm" class="macro">luaM_freearray</a>(<a href="../h_src/57830220.htm" class="localvar">L</a>, <a href="../h_src/57830084.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>, <a href="../h_src/57830084.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>);
+<a href="../h_aa/57614744.htm" class=function>luaU_dump</a>                                        ldump.c
+   226 :    <a href="../h_src/57848784.htm" class="function">dumpByte</a>(&amp;<a href="../h_src/57840624.htm" class="localvar">D</a>, <a href="../h_src/57841168.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>);
+<a href="../h_aa/143394320.htm" class=function>PrintDebug</a>                                       luac.c
+   707 :    <a href="../h_src/143393912.htm" class="localvar">n</a>=<a href="../h_src/143394184.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>;
+<a href="../h_aa/143394728.htm" class=function>PrintHeader</a>                                      luac.c
+   683 :    <a href="../h_src/143394864.htm" class="macro">S</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515800.htm" class="variable">maxstacksize</a>),<a href="../h_src/143394864.htm" class="macro">S</a>(<a href="../h_src/143394592.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>));
+<a href="../h_aa/58198124.htm" class=function>pushclosure</a>                                      lvm.c
+   790 :    int <a href="../h_src/58197308.htm" class="localvar">nup</a> = <a href="../h_src/58197852.htm" class="localvar">p</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>;
+<a href="../h_aa/57973604.htm" class=function>traverseproto</a>                                    lgc.c
+   583 :    for (<a href="../h_src/57973196.htm" class="localvar">i</a> = 0; <a href="../h_src/57973196.htm" class="localvar">i</a> &lt; <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a>; <a href="../h_src/57973196.htm" class="localvar">i</a>++)  <a  class="comments">/* mark upvalue names */</a>
+   589 :    return 1 + <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515664.htm" class="variable">sizek</a> + <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515732.htm" class="variable">sizeupvalues</a> + <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515460.htm" class="variable">sizep</a> + <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515392.htm" class="variable">sizelocvars</a>;
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable sizeupvalues</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

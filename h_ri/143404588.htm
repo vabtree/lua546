@@ -1,0 +1,51 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>argv</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143404588.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/143404588.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/143404588.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/143404588.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/143404860.htm" class=function>doargs</a>                                           luac.c
+    80 :    if (<a href="../h_src/143404588.htm" class="localvar">argv</a>[0]!=NULL &amp;&amp; *<a href="../h_src/143404588.htm" class="localvar">argv</a>[0]!=0) <a href="../h_src/143405948.htm" class="variable">progname</a>=<a href="../h_src/143404588.htm" class="localvar">argv</a>[0];
+    83 :    if (*<a href="../h_src/143404588.htm" class="localvar">argv</a>[<a href="../h_src/143404452.htm" class="localvar">i</a>]!='-')			<a  class="comments">/* end of options; keep it */</a>
+    85 :    else if (<a href="../h_src/143404996.htm" class="macro">IS</a>(&quot;--&quot;))			<a  class="comments">/* end of options; skip it */</a>
+    91 :    else if (<a href="../h_src/143404996.htm" class="macro">IS</a>(&quot;-&quot;))			<a  class="comments">/* end of options; use stdin */</a>
+    93 :    else if (<a href="../h_src/143404996.htm" class="macro">IS</a>(&quot;-l&quot;))			<a  class="comments">/* list */</a>
+    95 :    else if (<a href="../h_src/143404996.htm" class="macro">IS</a>(&quot;-o&quot;))			<a  class="comments">/* output file */</a>
+    97 :    <a href="../h_src/143406016.htm" class="variable">output</a>=<a href="../h_src/143404588.htm" class="localvar">argv</a>[++<a href="../h_src/143404452.htm" class="localvar">i</a>];
+   100 :    if (<a href="../h_src/143404996.htm" class="macro">IS</a>(&quot;-&quot;)) <a href="../h_src/143406016.htm" class="variable">output</a>=NULL;
+   102 :    else if (<a href="../h_src/143404996.htm" class="macro">IS</a>(&quot;-p&quot;))			<a  class="comments">/* parse only */</a>
+   104 :    else if (<a href="../h_src/143404996.htm" class="macro">IS</a>(&quot;-s&quot;))			<a  class="comments">/* strip debug information */</a>
+   106 :    else if (<a href="../h_src/143404996.htm" class="macro">IS</a>(&quot;-v&quot;))			<a  class="comments">/* show version */</a>
+   109 :    <a href="../h_src/143405268.htm" class="function">usage</a>(<a href="../h_src/143404588.htm" class="localvar">argv</a>[<a href="../h_src/143404452.htm" class="localvar">i</a>]);
+   114 :    <a href="../h_src/143404588.htm" class="localvar">argv</a>[--<a href="../h_src/143404452.htm" class="localvar">i</a>]=<a href="../h_src/143406084.htm" class="variable">Output</a>;
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable argv</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

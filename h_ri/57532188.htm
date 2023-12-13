@@ -1,0 +1,405 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>StkId</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57532188.htm" class="type" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57532188.htm" class="type" target="_self">Usage</a></li>
+<li><a href="../h_src/57532188.htm" class="type" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57532188.htm" class="type" target="_self">Used By</a></li>
+<li><a href="../h_rx/57532188.htm" class="type" target="_self">Cross Reference</a></li>
+<li><a href="../h_ro/57532188.htm" class="type" target="_self">Built From</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Used In</h4>
+<pre><a href="../h_aa/57753136.htm" class=variable>base</a>                                             ldebug.c
+   197 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57753136.htm" class="localvar">base</a> = <a href="../h_src/57753544.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a> + 1;
+<a href="../h_aa/57896316.htm" class=variable>base</a>                                             ldebug.c
+   666 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57896316.htm" class="localvar">base</a> = <a href="../h_src/57896724.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a> + 1;
+<a href="../h_aa/58187652.htm" class=variable>base</a>                                             lvm.c
+  1149 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58187652.htm" class="localvar">base</a>;
+<a href="../h_aa/58196220.htm" class=variable>base</a>                                             lvm.c
+   811 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58196220.htm" class="localvar">base</a> = <a href="../h_src/58196356.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a> + 1;
+<a href="../h_aa/58197580.htm" class=variable>base</a>                                             lvm.c
+   788 :    static void <a href="../h_src/58198124.htm" class="function">pushclosure</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58197988.htm" class="localvar">L</a>, <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/58197852.htm" class="localvar">p</a>, <a href="../h_src/57509612.htm" class="type">UpVal</a> **<a href="../h_src/58197716.htm" class="localvar">encup</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58197580.htm" class="localvar">base</a>,
+<a href="../h_aa/57864220.htm" class=function>ccall</a>                                            ldo.c
+   632 :    <a href="../h_src/57634124.htm" class="macro">checkstackp</a>(<a href="../h_src/57864084.htm" class="localvar">L</a>, 0, <a href="../h_src/57863948.htm" class="localvar">func</a>);  <a  class="comments">/* free any use of EXTRA_STACK */</a>
+<a href="../h_aa/57879724.htm" class=function>correctstack</a>                                     ldo.c
+   185 :    <a href="../h_src/57879588.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57879588.htm" class="localvar">L</a>, <a href="../h_src/57879588.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531916.htm" class="variable">offset</a>);
+   186 :    <a href="../h_src/57879588.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642148.htm" class="variable">tbclist</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57879588.htm" class="localvar">L</a>, <a href="../h_src/57879588.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642148.htm" class="variable">tbclist</a>.<a href="../h_src/57531916.htm" class="variable">offset</a>);
+   188 :    <a href="../h_src/57879316.htm" class="localvar">up</a>-&gt;<a href="../h_src/57510564.htm" class="variable">v</a>.<a href="../h_src/57510768.htm" class="variable">p</a> = <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57879588.htm" class="localvar">L</a>, <a href="../h_src/57879316.htm" class="localvar">up</a>-&gt;<a href="../h_src/57510564.htm" class="variable">v</a>.<a href="../h_src/57510700.htm" class="variable">offset</a>));
+   190 :    <a href="../h_src/57879452.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651464.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57879588.htm" class="localvar">L</a>, <a href="../h_src/57879452.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651464.htm" class="variable">top</a><a href="../h_src/57531984.htm" class="variable">p</a>.<a href="../h_src/57531916.htm" class="variable">offset</a>);
+   191 :    <a href="../h_src/57879452.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57879588.htm" class="localvar">L</a>, <a href="../h_src/57879452.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531916.htm" class="variable">offset</a>);
+<a href="../h_aa/57888428.htm" class=variable>errfunc</a>                                          ldebug.c
+   811 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57888428.htm" class="localvar">errfunc</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57888564.htm" class="localvar">L</a>, <a href="../h_src/57888564.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641604.htm" class="variable">errfunc</a>);
+<a href="../h_aa/57862452.htm" class=function>finishpcallk</a>                                     ldo.c
+   680 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57861908.htm" class="localvar">func</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57862316.htm" class="localvar">L</a>, <a href="../h_src/57862180.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649560.htm" class="variable">u2</a>.<a href="../h_src/57650172.htm" class="variable">funcidx</a>);
+<a href="../h_aa/57858780.htm" class=variable>firstArg</a>                                         ldo.c
+   787 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57858780.htm" class="localvar">firstArg</a> = <a href="../h_src/57859188.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - <a href="../h_src/57858916.htm" class="localvar">n</a>;  <a  class="comments">/* first argument */</a>
+<a href="../h_aa/57873332.htm" class=variable>firstres</a>                                         ldo.c
+   389 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57873332.htm" class="localvar">firstres</a> = <a href="../h_src/57873740.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - <a href="../h_src/57873468.htm" class="localvar">nres</a>;  <a  class="comments">/* index of first result */</a>
+<a href="../h_aa/57870884.htm" class=variable>firstresult</a>                                      ldo.c
+   434 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57870884.htm" class="localvar">firstresult</a>;
+<a href="../h_aa/57604544.htm" class=variable>from</a>                                             lapi.c
+   227 :    <a href="../h_src/57545312.htm" class="macro">l_sinline</a> void <a href="../h_src/57604816.htm" class="function">reverse</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57604680.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57604544.htm" class="localvar">from</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57604408.htm" class="localvar">to</a>) {
+<a href="../h_aa/57605632.htm" class=variable>func</a>                                             lapi.c
+   183 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57605632.htm" class="localvar">func</a>, <a href="../h_src/57605496.htm" class="localvar">newtop</a>;
+<a href="../h_aa/57724876.htm" class=variable>CallS::func</a>                                      lapi.c
+  1031 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57724876.htm" class="variable">func</a>;
+<a href="../h_aa/57725148.htm" class=variable>func</a>                                             lapi.c
+  1006 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57725148.htm" class="localvar">func</a>;
+<a href="../h_aa/57861908.htm" class=variable>func</a>                                             ldo.c
+   680 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57861908.htm" class="localvar">func</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57862316.htm" class="localvar">L</a>, <a href="../h_src/57862180.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57649560.htm" class="variable">u2</a>.<a href="../h_src/57650172.htm" class="variable">funcidx</a>);
+<a href="../h_aa/57862724.htm" class=variable>func</a>                                             ldo.c
+   654 :    void <a href="../h_src/57633172.htm" class="function">luaD_callnoyield</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57862860.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57862724.htm" class="localvar">func</a>, int <a href="../h_src/57862588.htm" class="localvar">nResults</a>) {
+<a href="../h_aa/57863132.htm" class=variable>func</a>                                             ldo.c
+   646 :    void <a href="../h_src/57633240.htm" class="function">luaD_call</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57863268.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57863132.htm" class="localvar">func</a>, int <a href="../h_src/57862996.htm" class="localvar">nResults</a>) {
+<a href="../h_aa/57863948.htm" class=variable>func</a>                                             ldo.c
+   628 :    <a href="../h_src/57545312.htm" class="macro">l_sinline</a> void <a href="../h_src/57864220.htm" class="function">ccall</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57864084.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57863948.htm" class="localvar">func</a>, int <a href="../h_src/57863812.htm" class="localvar">nResults</a>, <a href="../h_src/57545176.htm" class="type">l_uint32</a> <a href="../h_src/57863676.htm" class="localvar">inc</a>) {
+<a href="../h_aa/57865308.htm" class=variable>func</a>                                             ldo.c
+   588 :    <a href="../h_src/57537764.htm" class="type">CallInfo</a> *<a href="../h_src/57633308.htm" class="function">luaD_precall</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57865444.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57865308.htm" class="localvar">func</a>, int <a href="../h_src/57865172.htm" class="localvar">nresults</a>) {
+<a href="../h_aa/57866804.htm" class=variable>func</a>                                             ldo.c
+   543 :    int <a href="../h_src/57633376.htm" class="function">luaD_pretailcall</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57867076.htm" class="localvar">L</a>, <a href="../h_src/57537764.htm" class="type">CallInfo</a> *<a href="../h_src/57866940.htm" class="localvar">ci</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57866804.htm" class="localvar">func</a>,
+<a href="../h_aa/57868028.htm" class=variable>func</a>                                             ldo.c
+   516 :    <a href="../h_src/57545312.htm" class="macro">l_sinline</a> int <a href="../h_src/57868300.htm" class="function">precallC</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57868164.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57868028.htm" class="localvar">func</a>, int <a href="../h_src/57867892.htm" class="localvar">nresults</a>,
+<a href="../h_aa/57868980.htm" class=variable>func</a>                                             ldo.c
+   502 :    <a href="../h_src/57545312.htm" class="macro">l_sinline</a> <a href="../h_src/57537764.htm" class="type">CallInfo</a> *<a href="../h_src/57869252.htm" class="function">prepCallInfo</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57869116.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57868980.htm" class="localvar">func</a>, int <a href="../h_src/57868844.htm" class="localvar">nret</a>,
+<a href="../h_aa/57872652.htm" class=variable>func</a>                                             ldo.c
+   412 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57633104.htm" class="function">luaD_tryfuncTM</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57872788.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57872652.htm" class="localvar">func</a>) {
+<a href="../h_aa/58085544.htm" class=variable>func</a>                                             ltm.c
+   122 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58085544.htm" class="localvar">func</a> = <a href="../h_src/58086360.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>;
+<a href="../h_aa/58087584.htm" class=variable>func</a>                                             ltm.c
+   105 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58087584.htm" class="localvar">func</a> = <a href="../h_src/58088264.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>;
+<a href="../h_aa/57609100.htm" class=function>index2stack</a>                                      lapi.c
+    95 :    <a href="../h_src/57545312.htm" class="macro">l_sinline</a> <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57609100.htm" class="function">index2stack</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57608964.htm" class="localvar">L</a>, int <a href="../h_src/57608828.htm" class="localvar">idx</a>) {
+<a href="../h_aa/58112540.htm" class=variable>key</a>                                              ltable.c
+   349 :    int <a href="../h_src/57616240.htm" class="function">luaH_next</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58112812.htm" class="localvar">L</a>, <a href="../h_src/57504308.htm" class="type">Table</a> *<a href="../h_src/58112676.htm" class="localvar">t</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58112540.htm" class="localvar">key</a>) {
+<a href="../h_aa/57604952.htm" class=variable>level</a>                                            lapi.c
+   210 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57604952.htm" class="localvar">level</a>;
+<a href="../h_aa/57831308.htm" class=variable>level</a>                                            lfunc.c
+   227 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57630384.htm" class="function">luaF_close</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57831444.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57831308.htm" class="localvar">level</a>, int <a href="../h_src/57831172.htm" class="localvar">status</a>, int <a href="../h_src/57831036.htm" class="localvar">yy</a>) {
+<a href="../h_aa/57832668.htm" class=variable>level</a>                                            lfunc.c
+   193 :    void <a href="../h_src/57630452.htm" class="function">luaF_closeupval</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57832804.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57832668.htm" class="localvar">level</a>) {
+<a href="../h_aa/57833076.htm" class=variable>level</a>                                            lfunc.c
+   168 :    void <a href="../h_src/57630520.htm" class="function">luaF_newtbcupval</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57833212.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57833076.htm" class="localvar">level</a>) {
+<a href="../h_aa/57834028.htm" class=variable>level</a>                                            lfunc.c
+   143 :    static void <a href="../h_src/57834300.htm" class="function">prepcallclosemth</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57834164.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57834028.htm" class="localvar">level</a>, int <a href="../h_src/57833892.htm" class="localvar">status</a>, int <a href="../h_src/57833756.htm" class="localvar">yy</a>) {
+<a href="../h_aa/57834844.htm" class=variable>level</a>                                            lfunc.c
+   125 :    static void <a href="../h_src/57835116.htm" class="function">checkclosemth</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57834980.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57834844.htm" class="localvar">level</a>) {
+<a href="../h_aa/57837292.htm" class=variable>level</a>                                            lfunc.c
+    87 :    <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57630588.htm" class="function">luaF_findupval</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57837428.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57837292.htm" class="localvar">level</a>) {
+<a href="../h_aa/57838108.htm" class=variable>level</a>                                            lfunc.c
+    65 :    static <a href="../h_src/57509612.htm" class="type">UpVal</a> *<a href="../h_src/57838380.htm" class="function">newupval</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57838244.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57838108.htm" class="localvar">level</a>, <a href="../h_src/57509612.htm" class="type">UpVal</a> **<a href="../h_src/57837972.htm" class="localvar">prev</a>) {
+<a href="../h_aa/57856332.htm" class=variable>CloseP::level</a>                                    ldo.c
+   906 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57856332.htm" class="variable">level</a>;
+<a href="../h_aa/57876732.htm" class=variable>lim</a>                                              ldo.c
+   279 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57876732.htm" class="localvar">lim</a> = <a href="../h_src/57877140.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>;
+<a href="../h_aa/57752864.htm" class=variable>limit</a>                                            ldebug.c
+   206 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57752864.htm" class="localvar">limit</a> = (<a href="../h_src/57753544.htm" class="localvar">ci</a> == <a href="../h_src/57753680.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642420.htm" class="variable">ci</a>) ? <a href="../h_src/57753680.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> : <a href="../h_src/57753544.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651328.htm" class="variable">next</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a>;
+<a href="../h_aa/57633036.htm" class=function>luaD_closeprotected</a>                              ldo.c
+   929 :    <a href="../h_src/57854836.htm" class="localvar">pcl</a>.<a href="../h_src/57856332.htm" class="variable">level</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57855516.htm" class="localvar">L</a>, <a href="../h_src/57855380.htm" class="localvar">level</a>); <a href="../h_src/57854836.htm" class="localvar">pcl</a>.<a href="../h_src/57856264.htm" class="variable">status</a> = <a href="../h_src/57855244.htm" class="localvar">status</a>;
+<a href="../h_aa/57633512.htm" class=function>luaD_hook</a>                                        ldo.c
+   357 :    <a href="../h_src/57874964.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651464.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57875916.htm" class="localvar">L</a>, <a href="../h_src/57874692.htm" class="localvar">ci_top</a>);
+   358 :    <a href="../h_src/57875916.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57875916.htm" class="localvar">L</a>, <a href="../h_src/57874828.htm" class="localvar">top</a>);
+<a href="../h_aa/57632968.htm" class=function>luaD_pcall</a>                                       ldo.c
+   958 :    <a href="../h_src/57633648.htm" class="function">luaD_seterrorobj</a>(<a href="../h_src/57854700.htm" class="localvar">L</a>, <a href="../h_src/57854020.htm" class="localvar">status</a>, <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57854700.htm" class="localvar">L</a>, <a href="../h_src/57854292.htm" class="localvar">old_top</a><a href="../h_src/57531984.htm" class="variable">p</a>));
+<a href="../h_aa/57633308.htm" class=function>luaD_precall</a>                                     ldo.c
+   603 :    <a href="../h_src/57633988.htm" class="macro">checkstackGCp</a>(<a href="../h_src/57865444.htm" class="localvar">L</a>, <a href="../h_src/57864492.htm" class="localvar">fsize</a>, <a href="../h_src/57865308.htm" class="localvar">func</a>);
+<a href="../h_aa/57633376.htm" class=function>luaD_pretailcall</a>                                 ldo.c
+   556 :    <a href="../h_src/57633988.htm" class="macro">checkstackGCp</a>(<a href="../h_src/57867076.htm" class="localvar">L</a>, <a href="../h_src/57866260.htm" class="localvar">fsize</a> - <a href="../h_src/57866532.htm" class="localvar">delta</a>, <a href="../h_src/57866804.htm" class="localvar">func</a>);
+<a href="../h_aa/57633104.htm" class=function>luaD_tryfuncTM</a>                                   ldo.c
+   412 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57633104.htm" class="function">luaD_tryfuncTM</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57872788.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57872652.htm" class="localvar">func</a>) {
+   415 :    <a href="../h_src/57633988.htm" class="macro">checkstackGCp</a>(<a href="../h_src/57872788.htm" class="localvar">L</a>, 1, <a href="../h_src/57872652.htm" class="localvar">func</a>);  <a  class="comments">/* space for metamethod */</a>
+<a href="../h_aa/57630384.htm" class=function>luaF_close</a>                                       lfunc.c
+   227 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57630384.htm" class="function">luaF_close</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57831444.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57831308.htm" class="localvar">level</a>, int <a href="../h_src/57831172.htm" class="localvar">status</a>, int <a href="../h_src/57831036.htm" class="localvar">yy</a>) {
+   234 :    <a href="../h_src/57831308.htm" class="localvar">level</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57831444.htm" class="localvar">L</a>, <a href="../h_src/57830900.htm" class="localvar">levelrel</a>);
+<a href="../h_aa/57630452.htm" class=function>luaF_closeupval</a>                                  lfunc.c
+   196 :    while ((<a href="../h_src/57832532.htm" class="localvar">uv</a> = <a href="../h_src/57832804.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642216.htm" class="variable">openupval</a>) != NULL &amp;&amp; (<a href="../h_src/57832396.htm" class="localvar">upl</a> = <a href="../h_src/57631404.htm" class="macro">uplevel</a>(<a href="../h_src/57832532.htm" class="localvar">uv</a>)) &gt;= <a href="../h_src/57832668.htm" class="localvar">level</a>) {
+<a href="../h_aa/57630588.htm" class=function>luaF_findupval</a>                                   lfunc.c
+    91 :    while ((<a href="../h_src/57837020.htm" class="localvar">p</a> = *<a href="../h_src/57837156.htm" class="localvar">pp</a>) != NULL &amp;&amp; <a href="../h_src/57631404.htm" class="macro">uplevel</a>(<a href="../h_src/57837020.htm" class="localvar">p</a>) &gt;= <a href="../h_src/57837292.htm" class="localvar">level</a>) {  <a  class="comments">/* search for it */</a>
+    93 :    if (<a href="../h_src/57631404.htm" class="macro">uplevel</a>(<a href="../h_src/57837020.htm" class="localvar">p</a>) == <a href="../h_src/57837292.htm" class="localvar">level</a>)  <a  class="comments">/* corresponding upvalue? */</a>
+<a href="../h_aa/57635144.htm" class=function>luaG_errormsg</a>                                    ldebug.c
+   811 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57888428.htm" class="localvar">errfunc</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57888564.htm" class="localvar">L</a>, <a href="../h_src/57888564.htm" class="localvar">L</a>-&gt;<a href="../h_src/57641604.htm" class="variable">errfunc</a>);
+<a href="../h_aa/57497848.htm" class=function>luaT_callTMres</a>                                   ltm.c
+   132 :    <a href="../h_src/58085816.htm" class="localvar">res</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/58086360.htm" class="localvar">L</a>, <a href="../h_src/58085680.htm" class="localvar">result</a>);
+<a href="../h_aa/57497304.htm" class=function>luaT_getvarargs</a>                                  ltm.c
+   263 :    <a href="../h_src/57633988.htm" class="macro">checkstackGCp</a>(<a href="../h_src/58077112.htm" class="localvar">L</a>, <a href="../h_src/58076432.htm" class="localvar">nextra</a>, <a href="../h_src/58076840.htm" class="localvar">where</a>);  <a  class="comments">/* ensure stack space */</a><a href="../h_src/57642284.htm" class="variable">stack</a> space */
+<a href="../h_aa/57602640.htm" class=variable>m</a>                                                lapi.c
+   242 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57602912.htm" class="localvar">p</a>, <a href="../h_src/57602776.htm" class="localvar">t</a>, <a href="../h_src/57602640.htm" class="localvar">m</a>;
+<a href="../h_aa/57871564.htm" class=function>moveresults</a>                                      ldo.c
+   459 :    <a href="../h_src/57871292.htm" class="localvar">res</a> = <a href="../h_src/57634260.htm" class="macro">restorestack</a>(<a href="../h_src/57871428.htm" class="localvar">L</a>, <a href="../h_src/57870340.htm" class="localvar">savedres</a>);  <a  class="comments">/* hook can move stack */</a><a href="../h_src/57642284.htm" class="variable">stack</a> */
+<a href="../h_aa/57878364.htm" class=variable>newstack</a>                                         ldo.c
+   215 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57878364.htm" class="localvar">newstack</a>;
+<a href="../h_aa/57605496.htm" class=variable>newtop</a>                                           lapi.c
+   183 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57605632.htm" class="localvar">func</a>, <a href="../h_src/57605496.htm" class="localvar">newtop</a>;
+<a href="../h_aa/57608556.htm" class=variable>o</a>                                                lapi.c
+    98 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57608556.htm" class="localvar">o</a> = <a href="../h_src/57608692.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a> + <a href="../h_src/57608828.htm" class="localvar">idx</a>;
+<a href="../h_aa/57609508.htm" class=variable>o</a>                                                lapi.c
+    63 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57609508.htm" class="localvar">o</a> = <a href="../h_src/57609644.htm" class="localvar">ci</a>-&gt;<a href="../h_src/57651532.htm" class="variable">func</a>.<a href="../h_src/57531984.htm" class="variable">p</a> + <a href="../h_src/57609780.htm" class="localvar">idx</a>;
+<a href="../h_aa/57716716.htm" class=variable>o</a>                                                lapi.c
+  1272 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57716716.htm" class="localvar">o</a>;
+<a href="../h_aa/57722836.htm" class=variable>o</a>                                                lapi.c
+  1057 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57722836.htm" class="localvar">o</a> = <a href="../h_src/57609100.htm" class="function">index2stack</a>(<a href="../h_src/57724060.htm" class="localvar">L</a>, <a href="../h_src/57723652.htm" class="localvar">errfunc</a>);
+<a href="../h_aa/57971292.htm" class=variable>o</a>                                                lgc.c
+   629 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57971292.htm" class="localvar">o</a> = <a href="../h_src/57971564.htm" class="localvar">th</a>-&gt;<a href="../h_src/57642284.htm" class="variable">stack</a>.<a href="../h_src/57531984.htm" class="variable">p</a>;
+<a href="../h_aa/57882784.htm" class=variable>oldtop</a>                                           ldo.c
+    91 :    void <a href="../h_src/57633648.htm" class="function">luaD_seterrorobj</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57883056.htm" class="localvar">L</a>, int <a href="../h_src/57882920.htm" class="localvar">errcode</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57882784.htm" class="localvar">oldtop</a>) {
+<a href="../h_aa/57531984.htm" class=variable>StkIdRel::p</a>                                      lobject.h
+   166 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57531984.htm" class="variable">p</a>;  <a  class="comments">/* actual pointer */</a>
+<a href="../h_aa/57602912.htm" class=variable>p</a>                                                lapi.c
+   242 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57602912.htm" class="localvar">p</a>, <a href="../h_src/57602776.htm" class="localvar">t</a>, <a href="../h_src/57602640.htm" class="localvar">m</a>;
+<a href="../h_aa/57872380.htm" class=variable>p</a>                                                ldo.c
+   414 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57872380.htm" class="localvar">p</a>;
+<a href="../h_aa/57751368.htm" class=variable>pos</a>                                              ldebug.c
+   243 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57751368.htm" class="localvar">pos</a> = NULL;  <a  class="comments">/* to avoid warnings */</a>
+<a href="../h_aa/57752184.htm" class=variable>pos</a>                                              ldebug.c
+   230 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57752184.htm" class="localvar">pos</a> = NULL;  <a  class="comments">/* to avoid warnings */</a>
+<a href="../h_aa/57753272.htm" class=variable>pos</a>                                              ldebug.c
+   196 :    const char *<a href="../h_src/57635892.htm" class="function">luaG_findlocal</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57753680.htm" class="localvar">L</a>, <a href="../h_src/57537764.htm" class="type">CallInfo</a> *<a href="../h_src/57753544.htm" class="localvar">ci</a>, int <a href="../h_src/57753408.htm" class="localvar">n</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> *<a href="../h_src/57753272.htm" class="localvar">pos</a>) {
+<a href="../h_aa/57753952.htm" class=variable>pos</a>                                              ldebug.c
+   184 :    static const char *<a href="../h_src/57754360.htm" class="function">findvararg</a> (<a href="../h_src/57537764.htm" class="type">CallInfo</a> *<a href="../h_src/57754224.htm" class="localvar">ci</a>, int <a href="../h_src/57754088.htm" class="localvar">n</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> *<a href="../h_src/57753952.htm" class="localvar">pos</a>) {
+<a href="../h_aa/57868300.htm" class=function>precallC</a>                                         ldo.c
+   520 :    <a href="../h_src/57633988.htm" class="macro">checkstackGCp</a>(<a href="../h_src/57868164.htm" class="localvar">L</a>, <a href="../h_src/57442688.htm" class="macro">LUA_MINSTACK</a>, <a href="../h_src/57868028.htm" class="localvar">func</a>);  <a  class="comments">/* ensure minimum stack size */</a><a href="../h_src/57642284.htm" class="variable">stack</a> size */
+<a href="../h_aa/58057460.htm" class=variable>ra</a>                                               lvm.c
+   206 :    static int <a href="../h_src/58057732.htm" class="function">forprep</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58057596.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58057460.htm" class="localvar">ra</a>) {
+<a href="../h_aa/58138148.htm" class=variable>ra</a>                                               lvm.c
+  1651 :    <a href="../h_src/58191596.htm" class="macro">op_orderI</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58193228.htm" class="macro">l_gti</a>, <a href="../h_src/57539056.htm" class="macro">luai_numgt</a>, 1, <a href="../h_src/57499548.htm" class="variable">TM_LT</a>);
+<a href="../h_aa/58139100.htm" class=variable>ra</a>                                               lvm.c
+  1647 :    <a href="../h_src/58191596.htm" class="macro">op_orderI</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58193364.htm" class="macro">l_lei</a>, <a href="../h_src/57539192.htm" class="macro">luai_numle</a>, 0, <a href="../h_src/57499480.htm" class="variable">TM_LE</a>);
+<a href="../h_aa/58140052.htm" class=variable>ra</a>                                               lvm.c
+  1643 :    <a href="../h_src/58191596.htm" class="macro">op_orderI</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58193500.htm" class="macro">l_lti</a>, <a href="../h_src/57539328.htm" class="macro">luai_numlt</a>, 0, <a href="../h_src/57499548.htm" class="variable">TM_LT</a>);
+<a href="../h_aa/58140596.htm" class=variable>ra</a>                                               lvm.c
+  1630 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58140596.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58141140.htm" class=variable>ra</a>                                               lvm.c
+  1622 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58141140.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58141956.htm" class=variable>ra</a>                                               lvm.c
+  1618 :    <a href="../h_src/58191732.htm" class="macro">op_order</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58193364.htm" class="macro">l_lei</a>, <a href="../h_src/58207440.htm" class="function">LEnum</a>, <a href="../h_src/58205808.htm" class="function">lessequalothers</a>);
+<a href="../h_aa/58142772.htm" class=variable>ra</a>                                               lvm.c
+  1614 :    <a href="../h_src/58191732.htm" class="macro">op_order</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58193500.htm" class="macro">l_lti</a>, <a href="../h_src/58208120.htm" class="function">LTnum</a>, <a href="../h_src/58206760.htm" class="function">lessthanothers</a>);
+<a href="../h_aa/58143316.htm" class=variable>ra</a>                                               lvm.c
+  1606 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58143316.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58143452.htm" class=variable>ra</a>                                               lvm.c
+  1596 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58143452.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58143588.htm" class=variable>ra</a>                                               lvm.c
+  1591 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58143588.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58143860.htm" class=variable>ra</a>                                               lvm.c
+  1583 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58143860.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58143996.htm" class=variable>ra</a>                                               lvm.c
+  1578 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58143996.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58144268.htm" class=variable>ra</a>                                               lvm.c
+  1569 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58144268.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58144812.htm" class=variable>ra</a>                                               lvm.c
+  1558 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58144812.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58145628.htm" class=variable>ra</a>                                               lvm.c
+  1543 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58145628.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58146444.htm" class=variable>ra</a>                                               lvm.c
+  1533 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58146444.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58147260.htm" class=variable>ra</a>                                               lvm.c
+  1523 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58147260.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58147940.htm" class=variable>ra</a>                                               lvm.c
+  1513 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58147940.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58148756.htm" class=variable>ra</a>                                               lvm.c
+  1509 :    <a href="../h_src/58191868.htm" class="macro">op_bitwise</a>(L, <a href="../h_src/57610596.htm" class="function">luaV_shiftl</a>);
+<a href="../h_aa/58149572.htm" class=variable>ra</a>                                               lvm.c
+  1505 :    <a href="../h_src/58191868.htm" class="macro">op_bitwise</a>(L, <a href="../h_src/57611888.htm" class="macro">luaV_shiftr</a>);
+<a href="../h_aa/58150388.htm" class=variable>ra</a>                                               lvm.c
+  1501 :    <a href="../h_src/58191868.htm" class="macro">op_bitwise</a>(L, <a href="../h_src/58193636.htm" class="macro">l_bxor</a>);
+<a href="../h_aa/58151204.htm" class=variable>ra</a>                                               lvm.c
+  1497 :    <a href="../h_src/58191868.htm" class="macro">op_bitwise</a>(L, <a href="../h_src/58193772.htm" class="macro">l_bor</a>);
+<a href="../h_aa/58152020.htm" class=variable>ra</a>                                               lvm.c
+  1493 :    <a href="../h_src/58191868.htm" class="macro">op_bitwise</a>(L, <a href="../h_src/58193908.htm" class="macro">l_band</a>);
+<a href="../h_aa/58152972.htm" class=variable>ra</a>                                               lvm.c
+  1489 :    <a href="../h_src/58192276.htm" class="macro">op_arith</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/57610800.htm" class="function">luaV_idiv</a>, <a href="../h_src/57541096.htm" class="macro">luai_numidiv</a>);
+<a href="../h_aa/58154060.htm" class=variable>ra</a>                                               lvm.c
+  1484 :    <a href="../h_src/58192684.htm" class="macro">op_arithf</a>(L, <a href="../h_src/57540824.htm" class="macro">luai_numdiv</a>);
+<a href="../h_aa/58154876.htm" class=variable>ra</a>                                               lvm.c
+  1480 :    <a href="../h_src/58192684.htm" class="macro">op_arithf</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/57540280.htm" class="macro">luai_numpow</a>);
+<a href="../h_aa/58155828.htm" class=variable>ra</a>                                               lvm.c
+  1476 :    <a href="../h_src/58192276.htm" class="macro">op_arith</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/57610732.htm" class="function">luaV_mod</a>, <a href="../h_src/57610664.htm" class="function">luaV_modf</a>);
+<a href="../h_aa/58157052.htm" class=variable>ra</a>                                               lvm.c
+  1471 :    <a href="../h_src/58192276.htm" class="macro">op_arith</a>(L, <a href="../h_src/58194044.htm" class="macro">l_muli</a>, <a href="../h_src/57539736.htm" class="macro">luai_nummul</a>);
+<a href="../h_aa/58158276.htm" class=variable>ra</a>                                               lvm.c
+  1467 :    <a href="../h_src/58192276.htm" class="macro">op_arith</a>(L, <a href="../h_src/58194180.htm" class="macro">l_subi</a>, <a href="../h_src/57539872.htm" class="macro">luai_numsub</a>);
+<a href="../h_aa/58159500.htm" class=variable>ra</a>                                               lvm.c
+  1463 :    <a href="../h_src/58192276.htm" class="macro">op_arith</a>(L, <a href="../h_src/58194316.htm" class="macro">l_addi</a>, <a href="../h_src/57540008.htm" class="macro">luai_numadd</a>);
+<a href="../h_aa/58160452.htm" class=variable>ra</a>                                               lvm.c
+  1453 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58160452.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58161132.htm" class=variable>ra</a>                                               lvm.c
+  1443 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58161132.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58161948.htm" class=variable>ra</a>                                               lvm.c
+  1439 :    <a href="../h_src/58192004.htm" class="macro">op_bitwiseK</a>(L, <a href="../h_src/58193636.htm" class="macro">l_bxor</a>);
+<a href="../h_aa/58162764.htm" class=variable>ra</a>                                               lvm.c
+  1435 :    <a href="../h_src/58192004.htm" class="macro">op_bitwiseK</a>(L, <a href="../h_src/58193772.htm" class="macro">l_bor</a>);
+<a href="../h_aa/58163580.htm" class=variable>ra</a>                                               lvm.c
+  1431 :    <a href="../h_src/58192004.htm" class="macro">op_bitwiseK</a>(L, <a href="../h_src/58193908.htm" class="macro">l_band</a>);
+<a href="../h_aa/58164532.htm" class=variable>ra</a>                                               lvm.c
+  1427 :    <a href="../h_src/58192140.htm" class="macro">op_arithK</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/57610800.htm" class="function">luaV_idiv</a>, <a href="../h_src/57541096.htm" class="macro">luai_numidiv</a>);
+<a href="../h_aa/58165620.htm" class=variable>ra</a>                                               lvm.c
+  1422 :    <a href="../h_src/58192548.htm" class="macro">op_arithfK</a>(L, <a href="../h_src/57540824.htm" class="macro">luai_numdiv</a>);
+<a href="../h_aa/58166436.htm" class=variable>ra</a>                                               lvm.c
+  1418 :    <a href="../h_src/58192548.htm" class="macro">op_arithfK</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/57540280.htm" class="macro">luai_numpow</a>);
+<a href="../h_aa/58167388.htm" class=variable>ra</a>                                               lvm.c
+  1414 :    <a href="../h_src/58192140.htm" class="macro">op_arithK</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/57610732.htm" class="function">luaV_mod</a>, <a href="../h_src/57610664.htm" class="function">luaV_modf</a>);
+<a href="../h_aa/58168612.htm" class=variable>ra</a>                                               lvm.c
+  1409 :    <a href="../h_src/58192140.htm" class="macro">op_arithK</a>(L, <a href="../h_src/58194044.htm" class="macro">l_muli</a>, <a href="../h_src/57539736.htm" class="macro">luai_nummul</a>);
+<a href="../h_aa/58169836.htm" class=variable>ra</a>                                               lvm.c
+  1405 :    <a href="../h_src/58192140.htm" class="macro">op_arithK</a>(L, <a href="../h_src/58194180.htm" class="macro">l_subi</a>, <a href="../h_src/57539872.htm" class="macro">luai_numsub</a>);
+<a href="../h_aa/58171060.htm" class=variable>ra</a>                                               lvm.c
+  1401 :    <a href="../h_src/58192140.htm" class="macro">op_arithK</a>(L, <a href="../h_src/58194316.htm" class="macro">l_addi</a>, <a href="../h_src/57540008.htm" class="macro">luai_numadd</a>);
+<a href="../h_aa/58172420.htm" class=variable>ra</a>                                               lvm.c
+  1397 :    <a href="../h_src/58192956.htm" class="macro">op_arithI</a>(L, <a href="../h_src/58194316.htm" class="macro">l_addi</a>, <a href="../h_src/57540008.htm" class="macro">luai_numadd</a>);
+<a href="../h_aa/58173644.htm" class=variable>ra</a>                                               lvm.c
+  1383 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58173644.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58174460.htm" class=variable>ra</a>                                               lvm.c
+  1364 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58174460.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58175412.htm" class=variable>ra</a>                                               lvm.c
+  1351 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58175412.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58176500.htm" class=variable>ra</a>                                               lvm.c
+  1336 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58176500.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58177452.htm" class=variable>ra</a>                                               lvm.c
+  1321 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58177452.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58179356.htm" class=variable>ra</a>                                               lvm.c
+  1295 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58179356.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58180444.htm" class=variable>ra</a>                                               lvm.c
+  1280 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58180444.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58181396.htm" class=variable>ra</a>                                               lvm.c
+  1265 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58181396.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58182348.htm" class=variable>ra</a>                                               lvm.c
+  1252 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58182348.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58182892.htm" class=variable>ra</a>                                               lvm.c
+  1245 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58182892.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58183436.htm" class=variable>ra</a>                                               lvm.c
+  1239 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58183436.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58183708.htm" class=variable>ra</a>                                               lvm.c
+  1231 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58183708.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58183844.htm" class=variable>ra</a>                                               lvm.c
+  1226 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58183844.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58183980.htm" class=variable>ra</a>                                               lvm.c
+  1220 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58183980.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58184116.htm" class=variable>ra</a>                                               lvm.c
+  1215 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58184116.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58184660.htm" class=variable>ra</a>                                               lvm.c
+  1208 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58184660.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58185204.htm" class=variable>ra</a>                                               lvm.c
+  1202 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58185204.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58185612.htm" class=variable>ra</a>                                               lvm.c
+  1196 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58185612.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58186020.htm" class=variable>ra</a>                                               lvm.c
+  1190 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58186020.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58186428.htm" class=variable>ra</a>                                               lvm.c
+  1185 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58186428.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58194452.htm" class=variable>ra</a>                                               lvm.c
+   856 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58194452.htm" class="localvar">ra</a> = <a href="../h_src/58196220.htm" class="localvar">base</a> + <a href="../h_src/57694072.htm" class="macro">GETARG_A</a>(<a href="../h_src/58196084.htm" class="localvar">inst</a>);
+<a href="../h_aa/58197444.htm" class=variable>ra</a>                                               lvm.c
+   789 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58197444.htm" class="localvar">ra</a>) {
+<a href="../h_aa/58201184.htm" class=variable>ra</a>                                               lvm.c
+   685 :    void <a href="../h_src/57610528.htm" class="function">luaV_objlen</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58201320.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58201184.htm" class="localvar">ra</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58201048.htm" class="localvar">rb</a>) {
+<a href="../h_aa/58214988.htm" class=variable>ra</a>                                               lvm.c
+   266 :    static int <a href="../h_src/58215124.htm" class="function">floatforloop</a> (<a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58214988.htm" class="localvar">ra</a>) {
+<a href="../h_aa/58353564.htm" class=variable>ra</a>                                               lvm.c
+  1879 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58353564.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58353836.htm" class=variable>ra</a>                                               lvm.c
+  1872 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58353836.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58354788.htm" class=variable>ra</a>                                               lvm.c
+  1848 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58354788.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58355196.htm" class=variable>ra</a>                                               lvm.c
+  1840 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58355196.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58355332.htm" class=variable>ra</a>                                               lvm.c
+  1823 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58355332.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58355468.htm" class=variable>ra</a>                                               lvm.c
+  1813 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58355468.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58355604.htm" class=variable>ra</a>                                               lvm.c
+  1806 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58355604.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58356556.htm" class=variable>ra</a>                                               lvm.c
+  1787 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58356556.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58356964.htm" class=variable>ra</a>                                               lvm.c
+  1771 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58356964.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58357236.htm" class=variable>ra</a>                                               lvm.c
+  1759 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58357236.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58357508.htm" class=variable>ra</a>                                               lvm.c
+  1742 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58357508.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58357916.htm" class=variable>ra</a>                                               lvm.c
+  1719 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58357916.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58358596.htm" class=variable>ra</a>                                               lvm.c
+  1693 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58358596.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58359140.htm" class=variable>ra</a>                                               lvm.c
+  1676 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58359140.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58359820.htm" class=variable>ra</a>                                               lvm.c
+  1665 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58359820.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58360228.htm" class=variable>ra</a>                                               lvm.c
+  1659 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58360228.htm" class="localvar">ra</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+<a href="../h_aa/58361180.htm" class=variable>ra</a>                                               lvm.c
+  1655 :    <a href="../h_src/58191596.htm" class="macro">op_orderI</a>(<a href="../h_src/58188196.htm" class="localvar">L</a>, <a href="../h_src/58193092.htm" class="macro">l_gei</a>, <a href="../h_src/57538920.htm" class="macro">luai_numge</a>, 1, <a href="../h_src/57499480.htm" class="variable">TM_LE</a>);
+<a href="../h_aa/57880268.htm" class=function>relstack</a>                                         ldo.c
+   171 :    <a href="../h_src/57879860.htm" class="localvar">up</a>-&gt;<a href="../h_src/57510564.htm" class="variable">v</a>.<a href="../h_src/57510700.htm" class="variable">offset</a> = <a href="../h_src/57634396.htm" class="macro">savestack</a>(<a href="../h_src/57880132.htm" class="localvar">L</a>, <a href="../h_src/57631404.htm" class="macro">uplevel</a>(<a href="../h_src/57879860.htm" class="localvar">up</a>));
+<a href="../h_aa/57871292.htm" class=variable>res</a>                                              ldo.c
+   433 :    <a href="../h_src/57545312.htm" class="macro">l_sinline</a> void <a href="../h_src/57871564.htm" class="function">moveresults</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57871428.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57871292.htm" class="localvar">res</a>, int <a href="../h_src/57871156.htm" class="localvar">nres</a>, int <a href="../h_src/57871020.htm" class="localvar">wanted</a>) {
+<a href="../h_aa/57914920.htm" class=variable>res</a>                                              lobject.c
+   127 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57914920.htm" class="localvar">res</a>) {
+<a href="../h_aa/58081056.htm" class=variable>res</a>                                              ltm.c
+   185 :    int <a href="../h_src/58081192.htm" class="localvar">flip</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58081056.htm" class="localvar">res</a>, <a href="../h_src/57499004.htm" class="type">TMS</a> <a href="../h_src/58080920.htm" class="localvar">event</a>) {
+<a href="../h_aa/58081872.htm" class=variable>res</a>                                              ltm.c
+   176 :    int <a href="../h_src/58082008.htm" class="localvar">flip</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58081872.htm" class="localvar">res</a>, <a href="../h_src/57499004.htm" class="type">TMS</a> <a href="../h_src/58081736.htm" class="localvar">event</a>) {
+<a href="../h_aa/58082960.htm" class=variable>res</a>                                              ltm.c
+   149 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58082960.htm" class="localvar">res</a>, <a href="../h_src/57499004.htm" class="type">TMS</a> <a href="../h_src/58082824.htm" class="localvar">event</a>) {
+<a href="../h_aa/58083776.htm" class=variable>res</a>                                              ltm.c
+   138 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58083776.htm" class="localvar">res</a>, <a href="../h_src/57499004.htm" class="type">TMS</a> <a href="../h_src/58083640.htm" class="localvar">event</a>) {
+<a href="../h_aa/58085816.htm" class=variable>res</a>                                              ltm.c
+   120 :    const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58085952.htm" class="localvar">p2</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58085816.htm" class="localvar">res</a>) {
+<a href="../h_aa/58145764.htm" class=variable>result</a>                                           lvm.c
+  1538 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58145764.htm" class="localvar">result</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58146308.htm" class="localvar">pi</a>);
+<a href="../h_aa/58146580.htm" class=variable>result</a>                                           lvm.c
+  1528 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58146580.htm" class="localvar">result</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58147124.htm" class="localvar">pi</a>);
+<a href="../h_aa/58147396.htm" class=variable>result</a>                                           lvm.c
+  1517 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58147396.htm" class="localvar">result</a> = <a href="../h_src/58191460.htm" class="macro">RA</a>(<a href="../h_src/58147804.htm" class="localvar">pi</a>);
+<a href="../h_aa/57602776.htm" class=variable>t</a>                                                lapi.c
+   242 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57602912.htm" class="localvar">p</a>, <a href="../h_src/57602776.htm" class="localvar">t</a>, <a href="../h_src/57602640.htm" class="localvar">m</a>;
+<a href="../h_aa/57830764.htm" class=variable>tbc</a>                                              lfunc.c
+   231 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57830764.htm" class="localvar">tbc</a> = <a href="../h_src/57831444.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642148.htm" class="variable">tbclist</a>.<a href="../h_src/57531984.htm" class="variable">p</a>;  <a  class="comments">/* get variable index */</a>
+<a href="../h_aa/57831580.htm" class=variable>tbc</a>                                              lfunc.c
+   214 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57831580.htm" class="localvar">tbc</a> = <a href="../h_src/57831716.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642148.htm" class="variable">tbclist</a>.<a href="../h_src/57531984.htm" class="variable">p</a>;
+<a href="../h_aa/57604408.htm" class=variable>to</a>                                               lapi.c
+   227 :    <a href="../h_src/57545312.htm" class="macro">l_sinline</a> void <a href="../h_src/57604816.htm" class="function">reverse</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/57604680.htm" class="localvar">L</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57604544.htm" class="localvar">from</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57604408.htm" class="localvar">to</a>) {
+<a href="../h_aa/57836204.htm" class=variable>top</a>                                              lfunc.c
+   108 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57836204.htm" class="localvar">top</a> = <a href="../h_src/57836748.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>;
+<a href="../h_aa/57868572.htm" class=variable>top</a>                                              ldo.c
+   503 :    int <a href="../h_src/57868708.htm" class="localvar">mask</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57868572.htm" class="localvar">top</a>) {
+<a href="../h_aa/58082552.htm" class=variable>top</a>                                              ltm.c
+   168 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58082552.htm" class="localvar">top</a> = <a href="../h_src/58082688.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>;
+<a href="../h_aa/58195132.htm" class=variable>top</a>                                              lvm.c
+   843 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58195132.htm" class="localvar">top</a> = <a href="../h_src/58196492.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a> - 1;  <a  class="comments">/* top when 'luaT_tryconcatTM' was called */</a>
+<a href="../h_aa/58202680.htm" class=variable>top</a>                                              lvm.c
+   642 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58202680.htm" class="localvar">top</a> = <a href="../h_src/58202952.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>;
+<a href="../h_aa/58203632.htm" class=variable>top</a>                                              lvm.c
+   624 :    static void <a href="../h_src/58203768.htm" class="function">copy2buff</a> (<a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58203632.htm" class="localvar">top</a>, int <a href="../h_src/58203496.htm" class="localvar">n</a>, char *<a href="../h_src/58203360.htm" class="localvar">buff</a>) {
+<a href="../h_aa/57832396.htm" class=variable>upl</a>                                              lfunc.c
+   195 :    <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/57832396.htm" class="localvar">upl</a>;  <a  class="comments">/* stack index pointed by 'uv' */</a>
+<a href="../h_aa/58213764.htm" class=variable>val</a>                                              lvm.c
+   287 :    void <a href="../h_src/57611140.htm" class="function">luaV_finishget</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58214172.htm" class="localvar">L</a>, const <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58214036.htm" class="localvar">t</a>, <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58213900.htm" class="localvar">key</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58213764.htm" class="localvar">val</a>,
+<a href="../h_aa/58076840.htm" class=variable>where</a>                                            ltm.c
+   258 :    void <a href="../h_src/57497304.htm" class="function">luaT_getvarargs</a> (<a href="../h_src/57444252.htm" class="type">lua_State</a> *<a href="../h_src/58077112.htm" class="localvar">L</a>, <a href="../h_src/57537764.htm" class="type">CallInfo</a> *<a href="../h_src/58076976.htm" class="localvar">ci</a>, <a href="../h_src/57532188.htm" class="type">StkId</a> <a href="../h_src/58076840.htm" class="localvar">where</a>, int <a href="../h_src/58076704.htm" class="localvar">wanted</a>) {
+</pre>
+<h4><a class="legend">Table lists all symbols that directly use type StkId</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

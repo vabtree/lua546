@@ -1,0 +1,54 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>l_floatatt</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57451868.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57451868.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57451868.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57451868.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/143241756.htm" class=file>lmathlib.c</a>
+   255 :    #if <a href="../h_src/143231216.htm" class="macro">FIGS</a> &gt; 64
+   458 :    #if <a href="../h_src/143231216.htm" class="macro">FIGS</a> &lt;= 32
+<a href="../h_aa/58062016.htm" class=file>lvm.c</a>
+    67 :    #if ((((<a href="../h_src/57450100.htm" class="macro">LUA_MAXINTEGER</a> &gt;&gt; (<a href="../h_src/58061268.htm" class="macro">NBM</a> / 4)) &gt;&gt; (<a href="../h_src/58061268.htm" class="macro">NBM</a> / 4)) &gt;&gt; (<a href="../h_src/58061268.htm" class="macro">NBM</a> / 4)) \
+    68 :    &gt;&gt; (<a href="../h_src/58061268.htm" class="macro">NBM</a> - (3 * (<a href="../h_src/58061268.htm" class="macro">NBM</a> / 4))))  &gt;  0
+<a href="../h_aa/143225844.htm" class=function>I2d</a>                                              lmathlib.c
+   493 :    <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/143225572.htm" class="localvar">h</a> = (<a href="../h_src/57442144.htm" class="type">lua_Number</a>)<a href="../h_src/143230400.htm" class="macro">trim32</a>(<a href="../h_src/143225708.htm" class="localvar">x</a>.<a href="../h_src/143230604.htm" class="variable">h</a>) * <a href="../h_src/143225980.htm" class="macro">shiftHI</a>;
+   494 :    <a href="../h_src/57442144.htm" class="type">lua_Number</a> <a href="../h_src/143225436.htm" class="localvar">l</a> = (<a href="../h_src/57442144.htm" class="type">lua_Number</a>)(<a href="../h_src/143230400.htm" class="macro">trim32</a>(<a href="../h_src/143225708.htm" class="localvar">x</a>.<a href="../h_src/143230536.htm" class="variable">l</a>) &gt;&gt; <a href="../h_src/143226116.htm" class="macro">shiftLOW</a>);
+   495 :    return (<a href="../h_src/143225572.htm" class="localvar">h</a> + <a href="../h_src/143225436.htm" class="localvar">l</a>) * <a href="../h_src/143226252.htm" class="macro">scaleFIG</a>;
+<a href="../h_aa/57805224.htm" class=function>luaK_numberK</a>                                     lcode.c
+   609 :    const int <a href="../h_src/57804408.htm" class="localvar">nbm</a> = <a href="../h_src/57451868.htm" class="macro">l_floatatt</a>(MANT_DIG);
+<a href="../h_aa/143300780.htm" class=function>num2straux</a>                                       lstrlib.c
+  1041 :    <a href="../h_src/143300100.htm" class="localvar">m</a> = <a href="../h_src/143301596.htm" class="function">adddigit</a>(<a href="../h_src/143300644.htm" class="localvar">buff</a>, <a href="../h_src/143299964.htm" class="localvar">n</a>++, <a href="../h_src/143300100.htm" class="localvar">m</a> * (1 &lt;&lt; <a href="../h_src/143301732.htm" class="macro">L_NBFD</a>));  <a  class="comments">/* add first digit */</a>
+  1042 :    <a href="../h_src/143300236.htm" class="localvar">e</a> -= <a href="../h_src/143301732.htm" class="macro">L_NBFD</a>;  <a  class="comments">/* this digit goes before the radix point */</a>
+<a href="../h_aa/143291804.htm" class=function>str_format</a>                                       lstrlib.c
+  1323 :    <a href="../h_src/143290444.htm" class="localvar">maxitem</a> = <a href="../h_src/143298740.htm" class="macro">MAX_ITEMF</a>;  <a  class="comments">/* extra space for '%f' */</a>
+</pre>
+<h4><a class="legend">Table lists functions that directly use l_floatatt</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

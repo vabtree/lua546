@@ -1,0 +1,120 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>BinOpr</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57672720.htm" class="type" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57672720.htm" class="type" target="_self">Usage</a></li>
+<li><a href="../h_src/57672720.htm" class="type" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57672720.htm" class="type" target="_self">Used By</a></li>
+<li><a href="../h_rx/57672720.htm" class="type" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Used In</h4>
+<pre><a href="../h_aa/57784348.htm" class=variable>baser</a>                                            lcode.c
+  1357 :    <a href="../h_src/57545312.htm" class="macro">l_sinline</a> <a href="../h_src/57684756.htm" class="type">OpCode</a> <a href="../h_src/57784620.htm" class="function">binopr2op</a> (<a href="../h_src/57672584.htm" class="type">BinOpr</a> <a href="../h_src/57784484.htm" class="localvar">opr</a>, <a href="../h_src/57672584.htm" class="type">BinOpr</a> <a href="../h_src/57784348.htm" class="localvar">baser</a>, <a href="../h_src/57684756.htm" class="type">OpCode</a> <a href="../h_src/57784212.htm" class="localvar">base</a>) {
+<a href="../h_aa/57672584.htm" class=type>BinOpr</a>                                           lcode.h
+    26 :    typedef enum <a href="../h_src/57672720.htm" class="type">BinOpr</a> {
+<a href="../h_aa/58011860.htm" class=function>getbinopr</a>                                        lparser.c
+  1206 :    static <a href="../h_src/57672584.htm" class="type">BinOpr</a> <a href="../h_src/58011860.htm" class="function">getbinopr</a> (int <a href="../h_src/58011724.htm" class="localvar">op</a>) {
+<a href="../h_aa/57669048.htm" class=function>luaK_posfix</a>                                      lcode.c
+  1768 :    <a href="../h_src/57766668.htm" class="localvar">opr</a> = <a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57672584.htm" class="type">BinOpr</a>, (<a href="../h_src/57766668.htm" class="localvar">opr</a> - <a href="../h_src/57673060.htm" class="variable">OPR_GT</a>) + <a href="../h_src/57673264.htm" class="variable">OPR_LT</a>);
+<a href="../h_aa/58009888.htm" class=variable>nextop</a>                                           lparser.c
+  1276 :    <a href="../h_src/57672584.htm" class="type">BinOpr</a> <a href="../h_src/58009888.htm" class="localvar">nextop</a>;
+<a href="../h_aa/57768300.htm" class=variable>op</a>                                               lcode.c
+  1633 :    void <a href="../h_src/57669116.htm" class="function">luaK_infix</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57768436.htm" class="localvar">fs</a>, <a href="../h_src/57672584.htm" class="type">BinOpr</a> <a href="../h_src/57768300.htm" class="localvar">op</a>, <a href="../h_src/57679384.htm" class="type">expdesc</a> *<a href="../h_src/57768164.htm" class="localvar">v</a>) {
+<a href="../h_aa/57773468.htm" class=variable>op</a>                                               lcode.c
+  1513 :    static void <a href="../h_src/57773740.htm" class="function">codecommutative</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57773604.htm" class="localvar">fs</a>, <a href="../h_src/57672584.htm" class="type">BinOpr</a> <a href="../h_src/57773468.htm" class="localvar">op</a>,
+<a href="../h_aa/58010432.htm" class=variable>op</a>                                               lparser.c
+  1261 :    <a href="../h_src/57672584.htm" class="type">BinOpr</a> <a href="../h_src/58010432.htm" class="localvar">op</a>;
+<a href="../h_aa/57766668.htm" class=variable>opr</a>                                              lcode.c
+  1702 :    void <a href="../h_src/57669048.htm" class="function">luaK_posfix</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57766804.htm" class="localvar">fs</a>, <a href="../h_src/57672584.htm" class="type">BinOpr</a> <a href="../h_src/57766668.htm" class="localvar">opr</a>,
+<a href="../h_aa/57770204.htm" class=variable>opr</a>                                              lcode.c
+  1581 :    static void <a href="../h_src/57770476.htm" class="function">codeeq</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57770340.htm" class="localvar">fs</a>, <a href="../h_src/57672584.htm" class="type">BinOpr</a> <a href="../h_src/57770204.htm" class="localvar">opr</a>, <a href="../h_src/57679384.htm" class="type">expdesc</a> *<a href="../h_src/57770068.htm" class="localvar">e1</a>, <a href="../h_src/57679384.htm" class="type">expdesc</a> *<a href="../h_src/57769932.htm" class="localvar">e2</a>) {
+<a href="../h_aa/57771564.htm" class=variable>opr</a>                                              lcode.c
+  1549 :    static void <a href="../h_src/57771836.htm" class="function">codeorder</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57771700.htm" class="localvar">fs</a>, <a href="../h_src/57672584.htm" class="type">BinOpr</a> <a href="../h_src/57771564.htm" class="localvar">opr</a>, <a href="../h_src/57679384.htm" class="type">expdesc</a> *<a href="../h_src/57771428.htm" class="localvar">e1</a>, <a href="../h_src/57679384.htm" class="type">expdesc</a> *<a href="../h_src/57771292.htm" class="localvar">e2</a>) {
+<a href="../h_aa/57772516.htm" class=variable>opr</a>                                              lcode.c
+  1531 :    static void <a href="../h_src/57772788.htm" class="function">codebitwise</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57772652.htm" class="localvar">fs</a>, <a href="../h_src/57672584.htm" class="type">BinOpr</a> <a href="../h_src/57772516.htm" class="localvar">opr</a>,
+<a href="../h_aa/57774420.htm" class=variable>opr</a>                                              lcode.c
+  1499 :    static void <a href="../h_src/57774692.htm" class="function">codearith</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57774556.htm" class="localvar">fs</a>, <a href="../h_src/57672584.htm" class="type">BinOpr</a> <a href="../h_src/57774420.htm" class="localvar">opr</a>,
+<a href="../h_aa/57775372.htm" class=variable>opr</a>                                              lcode.c
+  1487 :    static void <a href="../h_src/57775644.htm" class="function">codebinNoK</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57775508.htm" class="localvar">fs</a>, <a href="../h_src/57672584.htm" class="type">BinOpr</a> <a href="../h_src/57775372.htm" class="localvar">opr</a>,
+<a href="../h_aa/57778500.htm" class=variable>opr</a>                                              lcode.c
+  1448 :    static void <a href="../h_src/57778772.htm" class="function">codebinK</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57778636.htm" class="localvar">fs</a>, <a href="../h_src/57672584.htm" class="type">BinOpr</a> <a href="../h_src/57778500.htm" class="localvar">opr</a>,
+<a href="../h_aa/57780812.htm" class=variable>opr</a>                                              lcode.c
+  1421 :    static void <a href="../h_src/57781084.htm" class="function">codebinexpval</a> (<a href="../h_src/57674556.htm" class="type">FuncState</a> *<a href="../h_src/57780948.htm" class="localvar">fs</a>, <a href="../h_src/57672584.htm" class="type">BinOpr</a> <a href="../h_src/57780812.htm" class="localvar">opr</a>,
+<a href="../h_aa/57783668.htm" class=variable>opr</a>                                              lcode.c
+  1377 :    <a href="../h_src/57545312.htm" class="macro">l_sinline</a> <a href="../h_src/57499004.htm" class="type">TMS</a> <a href="../h_src/57783804.htm" class="function">binopr2TM</a> (<a href="../h_src/57672584.htm" class="type">BinOpr</a> <a href="../h_src/57783668.htm" class="localvar">opr</a>) {
+<a href="../h_aa/57784484.htm" class=variable>opr</a>                                              lcode.c
+  1357 :    <a href="../h_src/57545312.htm" class="macro">l_sinline</a> <a href="../h_src/57684756.htm" class="type">OpCode</a> <a href="../h_src/57784620.htm" class="function">binopr2op</a> (<a href="../h_src/57672584.htm" class="type">BinOpr</a> <a href="../h_src/57784484.htm" class="localvar">opr</a>, <a href="../h_src/57672584.htm" class="type">BinOpr</a> <a href="../h_src/57784348.htm" class="localvar">baser</a>, <a href="../h_src/57684756.htm" class="type">OpCode</a> <a href="../h_src/57784212.htm" class="localvar">base</a>) {
+<a href="../h_aa/57674216.htm" class=variable>OPR_ADD</a>                                          lcode.h
+    28 :    <a href="../h_src/57674216.htm" class="variable">OPR_ADD</a>, <a href="../h_src/57674148.htm" class="variable">OPR_SUB</a>, <a href="../h_src/57674080.htm" class="variable">OPR_MUL</a>, <a href="../h_src/57674012.htm" class="variable">OPR_MOD</a>, <a href="../h_src/57673944.htm" class="variable">OPR_POW</a>,
+<a href="../h_aa/57672924.htm" class=variable>OPR_AND</a>                                          lcode.h
+    39 :    <a href="../h_src/57672924.htm" class="variable">OPR_AND</a>, <a href="../h_src/57672856.htm" class="variable">OPR_OR</a>,
+<a href="../h_aa/57673740.htm" class=variable>OPR_BAND</a>                                         lcode.h
+    31 :    <a href="../h_src/57673740.htm" class="variable">OPR_BAND</a>, <a href="../h_src/57673672.htm" class="variable">OPR_BOR</a>, <a href="../h_src/57673604.htm" class="variable">OPR_BXOR</a>,
+<a href="../h_aa/57673672.htm" class=variable>OPR_BOR</a>                                          lcode.h
+    31 :    <a href="../h_src/57673740.htm" class="variable">OPR_BAND</a>, <a href="../h_src/57673672.htm" class="variable">OPR_BOR</a>, <a href="../h_src/57673604.htm" class="variable">OPR_BXOR</a>,
+<a href="../h_aa/57673604.htm" class=variable>OPR_BXOR</a>                                         lcode.h
+    31 :    <a href="../h_src/57673740.htm" class="variable">OPR_BAND</a>, <a href="../h_src/57673672.htm" class="variable">OPR_BOR</a>, <a href="../h_src/57673604.htm" class="variable">OPR_BXOR</a>,
+<a href="../h_aa/57673400.htm" class=variable>OPR_CONCAT</a>                                       lcode.h
+    34 :    <a href="../h_src/57673400.htm" class="variable">OPR_CONCAT</a>,
+<a href="../h_aa/57673876.htm" class=variable>OPR_DIV</a>                                          lcode.h
+    29 :    <a href="../h_src/57673876.htm" class="variable">OPR_DIV</a>, <a href="../h_src/57673808.htm" class="variable">OPR_IDIV</a>,
+<a href="../h_aa/57673332.htm" class=variable>OPR_EQ</a>                                           lcode.h
+    36 :    <a href="../h_src/57673332.htm" class="variable">OPR_EQ</a>, <a href="../h_src/57673264.htm" class="variable">OPR_LT</a>, <a href="../h_src/57673196.htm" class="variable">OPR_LE</a>,
+<a href="../h_aa/57672992.htm" class=variable>OPR_GE</a>                                           lcode.h
+    37 :    <a href="../h_src/57673128.htm" class="variable">OPR_NE</a>, <a href="../h_src/57673060.htm" class="variable">OPR_GT</a>, <a href="../h_src/57672992.htm" class="variable">OPR_GE</a>,
+<a href="../h_aa/57673060.htm" class=variable>OPR_GT</a>                                           lcode.h
+    37 :    <a href="../h_src/57673128.htm" class="variable">OPR_NE</a>, <a href="../h_src/57673060.htm" class="variable">OPR_GT</a>, <a href="../h_src/57672992.htm" class="variable">OPR_GE</a>,
+<a href="../h_aa/57673808.htm" class=variable>OPR_IDIV</a>                                         lcode.h
+    29 :    <a href="../h_src/57673876.htm" class="variable">OPR_DIV</a>, <a href="../h_src/57673808.htm" class="variable">OPR_IDIV</a>,
+<a href="../h_aa/57673196.htm" class=variable>OPR_LE</a>                                           lcode.h
+    36 :    <a href="../h_src/57673332.htm" class="variable">OPR_EQ</a>, <a href="../h_src/57673264.htm" class="variable">OPR_LT</a>, <a href="../h_src/57673196.htm" class="variable">OPR_LE</a>,
+<a href="../h_aa/57673264.htm" class=variable>OPR_LT</a>                                           lcode.h
+    36 :    <a href="../h_src/57673332.htm" class="variable">OPR_EQ</a>, <a href="../h_src/57673264.htm" class="variable">OPR_LT</a>, <a href="../h_src/57673196.htm" class="variable">OPR_LE</a>,
+<a href="../h_aa/57674012.htm" class=variable>OPR_MOD</a>                                          lcode.h
+    28 :    <a href="../h_src/57674216.htm" class="variable">OPR_ADD</a>, <a href="../h_src/57674148.htm" class="variable">OPR_SUB</a>, <a href="../h_src/57674080.htm" class="variable">OPR_MUL</a>, <a href="../h_src/57674012.htm" class="variable">OPR_MOD</a>, <a href="../h_src/57673944.htm" class="variable">OPR_POW</a>,
+<a href="../h_aa/57674080.htm" class=variable>OPR_MUL</a>                                          lcode.h
+    28 :    <a href="../h_src/57674216.htm" class="variable">OPR_ADD</a>, <a href="../h_src/57674148.htm" class="variable">OPR_SUB</a>, <a href="../h_src/57674080.htm" class="variable">OPR_MUL</a>, <a href="../h_src/57674012.htm" class="variable">OPR_MOD</a>, <a href="../h_src/57673944.htm" class="variable">OPR_POW</a>,
+<a href="../h_aa/57673128.htm" class=variable>OPR_NE</a>                                           lcode.h
+    37 :    <a href="../h_src/57673128.htm" class="variable">OPR_NE</a>, <a href="../h_src/57673060.htm" class="variable">OPR_GT</a>, <a href="../h_src/57672992.htm" class="variable">OPR_GE</a>,
+<a href="../h_aa/57672788.htm" class=variable>OPR_NOBINOPR</a>                                     lcode.h
+    40 :    <a href="../h_src/57672788.htm" class="variable">OPR_NOBINOPR</a>
+<a href="../h_aa/57672856.htm" class=variable>OPR_OR</a>                                           lcode.h
+    39 :    <a href="../h_src/57672924.htm" class="variable">OPR_AND</a>, <a href="../h_src/57672856.htm" class="variable">OPR_OR</a>,
+<a href="../h_aa/57673944.htm" class=variable>OPR_POW</a>                                          lcode.h
+    28 :    <a href="../h_src/57674216.htm" class="variable">OPR_ADD</a>, <a href="../h_src/57674148.htm" class="variable">OPR_SUB</a>, <a href="../h_src/57674080.htm" class="variable">OPR_MUL</a>, <a href="../h_src/57674012.htm" class="variable">OPR_MOD</a>, <a href="../h_src/57673944.htm" class="variable">OPR_POW</a>,
+<a href="../h_aa/57673536.htm" class=variable>OPR_SHL</a>                                          lcode.h
+    32 :    <a href="../h_src/57673536.htm" class="variable">OPR_SHL</a>, <a href="../h_src/57673468.htm" class="variable">OPR_SHR</a>,
+<a href="../h_aa/57673468.htm" class=variable>OPR_SHR</a>                                          lcode.h
+    32 :    <a href="../h_src/57673536.htm" class="variable">OPR_SHL</a>, <a href="../h_src/57673468.htm" class="variable">OPR_SHR</a>,
+<a href="../h_aa/57674148.htm" class=variable>OPR_SUB</a>                                          lcode.h
+    28 :    <a href="../h_src/57674216.htm" class="variable">OPR_ADD</a>, <a href="../h_src/57674148.htm" class="variable">OPR_SUB</a>, <a href="../h_src/57674080.htm" class="variable">OPR_MUL</a>, <a href="../h_src/57674012.htm" class="variable">OPR_MOD</a>, <a href="../h_src/57673944.htm" class="variable">OPR_POW</a>,
+<a href="../h_aa/58010976.htm" class=function>subexpr</a>                                          lparser.c
+  1260 :    static <a href="../h_src/57672584.htm" class="type">BinOpr</a> <a href="../h_src/58010976.htm" class="function">subexpr</a> (<a href="../h_src/57700124.htm" class="type">LexState</a> *<a href="../h_src/58010840.htm" class="localvar">ls</a>, <a href="../h_src/57679384.htm" class="type">expdesc</a> *<a href="../h_src/58010704.htm" class="localvar">v</a>, int <a href="../h_src/58010568.htm" class="localvar">limit</a>) {
+</pre>
+<h4><a class="legend">Table lists all symbols that directly use type BinOpr</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

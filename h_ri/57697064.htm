@@ -1,0 +1,58 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>POS_Bx</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57697064.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57697064.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57697064.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57697064.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/58000912.htm" class=function>fixforjump</a>                                       lparser.c
+  1537 :    <a href="../h_src/57692440.htm" class="macro">SETARG_Bx</a>(*<a href="../h_src/58000232.htm" class="localvar">jmp</a>, <a href="../h_src/58000096.htm" class="localvar">offset</a>);
+<a href="../h_aa/57745588.htm" class=function>getobjname</a>                                       ldebug.c
+   569 :    int <a href="../h_src/57738380.htm" class="localvar">b</a> = (<a href="../h_src/57739060.htm" class="localvar">op</a> == <a href="../h_src/57690332.htm" class="variable">OP_LOADK</a>) ? <a href="../h_src/57692576.htm" class="macro">GETARG_Bx</a>(<a href="../h_src/57739196.htm" class="localvar">i</a>)
+<a href="../h_aa/57671224.htm" class=function>luaK_codeABx</a>                                     lcode.c
+   411 :    return <a href="../h_src/57671292.htm" class="function">luaK_code</a>(<a href="../h_src/57814336.htm" class="localvar">fs</a>, <a href="../h_src/57691352.htm" class="macro">CREATE_ABx</a>(<a href="../h_src/57814200.htm" class="localvar">o</a>, <a href="../h_src/57814064.htm" class="localvar">a</a>, <a href="../h_src/57813928.htm" class="localvar">bc</a>));
+<a href="../h_aa/57671156.htm" class=function>luaK_codeAsBx</a>                                    lcode.c
+   422 :    return <a href="../h_src/57671292.htm" class="function">luaK_code</a>(<a href="../h_src/57813792.htm" class="localvar">fs</a>, <a href="../h_src/57691352.htm" class="macro">CREATE_ABx</a>(<a href="../h_src/57813656.htm" class="localvar">o</a>, <a href="../h_src/57813520.htm" class="localvar">a</a>, <a href="../h_src/57813248.htm" class="localvar">b</a>));
+<a href="../h_aa/57610936.htm" class=function>luaV_execute</a>                                     lvm.c
+  1191 :    <a href="../h_src/57442076.htm" class="type">lua_Integer</a> <a href="../h_src/58185884.htm" class="localvar">b</a> = <a href="../h_src/57692032.htm" class="macro">GETARG_sBx</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+  1197 :    int <a href="../h_src/58185476.htm" class="localvar">b</a> = <a href="../h_src/57692032.htm" class="macro">GETARG_sBx</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+  1203 :    <a href="../h_src/57535384.htm" class="type">TValue</a> *<a href="../h_src/58185068.htm" class="localvar">rb</a> = <a href="../h_src/58187788.htm" class="localvar">k</a> + <a href="../h_src/57692576.htm" class="macro">GETARG_Bx</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+  1797 :    <a href="../h_src/58187516.htm" class="localvar">pc</a> -= <a href="../h_src/57692576.htm" class="macro">GETARG_Bx</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);  <a  class="comments">/* jump back */</a>
+  1801 :    <a href="../h_src/58187516.htm" class="localvar">pc</a> -= <a href="../h_src/57692576.htm" class="macro">GETARG_Bx</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);  <a  class="comments">/* jump back */</a>
+  1809 :    <a href="../h_src/58187516.htm" class="localvar">pc</a> += <a href="../h_src/57692576.htm" class="macro">GETARG_Bx</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>) + 1;  <a  class="comments">/* skip the loop */</a>
+  1816 :    <a href="../h_src/58187516.htm" class="localvar">pc</a> += <a href="../h_src/57692576.htm" class="macro">GETARG_Bx</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);
+  1843 :    <a href="../h_src/58187516.htm" class="localvar">pc</a> -= <a href="../h_src/57692576.htm" class="macro">GETARG_Bx</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>);  <a  class="comments">/* jump back */</a>
+  1873 :    <a href="../h_src/57513828.htm" class="type">Proto</a> *<a href="../h_src/58353700.htm" class="localvar">p</a> = <a href="../h_src/58187924.htm" class="localvar">cl</a>-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a>[<a href="../h_src/57692576.htm" class="macro">GETARG_Bx</a>(<a href="../h_src/58186564.htm" class="localvar">i</a>)];
+<a href="../h_aa/143397312.htm" class=function>PrintCode</a>                                        luac.c
+   346 :    int <a href="../h_src/143395816.htm" class="localvar">bx</a>=<a href="../h_src/57692576.htm" class="macro">GETARG_Bx</a>(<a href="../h_src/143396632.htm" class="localvar">i</a>);
+   349 :    int <a href="../h_src/143395408.htm" class="localvar">sbx</a>=<a href="../h_src/57692032.htm" class="macro">GETARG_sBx</a>(<a href="../h_src/143396632.htm" class="localvar">i</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use POS_Bx</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

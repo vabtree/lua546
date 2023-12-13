@@ -1,0 +1,71 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">Proto::</a>lineinfo</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57514304.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57514304.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57514304.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57514304.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57514304.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/58024712.htm" class=function>close_func</a>                                       lparser.c
+   765 :    <a href="../h_src/57657108.htm" class="macro">luaM_shrinkvector</a>(<a href="../h_src/58024440.htm" class="localvar">L</a>, <a href="../h_src/58024168.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514304.htm" class="variable">lineinfo</a>, <a href="../h_src/58024168.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515528.htm" class="variable">sizelineinfo</a>, <a href="../h_src/58024304.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675508.htm" class="variable">pc</a>, <a href="../h_src/57550412.htm" class="type">ls_byte</a>);
+<a href="../h_aa/58065824.htm" class=function>loadDebug</a>                                        lundump.c
+   230 :    <a href="../h_src/58065552.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514304.htm" class="variable">lineinfo</a> = <a href="../h_src/57495196.htm" class="macro">luaM_newvectorchecked</a>(<a href="../h_src/58065688.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, <a href="../h_src/58065280.htm" class="localvar">n</a>, <a href="../h_src/57550412.htm" class="type">ls_byte</a>);
+<a href="../h_aa/57630996.htm" class=function>luaF_newproto</a>                                    lfunc.c
+   249 :    <a href="../h_src/57830356.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514304.htm" class="variable">lineinfo</a> = NULL;
+<a href="../h_aa/57817260.htm" class=function>savelineinfo</a>                                     lcode.c
+   340 :    <a href="../h_src/57494924.htm" class="macro">luaM_growvector</a>(<a href="../h_src/57817124.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/57816988.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514304.htm" class="variable">lineinfo</a>, <a href="../h_src/57816580.htm" class="localvar">pc</a>, <a href="../h_src/57816988.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515528.htm" class="variable">sizelineinfo</a>, <a href="../h_src/57550412.htm" class="type">ls_byte</a>,
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57886660.htm" class=function>changedline</a>                                      ldebug.c
+   848 :    if (<a href="../h_src/57886524.htm" class="localvar">p</a>-&gt;<a href="../h_src/57514304.htm" class="variable">lineinfo</a> == NULL)  <a  class="comments">/* no debug information? */</a>
+   854 :    int <a href="../h_src/57885844.htm" class="localvar">lineinfo</a> = <a href="../h_src/57886524.htm" class="localvar">p</a>-&gt;<a href="../h_src/57514304.htm" class="variable">lineinfo</a>[++<a href="../h_src/57885980.htm" class="localvar">pc</a>];
+<a href="../h_aa/58024712.htm" class=function>close_func</a>                                       lparser.c
+   765 :    <a href="../h_src/57657108.htm" class="macro">luaM_shrinkvector</a>(<a href="../h_src/58024440.htm" class="localvar">L</a>, <a href="../h_src/58024168.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514304.htm" class="variable">lineinfo</a>, <a href="../h_src/58024168.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515528.htm" class="variable">sizelineinfo</a>, <a href="../h_src/58024304.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675508.htm" class="variable">pc</a>, <a href="../h_src/57550412.htm" class="type">ls_byte</a>);
+<a href="../h_aa/57842664.htm" class=function>dumpDebug</a>                                        ldump.c
+   162 :    <a href="../h_src/57849804.htm" class="macro">dumpVector</a>(<a href="../h_src/57842528.htm" class="localvar">D</a>, <a href="../h_src/57842392.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514304.htm" class="variable">lineinfo</a>, <a href="../h_src/57842120.htm" class="localvar">n</a>);
+<a href="../h_aa/58065824.htm" class=function>loadDebug</a>                                        lundump.c
+   232 :    <a href="../h_src/58074392.htm" class="macro">loadVector</a>(<a href="../h_src/58065688.htm" class="localvar">S</a>, <a href="../h_src/58065552.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514304.htm" class="variable">lineinfo</a>, <a href="../h_src/58065280.htm" class="localvar">n</a>);
+<a href="../h_aa/57630248.htm" class=function>luaF_freeproto</a>                                   lfunc.c
+   271 :    <a href="../h_src/57495604.htm" class="macro">luaM_freearray</a>(<a href="../h_src/57830220.htm" class="localvar">L</a>, <a href="../h_src/57830084.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514304.htm" class="variable">lineinfo</a>, <a href="../h_src/57830084.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515528.htm" class="variable">sizelineinfo</a>);
+<a href="../h_aa/57635960.htm" class=function>luaG_getfuncline</a>                                 ldebug.c
+    84 :    if (<a href="../h_src/57757692.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514304.htm" class="variable">lineinfo</a> == NULL)  <a  class="comments">/* no debug information? */</a>
+    91 :    <a href="../h_src/57757284.htm" class="localvar">baseline</a> += <a href="../h_src/57757692.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514304.htm" class="variable">lineinfo</a>[<a href="../h_src/57757420.htm" class="localvar">basepc</a>];  <a  class="comments">/* correct line */</a>
+<a href="../h_aa/57750212.htm" class=function>nextline</a>                                         ldebug.c
+   283 :    if (<a href="../h_src/57750076.htm" class="localvar">p</a>-&gt;<a href="../h_src/57514304.htm" class="variable">lineinfo</a>[<a href="../h_src/57749804.htm" class="localvar">pc</a>] != <a href="../h_src/57636368.htm" class="macro">ABSLINEINFO</a>)
+   284 :    return <a href="../h_src/57749940.htm" class="localvar">currentline</a> + <a href="../h_src/57750076.htm" class="localvar">p</a>-&gt;<a href="../h_src/57514304.htm" class="variable">lineinfo</a>[<a href="../h_src/57749804.htm" class="localvar">pc</a>];
+<a href="../h_aa/57816376.htm" class=function>removelastlineinfo</a>                               lcode.c
+   356 :    if (<a href="../h_src/57816104.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514304.htm" class="variable">lineinfo</a>[<a href="../h_src/57815968.htm" class="localvar">pc</a>] != <a href="../h_src/57636368.htm" class="macro">ABSLINEINFO</a>) {  <a  class="comments">/* relative line info? */</a>
+   357 :    <a href="../h_src/57816240.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675372.htm" class="variable">previousline</a> -= <a href="../h_src/57816104.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514304.htm" class="variable">lineinfo</a>[<a href="../h_src/57815968.htm" class="localvar">pc</a>];  <a  class="comments">/* correct last line saved */</a>
+<a href="../h_aa/57817260.htm" class=function>savelineinfo</a>                                     lcode.c
+   340 :    <a href="../h_src/57494924.htm" class="macro">luaM_growvector</a>(<a href="../h_src/57817124.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/57816988.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514304.htm" class="variable">lineinfo</a>, <a href="../h_src/57816580.htm" class="localvar">pc</a>, <a href="../h_src/57816988.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515528.htm" class="variable">sizelineinfo</a>, <a href="../h_src/57550412.htm" class="type">ls_byte</a>,
+   342 :    <a href="../h_src/57816988.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514304.htm" class="variable">lineinfo</a>[<a href="../h_src/57816580.htm" class="localvar">pc</a>] = <a href="../h_src/57816716.htm" class="localvar">linedif</a>;
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable lineinfo</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

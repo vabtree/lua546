@@ -1,0 +1,49 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>LUA_MININTEGER</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57449964.htm" class="macro" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/57449964.htm" class="macro" target="_self">Usage</a></li>
+<li><a href="../h_src/57449964.htm" class="macro" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57449964.htm" class="macro" target="_self">Called By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/143295748.htm" class=function>addliteral</a>                                       lstrlib.c
+  1190 :    const char *<a href="../h_src/143294524.htm" class="localvar">format</a> = (<a href="../h_src/143294660.htm" class="localvar">n</a> == <a href="../h_src/57449964.htm" class="macro">LUA_MININTEGER</a>)  <a  class="comments">/* corner case? */</a>
+<a href="../h_aa/58058684.htm" class=function>forlimit</a>                                         lvm.c
+   190 :    *<a href="../h_src/58058140.htm" class="localvar">p</a> = <a href="../h_src/57449964.htm" class="macro">LUA_MININTEGER</a>;  <a  class="comments">/* truncate */</a>
+<a href="../h_aa/58119408.htm" class=function>l_hashfloat</a>                                      ltable.c
+   135 :    if (!<a href="../h_src/57452140.htm" class="macro">lua_numbertointeger</a>(<a href="../h_src/58119272.htm" class="localvar">n</a>, &amp;<a href="../h_src/58119000.htm" class="localvar">ni</a>)) {  <a  class="comments">/* is 'n' inf/-inf/NaN? */</a>
+<a href="../h_aa/57574212.htm" class=function>luaopen_math</a>                                     lmathlib.c
+   759 :    <a href="../h_src/57435140.htm" class="function">lua_pushinteger</a>(<a href="../h_src/143217412.htm" class="localvar">L</a>, <a href="../h_src/57449964.htm" class="macro">LUA_MININTEGER</a>);
+<a href="../h_aa/57611208.htm" class=function>luaV_flttointeger</a>                                lvm.c
+   128 :    return <a href="../h_src/57452140.htm" class="macro">lua_numbertointeger</a>(<a href="../h_src/58059772.htm" class="localvar">f</a>, <a href="../h_src/58060044.htm" class="localvar">p</a>);
+<a href="../h_aa/143237812.htm" class=function>pushnumint</a>                                       lmathlib.c
+    88 :    if (<a href="../h_src/57452140.htm" class="macro">lua_numbertointeger</a>(<a href="../h_src/143237540.htm" class="localvar">d</a>, &amp;<a href="../h_src/143237404.htm" class="localvar">n</a>))  <a  class="comments">/* does 'd' fit in an integer? */</a>
+</pre>
+<h4><a class="legend">Table lists functions that directly use LUA_MININTEGER</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

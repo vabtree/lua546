@@ -1,0 +1,93 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2><a class="descr">TString::</a>tt</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57523620.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57523620.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/57523620.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57523620.htm" class="variable" target="_self">Used By</a></li>
+<li><a href="../h_rx/57523620.htm" class="variable" target="_self">Cross Reference</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57584212.htm" class=function>auxgetstr</a>                                        lapi.c
+   647 :    <a href="../h_src/57524096.htm" class="macro">setsvalue2s</a>(<a href="../h_src/57584076.htm" class="localvar">L</a>, <a href="../h_src/57584076.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57583532.htm" class="localvar">str</a>);
+<a href="../h_aa/57733988.htm" class=function>auxsetstr</a>                                        lapi.c
+   838 :    <a href="../h_src/57524096.htm" class="macro">setsvalue2s</a>(<a href="../h_src/57733852.htm" class="localvar">L</a>, <a href="../h_src/57733852.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57733308.htm" class="localvar">str</a>);  <a  class="comments">/* push 'str' (to make it a TValue) */</a><a href="../h_src/57535384.htm" class="type">TValue</a>) */
+<a href="../h_aa/58203768.htm" class=function>copy2buff</a>                                        lvm.c
+   627 :    <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58203088.htm" class="localvar">l</a> = <a href="../h_src/57522260.htm" class="macro">vslen</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58203632.htm" class="localvar">top</a> - <a href="../h_src/58203496.htm" class="localvar">n</a>));  <a  class="comments">/* length of string being copied */</a>
+<a href="../h_aa/57846200.htm" class=function>dumpString</a>                                       ldump.c
+    96 :    <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/57845792.htm" class="localvar">size</a> = <a href="../h_src/57522396.htm" class="macro">tsslen</a>(<a href="../h_src/57845928.htm" class="localvar">s</a>);
+<a href="../h_aa/57750824.htm" class=function>funcinfo</a>                                         ldebug.c
+   268 :    <a href="../h_src/57750688.htm" class="localvar">ar</a>-&gt;<a href="../h_src/57423444.htm" class="variable">srclen</a> = <a href="../h_src/57522396.htm" class="macro">tsslen</a>(<a href="../h_src/57750348.htm" class="localvar">p</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>);
+<a href="../h_aa/58211588.htm" class=function>l_strcmp</a>                                         lvm.c
+   377 :    <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58211044.htm" class="localvar">ll</a> = <a href="../h_src/57522396.htm" class="macro">tsslen</a>(<a href="../h_src/58211452.htm" class="localvar">ls</a>);
+   379 :    <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58210772.htm" class="localvar">lr</a> = <a href="../h_src/57522396.htm" class="macro">tsslen</a>(<a href="../h_src/58211316.htm" class="localvar">rs</a>);
+<a href="../h_aa/58060996.htm" class=function>l_strton</a>                                         lvm.c
+    95 :    return (<a href="../h_src/57501656.htm" class="function">luaO_str2num</a>(<a href="../h_src/57522532.htm" class="macro">svalue</a>(<a href="../h_src/58060860.htm" class="localvar">obj</a>), <a href="../h_src/58060724.htm" class="localvar">result</a>) == <a href="../h_src/57522260.htm" class="macro">vslen</a>(<a href="../h_src/58060860.htm" class="localvar">obj</a>) + 1);
+<a href="../h_aa/57927976.htm" class=function>llex</a>                                             llex.c
+   548 :    if (<a href="../h_src/57619436.htm" class="macro">isreserved</a>(<a href="../h_src/57927296.htm" class="localvar">ts</a>))  <a  class="comments">/* reserved word? */</a>
+<a href="../h_aa/58068680.htm" class=function>loadConstants</a>                                    lundump.c
+   183 :    <a href="../h_src/57523960.htm" class="macro">setsvalue2n</a>(<a href="../h_src/58068544.htm" class="localvar">S</a>-&gt;<a href="../h_src/58075208.htm" class="variable">L</a>, o, <a href="../h_src/58069904.htm" class="function">loadString</a>(<a href="../h_src/58068544.htm" class="localvar">S</a>, <a href="../h_src/58068408.htm" class="localvar">f</a>));
+<a href="../h_aa/58071128.htm" class=function>loadStringN</a>                                      lundump.c
+   123 :    <a href="../h_src/57524096.htm" class="macro">setsvalue2s</a>(<a href="../h_src/58070720.htm" class="localvar">L</a>, <a href="../h_src/58070720.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/58070584.htm" class="localvar">ts</a>);  <a  class="comments">/* anchor it ('loadVector' can GC) */</a>
+<a href="../h_aa/57430244.htm" class=function>lua_concat</a>                                       lapi.c
+  1291 :    <a href="../h_src/57524096.htm" class="macro">setsvalue2s</a>(<a href="../h_src/57716580.htm" class="localvar">L</a>, <a href="../h_src/57716580.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57618552.htm" class="function">luaS_newlstr</a>(<a href="../h_src/57716580.htm" class="localvar">L</a>, &quot;&quot;, 0));  <a  class="comments">/* push empty string */</a>
+<a href="../h_aa/57435072.htm" class=function>lua_pushlstring</a>                                  lapi.c
+   530 :    <a href="../h_src/57524096.htm" class="macro">setsvalue2s</a>(<a href="../h_src/57589380.htm" class="localvar">L</a>, <a href="../h_src/57589380.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57588972.htm" class="localvar">ts</a>);
+<a href="../h_aa/57435004.htm" class=function>lua_pushstring</a>                                   lapi.c
+   545 :    <a href="../h_src/57524096.htm" class="macro">setsvalue2s</a>(<a href="../h_src/57588564.htm" class="localvar">L</a>, <a href="../h_src/57588564.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57588292.htm" class="localvar">ts</a>);
+<a href="../h_aa/57438200.htm" class=function>lua_tolstring</a>                                    lapi.c
+   420 :    *<a href="../h_src/57593188.htm" class="localvar">len</a> = <a href="../h_src/57522260.htm" class="macro">vslen</a>(<a href="../h_src/57593052.htm" class="localvar">o</a>);
+<a href="../h_aa/57633648.htm" class=function>luaD_seterrorobj</a>                                 ldo.c
+    94 :    <a href="../h_src/57524096.htm" class="macro">setsvalue2s</a>(<a href="../h_src/57883056.htm" class="localvar">L</a>, <a href="../h_src/57882784.htm" class="localvar">oldtop</a>, <a href="../h_src/57641196.htm" class="macro">G</a>(<a href="../h_src/57883056.htm" class="localvar">L</a>)-&gt;<a href="../h_src/57643780.htm" class="variable">memerrmsg</a>); <a  class="comments">/* reuse preregistered msg. */</a>
+    98 :    <a href="../h_src/57524096.htm" class="macro">setsvalue2s</a>(<a href="../h_src/57883056.htm" class="localvar">L</a>, <a href="../h_src/57882784.htm" class="localvar">oldtop</a>, <a href="../h_src/57619572.htm" class="macro">luaS_newliteral</a>(<a href="../h_src/57883056.htm" class="localvar">L</a>, &quot;error in error handling&quot;));
+<a href="../h_aa/57635212.htm" class=function>luaG_addinfo</a>                                     ldebug.c
+   801 :    <a href="../h_src/57501316.htm" class="function">luaO_chunkid</a>(<a href="../h_src/57888700.htm" class="localvar">buff</a>, <a href="../h_src/57522668.htm" class="macro">getstr</a>(<a href="../h_src/57888972.htm" class="localvar">src</a>), <a href="../h_src/57522396.htm" class="macro">tsslen</a>(<a href="../h_src/57888972.htm" class="localvar">src</a>));
+<a href="../h_aa/57616852.htm" class=function>luaH_getstr</a>                                      ltable.c
+   775 :    if (<a href="../h_src/58096356.htm" class="localvar">key</a>-&gt;<a href="../h_src/57523620.htm" class="variable">tt</a> == <a href="../h_src/57525184.htm" class="macro">LUA_VSHRSTR</a>)
+   779 :    <a href="../h_src/57524232.htm" class="macro">setsvalue</a>(<a href="../h_src/57547760.htm" class="macro">cast</a>(<a href="../h_src/57444252.htm" class="type">lua_State</a> *, NULL), &amp;<a href="../h_src/58096220.htm" class="localvar">ko</a>, <a href="../h_src/58096356.htm" class="localvar">key</a>);
+<a href="../h_aa/57670884.htm" class=function>luaK_exp2const</a>                                   lcode.c
+    98 :    <a href="../h_src/57524232.htm" class="macro">setsvalue</a>(<a href="../h_src/57666940.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, <a href="../h_src/57666668.htm" class="localvar">v</a>, <a href="../h_src/57666804.htm" class="localvar">e</a>-&gt;<a href="../h_src/57679588.htm" class="variable">u</a>.<a href="../h_src/57680472.htm" class="variable">strval</a>);
+<a href="../h_aa/57501520.htm" class=function>luaO_tostring</a>                                    lobject.c
+   377 :    <a href="../h_src/57524232.htm" class="macro">setsvalue</a>(<a href="../h_src/57906624.htm" class="localvar">L</a>, <a href="../h_src/57906488.htm" class="localvar">obj</a>, <a href="../h_src/57618552.htm" class="function">luaS_newlstr</a>(<a href="../h_src/57906624.htm" class="localvar">L</a>, <a href="../h_src/57906352.htm" class="localvar">buff</a>, <a href="../h_src/57906216.htm" class="localvar">len</a>));
+<a href="../h_aa/57610868.htm" class=function>luaV_concat</a>                                      lvm.c
+   654 :    <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58202136.htm" class="localvar">tl</a> = <a href="../h_src/57522260.htm" class="macro">vslen</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58202680.htm" class="localvar">top</a> - 1));
+   658 :    <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/58201864.htm" class="localvar">l</a> = <a href="../h_src/57522260.htm" class="macro">vslen</a>(<a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/58202680.htm" class="localvar">top</a> - <a href="../h_src/58202544.htm" class="localvar">n</a> - 1));
+   674 :    <a href="../h_src/57524096.htm" class="macro">setsvalue2s</a>(<a href="../h_src/58202952.htm" class="localvar">L</a>, <a href="../h_src/58202680.htm" class="localvar">top</a> - <a href="../h_src/58202544.htm" class="localvar">n</a>, <a href="../h_src/58202000.htm" class="localvar">ts</a>);  <a  class="comments">/* create result */</a>
+<a href="../h_aa/57699852.htm" class=function>luaX_newstring</a>                                   llex.c
+   142 :    <a href="../h_src/57524232.htm" class="macro">setsvalue</a>(<a href="../h_src/57936612.htm" class="localvar">L</a>, <a href="../h_src/57936204.htm" class="localvar">stv</a>, <a href="../h_src/57936476.htm" class="localvar">ts</a>);  <a  class="comments">/* temporarily anchor the string */</a>
+<a href="../h_aa/143399964.htm" class=function>PrintString</a>                                      luac.c
+   223 :    <a href="../h_aa/57441192.htm" class="type">size_t</a> <a href="../h_src/143399556.htm" class="localvar">i</a>,<a href="../h_src/143399420.htm" class="localvar">n</a>=<a href="../h_src/57522396.htm" class="macro">tsslen</a>(<a href="../h_src/143399828.htm" class="localvar">ts</a>);
+<a href="../h_aa/57905196.htm" class=function>pushstr</a>                                          lobject.c
+   416 :    <a href="../h_src/57524096.htm" class="macro">setsvalue2s</a>(<a href="../h_src/57904584.htm" class="localvar">L</a>, <a href="../h_src/57904584.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57618552.htm" class="function">luaS_newlstr</a>(<a href="../h_src/57904584.htm" class="localvar">L</a>, <a href="../h_src/57904856.htm" class="localvar">str</a>, <a href="../h_src/57904720.htm" class="localvar">lstr</a>));
+<a href="../h_aa/57860140.htm" class=function>resume_error</a>                                     ldo.c
+   771 :    <a href="../h_src/57524096.htm" class="macro">setsvalue2s</a>(<a href="../h_src/57860004.htm" class="localvar">L</a>, <a href="../h_src/57860004.htm" class="localvar">L</a>-&gt;<a href="../h_src/57642624.htm" class="variable">top</a>.<a href="../h_src/57531984.htm" class="variable">p</a>, <a href="../h_src/57618484.htm" class="function">luaS_new</a>(<a href="../h_src/57860004.htm" class="localvar">L</a>, <a href="../h_src/57859868.htm" class="localvar">msg</a>));  <a  class="comments">/* push error message */</a>
+<a href="../h_aa/57806720.htm" class=function>stringK</a>                                          lcode.c
+   577 :    <a href="../h_src/57524232.htm" class="macro">setsvalue</a>(<a href="../h_src/57806584.htm" class="localvar">fs</a>-&gt;<a href="../h_src/57675780.htm" class="variable">ls</a>-&gt;<a href="../h_src/57700940.htm" class="variable">L</a>, &amp;<a href="../h_src/57806312.htm" class="localvar">o</a>, <a href="../h_src/57806448.htm" class="localvar">s</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable tt</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

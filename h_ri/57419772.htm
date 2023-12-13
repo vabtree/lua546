@@ -1,0 +1,72 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>luaL_checktype</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57419772.htm" class="function" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57419772.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57419772.htm" class="function" target="_self">Flow Chart</a></li>
+<li><a href="../h_src/57419772.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57419772.htm" class="function" target="_self">Called By</a></li>
+<li><a href="../h_rx/57419772.htm" class="function" target="_self">Call Tree</a></li>
+<li><a href="../h_ro/57419772.htm" class="function" target="_self">Calls and Uses</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/143273580.htm" class=function>auxupvalue</a>                                       ldblib.c
+   261 :    <a href="../h_src/57419772.htm" class="function">luaL_checktype</a>(<a href="../h_src/143273444.htm" class="localvar">L</a>, 1, <a href="../h_src/57443232.htm" class="macro">LUA_TFUNCTION</a>);  <a  class="comments">/* closure */</a>
+<a href="../h_aa/143430088.htm" class=function>checktab</a>                                         ltablib.c
+    56 :    <a href="../h_src/57419772.htm" class="function">luaL_checktype</a>(<a href="../h_src/143429952.htm" class="localvar">L</a>, <a href="../h_src/143429816.htm" class="localvar">arg</a>, <a href="../h_src/57443368.htm" class="macro">LUA_TTABLE</a>);  <a  class="comments">/* force an error */</a>
+<a href="../h_aa/143272356.htm" class=function>checkupval</a>                                       ldblib.c
+   288 :    <a href="../h_src/57419772.htm" class="function">luaL_checktype</a>(<a href="../h_src/143272220.htm" class="localvar">L</a>, <a href="../h_src/143272084.htm" class="localvar">argf</a>, <a href="../h_src/57443232.htm" class="macro">LUA_TFUNCTION</a>);  <a  class="comments">/* closure */</a>
+<a href="../h_aa/143268820.htm" class=function>db_sethook</a>                                       ldblib.c
+   375 :    <a href="../h_src/57419772.htm" class="function">luaL_checktype</a>(<a href="../h_src/143268684.htm" class="localvar">L</a>, <a href="../h_src/143268548.htm" class="localvar">arg</a>+1, <a href="../h_src/57443232.htm" class="macro">LUA_TFUNCTION</a>);
+<a href="../h_aa/58284748.htm" class=function>db_setuservalue</a>                                  ldblib.c
+    79 :    <a href="../h_src/57419772.htm" class="function">luaL_checktype</a>(<a href="../h_src/58284612.htm" class="localvar">L</a>, 1, <a href="../h_src/57443096.htm" class="macro">LUA_TUSERDATA</a>);
+<a href="../h_aa/58291140.htm" class=function>luaB_cocreate</a>                                    lcorolib.c
+    97 :    <a href="../h_src/57419772.htm" class="function">luaL_checktype</a>(<a href="../h_src/58291004.htm" class="localvar">L</a>, 1, <a href="../h_src/57443232.htm" class="macro">LUA_TFUNCTION</a>);
+<a href="../h_aa/58298892.htm" class=function>luaB_load</a>                                        lbaselib.c
+   399 :    <a href="../h_src/57419772.htm" class="function">luaL_checktype</a>(<a href="../h_src/58298756.htm" class="localvar">L</a>, 1, <a href="../h_src/57443232.htm" class="macro">LUA_TFUNCTION</a>);
+<a href="../h_aa/58302700.htm" class=function>luaB_next</a>                                        lbaselib.c
+   268 :    <a href="../h_src/57419772.htm" class="function">luaL_checktype</a>(<a href="../h_src/58302564.htm" class="localvar">L</a>, 1, <a href="../h_src/57443368.htm" class="macro">LUA_TTABLE</a>);
+<a href="../h_aa/58306644.htm" class=function>luaB_rawget</a>                                      lbaselib.c
+   167 :    <a href="../h_src/57419772.htm" class="function">luaL_checktype</a>(<a href="../h_src/58306508.htm" class="localvar">L</a>, 1, <a href="../h_src/57443368.htm" class="macro">LUA_TTABLE</a>);
+<a href="../h_aa/58306372.htm" class=function>luaB_rawset</a>                                      lbaselib.c
+   175 :    <a href="../h_src/57419772.htm" class="function">luaL_checktype</a>(<a href="../h_src/58306236.htm" class="localvar">L</a>, 1, <a href="../h_src/57443368.htm" class="macro">LUA_TTABLE</a>);
+<a href="../h_aa/58307732.htm" class=function>luaB_setmetatable</a>                                lbaselib.c
+   139 :    <a href="../h_src/57419772.htm" class="function">luaL_checktype</a>(<a href="../h_src/58307596.htm" class="localvar">L</a>, 1, <a href="../h_src/57443368.htm" class="macro">LUA_TTABLE</a>);
+<a href="../h_aa/58309500.htm" class=function>luaB_tonumber</a>                                    lbaselib.c
+   101 :    <a href="../h_src/57419772.htm" class="function">luaL_checktype</a>(<a href="../h_src/58309364.htm" class="localvar">L</a>, 1, <a href="../h_src/57443504.htm" class="macro">LUA_TSTRING</a>);  <a  class="comments">/* no numbers as strings */</a>
+<a href="../h_aa/58294948.htm" class=function>luaB_xpcall</a>                                      lbaselib.c
+   490 :    <a href="../h_src/57419772.htm" class="function">luaL_checktype</a>(<a href="../h_src/58294812.htm" class="localvar">L</a>, 2, <a href="../h_src/57443232.htm" class="macro">LUA_TFUNCTION</a>);  <a  class="comments">/* check error function */</a>
+<a href="../h_aa/143346952.htm" class=function>os_time</a>                                          loslib.c
+   350 :    <a href="../h_src/57419772.htm" class="function">luaL_checktype</a>(<a href="../h_src/143346816.htm" class="localvar">L</a>, 1, <a href="../h_src/57443368.htm" class="macro">LUA_TTABLE</a>);
+<a href="../h_aa/143419276.htm" class=function>sort</a>                                             ltablib.c
+   404 :    <a href="../h_src/57419772.htm" class="function">luaL_checktype</a>(<a href="../h_src/143419140.htm" class="localvar">L</a>, 2, <a href="../h_src/57443232.htm" class="macro">LUA_TFUNCTION</a>);  <a  class="comments">/* must be a function */</a>
+<a href="../h_aa/143333012.htm" class=function>str_dump</a>                                         lstrlib.c
+   236 :    <a href="../h_src/57419772.htm" class="function">luaL_checktype</a>(<a href="../h_src/143332876.htm" class="localvar">L</a>, 1, <a href="../h_src/57443232.htm" class="macro">LUA_TFUNCTION</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use luaL_checktype</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

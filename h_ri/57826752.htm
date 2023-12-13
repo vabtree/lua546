@@ -1,0 +1,89 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>reallymarkobject</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57826752.htm" class="function" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57826752.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57826752.htm" class="function" target="_self">Flow Chart</a></li>
+<li><a href="../h_src/57826752.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/57826752.htm" class="function" target="_self">Called By</a></li>
+<li><a href="../h_rx/57826752.htm" class="function" target="_self">Call Tree</a></li>
+<li><a href="../h_ro/57826752.htm" class="function" target="_self">Calls and Uses</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Called By</h4>
+<pre><a href="../h_aa/57826616.htm" class=function>atomic</a>                                           lgc.c
+  1532 :    <a href="../h_src/57827024.htm" class="macro">markobject</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>, <a href="../h_src/57945452.htm" class="localvar">L</a>);  <a  class="comments">/* mark running thread */</a>
+  1534 :    <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57945316.htm" class="localvar">g</a>, &amp;<a href="../h_src/57945316.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646296.htm" class="variable">l_registry</a>);
+<a href="../h_aa/57824712.htm" class=function>iscleared</a>                                        lgc.c
+   188 :    <a href="../h_src/57827024.htm" class="macro">markobject</a>(<a href="../h_src/57824576.htm" class="localvar">g</a>, <a href="../h_src/57824440.htm" class="localvar">o</a>);  <a  class="comments">/* strings are 'values', so are never weak */</a>
+<a href="../h_aa/57620456.htm" class=function>luaC_barrier_</a>                                    lgc.c
+   212 :    <a href="../h_src/57826752.htm" class="function">reallymarkobject</a>(<a href="../h_src/57823896.htm" class="localvar">g</a>, <a href="../h_src/57824032.htm" class="localvar">v</a>);  <a  class="comments">/* restore invariant */</a>
+<a href="../h_aa/57820632.htm" class=function>markbeingfnz</a>                                     lgc.c
+   350 :    <a href="../h_src/57827024.htm" class="macro">markobject</a>(<a href="../h_src/57820496.htm" class="localvar">g</a>, <a href="../h_src/57820360.htm" class="localvar">o</a>);
+<a href="../h_aa/57821040.htm" class=function>markmt</a>                                           lgc.c
+   338 :    <a href="../h_src/57826888.htm" class="macro">markobjectN</a>(<a href="../h_src/57820904.htm" class="localvar">g</a>, <a href="../h_src/57820904.htm" class="localvar">g</a>-&gt;<a href="../h_src/57643440.htm" class="variable">mt</a>[<a href="../h_src/57820768.htm" class="localvar">i</a>]);
+<a href="../h_aa/57952252.htm" class=function>markold</a>                                          lgc.c
+  1226 :    <a href="../h_src/57826752.htm" class="function">reallymarkobject</a>(<a href="../h_src/57952116.htm" class="localvar">g</a>, <a href="../h_src/57951708.htm" class="localvar">p</a>);
+<a href="../h_aa/57826752.htm" class=function>reallymarkobject</a>                                 lgc.c
+   310 :    <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57821584.htm" class="localvar">g</a>, <a href="../h_src/57821312.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57510564.htm" class="variable">v</a>.<a href="../h_src/57510768.htm" class="variable">p</a>);  <a  class="comments">/* mark its content */</a>
+   316 :    <a href="../h_src/57826888.htm" class="macro">markobjectN</a>(<a href="../h_src/57821584.htm" class="localvar">g</a>, <a href="../h_src/57821176.htm" class="localvar">u</a>-&gt;<a href="../h_src/57519540.htm" class="variable">metatable</a>);  <a  class="comments">/* mark its metatable */</a>
+<a href="../h_aa/57820088.htm" class=function>remarkupvals</a>                                     lgc.c
+   385 :    <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57819952.htm" class="localvar">g</a>, <a href="../h_src/57819340.htm" class="localvar">uv</a>-&gt;<a href="../h_src/57510564.htm" class="variable">v</a>.<a href="../h_src/57510768.htm" class="variable">p</a>);  <a  class="comments">/* mark its value */</a>
+<a href="../h_aa/57818932.htm" class=function>restartcollection</a>                                lgc.c
+   405 :    <a href="../h_src/57827024.htm" class="macro">markobject</a>(<a href="../h_src/57818796.htm" class="localvar">g</a>, <a href="../h_src/57818796.htm" class="localvar">g</a>-&gt;<a href="../h_src/57643848.htm" class="variable">mainthread</a>);
+   406 :    <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57818796.htm" class="localvar">g</a>, &amp;<a href="../h_src/57818796.htm" class="localvar">g</a>-&gt;<a href="../h_src/57646296.htm" class="variable">l_registry</a>);
+<a href="../h_aa/57973060.htm" class=function>traverseCclosure</a>                                 lgc.c
+   596 :    <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57972924.htm" class="localvar">g</a>, &amp;<a href="../h_src/57972788.htm" class="localvar">cl</a>-&gt;<a href="../h_src/57508796.htm" class="variable">upvalue</a>[<a href="../h_src/57972652.htm" class="localvar">i</a>]);
+<a href="../h_aa/57817436.htm" class=function>traverseephemeron</a>                                lgc.c
+   491 :    <a href="../h_src/57826752.htm" class="function">reallymarkobject</a>(<a href="../h_src/57977276.htm" class="localvar">g</a>, <a href="../h_src/57527496.htm" class="macro">gcvalue</a>(&amp;<a href="../h_src/57977140.htm" class="localvar">h</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/57976460.htm" class="localvar">i</a>]));
+   507 :    <a href="../h_src/57826752.htm" class="function">reallymarkobject</a>(<a href="../h_src/57977276.htm" class="localvar">g</a>, <a href="../h_src/57527496.htm" class="macro">gcvalue</a>(<a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/57976052.htm" class="localvar">n</a>)));  <a  class="comments">/* mark it now */</a>
+<a href="../h_aa/57972516.htm" class=function>traverseLclosure</a>                                 lgc.c
+   606 :    <a href="../h_src/57826888.htm" class="macro">markobjectN</a>(<a href="../h_src/57972380.htm" class="localvar">g</a>, <a href="../h_src/57972244.htm" class="localvar">cl</a>-&gt;<a href="../h_src/57508184.htm" class="variable">p</a>);  <a  class="comments">/* mark its prototype */</a>
+   609 :    <a href="../h_src/57826888.htm" class="macro">markobjectN</a>(<a href="../h_src/57972380.htm" class="localvar">g</a>, <a href="../h_src/57971972.htm" class="localvar">uv</a>);  <a  class="comments">/* mark upvalue */</a>
+<a href="../h_aa/57973604.htm" class=function>traverseproto</a>                                    lgc.c
+   580 :    <a href="../h_src/57826888.htm" class="macro">markobjectN</a>(<a href="../h_src/57973468.htm" class="localvar">g</a>, <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57513964.htm" class="variable">source</a>);
+   582 :    <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57973468.htm" class="localvar">g</a>, &amp;<a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57515052.htm" class="variable">k</a>[<a href="../h_src/57973196.htm" class="localvar">i</a>]);
+   584 :    <a href="../h_src/57826888.htm" class="macro">markobjectN</a>(<a href="../h_src/57973468.htm" class="localvar">g</a>, <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514440.htm" class="variable">upvalues</a>[<a href="../h_src/57973196.htm" class="localvar">i</a>].<a href="../h_src/57517364.htm" class="variable">name</a>);
+   586 :    <a href="../h_src/57826888.htm" class="macro">markobjectN</a>(<a href="../h_src/57973468.htm" class="localvar">g</a>, <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514576.htm" class="variable">p</a>[<a href="../h_src/57973196.htm" class="localvar">i</a>]);
+   588 :    <a href="../h_src/57826888.htm" class="macro">markobjectN</a>(<a href="../h_src/57973468.htm" class="localvar">g</a>, <a href="../h_src/57973332.htm" class="localvar">f</a>-&gt;<a href="../h_src/57514032.htm" class="variable">locvars</a>[<a href="../h_src/57973196.htm" class="localvar">i</a>].<a href="../h_src/57516888.htm" class="variable">varname</a>);
+<a href="../h_aa/57975916.htm" class=function>traversestrongtable</a>                              lgc.c
+   528 :    <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57975780.htm" class="localvar">g</a>, &amp;<a href="../h_src/57975644.htm" class="localvar">h</a>-&gt;<a href="../h_src/57504716.htm" class="variable">array</a>[<a href="../h_src/57975236.htm" class="localvar">i</a>]);
+   534 :    <a href="../h_src/57827160.htm" class="macro">markkey</a>(<a href="../h_src/57975780.htm" class="localvar">g</a>, <a href="../h_src/57975508.htm" class="localvar">n</a>);
+   535 :    <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57975780.htm" class="localvar">g</a>, <a href="../h_src/57617872.htm" class="macro">gval</a>(<a href="../h_src/57975508.htm" class="localvar">n</a>));
+<a href="../h_aa/57974964.htm" class=function>traversetable</a>                                    lgc.c
+   545 :    <a href="../h_src/57826888.htm" class="macro">markobjectN</a>(<a href="../h_src/57974828.htm" class="localvar">g</a>, <a href="../h_src/57974692.htm" class="localvar">h</a>-&gt;<a href="../h_src/57504444.htm" class="variable">metatable</a>);
+<a href="../h_aa/57971836.htm" class=function>traversethread</a>                                   lgc.c
+   637 :    <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57971700.htm" class="localvar">g</a>, <a href="../h_src/57531712.htm" class="macro">s2v</a>(<a href="../h_src/57971292.htm" class="localvar">o</a>));
+   639 :    <a href="../h_src/57827024.htm" class="macro">markobject</a>(<a href="../h_src/57971700.htm" class="localvar">g</a>, <a href="../h_src/57971428.htm" class="localvar">uv</a>);  <a  class="comments">/* open upvalues cannot be collected */</a>
+<a href="../h_aa/57974148.htm" class=function>traverseudata</a>                                    lgc.c
+   565 :    <a href="../h_src/57826888.htm" class="macro">markobjectN</a>(<a href="../h_src/57974012.htm" class="localvar">g</a>, <a href="../h_src/57973876.htm" class="localvar">u</a>-&gt;<a href="../h_src/57519540.htm" class="variable">metatable</a>);  <a  class="comments">/* mark its metatable */</a>
+   567 :    <a href="../h_src/57827296.htm" class="macro">markvalue</a>(<a href="../h_src/57974012.htm" class="localvar">g</a>, &amp;<a href="../h_src/57973876.htm" class="localvar">u</a>-&gt;<a href="../h_src/57519336.htm" class="variable">uv</a>[<a href="../h_src/57973740.htm" class="localvar">i</a>].<a href="../h_src/57520764.htm" class="variable">uv</a>);
+<a href="../h_aa/57818252.htm" class=function>traverseweakvalue</a>                                lgc.c
+   456 :    <a href="../h_src/57827160.htm" class="macro">markkey</a>(<a href="../h_src/57818116.htm" class="localvar">g</a>, <a href="../h_src/57817844.htm" class="localvar">n</a>);
+</pre>
+<h4><a class="legend">Table lists functions that directly use reallymarkobject</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

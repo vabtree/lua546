@@ -1,0 +1,63 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>form</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/143290580.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/143290580.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/143290580.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/143290580.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/143291804.htm" class=function>str_format</a>                                       lstrlib.c
+  1338 :    <a href="../h_src/143290580.htm" class="localvar">form</a>[<a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/143290580.htm" class="localvar">form</a>) - 1] = 's';  <a  class="comments">/* format it as a string */</a>
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/143291804.htm" class=function>str_format</a>                                       lstrlib.c
+  1294 :    <a href="../h_src/143291124.htm" class="localvar">strfrmt</a> = <a href="../h_src/143293300.htm" class="function">getformat</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143291124.htm" class="localvar">strfrmt</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>);
+  1297 :    <a href="../h_src/143294116.htm" class="function">checkformat</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>, <a href="../h_src/143297788.htm" class="macro">L_FMTFLAGSC</a>, 0);
+  1298 :    <a href="../h_src/143290172.htm" class="localvar">nb</a> = <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143290308.htm" class="localvar">buff</a>, <a href="../h_src/143290444.htm" class="localvar">maxitem</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>, (int)<a href="../h_src/57419976.htm" class="function">luaL_checkinteger</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143291396.htm" class="localvar">arg</a>));
+  1311 :    <a href="../h_src/143294116.htm" class="function">checkformat</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>, <a href="../h_src/143290852.htm" class="localvar">flags</a>, 1);
+  1312 :    <a href="../h_src/143292620.htm" class="function">addlenmod</a>(<a href="../h_src/143290580.htm" class="localvar">form</a>, <a href="../h_src/57450236.htm" class="macro">LUA_INTEGER_FRMLEN</a>);
+  1313 :    <a href="../h_src/143290172.htm" class="localvar">nb</a> = <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143290308.htm" class="localvar">buff</a>, <a href="../h_src/143290444.htm" class="localvar">maxitem</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>, (<a href="../h_src/57450916.htm" class="macro">LUAI_UACINT</a>)<a href="../h_src/143290036.htm" class="localvar">n</a>);
+  1317 :    <a href="../h_src/143294116.htm" class="function">checkformat</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>, <a href="../h_src/143298332.htm" class="macro">L_FMTFLAGSF</a>, 1);
+  1318 :    <a href="../h_src/143292620.htm" class="function">addlenmod</a>(<a href="../h_src/143290580.htm" class="localvar">form</a>, <a href="../h_src/57451596.htm" class="macro">LUA_NUMBER_FRMLEN</a>);
+  1319 :    <a href="../h_src/143290172.htm" class="localvar">nb</a> = <a href="../h_src/143299828.htm" class="function">lua_number2strx</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143290308.htm" class="localvar">buff</a>, <a href="../h_src/143290444.htm" class="localvar">maxitem</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>,
+  1328 :    <a href="../h_src/143294116.htm" class="function">checkformat</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>, <a href="../h_src/143298332.htm" class="macro">L_FMTFLAGSF</a>, 1);
+  1329 :    <a href="../h_src/143292620.htm" class="function">addlenmod</a>(<a href="../h_src/143290580.htm" class="localvar">form</a>, <a href="../h_src/57451596.htm" class="macro">LUA_NUMBER_FRMLEN</a>);
+  1330 :    <a href="../h_src/143290172.htm" class="localvar">nb</a> = <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143290308.htm" class="localvar">buff</a>, <a href="../h_src/143290444.htm" class="localvar">maxitem</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>, (<a href="../h_src/57451732.htm" class="macro">LUAI_UACNUMBER</a>)<a href="../h_src/143289900.htm" class="localvar">n</a>);
+  1335 :    <a href="../h_src/143294116.htm" class="function">checkformat</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>, <a href="../h_src/143297788.htm" class="macro">L_FMTFLAGSC</a>, 0);
+  1338 :    <a href="../h_src/143290580.htm" class="localvar">form</a>[<a href="../h_aa/57568976.htm" class="libfunc">strlen</a>(<a href="../h_src/143290580.htm" class="localvar">form</a>) - 1] = 's';  <a  class="comments">/* format it as a string */</a>
+  1340 :    <a href="../h_src/143290172.htm" class="localvar">nb</a> = <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143290308.htm" class="localvar">buff</a>, <a href="../h_src/143290444.htm" class="localvar">maxitem</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>, <a href="../h_src/143289764.htm" class="localvar">p</a>);
+  1344 :    if (<a href="../h_src/143290580.htm" class="localvar">form</a>[2] != '\0')  <a  class="comments">/* modifiers? */</a>
+  1352 :    if (<a href="../h_src/143290580.htm" class="localvar">form</a>[2] == '\0')  <a  class="comments">/* no modifiers? */</a>
+  1356 :    <a href="../h_src/143294116.htm" class="function">checkformat</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>, <a href="../h_src/143297788.htm" class="macro">L_FMTFLAGSC</a>, 1);
+  1357 :    if (<a href="../h_aa/57565916.htm" class="libfunc">strchr</a>(<a href="../h_src/143290580.htm" class="localvar">form</a>, '.') == NULL &amp;&amp; <a href="../h_src/143289628.htm" class="localvar">l</a> &gt;= 100) {
+  1362 :    <a href="../h_src/143290172.htm" class="localvar">nb</a> = <a href="../h_src/57449692.htm" class="macro">l_sprintf</a>(<a href="../h_src/143290308.htm" class="localvar">buff</a>, <a href="../h_src/143290444.htm" class="localvar">maxitem</a>, <a href="../h_src/143290580.htm" class="localvar">form</a>, <a href="../h_src/143289492.htm" class="localvar">s</a>);
+  1369 :    return <a href="../h_src/57419296.htm" class="function">luaL_error</a>(<a href="../h_src/143291668.htm" class="localvar">L</a>, &quot;invalid conversion '%s' to 'format'&quot;, <a href="../h_src/143290580.htm" class="localvar">form</a>);
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable form</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+

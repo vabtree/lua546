@@ -1,0 +1,49 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>f</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/58098260.htm" class="variable" target="_self">Info</a></li>
+<li id="current"><a href="../h_ri/58098260.htm" class="variable" target="_self">Usage</a></li>
+<li><a href="../h_src/58098260.htm" class="variable" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li id="current"><a href="../h_ri/58098260.htm" class="variable" target="_self">Used By</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Set By</h4>
+<pre><a href="../h_aa/57616716.htm" class=function>luaH_newkey</a>                                      ltable.c
+   685 :    <a href="../h_src/57506008.htm" class="type">Node</a> *<a href="../h_src/58098260.htm" class="localvar">f</a> = <a href="../h_src/58099892.htm" class="function">getfreepos</a>(<a href="../h_src/58099484.htm" class="localvar">t</a>);  <a  class="comments">/* get a free place */</a>
+</pre>
+<h4>Read By</h4>
+<pre><a href="../h_aa/57616716.htm" class=function>luaH_newkey</a>                                      ltable.c
+   686 :    if (<a href="../h_src/58098260.htm" class="localvar">f</a> == NULL) {  <a  class="comments">/* cannot find a free place? */</a>
+   698 :    <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58098396.htm" class="localvar">othern</a>) = <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/58098260.htm" class="localvar">f</a> - <a href="../h_src/58098396.htm" class="localvar">othern</a>);  <a  class="comments">/* rechain to point to 'f' */</a>
+   699 :    *<a href="../h_src/58098260.htm" class="localvar">f</a> = *<a href="../h_src/58099076.htm" class="localvar">mp</a>;  <a  class="comments">/* copy colliding node into free pos. (mp-&gt;next also goes) */</a>
+   701 :    <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58098260.htm" class="localvar">f</a>) += <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a> - <a href="../h_src/58098260.htm" class="localvar">f</a>);  <a  class="comments">/* correct 'next' */</a><a href="../h_src/57506280.htm" class="variable">next</a>' */
+   709 :    <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58098260.htm" class="localvar">f</a>) = <a href="../h_src/57547216.htm" class="macro">cast_int</a>((<a href="../h_src/58099076.htm" class="localvar">mp</a> + <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>)) - <a href="../h_src/58098260.htm" class="localvar">f</a>);  <a  class="comments">/* chain new position */</a>
+   711 :    <a href="../h_src/57617736.htm" class="macro">gnext</a>(<a href="../h_src/58099076.htm" class="localvar">mp</a>) = <a href="../h_src/57547216.htm" class="macro">cast_int</a>(<a href="../h_src/58098260.htm" class="localvar">f</a> - <a href="../h_src/58099076.htm" class="localvar">mp</a>);
+   712 :    <a href="../h_src/58099076.htm" class="localvar">mp</a> = <a href="../h_src/58098260.htm" class="localvar">f</a>;
+</pre>
+<h4><a class="legend">Table lists all functions that directly set or read variable f</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+
