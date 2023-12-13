@@ -1,0 +1,117 @@
+<html>
+<head>
+<!-- This html document was created by Imagix 4D -->
+<link href="../htm/symbol.css" rel="stylesheet" type="text/css">
+<link href="../htm/symcolors.css" rel="stylesheet" type="text/css">
+<link href="../htm/notebook.css" rel="stylesheet" type="text/css">
+<base target="symbol">
+</head>
+<body>
+
+<h2>lua_createtable</h2>
+
+<div class="notebook">
+<ul>
+<li><a href="../h_aa/57433916.htm" class="function" target="_self">Info</a></li>
+<li id="current"><a href="../h_rx/57433916.htm" class="function" target="_self">Calling Hierarchy</a></li>
+<li><a href="../h_nf/57433916.htm" class="function" target="_self">Flow Chart</a></li>
+<li><a href="../h_src/57433916.htm" class="function" target="_self">Source Code</a></li>
+</ul>
+</div>
+<div class="notebook">
+<ul>
+<li><a href="../h_ri/57433916.htm" class="function" target="_self">Called By</a></li>
+<li><a href="../h_rx/57433916.htm" class="function" target="_self">Call Tree</a></li>
+<li id="current"><a href="../h_ro/57433916.htm" class="function" target="_self">Calls and Uses</a></li>
+</ul>
+</div>
+<div class="nb_clear">
+</div>
+<h4>Calls</h4>
+<pre><a href="../h_aa/57548168.htm" class=macro>api_check</a>                                        llimits.h (line 126)
+<a href="../h_aa/57637932.htm" class=macro>api_incr_top</a>                                     lapi.h (line 16)
+<a href="../h_aa/57627732.htm" class=macro>bit2mask</a>                                         lgc.h (line 64)
+<a href="../h_aa/57527904.htm" class=macro>BIT_ISCOLLECTABLE</a>                                lobject.h (line 298)
+<a href="../h_aa/57627868.htm" class=macro>bitmask</a>                                          lgc.h (line 63)
+<a href="../h_aa/57547760.htm" class=macro>cast</a>                                             llimits.h (line 136)
+<a href="../h_aa/57640244.htm" class=macro>cast_u</a>                                           lstate.h (line 370)
+<a href="../h_aa/57548712.htm" class=macro>check_exp</a>                                        llimits.h (line 115)
+<a href="../h_aa/57533956.htm" class=macro>checkliveness</a>                                    lobject.h (line 106)
+<a href="../h_aa/57538240.htm" class=macro>condchangemem</a>                                    llimits.h (line 374)
+<a href="../h_aa/57527632.htm" class=macro>ctb</a>                                              lobject.h (line 303)
+<a href="../h_aa/57641196.htm" class=macro>G</a>                                                lstate.h (line 335)
+<a href="../h_aa/57527496.htm" class=macro>gcvalue</a>                                          lobject.h (line 305)
+<a href="../h_aa/57527768.htm" class=macro>iscollectable</a>                                    lobject.h (line 300)
+<a href="../h_aa/57625556.htm" class=macro>isdead</a>                                           lgc.h (line 96)
+<a href="../h_aa/57625692.htm" class=macro>isdeadm</a>                                          lgc.h (line 95)
+<a href="../h_aa/57551840.htm" class=macro>LUA_API</a>                                          luaconf.h (line 281)
+<a href="../h_aa/57548848.htm" class=macro>lua_assert</a>                                       llimits.h (line 114)
+<a href="../h_aa/57543408.htm" class=macro>lua_lock</a>                                         llimits.h (line 264)
+<a href="../h_aa/57548576.htm" class=macro>lua_longassert</a>                                   llimits.h (line 116)
+<a href="../h_aa/57443504.htm" class=macro>LUA_TSTRING</a>                                      lua.h (line 69)
+<a href="../h_aa/57443368.htm" class=macro>LUA_TTABLE</a>                                       lua.h (line 70)
+<a href="../h_aa/57543272.htm" class=macro>lua_unlock</a>                                       llimits.h (line 265)
+<a href="../h_aa/57507436.htm" class=macro>LUA_VTABLE</a>                                       lobject.h (line 680)
+<a href="../h_aa/57621612.htm" class=macro>luaC_checkGC</a>                                     lgc.h (line 172)
+<a href="../h_aa/57621748.htm" class=macro>luaC_condGC</a>                                      lgc.h (line 167)
+<a href="../h_aa/57620796.htm" class=function>luaC_step</a>                                        lgc.c (line 1688)
+<a href="../h_aa/57616512.htm" class=function>luaH_new</a>                                         ltable.c (line 626)
+<a href="../h_aa/57616444.htm" class=function>luaH_resize</a>                                      ltable.c (line 553)
+<a href="../h_aa/57548304.htm" class=macro>luai_apicheck</a>                                    llimits.h (line 123)
+<a href="../h_aa/57536812.htm" class=macro>makevariant</a>                                      lobject.h (line 42)
+<a href="../h_aa/57638884.htm" class=macro>obj2gco</a>                                          lstate.h (line 390)
+<a href="../h_aa/57625828.htm" class=macro>otherwhite</a>                                       lgc.h (line 94)
+<a href="../h_aa/57535044.htm" class=macro>rawtt</a>                                            lobject.h (line 77)
+<a href="../h_aa/57534092.htm" class=macro>righttt</a>                                          lobject.h (line 98)
+<a href="../h_aa/57531712.htm" class=macro>s2v</a>                                              lobject.h (line 172)
+<a href="../h_aa/57507028.htm" class=macro>sethvalue</a>                                        lobject.h (line 686)
+<a href="../h_aa/57506892.htm" class=macro>sethvalue2s</a>                                      lobject.h (line 691)
+<a href="../h_aa/57533820.htm" class=macro>settt_</a>                                           lobject.h (line 114)
+<a href="../h_aa/57534636.htm" class=macro>ttypetag</a>                                         lobject.h (line 84)
+<a href="../h_aa/57535316.htm" class=macro>val_</a>                                             lobject.h (line 72)
+<a href="../h_aa/57627188.htm" class=macro>WHITE0BIT</a>                                        lgc.h (line 75)
+<a href="../h_aa/57627052.htm" class=macro>WHITE1BIT</a>                                        lgc.h (line 76)
+<a href="../h_aa/57626508.htm" class=macro>WHITEBITS</a>                                        lgc.h (line 84)
+<a href="../h_aa/57534772.htm" class=macro>withvariant</a>                                      lobject.h (line 83)
+
+</pre>
+<h4>Sets</h4>
+<pre><a href="../h_aa/57536268.htm" class=variable>Value::gc</a>                                        lobject.h (line 50)
+<a href="../h_aa/57736164.htm" class=variable>io</a>                                               lapi.c (line 766)
+<a href="../h_aa/57531984.htm" class=variable>StkIdRel::p</a>                                      lobject.h (line 166)
+<a href="../h_aa/57736300.htm" class=variable>t</a>                                                lapi.c (line 763)
+<a href="../h_aa/57642624.htm" class=variable>lua_State::top</a>                                   lstate.h (line 314)
+<a href="../h_aa/57535452.htm" class=variable>TValue::tt_</a>                                      lobject.h (line 68)
+<a href="../h_aa/57535520.htm" class=variable>TValue::value_</a>                                   lobject.h (line 68)
+<a href="../h_aa/57736028.htm" class=variable>x_</a>                                               lapi.c (line 766)
+
+</pre>
+<h4>Reads</h4>
+<pre><a href="../h_aa/57640788.htm" class=variable>GCUnion::gc</a>                                      lstate.h (line 354)
+<a href="../h_aa/57646568.htm" class=variable>global_State::GCdebt</a>                             lstate.h (line 258)
+<a href="../h_aa/57736164.htm" class=variable>io</a>                                               lapi.c (line 766)
+<a href="../h_aa/57736708.htm" class=variable>L</a>                                                lapi.c (line 762)
+<a href="../h_aa/57642488.htm" class=variable>lua_State::l_G</a>                                   lstate.h (line 315)
+<a href="../h_aa/57736572.htm" class=variable>narray</a>                                           lapi.c (line 762)
+<a href="../h_aa/57736436.htm" class=variable>nrec</a>                                             lapi.c (line 762)
+<a href="../h_aa/57531984.htm" class=variable>StkIdRel::p</a>                                      lobject.h (line 166)
+<a href="../h_aa/57736300.htm" class=variable>t</a>                                                lapi.c (line 763)
+<a href="../h_aa/57642624.htm" class=variable>lua_State::top</a>                                   lstate.h (line 314)
+<a href="../h_aa/57532732.htm" class=variable>StackValue::val</a>                                  lobject.h (line 149)
+<a href="../h_aa/57736028.htm" class=variable>x_</a>                                               lapi.c (line 766)
+
+</pre>
+<h4>HasType</h4>
+<pre><a href="../h_aa/57640924.htm" class=class>GCUnion</a>                                          lstate.h (line 353)
+<a href="../h_aa/57467304.htm" class=pretype>void</a>
+
+</pre>
+<h4><a class="legend">Table lists functions, variables and types directly used by lua_createtable</a></h4>
+<pre>
+<div class="footer">
+Generated on 13 Dec 2023 (09:27) by <a class="footer" href="http://www.imagix.com">Imagix 4D</a>
+</div>
+</pre>
+</body>
+</html>
+
